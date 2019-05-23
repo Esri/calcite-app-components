@@ -1,0 +1,40 @@
+{
+  "name": "calcite-app-components",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "jsnext:main": "dist/esm/index.mjs",
+  "unpkg": "dist/ionic.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "dependencies": {
+    "@esri/calcite-base": "github:ArcGIS/calcite-base",
+    "@esri/calcite-colors": "^1.2.0",
+    "@esri/calcite-ui-icons": "^2.0.1",
+    "calcite-components": "github:ArcGIS/calcite-components",
+    "calcite-fonts": "github:ArcGIS/calcite-fonts"
+  },
+  "devDependencies": {
+    "@stencil/core": "one",
+    "@stencil/sass": "^0.2.3",
+    "@stencil/state-tunnel": "one",
+    "@types/jest": "23.3.14",
+    "@types/puppeteer": "1.12.4",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "puppeteer": "1.14.0"
+  },
+  "license": "MIT"
+}
