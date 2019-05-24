@@ -1,4 +1,4 @@
-# calcite-application-components
+# calcite-app-components
 
 A collection of calcite components for building single page applications.
 
