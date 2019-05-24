@@ -5,15 +5,7 @@ export const config: Config = {
   namespace: "calcite",
   bundles: [
     {
-      components: [
-        "calcite-modal",
-        "calcite-alerts",
-        "calcite-alert",
-        "calcite-tabs",
-        "calcite-tab",
-        "calcite-tab-title",
-        "calcite-tab-nav"
-      ]
+      components: ["calcite-alert"]
     }
   ],
   outputTargets: [
