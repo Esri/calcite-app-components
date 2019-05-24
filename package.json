@@ -1,5 +1,5 @@
 {
-  "name": "calcite-mapping-components",
+  "name": "calcite-application-components",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",

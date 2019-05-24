@@ -1,6 +1,6 @@
-# calcite-mapping-components
+# calcite-application-components
 
-Single page application user interface components to be used in ArcGIS applications and widgets.
+A collection of calcite components for building single page applications.
 
 ## Features
 
