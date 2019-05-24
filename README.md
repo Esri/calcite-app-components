@@ -4,12 +4,7 @@ Single page application user interface components to be used in ArcGIS applicati
 
 ## Features
 
-- Basemaps - Set different basemaps interactively
-- Geolocation - Find and display your geolocation
-- Place Finding - Find places or geocode an address
-- Directions - Get directions
-- Graphics - Draw points, lines and polygons
-- Cloud - Draw and query features stored in the ArcGIS Online cloud
+@todo
 
 ## Instructions
 
