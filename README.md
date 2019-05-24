@@ -54,5 +54,5 @@ limitations under the License.
 
 A copy of the license is available in the repository's [license.txt](https://raw.github.com/Esri/quickstart-map-js/master/license.txt) file.
 
-[](Esri Tags: JavaScript, Calcite)
+[](Esri Tags: JavaScript Calcite Components UI Typescript)
 [](Esri Language: TypeScript)​
