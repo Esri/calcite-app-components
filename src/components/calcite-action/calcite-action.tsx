@@ -9,7 +9,7 @@ import {
 } from "@stencil/core";
 
 const CSS = {
-  base: "calcite-action",
+  button: "calcite-action__button",
   iconContainer: "calcite-action__icon-container",
   text: "calcite-action__text"
 };
@@ -20,23 +20,61 @@ const CSS = {
   shadow: true
 })
 export class CalciteAction {
+  //--------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  el
+  //----------------------------------
+
   @Element() el: HTMLElement;
+
+  //----------------------------------
+  //  active
+  //----------------------------------
 
   @Prop({ reflect: true }) active = false;
 
+  //----------------------------------
+  //  group
+  //----------------------------------
+
   @Prop({ reflect: true }) group = "default";
+
+  //----------------------------------
+  //  indicator
+  //----------------------------------
 
   @Prop({ reflect: true }) indicator = false;
 
+  //----------------------------------
+  //  label
+  //----------------------------------
+
   @Prop() label: string = null;
+
+  //----------------------------------
+  //  text
+  //----------------------------------
 
   @Prop() text: string = null;
 
-  clickHandler() {
-    this.actionClick.emit(this);
-  }
+  //--------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  //--------------------------------------------------------------------------
 
   @Event() actionClick: EventEmitter;
+
+  //--------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  //--------------------------------------------------------------------------
 
   render() {
     const { label, text } = this;
@@ -47,19 +85,34 @@ export class CalciteAction {
       </span>
     );
 
-    const textNode = text ? <span class={CSS.text}>{text}</span> : null;
+    const textNode = text ? (
+      <span aria-hidden="true" class={CSS.text}>
+        {text}
+      </span>
+    ) : null;
 
     return (
       <Host>
         <button
-          class={CSS.base}
+          class={CSS.button}
+          title={label}
           aria-label={label}
-          onClick={this.clickHandler.bind(this)}
+          onClick={this._clickHandler.bind(this)}
         >
           {iconNode}
           {textNode}
         </button>
       </Host>
     );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  //--------------------------------------------------------------------------
+
+  private _clickHandler(): void {
+    this.actionClick.emit(this);
   }
 }
