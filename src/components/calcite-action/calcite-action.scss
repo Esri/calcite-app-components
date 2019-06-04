@@ -3,13 +3,17 @@
 }
 
 .calcite-action__button {
-  position: relative;
+  display: flex;
 }
 
 .calcite-action__icon-container {
-  position: relative;
+  flex: 1;
+  display: block;
+  max-width: 16px;
+  max-height: 16px;
 }
 
 .calcite-action__text {
-  position: relative;
+  flex: 1;
+  display: block;
 }

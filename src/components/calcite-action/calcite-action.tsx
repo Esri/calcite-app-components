@@ -81,7 +81,7 @@ export class CalciteAction {
 
     const iconNode = (
       <span class={CSS.iconContainer}>
-        <slot name="action-icon" />
+        <slot />
       </span>
     );
 
