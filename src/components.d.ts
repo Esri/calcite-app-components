@@ -9,35 +9,27 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface CalciteAlert {
-    'close': () => Promise<void>;
-    'color': string;
-    'currentAlert': string;
-    'dismiss': boolean;
-    'duration': string;
-    'icon': boolean;
-    'id': string;
-    'queueLength': number;
-    'theme': string;
+  interface CalciteAction {
+    'active': boolean;
+    'group': string;
+    'indicator': boolean;
+    'label': string;
+    'text': string;
   }
 }
 
 declare namespace LocalJSX {
-  interface CalciteAlert extends JSXBase.HTMLAttributes {
-    'color'?: string;
-    'currentAlert'?: string;
-    'dismiss'?: boolean;
-    'duration'?: string;
-    'icon'?: boolean;
-    'id'?: string;
-    'onAlertClose'?: (event: CustomEvent<any>) => void;
-    'onAlertOpen'?: (event: CustomEvent<any>) => void;
-    'queueLength'?: number;
-    'theme'?: string;
+  interface CalciteAction extends JSXBase.HTMLAttributes {
+    'active'?: boolean;
+    'group'?: string;
+    'indicator'?: boolean;
+    'label'?: string;
+    'onActionClick'?: (event: CustomEvent<any>) => void;
+    'text'?: string;
   }
 
   interface IntrinsicElements {
-    'calcite-alert': CalciteAlert;
+    'calcite-action': CalciteAction;
   }
 }
 
@@ -55,14 +47,14 @@ declare global {
 
 
 
-  interface HTMLCalciteAlertElement extends Components.CalciteAlert, HTMLStencilElement {}
-  var HTMLCalciteAlertElement: {
-    prototype: HTMLCalciteAlertElement;
-    new (): HTMLCalciteAlertElement;
+  interface HTMLCalciteActionElement extends Components.CalciteAction, HTMLStencilElement {}
+  var HTMLCalciteActionElement: {
+    prototype: HTMLCalciteActionElement;
+    new (): HTMLCalciteActionElement;
   };
 
   interface HTMLElementTagNameMap {
-    'calcite-alert': HTMLCalciteAlertElement;
+    'calcite-action': HTMLCalciteActionElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}

@@ -24,6 +24,20 @@
   <body>
     <div class="example-container">
       <h2>Calcite Component Examples - WIP !</h2>
+      <calcite-action
+        id="action-test"
+        active="true"
+        label="click-me"
+        text="hello world"
+        group="test"
+      ></calcite-action>
+      <script>
+        document
+          .getElementById("action-test")
+          .addEventListener("actionClick", function(event) {
+            console.log(event);
+          });
+      </script>
     </div>
   </body>
 </html>

@@ -5,7 +5,7 @@ export const config: Config = {
   namespace: "calcite",
   bundles: [
     {
-      components: ["calcite-alert"]
+      components: ["calcite-action"]
     }
   ],
   outputTargets: [
