@@ -5,7 +5,11 @@ export const config: Config = {
   namespace: "calcite",
   bundles: [
     {
-      components: ["calcite-action"]
+      components: [
+        "calcite-action",
+        "calcite-action-group",
+        "calcite-action-bar"
+      ]
     }
   ],
   outputTargets: [

@@ -39,12 +39,6 @@ export class CalciteAction {
   @Prop({ reflect: true }) active = false;
 
   //----------------------------------
-  //  group
-  //----------------------------------
-
-  @Prop({ reflect: true }) group = "default";
-
-  //----------------------------------
   //  indicator
   //----------------------------------
 
@@ -55,6 +49,12 @@ export class CalciteAction {
   //----------------------------------
 
   @Prop() label: string = null;
+
+  //----------------------------------
+  //  text
+  //----------------------------------
+
+  @Prop() text: string = null;
 
   //--------------------------------------------------------------------------
   //
@@ -71,19 +71,17 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   render() {
-    const { label } = this;
+    const { label, text } = this;
 
     const iconContainerNode = (
       <div aria-hidden="true" class={CSS.iconContainer}>
-        <slot name="icon" />
-      </div>
-    );
-
-    const textContainerNode = (
-      <div class={CSS.textContainer}>
         <slot />
       </div>
     );
+
+    const textContainerNode = text ? (
+      <div class={CSS.textContainer}>{text}</div>
+    ) : null;
 
     return (
       <Host>

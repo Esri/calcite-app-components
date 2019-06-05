@@ -2,14 +2,15 @@
 
 # props
 
+text: string;
 label: string;
+group: string;
 active: boolean;
 indicator: boolean;
 
 # slots
 
-icon (svg or img)
-text (textContent)
+action-icon (svg or img)
 
 # todo
 

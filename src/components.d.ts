@@ -11,23 +11,29 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface CalciteAction {
     'active': boolean;
-    'group': string;
     'indicator': boolean;
     'label': string;
+    'text': string;
   }
+  interface CalciteActionBar {}
+  interface CalciteActionGroup {}
 }
 
 declare namespace LocalJSX {
   interface CalciteAction extends JSXBase.HTMLAttributes {
     'active'?: boolean;
-    'group'?: string;
     'indicator'?: boolean;
     'label'?: string;
     'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
+    'text'?: string;
   }
+  interface CalciteActionBar extends JSXBase.HTMLAttributes {}
+  interface CalciteActionGroup extends JSXBase.HTMLAttributes {}
 
   interface IntrinsicElements {
     'calcite-action': CalciteAction;
+    'calcite-action-bar': CalciteActionBar;
+    'calcite-action-group': CalciteActionGroup;
   }
 }
 
@@ -51,8 +57,22 @@ declare global {
     new (): HTMLCalciteActionElement;
   };
 
+  interface HTMLCalciteActionBarElement extends Components.CalciteActionBar, HTMLStencilElement {}
+  var HTMLCalciteActionBarElement: {
+    prototype: HTMLCalciteActionBarElement;
+    new (): HTMLCalciteActionBarElement;
+  };
+
+  interface HTMLCalciteActionGroupElement extends Components.CalciteActionGroup, HTMLStencilElement {}
+  var HTMLCalciteActionGroupElement: {
+    prototype: HTMLCalciteActionGroupElement;
+    new (): HTMLCalciteActionGroupElement;
+  };
+
   interface HTMLElementTagNameMap {
     'calcite-action': HTMLCalciteActionElement;
+    'calcite-action-bar': HTMLCalciteActionBarElement;
+    'calcite-action-group': HTMLCalciteActionGroupElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}
