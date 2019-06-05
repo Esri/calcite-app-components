@@ -11,7 +11,7 @@ import {
 const CSS = {
   button: "calcite-action__button",
   iconContainer: "calcite-action__icon-container",
-  text: "calcite-action__text"
+  textContainer: "calcite-action__text-container"
 };
 
 @Component({
@@ -56,19 +56,13 @@ export class CalciteAction {
 
   @Prop() label: string = null;
 
-  //----------------------------------
-  //  text
-  //----------------------------------
-
-  @Prop() text: string = null;
-
   //--------------------------------------------------------------------------
   //
   //  Events
   //
   //--------------------------------------------------------------------------
 
-  @Event() actionClick: EventEmitter;
+  @Event() calciteActionClick: EventEmitter;
 
   //--------------------------------------------------------------------------
   //
@@ -77,19 +71,19 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   render() {
-    const { label, text } = this;
+    const { label } = this;
 
-    const iconNode = (
-      <span class={CSS.iconContainer}>
-        <slot />
-      </span>
+    const iconContainerNode = (
+      <div aria-hidden="true" class={CSS.iconContainer}>
+        <slot name="icon" />
+      </div>
     );
 
-    const textNode = text ? (
-      <span aria-hidden="true" class={CSS.text}>
-        {text}
-      </span>
-    ) : null;
+    const textContainerNode = (
+      <div class={CSS.textContainer}>
+        <slot />
+      </div>
+    );
 
     return (
       <Host>
@@ -99,8 +93,8 @@ export class CalciteAction {
           aria-label={label}
           onClick={this._clickHandler.bind(this)}
         >
-          {iconNode}
-          {textNode}
+          {iconContainerNode}
+          {textContainerNode}
         </button>
       </Host>
     );
@@ -113,6 +107,6 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   private _clickHandler(): void {
-    this.actionClick.emit(this);
+    this.calciteActionClick.emit(this);
   }
 }

@@ -4,16 +4,33 @@
 
 .calcite-action__button {
   display: flex;
+  color: #fff;
+  fill: #fff;
+  background-color: #383838;
+  padding: 9px;
+  margin: 2px 0;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  width: auto;
+  cursor: pointer;
+  font: inherit;
+  line-height: normal;
+  transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
 }
 
 .calcite-action__icon-container {
-  flex: 1;
   display: block;
   max-width: 16px;
   max-height: 16px;
+  margin: 0;
+  justify-content: center;
 }
 
-.calcite-action__text {
+.calcite-action__text-container {
   flex: 1;
   display: block;
+  line-height: 16px;
+  margin: 0 6px;
+  word-break: break-word;
 }

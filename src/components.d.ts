@@ -14,7 +14,6 @@ export namespace Components {
     'group': string;
     'indicator': boolean;
     'label': string;
-    'text': string;
   }
 }
 
@@ -24,8 +23,7 @@ declare namespace LocalJSX {
     'group'?: string;
     'indicator'?: boolean;
     'label'?: string;
-    'onActionClick'?: (event: CustomEvent<any>) => void;
-    'text'?: string;
+    'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
   }
 
   interface IntrinsicElements {
