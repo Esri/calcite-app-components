@@ -1,16 +1,8 @@
-import {
-  Component,
-  Element,
-  // Event,
-  // EventEmitter,
-  h,
-  Host
-  //Prop
-} from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
-// const CSS = {
-
-// };
+const CSS = {
+  base: "calcite-action-bar"
+};
 
 // todo: create calcite-action-group for containing the section of actions.
 // todo: calcite-action-bar should take calcite-action-group custom elements
@@ -21,7 +13,7 @@ import {
   styleUrl: "calcite-action-bar.scss",
   shadow: true
 })
-export class CalciteAction {
+export class CalciteActionBar {
   //--------------------------------------------------------------------------
   //
   //  Properties
@@ -29,10 +21,10 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   //----------------------------------
-  //  el
+  //  expanded
   //----------------------------------
 
-  @Element() el: HTMLElement;
+  @Prop({ reflect: true }) expanded = false;
 
   //--------------------------------------------------------------------------
   //
@@ -47,12 +39,12 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   render() {
-    return <Host />;
+    return (
+      <Host>
+        <div class={CSS.base}>
+          <slot />
+        </div>
+      </Host>
+    );
   }
-
-  //--------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  //--------------------------------------------------------------------------
 }

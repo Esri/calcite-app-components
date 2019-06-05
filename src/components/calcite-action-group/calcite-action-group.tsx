@@ -1,23 +1,15 @@
-import {
-  Component,
-  Element,
-  // Event,
-  // EventEmitter,
-  h,
-  Host
-  //Prop
-} from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
-// const CSS = {
-
-// };
+const CSS = {
+  base: "calcite-action-group"
+};
 
 @Component({
   tag: "calcite-action-group",
   styleUrl: "calcite-action-group.scss",
   shadow: true
 })
-export class CalciteAction {
+export class CalciteActionGroup {
   //--------------------------------------------------------------------------
   //
   //  Properties
@@ -25,16 +17,10 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   //----------------------------------
-  //  el
+  //  end
   //----------------------------------
 
-  @Element() el: HTMLElement;
-
-  //--------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  //--------------------------------------------------------------------------
+  @Prop({ reflect: true }) end = false;
 
   //--------------------------------------------------------------------------
   //
@@ -43,12 +29,12 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   render() {
-    return <Host />;
+    return (
+      <Host>
+        <div class={CSS.base}>
+          <slot />
+        </div>
+      </Host>
+    );
   }
-
-  //--------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  //--------------------------------------------------------------------------
 }

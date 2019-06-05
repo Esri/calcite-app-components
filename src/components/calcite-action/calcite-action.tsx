@@ -1,12 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop
-} from "@stencil/core";
+import { Component, Event, EventEmitter, h, Host, Prop } from "@stencil/core";
 
 const CSS = {
   button: "calcite-action__button",
@@ -25,12 +17,6 @@ export class CalciteAction {
   //  Properties
   //
   //--------------------------------------------------------------------------
-
-  //----------------------------------
-  //  el
-  //----------------------------------
-
-  @Element() el: HTMLElement;
 
   //----------------------------------
   //  active
@@ -78,6 +64,8 @@ export class CalciteAction {
         <slot />
       </div>
     );
+
+    // this.el.shadowRoot.querySelector("slot").assignedNodes().length > 0
 
     const textContainerNode = text ? (
       <div class={CSS.textContainer}>{text}</div>

@@ -15,8 +15,12 @@ export namespace Components {
     'label': string;
     'text': string;
   }
-  interface CalciteActionBar {}
-  interface CalciteActionGroup {}
+  interface CalciteActionBar {
+    'expanded': boolean;
+  }
+  interface CalciteActionGroup {
+    'end': boolean;
+  }
 }
 
 declare namespace LocalJSX {
@@ -27,8 +31,12 @@ declare namespace LocalJSX {
     'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
     'text'?: string;
   }
-  interface CalciteActionBar extends JSXBase.HTMLAttributes {}
-  interface CalciteActionGroup extends JSXBase.HTMLAttributes {}
+  interface CalciteActionBar extends JSXBase.HTMLAttributes {
+    'expanded'?: boolean;
+  }
+  interface CalciteActionGroup extends JSXBase.HTMLAttributes {
+    'end'?: boolean;
+  }
 
   interface IntrinsicElements {
     'calcite-action': CalciteAction;
