@@ -1,7 +1,5 @@
 import { Component, Element, h, Host, Prop, Watch } from "@stencil/core";
 
-// todo: expandEnabled: boolean; property
-
 @Component({
   tag: "calcite-action-bar",
   styleUrl: "calcite-action-bar.scss",
