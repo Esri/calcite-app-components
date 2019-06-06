@@ -23,6 +23,8 @@ export namespace Components {
     'justifyBottom': boolean;
   }
   interface CalciteActionPad {}
+  interface CalciteFlowControl {}
+  interface CalciteFlowPanel {}
 }
 
 declare namespace LocalJSX {
@@ -41,12 +43,16 @@ declare namespace LocalJSX {
     'justifyBottom'?: boolean;
   }
   interface CalciteActionPad extends JSXBase.HTMLAttributes {}
+  interface CalciteFlowControl extends JSXBase.HTMLAttributes {}
+  interface CalciteFlowPanel extends JSXBase.HTMLAttributes {}
 
   interface IntrinsicElements {
     'calcite-action': CalciteAction;
     'calcite-action-bar': CalciteActionBar;
     'calcite-action-group': CalciteActionGroup;
     'calcite-action-pad': CalciteActionPad;
+    'calcite-flow-control': CalciteFlowControl;
+    'calcite-flow-panel': CalciteFlowPanel;
   }
 }
 
@@ -88,11 +94,25 @@ declare global {
     new (): HTMLCalciteActionPadElement;
   };
 
+  interface HTMLCalciteFlowControlElement extends Components.CalciteFlowControl, HTMLStencilElement {}
+  var HTMLCalciteFlowControlElement: {
+    prototype: HTMLCalciteFlowControlElement;
+    new (): HTMLCalciteFlowControlElement;
+  };
+
+  interface HTMLCalciteFlowPanelElement extends Components.CalciteFlowPanel, HTMLStencilElement {}
+  var HTMLCalciteFlowPanelElement: {
+    prototype: HTMLCalciteFlowPanelElement;
+    new (): HTMLCalciteFlowPanelElement;
+  };
+
   interface HTMLElementTagNameMap {
     'calcite-action': HTMLCalciteActionElement;
     'calcite-action-bar': HTMLCalciteActionBarElement;
     'calcite-action-group': HTMLCalciteActionGroupElement;
     'calcite-action-pad': HTMLCalciteActionPadElement;
+    'calcite-flow-control': HTMLCalciteFlowControlElement;
+    'calcite-flow-panel': HTMLCalciteFlowPanelElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}
