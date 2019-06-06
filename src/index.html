@@ -20,6 +20,12 @@
         right: 0;
         height: 100%;
       }
+
+      #action-pad {
+        position: absolute;
+        top: 100px;
+        left: 200px;
+      }
     </style>
 
     <link rel="stylesheet" href="/build/calcite.css" />
@@ -68,6 +74,33 @@
             console.log(event);
           });
       </script>
+
+      <calcite-action-pad id="action-pad">
+        <calcite-action-group>
+          <calcite-action text="Add">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="100%"
+              height="100%"
+            >
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </calcite-action-group>
+        <calcite-action-group last>
+          <calcite-action text="Add">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="100%"
+              height="100%"
+            >
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </calcite-action-group>
+      </calcite-action-pad>
 
       <calcite-action-bar id="action-bar">
         <calcite-action-group>
@@ -142,7 +175,7 @@
             </svg>
           </calcite-action>
         </calcite-action-group>
-        <calcite-action-group end>
+        <calcite-action-group last align-bottom>
           <calcite-action id="toggle-expand" text="Expand">
             <svg
               width="100%"

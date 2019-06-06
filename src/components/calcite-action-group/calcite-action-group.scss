@@ -6,10 +6,13 @@
   margin: 0;
 }
 
-:host([end]) {
+:host([last]) {
+  border-bottom: none;
+}
+
+:host([align-bottom]) {
   flex-grow: 1;
   justify-content: flex-end;
-  border-bottom: none;
 }
 
 :host .calcite-action {

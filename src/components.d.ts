@@ -20,8 +20,10 @@ export namespace Components {
     'expanded': boolean;
   }
   interface CalciteActionGroup {
-    'end': boolean;
+    'alignBottom': boolean;
+    'last': boolean;
   }
+  interface CalciteActionPad {}
 }
 
 declare namespace LocalJSX {
@@ -37,13 +39,16 @@ declare namespace LocalJSX {
     'expanded'?: boolean;
   }
   interface CalciteActionGroup extends JSXBase.HTMLAttributes {
-    'end'?: boolean;
+    'alignBottom'?: boolean;
+    'last'?: boolean;
   }
+  interface CalciteActionPad extends JSXBase.HTMLAttributes {}
 
   interface IntrinsicElements {
     'calcite-action': CalciteAction;
     'calcite-action-bar': CalciteActionBar;
     'calcite-action-group': CalciteActionGroup;
+    'calcite-action-pad': CalciteActionPad;
   }
 }
 
@@ -79,10 +84,17 @@ declare global {
     new (): HTMLCalciteActionGroupElement;
   };
 
+  interface HTMLCalciteActionPadElement extends Components.CalciteActionPad, HTMLStencilElement {}
+  var HTMLCalciteActionPadElement: {
+    prototype: HTMLCalciteActionPadElement;
+    new (): HTMLCalciteActionPadElement;
+  };
+
   interface HTMLElementTagNameMap {
     'calcite-action': HTMLCalciteActionElement;
     'calcite-action-bar': HTMLCalciteActionBarElement;
     'calcite-action-group': HTMLCalciteActionGroupElement;
+    'calcite-action-pad': HTMLCalciteActionPadElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}

@@ -8,7 +8,8 @@ export const config: Config = {
       components: [
         "calcite-action",
         "calcite-action-group",
-        "calcite-action-bar"
+        "calcite-action-bar",
+        "calcite-action-pad"
       ]
     }
   ],
