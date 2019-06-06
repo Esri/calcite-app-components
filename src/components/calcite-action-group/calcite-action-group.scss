@@ -1,20 +1,15 @@
 :host {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 6px 4px;
   margin: 0;
 }
 
-:host([last]) {
-  border-bottom: none;
-}
-
-:host([align-bottom]) {
+:host([justify-bottom]) {
   flex-grow: 1;
   justify-content: flex-end;
 }
 
-:host .calcite-action {
+:host ::slotted(calcite-action) {
   display: flex;
 }

@@ -20,8 +20,7 @@ export namespace Components {
     'expanded': boolean;
   }
   interface CalciteActionGroup {
-    'alignBottom': boolean;
-    'last': boolean;
+    'justifyBottom': boolean;
   }
   interface CalciteActionPad {}
 }
@@ -39,8 +38,7 @@ declare namespace LocalJSX {
     'expanded'?: boolean;
   }
   interface CalciteActionGroup extends JSXBase.HTMLAttributes {
-    'alignBottom'?: boolean;
-    'last'?: boolean;
+    'justifyBottom'?: boolean;
   }
   interface CalciteActionPad extends JSXBase.HTMLAttributes {}
 
