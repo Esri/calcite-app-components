@@ -157,10 +157,13 @@
       </calcite-action-bar>
 
       <script>
-        var toggleExpand = document.getElementById("toggle-expand");
+        var actionBar = document.getElementById("action-bar");
+        actionBar.addEventListener("calciteActionClick", function(event) {
+          console.log(event.target.text);
+        });
 
+        var toggleExpand = document.getElementById("toggle-expand");
         toggleExpand.addEventListener("calciteActionClick", function(event) {
-          var actionBar = document.getElementById("action-bar");
           actionBar.toggleAttribute("expanded");
 
           var expanded = actionBar.hasAttribute("expanded");
