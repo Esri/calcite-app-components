@@ -24,7 +24,9 @@ export namespace Components {
   }
   interface CalciteActionPad {}
   interface CalciteFlowControl {}
-  interface CalciteFlowPanel {}
+  interface CalciteFlowPanel {
+    'label': string;
+  }
 }
 
 declare namespace LocalJSX {
@@ -44,7 +46,9 @@ declare namespace LocalJSX {
   }
   interface CalciteActionPad extends JSXBase.HTMLAttributes {}
   interface CalciteFlowControl extends JSXBase.HTMLAttributes {}
-  interface CalciteFlowPanel extends JSXBase.HTMLAttributes {}
+  interface CalciteFlowPanel extends JSXBase.HTMLAttributes {
+    'label'?: string;
+  }
 
   interface IntrinsicElements {
     'calcite-action': CalciteAction;

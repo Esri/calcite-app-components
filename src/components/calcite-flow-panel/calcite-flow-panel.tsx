@@ -1,4 +1,4 @@
-import { Component, h, Host } from "@stencil/core";
+import { Component, Element, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "calcite-flow-panel",
@@ -11,6 +11,18 @@ export class CalciteFlowPanel {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  el
+  //----------------------------------
+
+  @Element() el: HTMLElement;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  @Prop() label: string = null;
 
   //--------------------------------------------------------------------------
   //
@@ -25,24 +37,35 @@ export class CalciteFlowPanel {
   //--------------------------------------------------------------------------
 
   // frame
-  //   header - need component (calcite-flow-header)
+  //   header -
   //     back button (appears if more than one flow)
-  //     title button
+  //     title
   //     menu button (appears if menu exists)
-  //       list of actions (calcite-action-menu). just takes actions inside
+  //       list of actions
   //   content
-  //   footer - need component (calcite-flow-footer). just takes actions inside
+  //   footer - just takes actions inside
 
   render() {
+    const { label, el } = this;
+
+    const { title } = el;
+
+    const labelFallback = label || title;
+
     return (
       <Host>
-        <div>
-          <header />
-          <div>
+        <article>
+          <header aria-label={labelFallback} title={labelFallback}>
+            {title}
+            <slot name="menu-actions" />
+          </header>
+          <section>
             <slot />
-          </div>
-          <footer />
-        </div>
+          </section>
+          <footer>
+            <slot name="footer-actions" />
+          </footer>
+        </article>
       </Host>
     );
   }
