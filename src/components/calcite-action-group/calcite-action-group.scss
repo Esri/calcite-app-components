@@ -11,3 +11,7 @@
   justify-content: flex-end;
   border-bottom: none;
 }
+
+:host .calcite-action {
+  display: flex;
+}

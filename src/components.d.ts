@@ -11,9 +11,10 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface CalciteAction {
     'active': boolean;
-    'disableText': boolean;
     'indicator': boolean;
     'label': string;
+    'text': string;
+    'textEnabled': boolean;
   }
   interface CalciteActionBar {
     'expanded': boolean;
@@ -26,10 +27,11 @@ export namespace Components {
 declare namespace LocalJSX {
   interface CalciteAction extends JSXBase.HTMLAttributes {
     'active'?: boolean;
-    'disableText'?: boolean;
     'indicator'?: boolean;
     'label'?: string;
     'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
+    'text'?: string;
+    'textEnabled'?: boolean;
   }
   interface CalciteActionBar extends JSXBase.HTMLAttributes {
     'expanded'?: boolean;

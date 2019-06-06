@@ -1,11 +1,5 @@
 import { Component, h, Host, Prop } from "@stencil/core";
 
-const CSS = {
-  base: "calcite-action-bar"
-};
-
-// todo: create calcite-action-group for containing the section of actions.
-// todo: calcite-action-bar should take calcite-action-group custom elements
 // todo: expandEnabled: boolean; property
 
 @Component({
@@ -41,9 +35,7 @@ export class CalciteActionBar {
   render() {
     return (
       <Host>
-        <div class={CSS.base}>
-          <slot />
-        </div>
+        <slot />
       </Host>
     );
   }

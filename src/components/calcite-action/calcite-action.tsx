@@ -25,12 +25,6 @@ export class CalciteAction {
   @Prop({ reflect: true }) active = false;
 
   //----------------------------------
-  //  disableText
-  //----------------------------------
-
-  @Prop({ reflect: true }) disableText = false;
-
-  //----------------------------------
   //  indicator
   //----------------------------------
 
@@ -41,6 +35,18 @@ export class CalciteAction {
   //----------------------------------
 
   @Prop() label: string = null;
+
+  //----------------------------------
+  //  text
+  //----------------------------------
+
+  @Prop() text: string = null;
+
+  //----------------------------------
+  //  textEnabled
+  //----------------------------------
+
+  @Prop({ reflect: true }) textEnabled = false;
 
   //--------------------------------------------------------------------------
   //
@@ -57,19 +63,19 @@ export class CalciteAction {
   //--------------------------------------------------------------------------
 
   render() {
-    const { disableText, label } = this;
+    const { textEnabled, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        <slot name="icon" />
-      </div>
-    );
-
-    const textContainerNode = disableText ? null : (
-      <div key="text-container" class={CSS.textContainer}>
         <slot />
       </div>
     );
+
+    const textContainerNode = textEnabled ? (
+      <div key="text-container" class={CSS.textContainer}>
+        {text}
+      </div>
+    ) : null;
 
     return (
       <Host>
