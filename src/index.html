@@ -30,14 +30,11 @@
   <body>
     <div class="example-container">
       <h2>Calcite Component Examples - WIP !</h2>
-      <calcite-action
-        id="action-test"
-        active="true"
-        label="click-me"
-        text="hello world"
+      <calcite-action id="action-test" active="true" label="click-me"
         ><svg
           width="100%"
           height="100%"
+          slot="icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
         >
@@ -45,12 +42,14 @@
             d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
           />
         </svg>
+        hello world
       </calcite-action>
 
-      <calcite-action id="action-test2" label="click-me2" text=""
+      <calcite-action id="action-test2" label="click-me2" disable-text
         ><svg
           width="100%"
           height="100%"
+          slot="icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
         >
@@ -58,6 +57,7 @@
             d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
           />
         </svg>
+        hello world 2
       </calcite-action>
 
       <script>
@@ -70,8 +70,9 @@
 
       <calcite-action-bar id="action-bar">
         <calcite-action-group>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -82,8 +83,9 @@
               />
             </svg>
           </calcite-action>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -94,8 +96,9 @@
               />
             </svg>
           </calcite-action>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -108,8 +111,9 @@
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -120,8 +124,9 @@
               />
             </svg>
           </calcite-action>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -132,8 +137,9 @@
               />
             </svg>
           </calcite-action>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -146,8 +152,9 @@
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group end>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -158,8 +165,9 @@
               />
             </svg>
           </calcite-action>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
@@ -170,8 +178,9 @@
               />
             </svg>
           </calcite-action>
-          <calcite-action text=""
+          <calcite-action
             ><svg
+              slot="icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               width="100%"
