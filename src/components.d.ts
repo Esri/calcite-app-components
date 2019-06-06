@@ -4,56 +4,53 @@
  * It contains typing information for all components that exist in this project.
  */
 
-
-import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 
 export namespace Components {
   interface CalciteAction {
-    'active': boolean;
-    'indicator': boolean;
-    'label': string;
-    'text': string;
-    'textEnabled': boolean;
+    active: boolean;
+    indicator: boolean;
+    label: string;
+    text: string;
+    textEnabled: boolean;
   }
   interface CalciteActionBar {
-    'expanded': boolean;
+    expanded: boolean;
   }
   interface CalciteActionGroup {
-    'alignBottom': boolean;
-    'last': boolean;
+    alignBottom: boolean;
+    last: boolean;
   }
   interface CalciteActionPad {}
 }
 
 declare namespace LocalJSX {
   interface CalciteAction extends JSXBase.HTMLAttributes {
-    'active'?: boolean;
-    'indicator'?: boolean;
-    'label'?: string;
-    'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
-    'text'?: string;
-    'textEnabled'?: boolean;
+    active?: boolean;
+    indicator?: boolean;
+    label?: string;
+    onCalciteActionClick?: (event: CustomEvent<any>) => void;
+    text?: string;
+    textEnabled?: boolean;
   }
   interface CalciteActionBar extends JSXBase.HTMLAttributes {
-    'expanded'?: boolean;
+    expanded?: boolean;
   }
   interface CalciteActionGroup extends JSXBase.HTMLAttributes {
-    'alignBottom'?: boolean;
-    'last'?: boolean;
+    alignBottom?: boolean;
+    last?: boolean;
   }
   interface CalciteActionPad extends JSXBase.HTMLAttributes {}
 
   interface IntrinsicElements {
-    'calcite-action': CalciteAction;
-    'calcite-action-bar': CalciteActionBar;
-    'calcite-action-group': CalciteActionGroup;
-    'calcite-action-pad': CalciteActionPad;
+    "calcite-action": CalciteAction;
+    "calcite-action-bar": CalciteActionBar;
+    "calcite-action-group": CalciteActionGroup;
+    "calcite-action-pad": CalciteActionPad;
   }
 }
 
 export { LocalJSX as JSX };
-
 
 declare module "@stencil/core" {
   export namespace JSX {
@@ -61,42 +58,45 @@ declare module "@stencil/core" {
   }
 }
 
-
 declare global {
-
-
-
-  interface HTMLCalciteActionElement extends Components.CalciteAction, HTMLStencilElement {}
+  interface HTMLCalciteActionElement
+    extends Components.CalciteAction,
+      HTMLStencilElement {}
   var HTMLCalciteActionElement: {
     prototype: HTMLCalciteActionElement;
     new (): HTMLCalciteActionElement;
   };
 
-  interface HTMLCalciteActionBarElement extends Components.CalciteActionBar, HTMLStencilElement {}
+  interface HTMLCalciteActionBarElement
+    extends Components.CalciteActionBar,
+      HTMLStencilElement {}
   var HTMLCalciteActionBarElement: {
     prototype: HTMLCalciteActionBarElement;
     new (): HTMLCalciteActionBarElement;
   };
 
-  interface HTMLCalciteActionGroupElement extends Components.CalciteActionGroup, HTMLStencilElement {}
+  interface HTMLCalciteActionGroupElement
+    extends Components.CalciteActionGroup,
+      HTMLStencilElement {}
   var HTMLCalciteActionGroupElement: {
     prototype: HTMLCalciteActionGroupElement;
     new (): HTMLCalciteActionGroupElement;
   };
 
-  interface HTMLCalciteActionPadElement extends Components.CalciteActionPad, HTMLStencilElement {}
+  interface HTMLCalciteActionPadElement
+    extends Components.CalciteActionPad,
+      HTMLStencilElement {}
   var HTMLCalciteActionPadElement: {
     prototype: HTMLCalciteActionPadElement;
     new (): HTMLCalciteActionPadElement;
   };
 
   interface HTMLElementTagNameMap {
-    'calcite-action': HTMLCalciteActionElement;
-    'calcite-action-bar': HTMLCalciteActionBarElement;
-    'calcite-action-group': HTMLCalciteActionGroupElement;
-    'calcite-action-pad': HTMLCalciteActionPadElement;
+    "calcite-action": HTMLCalciteActionElement;
+    "calcite-action-bar": HTMLCalciteActionBarElement;
+    "calcite-action-group": HTMLCalciteActionGroupElement;
+    "calcite-action-pad": HTMLCalciteActionPadElement;
   }
 
   interface ElementTagNameMap extends HTMLElementTagNameMap {}
 }
-
