@@ -6,3 +6,11 @@
   flex-direction: column;
   max-width: 15vw;
 }
+
+:host ::slotted(calcite-action-group) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+:host ::slotted(calcite-action-group:last-child) {
+  border-bottom: none;
+}
