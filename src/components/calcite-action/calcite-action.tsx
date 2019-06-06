@@ -77,12 +77,14 @@ export class CalciteAction {
       </div>
     ) : null;
 
+    const labelFallback = label || text;
+
     return (
       <Host>
         <button
           class={CSS.button}
-          title={label}
-          aria-label={label}
+          title={labelFallback}
+          aria-label={labelFallback}
           onClick={this._clickHandler.bind(this)}
         >
           {iconContainerNode}

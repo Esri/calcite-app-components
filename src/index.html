@@ -150,7 +150,7 @@
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
             >
-              <path d="M10.217 8l-6-6h2.766l6 6-6 6H4.217z" />
+              <path d="M11.783 14H9.017l-6-6 6-6h2.766l-6 6z" />
             </svg>
           </calcite-action>
         </calcite-action-group>
@@ -165,7 +165,9 @@
 
           var expanded = actionBar.hasAttribute("expanded");
           toggleExpand.setAttribute("text", expanded ? "Collapse" : "Expanded");
-          toggleExpand.toggleAttribute("text-enabled");
+          toggleExpand.innerHTML = expanded
+            ? '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><path d="M10.217 8l-6-6h2.766l6 6-6 6H4.217z" /></svg>'
+            : '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.783 14H9.017l-6-6 6-6h2.766l-6 6z"/></svg>';
         });
       </script>
     </div>

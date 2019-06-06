@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from "@stencil/core";
+import { Component, Element, h, Host, Prop, Watch } from "@stencil/core";
 
 // todo: expandEnabled: boolean; property
 
@@ -15,10 +15,27 @@ export class CalciteActionBar {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  el
+  //----------------------------------
+
+  @Element() el: HTMLElement;
+
+  //----------------------------------
   //  expanded
   //----------------------------------
 
   @Prop({ reflect: true }) expanded = false;
+
+  @Watch("expanded")
+  watchHandler(newValue: boolean) {
+    this.el
+      .querySelectorAll("calcite-action")
+      .forEach(action =>
+        newValue
+          ? action.setAttribute("text-enabled", "true")
+          : action.removeAttribute("text-enabled")
+      );
+  }
 
   //--------------------------------------------------------------------------
   //
