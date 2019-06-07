@@ -18,6 +18,9 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
+    "prettier": "npm-run-all --parallel prettier:**",
+    "prettier:ts": "prettier --write \"src/**/*.ts?(x)\"",
+    "prettier:styles": "prettier --write \"src/**/*.scss\"",
     "prerelease:prepare": "npm run build",
     "release:prepare": "npm version prerelease --preid=alpha --no-git-tag-version",
     "release:publish": "./support/release.sh"
@@ -31,18 +34,23 @@
     "@esri/calcite-colors": "^1.2.0",
     "@esri/calcite-ui-icons": "^2.0.1",
     "calcite-components": "github:ArcGIS/calcite-components",
-    "calcite-fonts": "github:ArcGIS/calcite-fonts"
+    "calcite-fonts": "github:ArcGIS/calcite-fonts",
+    "npm-run-all": "4.1.5"
   },
   "devDependencies": {
     "@stencil/core": "one",
+    "@stencil/postcss": "0.1.0",
     "@stencil/sass": "^0.2.3",
     "@stencil/state-tunnel": "one",
+    "@types/autoprefixer": "9.5.0",
     "@types/jest": "23.3.14",
     "@types/puppeteer": "1.12.4",
+    "autoprefixer": "9.6.0",
+    "gh-release": "^3.5.0",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
-    "puppeteer": "1.14.0",
-    "gh-release": "^3.5.0"
+    "prettier": "1.17.1",
+    "puppeteer": "1.14.0"
   },
   "license": "MIT"
 }

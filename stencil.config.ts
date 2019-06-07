@@ -1,5 +1,7 @@
 import { Config } from "@stencil/core";
+import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
+import autoprefixer from "autoprefixer";
 
 export const config: Config = {
   namespace: "calcite",
@@ -17,7 +19,7 @@ export const config: Config = {
   ],
   outputTargets: [
     { type: "dist" },
-    // { type: "docs-readme" },
+    { type: "docs-readme" },
     {
       type: "www",
       serviceWorker: null // disable service workers
@@ -27,6 +29,11 @@ export const config: Config = {
   plugins: [
     sass({
       injectGlobalPaths: ["src/assets/styles/includes.scss"]
+    }),
+
+    // drop any type when https://github.com/ionic-team/stencil-postcss/pull/16 lands
+    (postcss as any)({
+      plugins: [autoprefixer()]
     })
   ]
 };

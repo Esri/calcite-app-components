@@ -23,55 +23,9 @@ export namespace Components {
     'justifyBottom': boolean;
   }
   interface CalciteActionPad {}
-  interface CalciteFlowControl {}
-  interface CalciteFlowPanel {
-    'label': string;
-  }
 }
-
-declare namespace LocalJSX {
-  interface CalciteAction extends JSXBase.HTMLAttributes {
-    'active'?: boolean;
-    'indicator'?: boolean;
-    'label'?: string;
-    'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
-    'text'?: string;
-    'textEnabled'?: boolean;
-  }
-  interface CalciteActionBar extends JSXBase.HTMLAttributes {
-    'expanded'?: boolean;
-  }
-  interface CalciteActionGroup extends JSXBase.HTMLAttributes {
-    'justifyBottom'?: boolean;
-  }
-  interface CalciteActionPad extends JSXBase.HTMLAttributes {}
-  interface CalciteFlowControl extends JSXBase.HTMLAttributes {}
-  interface CalciteFlowPanel extends JSXBase.HTMLAttributes {
-    'label'?: string;
-  }
-
-  interface IntrinsicElements {
-    'calcite-action': CalciteAction;
-    'calcite-action-bar': CalciteActionBar;
-    'calcite-action-group': CalciteActionGroup;
-    'calcite-action-pad': CalciteActionPad;
-    'calcite-flow-control': CalciteFlowControl;
-    'calcite-flow-panel': CalciteFlowPanel;
-  }
-}
-
-export { LocalJSX as JSX };
-
-
-declare module "@stencil/core" {
-  export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
-  }
-}
-
 
 declare global {
-
 
 
   interface HTMLCalciteActionElement extends Components.CalciteAction, HTMLStencilElement {}
@@ -97,28 +51,46 @@ declare global {
     prototype: HTMLCalciteActionPadElement;
     new (): HTMLCalciteActionPadElement;
   };
-
-  interface HTMLCalciteFlowControlElement extends Components.CalciteFlowControl, HTMLStencilElement {}
-  var HTMLCalciteFlowControlElement: {
-    prototype: HTMLCalciteFlowControlElement;
-    new (): HTMLCalciteFlowControlElement;
-  };
-
-  interface HTMLCalciteFlowPanelElement extends Components.CalciteFlowPanel, HTMLStencilElement {}
-  var HTMLCalciteFlowPanelElement: {
-    prototype: HTMLCalciteFlowPanelElement;
-    new (): HTMLCalciteFlowPanelElement;
-  };
-
   interface HTMLElementTagNameMap {
     'calcite-action': HTMLCalciteActionElement;
     'calcite-action-bar': HTMLCalciteActionBarElement;
     'calcite-action-group': HTMLCalciteActionGroupElement;
     'calcite-action-pad': HTMLCalciteActionPadElement;
-    'calcite-flow-control': HTMLCalciteFlowControlElement;
-    'calcite-flow-panel': HTMLCalciteFlowPanelElement;
   }
-
-  interface ElementTagNameMap extends HTMLElementTagNameMap {}
 }
+
+declare namespace LocalJSX {
+  interface CalciteAction extends JSXBase.HTMLAttributes<HTMLCalciteActionElement> {
+    'active'?: boolean;
+    'indicator'?: boolean;
+    'label'?: string;
+    'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
+    'text'?: string;
+    'textEnabled'?: boolean;
+  }
+  interface CalciteActionBar extends JSXBase.HTMLAttributes<HTMLCalciteActionBarElement> {
+    'expanded'?: boolean;
+  }
+  interface CalciteActionGroup extends JSXBase.HTMLAttributes<HTMLCalciteActionGroupElement> {
+    'justifyBottom'?: boolean;
+  }
+  interface CalciteActionPad extends JSXBase.HTMLAttributes<HTMLCalciteActionPadElement> {}
+
+  interface IntrinsicElements {
+    'calcite-action': CalciteAction;
+    'calcite-action-bar': CalciteActionBar;
+    'calcite-action-group': CalciteActionGroup;
+    'calcite-action-pad': CalciteActionPad;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
 
