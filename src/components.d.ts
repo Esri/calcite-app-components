@@ -24,46 +24,13 @@ export namespace Components {
     'last': boolean;
   }
   interface CalciteActionPad {}
-}
-
-declare namespace LocalJSX {
-  interface CalciteAction extends JSXBase.HTMLAttributes {
-    'active'?: boolean;
-    'indicator'?: boolean;
-    'label'?: string;
-    'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
-    'text'?: string;
-    'textEnabled'?: boolean;
-  }
-  interface CalciteActionBar extends JSXBase.HTMLAttributes {
-    'expanded'?: boolean;
-  }
-  interface CalciteActionGroup extends JSXBase.HTMLAttributes {
-    'alignBottom'?: boolean;
-    'last'?: boolean;
-  }
-  interface CalciteActionPad extends JSXBase.HTMLAttributes {}
-
-  interface IntrinsicElements {
-    'calcite-action': CalciteAction;
-    'calcite-action-bar': CalciteActionBar;
-    'calcite-action-group': CalciteActionGroup;
-    'calcite-action-pad': CalciteActionPad;
+  interface CalciteTip {
+    'header': string;
+    'thumbnail': string;
   }
 }
-
-export { LocalJSX as JSX };
-
-
-declare module "@stencil/core" {
-  export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
-  }
-}
-
 
 declare global {
-
 
 
   interface HTMLCalciteActionElement extends Components.CalciteAction, HTMLStencilElement {}
@@ -90,13 +57,58 @@ declare global {
     new (): HTMLCalciteActionPadElement;
   };
 
+  interface HTMLCalciteTipElement extends Components.CalciteTip, HTMLStencilElement {}
+  var HTMLCalciteTipElement: {
+    prototype: HTMLCalciteTipElement;
+    new (): HTMLCalciteTipElement;
+  };
   interface HTMLElementTagNameMap {
     'calcite-action': HTMLCalciteActionElement;
     'calcite-action-bar': HTMLCalciteActionBarElement;
     'calcite-action-group': HTMLCalciteActionGroupElement;
     'calcite-action-pad': HTMLCalciteActionPadElement;
+    'calcite-tip': HTMLCalciteTipElement;
+  }
+}
+
+declare namespace LocalJSX {
+  interface CalciteAction extends JSXBase.HTMLAttributes<HTMLCalciteActionElement> {
+    'active'?: boolean;
+    'indicator'?: boolean;
+    'label'?: string;
+    'onCalciteActionClick'?: (event: CustomEvent<any>) => void;
+    'text'?: string;
+    'textEnabled'?: boolean;
+  }
+  interface CalciteActionBar extends JSXBase.HTMLAttributes<HTMLCalciteActionBarElement> {
+    'expanded'?: boolean;
+  }
+  interface CalciteActionGroup extends JSXBase.HTMLAttributes<HTMLCalciteActionGroupElement> {
+    'alignBottom'?: boolean;
+    'last'?: boolean;
+  }
+  interface CalciteActionPad extends JSXBase.HTMLAttributes<HTMLCalciteActionPadElement> {}
+  interface CalciteTip extends JSXBase.HTMLAttributes<HTMLCalciteTipElement> {
+    'header'?: string;
+    'thumbnail'?: string;
   }
 
-  interface ElementTagNameMap extends HTMLElementTagNameMap {}
+  interface IntrinsicElements {
+    'calcite-action': CalciteAction;
+    'calcite-action-bar': CalciteActionBar;
+    'calcite-action-group': CalciteActionGroup;
+    'calcite-action-pad': CalciteActionPad;
+    'calcite-tip': CalciteTip;
+  }
 }
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
 
