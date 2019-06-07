@@ -17,7 +17,7 @@ export const config: Config = {
   ],
   outputTargets: [
     { type: "dist" },
-    // { type: "docs-readme" },
+    { type: "docs-readme" },
     {
       type: "www",
       serviceWorker: null // disable service workers

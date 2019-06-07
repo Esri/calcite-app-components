@@ -1,18 +1,17 @@
-# calcite-action
+# calcite-action-group
 
-# props
 
-text: string;
-label: string;
-group: string;
-active: boolean;
-indicator: boolean;
 
-# slots
+<!-- Auto Generated Below -->
 
-action-icon (svg or img)
 
-# todo
+## Properties
 
-- tests
-- verify aria
+| Property        | Attribute        | Description | Type      | Default |
+| --------------- | ---------------- | ----------- | --------- | ------- |
+| `justifyBottom` | `justify-bottom` |             | `boolean` | `false` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
