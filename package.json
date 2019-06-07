@@ -15,15 +15,15 @@
   ],
   "scripts": {
     "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
     "prettier": "npm-run-all --parallel prettier:**",
     "prettier:ts": "prettier --write \"src/**/*.ts?(x)\"",
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
     "prerelease:prepare": "npm run build",
     "release:prepare": "npm version prerelease --preid=alpha --no-git-tag-version",
-    "release:publish": "./support/release.sh"
+    "release:publish": "./support/release.sh",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "repository": {
     "type": "git",
