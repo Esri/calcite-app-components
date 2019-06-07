@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.title {
+  margin: var(--calcite-app-side-spacing-quarter);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary {
+  font-size: var(--font-size--1);
+}

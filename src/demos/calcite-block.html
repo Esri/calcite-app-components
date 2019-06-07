@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Demos - Block</title>
+
+    <link rel="stylesheet" href="/build/calcite.css" />
+    <script type="module" src="/build/calcite.esm.js"></script>
+    <script nomodule src="/build/calcite.js"></script>
+    <!--Native Nav component-->
+    <script src="/demos/nav.js"></script>
+    <!--Demo Pages CSS-->
+    <link rel="stylesheet" href="/demos/demos.css" />
+  </head>
+  <body>
+    <calcite-styleguide-nav></calcite-styleguide-nav>
+    <section class="example-container">
+      <style>
+        calcite-block {
+          width: 280px;
+        }
+
+        calcite-block img {
+          width: 100%;
+          max-width: 100%;
+        }
+      </style>
+
+      <h2>Simple header only (non-collapsible - default)</h2>
+
+      <calcite-block>
+        <calcite-block-header heading="Heading" summary="summary"></calcite-block-header>
+      </calcite-block>
+
+      <h2>Header + control</h2>
+
+      <calcite-block>
+        <calcite-block-header heading="With control" summary="has inline input">
+          <input placeholder="I'm a header control" />
+        </calcite-block-header>
+      </calcite-block>
+
+      <h2>Header + content (collapsible)</h2>
+
+      <calcite-block open collapsible>
+        <calcite-block-header heading="Heading" summary="summary"></calcite-block-header>
+        <calcite-block-content>
+          <img src="https://placeimg.com/640/480/tech" />
+
+          <calcite-block-section open>
+            <calcite-block-header heading="Section 1"></calcite-block-header>
+            <calcite-block-content>
+              <img src="https://placeimg.com/640/480/people" />
+            </calcite-block-content>
+          </calcite-block-section>
+
+          <calcite-block-section open>
+            <calcite-block-header heading="Section 2"></calcite-block-header>
+            <calcite-block-content>
+              <label>
+                <input
+                type="checkbox"
+                name="check-please" />
+                Check-ch-check-check-check-ch-check it out</label>
+            </calcite-block-content>
+          </calcite-block-section>
+
+          <img src="https://placeimg.com/640/480/arch" />
+        </calcite-block-content>
+      </calcite-block>
+
+      <h2>RTL</h2>
+
+      <calcite-block open collapsible dir="rtl">
+        <calcite-block-header heading="Heading" summary="summary"></calcite-block-header>
+        <calcite-block-content>
+          <calcite-block-section open>
+            <calcite-block-header heading="Animals"></calcite-block-header>
+            <calcite-block-content>
+              <img src="https://placeimg.com/640/480/animals" />
+            </calcite-block-content>
+          </calcite-block-section>
+
+          <calcite-block-section open>
+            <calcite-block-header heading="Nature"></calcite-block-header>
+            <calcite-block-content>
+              <img src="https://placeimg.com/640/480/nature" />
+            </calcite-block-content>
+          </calcite-block-section>
+        </calcite-block-content>
+      </calcite-block>
+    </section>
+  </body>
+</html>
