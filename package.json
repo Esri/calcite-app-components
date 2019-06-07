@@ -39,10 +39,13 @@
   },
   "devDependencies": {
     "@stencil/core": "one",
+    "@stencil/postcss": "0.1.0",
     "@stencil/sass": "^0.2.3",
     "@stencil/state-tunnel": "one",
+    "@types/autoprefixer": "9.5.0",
     "@types/jest": "23.3.14",
     "@types/puppeteer": "1.12.4",
+    "autoprefixer": "9.6.0",
     "gh-release": "^3.5.0",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
