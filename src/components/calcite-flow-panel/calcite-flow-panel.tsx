@@ -19,10 +19,22 @@ export class CalciteFlowPanel {
   @Element() el: HTMLElement;
 
   //----------------------------------
+  //  backButton
+  //----------------------------------
+
+  @Prop({ reflect: true }) backButton = false;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
-  @Prop() label: string = null;
+  @Prop({ reflect: true }) label: string = null;
+
+  //----------------------------------
+  //  heading
+  //----------------------------------
+
+  @Prop({ reflect: true }) heading: string = null;
 
   //--------------------------------------------------------------------------
   //
@@ -46,25 +58,52 @@ export class CalciteFlowPanel {
   //   footer - just takes actions inside
 
   render() {
-    const { label, el } = this;
+    const { label, backButton, el, heading } = this;
 
-    const { title } = el;
+    const labelFallback = label || heading;
 
-    const labelFallback = label || title;
+    const backButtonNode = backButton ? <button>back</button> : null;
+
+    const hasMenuActions = !!el.querySelector("[slot=menu-actions]");
+    const hasFooterActions = !!el.querySelector("[slot=footer-actions]");
+
+    console.log(hasMenuActions);
+
+    const menuActionsSlot = <slot name="menu-actions" />;
+
+    const menuButtonNode = hasMenuActions ? <button>menu</button> : null;
+
+    const menuActionsContainerNode = hasMenuActions ? (
+      <div>{menuActionsSlot}</div>
+    ) : null;
+
+    const footerActionsSlot = <slot name="footer-actions" />;
+
+    const footerActionsContainerNode = hasFooterActions ? (
+      <footer>{footerActionsSlot}</footer>
+    ) : null;
+
+    const contentContainerNode = (
+      <section>
+        <slot />
+      </section>
+    );
+
+    const headerNode = (
+      <header aria-label={labelFallback} title={labelFallback}>
+        {backButtonNode}
+        {heading}
+        {menuButtonNode}
+        {menuActionsContainerNode}
+      </header>
+    );
 
     return (
       <Host>
         <article>
-          <header aria-label={labelFallback} title={labelFallback}>
-            {title}
-            <slot name="menu-actions" />
-          </header>
-          <section>
-            <slot />
-          </section>
-          <footer>
-            <slot name="footer-actions" />
-          </footer>
+          {headerNode}
+          {contentContainerNode}
+          {footerActionsContainerNode}
         </article>
       </Host>
     );

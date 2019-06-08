@@ -25,6 +25,8 @@ export namespace Components {
   interface CalciteActionPad {}
   interface CalciteFlowControl {}
   interface CalciteFlowPanel {
+    'backButton': boolean;
+    'heading': string;
     'label': string;
   }
 }
@@ -95,6 +97,8 @@ declare namespace LocalJSX {
   interface CalciteActionPad extends JSXBase.HTMLAttributes<HTMLCalciteActionPadElement> {}
   interface CalciteFlowControl extends JSXBase.HTMLAttributes<HTMLCalciteFlowControlElement> {}
   interface CalciteFlowPanel extends JSXBase.HTMLAttributes<HTMLCalciteFlowPanelElement> {
+    'backButton'?: boolean;
+    'heading'?: string;
     'label'?: string;
   }
 
