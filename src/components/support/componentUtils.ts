@@ -1,5 +1,5 @@
 function supportsLocalStorage(): boolean {
-  return typeof Storage !== "undefined";
+  return typeof Storage !== 'undefined';
 }
 
 export function getItem(id: string): string | null {
