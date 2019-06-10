@@ -8,6 +8,9 @@ $gutter-size: 24px 12px;
   color: #6E6E6E;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
+:host([hidden]) {
+  display: none;
+}
 
 .title {
    font-size: 24px;
@@ -21,4 +24,21 @@ $gutter-size: 24px 12px;
   height: 24px;
   margin: $gutter-size;
   font-size: 24px;
+  cursor: pointer;
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: 0;
+  }
+}
+.content {
+  display: flex;
+  align-items: flex-start;
+  & > :last-child {
+    margin-left: 12px;
+    margin-right: auto;
+    :host-context([dir="rtl"]) & {
+      margin-right: 12px;
+      margin-left: auto;
+    }
+  }
 }
