@@ -3,91 +3,91 @@ import {
   Element,
   Event,
   EventEmitter,
-  h,
   Host,
-  Prop
-} from "@stencil/core";
+  Prop,
+  h
+} from '@stencil/core';
 
-import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
+import { chevronLeft16F, ellipsis16F } from '@esri/calcite-ui-icons';
 
 const CSS = {
-  frame: "calcite-flow-panel__frame",
-  header: "calcite-flow-panel__header",
-  headingContainer: "calcite-flow-panel__heading-container",
-  backButton: "calcite-flow-panel__back-button",
-  menuButton: "calcite-flow-panel__menu-button",
-  menu: "calcite-flow-panel__menu",
-  contentContainer: "calcite-flow-panel__content-container",
-  footer: "calcite-flow-panel__footer"
+  frame: 'calcite-flow-panel__frame',
+  header: 'calcite-flow-panel__header',
+  headingContainer: 'calcite-flow-panel__heading-container',
+  backButton: 'calcite-flow-panel__back-button',
+  menuButton: 'calcite-flow-panel__menu-button',
+  menu: 'calcite-flow-panel__menu',
+  contentContainer: 'calcite-flow-panel__content-container',
+  footer: 'calcite-flow-panel__footer'
 };
 
-interface Labels {
+export interface Labels {
   openMenu: string;
   closeMenu: string;
   back: string;
 }
 
 const DEFAULT_LABELS = {
-  back: "Back",
-  openMenu: "Open menu",
-  closeMenu: "Close menu"
+  back: 'Back',
+  openMenu: 'Open menu',
+  closeMenu: 'Close menu'
 };
 
 @Component({
-  tag: "calcite-flow-panel",
-  styleUrl: "calcite-flow-panel.scss",
+  tag: 'calcite-flow-panel',
+  styleUrl: 'calcite-flow-panel.scss',
   shadow: true
 })
 export class CalciteFlowPanel {
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
   //
   //  Properties
   //
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
 
-  //----------------------------------
+  // ----------------------------------
   //  el
-  //----------------------------------
+  // ----------------------------------
 
   @Element() el: HTMLElement;
 
-  //----------------------------------
+  // ----------------------------------
   //  backButton
-  //----------------------------------
+  // ----------------------------------
 
   @Prop({ reflect: true }) backButton = false;
 
-  //----------------------------------
+  // ----------------------------------
   //  labels
-  //----------------------------------
+  // ----------------------------------
 
   @Prop() labels: Labels = DEFAULT_LABELS;
 
-  //----------------------------------
+  // ----------------------------------
   //  heading
-  //----------------------------------
+  // ----------------------------------
 
   @Prop({ reflect: true }) heading: string = null;
 
-  //----------------------------------
+  // ----------------------------------
   //  menuOpen
-  //----------------------------------
+  // ----------------------------------
 
   @Prop({ reflect: true }) menuOpen = false;
 
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
   //
   //  Events
   //
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
 
   @Event() calciteFlowPanelBackClick: EventEmitter;
 
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
   //
   //  Public Methods
   //
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
 
   render() {
     const { backButton, el, heading, menuOpen, labels } = this;
@@ -111,8 +111,8 @@ export class CalciteFlowPanel {
       </button>
     ) : null;
 
-    const hasMenuActions = !!el.querySelector("[slot=menu-actions]");
-    const hasFooterActions = !!el.querySelector("[slot=footer-actions]");
+    const hasMenuActions = !!el.querySelector('[slot=menu-actions]');
+    const hasFooterActions = !!el.querySelector('[slot=footer-actions]');
 
     const menuLabel = menuOpen ? labels.closeMenu : labels.openMenu;
 
@@ -178,11 +178,11 @@ export class CalciteFlowPanel {
     );
   }
 
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
   //
   //  Private Methods
   //
-  //--------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
 
   private _toggleMenuOpen(): void {
     this.menuOpen = !this.menuOpen;
