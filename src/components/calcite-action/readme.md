@@ -1,17 +1,28 @@
 # calcite-action
 
-# props
 
-label: string;
-active: boolean;
-indicator: boolean;
 
-# slots
+<!-- Auto Generated Below -->
 
-icon (svg or img)
-text (textContent)
 
-# todo
+## Properties
 
-- tests
-- verify aria
+| Property      | Attribute      | Description | Type      | Default |
+| ------------- | -------------- | ----------- | --------- | ------- |
+| `active`      | `active`       |             | `boolean` | `false` |
+| `indicator`   | `indicator`    |             | `boolean` | `false` |
+| `label`       | `label`        |             | `string`  | `null`  |
+| `text`        | `text`         |             | `string`  | `null`  |
+| `textEnabled` | `text-enabled` |             | `boolean` | `false` |
+
+
+## Events
+
+| Event                | Description | Type               |
+| -------------------- | ----------- | ------------------ |
+| `calciteActionClick` |             | `CustomEvent<any>` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

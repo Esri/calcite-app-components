@@ -1,18 +1,10 @@
-# calcite-action
+# calcite-action-pad
 
-# props
 
-text: string;
-label: string;
-group: string;
-active: boolean;
-indicator: boolean;
 
-# slots
+<!-- Auto Generated Below -->
 
-action-icon (svg or img)
 
-# todo
+----------------------------------------------
 
-- tests
-- verify aria
+*Built with [StencilJS](https://stenciljs.com/)*
