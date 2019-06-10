@@ -13,24 +13,30 @@ export class CalciteTip {
   @Prop() header:string = "";
   @Prop() thumbnail:string = "";
 
+  //@ts-ignore
+  closeTip(event) {
+    this.el.setAttribute("hidden", "");
+  }
+
   render() {
     return (
       <Host>
         <slot name="header" />
-        <div class="close">
+        <div class="close" onClick={event => this.closeTip(event)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={x24}/>
           </svg>
         </div>
-        <div class="media">
-          { this.thumbnail ? <img src={this.thumbnail} class="media-image" /> : null }
-          <div class="media-content">
-            <slot />
-          </div>
+        <div class="content">
+            <slot name="thumbnail" />
+            <div>
+              <slot />
+              { !!this.el.querySelector('[slot=link]') ? <p class="link">
+                <slot name="link" />
+              </p> : null }
+              </div>
         </div>
-        { !!this.el.querySelector('[slot=link]') ? <p class="link">
-          <slot name="link" />
-        </p> : null }
+
       </Host>
     );
   }
