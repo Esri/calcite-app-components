@@ -33,6 +33,8 @@ const DEFAULT_LABELS = {
   closeMenu: 'Close menu'
 };
 
+// todo: key navigation for menu
+
 @Component({
   tag: 'calcite-flow-panel',
   styleUrl: 'calcite-flow-panel.scss',
@@ -55,7 +57,7 @@ export class CalciteFlowPanel {
   //  backButton
   // ----------------------------------
 
-  @Prop({ reflect: true }) backButton = false;
+  @Prop() backButton = false;
 
   // ----------------------------------
   //  labels
@@ -67,7 +69,7 @@ export class CalciteFlowPanel {
   //  heading
   // ----------------------------------
 
-  @Prop({ reflect: true }) heading: string = null;
+  @Prop() heading: string = null;
 
   // ----------------------------------
   //  menuOpen
@@ -189,6 +191,6 @@ export class CalciteFlowPanel {
   }
 
   private _backButtonClick(): void {
-    this.calciteFlowPanelBackClick.emit(this);
+    this.calciteFlowPanelBackClick.emit(this.el);
   }
 }

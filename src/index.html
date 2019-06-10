@@ -234,71 +234,37 @@
       <h2>calcite-flow-control</h2>
       <p>todo</p>
 
-      <calcite-flow-control>
-        <calcite-flow-panel title="Hello World" label="Hello there">
+      <calcite-flow-control id="flow-control">
+        <calcite-flow-panel heading="First Panel">
           <div slot="menu-actions">
-            <calcite-action text="hello world" text-enabled
-              ><svg
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
-                />
-              </svg>
-            </calcite-action>
+            <button>Save</button>
+            <button>Cancel</button>
           </div>
           <div slot="footer-actions">
-            <calcite-action text="hello world" text-enabled
-              ><svg
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
-                />
-              </svg>
-            </calcite-action>
+            <button>Save</button>
+            <button>Cancel</button>
           </div>
-          <p>content</p>
+          <p>content 1</p>
         </calcite-flow-panel>
-
-        <calcite-flow-panel title="Hello World" label="Hello there">
+        <calcite-flow-panel heading="Second Panel" id="last-flow">
           <div slot="menu-actions">
-            <calcite-action text="hello world" text-enabled
-              ><svg
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
-                />
-              </svg>
-            </calcite-action>
+            <button>Save</button>
+            <button>Cancel</button>
           </div>
           <div slot="footer-actions">
-            <calcite-action text="hello world" text-enabled
-              ><svg
-                width="100%"
-                height="100%"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
-                />
-              </svg>
-            </calcite-action>
+            <button>Save</button>
+            <button>Cancel</button>
           </div>
-          <p>content</p>
+          <p>content 2</p>
         </calcite-flow-panel>
       </calcite-flow-control>
+
+      <!-- <script>
+        var lastFlow = document.getElementById("last-flow");
+        lastFlow.addEventListener("calciteFlowPanelBackClick", function(event) {
+          event.stopPropagation();
+        });
+      </script> -->
 
       <h2>calcite-shell</h2>
       <p>todo</p>
