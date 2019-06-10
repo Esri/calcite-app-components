@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "tslint-stencil/default",
+    "tslint-ionic-rules"
+  ],
+  "rules": {
+    "component-member-order": {
+      "severity": "warn"
+    }
+  }
+}

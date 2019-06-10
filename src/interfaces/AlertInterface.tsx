@@ -1,5 +1,5 @@
-import { h } from "@stencil/core";
-import { createProviderConsumer } from "@stencil/state-tunnel";
+import { h } from '@stencil/core';
+import { createProviderConsumer } from '@stencil/state-tunnel';
 
 export interface AlertInterface {
   currentAlert: string;
@@ -8,7 +8,7 @@ export interface AlertInterface {
 
 export default createProviderConsumer<AlertInterface>(
   {
-    currentAlert: "",
+    currentAlert: '',
     queueLength: 0
   },
   (subscribe, child) => (

@@ -15,15 +15,17 @@
   ],
   "scripts": {
     "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
+    "lint": "tslint \"src/**/*.ts?(x)\"",
+    "lint:fix": "tslint --fix \"src/**/*.ts?(x)\"",
     "prettier": "npm-run-all --parallel prettier:**",
     "prettier:ts": "prettier --write \"src/**/*.ts?(x)\"",
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
     "prerelease:prepare": "npm run build",
     "release:prepare": "npm version prerelease --preid=alpha --no-git-tag-version",
-    "release:publish": "./support/release.sh"
+    "release:publish": "./support/release.sh",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "repository": {
     "type": "git",
@@ -50,7 +52,10 @@
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
     "prettier": "1.17.1",
-    "puppeteer": "1.14.0"
+    "puppeteer": "1.14.0",
+    "tslint": "5.17.0",
+    "tslint-ionic-rules": "0.0.21",
+    "tslint-stencil": "1.0.1"
   },
   "license": "MIT"
 }
