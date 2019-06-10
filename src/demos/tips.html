@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Calcite Component Starter</title>
+
+    <link rel="stylesheet" href="/build/calcite.css" />
+    <script type="module" src="/build/calcite.esm.js"></script>
+    <script nomodule src="/build/calcite.js"></script>
+    <!--Native Nav component-->
+    <script src="/demos/nav.js"></script>
+    <!--Demo Pages CSS-->
+    <link rel="stylesheet" href="/demos/demos.css" />
+  </head>
+  <body>
+    <calcite-styleguide-nav></calcite-styleguide-nav>
+    <section class="example-container">
+      <h2>Normal Tip</h2>
+      <div>
+        <calcite-tip thumbnail="https://via.placeholder.com/150">
+          <h2 slot="header">Celestial Bodies</h2>
+          <img slot="thumbnail" src="https://via.placeholder.com/150" alt="150x150" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a slot="link" href="http://www.esri.com">View Esri</a>
+        </calcite-tip>
+      </div>
+      <h2>RTL Tip</h2>
+      <div dir="rtl">
+        <calcite-tip thumbnail="https://via.placeholder.com/150">
+          <h2 slot="header">Celestial Bodies</h2>
+          <img slot="thumbnail" src="https://via.placeholder.com/150" alt="150x150" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a slot="link" href="http://www.esri.com">View Esri</a>
+        </calcite-tip>
+      </div>
+    </section>
+  </body>
+</html>
