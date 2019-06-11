@@ -1,14 +1,14 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
 const CSS = {
-  button: 'calcite-action__button',
-  iconContainer: 'calcite-action__icon-container',
-  textContainer: 'calcite-action__text-container'
+  button: "calcite-action__button",
+  iconContainer: "calcite-action__icon-container",
+  textContainer: "calcite-action__text-container"
 };
 
 @Component({
-  tag: 'calcite-action',
-  styleUrl: 'calcite-action.scss',
+  tag: "calcite-action",
+  styleUrl: "calcite-action.scss",
   shadow: true
 })
 export class CalciteAction {

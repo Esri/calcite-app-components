@@ -4,7 +4,7 @@ function random() {
 }
 
 function gen(count) {
-  let out = '';
+  let out = "";
   for (let i = 0; i < count; i++) {
     out += (((1 + random()) * 0x10000) | 0).toString(16).substring(1);
   }
@@ -12,5 +12,5 @@ function gen(count) {
 }
 
 export function guid() {
-  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join('-');
+  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join("-");
 }
