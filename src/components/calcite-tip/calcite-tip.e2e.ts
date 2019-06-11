@@ -22,5 +22,24 @@ describe('calcite-tip', () => {
     await page.waitForChanges();
     const isVisible = await tip.isVisible();
     expect(isVisible).toBe(false);
-  })
+  });
+  it('should hide by default if tip with an id is dismissed', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-tip id="foo"><p>testing localstorage</p></calcite-tip>`).catch(error =>{
+      console.error(error);
+    });
+
+    const closeButton = await page.find('calcite-tip >>> .close');
+    closeButton.click();
+    await page.waitForChanges();
+
+    const page2 = await newE2EPage();
+    await page2.setContent(`<calcite-tip id="foo"><p>testing localstorage</p></calcite-tip>`).catch(error =>{
+      console.error(error);
+    });
+
+    const tip = await page2.find("calcite-tip");
+    const isVisible = await tip.isVisible();
+    expect(isVisible).toBe(false);
+  });
 });
