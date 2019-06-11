@@ -7,9 +7,21 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `label`  | `label`   |             | `string` | `null`  |
+| Property     | Attribute     | Description | Type      | Default          |
+| ------------ | ------------- | ----------- | --------- | ---------------- |
+| `backButton` | `back-button` |             | `boolean` | `false`          |
+| `heading`    | `heading`     |             | `string`  | `null`           |
+| `labels`     | --            |             | `Labels`  | `DEFAULT_LABELS` |
+| `menuOpen`   | `menu-open`   |             | `boolean` | `false`          |
+
+
+## Events
+
+| Event                        | Description | Type               |
+| ---------------------------- | ----------- | ------------------ |
+| `calciteFlowPanelBackClick`  |             | `CustomEvent<any>` |
+| `calciteFlowPanelRegister`   |             | `CustomEvent<any>` |
+| `calciteFlowPanelUnregister` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------
