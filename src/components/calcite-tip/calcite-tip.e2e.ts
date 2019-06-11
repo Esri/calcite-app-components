@@ -1,7 +1,26 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('calcite-tip', () => {
-  it('should', async () => {
-    console.log('not fail');
+  it('should render', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-tip><p>basic render</p></calcite-tip>`).catch(error =>{
+      console.error(error);
+    });
+    const el = await page.find('calcite-tip');
+    expect(el).not.toBeNull();
   });
+
+  it('should be hidden after the close button is clicked', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-tip><p>testing close button</p></calcite-tip>`).catch(error =>{
+      console.error(error);
+    });
+    const tip = await page.find("calcite-tip");
+    const closeButton = await page.find('calcite-tip >>> .close');
+
+    closeButton.click();
+    await page.waitForChanges();
+    const isVisible = await tip.isVisible();
+    expect(isVisible).toBe(false);
+  })
 });
