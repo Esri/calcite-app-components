@@ -6,6 +6,12 @@
   "rules": {
     "component-member-order": {
       "severity": "warn"
+    },
+    "decorated-member-style": {
+      "severity": "off"
+    },
+    "quotemark": {
+      "options": [ "double" ]
     }
   }
 }
