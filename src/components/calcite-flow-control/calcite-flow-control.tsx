@@ -1,4 +1,13 @@
-import { Component, Element, Host, Listen, Method, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Listen,
+  Method,
+  State,
+  Watch,
+  h
+} from '@stencil/core';
 
 @Component({
   tag: 'calcite-flow-control',
@@ -18,15 +27,55 @@ export class CalciteFlowControl {
 
   @Element() el: HTMLElement;
 
+  // ----------------------------------
+  //  flows
+  // ----------------------------------
+
+  @State() flows: HTMLCalciteFlowPanelElement[] = [];
+
+  @Watch('flows')
+  flowsWatchHandler(
+    newValue: HTMLCalciteFlowPanelElement[]
+    // oldValue: HTMLCalciteFlowPanelElement[]
+  ) {
+    const flowCount = newValue.length;
+    const activeFlowIndex = flowCount - 1;
+
+    this.flowCount = flowCount;
+    this.activeFlow = newValue[activeFlowIndex] || null;
+  }
+
+  // ----------------------------------
+  //  activeFlow
+  // ----------------------------------
+
+  @State() activeFlow: HTMLCalciteFlowPanelElement;
+
+  // ----------------------------------
+  //  flowCount
+  // ----------------------------------
+
+  @State() flowCount = 0;
+
   // --------------------------------------------------------------------------
   //
   //  Events
   //
   // --------------------------------------------------------------------------
 
+  @Listen('calciteFlowPanelRegister')
+  registerHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
+    this.flows = [event.detail, ...this.flows];
+  }
+
+  @Listen('calciteFlowPanelUnregister')
+  unregisterHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
+    this.flows = this.flows.filter(flow => flow !== event.detail);
+  }
+
   @Listen('calciteFlowPanelBackClick')
-  todoCompletedHandler() {
-    this.pop();
+  backClickHandler() {
+    this.removeActiveFlow();
   }
 
   // --------------------------------------------------------------------------
@@ -36,30 +85,34 @@ export class CalciteFlowControl {
   // --------------------------------------------------------------------------
 
   @Method()
-  pop(): void {
-    const { el } = this;
+  async removeActiveFlow(): Promise<void> {
+    // const { el } = this;
 
-    const flowNodes = el.querySelectorAll('calcite-flow-panel');
-    const flowCount = flowNodes.length;
-    const activeFlowIndex = flowCount - 1;
-    flowNodes[activeFlowIndex].remove();
+    // const flowNodes = el.querySelectorAll('calcite-flow-panel');
+    // const flowCount = flowNodes.length;
+    // const activeFlowIndex = flowCount - 1;
+    // flowNodes[activeFlowIndex].remove();
+
+    this.activeFlow.remove();
+
+    this.flows = this.flows.filter(Boolean);
   }
 
   render() {
-    const { el } = this;
+    const { activeFlow, el, flowCount } = this;
 
     const flowNodes = el.querySelectorAll('calcite-flow-panel');
-    const flowCount = flowNodes.length;
-    const hasMultipleFlows = flowCount > 1;
-    const activeFlowIndex = flowCount - 1;
 
-    flowNodes.forEach((flowNode, index) => {
-      flowNode.backButton = hasMultipleFlows;
-      flowNode.hidden = index !== activeFlowIndex;
+    console.log(activeFlow);
+
+    flowNodes.forEach(flowNode => {
+      flowNode.backButton = flowCount > 1;
+      // flowNode.hidden = flowNode !== activeFlow;
     });
 
     return (
       <Host>
+        {activeFlow}
         <slot />
       </Host>
     );

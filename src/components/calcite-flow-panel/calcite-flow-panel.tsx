@@ -83,6 +83,10 @@ export class CalciteFlowPanel {
   //
   // --------------------------------------------------------------------------
 
+  @Event() calciteFlowPanelRegister: EventEmitter;
+
+  @Event() calciteFlowPanelUnregister: EventEmitter;
+
   @Event() calciteFlowPanelBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
@@ -90,6 +94,14 @@ export class CalciteFlowPanel {
   //  Public Methods
   //
   // --------------------------------------------------------------------------
+
+  componentWillLoad() {
+    this.calciteFlowPanelRegister.emit(this.el);
+  }
+
+  disconnectedCallback() {
+    this.calciteFlowPanelUnregister.emit(this.el);
+  }
 
   render() {
     const { backButton, el, heading, menuOpen, labels } = this;
