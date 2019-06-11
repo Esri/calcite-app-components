@@ -36,7 +36,6 @@ export class CalciteTip {
               </p> : null }
               </div>
         </div>
-
       </Host>
     );
   }
