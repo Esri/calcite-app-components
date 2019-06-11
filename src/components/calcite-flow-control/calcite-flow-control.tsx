@@ -3,29 +3,25 @@ import {
   Element,
   Host,
   Listen,
+  Method,
   State,
   Watch,
   h
-} from "@stencil/core";
+} from '@stencil/core';
 
-function nodeListToArray(domNodeList): Element[] {
-  if (Array.isArray(domNodeList)) {
-    return domNodeList;
-  } else {
-    return Array.prototype.slice.call(domNodeList);
-  }
-}
+import { nodeListToArray } from 'calcite-components/dist/collection/utils/dom';
 
-type FlowDirection = "advancing" | "retreating";
+type FlowDirection = 'advancing' | 'retreating';
 
 const CSS = {
-  advancing: "",
-  retreating: ""
+  frame: 'calcite-flow-control__frame',
+  frameAdvancing: 'calcite-flow-control__frame--advancing',
+  frameRetreating: 'calcite-flow-control__frame--retreating'
 };
 
 @Component({
-  tag: "calcite-flow-control",
-  styleUrl: "calcite-flow-control.scss",
+  tag: 'calcite-flow-control',
+  styleUrl: 'calcite-flow-control.scss',
   shadow: true
 })
 export class CalciteFlowControl {
@@ -47,16 +43,15 @@ export class CalciteFlowControl {
 
   @State() flows: HTMLCalciteFlowPanelElement[] = [];
 
-  @Watch("flows")
+  @Watch('flows')
   flowsWatchHandler(
     newValue: HTMLCalciteFlowPanelElement[],
     oldValue: HTMLCalciteFlowPanelElement[]
   ) {
     const flowCount = newValue.length;
     const oldFlowCount = oldValue.length;
-    const activeFlowIndex = flowCount ? flowCount - 1 : null;
-    const activeFlow = newValue[activeFlowIndex] || null;
-    const flowDirection = flowCount < oldFlowCount ? "retreating" : "advancing";
+    const activeFlow = newValue[flowCount - 1];
+    const flowDirection = flowCount < oldFlowCount ? 'retreating' : 'advancing';
 
     if (flowCount && activeFlow) {
       newValue.forEach(flowNode => {
@@ -66,15 +61,8 @@ export class CalciteFlowControl {
     }
 
     this.flowCount = flowCount;
-    this.activeFlow = activeFlow;
     this.flowDirection = flowDirection;
   }
-
-  // ----------------------------------
-  //  activeFlow
-  // ----------------------------------
-
-  @State() activeFlow: HTMLCalciteFlowPanelElement;
 
   // ----------------------------------
   //  flowCount
@@ -94,10 +82,10 @@ export class CalciteFlowControl {
   //
   // --------------------------------------------------------------------------
 
-  @Listen("calciteFlowPanelRegister")
+  @Listen('calciteFlowPanelRegister')
   registerHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
     const nodes = nodeListToArray(
-      this.el.querySelectorAll("calcite-flow-panel")
+      this.el.querySelectorAll('calcite-flow-panel')
     );
     const index = nodes.indexOf(event.detail);
     const flows = [...this.flows];
@@ -105,18 +93,14 @@ export class CalciteFlowControl {
     this.flows = flows;
   }
 
-  @Listen("calciteFlowPanelUnregister")
+  @Listen('calciteFlowPanelUnregister')
   unregisterHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
     this.flows = this.flows.filter(flow => flow !== event.detail);
   }
 
-  @Listen("calciteFlowPanelBackClick")
+  @Listen('calciteFlowPanelBackClick')
   backClickHandler() {
-    const flows = [...this.flows];
-    flows[this.flowCount - 1].remove();
-    flows.pop();
-
-    this.flows = flows;
+    this.back();
   }
 
   // --------------------------------------------------------------------------
@@ -125,32 +109,31 @@ export class CalciteFlowControl {
   //
   // --------------------------------------------------------------------------
 
+  @Method()
+  async back() {
+    const flows = [...this.flows];
+    flows[this.flowCount - 1].remove();
+    flows.pop();
+
+    this.flows = flows;
+  }
+
   render() {
-    const { flowDirection } = this;
+    const { flowDirection, flowCount } = this;
+
+    const flowDirectionClass =
+      flowDirection === 'advancing'
+        ? CSS.frameAdvancing
+        : flowDirection === 'retreating'
+        ? CSS.frameRetreating
+        : null;
 
     return (
       <Host>
-        <div class={this._getFlowDirectionClass(flowDirection)}>
+        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
           <slot />
         </div>
       </Host>
     );
-  }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  private _getFlowDirectionClass(flowDirection: FlowDirection): string {
-    if (flowDirection === "advancing") {
-      return CSS.advancing;
-    }
-    if (flowDirection === "retreating") {
-      return CSS.retreating;
-    }
-
-    return null;
   }
 }

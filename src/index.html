@@ -28,6 +28,11 @@
         height: 400px;
       }
 
+      .flow-control-container {
+        width: 350px;
+        height: 800px;
+      }
+
       calcite-action-pad {
         position: absolute;
         top: 0;
@@ -234,30 +239,44 @@
       <h2>calcite-flow-control</h2>
       <p>todo</p>
 
-      <calcite-flow-control id="flow-control">
-        <calcite-flow-panel heading="First Panel">
-          <div slot="menu-actions">
-            <button>Save</button>
-            <button>Cancel</button>
-          </div>
-          <div slot="footer-actions">
-            <button>Save</button>
-            <button>Cancel</button>
-          </div>
-          <p>content 1</p>
-        </calcite-flow-panel>
-        <calcite-flow-panel heading="Second Panel" id="last-flow">
-          <div slot="menu-actions">
-            <button>Save</button>
-            <button>Cancel</button>
-          </div>
-          <div slot="footer-actions">
-            <button>Save</button>
-            <button>Cancel</button>
-          </div>
-          <p>content 2</p>
-        </calcite-flow-panel>
-      </calcite-flow-control>
+      <div class="flow-control-container">
+        <calcite-flow-control id="flow-control">
+          <calcite-flow-panel heading="First Panel">
+            <div slot="menu-actions">
+              <button>Save</button>
+              <button>Cancel</button>
+            </div>
+            <div slot="footer-actions">
+              <button>Save</button>
+              <button>Cancel</button>
+            </div>
+            <p>content 1</p>
+          </calcite-flow-panel>
+          <calcite-flow-panel heading="Second Panel" id="last-flow">
+            <div slot="menu-actions">
+              <button>Save</button>
+              <button>Cancel</button>
+            </div>
+            <div slot="footer-actions">
+              <button>Save</button>
+              <button>Cancel</button>
+            </div>
+            <p>content 2</p>
+          </calcite-flow-panel>
+        </calcite-flow-control>
+
+        <button id="add-flow-panel">Add new flow</button>
+        <script>
+          document
+            .getElementById("add-flow-panel")
+            .addEventListener("click", function() {
+              var newNode = document.createElement("calcite-flow-panel");
+              newNode.heading = "New Panel";
+              newNode.innerHTML = "<p>New Content</p>";
+              document.getElementById("flow-control").appendChild(newNode);
+            });
+        </script>
+      </div>
 
       <!-- <script>
         var lastFlow = document.getElementById("last-flow");

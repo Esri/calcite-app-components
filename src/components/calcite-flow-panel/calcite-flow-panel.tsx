@@ -11,10 +11,11 @@ import {
 import { chevronLeft16F, ellipsis16F } from '@esri/calcite-ui-icons';
 
 const CSS = {
-  frame: 'calcite-flow-panel__frame',
+  container: 'calcite-flow-panel__container',
   header: 'calcite-flow-panel__header',
-  headingContainer: 'calcite-flow-panel__heading-container',
+  heading: 'calcite-flow-panel__heading',
   backButton: 'calcite-flow-panel__back-button',
+  menuContainer: 'calcite-flow-panel__menu-container',
   menuButton: 'calcite-flow-panel__menu-button',
   menu: 'calcite-flow-panel__menu',
   contentContainer: 'calcite-flow-panel__content-container',
@@ -168,22 +169,26 @@ export class CalciteFlowPanel {
       </section>
     );
 
-    const headingContainerNode = (
-      <span class={CSS.headingContainer}>{heading}</span>
-    );
+    const headingNode = <h2 class={CSS.heading}>{heading}</h2>;
+
+    const menuContainerNode = hasMenuActions ? (
+      <div class={CSS.menuContainer}>
+        {menuButtonNode}
+        {menuActionsContainerNode}
+      </div>
+    ) : null;
 
     const headerNode = (
       <header class={CSS.header}>
         {backButtonNode}
-        {headingContainerNode}
-        {menuButtonNode}
-        {menuActionsContainerNode}
+        {headingNode}
+        {menuContainerNode}
       </header>
     );
 
     return (
       <Host>
-        <article class={CSS.frame}>
+        <article class={CSS.container}>
           {headerNode}
           {contentContainerNode}
           {footerActionsContainerNode}
