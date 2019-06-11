@@ -36,5 +36,8 @@ export const config: Config = {
     (postcss as any)({
       plugins: [autoprefixer()]
     })
-  ]
+  ],
+  testing: {
+    setupTestFrameworkScriptFile: ["../src/tests/setup.js"]
+  }
 };
