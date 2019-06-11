@@ -1,8 +1,8 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from "@stencil/core";
 
 @Component({
-  tag: 'calcite-action-group',
-  styleUrl: 'calcite-action-group.scss',
+  tag: "calcite-action-group",
+  styleUrl: "calcite-action-group.scss",
   shadow: true
 })
 export class CalciteActionGroup {
