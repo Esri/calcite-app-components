@@ -38,6 +38,18 @@ export class CalciteFlowControl {
   @Element() el: HTMLElement;
 
   // ----------------------------------
+  //  flowCount
+  // ----------------------------------
+
+  @State() flowCount = 0;
+
+  // ----------------------------------
+  //  flowDirection
+  // ----------------------------------
+
+  @State() flowDirection: FlowDirection = null;
+
+  // ----------------------------------
   //  flows
   // ----------------------------------
 
@@ -63,7 +75,7 @@ export class CalciteFlowControl {
 
     if (flowCount && activeFlow) {
       newValue.forEach(flowNode => {
-        flowNode.backButton = hasMultipleFlows;
+        flowNode.showBackButton = hasMultipleFlows;
         flowNode.hidden = flowNode !== activeFlow;
       });
     }
@@ -71,18 +83,6 @@ export class CalciteFlowControl {
     this.flowCount = flowCount;
     this.flowDirection = flowDirection;
   }
-
-  // ----------------------------------
-  //  flowCount
-  // ----------------------------------
-
-  @State() flowCount = 0;
-
-  // ----------------------------------
-  //  flowDirection
-  // ----------------------------------
-
-  @State() flowDirection: FlowDirection = null;
 
   // --------------------------------------------------------------------------
   //

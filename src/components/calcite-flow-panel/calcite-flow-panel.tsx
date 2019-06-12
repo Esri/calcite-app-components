@@ -28,8 +28,6 @@ export interface Labels {
   back: string;
 }
 
-// todo: key navigation for menu
-
 @Component({
   tag: "calcite-flow-panel",
   styleUrl: "calcite-flow-panel.scss",
@@ -49,10 +47,10 @@ export class CalciteFlowPanel {
   @Element() el: HTMLElement;
 
   // ----------------------------------
-  //  backButton
+  //  heading
   // ----------------------------------
 
-  @Prop() backButton = false;
+  @Prop() heading: string = null;
 
   // ----------------------------------
   //  labels
@@ -65,16 +63,16 @@ export class CalciteFlowPanel {
   };
 
   // ----------------------------------
-  //  heading
-  // ----------------------------------
-
-  @Prop() heading: string = null;
-
-  // ----------------------------------
   //  menuOpen
   // ----------------------------------
 
   @Prop({ reflect: true }) menuOpen = false;
+
+  // ----------------------------------
+  //  showBackButton
+  // ----------------------------------
+
+  @Prop() showBackButton = false;
 
   // --------------------------------------------------------------------------
   //
@@ -103,9 +101,9 @@ export class CalciteFlowPanel {
   }
 
   render() {
-    const { backButton, el, heading, menuOpen, labels } = this;
+    const { showBackButton, el, heading, menuOpen, labels } = this;
 
-    const backButtonNode = backButton ? (
+    const backButtonNode = showBackButton ? (
       <button
         key="back-button"
         class={CSS.backButton}
