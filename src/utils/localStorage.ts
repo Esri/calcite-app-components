@@ -20,4 +20,4 @@ export function setItem(id: string, value: string): void {
 export default {
   getItem,
   setItem
-}
+};
