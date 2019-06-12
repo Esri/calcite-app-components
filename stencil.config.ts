@@ -1,34 +1,34 @@
-import { Config } from '@stencil/core';
-import { postcss } from '@stencil/postcss';
-import { sass } from '@stencil/sass';
-import autoprefixer from 'autoprefixer';
+import { Config } from "@stencil/core";
+import { postcss } from "@stencil/postcss";
+import { sass } from "@stencil/sass";
+import autoprefixer from "autoprefixer";
 
 export const config: Config = {
-  namespace: 'calcite',
+  namespace: "calcite",
   bundles: [
     {
       components: [
-        'calcite-action',
-        'calcite-action-group',
-        'calcite-action-bar',
-        'calcite-action-pad',
-        'calcite-flow-control',
-        'calcite-flow-panel'
+        "calcite-action",
+        "calcite-action-group",
+        "calcite-action-bar",
+        "calcite-action-pad",
+        "calcite-flow-control",
+        "calcite-flow-panel"
       ]
     }
   ],
   outputTargets: [
-    { type: 'dist' },
-    { type: 'docs-readme' },
+    { type: "dist" },
+    { type: "docs-readme" },
     {
-      type: 'www',
+      type: "www",
       serviceWorker: null // disable service workers
     }
   ],
-  globalStyle: 'src/assets/styles/includes.scss',
+  globalStyle: "src/assets/styles/includes.scss",
   plugins: [
     sass({
-      injectGlobalPaths: ['src/assets/styles/includes.scss']
+      injectGlobalPaths: ["src/assets/styles/includes.scss"]
     }),
 
     // drop any type when https://github.com/ionic-team/stencil-postcss/pull/16 lands
