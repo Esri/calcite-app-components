@@ -33,7 +33,7 @@ describe("calcite-tip", () => {
     const page = await newE2EPage();
     await page
       .setContent(
-        `<calcite-tip storageId="foo"><p>testing localstorage</p></calcite-tip>`
+        `<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`
       )
       .catch(error => {
         console.error(error);
@@ -46,7 +46,7 @@ describe("calcite-tip", () => {
     const page2 = await newE2EPage();
     await page2
       .setContent(
-        `<calcite-tip storageId="foo"><p>testing localstorage</p></calcite-tip>`
+        `<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`
       )
       .catch(error => {
         console.error(error);

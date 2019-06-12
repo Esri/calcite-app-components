@@ -11,7 +11,8 @@ export class CalciteTip {
   @Element() el: HTMLElement;
 
   @Prop() storageId = "";
-  @Prop() dismissed = false;
+
+  dismissed = false;
 
   //@ts-ignore
   closeTip(event: Event) {
