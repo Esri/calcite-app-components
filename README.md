@@ -21,7 +21,7 @@ A collection of calcite components for building single page applications.
 
 ### Testing
 #### Gotchas
-Disabling headless mode and enabling devtools causes calls to `page.setContent(<html>) to fail in end to end tests.
+Disabling headless mode and enabling devtools causes calls to `page.setContent(<html>)` to fail in end to end tests.
 A workaround is manually modifying the waitUntil option in `<projectDir>\node_modules\@stencil\core\dist\testing\index.js` Line 39000 to 'load'.
 
 ## Resources
