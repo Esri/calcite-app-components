@@ -4,24 +4,25 @@ $gutter-size: 24px 12px;
   position: relative;
   display: block;
   padding: $gutter-size;
-  background-color: #FFF;
-  color: #6E6E6E;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  background-color: #fff;
+  color: #6e6e6e;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 :host([hidden]) {
   display: none;
 }
 
 .title {
-   font-size: 24px;
+  font-size: 24px;
 }
 
+$tip-close-size: 24px;
 .close {
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 24px;
-  height: 24px;
+  width: $tip-close-size;
+  height: $tip-close-size;
   margin: $gutter-size;
   font-size: 24px;
   cursor: pointer;
