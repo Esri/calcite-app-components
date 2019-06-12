@@ -31,12 +31,12 @@ a.is-active {
 <nav class="styleguide--nav">
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/demos/tips.html">Tips</a></li>
+      <li><a href="/demos/calcite-tip.html">Calcite Tip</a></li>
     </ul>
 </nav>
 `;
 
-class styleguideNav extends HTMLElement {
+class StyleguideNav extends HTMLElement {
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ 'mode': 'open' });
@@ -47,4 +47,4 @@ class styleguideNav extends HTMLElement {
     activeLink && activeLink.classList.add('is-active');
   }
 }
-window.customElements.define('calcite-styleguide-nav', styleguideNav);
+window.customElements.define('calcite-styleguide-nav', StyleguideNav);
