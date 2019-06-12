@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type      | Default                                                                          |
-| ------------ | ------------- | ----------- | --------- | -------------------------------------------------------------------------------- |
-| `backButton` | `back-button` |             | `boolean` | `false`                                                                          |
-| `heading`    | `heading`     |             | `string`  | `null`                                                                           |
-| `labels`     | --            |             | `Labels`  | `{     back: 'Back',     openMenu: 'Open menu',     closeMenu: 'Close menu'   }` |
-| `menuOpen`   | `menu-open`   |             | `boolean` | `false`                                                                          |
+| Property         | Attribute          | Description | Type      | Default                                                                          |
+| ---------------- | ------------------ | ----------- | --------- | -------------------------------------------------------------------------------- |
+| `heading`        | `heading`          |             | `string`  | `null`                                                                           |
+| `labels`         | --                 |             | `Labels`  | `{     back: "Back",     openMenu: "Open menu",     closeMenu: "Close menu"   }` |
+| `menuOpen`       | `menu-open`        |             | `boolean` | `false`                                                                          |
+| `showBackButton` | `show-back-button` |             | `boolean` | `false`                                                                          |
 
 
 ## Events
