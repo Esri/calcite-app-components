@@ -106,11 +106,6 @@ export class CalciteFlowControl {
     this.flows = this.flows.filter(flow => flow !== event.detail);
   }
 
-  @Listen("calciteFlowPanelBackClick")
-  backClickHandler() {
-    this.back();
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Public Methods

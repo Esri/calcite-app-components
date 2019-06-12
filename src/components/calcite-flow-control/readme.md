@@ -7,13 +7,13 @@
 
 ## Methods
 
-### `back() => Promise<void>`
+### `back() => Promise<any>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<any>`
 
 
 

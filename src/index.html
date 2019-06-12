@@ -256,15 +256,24 @@
 
         <button id="add-flow-panel">Add new flow</button>
         <script>
-          document
-            .getElementById("add-flow-panel")
-            .addEventListener("click", function() {
-              var newNode = document.createElement("calcite-flow-panel");
-              newNode.heading = "New Panel";
-              newNode.innerHTML =
-                '<p>New Content</p><div slot="menu-actions"><button>Save</button><button>Cancel</button></div><div slot="footer-actions"><button>Save</button><button>Cancel</button></div>';
-              document.getElementById("flow-control").appendChild(newNode);
-            });
+          var flowControlNode = document.getElementById("flow-control");
+
+          flowControlNode.addEventListener(
+            "calciteFlowPanelBackClick",
+            function() {
+              flowControlNode.back();
+            }
+          );
+
+          var addFlowButtonNode = document.getElementById("add-flow-panel");
+
+          addFlowButtonNode.addEventListener("click", function() {
+            var newNode = document.createElement("calcite-flow-panel");
+            newNode.heading = "New Panel";
+            newNode.innerHTML =
+              '<p>New Content</p><div slot="menu-actions"><button>Save</button><button>Cancel</button></div><div slot="footer-actions"><button>Save</button><button>Cancel</button></div>';
+            flowControlNode.appendChild(newNode);
+          });
         </script>
       </div>
 
