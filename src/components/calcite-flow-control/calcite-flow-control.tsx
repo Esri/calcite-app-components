@@ -7,21 +7,21 @@ import {
   State,
   Watch,
   h
-} from '@stencil/core';
+} from "@stencil/core";
 
-import { nodeListToArray } from 'calcite-components/dist/collection/utils/dom';
+import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
 
-type FlowDirection = 'advancing' | 'retreating';
+type FlowDirection = "advancing" | "retreating";
 
 const CSS = {
-  frame: 'calcite-flow-control__frame',
-  frameAdvancing: 'calcite-flow-control__frame--advancing',
-  frameRetreating: 'calcite-flow-control__frame--retreating'
+  frame: "calcite-flow-control__frame",
+  frameAdvancing: "calcite-flow-control__frame--advancing",
+  frameRetreating: "calcite-flow-control__frame--retreating"
 };
 
 @Component({
-  tag: 'calcite-flow-control',
-  styleUrl: 'calcite-flow-control.scss',
+  tag: "calcite-flow-control",
+  styleUrl: "calcite-flow-control.scss",
   shadow: true
 })
 export class CalciteFlowControl {
@@ -43,7 +43,7 @@ export class CalciteFlowControl {
 
   @State() flows: HTMLCalciteFlowPanelElement[] = [];
 
-  @Watch('flows')
+  @Watch("flows")
   flowsWatchHandler(
     newValue: HTMLCalciteFlowPanelElement[],
     oldValue: HTMLCalciteFlowPanelElement[]
@@ -57,8 +57,8 @@ export class CalciteFlowControl {
     const flowDirection =
       hasMultipleFlows || hadMultipleFlows
         ? flowCount < oldFlowCount
-          ? 'retreating'
-          : 'advancing'
+          ? "retreating"
+          : "advancing"
         : null;
 
     if (flowCount && activeFlow) {
@@ -90,10 +90,10 @@ export class CalciteFlowControl {
   //
   // --------------------------------------------------------------------------
 
-  @Listen('calciteFlowPanelRegister')
+  @Listen("calciteFlowPanelRegister")
   registerHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
     const nodes = nodeListToArray(
-      this.el.querySelectorAll('calcite-flow-panel')
+      this.el.querySelectorAll("calcite-flow-panel")
     );
     const index = nodes.indexOf(event.detail);
     const flows = [...this.flows];
@@ -101,12 +101,12 @@ export class CalciteFlowControl {
     this.flows = flows;
   }
 
-  @Listen('calciteFlowPanelUnregister')
+  @Listen("calciteFlowPanelUnregister")
   unregisterHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
     this.flows = this.flows.filter(flow => flow !== event.detail);
   }
 
-  @Listen('calciteFlowPanelBackClick')
+  @Listen("calciteFlowPanelBackClick")
   backClickHandler() {
     this.back();
   }
@@ -130,9 +130,9 @@ export class CalciteFlowControl {
     const { flowDirection, flowCount } = this;
 
     const flowDirectionClass =
-      flowDirection === 'advancing'
+      flowDirection === "advancing"
         ? CSS.frameAdvancing
-        : flowDirection === 'retreating'
+        : flowDirection === "retreating"
         ? CSS.frameRetreating
         : null;
 

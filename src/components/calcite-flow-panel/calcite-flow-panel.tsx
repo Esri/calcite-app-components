@@ -6,20 +6,20 @@ import {
   Host,
   Prop,
   h
-} from '@stencil/core';
+} from "@stencil/core";
 
-import { chevronLeft16F, ellipsis16F } from '@esri/calcite-ui-icons';
+import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
 
 const CSS = {
-  container: 'calcite-flow-panel__container',
-  header: 'calcite-flow-panel__header',
-  heading: 'calcite-flow-panel__heading',
-  backButton: 'calcite-flow-panel__back-button',
-  menuContainer: 'calcite-flow-panel__menu-container',
-  menuButton: 'calcite-flow-panel__menu-button',
-  menu: 'calcite-flow-panel__menu',
-  contentContainer: 'calcite-flow-panel__content-container',
-  footer: 'calcite-flow-panel__footer'
+  container: "calcite-flow-panel__container",
+  header: "calcite-flow-panel__header",
+  heading: "calcite-flow-panel__heading",
+  backButton: "calcite-flow-panel__back-button",
+  menuContainer: "calcite-flow-panel__menu-container",
+  menuButton: "calcite-flow-panel__menu-button",
+  menu: "calcite-flow-panel__menu",
+  contentContainer: "calcite-flow-panel__content-container",
+  footer: "calcite-flow-panel__footer"
 };
 
 export interface Labels {
@@ -31,8 +31,8 @@ export interface Labels {
 // todo: key navigation for menu
 
 @Component({
-  tag: 'calcite-flow-panel',
-  styleUrl: 'calcite-flow-panel.scss',
+  tag: "calcite-flow-panel",
+  styleUrl: "calcite-flow-panel.scss",
   shadow: true
 })
 export class CalciteFlowPanel {
@@ -59,9 +59,9 @@ export class CalciteFlowPanel {
   // ----------------------------------
 
   @Prop() labels: Labels = {
-    back: 'Back',
-    openMenu: 'Open menu',
-    closeMenu: 'Close menu'
+    back: "Back",
+    openMenu: "Open menu",
+    closeMenu: "Close menu"
   };
 
   // ----------------------------------
@@ -124,8 +124,8 @@ export class CalciteFlowPanel {
       </button>
     ) : null;
 
-    const hasMenuActions = !!el.querySelector('[slot=menu-actions]');
-    const hasFooterActions = !!el.querySelector('[slot=footer-actions]');
+    const hasMenuActions = !!el.querySelector("[slot=menu-actions]");
+    const hasFooterActions = !!el.querySelector("[slot=footer-actions]");
 
     const menuLabel = menuOpen ? labels.closeMenu : labels.openMenu;
 
