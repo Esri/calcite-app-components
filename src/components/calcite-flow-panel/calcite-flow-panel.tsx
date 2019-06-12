@@ -92,7 +92,7 @@ export class CalciteFlowPanel {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  connectedCallback() {
     this.calciteFlowPanelRegister.emit(this.el);
   }
 
