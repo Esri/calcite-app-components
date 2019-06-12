@@ -28,12 +28,6 @@ export interface Labels {
   back: string;
 }
 
-const DEFAULT_LABELS = {
-  back: 'Back',
-  openMenu: 'Open menu',
-  closeMenu: 'Close menu'
-};
-
 // todo: key navigation for menu
 
 @Component({
@@ -64,7 +58,11 @@ export class CalciteFlowPanel {
   //  labels
   // ----------------------------------
 
-  @Prop() labels: Labels = DEFAULT_LABELS;
+  @Prop() labels: Labels = {
+    back: 'Back',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu'
+  };
 
   // ----------------------------------
   //  heading

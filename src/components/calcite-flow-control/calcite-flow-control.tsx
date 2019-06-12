@@ -50,12 +50,20 @@ export class CalciteFlowControl {
   ) {
     const flowCount = newValue.length;
     const oldFlowCount = oldValue.length;
+    const hasMultipleFlows = flowCount > 1;
+    const hadMultipleFlows = oldFlowCount > 1;
     const activeFlow = newValue[flowCount - 1];
-    const flowDirection = flowCount < oldFlowCount ? 'retreating' : 'advancing';
+
+    const flowDirection =
+      hasMultipleFlows || hadMultipleFlows
+        ? flowCount < oldFlowCount
+          ? 'retreating'
+          : 'advancing'
+        : null;
 
     if (flowCount && activeFlow) {
       newValue.forEach(flowNode => {
-        flowNode.backButton = flowCount > 1;
+        flowNode.backButton = hasMultipleFlows;
         flowNode.hidden = flowNode !== activeFlow;
       });
     }
