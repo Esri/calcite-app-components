@@ -118,12 +118,18 @@ export class CalciteFlowControl {
   // --------------------------------------------------------------------------
 
   @Method()
-  async back() {
-    const flows = [...this.flows];
-    flows[this.flowCount - 1].remove();
-    flows.pop();
+  async back(): Promise<HTMLCalciteFlowPanelElement> {
+    const { el, flows, flowCount } = this;
 
-    this.flows = flows;
+    const newFlows = [...flows];
+
+    const removedElement = el.removeChild(newFlows[flowCount - 1]);
+
+    newFlows.pop();
+
+    this.flows = newFlows;
+
+    return removedElement;
   }
 
   render() {
