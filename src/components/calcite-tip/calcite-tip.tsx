@@ -1,6 +1,6 @@
-import { Component, h, Host, Prop, Element, Method, State } from "@stencil/core";
+import { Component, h, Host, Element, Prop, State, Watch } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
-import * as localStorage from "../../utils/localStorage";
+import { getItem, setItem } from "../../utils/localStorage";
 
 @Component({
   tag: "calcite-tip",
@@ -11,22 +11,19 @@ export class CalciteTip {
   @Element() el: HTMLElement;
 
   @Prop() storageId = "";
-  @Prop() hidden:boolean = false;
+  @Prop() dismissed = false;
 
-  @State() isHidden = this.hidden || localStorage.getItem(this.storageId) !== null;
+  @State() isHidden = this.dismissed || getItem(`calcite-tip-${this.storageId}`) !== null;
 
-  @Method()
-  async hideTip() {
+  @Watch("dismissed")
+  dismissedHandler(newValue: boolean) {
+    this.isHidden = newValue;
+  }
+
+  hideTip() {
     this.isHidden = true;
     if (this.storageId) {
-      localStorage.setItem(this.storageId, "hidden");
-    }
-  }
-  @Method()
-  async showTip() {
-    this.isHidden = false;
-    if (this.storageId) {
-      localStorage.removeItem(this.storageId);
+      setItem(`calcite-tip-${this.storageId}`, "dismissed");
     }
   }
 

@@ -16,11 +16,11 @@ describe("calcite-tip", () => {
     expect(isVisible).toBe(true);
   });
 
-  it("should be hidden if the hidden prop is passed", async () => {
+  it("should be hidden if the dismissed prop is passed", async () => {
     const page = await newE2EPage();
 
     await page
-      .setContent(`<calcite-tip hidden><p>hidden by default</p></calcite-tip>`)
+      .setContent(`<calcite-tip dismissed><p>hidden by default</p></calcite-tip>`)
       .catch(error => {
         console.error(error);
       });
