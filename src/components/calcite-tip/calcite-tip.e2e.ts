@@ -1,7 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 describe("calcite-tip", () => {
-  it("should render", async () => {
+  it("should render and be visible", async () => {
     const page = await newE2EPage();
 
     await page
@@ -14,6 +14,21 @@ describe("calcite-tip", () => {
     expect(tip).not.toBeNull();
     const isVisible = await tip.isVisible();
     expect(isVisible).toBe(true);
+  });
+
+  it("should be hidden if the hidden prop is passed", async () => {
+    const page = await newE2EPage();
+
+    await page
+      .setContent(`<calcite-tip hidden><p>hidden by default</p></calcite-tip>`)
+      .catch(error => {
+        console.error(error);
+      });
+
+    const tip = await page.find("calcite-tip");
+    expect(tip).not.toBeNull();
+    const isVisible = await tip.isVisible();
+    expect(isVisible).toBe(false);
   });
 
   it("should be hidden after the close button is clicked", async () => {
@@ -31,6 +46,7 @@ describe("calcite-tip", () => {
     const isVisible = await tip.isVisible();
     expect(isVisible).toBe(false);
   });
+
   it("should hide by default if tip with an id is dismissed", async () => {
     const page = await newE2EPage();
     await page

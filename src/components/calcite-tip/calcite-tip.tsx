@@ -11,8 +11,9 @@ export class CalciteTip {
   @Element() el: HTMLElement;
 
   @Prop() storageId = "";
+  @Prop() hidden:boolean = false;
 
-  @State() isHidden = localStorage.getItem(this.storageId) !== null;
+  @State() isHidden = this.hidden || localStorage.getItem(this.storageId) !== null;
 
   @Method()
   async hideTip() {
