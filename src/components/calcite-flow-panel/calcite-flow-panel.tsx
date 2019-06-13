@@ -88,7 +88,7 @@ export class CalciteFlowPanel {
 
   // --------------------------------------------------------------------------
   //
-  //  Public Methods
+  //  Lifecycle Methods
   //
   // --------------------------------------------------------------------------
 
@@ -101,63 +101,13 @@ export class CalciteFlowPanel {
   }
 
   render() {
-    const { showBackButton, el, heading, menuOpen, labels } = this;
-
-    const backButtonNode = showBackButton ? (
-      <button
-        key="back-button"
-        class={CSS.backButton}
-        aria-label={labels.back}
-        title={labels.back}
-        onClick={this._backButtonClick.bind(this)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="16"
-          width="16"
-          viewBox="0 0 16 16"
-        >
-          <path d={chevronLeft16F} />
-        </svg>
-      </button>
-    ) : null;
-
-    const hasMenuActions = !!el.querySelector("[slot=menu-actions]");
-    const hasFooterActions = !!el.querySelector("[slot=footer-actions]");
-
-    const menuLabel = menuOpen ? labels.closeMenu : labels.openMenu;
-
-    const menuButtonNode = hasMenuActions ? (
-      <button
-        key="menu-button"
-        class={CSS.menuButton}
-        aria-label={menuLabel}
-        title={menuLabel}
-        onClick={this._toggleMenuOpen.bind(this)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="16"
-          width="16"
-          viewBox="0 0 16 16"
-        >
-          <path d={ellipsis16F} />
-        </svg>
-      </button>
-    ) : null;
-
-    const menuActionsContainerNode =
-      hasMenuActions && menuOpen ? (
-        <div key="menu-actions" class={CSS.menu}>
-          <slot name="menu-actions" />
-        </div>
-      ) : null;
-
-    const footerActionsContainerNode = hasFooterActions ? (
-      <footer class={CSS.footer}>
-        <slot name="footer-actions" />
-      </footer>
-    ) : null;
+    const headerNode = (
+      <header class={CSS.header}>
+        {this.renderBackButton()}
+        <h2 class={CSS.heading}>{this.heading}</h2>
+        {this.renderMenuContainer()}
+      </header>
+    );
 
     const contentContainerNode = (
       <section class={CSS.contentContainer}>
@@ -165,29 +115,12 @@ export class CalciteFlowPanel {
       </section>
     );
 
-    const headingNode = <h2 class={CSS.heading}>{heading}</h2>;
-
-    const menuContainerNode = hasMenuActions ? (
-      <div class={CSS.menuContainer}>
-        {menuButtonNode}
-        {menuActionsContainerNode}
-      </div>
-    ) : null;
-
-    const headerNode = (
-      <header class={CSS.header}>
-        {backButtonNode}
-        {headingNode}
-        {menuContainerNode}
-      </header>
-    );
-
     return (
       <Host>
         <article class={CSS.container}>
           {headerNode}
           {contentContainerNode}
-          {footerActionsContainerNode}
+          {this.renderFooterActions()}
         </article>
       </Host>
     );
@@ -199,11 +132,90 @@ export class CalciteFlowPanel {
   //
   // --------------------------------------------------------------------------
 
-  private _toggleMenuOpen(): void {
+  renderBackButton() {
+    const { showBackButton, labels } = this;
+
+    return showBackButton ? (
+      <button
+        key="back-button"
+        class={CSS.backButton}
+        aria-label={labels.back}
+        title={labels.back}
+        onClick={this.backButtonClick.bind(this)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="16"
+          width="16"
+          viewBox="0 0 16 16"
+        >
+          <path d={chevronLeft16F} />
+        </svg>
+      </button>
+    ) : null;
+  }
+
+  renderMenuButton() {
+    const { menuOpen, labels } = this;
+
+    const menuLabel = menuOpen ? labels.closeMenu : labels.openMenu;
+
+    return (
+      <button
+        key="menu-button"
+        class={CSS.menuButton}
+        aria-label={menuLabel}
+        title={menuLabel}
+        onClick={this.toggleMenuOpen.bind(this)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="16"
+          width="16"
+          viewBox="0 0 16 16"
+        >
+          <path d={ellipsis16F} />
+        </svg>
+      </button>
+    );
+  }
+
+  renderMenuActions() {
+    const { menuOpen } = this;
+
+    return menuOpen ? (
+      <div key="menu-actions" class={CSS.menu}>
+        <slot name="menu-actions" />
+      </div>
+    ) : null;
+  }
+
+  renderFooterActions() {
+    const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
+
+    return hasFooterActions ? (
+      <footer class={CSS.footer}>
+        <slot name="footer-actions" />
+      </footer>
+    ) : null;
+  }
+
+  renderMenuContainer() {
+    const hasMenuActions = !!this.el.querySelector("[slot=menu-actions]");
+
+    return hasMenuActions ? (
+      <div class={CSS.menuContainer}>
+        {this.renderMenuButton()}
+        {this.renderMenuActions()}
+      </div>
+    ) : null;
+  }
+
+  toggleMenuOpen(): void {
     this.menuOpen = !this.menuOpen;
   }
 
-  private _backButtonClick(): void {
+  backButtonClick(): void {
     this.calciteFlowPanelBackClick.emit(this.el);
   }
 }
