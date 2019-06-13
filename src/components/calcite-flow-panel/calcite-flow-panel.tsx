@@ -22,12 +22,6 @@ const CSS = {
   footer: "calcite-flow-panel__footer"
 };
 
-export interface Labels {
-  openMenu: string;
-  closeMenu: string;
-  back: string;
-}
-
 @Component({
   tag: "calcite-flow-panel",
   styleUrl: "calcite-flow-panel.scss",
@@ -56,7 +50,7 @@ export class CalciteFlowPanel {
   //  labels
   // ----------------------------------
 
-  @Prop() labels: Labels = {
+  @Prop() labels = {
     back: "Back",
     openMenu: "Open menu",
     closeMenu: "Close menu"
