@@ -10,8 +10,10 @@ describe("calcite-tip", () => {
         console.error(error);
       });
 
-    const el = await page.find("calcite-tip");
-    expect(el).not.toBeNull();
+    const tip = await page.find("calcite-tip");
+    expect(tip).not.toBeNull();
+    const isVisible = await tip.isVisible();
+    expect(isVisible).toBe(true);
   });
 
   it("should be hidden after the close button is clicked", async () => {

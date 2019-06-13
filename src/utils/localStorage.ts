@@ -17,7 +17,16 @@ export function setItem(id: string, value: string): void {
   localStorage.setItem(id, value);
 }
 
+export function removeItem(id: string): void {
+  if (!id || !supportsLocalStorage()) {
+    return;
+  }
+
+  localStorage.removeItem(id);
+}
+
 export default {
   getItem,
-  setItem
+  setItem,
+  removeItem
 };

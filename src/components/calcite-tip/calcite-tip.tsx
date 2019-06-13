@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from "@stencil/core";
+import { Component, h, Host, Prop, Element, Method, State } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
 import localStorage from "../../utils/localStorage";
 
@@ -12,25 +12,28 @@ export class CalciteTip {
 
   @Prop() storageId = "";
 
-  dismissed = false;
+  @State() isHidden = localStorage.getItem(this.storageId) !== null;
 
-  closeTip() {
-    this.el.setAttribute("hidden", "");
+  @Method()
+  async hideTip() {
+    this.isHidden = true;
     if (this.storageId) {
-      localStorage.setItem(this.storageId, "dismissed");
+      localStorage.setItem(this.storageId, "hidden");
     }
   }
-
-  constructor() {
-    const storageVal = localStorage.getItem(this.storageId);
-    this.dismissed = storageVal !== null;
+  @Method()
+  async showTip() {
+    this.isHidden = false;
+    if (this.storageId) {
+      localStorage.removeItem(this.storageId);
+    }
   }
 
   render() {
     return (
-      <Host hidden={this.dismissed}>
+      <Host hidden={this.isHidden}>
         <slot name="heading" />
-        <div class="close" onClick={() => this.closeTip()}>
+        <div class="close" onClick={() => this.hideTip()}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={x24} />
           </svg>
