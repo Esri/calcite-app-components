@@ -11,17 +11,12 @@ export class CalciteTip {
   @Element() el: HTMLElement;
 
   @Prop() storageId = "";
-  @Prop() dismissed = false;
+  @Prop() dismissible = true;
 
-  @State() isHidden = this.dismissed || getItem(`calcite-tip-${this.storageId}`) !== null;
-
-  @Watch("dismissed")
-  dismissedHandler(newValue: boolean) {
-    this.isHidden = newValue;
-  }
+  @State() dismissed = getItem(`calcite-tip-${this.storageId}`) !== null;
 
   hideTip() {
-    this.isHidden = true;
+    this.dismissed = true;
     if (this.storageId) {
       setItem(`calcite-tip-${this.storageId}`, "dismissed");
     }
@@ -29,13 +24,13 @@ export class CalciteTip {
 
   render() {
     return (
-      <Host hidden={this.isHidden}>
+      <Host hidden={this.dismissed}>
         <slot name="heading" />
-        <div class="close" onClick={() => this.hideTip()}>
+        { this.dismissible ? <div class="close" onClick={() => this.hideTip()}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={x24} />
           </svg>
-        </div>
+        </div> : null }
         <div class="content">
           <slot name="thumbnail" />
           <div>

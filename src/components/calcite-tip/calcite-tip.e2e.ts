@@ -16,19 +16,17 @@ describe("calcite-tip", () => {
     expect(isVisible).toBe(true);
   });
 
-  it("should be hidden if the dismissed prop is passed", async () => {
+  it("should remove the closeButton if dismissible prop is false", async () => {
     const page = await newE2EPage();
 
     await page
-      .setContent(`<calcite-tip dismissed><p>hidden by default</p></calcite-tip>`)
+      .setContent(`<calcite-tip dismissible="false"><p>not dismissible</p></calcite-tip>`)
       .catch(error => {
         console.error(error);
       });
 
-    const tip = await page.find("calcite-tip");
-    expect(tip).not.toBeNull();
-    const isVisible = await tip.isVisible();
-    expect(isVisible).toBe(false);
+    const closeButton = await page.find("calcite-tip >>> .close");
+    expect(closeButton).toBeNull();
   });
 
   it("should be hidden after the close button is clicked", async () => {
