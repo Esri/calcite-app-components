@@ -11,7 +11,9 @@ export const config: Config = {
         "calcite-action",
         "calcite-action-group",
         "calcite-action-bar",
-        "calcite-action-pad"
+        "calcite-action-pad",
+        "calcite-shell",
+        "calcite-shell-panel"
       ]
     }
   ],
