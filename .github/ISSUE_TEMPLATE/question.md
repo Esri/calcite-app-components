@@ -7,9 +7,9 @@ assignees: ''
 
 ---
 
-## Question
-...?
+### Question
 
-## Helpful Details
-**Topic:** ...
-**Context:** ...
+
+### Helpful Details
+**Topic:** 
+**Context:** 
