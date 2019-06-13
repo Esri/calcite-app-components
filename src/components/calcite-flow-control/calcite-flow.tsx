@@ -14,17 +14,17 @@ import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
 type FlowDirection = "advancing" | "retreating";
 
 const CSS = {
-  frame: "calcite-flow-control__frame",
-  frameAdvancing: "calcite-flow-control__frame--advancing",
-  frameRetreating: "calcite-flow-control__frame--retreating"
+  frame: "calcite-flow__frame",
+  frameAdvancing: "calcite-flow__frame--advancing",
+  frameRetreating: "calcite-flow__frame--retreating"
 };
 
 @Component({
-  tag: "calcite-flow-control",
-  styleUrl: "calcite-flow-control.scss",
+  tag: "calcite-flow",
+  styleUrl: "calcite-flow.scss",
   shadow: true
 })
-export class CalciteFlowControl {
+export class CalciteFlow {
   // --------------------------------------------------------------------------
   //
   //  Properties

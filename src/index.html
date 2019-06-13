@@ -236,11 +236,11 @@
             : '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><path d="M10.217 8l-6-6h2.766l6 6-6 6H4.217z" /></svg>';
         });
       </script>
-      <h2>calcite-flow-control</h2>
+      <h2>calcite-flow</h2>
       <p>todo</p>
 
       <div class="flow-control-container">
-        <calcite-flow-control id="flow-control">
+        <calcite-flow id="flow-control">
           <calcite-flow-panel heading="First Panel">
             <div slot="menu-actions">
               <button>Save</button>
@@ -252,9 +252,9 @@
             </div>
             <p>content 1</p>
           </calcite-flow-panel>
-        </calcite-flow-control>
+        </calcite-flow>
 
-        <button id="add-flow-panel">Add new flow</button>
+        <button id="add-flow-panel">Add Flow Panel</button>
         <script>
           var flowControlNode = document.getElementById("flow-control");
 
@@ -269,7 +269,7 @@
 
           addFlowButtonNode.addEventListener("click", function() {
             var newNode = document.createElement("calcite-flow-panel");
-            newNode.heading = "New Panel";
+            newNode.heading = "New Panel " + Date.now();
             newNode.innerHTML =
               '<p>New Content</p><div slot="menu-actions"><button>Save</button><button>Cancel</button></div><div slot="footer-actions"><button>Save</button><button>Cancel</button></div>';
             flowControlNode.appendChild(newNode);

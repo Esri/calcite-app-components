@@ -12,7 +12,7 @@ export const config: Config = {
         "calcite-action-group",
         "calcite-action-bar",
         "calcite-action-pad",
-        "calcite-flow-control",
+        "calcite-flow",
         "calcite-flow-panel"
       ]
     }

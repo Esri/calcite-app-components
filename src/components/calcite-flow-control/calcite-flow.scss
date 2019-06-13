@@ -5,7 +5,7 @@ $animation-time--slow: round($animation-time * 2);
 :host {
   display: flex;
 }
-.calcite-flow-control__frame {
+.calcite-flow__frame {
   width: 100%;
   height: 100%;
   padding: 0;
@@ -14,15 +14,15 @@ $animation-time--slow: round($animation-time * 2);
   flex-flow: column;
   position: relative;
 }
-.calcite-flow-control__frame--advancing {
-  animation: calcite-flow-control-panel-advance $animation-time ease-in-out;
+.calcite-flow__frame--advancing {
+  animation: calcite-flow-panel-advance $animation-time ease-in-out;
 }
 
-.calcite-flow-control__frame--retreating {
-  animation: calcite-flow-control-panel-retreat $animation-time ease-in-out;
+.calcite-flow__frame--retreating {
+  animation: calcite-flow-panel-retreat $animation-time ease-in-out;
 }
 
-@keyframes calcite-flow-control-panel-advance {
+@keyframes calcite-flow-panel-advance {
   0% {
     opacity: 0;
     transform: translate3d(50px, 0, 0) scale(0.99);
@@ -33,7 +33,7 @@ $animation-time--slow: round($animation-time * 2);
   }
 }
 
-@keyframes calcite-flow-control-panel-retreat {
+@keyframes calcite-flow-panel-retreat {
   0% {
     opacity: 0;
     transform: translate3d(-50px, 0, 0) scale(0.99);
