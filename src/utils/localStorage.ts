@@ -24,9 +24,3 @@ export function removeItem(id: string): void {
 
   localStorage.removeItem(id);
 }
-
-export default {
-  getItem,
-  setItem,
-  removeItem
-};

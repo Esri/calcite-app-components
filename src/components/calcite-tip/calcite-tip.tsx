@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element, Method, State } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
-import localStorage from "../../utils/localStorage";
+import * as localStorage from "../../utils/localStorage";
 
 @Component({
   tag: "calcite-tip",
