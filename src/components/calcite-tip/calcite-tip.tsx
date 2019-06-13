@@ -14,8 +14,7 @@ export class CalciteTip {
 
   dismissed = false;
 
-  //@ts-ignore
-  closeTip(event: Event) {
+  closeTip() {
     this.el.setAttribute("hidden", "");
     if (this.storageId) {
       localStorage.setItem(this.storageId, "dismissed");
@@ -31,7 +30,7 @@ export class CalciteTip {
     return (
       <Host hidden={this.dismissed}>
         <slot name="heading" />
-        <div class="close" onClick={event => this.closeTip(event)}>
+        <div class="close" onClick={() => this.closeTip()}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={x24} />
           </svg>
