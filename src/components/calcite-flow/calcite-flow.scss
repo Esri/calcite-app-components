@@ -15,14 +15,14 @@ $animation-time--slow: round($animation-time * 2);
   position: relative;
 }
 .frame--advancing {
-  animation: calcite-flow-panel-advance $animation-time ease-in-out;
+  animation: calcite-flow-item-advance $animation-time ease-in-out;
 }
 
 .frame--retreating {
-  animation: calcite-flow-panel-retreat $animation-time ease-in-out;
+  animation: calcite-flow-item-retreat $animation-time ease-in-out;
 }
 
-@keyframes calcite-flow-panel-advance {
+@keyframes calcite-flow-item-advance {
   0% {
     opacity: 0;
     transform: translate3d(50px, 0, 0) scale(0.99);
@@ -33,7 +33,7 @@ $animation-time--slow: round($animation-time * 2);
   }
 }
 
-@keyframes calcite-flow-panel-retreat {
+@keyframes calcite-flow-item-retreat {
   0% {
     opacity: 0;
     transform: translate3d(-50px, 0, 0) scale(0.99);

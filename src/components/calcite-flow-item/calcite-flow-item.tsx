@@ -24,11 +24,11 @@ const CSS = {
 };
 
 @Component({
-  tag: "calcite-flow-panel",
-  styleUrl: "calcite-flow-panel.scss",
+  tag: "calcite-flow-item",
+  styleUrl: "calcite-flow-item.scss",
   shadow: true
 })
-export class CalciteFlowPanel {
+export class CalciteFlowItem {
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -36,11 +36,11 @@ export class CalciteFlowPanel {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    this.calciteFlowPanelRegister.emit(this.el);
+    this.calciteFlowItemRegister.emit(this.el);
   }
 
   disconnectedCallback() {
-    this.calciteFlowPanelUnregister.emit(this.el);
+    this.calciteFlowItemUnregister.emit(this.el);
   }
 
   render() {
@@ -93,11 +93,11 @@ export class CalciteFlowPanel {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calciteFlowPanelRegister: EventEmitter;
+  @Event() calciteFlowItemRegister: EventEmitter;
 
-  @Event() calciteFlowPanelUnregister: EventEmitter;
+  @Event() calciteFlowItemUnregister: EventEmitter;
 
-  @Event() calciteFlowPanelBackClick: EventEmitter;
+  @Event() calciteFlowItemBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -215,6 +215,6 @@ export class CalciteFlowPanel {
   }
 
   backButtonClick(): void {
-    this.calciteFlowPanelBackClick.emit(this.el);
+    this.calciteFlowItemBackClick.emit(this.el);
   }
 }

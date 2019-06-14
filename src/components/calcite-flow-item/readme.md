@@ -1,6 +1,4 @@
-# calcite-flow-panel
-
-
+# calcite-flow-item
 
 <!-- Auto Generated Below -->
 
@@ -17,11 +15,11 @@
 
 ## Events
 
-| Event                        | Description | Type               |
-| ---------------------------- | ----------- | ------------------ |
-| `calciteFlowPanelBackClick`  |             | `CustomEvent<any>` |
-| `calciteFlowPanelRegister`   |             | `CustomEvent<any>` |
-| `calciteFlowPanelUnregister` |             | `CustomEvent<any>` |
+| Event                       | Description | Type               |
+| --------------------------- | ----------- | ------------------ |
+| `calciteFlowItemBackClick`  |             | `CustomEvent<any>` |
+| `calciteFlowItemRegister`   |             | `CustomEvent<any>` |
+| `calciteFlowItemUnregister` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

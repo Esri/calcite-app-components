@@ -241,7 +241,7 @@
 
       <div class="flow-control-container">
         <calcite-flow id="flow-control">
-          <calcite-flow-panel heading="First Panel">
+          <calcite-flow-item heading="First Panel">
             <div slot="menu-actions">
               <button>Save</button>
               <button>Cancel</button>
@@ -251,24 +251,24 @@
               <button>Cancel</button>
             </div>
             <p>content 1</p>
-          </calcite-flow-panel>
+          </calcite-flow-item>
         </calcite-flow>
 
-        <button id="add-flow-panel">Add Flow Panel</button>
+        <button id="add-flow-item">Add Flow Item</button>
         <script>
           var flowControlNode = document.getElementById("flow-control");
 
           flowControlNode.addEventListener(
-            "calciteFlowPanelBackClick",
+            "calciteFlowItemBackClick",
             function() {
               flowControlNode.back();
             }
           );
 
-          var addFlowButtonNode = document.getElementById("add-flow-panel");
+          var addFlowButtonNode = document.getElementById("add-flow-item");
 
           addFlowButtonNode.addEventListener("click", function() {
-            var newNode = document.createElement("calcite-flow-panel");
+            var newNode = document.createElement("calcite-flow-item");
             newNode.heading = "New Panel " + Date.now();
             newNode.innerHTML =
               '<p>New Content</p><div slot="menu-actions"><button>Cancel</button></div><div slot="footer-actions"><button>Save</button><button>Cancel</button></div>';
@@ -279,7 +279,7 @@
 
       <!-- <script>
         var lastFlow = document.getElementById("last-flow");
-        lastFlow.addEventListener("calciteFlowPanelBackClick", function(event) {
+        lastFlow.addEventListener("calciteFlowItemBackClick", function(event) {
           event.stopPropagation();
         });
       </script> -->

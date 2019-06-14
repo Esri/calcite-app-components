@@ -56,10 +56,10 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  @Listen("calciteFlowPanelRegister")
-  registerHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
+  @Listen("calciteFlowItemRegister")
+  registerHandler(event: CustomEvent<HTMLCalciteFlowItemElement>) {
     const nodes = nodeListToArray(
-      this.el.querySelectorAll("calcite-flow-panel")
+      this.el.querySelectorAll("calcite-flow-item")
     );
     const index = nodes.indexOf(event.detail);
     const flows = [...this.flows];
@@ -67,8 +67,8 @@ export class CalciteFlow {
     this.flows = flows;
   }
 
-  @Listen("calciteFlowPanelUnregister")
-  unregisterHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
+  @Listen("calciteFlowItemUnregister")
+  unregisterHandler(event: CustomEvent<HTMLCalciteFlowItemElement>) {
     this.flows = this.flows.filter(flow => flow !== event.detail);
   }
 
@@ -84,12 +84,12 @@ export class CalciteFlow {
 
   @State() flowDirection: FlowDirection = null;
 
-  @State() flows: HTMLCalciteFlowPanelElement[] = [];
+  @State() flows: HTMLCalciteFlowItemElement[] = [];
 
   @Watch("flows")
   flowsWatchHandler(
-    newValue: HTMLCalciteFlowPanelElement[],
-    oldValue: HTMLCalciteFlowPanelElement[]
+    newValue: HTMLCalciteFlowItemElement[],
+    oldValue: HTMLCalciteFlowItemElement[]
   ) {
     const flowCount = newValue.length;
     const oldFlowCount = oldValue.length;
@@ -122,7 +122,7 @@ export class CalciteFlow {
   // --------------------------------------------------------------------------
 
   @Method()
-  async back(): Promise<HTMLCalciteFlowPanelElement> {
+  async back(): Promise<HTMLCalciteFlowItemElement> {
     const { el, flows, flowCount } = this;
 
     const newFlows = [...flows];
