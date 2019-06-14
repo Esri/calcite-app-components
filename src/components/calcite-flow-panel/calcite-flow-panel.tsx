@@ -15,6 +15,7 @@ const CSS = {
   header: "calcite-flow-panel__header",
   heading: "calcite-flow-panel__heading",
   backButton: "calcite-flow-panel__back-button",
+  singleActionContainer: "calcite-flow-panel__single-action-container",
   menuContainer: "calcite-flow-panel__menu-container",
   menuButton: "calcite-flow-panel__menu-button",
   menu: "calcite-flow-panel__menu",
@@ -99,7 +100,7 @@ export class CalciteFlowPanel {
       <header class={CSS.header}>
         {this.renderBackButton()}
         <h2 class={CSS.heading}>{this.heading}</h2>
-        {this.renderMenuContainer()}
+        {this.renderHeaderActions()}
       </header>
     );
 
@@ -194,15 +195,33 @@ export class CalciteFlowPanel {
     ) : null;
   }
 
-  renderMenuContainer() {
-    const hasMenuActions = !!this.el.querySelector("[slot=menu-actions]");
+  renderSingleActionContainer() {
+    return (
+      <div class={CSS.singleActionContainer}>
+        <slot name="menu-actions" />
+      </div>
+    );
+  }
 
-    return hasMenuActions ? (
+  renderMenuActionsContainer() {
+    return (
       <div class={CSS.menuContainer}>
         {this.renderMenuButton()}
         {this.renderMenuActions()}
       </div>
-    ) : null;
+    );
+  }
+
+  renderHeaderActions() {
+    const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
+    const hasMenuActions = !!menuActionsNode;
+    const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
+
+    return actionCount === 1
+      ? this.renderSingleActionContainer()
+      : hasMenuActions
+      ? this.renderMenuActionsContainer()
+      : null;
   }
 
   toggleMenuOpen(): void {
