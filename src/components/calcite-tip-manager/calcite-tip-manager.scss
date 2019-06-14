@@ -1,0 +1,28 @@
+$gutter-size: 24px 12px;
+
+:host {
+  position: relative;
+  display: block;
+  padding: $gutter-size;
+  background-color: #fff;
+  color: #6e6e6e;
+}
+:host([hidden]) {
+  display: none;
+}
+
+$tip-manager-close-size: 24px;
+.close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: $tip-close-size;
+  height: $tip-close-size;
+  margin: $gutter-size;
+  font-size: 24px;
+  cursor: pointer;
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: 0;
+  }
+}
