@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
-    <title>Calcite Component Starter</title>
+    <title>Calcite App Components</title>
 
     <style>
       .dark-tabs-demo {
@@ -40,14 +40,19 @@
         height: 800px;
       }
     </style>
-
+    <!--Demo Pages CSS-->
+    <link rel="stylesheet" href="/demos/demos.css" />
     <link rel="stylesheet" href="/build/calcite.css" />
     <script type="module" src="build/calcite.esm.js"></script>
     <script nomodule src="build/calcite.js"></script>
+    <!--Native Nav component-->
+    <script src="/demos/nav.js"></script>
   </head>
 
   <body>
+    <calcite-styleguide-nav></calcite-styleguide-nav>
     <div class="example-container">
+
       <h1>Calcite App Components</h1>
       <p>Work in progress!</p>
 
@@ -246,5 +251,6 @@
       <h2>calcite-block</h2>
       <p>todo</p>
     </div>
+
   </body>
 </html>

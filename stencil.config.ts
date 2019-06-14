@@ -20,6 +20,9 @@ export const config: Config = {
     { type: "docs-readme" },
     {
       type: "www",
+      copy: [
+        { src: 'demos' }
+      ],
       serviceWorker: null // disable service workers
     }
   ],
@@ -33,5 +36,8 @@ export const config: Config = {
     (postcss as any)({
       plugins: [autoprefixer()]
     })
-  ]
+  ],
+  testing: {
+    setupTestFrameworkScriptFile: ["../src/tests/setup.js"]
+  }
 };
