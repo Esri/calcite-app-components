@@ -75,8 +75,6 @@ export class CalciteFlowPanel {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
-
   @Prop() heading: string = null;
 
   @Prop() labels = {
@@ -88,6 +86,14 @@ export class CalciteFlowPanel {
   @Prop({ reflect: true }) menuOpen = false;
 
   @Prop() showBackButton = false;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
