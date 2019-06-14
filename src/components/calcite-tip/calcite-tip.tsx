@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State, Watch } from "@stencil/core";
+import { Component, h, Host, Element, Prop, State } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 
