@@ -1,6 +1,9 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Host, Prop, h } from "@stencil/core";
 
-// const CSS = {};
+const CSS = {
+  actionBarContainer: "action-bar-container",
+  contentContainer: "content-container"
+};
 
 @Component({
   tag: "calcite-shell-panel",
@@ -14,19 +17,7 @@ export class CalciteShellPanel {
   //
   // --------------------------------------------------------------------------
 
-  // ----------------------------------
-  //  active
-  // ----------------------------------
-
-  @Prop({ reflect: true }) active = false;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Event() calciteActionClick: EventEmitter;
+  @Prop({ reflect: true }) primary = false;
 
   // --------------------------------------------------------------------------
   //
@@ -35,12 +26,15 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    return <Host />;
+    return (
+      <Host>
+        <div class={CSS.actionBarContainer}>
+          <slot name="action-bar" />
+        </div>
+        <div class={CSS.contentContainer}>
+          <slot />
+        </div>
+      </Host>
+    );
   }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
 }

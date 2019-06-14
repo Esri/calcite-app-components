@@ -1,6 +1,12 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Host, h } from "@stencil/core";
 
-// const CSS = {};
+const CSS = {
+  headerContainer: "header-container",
+  primaryPanel: "primary-panel",
+  contentContainer: "content-container",
+  contextualPanel: "contextual-panel",
+  tipManagerContainer: "tip-mananger-container"
+};
 
 @Component({
   tag: "calcite-shell",
@@ -10,37 +16,37 @@ import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 export class CalciteShell {
   // --------------------------------------------------------------------------
   //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-
-  // ----------------------------------
-  //  active
-  // ----------------------------------
-
-  @Prop({ reflect: true }) active = false;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Event() calciteActionClick: EventEmitter;
-
-  // --------------------------------------------------------------------------
-  //
   //  Public Methods
   //
   // --------------------------------------------------------------------------
 
   render() {
-    return <Host />;
-  }
+    return (
+      <Host>
+        <div class={CSS.headerContainer}>
+          <slot name="header" />
+        </div>
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
+        <div class={CSS.primaryPanel}>
+          <slot name="primary-panel" />
+        </div>
+
+        <div class={CSS.contentContainer}>
+          <slot />
+        </div>
+
+        <div class={CSS.contextualPanel}>
+          <slot name="contextual-panel" />
+        </div>
+
+        <div class={CSS.tipManagerContainer}>
+          <slot name="tip-manager" />
+        </div>
+
+        <slot name="floating-panel" />
+
+        <slot name="action-pad" />
+      </Host>
+    );
+  }
 }
