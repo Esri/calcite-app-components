@@ -11,16 +11,16 @@ import {
 import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
 
 const CSS = {
-  container: "calcite-flow-panel__container",
-  header: "calcite-flow-panel__header",
-  heading: "calcite-flow-panel__heading",
-  backButton: "calcite-flow-panel__back-button",
-  singleActionContainer: "calcite-flow-panel__single-action-container",
-  menuContainer: "calcite-flow-panel__menu-container",
-  menuButton: "calcite-flow-panel__menu-button",
-  menu: "calcite-flow-panel__menu",
-  contentContainer: "calcite-flow-panel__content-container",
-  footer: "calcite-flow-panel__footer"
+  container: "container",
+  header: "header",
+  heading: "heading",
+  backButton: "back-button",
+  singleActionContainer: "single-action-container",
+  menuContainer: "menu-container",
+  menuButton: "menu-button",
+  menu: "menu",
+  contentContainer: "content-container",
+  footer: "footer"
 };
 
 @Component({
@@ -31,59 +31,7 @@ const CSS = {
 export class CalciteFlowPanel {
   // --------------------------------------------------------------------------
   //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-
-  // ----------------------------------
-  //  el
-  // ----------------------------------
-
-  @Element() el: HTMLElement;
-
-  // ----------------------------------
-  //  heading
-  // ----------------------------------
-
-  @Prop() heading: string = null;
-
-  // ----------------------------------
-  //  labels
-  // ----------------------------------
-
-  @Prop() labels = {
-    back: "Back",
-    openMenu: "Open menu",
-    closeMenu: "Close menu"
-  };
-
-  // ----------------------------------
-  //  menuOpen
-  // ----------------------------------
-
-  @Prop({ reflect: true }) menuOpen = false;
-
-  // ----------------------------------
-  //  showBackButton
-  // ----------------------------------
-
-  @Prop() showBackButton = false;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Event() calciteFlowPanelRegister: EventEmitter;
-
-  @Event() calciteFlowPanelUnregister: EventEmitter;
-
-  @Event() calciteFlowPanelBackClick: EventEmitter;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle Methods
+  //  Lifecycle
   //
   // --------------------------------------------------------------------------
 
@@ -120,6 +68,38 @@ export class CalciteFlowPanel {
       </Host>
     );
   }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
+  @Prop() heading: string = null;
+
+  @Prop() labels = {
+    back: "Back",
+    openMenu: "Open menu",
+    closeMenu: "Close menu"
+  };
+
+  @Prop({ reflect: true }) menuOpen = false;
+
+  @Prop() showBackButton = false;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  @Event() calciteFlowPanelRegister: EventEmitter;
+
+  @Event() calciteFlowPanelUnregister: EventEmitter;
+
+  @Event() calciteFlowPanelBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
   //

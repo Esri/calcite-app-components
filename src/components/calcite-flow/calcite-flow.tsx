@@ -14,9 +14,9 @@ import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
 type FlowDirection = "advancing" | "retreating";
 
 const CSS = {
-  frame: "calcite-flow__frame",
-  frameAdvancing: "calcite-flow__frame--advancing",
-  frameRetreating: "calcite-flow__frame--retreating"
+  frame: "frame",
+  frameAdvancing: "frame--advancing",
+  frameRetreating: "frame--retreating"
 };
 
 @Component({
@@ -27,31 +27,62 @@ const CSS = {
 export class CalciteFlow {
   // --------------------------------------------------------------------------
   //
-  //  Properties
+  //  Lifecycle
   //
   // --------------------------------------------------------------------------
 
-  // ----------------------------------
-  //  el
-  // ----------------------------------
+  render() {
+    const { flowDirection, flowCount } = this;
+
+    const flowDirectionClass =
+      flowDirection === "advancing"
+        ? CSS.frameAdvancing
+        : flowDirection === "retreating"
+        ? CSS.frameRetreating
+        : null;
+
+    return (
+      <Host>
+        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
+          <slot />
+        </div>
+      </Host>
+    );
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  @Listen("calciteFlowPanelRegister")
+  registerHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
+    const nodes = nodeListToArray(
+      this.el.querySelectorAll("calcite-flow-panel")
+    );
+    const index = nodes.indexOf(event.detail);
+    const flows = [...this.flows];
+    flows[index] = event.detail;
+    this.flows = flows;
+  }
+
+  @Listen("calciteFlowPanelUnregister")
+  unregisterHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
+    this.flows = this.flows.filter(flow => flow !== event.detail);
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
 
   @Element() el: HTMLElement;
 
-  // ----------------------------------
-  //  flowCount
-  // ----------------------------------
-
   @State() flowCount = 0;
 
-  // ----------------------------------
-  //  flowDirection
-  // ----------------------------------
-
   @State() flowDirection: FlowDirection = null;
-
-  // ----------------------------------
-  //  flows
-  // ----------------------------------
 
   @State() flows: HTMLCalciteFlowPanelElement[] = [];
 
@@ -86,28 +117,6 @@ export class CalciteFlow {
 
   // --------------------------------------------------------------------------
   //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Listen("calciteFlowPanelRegister")
-  registerHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
-    const nodes = nodeListToArray(
-      this.el.querySelectorAll("calcite-flow-panel")
-    );
-    const index = nodes.indexOf(event.detail);
-    const flows = [...this.flows];
-    flows[index] = event.detail;
-    this.flows = flows;
-  }
-
-  @Listen("calciteFlowPanelUnregister")
-  unregisterHandler(event: CustomEvent<HTMLCalciteFlowPanelElement>) {
-    this.flows = this.flows.filter(flow => flow !== event.detail);
-  }
-
-  // --------------------------------------------------------------------------
-  //
   //  Public Methods
   //
   // --------------------------------------------------------------------------
@@ -125,24 +134,5 @@ export class CalciteFlow {
     this.flows = newFlows;
 
     return removedElement;
-  }
-
-  render() {
-    const { flowDirection, flowCount } = this;
-
-    const flowDirectionClass =
-      flowDirection === "advancing"
-        ? CSS.frameAdvancing
-        : flowDirection === "retreating"
-        ? CSS.frameRetreating
-        : null;
-
-    return (
-      <Host>
-        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
-          <slot />
-        </div>
-      </Host>
-    );
   }
 }
