@@ -12,16 +12,6 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  // ----------------------------------
-  //  el
-  // ----------------------------------
-
-  @Element() el: HTMLElement;
-
-  // ----------------------------------
-  //  expanded
-  // ----------------------------------
-
   @Prop({ reflect: true }) expanded = false;
 
   @Watch("expanded")
@@ -30,20 +20,22 @@ export class CalciteActionBar {
       .querySelectorAll("calcite-action")
       .forEach(action =>
         newValue
-          ? action.setAttribute("text-enabled", "true")
+          ? action.toggleAttribute("text-enabled")
           : action.removeAttribute("text-enabled")
       );
   }
 
   // --------------------------------------------------------------------------
   //
-  //  Events
+  //  Variables
   //
   // --------------------------------------------------------------------------
 
+  @Element() el: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
-  //  Public Methods
+  //  Component Methods
   //
   // --------------------------------------------------------------------------
 
