@@ -11,10 +11,11 @@ export const config: Config = {
         "calcite-action",
         "calcite-action-group",
         "calcite-action-bar",
-        "calcite-action-pad",
-        "calcite-flow",
-        "calcite-flow-item"
+        "calcite-action-pad"
       ]
+    },
+    {
+      components: ["calcite-flow", "calcite-flow-item"]
     }
   ],
   outputTargets: [
