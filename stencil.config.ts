@@ -22,6 +22,7 @@ export const config: Config = {
     { type: "docs-readme" },
     {
       type: "www",
+      copy: [{ src: "demos" }],
       serviceWorker: null // disable service workers
     }
   ],
