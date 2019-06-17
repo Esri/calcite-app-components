@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+  <link rel="stylesheet" href="../../build/calcite.css" />
+  <script type="module" src="../../build/calcite.esm.js"></script>
+  <script nomodule src="../../build/calcite.js"></script>
+  <!--Demo Pages CSS-->
+  <link rel="stylesheet" href="../demos.css" />
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.12/"></script>
+</head>
+
+<body>
+  <calcite-styleguide-nav></calcite-styleguide-nav>
+  <section class="example-container">
+    <h1>calcite-shell</h1>
+    <p>todo</p>
+
+    <style>
+      .calcite-shell-container {
+        width: 100%;
+        height: 1000px;
+      }
+    </style>
+
+    <style>
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      require(["esri/Map", "esri/views/MapView"], function (Map, MapView) {
+        var map = new Map({
+          basemap: "streets"
+        });
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 4,
+          center: [15, 65]
+        });
+      });
+    </script>
+
+    <div class="calcite-shell-container">
+      <calcite-shell>
+
+        <calcite-shell-panel slot="primary-panel">
+          <calcite-action-bar slot="action-bar" />
+          <p>Primary Content</p>
+        </calcite-shell-panel>
+
+        <calcite-shell-panel slot="contextual-panel">
+          <calcite-action-bar slot="action-bar" />
+          <p>Contextual Content</p>
+        </calcite-shell-panel>
+
+        <h2 slot="header">My App</h2>
+        <!-- <calcite-tip-manager slot="tip-manager" /> -->
+        <!-- <calcite-floating-panel slot="floating-panel" /> -->
+        <!-- <calcite-action-pad slot="action-pad" /> -->
+        <div id="viewDiv"></div>
+      </calcite-shell>
+    </div>
+
+  </section>
+</body>
+
+</html>
