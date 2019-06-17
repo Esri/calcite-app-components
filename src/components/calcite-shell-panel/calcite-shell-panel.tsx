@@ -1,8 +1,8 @@
 import { Component, Host, Prop, h } from "@stencil/core";
 
 const CSS = {
-  actionBarContainer: "action-bar-container",
-  contentContainer: "content-container"
+  actionBar: "action-bar",
+  content: "content"
 };
 
 @Component({
@@ -28,10 +28,8 @@ export class CalciteShellPanel {
   render() {
     return (
       <Host>
-        <div class={CSS.actionBarContainer}>
-          <slot name="action-bar" />
-        </div>
-        <div class={CSS.contentContainer}>
+        <slot name="action-bar" />
+        <div class={CSS.content}>
           <slot />
         </div>
       </Host>

@@ -1,7 +1,16 @@
-.action-bar-container {
-  // todo
+:host {
+  height: 100%;
+  width: 350px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.content-container {
-  // todo
+:host([primary]) {
+  flex-direction: row;
+}
+
+.content {
+  flex: 1;
+  padding: 10px;
 }
