@@ -43,39 +43,13 @@ export class CalciteFlowItem {
     this.calciteFlowItemUnregister.emit(this.el);
   }
 
-  render() {
-    const headerNode = (
-      <header class={CSS.header}>
-        {this.renderBackButton()}
-        <h2 class={CSS.heading}>{this.heading}</h2>
-        {this.renderHeaderActions()}
-      </header>
-    );
-
-    const contentContainerNode = (
-      <section class={CSS.contentContainer}>
-        <slot />
-      </section>
-    );
-
-    return (
-      <Host>
-        <article class={CSS.container}>
-          {headerNode}
-          {contentContainerNode}
-          {this.renderFooterActions()}
-        </article>
-      </Host>
-    );
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Properties
   //
   // --------------------------------------------------------------------------
 
-  @Prop() heading: string = null;
+  @Prop() heading: string;
 
   @Prop() labels = {
     back: "Back",
@@ -101,7 +75,7 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Properties
+  //  Variables
   //
   // --------------------------------------------------------------------------
 
@@ -109,7 +83,7 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Methods
+  //  Component Methods
   //
   // --------------------------------------------------------------------------
 
@@ -209,6 +183,38 @@ export class CalciteFlowItem {
       ? this.renderMenuActionsContainer()
       : null;
   }
+
+  render() {
+    const headerNode = (
+      <header class={CSS.header}>
+        {this.renderBackButton()}
+        <h2 class={CSS.heading}>{this.heading}</h2>
+        {this.renderHeaderActions()}
+      </header>
+    );
+
+    const contentContainerNode = (
+      <section class={CSS.contentContainer}>
+        <slot />
+      </section>
+    );
+
+    return (
+      <Host>
+        <article class={CSS.container}>
+          {headerNode}
+          {contentContainerNode}
+          {this.renderFooterActions()}
+        </article>
+      </Host>
+    );
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
 
   toggleMenuOpen(): void {
     this.menuOpen = !this.menuOpen;

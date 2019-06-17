@@ -7,7 +7,7 @@
 
 | Property         | Attribute          | Description | Type                                                     | Default                                                                          |
 | ---------------- | ------------------ | ----------- | -------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `heading`        | `heading`          |             | `string`                                                 | `null`                                                                           |
+| `heading`        | `heading`          |             | `string`                                                 | `undefined`                                                                      |
 | `labels`         | --                 |             | `{ back: string; openMenu: string; closeMenu: string; }` | `{     back: "Back",     openMenu: "Open menu",     closeMenu: "Close menu"   }` |
 | `menuOpen`       | `menu-open`        |             | `boolean`                                                | `false`                                                                          |
 | `showBackButton` | `show-back-button` |             | `boolean`                                                | `false`                                                                          |

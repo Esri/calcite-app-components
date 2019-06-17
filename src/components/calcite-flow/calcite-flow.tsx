@@ -27,31 +27,6 @@ const CSS = {
 export class CalciteFlow {
   // --------------------------------------------------------------------------
   //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  render() {
-    const { flowDirection, flowCount } = this;
-
-    const flowDirectionClass =
-      flowDirection === "advancing"
-        ? CSS.frameAdvancing
-        : flowDirection === "retreating"
-        ? CSS.frameRetreating
-        : null;
-
-    return (
-      <Host>
-        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
-          <slot />
-        </div>
-      </Host>
-    );
-  }
-
-  // --------------------------------------------------------------------------
-  //
   //  Events
   //
   // --------------------------------------------------------------------------
@@ -74,7 +49,7 @@ export class CalciteFlow {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Properties
+  //  Variables
   //
   // --------------------------------------------------------------------------
 
@@ -134,5 +109,30 @@ export class CalciteFlow {
     this.flows = newFlows;
 
     return removedElement;
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Component Methods
+  //
+  // --------------------------------------------------------------------------
+
+  render() {
+    const { flowDirection, flowCount } = this;
+
+    const flowDirectionClass =
+      flowDirection === "advancing"
+        ? CSS.frameAdvancing
+        : flowDirection === "retreating"
+        ? CSS.frameRetreating
+        : null;
+
+    return (
+      <Host>
+        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
+          <slot />
+        </div>
+      </Host>
+    );
   }
 }
