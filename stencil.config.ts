@@ -11,10 +11,11 @@ export const config: Config = {
         "calcite-action",
         "calcite-action-group",
         "calcite-action-bar",
-        "calcite-action-pad",
-        "calcite-shell",
-        "calcite-shell-panel"
+        "calcite-action-pad"
       ]
+    },
+    {
+      components: ["calcite-shell", "calcite-shell-panel"]
     }
   ],
   outputTargets: [
