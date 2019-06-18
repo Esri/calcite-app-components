@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type      | Default |
-| ------------- | -------------- | ----------- | --------- | ------- |
-| `active`      | `active`       |             | `boolean` | `false` |
-| `indicator`   | `indicator`    |             | `boolean` | `false` |
-| `label`       | `label`        |             | `string`  | `null`  |
-| `text`        | `text`         |             | `string`  | `null`  |
-| `textEnabled` | `text-enabled` |             | `boolean` | `false` |
+| Property      | Attribute      | Description | Type      | Default     |
+| ------------- | -------------- | ----------- | --------- | ----------- |
+| `active`      | `active`       |             | `boolean` | `false`     |
+| `indicator`   | `indicator`    |             | `boolean` | `false`     |
+| `label`       | `label`        |             | `string`  | `undefined` |
+| `text`        | `text`         |             | `string`  | `undefined` |
+| `textEnabled` | `text-enabled` |             | `boolean` | `false`     |
 
 
 ## Events
