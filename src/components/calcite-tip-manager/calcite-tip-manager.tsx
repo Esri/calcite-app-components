@@ -1,5 +1,7 @@
 import { Component, Host, h, Method, State, Element, Watch } from "@stencil/core";
 import { x24, chevronLeft24, chevronRight24 } from "@esri/calcite-ui-icons";
+import { DEFAULT_GROUP_TITLE } from './localized_text';
+// export const DEFAULT_GROUP_TITLE:string = "Tips";
 
 @Component({
   tag: "calcite-tip-manager",
@@ -30,7 +32,7 @@ export class CalciteTipManager {
 
   @State() dismissed = false;
   @State() selectedIndex = 0;
-  DEFAULT_GROUP_TITLE = "Tips"; //TODO: localize this text?
+  DEFAULT_GROUP_TITLE = DEFAULT_GROUP_TITLE;
   groupTitle = '';
   total = 0;
   tips = null;
@@ -95,7 +97,7 @@ export class CalciteTipManager {
     return (
       <Host hidden={this.dismissed}>
         <header class="header">
-          <h2 ref={(el) => this.title = el as HTMLInputElement} class="title">{this.groupTitle}</h2>
+          <h2 ref={(el) => this.title = el as HTMLInputElement} class="title" data-test-id="title">{this.groupTitle}</h2>
           <div class="close" onClick={() => this.hideTipManager()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
