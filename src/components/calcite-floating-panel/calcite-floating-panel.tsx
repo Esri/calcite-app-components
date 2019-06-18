@@ -17,7 +17,7 @@ export class CalciteFloatingPanel {
   /*
   side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
   over: centered on top of trigger and covers trigger.
-  stacked: dynamically above or below based on how close trigger is to top or bottom of window.
+  stack: dynamically above or below based on how close trigger is to top or bottom of window.
   */
   @Prop() position: CalcitePosition;
 

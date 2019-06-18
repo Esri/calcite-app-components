@@ -3,6 +3,22 @@
   display: flex;
   color: #ffffff;
   flex-direction: column;
+  position: absolute;
+}
+
+:host(position=side) {
+  top: 0;
+  left: 100%;
+}
+
+:host(position=over) {
+  top: 0;
+  left: 0;
+}
+
+:host(position=stack) {
+  top: 100%;
+  left: 0;
 }
 
 :host ::slotted(calcite-action-group) {
