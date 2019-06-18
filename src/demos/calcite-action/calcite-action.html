@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+
+    <link rel="stylesheet" href="../../build/calcite.css" />
+    <script type="module" src="../../build/calcite.esm.js"></script>
+    <script nomodule src="../../build/calcite.js"></script>
+    <!--Demo Pages CSS-->
+    <link rel="stylesheet" href="../demos.css" />
+  </head>
+  <body>
+    <calcite-styleguide-nav></calcite-styleguide-nav>
+    <section class="example-container">
+      <h1>calcite-action</h1>
+      <p>todo</p>
+
+      <style>
+        .action-bar-container {
+          position: relative;
+          width: 100%;
+          height: 800px;
+        }
+        calcite-action-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+        }
+      </style>
+
+      <h2>With text</h2>
+
+      <calcite-action
+        id="action-test"
+        active
+        label="click-me"
+        text="hello world"
+        text-enabled
+        ><svg
+          width="100%"
+          height="100%"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
+          />
+        </svg>
+      </calcite-action>
+
+      <h2>Without text</h2>
+      <p>todo</p>
+
+      <calcite-action id="action-test2" label="click-me2" text="hello world 2"
+        ><svg
+          width="100%"
+          height="100%"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M16 32l4-5h-8zm0-1.6L14.081 28h3.838zM27 12v8l5-4zm1 2.08L30.4 16 28 17.92zM16 0l-4 5h8zm0 1.6L17.919 4h-3.838zM5 20v-8l-5 4zm-1-2.08L1.6 16 4 14.08zM7 25h18V7H7zM8 8h16v16H8z"
+          />
+        </svg>
+      </calcite-action>
+    </section>
+  </body>
+</html>
