@@ -1,3 +1,24 @@
 :host {
+  background-color: #fff;
+  color: #4c4c4c;
   position: absolute;
+  z-index: 1;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([position-type="side"]) {
+  left: 100%;
+}
+
+:host([position-type="over"]) {
+  left: 0;
+  width: 350px;
+}
+
+:host([position-type="anchor"]) {
+  left: 0;
+  width: 350px;
 }

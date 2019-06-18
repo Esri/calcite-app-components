@@ -11,6 +11,20 @@
   display: none;
 }
 
+:host([position-type="side"]) {
+  left: 100%;
+}
+
+:host([position-type="over"]) {
+  left: 50%;
+  margin-left: -21px;
+}
+
+:host([position-type="anchor"]) {
+  left: 50%;
+  margin-left: -21px;
+}
+
 :host ::slotted(calcite-action-group) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }

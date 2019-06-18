@@ -62,8 +62,11 @@
             <calcite-floating-panel
               id="floating-panel"
               slot="floating-panel"
+              position-type="anchor"
               hidden
-              >Floating Panel Content</calcite-floating-panel
+              ><p style="height:150px; width:100%;">
+                Floating Panel Content
+              </p></calcite-floating-panel
             >
             <calcite-action-pad
               id="action-pad"
@@ -123,9 +126,9 @@
               </calcite-action-group>
             </calcite-action-bar>
             <p>Primary Content</p>
-            <p><button id="action-pad-button">Toggle Action Pad</button></p>
+            <p><button id="action-pad-button">Side Action Pad</button></p>
             <p>
-              <button id="floating-panel-button">Toggle Floating Panel</button>
+              <button id="floating-panel-button">Anchor Floating Panel</button>
             </p>
           </calcite-shell-panel>
 
@@ -187,6 +190,18 @@
           : actionPad.toggleAttribute("hidden");
 
         actionPad.positionElement = actionPadButton;
+      });
+
+      var floatingPanel = document.getElementById("floating-panel");
+      var floatingPanelButton = document.getElementById(
+        "floating-panel-button"
+      );
+      floatingPanelButton.addEventListener("click", function() {
+        floatingPanel.hasAttribute("hidden")
+          ? floatingPanel.removeAttribute("hidden")
+          : floatingPanel.toggleAttribute("hidden");
+
+        floatingPanel.positionElement = floatingPanelButton;
       });
     </script>
   </body>

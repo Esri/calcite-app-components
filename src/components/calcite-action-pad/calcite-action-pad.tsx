@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, Watch, h } from "@stencil/core";
+import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 
 import { CalcitePositionType } from "../interfaces";
 
@@ -22,6 +22,14 @@ export class CalciteActionPad {
   @Prop({ reflect: true }) positionType: CalcitePositionType;
 
   @Prop() positionElement: HTMLElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteFloatingPanelElement;
 
   @State() offsetTop = 0;
 
@@ -51,8 +59,29 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
+  setOffsetTop(
+    positionType: CalcitePositionType,
+    positionElement: HTMLElement
+  ): void {
+    const { offsetTop } = positionElement;
+    const { height: positionHeight } = positionElement.getBoundingClientRect();
+    const halfHeight = this.el.offsetHeight / 2;
+
+    this.offsetTop =
+      positionType === "anchor"
+        ? offsetTop + positionHeight
+        : positionType === "over"
+        ? offsetTop - halfHeight
+        : offsetTop;
+  }
+
+  @Watch("positionType")
+  positionTypeHandler(newValue: CalcitePositionType) {
+    this.setOffsetTop(newValue, this.positionElement);
+  }
+
   @Watch("positionElement")
   positionElementHandler(newValue: HTMLElement) {
-    this.offsetTop = newValue.offsetTop;
+    this.setOffsetTop(this.positionType, newValue);
   }
 }
