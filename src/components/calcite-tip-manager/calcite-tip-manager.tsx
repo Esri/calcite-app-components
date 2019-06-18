@@ -13,7 +13,7 @@ export class CalciteTipManager {
 
   // Lifecycle
 
-  connectedCallback() {
+  constructor() {
     this.tips = this.el.querySelectorAll('calcite-tip');
     this.total = this.el.querySelectorAll('calcite-tip').length;
     this.tips.forEach((item, index) => {
@@ -22,6 +22,10 @@ export class CalciteTipManager {
         this.selectedIndex = index;
       }
     });
+    this.selectedIndex = this.selectedIndex || 0; //need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
+  }
+
+  connectedCallback() {
     this.updateSelectedTip();
   }
 
@@ -29,8 +33,8 @@ export class CalciteTipManager {
 
   // State
 
-  @State() dismissed = false;
-  @State() selectedIndex = 0;
+  @State() dismissed = true;
+  @State() selectedIndex: number;
   DEFAULT_GROUP_TITLE = DEFAULT_GROUP_TITLE;
   groupTitle = '';
   total = 0;
@@ -74,6 +78,7 @@ export class CalciteTipManager {
   }
 
   triggerAnimation() {
+    if(!this.tipContainer) { return }
     this.tipContainer.classList.remove("is-animating", "forward", "backward");
     void this.tipContainer.offsetWidth; // hack for restarting animation. https://css-tricks.com/restart-css-animation/
     this.tipContainer.classList.add('is-animating', this.direction);
@@ -85,7 +90,7 @@ export class CalciteTipManager {
         this.groupTitle = tip.dataset.groupTitle ? tip.dataset.groupTitle : this.DEFAULT_GROUP_TITLE;
         tip.setAttribute("selected", "true");
       } else {
-        tip.setAttribute("selected", "false");
+        tip.removeAttribute("selected");
       }
     });
   }
@@ -97,7 +102,7 @@ export class CalciteTipManager {
       <Host hidden={this.dismissed}>
         <header class="header">
           <h2 ref={(el) => this.title = el as HTMLInputElement} class="title" data-test-id="title">{this.groupTitle}</h2>
-          <div class="close" onClick={() => this.hideTipManager()}>
+          <div class="close" onClick={() => this.hideTipManager()} data-test-id="close">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
@@ -107,13 +112,13 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class="pagination">
-          <button class="pageControl pageControl--left" onClick={()=> { this.previousTip(); }}>
+          <button class="pageControl pageControl--left" onClick={()=> { this.previousTip(); }} data-test-id="previous">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={chevronLeft24} />
             </svg>
           </button>
           <span class="pagePosition">{`Tip ${this.selectedIndex+1}/${this.total}`}</span>
-          <button class="pageControl pageControl--right" onClick={()=> { this.nextTip(); }}>
+          <button class="pageControl pageControl--right" onClick={()=> { this.nextTip(); }} data-test-id="next">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={chevronRight24} />
             </svg>
