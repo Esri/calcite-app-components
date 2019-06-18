@@ -52,8 +52,6 @@ export class CalciteShell {
       <div class={CSS.content}>
         <slot />
         <slot name="tip-manager" />
-        <slot name="floating-panel" />
-        <slot name="action-pad" />
       </div>
     );
   }

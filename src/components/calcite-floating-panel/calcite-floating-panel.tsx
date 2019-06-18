@@ -3,11 +3,11 @@ import { Component, Host, h, Prop } from "@stencil/core";
 import { CalcitePosition } from "../interfaces";
 
 @Component({
-  tag: "calcite-action-pad",
-  styleUrl: "calcite-action-pad.scss",
+  tag: "calcite-floating-panel",
+  styleUrl: "calcite-floating-panel.scss",
   shadow: true
 })
-export class CalciteActionPad {
+export class CalciteFloatingPanel {
   // --------------------------------------------------------------------------
   //
   //  Properties

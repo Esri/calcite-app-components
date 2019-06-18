@@ -32,6 +32,8 @@ export class CalciteShellPanel {
         <div class={CSS.content}>
           <slot />
         </div>
+        <slot name="floating-panel" />
+        <slot name="action-pad" />
       </Host>
     );
   }

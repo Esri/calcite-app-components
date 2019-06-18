@@ -1,4 +1,4 @@
-# calcite-action-pad
+# calcite-floating-panel
 
 
 
