@@ -27,17 +27,17 @@ export class CalciteExample {
   //
   // --------------------------------------------------------------------------
 
-  @Element()
-  el: HTMLElement;
-
   @Prop()
   someProp = true;
 
   // --------------------------------------------------------------------------
   //
-  //  State
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
+
+  @Element()
+  el: HTMLElement;
 
   internalProp: string;
 
