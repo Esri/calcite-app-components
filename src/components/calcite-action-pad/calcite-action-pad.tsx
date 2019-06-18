@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from "@stencil/core";
+import { Component, Host, Prop, h } from "@stencil/core";
 
 import { CalcitePosition } from "../interfaces";
 

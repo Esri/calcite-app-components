@@ -6,16 +6,23 @@ A collection of calcite components for building single page applications.
 
 @todo
 
-## Instructions
+## Local Dev
+
+### Instructions
 
 1. npm install
 2. npm start
 3. npm test
 
-## Requirements
+### Requirements
 
 - Notepad or your favorite HTML editor
 - Web browser with access to the Internet
+
+### Testing
+#### Gotchas
+Disabling headless mode and enabling devtools causes calls to `page.setContent(<html>)` to fail in end to end tests.
+A workaround is manually modifying the waitUntil option in `<projectDir>\node_modules\@stencil\core\dist\testing\index.js` Line 39000 to 'load'.
 
 ## Resources
 
