@@ -2,6 +2,8 @@ import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 
 import { CalcitePositionType } from "../interfaces";
 
+import { setOffsetTop } from "../shared/calcite-position";
+
 @Component({
   tag: "calcite-floating-panel",
   styleUrl: "calcite-floating-panel.scss",
@@ -32,6 +34,7 @@ export class CalciteFloatingPanel {
   @Element() el: HTMLCalciteFloatingPanelElement;
 
   @State() offsetTop = 0;
+
   // --------------------------------------------------------------------------
   //
   //  Component Methods
@@ -58,21 +61,7 @@ export class CalciteFloatingPanel {
   //
   // --------------------------------------------------------------------------
 
-  setOffsetTop(
-    positionType: CalcitePositionType,
-    positionElement: HTMLElement
-  ): void {
-    const { offsetTop } = positionElement;
-    const { height: positionHeight } = positionElement.getBoundingClientRect();
-    const halfHeight = this.el.offsetHeight / 2;
-
-    this.offsetTop =
-      positionType === "anchor"
-        ? offsetTop + positionHeight
-        : positionType === "over"
-        ? offsetTop - halfHeight
-        : offsetTop;
-  }
+  setOffsetTop = setOffsetTop;
 
   @Watch("positionType")
   positionTypeHandler(newValue: CalcitePositionType) {
