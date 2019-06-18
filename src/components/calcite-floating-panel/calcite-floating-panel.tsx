@@ -1,6 +1,6 @@
-import { Component, Host, h, Prop } from "@stencil/core";
+import { Component, Host, Prop, State, Watch, h } from "@stencil/core";
 
-import { CalcitePosition } from "../interfaces";
+import { CalcitePositionType } from "../interfaces";
 
 @Component({
   tag: "calcite-floating-panel",
@@ -17,10 +17,13 @@ export class CalciteFloatingPanel {
   /*
   side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
   over: centered on top of trigger and covers trigger.
-  stack: dynamically above or below based on how close trigger is to top or bottom of window.
+  anchor: dynamically above or below based on how close trigger is to top or bottom of window.
   */
-  @Prop() position: CalcitePosition;
+  @Prop({ reflect: true }) positionType: CalcitePositionType;
 
+  @Prop() positionElement: HTMLElement;
+
+  @State() offsetTop = 0;
   // --------------------------------------------------------------------------
   //
   //  Component Methods
@@ -33,5 +36,16 @@ export class CalciteFloatingPanel {
         <slot />
       </Host>
     );
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Watch("positionElement")
+  positionElementHandler(newValue: HTMLElement) {
+    this.offsetTop = newValue.offsetTop;
   }
 }

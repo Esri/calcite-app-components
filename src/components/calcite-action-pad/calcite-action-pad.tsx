@@ -1,6 +1,6 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Host, Prop, State, Watch, h } from "@stencil/core";
 
-import { CalcitePosition } from "../interfaces";
+import { CalcitePositionType } from "../interfaces";
 
 @Component({
   tag: "calcite-action-pad",
@@ -17,9 +17,13 @@ export class CalciteActionPad {
   /*
   side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
   over: centered on top of trigger and covers trigger.
-  stacked: dynamically above or below based on how close trigger is to top or bottom of window.
+  anchor: dynamically above or below based on how close trigger is to top or bottom of window.
   */
-  @Prop() position: CalcitePosition;
+  @Prop({ reflect: true }) positionType: CalcitePositionType;
+
+  @Prop() positionElement: HTMLElement;
+
+  @State() offsetTop = 0;
 
   // --------------------------------------------------------------------------
   //
@@ -28,10 +32,27 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   render() {
+    const { offsetTop } = this;
+
+    const style = {
+      top: `${offsetTop}px`
+    };
+
     return (
-      <Host>
+      <Host style={style}>
         <slot />
       </Host>
     );
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Watch("positionElement")
+  positionElementHandler(newValue: HTMLElement) {
+    this.offsetTop = newValue.offsetTop;
   }
 }

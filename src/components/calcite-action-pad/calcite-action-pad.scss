@@ -4,6 +4,11 @@
   color: #ffffff;
   flex-direction: column;
   position: absolute;
+  z-index: 1;
+}
+
+:host([hidden]) {
+  display: none;
 }
 
 :host ::slotted(calcite-action-group) {

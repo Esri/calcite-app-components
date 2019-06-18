@@ -59,6 +59,31 @@
       <div class="calcite-shell-container">
         <calcite-shell>
           <calcite-shell-panel slot="primary-panel" primary>
+            <calcite-floating-panel
+              id="floating-panel"
+              slot="floating-panel"
+              hidden
+              >Floating Panel Content</calcite-floating-panel
+            >
+            <calcite-action-pad
+              id="action-pad"
+              position-type="side"
+              slot="action-pad"
+              hidden
+            >
+              <calcite-action-group>
+                <calcite-action text="Add">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    height="16"
+                  >
+                    <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+                  </svg>
+                </calcite-action>
+              </calcite-action-group>
+            </calcite-action-pad>
             <calcite-action-bar slot="action-bar">
               <calcite-action-group>
                 <calcite-action text="Add">
@@ -98,6 +123,10 @@
               </calcite-action-group>
             </calcite-action-bar>
             <p>Primary Content</p>
+            <p><button id="action-pad-button">Toggle Action Pad</button></p>
+            <p>
+              <button id="floating-panel-button">Toggle Floating Panel</button>
+            </p>
           </calcite-shell-panel>
 
           <calcite-shell-panel slot="contextual-panel">
@@ -144,12 +173,21 @@
 
           <h2 slot="header">My App</h2>
           <!-- <calcite-tip-manager slot="tip-manager" /> -->
-          <!-- <calcite-floating-panel slot="floating-panel" /> -->
-          <!-- <calcite-action-pad slot="action-pad" /> -->
           <div id="viewDiv"></div>
           <div slot="footer">Footer</div>
         </calcite-shell>
       </div>
     </section>
+    <script>
+      var actionPad = document.getElementById("action-pad");
+      var actionPadButton = document.getElementById("action-pad-button");
+      actionPadButton.addEventListener("click", function() {
+        actionPad.hasAttribute("hidden")
+          ? actionPad.removeAttribute("hidden")
+          : actionPad.toggleAttribute("hidden");
+
+        actionPad.positionElement = actionPadButton;
+      });
+    </script>
   </body>
 </html>
