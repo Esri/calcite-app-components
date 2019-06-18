@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { DEFAULT_GROUP_TITLE } from './localized_text';
+import { DEFAULT_GROUP_TITLE } from './resources';
 
 describe("calcite-tip-manager", () => {
   it("should render and show the default title", async () => {

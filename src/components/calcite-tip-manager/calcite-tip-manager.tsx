@@ -1,7 +1,6 @@
 import { Component, Host, h, Method, State, Element, Watch } from "@stencil/core";
 import { x24, chevronLeft24, chevronRight24 } from "@esri/calcite-ui-icons";
 import { DEFAULT_GROUP_TITLE } from './localized_text';
-// export const DEFAULT_GROUP_TITLE:string = "Tips";
 
 @Component({
   tag: "calcite-tip-manager",
