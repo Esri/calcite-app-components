@@ -6,7 +6,7 @@ const CSS = {
   close: "close",
   content: "content",
   link: "link"
-}
+};
 
 @Component({
   tag: "calcite-tip",
@@ -16,15 +16,19 @@ const CSS = {
 export class CalciteTip {
   @Element() el: HTMLElement;
 
-  @Prop() storageId:string;
+  @Prop() storageId: string;
   @Prop() dismissible = true;
 
-  @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
+  @State() dismissed =
+    getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
   hideTip() {
     this.dismissed = true;
     if (this.storageId) {
-      setItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`, "dismissed");
+      setItem(
+        `${this.el.tagName.toLowerCase()}-${this.storageId}`,
+        "dismissed"
+      );
     }
   }
 
@@ -32,11 +36,13 @@ export class CalciteTip {
     return (
       <Host hidden={this.dismissed}>
         <slot name="heading" />
-        { this.dismissible ? <div class={CSS.close} onClick={() => this.hideTip()}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={x24} />
-          </svg>
-        </div> : null }
+        {this.dismissible ? (
+          <div class={CSS.close} onClick={() => this.hideTip()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d={x24} />
+            </svg>
+          </div>
+        ) : null}
         <div class={CSS.content}>
           <slot name="thumbnail" />
           <div>
