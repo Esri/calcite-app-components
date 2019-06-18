@@ -62,7 +62,7 @@ $tip-manager-close-size: 24px;
   box-shadow: none;
 
 }
-::slotted(calcite-tip[selected="true"]) {
+::slotted(calcite-tip[selected]) {
   display: block;
 }
 
