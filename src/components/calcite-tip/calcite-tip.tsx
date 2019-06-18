@@ -10,7 +10,7 @@ import { getItem, setItem } from "../../utils/localStorage";
 export class CalciteTip {
   @Element() el: HTMLElement;
 
-  @Prop() storageId = "";
+  @Prop() storageId:string;
   @Prop() dismissible = true;
 
   @State() dismissed = getItem(`calcite-tip-${this.storageId}`) !== null;
