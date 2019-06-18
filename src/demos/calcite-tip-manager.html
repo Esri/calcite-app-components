@@ -34,5 +34,10 @@
         </calcite-tip>
       </calcite-tip-manager>
     </section>
+    <script>
+      customElements.whenDefined('calcite-tip-manager').then(() => {
+        document.querySelector("calcite-tip-manager").showTipManager();
+      });
+    </script>
   </body>
 </html>
