@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "@stencil/core": "one",
-    "@stencil/postcss": "0.1.0",
-    "@stencil/sass": "^0.2.3",
+    "@stencil/postcss": "1.0.1",
+    "@stencil/sass": "1.0.0",
     "@stencil/state-tunnel": "one",
     "@types/autoprefixer": "9.5.0",
     "@types/jest": "23.3.14",
