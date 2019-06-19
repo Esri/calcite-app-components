@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State } from "@stencil/core";
+import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 
@@ -47,7 +47,7 @@ export class CalciteTip {
           <slot name="thumbnail" />
           <div>
             <slot />
-            {!!this.el.querySelector("[slot=link]") ? (
+            {this.el.querySelector("[slot=link]") ? (
               <p class={CSS.link}>
                 <slot name="link" />
               </p>
