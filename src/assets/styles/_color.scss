@@ -1,5 +1,5 @@
 
-:root {
+:host {
   // Background
   --calcite-app-background: #{$white};
   --calcite-app-background__content: #{$lightest-gray};
@@ -18,7 +18,7 @@
   --calcite-app-border: #{rgba($darker-gray, 0.25)};
 }
 
-:root([theme="dark"]) {
+:host([theme="dark"]) {
   // Background
   --calcite-app-background: #{$darker-gray};
   --calcite-app-background-content: #{$darkest-gray};

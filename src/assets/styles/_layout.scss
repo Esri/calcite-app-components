@@ -3,39 +3,45 @@
 $side-spacing: 15px !default;
 $cap-spacing: 15px !default;
 
-// spacing : three quarters
-$side-spacing--three-quarters: floor($side-spacing * 3/4) !default;
-$cap-spacing--three-quarters: floor($cap-spacing * 3/4) !default;
+:host {
+  /////////////////////////
+  // Spacing
+  --calcite-app-side-spacing: #{$side-spacing};
+  --calcite-app-cap-spacing: #{$cap-spacing};
 
-// spacing : half
-$side-spacing--half: floor($side-spacing / 2) !default;
-$cap-spacing--half: floor($cap-spacing / 2) !default;
+  // spacing : three quarters
+  --calcite-app-side-spacing--three-quarters: #{floor($side-spacing * 3/4)};
+  --calcite-app-cap-spacing--three-quarters: #{floor($cap-spacing * 3/4)};
 
-// spacing : third
-$side-spacing--third: floor($side-spacing / 3) !default;
-$cap-spacing--third: floor($cap-spacing / 3) !default;
+  // spacing : half
+  --calcite-app-side-spacing--half: #{floor($side-spacing / 2)};
+  --calcite-app-cap-spacing--half: #{floor($cap-spacing / 2)};
 
-// spacing : quarter
-$side-spacing--quarter: floor($side-spacing / 4) !default;
-$cap-spacing--quarter: floor($cap-spacing / 4) !default;
+  // spacing : third
+  --calcite-app-side-spacing--third: #{floor($side-spacing / 3)};
+  --calcite-app-cap-spacing--third: #{floor($cap-spacing / 3)};
 
-// spacing : eighth
-$side-spacing--eighth: ceil($side-spacing / 8) !default;
-$cap-spacing--eighth: ceil($cap-spacing / 8) !default;
+  // spacing : quarter
+  --calcite-app-side-spacing--quarter: #{floor($side-spacing / 4)};
+  --calcite-app-cap-spacing--quarter: #{floor($cap-spacing / 4)};
 
-// spacing : plus half
-$side-spacing--plus-half: floor($side-spacing * 1.5) !default;
-$cap-spacing--plus-half: floor($cap-spacing * 1.5) !default;
+  // spacing : eighth
+  --calcite-app-side-spacing--eighth: #{ceil($side-spacing / 8)};
+  --calcite-app-cap-spacing--eighth: #{ceil($cap-spacing / 8)};
 
-// spacing : double
-$side-spacing--double: floor($side-spacing * 2) !default;
-$cap-spacing--double: floor($cap-spacing * 2) !default;
+  // spacing : plus half
+  --calcite-app-side-spacing--plus-half: #{floor($side-spacing * 1.5)};
+  --calcite-app-cap-spacing--plus-half: #{floor($cap-spacing * 1.5)};
 
-/////////////////////////
-// Icons
-$icon-size: 16px;
+  // spacing : double
+  --calcite-app-side-spacing--double: #{floor($side-spacing * 2)};
+  --calcite-app-cap-spacing--double: #{floor($cap-spacing * 2)};
 
+  /////////////////////////
+  // Icons
+  --calcite-app-icon-size: 16px;
 
-/////////////////////////
-// Decoration
-$border-radius: 3px;
+  /////////////////////////
+  // Decoration
+  --calcite-app-border-radius: 3px;
+}
