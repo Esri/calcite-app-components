@@ -1,10 +1,11 @@
 :host .calcite-action__button {
   display: flex;
-  color: #fff;
-  fill: #fff;
-  background-color: #4c4c4c;
-  padding: 9px;
-  margin: 2px 0;
+  color: var(--calcite-app-foreground__interactive);
+  fill: var(--calcite-app-foreground__interactive);
+  background-color: var(--calcite-app-background);
+  border-radius: $border-radius;
+  padding: $cap-spacing--three-quarters $side-spacing--three-quarters;
+  margin: $cap-spacing--eighth 0;
   justify-content: flex-start;
   align-items: center;
   border: none;
@@ -12,26 +13,29 @@
   cursor: pointer;
   font: inherit;
   line-height: normal;
-  transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
+  transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
+}
+
+:host([active]) .calcite-action__button,
+:host .calcite-action__button:hover {
+  background-color: var(--calcite-app-background--highlight);
 }
 
 :host([active]) .calcite-action__button {
-  color: #69dcff;
-  fill: #69dcff;
+  color: var(--calcite-app-foreground__interactive--highlight);
+  fill: var(--calcite-app-foreground__interactive--highlight);
 }
 
 :host .calcite-action__icon-container {
-  display: block;
-  max-width: 16px;
-  max-height: 16px;
+  max-width: $icon-size;
+  max-height: $icon-size;
   margin: 0;
   justify-content: center;
 }
 
 :host .calcite-action__text-container {
   flex: 1;
-  display: block;
-  line-height: 16px;
-  margin: 0 6px;
+  line-height: 1rem;
+  margin: 0 $side-spacing--half;
   word-break: break-word;
 }

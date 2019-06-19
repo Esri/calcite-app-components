@@ -1,0 +1,38 @@
+
+:root {
+  // Background
+  --calcite-app-background: #{$white};
+  --calcite-app-background__content: #{$lightest-gray};
+
+  // :hover :active :current
+  --calcite-app-background--highlight: #{$lightest-blue};
+
+  // Foreground
+  --calcite-app-foreground: #{$darker-gray};
+  --calcite-app-foreground__interactive: #{$darker-gray};
+
+  // Foreground :states
+  --calcite-app-foreground__interactive--highlight: #{$dark-blue};
+
+  // Borders
+  --calcite-app-border: #{rgba($darker-gray, 0.25)};
+}
+
+:root([theme="dark"]) {
+  // Background
+  --calcite-app-background: #{$darker-gray};
+  --calcite-app-background-content: #{$darkest-gray};
+
+  // Background :hover :active :current
+  --calcite-app-background--highlight: #{$darkest-gray};
+
+  // Foreground
+  --calcite-app-foreground: #{$lightest-gray};
+  --calcite-app-foreground__interactive: #{$lighter-gray};
+
+  // Foreground  :hover :active :current
+  --calcite-app-foreground__interactive--highlight: #{$v-bb-120}; // Vibrant Blue
+
+  // Borders
+  --calcite-app-border: #{rgba($lightest-gray, 0.25)};
+}

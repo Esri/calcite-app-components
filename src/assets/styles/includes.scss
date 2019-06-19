@@ -1,7 +1,10 @@
 @import "./node_modules/@esri/calcite-colors/colors.scss";
-@import "./node_modules/@esri/calcite-base/dist/_index.scss";
+@import "./node_modules/@esri/calcite-base/dist/_variables.scss";
+@import "./layout";
+@import "./color";
 
-body {
+
+html {
   font-family: $avenir-family;
 }
 

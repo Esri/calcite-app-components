@@ -1,12 +1,12 @@
 :host {
-  background-color: #4c4c4c;
+  background-color: var(--calcite-app-background);
   display: flex;
-  color: #ffffff;
+  color: var(--calcite-app-foreground-inverse__interactive);
   flex-direction: column;
 }
 
 :host ::slotted(calcite-action-group) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid var(--calcite-app-border);
 }
 
 :host ::slotted(calcite-action-group:last-child) {

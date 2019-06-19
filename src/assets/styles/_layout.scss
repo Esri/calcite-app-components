@@ -1,0 +1,41 @@
+/////////////////////////
+// Spacing
+$side-spacing: 15px !default;
+$cap-spacing: 15px !default;
+
+// spacing : three quarters
+$side-spacing--three-quarters: floor($side-spacing * 3/4) !default;
+$cap-spacing--three-quarters: floor($cap-spacing * 3/4) !default;
+
+// spacing : half
+$side-spacing--half: floor($side-spacing / 2) !default;
+$cap-spacing--half: floor($cap-spacing / 2) !default;
+
+// spacing : third
+$side-spacing--third: floor($side-spacing / 3) !default;
+$cap-spacing--third: floor($cap-spacing / 3) !default;
+
+// spacing : quarter
+$side-spacing--quarter: floor($side-spacing / 4) !default;
+$cap-spacing--quarter: floor($cap-spacing / 4) !default;
+
+// spacing : eighth
+$side-spacing--eighth: ceil($side-spacing / 8) !default;
+$cap-spacing--eighth: ceil($cap-spacing / 8) !default;
+
+// spacing : plus half
+$side-spacing--plus-half: floor($side-spacing * 1.5) !default;
+$cap-spacing--plus-half: floor($cap-spacing * 1.5) !default;
+
+// spacing : double
+$side-spacing--double: floor($side-spacing * 2) !default;
+$cap-spacing--double: floor($cap-spacing * 2) !default;
+
+/////////////////////////
+// Icons
+$icon-size: 16px;
+
+
+/////////////////////////
+// Decoration
+$border-radius: 3px;
