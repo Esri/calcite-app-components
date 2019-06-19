@@ -9,9 +9,35 @@ import { DEFAULT_GROUP_TITLE } from './resources';
 })
 export class CalciteTipManager {
 
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
   @Element() el: HTMLElement;
 
-  // Lifecycle
+  @State() dismissed = true;
+  @State() selectedIndex: number;
+  DEFAULT_GROUP_TITLE = DEFAULT_GROUP_TITLE;
+  groupTitle = '';
+  total = 0;
+  tips = null;
+  title = null;
+  tipContainer = null;
+  direction: "forward" | "backward" = "forward";
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
 
   constructor() {
     this.tips = this.el.querySelectorAll('calcite-tip');
@@ -29,29 +55,11 @@ export class CalciteTipManager {
     this.updateSelectedTip();
   }
 
-  // Props
-
-  // State
-
-  @State() dismissed = true;
-  @State() selectedIndex: number;
-  DEFAULT_GROUP_TITLE = DEFAULT_GROUP_TITLE;
-  groupTitle = '';
-  total = 0;
-  tips = null;
-  title = null;
-  tipContainer = null;
-  direction: "forward" | "backward" = "forward";
-
-  // Watchers
-
-  @Watch('selectedIndex')
-  selectedChangeHandler() {
-    this.triggerAnimation();
-    this.updateSelectedTip();
-  }
-
-  // Methods
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
 
   @Method()
   async hideTipManager() {
@@ -60,6 +68,18 @@ export class CalciteTipManager {
   @Method()
   async showTipManager() {
     this.dismissed = false;
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Watch('selectedIndex')
+  selectedChangeHandler() {
+    this.triggerAnimation();
+    this.updateSelectedTip();
   }
 
   nextTip() {
@@ -95,7 +115,11 @@ export class CalciteTipManager {
     });
   }
 
-  // Render
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
 
   render() {
     return (
