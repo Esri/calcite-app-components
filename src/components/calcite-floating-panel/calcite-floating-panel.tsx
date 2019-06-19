@@ -64,7 +64,7 @@ export class CalciteFloatingPanel {
   @Watch("positionType")
   positionTypeHandler(newValue: CalcitePositionType) {
     this.offsetTop = getOffsetTop({
-      element: this.el,
+      floatingElement: this.el,
       positionType: newValue,
       positionElement: this.positionElement
     });
@@ -73,7 +73,7 @@ export class CalciteFloatingPanel {
   @Watch("positionElement")
   positionElementHandler(newValue: HTMLElement) {
     this.offsetTop = getOffsetTop({
-      element: this.el,
+      floatingElement: this.el,
       positionType: this.positionType,
       positionElement: newValue
     });

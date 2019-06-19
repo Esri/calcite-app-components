@@ -1,21 +1,46 @@
 import { CalcitePositionType } from "../interfaces";
 
-export function getOffsetTop(params: {
-  element: HTMLElement;
+interface CalcitePositionParams {
+  floatingElement: HTMLElement;
   positionType: CalcitePositionType;
   positionElement: HTMLElement;
-}): number {
-  const { positionElement, element, positionType } = params;
+}
 
-  const { offsetTop } = positionElement;
+function getAnchorPosition(params: CalcitePositionParams) {
+  const { positionElement } = params;
 
-  const { height: positionHeight } = positionElement.getBoundingClientRect();
+  const { offsetTop: positionElementTop } = positionElement;
 
-  const halfHeight = element.offsetHeight / 2;
+  const {
+    height: positionElementHeight
+  } = positionElement.getBoundingClientRect();
+
+  return positionElementTop + positionElementHeight;
+}
+
+function getOverPosition(params: CalcitePositionParams): number {
+  const { positionElement, floatingElement } = params;
+
+  const { offsetTop: positionElementTop } = positionElement;
+  const { offsetHeight: floatingElementHeight } = floatingElement;
+
+  return positionElementTop - floatingElementHeight / 2;
+}
+
+function getSidePosition(params: CalcitePositionParams): number {
+  const { positionElement } = params;
+
+  const { offsetTop: positionElementTop } = positionElement;
+
+  return positionElementTop;
+}
+
+export function getOffsetTop(params: CalcitePositionParams): number {
+  const { positionType } = params;
 
   return positionType === "anchor"
-    ? offsetTop + positionHeight
+    ? getAnchorPosition(params)
     : positionType === "over"
-    ? offsetTop - halfHeight
-    : offsetTop;
+    ? getOverPosition(params)
+    : getSidePosition(params);
 }
