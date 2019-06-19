@@ -20,7 +20,9 @@ describe("calcite-tip", () => {
     const page = await newE2EPage();
 
     await page
-      .setContent(`<calcite-tip dismissible="false"><p>not dismissible</p></calcite-tip>`)
+      .setContent(
+        `<calcite-tip dismissible="false"><p>not dismissible</p></calcite-tip>`
+      )
       .catch(error => {
         console.error(error);
       });
