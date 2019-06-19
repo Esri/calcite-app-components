@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                          | Default     |
-| ---------- | ---------- | ----------- | ----------------------------- | ----------- |
-| `position` | `position` |             | `"over" \| "side" \| "stack"` | `undefined` |
+| Property          | Attribute       | Description | Type                           | Default     |
+| ----------------- | --------------- | ----------- | ------------------------------ | ----------- |
+| `positionElement` | --              |             | `HTMLElement`                  | `undefined` |
+| `positionType`    | `position-type` |             | `"anchor" \| "over" \| "side"` | `undefined` |
 
 
 ----------------------------------------------
