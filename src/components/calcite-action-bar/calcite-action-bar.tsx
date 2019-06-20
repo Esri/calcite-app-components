@@ -2,6 +2,8 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronLeft16F, chevronRight16F } from "@esri/calcite-ui-icons";
 
+import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+
 const CSS = {
   actionGroupBottom: "action-group--bottom"
 };
@@ -42,15 +44,19 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderExpandToggle() {
-    const { expanded, expandToggle, labels } = this;
+    const { expanded, expandToggle, labels, el } = this;
+
+    const rtl = getElementDir(el) === "rtl";
 
     const expandText = expanded ? labels.collapse : labels.expand;
 
-    // todo: RTL and primary
+    const expandIcon = rtl ? chevronRight16F : chevronLeft16F;
+    const collapseIcon = rtl ? chevronLeft16F : chevronRight16F;
+
     const expandPath = expanded ? (
-      <path d={chevronLeft16F} />
+      <path d={expandIcon} />
     ) : (
-      <path d={chevronRight16F} />
+      <path d={collapseIcon} />
     );
 
     return expandToggle ? (
