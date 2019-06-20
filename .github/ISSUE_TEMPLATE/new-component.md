@@ -7,14 +7,20 @@ assignees: ''
 
 ---
 
-## Description
-...
-### Primary Use case
-...
-## Acceptance Criteria <small>(a.k.a. Requirements)</small>
-### Desired Behavior
-...
-### Desired Look & Feel
-...
-### Out of Scope <small>(anything not v1)</small>
-...
+### Description
+
+
+#### User Stories
+
+
+### Acceptance Criteria <small>(a.k.a. Requirements)</small>
+#### Desired Behavior
+
+
+#### Desired Look & Feel
+
+
+#### Out of Scope <small>(anything not v1)</small>
+
+
+### Helpful Details
