@@ -7,14 +7,13 @@ assignees: ''
 
 ---
 
-## Summary
-...
-## Actual Behavior
-...
-## Expected Behavior
-...
-## Reproduction Steps
+### Summary
+
+### Actual Behavior
+
+### Expected Behavior
+
+### Reproduction Steps
 1. 
 
 ### Relevant Info <small>(e.g. Browser, OS, Mobile,)</small>
-...
