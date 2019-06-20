@@ -20,6 +20,7 @@ export const config: Config = {
     { type: "docs-readme" },
     {
       type: "www",
+      copy: [{ src: "demos" }],
       serviceWorker: null // disable service workers
     }
   ],
@@ -29,9 +30,11 @@ export const config: Config = {
       injectGlobalPaths: ["src/assets/styles/includes.scss"]
     }),
 
-    // drop any type when https://github.com/ionic-team/stencil-postcss/pull/16 lands
-    (postcss as any)({
+    postcss({
       plugins: [autoprefixer()]
     })
-  ]
+  ],
+  testing: {
+    setupTestFrameworkScriptFile: ["../src/tests/setup.js"]
+  }
 };

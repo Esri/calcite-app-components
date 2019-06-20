@@ -7,20 +7,22 @@ assignees: ''
 
 ---
 
-## Description
-...
-## Acceptance Criteria <small>(a.k.a. Requirements)</small>
-### Desired New Behavior
-...
-### Desired Change to Look and Feel
-...
-### Out of Scope
-...
+### Description
 
-## Relevant Info <small>(e.g. Dependencies, Blockers)</small>
-...
 
-## Helpful Details
-**Which Component:** ...
-**Example Use Case:** ...
-...
+### Acceptance Criteria <small>(a.k.a. Requirements)</small>
+#### Desired New Behavior
+
+
+#### Desired Change to Look and Feel
+
+
+#### Out of Scope
+
+
+### Relevant Info <small>(e.g. Dependencies, Blockers)</small>
+
+
+### Helpful Details
+**Which Component:** 
+**Example Use Case:** 

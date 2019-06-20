@@ -1,7 +1,8 @@
 {
   "extends": [
     "tslint-stencil/default",
-    "tslint-ionic-rules"
+    "tslint-ionic-rules",
+    "tslint-config-prettier" // <- required to be last to disable conflicting rules
   ],
   "rules": {
     "component-member-order": {
@@ -9,9 +10,6 @@
     },
     "decorated-member-style": {
       "severity": "off"
-    },
-    "quotemark": {
-      "options": [ "double" ]
     }
   }
 }
