@@ -1,9 +1,12 @@
 @import "./node_modules/@esri/calcite-colors/colors.scss";
 @import "./node_modules/@esri/calcite-base/dist/_variables.scss";
+@import "./type";
 @import "./layout";
 @import "./color";
 
 
 html {
   font-family: $avenir-family;
+  font-size: $base-font-size;
+  line-height: $line-height;
 }
