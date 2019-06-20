@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "build": "stencil build",
+    "docs.generate": "stencil build --config stencil.docs.config.ts",
     "lint": "tslint \"src/**/*.ts?(x)\"",
     "lint:fix": "tslint --fix \"src/**/*.ts?(x)\"",
     "prettier": "npm-run-all --parallel prettier:**",
