@@ -24,6 +24,12 @@ A collection of calcite components for building single page applications.
 Disabling headless mode and enabling devtools causes calls to `page.setContent(<html>)` to fail in end to end tests.
 A workaround is manually modifying the waitUntil option in `<projectDir>\node_modules\@stencil\core\dist\testing\index.js` Line 39000 to 'load'.
 
+## Updating Github Pages Docs
+1. You'll need to generate a new stencil build for the docs by running `$ npm run docs.generate`.
+1. Then you need to add and push up the new files to github. `$ git add docs/*`. `$ git commit -m "describe changes"`. `$ git push`. 
+1. If you pushed the new code directly on the master branch, you're done. If not, you'll need to merge this branch into master before they will appear on the github pages site.
+1. Visit https://arcgis.github.io/calcite-app-components/ to see the updates. Clear your browser cache. It may take up to 30 minutes before the changes appear on the site. 
+
 ## Resources
 
 - [ArcGIS for JavaScript API Resource Center](http://help.arcgis.com/en/webapi/javascript/arcgis/index.html)
