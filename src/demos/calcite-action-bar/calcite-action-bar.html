@@ -105,18 +105,20 @@
               </svg>
             </calcite-action>
           </calcite-action-group>
-          <calcite-action-group justify-bottom>
-            <calcite-action id="toggle-expand" text="Expand">
+          <div slot="bottom-actions">
+            <calcite-action text="hello world">
               <svg
                 width="100%"
                 height="100%"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
               >
-                <path d="M10.217 8l-6-6h2.766l6 6-6 6H4.217z" />
+                <path
+                  d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
+                />
               </svg>
             </calcite-action>
-          </calcite-action-group>
+          </div>
         </calcite-action-bar>
       </div>
 
@@ -124,17 +126,6 @@
         var actionBar = document.getElementById("action-bar");
         actionBar.addEventListener("calciteActionClick", function(event) {
           console.log(event.target.text);
-        });
-
-        var toggleExpand = document.getElementById("toggle-expand");
-        toggleExpand.addEventListener("calciteActionClick", function(event) {
-          actionBar.toggleAttribute("expanded");
-
-          var expanded = actionBar.hasAttribute("expanded");
-          toggleExpand.setAttribute("text", expanded ? "Collapse" : "Expanded");
-          toggleExpand.innerHTML = expanded
-            ? '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M11.783 14H9.017l-6-6 6-6h2.766l-6 6z"/></svg>'
-            : '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><path d="M10.217 8l-6-6h2.766l6 6-6 6H4.217z" /></svg>';
         });
       </script>
     </section>
