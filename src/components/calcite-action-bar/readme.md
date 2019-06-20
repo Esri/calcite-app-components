@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type                                    | Default                                                |
-| -------------- | --------------- | ----------- | --------------------------------------- | ------------------------------------------------------ |
-| `expandToggle` | `expand-toggle` |             | `boolean`                               | `true`                                                 |
-| `expanded`     | `expanded`      |             | `boolean`                               | `false`                                                |
-| `labels`       | --              |             | `{ expand: string; collapse: string; }` | `{     expand: "Expand",     collapse: "Collapse"   }` |
+| Property   | Attribute  | Description | Type                                    | Default                                                |
+| ---------- | ---------- | ----------- | --------------------------------------- | ------------------------------------------------------ |
+| `expand`   | `expand`   |             | `boolean`                               | `true`                                                 |
+| `expanded` | `expanded` |             | `boolean`                               | `false`                                                |
+| `labels`   | --         |             | `{ expand: string; collapse: string; }` | `{     expand: "Expand",     collapse: "Collapse"   }` |
 
 
 ## Dependencies

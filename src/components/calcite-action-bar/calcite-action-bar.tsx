@@ -20,9 +20,9 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) expanded = false;
+  @Prop({ reflect: true }) expand = true;
 
-  @Prop({ reflect: true }) expandToggle = true;
+  @Prop({ reflect: true }) expanded = false;
 
   @Prop() labels = {
     expand: "Expand",
@@ -44,7 +44,7 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderExpandToggle() {
-    const { expanded, expandToggle, labels, el } = this;
+    const { expanded, expand, labels, el } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -53,13 +53,7 @@ export class CalciteActionBar {
     const expandIcon = rtl ? chevronRight16F : chevronLeft16F;
     const collapseIcon = rtl ? chevronLeft16F : chevronRight16F;
 
-    const expandPath = expanded ? (
-      <path d={expandIcon} />
-    ) : (
-      <path d={collapseIcon} />
-    );
-
-    return expandToggle ? (
+    return expand ? (
       <calcite-action
         onCalciteActionClick={this.toggleExpand.bind(this)}
         textEnabled={expanded}
@@ -71,7 +65,7 @@ export class CalciteActionBar {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
         >
-          {expandPath}
+          <path d={expanded ? expandIcon : collapseIcon} />
         </svg>
       </calcite-action>
     ) : null;
