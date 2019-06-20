@@ -47,11 +47,16 @@ export class CalciteActionBar {
     const { expanded, expand, labels, el } = this;
 
     const rtl = getElementDir(el) === "rtl";
+    const closestPanel = el.closest("calcite-shell-panel");
+    const primary = closestPanel && closestPanel.hasAttribute("primary");
 
     const expandText = expanded ? labels.collapse : labels.expand;
 
-    const expandIcon = rtl ? chevronRight16F : chevronLeft16F;
-    const collapseIcon = rtl ? chevronLeft16F : chevronRight16F;
+    const expandIcon = primary ? chevronLeft16F : chevronRight16F;
+    const collapseIcon = primary ? chevronRight16F : chevronLeft16F;
+
+    const expandIconDir = rtl ? collapseIcon : expandIcon;
+    const collapseIconDir = rtl ? expandIcon : collapseIcon;
 
     return expand ? (
       <calcite-action
@@ -65,7 +70,7 @@ export class CalciteActionBar {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
         >
-          <path d={expanded ? expandIcon : collapseIcon} />
+          <path d={expanded ? expandIconDir : collapseIconDir} />
         </svg>
       </calcite-action>
     ) : null;
