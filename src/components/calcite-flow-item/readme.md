@@ -2,16 +2,16 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property         | Attribute          | Description | Type                                                     | Default                                                                          |
-| ---------------- | ------------------ | ----------- | -------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `heading`        | `heading`          |             | `string`                                                 | `undefined`                                                                      |
-| `labels`         | --                 |             | `{ back: string; openMenu: string; closeMenu: string; }` | `{     back: "Back",     openMenu: "Open menu",     closeMenu: "Close menu"   }` |
-| `menuOpen`       | `menu-open`        |             | `boolean`                                                | `false`                                                                          |
-| `showBackButton` | `show-back-button` |             | `boolean`                                                | `false`                                                                          |
-
+| Property         | Attribute          | Description | Type      | Default     |
+| ---------------- | ------------------ | ----------- | --------- | ----------- |
+| `heading`        | `heading`          |             | `string`  | `undefined` |
+| `i18nBack`       | `i-1-8n-back`      |             | `string`  | `"Back"`    |
+| `i18nClose`      | `i-1-8n-close`     |             | `string`  | `"Close"`   |
+| `i18nOpen`       | `i-1-8n-open`      |             | `string`  | `"Open"`    |
+| `menuOpen`       | `menu-open`        |             | `boolean` | `false`     |
+| `showBackButton` | `show-back-button` |             | `boolean` | `false`     |
 
 ## Events
 
@@ -21,7 +21,6 @@
 | `calciteFlowItemRegister`   |             | `CustomEvent<any>` |
 | `calciteFlowItemUnregister` |             | `CustomEvent<any>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

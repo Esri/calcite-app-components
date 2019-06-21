@@ -1,18 +1,15 @@
 # calcite-action-bar
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                                    | Default                                                |
-| ---------- | ---------- | ----------- | --------------------------------------- | ------------------------------------------------------ |
-| `expand`   | `expand`   |             | `boolean`                               | `true`                                                 |
-| `expanded` | `expanded` |             | `boolean`                               | `false`                                                |
-| `labels`   | --         |             | `{ expand: string; collapse: string; }` | `{     expand: "Expand",     collapse: "Collapse"   }` |
-
+| Property       | Attribute         | Description | Type      | Default      |
+| -------------- | ----------------- | ----------- | --------- | ------------ |
+| `expand`       | `expand`          |             | `boolean` | `true`       |
+| `expanded`     | `expanded`        |             | `boolean` | `false`      |
+| `i18nCollapse` | `i-1-8n-collapse` |             | `string`  | `"Collapse"` |
+| `i18nExpand`   | `i-1-8n-expand`   |             | `string`  | `"Expand"`   |
 
 ## Dependencies
 
@@ -22,6 +19,7 @@
 - [calcite-action-group](../calcite-action-group)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action
@@ -29,6 +27,6 @@ graph TD;
   style calcite-action-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
