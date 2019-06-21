@@ -51,11 +51,11 @@ export class CalciteFlowItem {
 
   @Prop() heading: string;
 
-  @Prop() labels = {
-    back: "Back",
-    openMenu: "Open menu",
-    closeMenu: "Close menu"
-  };
+  @Prop() i18nBack = "Back";
+
+  @Prop() i18nOpen = "Open";
+
+  @Prop() i18nClose = "Close";
 
   @Prop({ reflect: true }) menuOpen = false;
 
@@ -88,14 +88,14 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton() {
-    const { showBackButton, labels } = this;
+    const { showBackButton, i18nBack } = this;
 
     return showBackButton ? (
       <button
         key="back-button"
         class={CSS.backButton}
-        aria-label={labels.back}
-        title={labels.back}
+        aria-label={i18nBack}
+        title={i18nBack}
         onClick={this.backButtonClick.bind(this)}
       >
         <svg
@@ -111,9 +111,9 @@ export class CalciteFlowItem {
   }
 
   renderMenuButton() {
-    const { menuOpen, labels } = this;
+    const { menuOpen, i18nOpen, i18nClose } = this;
 
-    const menuLabel = menuOpen ? labels.closeMenu : labels.openMenu;
+    const menuLabel = menuOpen ? i18nClose : i18nOpen;
 
     return (
       <button
