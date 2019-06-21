@@ -20,13 +20,16 @@ A collection of calcite components for building single page applications.
 - Web browser with access to the Internet
 
 ### Testing
+
 #### Gotchas
+
 Disabling headless mode and enabling devtools causes calls to `page.setContent(<html>)` to fail in end to end tests.
 A workaround is manually modifying the waitUntil option in `<projectDir>\node_modules\@stencil\core\dist\testing\index.js` Line 39000 to 'load'.
 
 ## Updating Github Pages Docs
+
 1. You'll need to generate a new stencil build for the docs by running `$ npm run docs`.
-1. The docs will need to be committed or merged in the `master` branch before they take effect. Afterward, it may take up to 30 minutes before the changes appear on the site. 
+1. The docs will need to be committed or merged in the `master` branch before they take effect.
 
 ## Resources
 
