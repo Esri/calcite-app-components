@@ -1,9 +1,9 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
 const CSS = {
-  button: "calcite-action__button",
-  iconContainer: "calcite-action__icon-container",
-  textContainer: "calcite-action__text-container"
+  button: "button",
+  iconContainer: "icon-container",
+  textContainer: "text-container"
 };
 
 @Component({
@@ -65,7 +65,7 @@ export class CalciteAction {
           class={CSS.button}
           title={labelFallback}
           aria-label={labelFallback}
-          onClick={this._clickHandler.bind(this)}
+          onClick={this.clickHandler.bind(this)}
         >
           {iconContainerNode}
           {textContainerNode}
@@ -80,7 +80,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  private _clickHandler(): void {
+  clickHandler(): void {
     this.calciteActionClick.emit(this);
   }
 }
