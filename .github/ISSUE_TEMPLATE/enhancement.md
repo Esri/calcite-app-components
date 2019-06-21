@@ -1,7 +1,7 @@
 ---
 name: Enhancement
 about: Request for a feature to be added to an existing component.
-title: 'Enmancement: '
+title: 'Enhancement: '
 labels: enhancement
 assignees: ''
 
