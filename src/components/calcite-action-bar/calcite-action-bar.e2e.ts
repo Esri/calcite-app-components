@@ -1,5 +1,4 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CalciteActionBar } from "./calcite-action-bar";
 
 describe("calcite-action-bar", () => {
   it("renders", async () => {
@@ -11,63 +10,65 @@ describe("calcite-action-bar", () => {
   });
 
   it("defaults", async () => {
-    const bar = new CalciteActionBar();
+    const page = await newE2EPage();
 
-    expect(bar.expand).toBe(true);
-    expect(bar.expanded).toBe(false);
-    expect(bar.labels.expand).toEqual("Expand");
-    expect(bar.labels.collapse).toEqual("Collapse");
+    await page.setContent("<calcite-action-bar></calcite-action-bar>");
+    const element = await page.find("calcite-action-bar");
+    expect(element.getAttribute("expand")).not.toBeNull();
+    expect(element.getAttribute("expanded")).toBeNull();
   });
 
-  // it("Default label", async () => {
-  //   const page = await newE2EPage();
+  it("expand: true", async () => {
+    const page = await newE2EPage();
 
-  //   await page.setContent("<calcite-action-bar expand></calcite-action-bar>");
+    await page.setContent("<calcite-action-bar></calcite-action-bar>");
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   const expandAction = await page.find(
-  //     "calcite-action-bar >>> calcite-action"
-  //   );
+    const expandAction = await page.find(
+      "calcite-action-bar >>> calcite-action"
+    );
 
-  //   expect(expandAction).not.toBeNull();
-  //   expect(expandAction.getProperty("text")).toBe("Expand");
-  // });
+    expect(expandAction).not.toBeNull();
+  });
 
-  // it("expand", async () => {
-  //   const page = await newE2EPage();
+  it("expand: false", async () => {
+    const page = await newE2EPage();
 
-  //   await page.setContent("<calcite-action-bar expand></calcite-action-bar>");
+    await page.setContent(
+      '<calcite-action-bar expand="false"></calcite-action-bar>'
+    );
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   const expandAction = await page.find(
-  //     "calcite-action-bar >>> calcite-action"
-  //   );
+    const expandAction = await page.find(
+      "calcite-action-bar >>> calcite-action"
+    );
 
-  //   expect(expandAction).not.toBeNull();
-  // });
+    expect(expandAction).toBeNull();
+  });
 
-  // it("expanded", async () => {
-  //   const page = await newE2EPage();
+  it("expanded", async () => {
+    const page = await newE2EPage();
 
-  //   await page.setContent("<calcite-action-bar expand></calcite-action-bar>");
+    await page.setContent("<calcite-action-bar></calcite-action-bar>");
 
-  //   //const eventSpy = await page.spyOnEvent("calciteActionClick", "window");
+    const bar = await page.find("calcite-action-bar");
 
-  //   const bar = await page.find("calcite-action-bar");
+    const eventSpy = await page.spyOnEvent("calciteActionClick", "window");
+    const buttonGroup = await page.find(
+      "calcite-action-bar >>> .action-group--bottom"
+    );
 
-  //   const button = await page.find(
-  //     "calcite-action-bar >>> calcite-action >>> .button"
-  //   );
+    const button = await buttonGroup.find("calcite-action >>> .button");
 
-  //   expect(button).not.toBeNull();
+    expect(button).not.toBeNull();
 
-  //   button.click();
+    button.click();
 
-  //   await page.waitForChanges();
+    await page.waitForChanges();
 
-  //   //expect(eventSpy).toHaveReceivedEvent();
-  //   expect(bar.getProperty("expanded")).toBe(true);
-  // });
+    expect(eventSpy).toHaveReceivedEvent();
+    expect(bar).toHaveAttribute("expanded");
+  });
 });
