@@ -1,4 +1,4 @@
-:host .calcite-action__button {
+:host .button {
   display: flex;
   color: #fff;
   fill: #fff;
@@ -15,12 +15,12 @@
   transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
 }
 
-:host([active]) .calcite-action__button {
+:host([active]) .button {
   color: #69dcff;
   fill: #69dcff;
 }
 
-:host .calcite-action__icon-container {
+:host .icon-container {
   display: block;
   max-width: 16px;
   max-height: 16px;
@@ -28,7 +28,7 @@
   justify-content: center;
 }
 
-:host .calcite-action__text-container {
+:host .text-container {
   flex: 1;
   display: block;
   line-height: 16px;
