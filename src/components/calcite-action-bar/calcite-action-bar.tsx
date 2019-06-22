@@ -24,9 +24,9 @@ export class CalciteActionBar {
 
   @Prop({ reflect: true }) expanded = false;
 
-  @Prop() i18nExpand = "Expand";
+  @Prop({ attribute: "i18n-expand" }) i18nExpand = "Expand";
 
-  @Prop() i18nCollapse = "Collapse";
+  @Prop({ attribute: "i18n-collapse" }) i18nCollapse = "Collapse";
 
   // --------------------------------------------------------------------------
   //
