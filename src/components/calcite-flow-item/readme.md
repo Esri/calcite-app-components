@@ -7,9 +7,9 @@
 | Property         | Attribute          | Description | Type      | Default     |
 | ---------------- | ------------------ | ----------- | --------- | ----------- |
 | `heading`        | `heading`          |             | `string`  | `undefined` |
-| `i18nBack`       | `i-1-8n-back`      |             | `string`  | `"Back"`    |
-| `i18nClose`      | `i-1-8n-close`     |             | `string`  | `"Close"`   |
-| `i18nOpen`       | `i-1-8n-open`      |             | `string`  | `"Open"`    |
+| `i18nBack`       | `i18n-back`        |             | `string`  | `"Back"`    |
+| `i18nClose`      | `i18n-close`       |             | `string`  | `"Close"`   |
+| `i18nOpen`       | `i18n-open`        |             | `string`  | `"Open"`    |
 | `menuOpen`       | `menu-open`        |             | `boolean` | `false`     |
 | `showBackButton` | `show-back-button` |             | `boolean` | `false`     |
 

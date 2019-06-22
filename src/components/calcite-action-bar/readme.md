@@ -4,12 +4,12 @@
 
 ## Properties
 
-| Property       | Attribute         | Description | Type      | Default      |
-| -------------- | ----------------- | ----------- | --------- | ------------ |
-| `expand`       | `expand`          |             | `boolean` | `true`       |
-| `expanded`     | `expanded`        |             | `boolean` | `false`      |
-| `i18nCollapse` | `i-1-8n-collapse` |             | `string`  | `"Collapse"` |
-| `i18nExpand`   | `i-1-8n-expand`   |             | `string`  | `"Expand"`   |
+| Property       | Attribute       | Description | Type      | Default      |
+| -------------- | --------------- | ----------- | --------- | ------------ |
+| `expand`       | `expand`        |             | `boolean` | `true`       |
+| `expanded`     | `expanded`      |             | `boolean` | `false`      |
+| `i18nCollapse` | `i18n-collapse` |             | `string`  | `"Collapse"` |
+| `i18nExpand`   | `i18n-expand`   |             | `string`  | `"Expand"`   |
 
 ## Dependencies
 

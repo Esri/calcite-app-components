@@ -51,11 +51,11 @@ export class CalciteFlowItem {
 
   @Prop() heading: string;
 
-  @Prop() i18nBack = "Back";
+  @Prop({ attribute: "i18n-back" }) i18nBack = "Back";
 
-  @Prop() i18nOpen = "Open";
+  @Prop({ attribute: "i18n-open" }) i18nOpen = "Open";
 
-  @Prop() i18nClose = "Close";
+  @Prop({ attribute: "i18n-close" }) i18nClose = "Close";
 
   @Prop({ reflect: true }) menuOpen = false;
 
