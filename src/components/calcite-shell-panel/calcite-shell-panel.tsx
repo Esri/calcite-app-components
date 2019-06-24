@@ -21,19 +21,34 @@ export class CalciteShellPanel {
 
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   render() {
+    const contentNode = (
+      <div class={CSS.content}>
+        <slot />
+      </div>
+    );
+
+    const actionBarNode = <slot name="action-bar" />;
+
+    const mainNodes = [contentNode, actionBarNode];
+
+    if (this.primary) {
+      mainNodes.reverse();
+    }
+
+    const floatingNodes = [
+      <slot name="floating-panel" />,
+      <slot name="action-pad" />
+    ];
+
     return (
       <Host>
-        <slot name="action-bar" />
-        <div class={CSS.content}>
-          <slot />
-        </div>
-        <slot name="floating-panel" />
-        <slot name="action-pad" />
+        {mainNodes}
+        {floatingNodes}
       </Host>
     );
   }
