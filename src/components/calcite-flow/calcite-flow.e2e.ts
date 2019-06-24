@@ -9,17 +9,90 @@ describe("calcite-flow", () => {
     expect(element).toHaveClass("hydrated");
   });
 
-  it("has frame", async () => {
+  it("frame defaults", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow></calcite-flow>");
-    const element = await page.find("calcite-flow");
+    const element = await page.find("calcite-flow >>> .frame");
     expect(element).toHaveClass("frame");
+    expect(element).not.toHaveClass("frame--advancing");
+    expect(element).not.toHaveClass("frame--retreating");
   });
 
-  // it("frame advancing", async () => {});
+  it("back()", async () => {
+    const page = await newE2EPage();
 
-  // it("frame retreating", async () => {});
+    await page.setContent(
+      "<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>"
+    );
 
-  // it("back()", async () => {});
+    await page.waitForChanges();
+
+    const element = await page.find("calcite-flow");
+
+    element.callMethod("back");
+
+    await page.waitForChanges();
+
+    const element2 = await page.find("calcite-flow");
+
+    expect(element2.innerHTML).toEqual("");
+  });
+
+  it("frame advancing", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      "<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>"
+    );
+
+    const element = await page.find("calcite-flow");
+
+    element.innerHTML =
+      "<calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item>";
+
+    await page.waitForChanges();
+
+    const frame = await page.find("calcite-flow >>> .frame");
+
+    expect(frame).toHaveClass("frame--advancing");
+  });
+
+  it("frame retreating", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
+    );
+
+    const element = await page.find("calcite-flow");
+
+    element.callMethod("back");
+
+    await page.waitForChanges();
+
+    const frame2 = await page.find("calcite-flow >>> .frame");
+
+    expect(frame2).toHaveClass("frame--retreating");
+  });
+
+  it("flow-item properties", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
+    );
+
+    await page.waitForChanges();
+
+    const items = await page.findAll("calcite-flow calcite-flow-item");
+
+    expect(items).toHaveLength(3);
+
+    expect(items[0].getAttribute("hidden")).not.toBe(null);
+    expect(items[0].getProperty("showBackButton")).not.toBe(null);
+
+    expect(items[2].getAttribute("hidden")).toBe(null);
+    expect(items[2].getProperty("showBackButton")).not.toBe(null);
+  });
 });

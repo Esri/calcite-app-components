@@ -102,11 +102,17 @@ export class CalciteFlow {
 
     const newFlows = [...flows];
 
-    const removedElement = el.removeChild(newFlows[flowCount - 1]);
+    const child = newFlows[flowCount - 1];
 
-    newFlows.pop();
+    const removedElement = child
+      ? el.removeChild(newFlows[flowCount - 1])
+      : null;
 
-    this.flows = newFlows;
+    if (removedElement) {
+      newFlows.pop();
+
+      this.flows = newFlows;
+    }
 
     return removedElement;
   }
@@ -125,7 +131,7 @@ export class CalciteFlow {
         ? CSS.frameAdvancing
         : flowDirection === "retreating"
         ? CSS.frameRetreating
-        : null;
+        : "";
 
     return (
       <Host>
