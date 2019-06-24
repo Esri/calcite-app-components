@@ -3,11 +3,6 @@
   width: 350px;
   position: relative;
   display: flex;
-  flex-direction: row-reverse;
-}
-
-:host([primary]) {
-  flex-direction: row;
 }
 
 .content {
