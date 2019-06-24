@@ -1,9 +1,6 @@
 # calcite-action
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -15,27 +12,26 @@
 | `text`        | `text`         |             | `string`  | `undefined` |
 | `textEnabled` | `text-enabled` |             | `boolean` | `false`     |
 
-
 ## Events
 
 | Event                | Description | Type               |
 | -------------------- | ----------- | ------------------ |
 | `calciteActionClick` |             | `CustomEvent<any>` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [calcite-action-bar](../calcite-action-bar)
+- [calcite-action-bar](../calcite-action-bar)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
