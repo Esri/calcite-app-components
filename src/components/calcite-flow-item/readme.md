@@ -7,11 +7,11 @@
 | Property         | Attribute          | Description | Type      | Default     |
 | ---------------- | ------------------ | ----------- | --------- | ----------- |
 | `heading`        | `heading`          |             | `string`  | `undefined` |
-| `i18nBack`       | `i18n-back`        |             | `string`  | `"Back"`    |
-| `i18nClose`      | `i18n-close`       |             | `string`  | `"Close"`   |
-| `i18nOpen`       | `i18n-open`        |             | `string`  | `"Open"`    |
 | `menuOpen`       | `menu-open`        |             | `boolean` | `false`     |
 | `showBackButton` | `show-back-button` |             | `boolean` | `false`     |
+| `textBack`       | `text-back`        |             | `string`  | `"Back"`    |
+| `textClose`      | `text-close`       |             | `string`  | `"Close"`   |
+| `textOpen`       | `text-open`        |             | `string`  | `"Open"`    |
 
 ## Events
 
