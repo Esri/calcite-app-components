@@ -1,4 +1,13 @@
-import { Component, Element, Host, Prop, State, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  h
+} from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 
@@ -14,13 +23,56 @@ const CSS = {
   shadow: true
 })
 export class CalciteTip {
-  @Element() el: HTMLElement;
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
 
   @Prop() storageId: string;
   @Prop() dismissible = true;
 
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
   @State() dismissed =
     getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  connectedCallback() {
+    console.log("calciteTipRegister");
+    this.calciteTipRegister.emit(this.el);
+  }
+
+  disconnectedCallback() {
+    console.log("calciteTipUnregister");
+    this.calciteTipUnregister.emit(this.el);
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  @Event() calciteTipRegister: EventEmitter;
+  @Event() calciteTipUnregister: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
 
   hideTip() {
     this.dismissed = true;
@@ -31,6 +83,12 @@ export class CalciteTip {
       );
     }
   }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
 
   render() {
     return (
