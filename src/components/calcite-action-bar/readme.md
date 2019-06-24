@@ -11,7 +11,6 @@
 | `textCollapse` | `text-collapse` |             | `string`  | `"Collapse"` |
 | `textExpand`   | `text-expand`   |             | `string`  | `"Expand"`   |
 
-
 ## Dependencies
 
 ### Depends on
