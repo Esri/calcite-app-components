@@ -5,7 +5,9 @@ describe("calcite-flow", () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow></calcite-flow>");
+
     const element = await page.find("calcite-flow");
+
     expect(element).toHaveClass("hydrated");
   });
 
@@ -13,7 +15,9 @@ describe("calcite-flow", () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow></calcite-flow>");
+
     const element = await page.find("calcite-flow >>> .frame");
+
     expect(element).toHaveClass("frame");
     expect(element).not.toHaveClass("frame--advancing");
     expect(element).not.toHaveClass("frame--retreating");
@@ -26,19 +30,17 @@ describe("calcite-flow", () => {
       "<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>"
     );
 
-    await page.waitForChanges();
-
     const element = await page.find("calcite-flow");
 
-    const methodValue = await element.callMethod("back");
+    const methodValue = await element
+      .callMethod("back")
+      .catch(() => console.log);
 
     expect(methodValue).not.toBeNull();
 
     await page.waitForChanges();
 
-    const element2 = await page.find("calcite-flow");
-
-    expect(element2.innerHTML).toEqual("");
+    expect(element.innerHTML).toEqual("");
   });
 
   it("frame advancing", async () => {
@@ -67,19 +69,19 @@ describe("calcite-flow", () => {
       "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
     );
 
-    await page.waitForChanges();
-
     const element = await page.find("calcite-flow");
 
-    const methodValue = await element.callMethod("back");
+    const methodValue = await element
+      .callMethod("back")
+      .catch(() => console.log);
 
     expect(methodValue).not.toBeNull();
 
     await page.waitForChanges();
 
-    const frame2 = await page.find("calcite-flow >>> .frame");
+    const frame = await page.find("calcite-flow >>> .frame");
 
-    expect(frame2).toHaveClass("frame--retreating");
+    expect(frame).toHaveClass("frame--retreating");
   });
 
   it("flow-item properties", async () => {
@@ -88,8 +90,6 @@ describe("calcite-flow", () => {
     await page.setContent(
       "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
     );
-
-    await page.waitForChanges();
 
     const items = await page.findAll("calcite-flow calcite-flow-item");
 

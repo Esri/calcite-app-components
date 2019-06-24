@@ -9,6 +9,37 @@ describe("calcite-flow-item", () => {
     expect(element).toHaveClass("hydrated");
   });
 
+  it("no menu actions", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-flow-item></calcite-flow-item>");
+
+    const menuContainer = await page.find(
+      "calcite-flow-item >>> .menu-container"
+    );
+
+    const singleActionContainer = await page.find(
+      "calcite-flow-item >>> .single-action-container"
+    );
+
+    expect(menuContainer).toBeNull();
+    expect(singleActionContainer).toBeNull();
+  });
+
+  it("single menu action", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>'
+    );
+
+    const singleActionContainer = await page.find(
+      "calcite-flow-item >>> .single-action-container"
+    );
+
+    expect(singleActionContainer).not.toBeNull();
+  });
+
   it("heading", async () => {
     const page = await newE2EPage();
 
@@ -62,12 +93,30 @@ describe("calcite-flow-item", () => {
   });
 });
 
-// showBackButton
-// no menu actions
-// single menuaction
-// no footer actions
-// footer action
+it("back button / showBackButton", async () => {
+  const page = await newE2EPage();
 
-// calciteFlowItemRegister
-// calciteFlowItemUnregister
-// calciteFlowItemBackClick
+  await page.setContent("<calcite-flow-item></calcite-flow-item>");
+
+  const element = await page.find("calcite-flow-item");
+
+  const showBackButton = await element.getProperty("showBackButton");
+
+  expect(showBackButton).toBe(false);
+
+  element.setProperty("showBackButton", true);
+
+  await page.waitForChanges();
+
+  const backButton = await page.find("calcite-flow-item >>> .back-button");
+
+  expect(backButton).not.toBeNull();
+
+  const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
+
+  backButton.click();
+
+  await page.waitForChanges();
+
+  expect(eventSpy).toHaveReceivedEvent();
+});
