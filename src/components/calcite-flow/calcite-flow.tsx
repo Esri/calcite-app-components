@@ -110,9 +110,9 @@ export class CalciteFlow {
 
     if (removedElement) {
       newFlows.pop();
-
-      this.flows = newFlows;
     }
+
+    this.flows = newFlows;
 
     return removedElement;
   }

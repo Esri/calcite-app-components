@@ -30,7 +30,9 @@ describe("calcite-flow", () => {
 
     const element = await page.find("calcite-flow");
 
-    element.callMethod("back");
+    const methodValue = await element.callMethod("back");
+
+    expect(methodValue).not.toBeNull();
 
     await page.waitForChanges();
 
@@ -65,9 +67,13 @@ describe("calcite-flow", () => {
       "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
     );
 
+    await page.waitForChanges();
+
     const element = await page.find("calcite-flow");
 
-    element.callMethod("back");
+    const methodValue = await element.callMethod("back");
+
+    expect(methodValue).not.toBeNull();
 
     await page.waitForChanges();
 
@@ -89,10 +95,13 @@ describe("calcite-flow", () => {
 
     expect(items).toHaveLength(3);
 
+    const showBackButton0 = await items[0].getProperty("showBackButton");
+    const showBackButton2 = await items[2].getProperty("showBackButton");
+
     expect(items[0].getAttribute("hidden")).not.toBe(null);
-    expect(items[0].getProperty("showBackButton")).not.toBe(null);
+    expect(showBackButton0).not.toBe(null);
 
     expect(items[2].getAttribute("hidden")).toBe(null);
-    expect(items[2].getProperty("showBackButton")).not.toBe(null);
+    expect(showBackButton2).not.toBe(null);
   });
 });
