@@ -24,9 +24,9 @@ export class CalciteActionBar {
 
   @Prop({ reflect: true }) expanded = false;
 
-  @Prop({ attribute: "i18n-expand" }) i18nExpand = "Expand";
+  @Prop() textExpand = "Expand";
 
-  @Prop({ attribute: "i18n-collapse" }) i18nCollapse = "Collapse";
+  @Prop() textCollapse = "Collapse";
 
   // --------------------------------------------------------------------------
   //
@@ -43,13 +43,13 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderExpandToggle() {
-    const { expanded, expand, i18nExpand, i18nCollapse, el } = this;
+    const { expanded, expand, textExpand, textCollapse, el } = this;
 
     const rtl = getElementDir(el) === "rtl";
     const closestPanel = el.closest("calcite-shell-panel");
     const primary = closestPanel && closestPanel.hasAttribute("primary");
 
-    const expandText = expanded ? i18nCollapse : i18nExpand;
+    const expandText = expanded ? textCollapse : textExpand;
 
     const expandIcon = primary ? chevronLeft16F : chevronRight16F;
     const collapseIcon = primary ? chevronRight16F : chevronLeft16F;
