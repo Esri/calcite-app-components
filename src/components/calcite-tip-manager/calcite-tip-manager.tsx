@@ -1,4 +1,4 @@
-import { Component, Element, Host, State, Watch, h } from "@stencil/core";
+import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import { DEFAULT_GROUP_TITLE } from "./resources";
 
@@ -13,6 +13,8 @@ export class CalciteTipManager {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
 
   // --------------------------------------------------------------------------
   //
@@ -31,7 +33,7 @@ export class CalciteTipManager {
     this.updateSelectedTip();
   }
 
-  groupTitle = DEFAULT_GROUP_TITLE;
+  groupTitle = this.textDefaultTitle;
 
   total = 0;
 
@@ -48,6 +50,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   constructor() {
+    console.log("constructor");
     this.tips = this.el.querySelectorAll("calcite-tip");
     this.total = this.el.querySelectorAll("calcite-tip").length;
     this.tips.forEach((item, index) => {
@@ -111,7 +114,7 @@ export class CalciteTipManager {
       if (index === this.selectedIndex) {
         this.groupTitle = tip.dataset.groupTitle
           ? tip.dataset.groupTitle
-          : this.defaultTitle;
+          : this.textDefaultTitle;
         tip.setAttribute("selected", "true");
       } else {
         tip.removeAttribute("selected");
