@@ -8,8 +8,8 @@
 | -------------- | --------------- | ----------- | --------- | ------------ |
 | `expand`       | `expand`        |             | `boolean` | `true`       |
 | `expanded`     | `expanded`      |             | `boolean` | `false`      |
-| `i18nCollapse` | `i18n-collapse` |             | `string`  | `"Collapse"` |
-| `i18nExpand`   | `i18n-expand`   |             | `string`  | `"Expand"`   |
+| `textCollapse` | `text-collapse` |             | `string`  | `"Collapse"` |
+| `textExpand`   | `text-expand`   |             | `string`  | `"Expand"`   |
 
 ## Dependencies
 
