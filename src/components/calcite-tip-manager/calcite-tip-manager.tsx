@@ -1,5 +1,7 @@
 import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
+import { isEqual } from "lodash-es";
+// import 'core-js/features/array/from';
 import { DEFAULT_GROUP_TITLE } from "./resources";
 
 @Component({
@@ -28,16 +30,15 @@ export class CalciteTipManager {
 
   @Watch("selectedIndex")
   selectedChangeHandler() {
-    console.log("selectedChangeHandler");
     this.triggerAnimation();
     this.updateSelectedTip();
   }
 
+  @State() tips;
+
   groupTitle = this.textDefaultTitle;
 
-  total = 0;
-
-  tips = null;
+  total: number;
 
   tipContainer = null;
 
@@ -50,9 +51,8 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   constructor() {
-    console.log("constructor");
-    this.tips = this.el.querySelectorAll("calcite-tip");
-    this.total = this.el.querySelectorAll("calcite-tip").length;
+    this.tips = Array.from(this.el.querySelectorAll("calcite-tip"));
+    this.total = this.tips.length;
     this.tips.forEach((item, index) => {
       item.setAttribute("dismissible", "false");
       if (item.hasAttribute("selected")) {
@@ -63,15 +63,18 @@ export class CalciteTipManager {
   }
 
   connectedCallback() {
-    console.log("connectedCallback");
     this.updateSelectedTip();
   }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
+  componentDidLoad() {
+    this.el.shadowRoot.querySelector("slot").addEventListener("slotchange", (event) => {
+      // @ts-ignore event.target is a slot and assignedElements is a valid method on a slot element
+      const newShadowDom = event.target.assignedElements();
+      if (!isEqual(this.tips, newShadowDom)) {
+        this.tips = newShadowDom;
+        this.total = this.tips.length;
+      }
+    });
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -109,12 +112,9 @@ export class CalciteTipManager {
   }
 
   updateSelectedTip() {
-    console.log("updateSelectedTip");
     this.tips.forEach((tip, index) => {
       if (index === this.selectedIndex) {
-        this.groupTitle = tip.dataset.groupTitle
-          ? tip.dataset.groupTitle
-          : this.textDefaultTitle;
+        this.groupTitle = tip.dataset.groupTitle ? tip.dataset.groupTitle : this.textDefaultTitle;
         tip.setAttribute("selected", "true");
       } else {
         tip.removeAttribute("selected");
@@ -136,20 +136,13 @@ export class CalciteTipManager {
           <h2 class="title" data-test-id="title">
             {this.groupTitle}
           </h2>
-          <div
-            class="close"
-            onClick={() => this.hideTipManager()}
-            data-test-id="close"
-          >
+          <div class="close" onClick={() => this.hideTipManager()} data-test-id="close">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
           </div>
         </header>
-        <div
-          class="tipContainer"
-          ref={el => (this.tipContainer = el as HTMLElement)}
-        >
+        <div class="tipContainer" ref={(el) => (this.tipContainer = el as HTMLElement)}>
           <slot />
         </div>
         <footer class="pagination">
@@ -164,9 +157,7 @@ export class CalciteTipManager {
               <path d={chevronLeft24} />
             </svg>
           </button>
-          <span class="pagePosition">{`Tip ${this.selectedIndex + 1}/${
-            this.total
-          }`}</span>
+          <span class="pagePosition">{`Tip ${this.selectedIndex + 1}/${this.total}`}</span>
           <button
             class="pageControl pageControl--right"
             onClick={() => {
