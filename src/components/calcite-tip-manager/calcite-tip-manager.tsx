@@ -129,7 +129,6 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   render() {
-    console.log("render");
     return (
       <Host>
         <header class="header">
