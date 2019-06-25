@@ -148,9 +148,7 @@ export class CalciteTipManager {
         <footer class="pagination">
           <button
             class="pageControl pageControl--left"
-            onClick={() => {
-              this.previousTip();
-            }}
+            onClick={() => this.previousTip()}
             data-test-id="previous"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -160,9 +158,7 @@ export class CalciteTipManager {
           <span class="pagePosition">{`Tip ${this.selectedIndex + 1}/${this.total}`}</span>
           <button
             class="pageControl pageControl--right"
-            onClick={() => {
-              this.nextTip();
-            }}
+            onClick={() => this.nextTip()}
             data-test-id="next"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
