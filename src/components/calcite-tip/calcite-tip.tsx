@@ -1,13 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Prop,
-  State,
-  h
-} from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 
@@ -40,8 +31,7 @@ export class CalciteTip {
 
   @Element() el: HTMLElement;
 
-  @State() dismissed =
-    getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
+  @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
   // --------------------------------------------------------------------------
   //
@@ -49,11 +39,11 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
+  componentDidLoad() {
     this.calciteTipRegister.emit(this.el);
   }
 
-  disconnectedCallback() {
+  componentDidUnload() {
     this.calciteTipUnregister.emit(this.el);
   }
 
@@ -75,10 +65,7 @@ export class CalciteTip {
   hideTip() {
     this.dismissed = true;
     if (this.storageId) {
-      setItem(
-        `${this.el.tagName.toLowerCase()}-${this.storageId}`,
-        "dismissed"
-      );
+      setItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`, "dismissed");
     }
   }
 
