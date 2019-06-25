@@ -50,12 +50,10 @@ export class CalciteTip {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    console.log("calciteTipRegister");
     this.calciteTipRegister.emit(this.el);
   }
 
   disconnectedCallback() {
-    console.log("calciteTipUnregister");
     this.calciteTipUnregister.emit(this.el);
   }
 
