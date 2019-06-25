@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "stencil build",
-    "lint": "prettier --write \"src/**/*.ts?(x)\"",
+    "docs": "stencil build --config stencil.docs.config.ts",
     "prerelease:prepare": "npm run build",
     "release:prepare": "npm version prerelease --preid=alpha --no-git-tag-version",
     "release:publish": "./support/release.sh",

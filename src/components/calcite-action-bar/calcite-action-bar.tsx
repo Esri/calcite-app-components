@@ -24,10 +24,9 @@ export class CalciteActionBar {
 
   @Prop({ reflect: true }) expanded = false;
 
-  @Prop() labels = {
-    expand: "Expand",
-    collapse: "Collapse"
-  };
+  @Prop() textExpand = "Expand";
+
+  @Prop() textCollapse = "Collapse";
 
   // --------------------------------------------------------------------------
   //
@@ -44,11 +43,11 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderExpandToggle() {
-    const { expanded, expand, labels, el } = this;
+    const { expanded, expand, textExpand, textCollapse, el } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
-    const expandText = expanded ? labels.collapse : labels.expand;
+    const expandText = expanded ? textCollapse : textExpand;
 
     const expandIcon = rtl ? chevronRight16F : chevronLeft16F;
     const collapseIcon = rtl ? chevronLeft16F : chevronRight16F;
@@ -59,12 +58,7 @@ export class CalciteActionBar {
         textEnabled={expanded}
         text={expandText}
       >
-        <svg
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-        >
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path d={expanded ? expandIcon : collapseIcon} />
         </svg>
       </calcite-action>
@@ -74,8 +68,7 @@ export class CalciteActionBar {
   renderBottomActionGroup() {
     const expandToggleNode = this.renderExpandToggle();
 
-    return this.el.querySelector("[slot=bottom-actions]") ||
-      expandToggleNode ? (
+    return this.el.querySelector("[slot=bottom-actions]") || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
         <slot name="bottom-actions" />
         {expandToggleNode}
@@ -102,10 +95,8 @@ export class CalciteActionBar {
   watchHandler(newValue: boolean) {
     this.el
       .querySelectorAll("calcite-action")
-      .forEach(action =>
-        newValue
-          ? action.toggleAttribute("text-enabled")
-          : action.removeAttribute("text-enabled")
+      .forEach((action) =>
+        newValue ? action.toggleAttribute("text-enabled") : action.removeAttribute("text-enabled")
       );
   }
 
