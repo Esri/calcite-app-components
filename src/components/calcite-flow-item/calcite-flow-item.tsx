@@ -1,12 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Prop,
-  h
-} from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
 import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
 
@@ -31,20 +23,6 @@ const CSS = {
 export class CalciteFlowItem {
   // --------------------------------------------------------------------------
   //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.calciteFlowItemRegister.emit(this.el);
-  }
-
-  disconnectedCallback() {
-    this.calciteFlowItemUnregister.emit(this.el);
-  }
-
-  // --------------------------------------------------------------------------
-  //
   //  Properties
   //
   // --------------------------------------------------------------------------
@@ -66,10 +44,6 @@ export class CalciteFlowItem {
   //  Events
   //
   // --------------------------------------------------------------------------
-
-  @Event() calciteFlowItemRegister: EventEmitter;
-
-  @Event() calciteFlowItemUnregister: EventEmitter;
 
   @Event() calciteFlowItemBackClick: EventEmitter;
 
@@ -98,12 +72,7 @@ export class CalciteFlowItem {
         title={textBack}
         onClick={this.backButtonClick.bind(this)}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="16"
-          width="16"
-          viewBox="0 0 16 16"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={chevronLeft16F} />
         </svg>
       </button>
@@ -123,12 +92,7 @@ export class CalciteFlowItem {
         title={menuLabel}
         onClick={this.toggleMenuOpen.bind(this)}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="16"
-          width="16"
-          viewBox="0 0 16 16"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={ellipsis16F} />
         </svg>
       </button>

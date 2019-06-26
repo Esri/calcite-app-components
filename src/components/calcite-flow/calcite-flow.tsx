@@ -1,13 +1,4 @@
-import {
-  Component,
-  Element,
-  Host,
-  Listen,
-  Method,
-  State,
-  Watch,
-  h
-} from "@stencil/core";
+import { Component, Element, Host, Method, State, h } from "@stencil/core";
 
 import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
 
@@ -27,28 +18,6 @@ const CSS = {
 export class CalciteFlow {
   // --------------------------------------------------------------------------
   //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Listen("calciteFlowItemRegister")
-  registerHandler(event: CustomEvent<HTMLCalciteFlowItemElement>) {
-    const nodes = nodeListToArray(
-      this.el.querySelectorAll("calcite-flow-item")
-    );
-    const index = nodes.indexOf(event.detail);
-    const flows = [...this.flows];
-    flows[index] = event.detail;
-    this.flows = flows;
-  }
-
-  @Listen("calciteFlowItemUnregister")
-  unregisterHandler(event: CustomEvent<HTMLCalciteFlowItemElement>) {
-    this.flows = this.flows.filter(flow => flow !== event.detail);
-  }
-
-  // --------------------------------------------------------------------------
-  //
   //  Private Properties
   //
   // --------------------------------------------------------------------------
@@ -61,33 +30,20 @@ export class CalciteFlow {
 
   @State() flows: HTMLCalciteFlowItemElement[] = [];
 
-  @Watch("flows")
-  flowsWatchHandler(
-    newValue: HTMLCalciteFlowItemElement[],
-    oldValue: HTMLCalciteFlowItemElement[]
-  ) {
-    const flowCount = newValue.length;
-    const oldFlowCount = oldValue.length;
-    const hasMultipleFlows = flowCount > 1;
-    const hadMultipleFlows = oldFlowCount > 1;
-    const activeFlow = newValue[flowCount - 1];
+  observer = new MutationObserver(this.flowItemObserver.bind(this));
 
-    const flowDirection =
-      hasMultipleFlows || hadMultipleFlows
-        ? flowCount < oldFlowCount
-          ? "retreating"
-          : "advancing"
-        : null;
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
 
-    if (flowCount && activeFlow) {
-      newValue.forEach(flowNode => {
-        flowNode.showBackButton = hasMultipleFlows;
-        flowNode.hidden = flowNode !== activeFlow;
-      });
-    }
+  componentDidLoad() {
+    this.observer.observe(this.el, { childList: true });
+  }
 
-    this.flowCount = flowCount;
-    this.flowDirection = flowDirection;
+  componentDidUnload() {
+    this.observer.disconnect();
   }
 
   // --------------------------------------------------------------------------
@@ -97,24 +53,49 @@ export class CalciteFlow {
   // --------------------------------------------------------------------------
 
   @Method()
-  async back(): Promise<HTMLCalciteFlowItemElement> {
-    const { el, flows, flowCount } = this;
+  async back(): Promise<void> {
+    const lastItem = this.el.querySelector("calcite-flow-item:last-child");
 
-    const newFlows = [...flows];
+    lastItem && lastItem.remove();
+  }
 
-    const child = newFlows[flowCount - 1];
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
 
-    const removedElement = child
-      ? el.removeChild(newFlows[flowCount - 1])
-      : null;
+  flowItemObserver() {
+    const { flows } = this;
 
-    if (removedElement) {
-      newFlows.pop();
+    const newFlows: HTMLCalciteFlowItemElement[] = nodeListToArray(
+      this.el.querySelectorAll("calcite-flow-item")
+    );
+
+    const oldFlowCount = flows.length;
+    const hadMultipleFlows = oldFlowCount > 1;
+    const newFlowCount = newFlows.length;
+    const hasMultipleFlows = newFlowCount > 1;
+
+    const flowDirection =
+      hasMultipleFlows || hadMultipleFlows
+        ? newFlowCount < oldFlowCount
+          ? "retreating"
+          : "advancing"
+        : null;
+
+    const activeFlow = newFlows[newFlowCount - 1];
+
+    if (newFlowCount && activeFlow) {
+      newFlows.forEach((flowNode) => {
+        flowNode.showBackButton = hasMultipleFlows;
+        flowNode.hidden = flowNode !== activeFlow;
+      });
     }
 
+    this.flowDirection = flowDirection;
+    this.flowCount = newFlowCount;
     this.flows = newFlows;
-
-    return removedElement;
   }
 
   // --------------------------------------------------------------------------
