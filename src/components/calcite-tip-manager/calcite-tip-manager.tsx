@@ -147,7 +147,10 @@ export class CalciteTipManager {
       { "is-animating": this.direction },
       this.direction
     );
-
+    if (this.total === 0) {
+      // TODO: Empty state
+      return <Host />;
+    }
     return (
       <Host>
         <header class={CSS.header}>
