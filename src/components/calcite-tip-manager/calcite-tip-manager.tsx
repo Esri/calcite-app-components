@@ -42,7 +42,7 @@ export class CalciteTipManager {
 
   tipContainer = null;
 
-  direction: "forward" | "backward" = "forward";
+  direction: "advancing" | "retreating" = "advancing";
 
   // --------------------------------------------------------------------------
   //
@@ -90,14 +90,14 @@ export class CalciteTipManager {
     this.el.toggleAttribute("aria-hidden");
   }
   nextTip() {
-    this.direction = "forward";
+    this.direction = "advancing";
     this.selectedIndex++;
     if (this.selectedIndex > this.total - 1) {
       this.selectedIndex = 0;
     }
   }
   previousTip() {
-    this.direction = "backward";
+    this.direction = "retreating";
     this.selectedIndex--;
     if (this.selectedIndex < 0) {
       this.selectedIndex = this.total - 1;
@@ -108,7 +108,7 @@ export class CalciteTipManager {
     if (!this.tipContainer) {
       return;
     }
-    this.tipContainer.classList.remove("is-animating", "forward", "backward");
+    this.tipContainer.classList.remove("is-animating", "advancing", "retreating");
     // tslint:disable-next-line
     void this.tipContainer.offsetWidth; // hack for restarting animation. https://css-tricks.com/restart-css-animation/
     this.tipContainer.classList.add("is-animating", this.direction);

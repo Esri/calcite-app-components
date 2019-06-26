@@ -1,6 +1,5 @@
-
 /* Variables, mixins, @keyframes*/
-@import '../../assets/styles/mixins';
+@import "../../assets/styles/mixins";
 
 $gutter-size: 24px 12px;
 $animation-time: 250ms;
@@ -48,10 +47,10 @@ $tip-manager-close-size: 24px;
   animation-duration: $animation-time;
   animation-timing-function: ease-in-out;
 }
-.tipContainer.is-animating.forward {
+.tipContainer.is-animating.advancing {
   animation-name: tip-advance;
 }
-.tipContainer.is-animating.backward {
+.tipContainer.is-animating.retreating {
   animation-name: tip-retreat;
 }
 
@@ -60,12 +59,10 @@ $tip-manager-close-size: 24px;
   display: none;
   background-color: transparent;
   box-shadow: none;
-
 }
 ::slotted(calcite-tip[selected]) {
   display: block;
 }
-
 
 /* Pagination Styles*/
 .pagination {
