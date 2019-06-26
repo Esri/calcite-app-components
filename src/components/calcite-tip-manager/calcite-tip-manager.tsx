@@ -1,7 +1,7 @@
 import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import { isEqual } from "lodash-es";
-// import 'core-js/features/array/from';
+import classnames from "classnames";
 import { DEFAULT_GROUP_TITLE } from "./resources";
 
 const CSS = {
@@ -41,7 +41,6 @@ export class CalciteTipManager {
 
   @Watch("selectedIndex")
   selectedChangeHandler() {
-    this.triggerAnimation();
     this.updateSelectedTip();
   }
 
@@ -49,7 +48,7 @@ export class CalciteTipManager {
 
   @State() total: number;
 
-  direction: "advancing" | "retreating" = "advancing";
+  @State() direction: "advancing" | "retreating";
 
   groupTitle = this.textDefaultTitle;
 
@@ -125,16 +124,6 @@ export class CalciteTipManager {
     this.selectedIndex = (previousIndex + this.total) % this.total;
   }
 
-  triggerAnimation() {
-    if (!this.tipContainer) {
-      return;
-    }
-    this.tipContainer.classList.remove("is-animating", "advancing", "retreating");
-    // tslint:disable-next-line
-    void this.tipContainer.offsetWidth; // hack for restarting animation. https://css-tricks.com/restart-css-animation/
-    this.tipContainer.classList.add("is-animating", this.direction);
-  }
-
   updateSelectedTip() {
     this.tips.forEach((tip, index) => {
       if (index === this.selectedIndex) {
@@ -153,6 +142,12 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   render() {
+    const tipContainerClasses = classnames(
+      CSS.tipContainer,
+      { "is-animating": this.direction },
+      this.direction
+    );
+
     return (
       <Host>
         <header class={CSS.header}>
@@ -165,7 +160,7 @@ export class CalciteTipManager {
             </svg>
           </div>
         </header>
-        <div class={CSS.tipContainer} ref={(el) => (this.tipContainer = el as HTMLElement)}>
+        <div class={tipContainerClasses} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>
