@@ -1,7 +1,7 @@
 :host .button {
   display: flex;
-  color: var(--calcite-app-foreground__interactive);
-  fill: var(--calcite-app-foreground__interactive);
+  color: var(--calcite-app-foreground);
+  fill: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
   border-radius: var(--calcite-app-border-radius);
   padding: var(--calcite-app-cap-spacing--three-quarters) var(--calcite-app-side-spacing--three-quarters);
@@ -15,24 +15,29 @@
   font-size: var(--font-size--1);
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
+  // @include fade-in();
 }
 
-:host([active]) .calcite-action__button,
-:host .calcite-action__button:hover {
-  background-color: var(--calcite-app-background--highlight);
+:host .button:hover {
+  background-color: var(--calcite-app-background--hover);
+  color: var(--calcite-app-foreground--hover);
+  fill: var(--calcite-app-foreground--hover);
 }
 
-
-:host([active]) .button {
-  color: var(--calcite-app-foreground__interactive--highlight);
-  fill: var(--calcite-app-foreground__interactive--highlight);
+:host([active]) .button,
+:host([active]) .button:hover {
+  color: var(--calcite-app-foreground--active);
+  fill: var(--calcite-app-foreground--active);
+  background-color: var(--calcite-app-background--active);
 }
 
-:host .icon-container {
+:host .button .icon-container {
   max-width: var(--calcite-app-icon-size);
   max-height: var(--calcite-app-icon-size);
   margin: 0;
   justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 :host .text-container {

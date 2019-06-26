@@ -1,38 +1,55 @@
-
 :host {
+  //-----------------------------
   // Background
   --calcite-app-background: #{$white};
-  --calcite-app-background__content: #{$lightest-gray};
+  // --calcite-app-background-content: #{$lightest-gray};
 
-  // :hover :active :current
-  --calcite-app-background--highlight: #{$lightest-blue};
+  // :hover
+  --calcite-app-background--hover: #{$lighter-gray};
 
+  // :active :focus active
+  --calcite-app-background--active: #{$lightest-blue};
+
+  //-----------------------------
   // Foreground
   --calcite-app-foreground: #{$darker-gray};
-  --calcite-app-foreground__interactive: #{$darker-gray};
+  --calcite-app-foreground-content: #{$darkest-gray};
 
-  // Foreground :states
-  --calcite-app-foreground__interactive--highlight: #{$dark-blue};
+  // :hover
+  --calcite-app-foreground--active: #{$darkest-gray};
 
+  // :active :focus active
+  --calcite-app-foreground--active: #{$dark-blue};
+
+  //-----------------------------
   // Borders
-  --calcite-app-border: #{rgba($darker-gray, 0.25)};
+  --calcite-app-border: #{$lighter-gray};
 }
 
 :host([theme="dark"]) {
+  //-----------------------------
   // Background
   --calcite-app-background: #{$darker-gray};
   --calcite-app-background-content: #{$darkest-gray};
 
-  // Background :hover :active :current
-  --calcite-app-background--highlight: #{$darkest-gray};
+  // :hover
+  --calcite-app-background--hover: #{$darkest-gray};
 
+  // :active :focus active
+  --calcite-app-background--active: #{$darkest-gray};
+
+  //-----------------------------
   // Foreground
-  --calcite-app-foreground: #{$lightest-gray};
-  --calcite-app-foreground__interactive: #{$lighter-gray};
+  --calcite-app-foreground: #{$light-gray};
+  // --calcite-app-foreground-content: #{$off-white};
 
-  // Foreground  :hover :active :current
-  --calcite-app-foreground__interactive--highlight: #{$v-bb-120}; // Vibrant Blue
+  // :hover
+  --calcite-app-foreground--hover: #{$lightest-gray};
 
+  // :active :focus active
+  --calcite-app-foreground--active: #{$v-bb-120}; // Vibrant Blue
+
+  //-----------------------------
   // Borders
-  --calcite-app-border: #{rgba($lightest-gray, 0.25)};
+  --calcite-app-border: #{$lighter-gray};
 }
