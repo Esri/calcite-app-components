@@ -68,11 +68,7 @@ export class CalciteTipManager {
   componentDidLoad() {
     this.el.shadowRoot.querySelector("slot").addEventListener("slotchange", (event) => {
       // @ts-ignore event.target is a slot and assignedElements is a valid method on a slot element
-      const newShadowDom = event.target.assignedElements();
-      if (!isEqual(this.tips, newShadowDom)) {
-        this.tips = newShadowDom;
-        this.total = this.tips.length;
-      }
+      this.updateTipState(event.target.assignedElements());
     });
   }
 
@@ -81,6 +77,13 @@ export class CalciteTipManager {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+
+  updateTipState(newTipList) {
+    if (!isEqual(this.tips, newTipList)) {
+      this.tips = newTipList;
+      this.total = this.tips.length;
+    }
+  }
 
   hideTipManager() {
     this.el.toggleAttribute("hidden");
