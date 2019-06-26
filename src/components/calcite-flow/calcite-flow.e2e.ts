@@ -26,17 +26,11 @@ describe("calcite-flow", () => {
   it("back()", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(
-      "<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>"
-    );
+    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
     const element = await page.find("calcite-flow");
 
-    const methodValue = await element
-      .callMethod("back")
-      .catch(() => console.log);
-
-    expect(methodValue).not.toBeNull();
+    await element.callMethod("back");
 
     await page.waitForChanges();
 
@@ -46,14 +40,11 @@ describe("calcite-flow", () => {
   it("frame advancing", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(
-      "<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>"
-    );
+    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
     const element = await page.find("calcite-flow");
 
-    element.innerHTML =
-      "<calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item>";
+    element.innerHTML = "<calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item>";
 
     await page.waitForChanges();
 
@@ -71,15 +62,13 @@ describe("calcite-flow", () => {
 
     const element = await page.find("calcite-flow");
 
-    const methodValue = await element
-      .callMethod("back")
-      .catch(() => console.log);
-
-    expect(methodValue).not.toBeNull();
+    await element.callMethod("back");
 
     await page.waitForChanges();
 
     const frame = await page.find("calcite-flow >>> .frame");
+
+    await page.waitFor(1000);
 
     expect(frame).toHaveClass("frame--retreating");
   });

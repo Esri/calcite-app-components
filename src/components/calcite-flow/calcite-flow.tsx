@@ -73,8 +73,9 @@ export class CalciteFlow {
     );
 
     const oldFlowCount = flows.length;
-    const hadMultipleFlows = oldFlowCount > 1;
     const newFlowCount = newFlows.length;
+
+    const hadMultipleFlows = oldFlowCount > 1;
     const hasMultipleFlows = newFlowCount > 1;
 
     const flowDirection =
@@ -93,9 +94,9 @@ export class CalciteFlow {
       });
     }
 
-    this.flowDirection = flowDirection;
-    this.flowCount = newFlowCount;
     this.flows = newFlows;
+    this.flowCount = newFlowCount;
+    this.flowDirection = flowDirection;
   }
 
   // --------------------------------------------------------------------------
