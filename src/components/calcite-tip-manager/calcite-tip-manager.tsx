@@ -128,7 +128,7 @@ export class CalciteTipManager {
     this.tips.forEach((tip, index) => {
       if (index === this.selectedIndex) {
         this.groupTitle = tip.dataset.groupTitle || this.textDefaultTitle;
-        tip.setAttribute("selected", "true");
+        tip.toggleAttribute("selected", true);
       } else {
         tip.removeAttribute("selected");
       }
