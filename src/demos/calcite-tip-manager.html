@@ -41,5 +41,23 @@
         </calcite-tip>
       </calcite-tip-manager>
     </section>
+    <section id="actions">
+      <button id="add">Add a new Tip</button>
+      <button id="remove">Remove Last Tip</button>
+    </section>
+    <script>
+      let count = 0;
+      document.getElementById("add").addEventListener("click", () => {
+        const mgr = document.querySelector("calcite-tip-manager");
+        let newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
+        newTip.querySelector('[slot="heading"]').innerText = `new Tip ${++count}`;
+        mgr.appendChild(newTip);
+      });
+      document.getElementById("remove").addEventListener("click", () => {
+        const mgr = document.querySelector("calcite-tip-manager");
+        lastTip = mgr.querySelector("calcite-tip:last-child");
+        mgr.removeChild(lastTip);
+      });
+    </script>
   </body>
 </html>
