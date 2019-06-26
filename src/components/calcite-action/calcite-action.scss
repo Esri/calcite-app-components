@@ -1,4 +1,4 @@
-:host .calcite-action__button {
+:host .button {
   display: flex;
   color: var(--calcite-app-foreground__interactive);
   fill: var(--calcite-app-foreground__interactive);
@@ -22,19 +22,20 @@
   background-color: var(--calcite-app-background--highlight);
 }
 
-:host([active]) .calcite-action__button {
+
+:host([active]) .button {
   color: var(--calcite-app-foreground__interactive--highlight);
   fill: var(--calcite-app-foreground__interactive--highlight);
 }
 
-:host .calcite-action__icon-container {
+:host .icon-container {
   max-width: var(--calcite-app-icon-size);
   max-height: var(--calcite-app-icon-size);
   margin: 0;
   justify-content: center;
 }
 
-:host .calcite-action__text-container {
+:host .text-container {
   flex: 1;
   line-height: 1rem;
   margin: 0 var(--calcite-app-side-spacing--half);
