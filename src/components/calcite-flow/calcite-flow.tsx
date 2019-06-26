@@ -30,7 +30,7 @@ export class CalciteFlow {
 
   @State() flows: HTMLCalciteFlowItemElement[] = [];
 
-  observer = new MutationObserver(this.flowItemObserver.bind(this));
+  flowItemObserver = new MutationObserver(this.flowItemObserverCallback.bind(this));
 
   // --------------------------------------------------------------------------
   //
@@ -39,11 +39,11 @@ export class CalciteFlow {
   // --------------------------------------------------------------------------
 
   componentDidLoad() {
-    this.observer.observe(this.el, { childList: true });
+    this.flowItemObserver.observe(this.el, { childList: true });
   }
 
   componentDidUnload() {
-    this.observer.disconnect();
+    this.flowItemObserver.disconnect();
   }
 
   // --------------------------------------------------------------------------
@@ -65,7 +65,7 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  flowItemObserver() {
+  flowItemObserverCallback(): void {
     const { flows } = this;
 
     const newFlows: HTMLCalciteFlowItemElement[] = nodeListToArray(

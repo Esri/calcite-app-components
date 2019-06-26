@@ -2,20 +2,14 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Methods
 
-### `back() => Promise<any>`
-
-
+### `back() => Promise<void>`
 
 #### Returns
 
-Type: `Promise<any>`
+Type: `Promise<void>`
 
+---
 
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

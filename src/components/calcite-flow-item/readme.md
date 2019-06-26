@@ -15,11 +15,9 @@
 
 ## Events
 
-| Event                       | Description | Type               |
-| --------------------------- | ----------- | ------------------ |
-| `calciteFlowItemBackClick`  |             | `CustomEvent<any>` |
-| `calciteFlowItemRegister`   |             | `CustomEvent<any>` |
-| `calciteFlowItemUnregister` |             | `CustomEvent<any>` |
+| Event                      | Description | Type               |
+| -------------------------- | ----------- | ------------------ |
+| `calciteFlowItemBackClick` |             | `CustomEvent<any>` |
 
 ---
 
