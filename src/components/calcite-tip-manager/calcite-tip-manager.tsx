@@ -44,6 +44,8 @@ export class CalciteTipManager {
 
   direction: "advancing" | "retreating" = "advancing";
 
+  observer = null;
+
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -66,10 +68,13 @@ export class CalciteTipManager {
     this.updateSelectedTip();
   }
   componentDidLoad() {
-    this.el.shadowRoot.querySelector("slot").addEventListener("slotchange", (event) => {
-      // @ts-ignore event.target is a slot and assignedElements is a valid method on a slot element
-      this.updateTipState(event.target.assignedElements());
+    this.observer = new MutationObserver(() => {
+      this.updateTipState(Array.from(this.el.querySelectorAll("calcite-tip")));
     });
+    this.observer.observe(this.el, { childList: true });
+  }
+  componentDidUnload() {
+    this.observer.disconnect();
   }
 
   // --------------------------------------------------------------------------
@@ -82,6 +87,9 @@ export class CalciteTipManager {
     if (!isEqual(this.tips, newTipList)) {
       this.tips = newTipList;
       this.total = this.tips.length;
+      if (this.selectedIndex > this.total - 1) {
+        this.selectedIndex = this.total - 1;
+      }
     }
   }
 
