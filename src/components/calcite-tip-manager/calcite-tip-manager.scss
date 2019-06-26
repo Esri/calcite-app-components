@@ -78,10 +78,10 @@ $tip-manager-close-size: 24px;
   width: 24px;
   height: 24px;
   cursor: pointer;
-  &--left {
+  &--previous {
     margin-right: 12px;
   }
-  &--right {
+  &--next {
     margin-left: 12px;
   }
   &:hover {

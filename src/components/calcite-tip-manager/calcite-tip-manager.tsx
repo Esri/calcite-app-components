@@ -4,6 +4,17 @@ import { isEqual } from "lodash-es";
 // import 'core-js/features/array/from';
 import { DEFAULT_GROUP_TITLE } from "./resources";
 
+const CSS = {
+  header: "header",
+  title: "title",
+  close: "close",
+  tipContainer: "tipContainer",
+  pagination: "pagination",
+  pageControl: "pageControl",
+  pageControlPrevious: "pageControl--previous",
+  pageControlNext: "pageControl--next",
+  pagePosition: "pagePosition"
+};
 @Component({
   tag: "calcite-tip-manager",
   styleUrl: "./calcite-tip-manager.scss",
@@ -36,13 +47,13 @@ export class CalciteTipManager {
 
   @State() tips;
 
-  groupTitle = this.textDefaultTitle;
-
-  total: number;
-
-  tipContainer = null;
+  @State() total: number;
 
   direction: "advancing" | "retreating" = "advancing";
+
+  groupTitle = this.textDefaultTitle;
+
+  tipContainer = null;
 
   observer = null;
 
@@ -67,12 +78,14 @@ export class CalciteTipManager {
   connectedCallback() {
     this.updateSelectedTip();
   }
+
   componentDidLoad() {
     this.observer = new MutationObserver(() => {
       this.updateTipState(Array.from(this.el.querySelectorAll("calcite-tip")));
     });
     this.observer.observe(this.el, { childList: true });
   }
+
   componentDidUnload() {
     this.observer.disconnect();
   }
@@ -84,12 +97,14 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   updateTipState(newTipList) {
+    // TODO: think of a better name for this.
     if (!isEqual(this.tips, newTipList)) {
       this.tips = newTipList;
       this.total = this.tips.length;
       if (this.selectedIndex > this.total - 1) {
         this.selectedIndex = this.total - 1;
       }
+      this.updateSelectedTip();
     }
   }
 
@@ -97,19 +112,17 @@ export class CalciteTipManager {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
   }
+
   nextTip() {
     this.direction = "advancing";
-    this.selectedIndex++;
-    if (this.selectedIndex > this.total - 1) {
-      this.selectedIndex = 0;
-    }
+    const nextIndex = this.selectedIndex + 1;
+    this.selectedIndex = (nextIndex + this.total) % this.total;
   }
+
   previousTip() {
     this.direction = "retreating";
-    this.selectedIndex--;
-    if (this.selectedIndex < 0) {
-      this.selectedIndex = this.total - 1;
-    }
+    const previousIndex = this.selectedIndex - 1;
+    this.selectedIndex = (previousIndex + this.total) % this.total;
   }
 
   triggerAnimation() {
@@ -125,7 +138,7 @@ export class CalciteTipManager {
   updateSelectedTip() {
     this.tips.forEach((tip, index) => {
       if (index === this.selectedIndex) {
-        this.groupTitle = tip.dataset.groupTitle ? tip.dataset.groupTitle : this.textDefaultTitle;
+        this.groupTitle = tip.dataset.groupTitle || this.textDefaultTitle;
         tip.setAttribute("selected", "true");
       } else {
         tip.removeAttribute("selected");
@@ -142,22 +155,22 @@ export class CalciteTipManager {
   render() {
     return (
       <Host>
-        <header class="header">
-          <h2 class="title" data-test-id="title">
+        <header class={CSS.header}>
+          <h2 class={CSS.title} data-test-id="title">
             {this.groupTitle}
           </h2>
-          <div class="close" onClick={() => this.hideTipManager()} data-test-id="close">
+          <div class={CSS.close} onClick={() => this.hideTipManager()} data-test-id="close">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
           </div>
         </header>
-        <div class="tipContainer" ref={(el) => (this.tipContainer = el as HTMLElement)}>
+        <div class={CSS.tipContainer} ref={(el) => (this.tipContainer = el as HTMLElement)}>
           <slot />
         </div>
-        <footer class="pagination">
+        <footer class={CSS.pagination}>
           <button
-            class="pageControl pageControl--left"
+            class={`${CSS.pageControl} ${CSS.pageControlPrevious}`}
             onClick={() => this.previousTip()}
             data-test-id="previous"
           >
@@ -165,9 +178,9 @@ export class CalciteTipManager {
               <path d={chevronLeft24} />
             </svg>
           </button>
-          <span class="pagePosition">{`Tip ${this.selectedIndex + 1}/${this.total}`}</span>
+          <span class={CSS.pagePosition}>{`Tip ${this.selectedIndex + 1}/${this.total}`}</span>
           <button
-            class="pageControl pageControl--right"
+            class={`${CSS.pageControl} ${CSS.pageControlNext}`}
             onClick={() => this.nextTip()}
             data-test-id="next"
           >
