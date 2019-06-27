@@ -2,7 +2,7 @@ import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import { isEqual } from "lodash-es";
 import classnames from "classnames";
-import { DEFAULT_GROUP_TITLE } from "./resources";
+import { DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 
 const CSS = {
   header: "header",
@@ -28,6 +28,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
+  @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
   // --------------------------------------------------------------------------
   //
@@ -176,7 +177,9 @@ export class CalciteTipManager {
               <path d={chevronLeft24} />
             </svg>
           </button>
-          <span class={CSS.pagePosition}>{`Tip ${this.selectedIndex + 1}/${this.total}`}</span>
+          <span class={CSS.pagePosition}>
+            {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
+          </span>
           <button
             class={`${CSS.pageControl} ${CSS.pageControlNext}`}
             onClick={() => this.nextTip()}
