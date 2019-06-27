@@ -15,7 +15,6 @@
   font-size: var(--font-size--1);
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
-  // @include fade-in();
 }
 
 :host .button:hover {
