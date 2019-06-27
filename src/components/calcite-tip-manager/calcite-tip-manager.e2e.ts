@@ -52,21 +52,21 @@ describe("calcite-tip-manager", () => {
       });
     const tipManager = await page.find("calcite-tip-manager");
 
-    let selectedTip = await tipManager.find(`calcite-tip[selected="true"]`);
+    let selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual("one"); // default selected tip is index 0
 
     const nextButton = await page.find(`calcite-tip-manager >>> [data-test-id="next"]`);
     nextButton.click();
     await page.waitForChanges();
 
-    selectedTip = await tipManager.find(`calcite-tip[selected="true"]`);
+    selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual("two");
 
     const previousButton = await page.find(`calcite-tip-manager >>> [data-test-id="previous"]`);
     previousButton.click();
     await page.waitForChanges();
 
-    selectedTip = await tipManager.find(`calcite-tip[selected="true"]`);
+    selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual("one");
   });
 
