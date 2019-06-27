@@ -1,55 +1,33 @@
 :host {
-  //-----------------------------
-  // Background
+  // idle
   --calcite-app-background: #{$white};
-  // --calcite-app-background-content: #{$lightest-gray};
+  --calcite-app-foreground: #{$darker-gray};
 
   // :hover
   --calcite-app-background--hover: #{$lighter-gray};
-
-  // :active :focus active
-  --calcite-app-background--active: #{$lightest-blue};
-
-  //-----------------------------
-  // Foreground
-  --calcite-app-foreground: #{$darker-gray};
-  --calcite-app-foreground-content: #{$darkest-gray};
-
-  // :hover
   --calcite-app-foreground--active: #{$darkest-gray};
 
   // :active :focus active
+  --calcite-app-background--active: #{$lightest-blue};
   --calcite-app-foreground--active: #{$dark-blue};
 
-  //-----------------------------
   // Borders
   --calcite-app-border: #{$lighter-gray};
 }
 
 :host([theme="dark"]) {
-  //-----------------------------
-  // Background
+  // idle
   --calcite-app-background: #{$darker-gray};
-  --calcite-app-background-content: #{$darkest-gray};
+  --calcite-app-foreground: #{$light-gray};
 
   // :hover
   --calcite-app-background--hover: #{$darkest-gray};
-
-  // :active :focus active
-  --calcite-app-background--active: #{$darkest-gray};
-
-  //-----------------------------
-  // Foreground
-  --calcite-app-foreground: #{$light-gray};
-  // --calcite-app-foreground-content: #{$off-white};
-
-  // :hover
   --calcite-app-foreground--hover: #{$lightest-gray};
 
   // :active :focus active
+  --calcite-app-background--active: #{$darkest-gray};
   --calcite-app-foreground--active: #{$v-bb-120}; // Vibrant Blue
 
-  //-----------------------------
   // Borders
   --calcite-app-border: #{$lighter-gray};
 }
