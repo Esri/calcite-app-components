@@ -18,16 +18,16 @@
 }
 
 :host .button:hover {
-  background-color: var(--calcite-app-background--hover);
-  color: var(--calcite-app-foreground--hover);
-  fill: var(--calcite-app-foreground--hover);
+  background-color: var(--calcite-app-background-hover);
+  color: var(--calcite-app-foreground-hover);
+  fill: var(--calcite-app-foreground-hover);
 }
 
 :host([active]) .button,
 :host([active]) .button:hover {
-  color: var(--calcite-app-foreground--active);
-  fill: var(--calcite-app-foreground--active);
-  background-color: var(--calcite-app-background--active);
+  color: var(--calcite-app-foreground-active);
+  fill: var(--calcite-app-foreground-active);
+  background-color: var(--calcite-app-background-active);
 }
 
 :host .button .icon-container {
