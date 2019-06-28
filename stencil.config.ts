@@ -7,12 +7,7 @@ export const config: Config = {
   namespace: "calcite",
   bundles: [
     {
-      components: [
-        "calcite-action",
-        "calcite-action-group",
-        "calcite-action-bar",
-        "calcite-action-pad"
-      ]
+      components: ["calcite-action", "calcite-action-group", "calcite-action-bar", "calcite-action-pad"]
     }
   ],
   outputTargets: [
@@ -35,6 +30,6 @@ export const config: Config = {
     })
   ],
   testing: {
-    setupTestFrameworkScriptFile: ["../src/tests/setup.js"]
+    setupTestFrameworkScriptFile: "../src/tests/setup.js"
   }
 };
