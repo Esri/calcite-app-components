@@ -1,0 +1,20 @@
+// Type
+$line-height: 1.3rem !default;
+$base-font-size: 14px !default;
+
+:host {
+  --line-height: 1.3rem;
+
+  --base-font-size: $base-font-size;
+
+  --font-size-2: 1.429rem;
+  --font-size-1: 1.143rem;
+  --font-size-0: 1rem;
+  --font-size--1: 0.858rem;
+
+  --font-weight: 400;
+  --font-weight-heading: 600;
+  --font-weight-bold: 600;
+
+  font-size: var(--font-size-0);
+}

@@ -1,16 +1,13 @@
 # calcite-example
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
-| Property   | Attribute   | Description | Type      | Default |
-| ---------- | ----------- | ----------- | --------- | ------- |
-| `someProp` | `some-prop` |             | `boolean` | `true`  |
-
+| Property       | Attribute        | Description | Type      | Default                                |
+| -------------- | ---------------- | ----------- | --------- | -------------------------------------- |
+| `someProp`     | `some-prop`      |             | `boolean` | `true`                                 |
+| `textMyString` | `text-my-string` |             | `string`  | `"i18n string prop start with 'text'"` |
 
 ## Events
 
@@ -18,20 +15,14 @@
 | --------------------- | ----------- | ------------------ |
 | `calciteExampleEvent` |             | `CustomEvent<any>` |
 
-
 ## Methods
 
 ### `publicMethod() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
+---
 
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
