@@ -1,37 +1,48 @@
 :host .button {
   display: flex;
-  color: #fff;
-  fill: #fff;
-  background-color: #4c4c4c;
-  padding: 9px;
-  margin: 2px 0;
+  color: var(--calcite-app-foreground);
+  fill: var(--calcite-app-foreground);
+  background-color: var(--calcite-app-background);
+  border-radius: var(--calcite-app-border-radius);
+  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-three-quarters);
+  margin: var(--calcite-app-cap-spacing-quarter) 0;
   justify-content: flex-start;
   align-items: center;
   border: none;
-  width: auto;
+  width: 100%;
   cursor: pointer;
   font: inherit;
+  font-size: var(--font-size--1);
   line-height: normal;
-  transition: color 125ms ease-in-out, background-color 125ms ease-in-out;
+  transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
 }
 
-:host([active]) .button {
-  color: #69dcff;
-  fill: #69dcff;
+:host .button:hover {
+  background-color: var(--calcite-app-background-hover);
+  color: var(--calcite-app-foreground-hover);
+  fill: var(--calcite-app-foreground-hover);
 }
 
-:host .icon-container {
-  display: block;
-  max-width: 16px;
-  max-height: 16px;
+:host([active]) .button,
+:host([active]) .button:hover {
+  color: var(--calcite-app-foreground-active);
+  fill: var(--calcite-app-foreground-active);
+  background-color: var(--calcite-app-background-active);
+}
+
+:host .button .icon-container {
+  max-width: var(--calcite-app-icon-size);
+  max-height: var(--calcite-app-icon-size);
   margin: 0;
   justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 :host .text-container {
   flex: 1;
-  display: block;
-  line-height: 16px;
-  margin: 0 6px;
+  line-height: 1rem;
+  margin: 0 var(--calcite-app-side-spacing-half);
   word-break: break-word;
+  text-align: left;
 }

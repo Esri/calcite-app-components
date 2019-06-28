@@ -1,0 +1,27 @@
+$vibrant-blue: $v-bb-120;
+
+:host {
+  --calcite-app-background: #{$white};
+  --calcite-app-foreground: #{$darker-gray};
+
+  --calcite-app-background-hover: #{$lighter-gray};
+  --calcite-app-foreground-hover: #{$darkest-gray};
+
+  --calcite-app-background-active: #{$lightest-blue};
+  --calcite-app-foreground-active: #{$dark-blue};
+
+  --calcite-app-border: #{$lighter-gray};
+}
+
+:host([theme="dark"]) {
+  --calcite-app-background: #{$darker-gray};
+  --calcite-app-foreground: #{$light-gray};
+
+  --calcite-app-background-hover: #{$darkest-gray};
+  --calcite-app-foreground-hover: #{$lightest-gray};
+
+  --calcite-app-background-active: #{$darkest-gray};
+  --calcite-app-foreground-active: #{$vibrant-blue};
+
+  --calcite-app-border: #{$lighter-gray};
+}
