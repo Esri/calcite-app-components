@@ -30,6 +30,9 @@ export class CalciteExample {
   @Prop()
   someProp = true;
 
+  @Prop()
+  textMyString = "i18n string prop start with 'text'";
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
