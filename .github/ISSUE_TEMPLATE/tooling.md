@@ -1,17 +1,17 @@
 ---
 name: Tooling
 about: Request improvements to our component workflow.
-title: 'Tooling: '
+title: "Tooling: "
 labels: tooling
-assignees: ''
-
+assignees: ""
 ---
 
 ## Summary
-...
+
 ## Measure of Success
-**Pain point:** ...
-**Desired outcome:** ...
+
+**Pain point:**
+
+**Desired outcome:**
 
 ### Resources <small>(e.g. links to libraries or code snippets)</small>
-...
