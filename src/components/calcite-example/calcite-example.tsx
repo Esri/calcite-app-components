@@ -3,6 +3,7 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Listen,
   Method,
   Prop,
@@ -11,9 +12,7 @@ import {
   h
 } from "@stencil/core";
 
-const CSS = {
-  foo: "foo"
-};
+import { CSS, MY_STRING_DEFAULT_TEXT } from "./resources";
 
 @Component({
   tag: "calcite-example",
@@ -31,7 +30,7 @@ export class CalciteExample {
   someProp = true;
 
   @Prop()
-  textMyString = "i18n string prop start with 'text'";
+  textMyString = MY_STRING_DEFAULT_TEXT;
 
   // --------------------------------------------------------------------------
   //
@@ -109,6 +108,10 @@ export class CalciteExample {
   // --------------------------------------------------------------------------
 
   render() {
-    return <div class={CSS.foo} />;
+    return (
+      <Host>
+        <div class={CSS.foo}>{this.someProp ? this.textMyString : null}</div>
+      </Host>
+    );
   }
 }
