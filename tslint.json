@@ -6,6 +6,13 @@
     },
     "decorated-member-style": {
       "severity": "off"
+    },
+    "lines-between-class-members": {
+      "options": [1]
+    },
+    "no-consecutive-blank-lines": {
+      "options": [1]
     }
-  }
+  },
+  "rulesDirectory": ["node_modules/tslint-lines-between-class-members"]
 }
