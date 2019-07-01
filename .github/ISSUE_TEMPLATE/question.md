@@ -1,15 +1,15 @@
 ---
 name: Question
 about: Request for information - not code changes.
-title: 'Question: '
+title: "Question: "
 labels: question
-assignees: ''
-
+assignees: ""
 ---
 
 ### Question
 
-
 ### Helpful Details
-**Topic:** 
-**Context:** 
+
+**Topic:**
+
+**Context:**

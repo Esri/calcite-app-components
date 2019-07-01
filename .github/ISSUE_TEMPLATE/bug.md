@@ -1,10 +1,9 @@
 ---
 name: Bug
 about: Report a bug in a component
-title: 'Bug: '
+title: "Bug: "
 labels: bug
-assignees: ''
-
+assignees: ""
 ---
 
 ### Summary
@@ -14,6 +13,7 @@ assignees: ''
 ### Expected Behavior
 
 ### Reproduction Steps
-1. 
+
+1.
 
 ### Relevant Info <small>(e.g. Browser, OS, Mobile,)</small>
