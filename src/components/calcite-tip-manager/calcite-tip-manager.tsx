@@ -1,6 +1,5 @@
 import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
-import { isEqual } from "lodash-es";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 
@@ -68,7 +67,7 @@ export class CalciteTipManager {
 
   componentDidLoad() {
     this.observer = new MutationObserver(() => {
-      this.updateTipState(Array.from(this.el.querySelectorAll("calcite-tip")));
+      this.childTipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
     });
     this.observer.observe(this.el, { childList: true });
   }
@@ -103,16 +102,13 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  updateTipState(newTipList) {
-    // TODO: think of a better name for this.
-    if (!isEqual(this.tips, newTipList)) {
-      this.tips = newTipList;
-      this.total = this.tips.length;
-      if (this.selectedIndex > this.total - 1) {
-        this.selectedIndex = this.total - 1;
-      }
-      this.updateSelectedTip();
+  childTipsChangeHandler(newTipList) {
+    this.tips = newTipList;
+    this.total = this.tips.length;
+    if (this.selectedIndex > this.total - 1) {
+      this.selectedIndex = this.total - 1;
     }
+    this.updateSelectedTip();
   }
 
   hideTipManager() {
