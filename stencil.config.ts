@@ -2,6 +2,12 @@ import { Config } from "@stencil/core";
 import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
+import minimist from "minimist";
+
+const headlessMode = process.env.PUPPETEER_HEADLESS !== "false";
+console.log("headlessMode", headlessMode);
+const argv = minimist(process.argv.slice(2));
+console.dir(argv);
 
 export const config: Config = {
   namespace: "calcite",
@@ -30,6 +36,10 @@ export const config: Config = {
     })
   ],
   testing: {
-    setupTestFrameworkScriptFile: "../src/tests/setup.js"
+    setupTestFrameworkScriptFile: "../src/tests/setup.js",
+    browserHeadless: headlessMode,
+    browserDevtools: !headlessMode,
+    browserSlowMo: argv.browserSlowMo || 500,
+    browserArgs: argv.browserArgs || []
   }
 };
