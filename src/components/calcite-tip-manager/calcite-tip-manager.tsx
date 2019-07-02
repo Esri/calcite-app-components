@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import { isEqual } from "lodash-es";
 import classnames from "classnames";
@@ -81,6 +81,26 @@ export class CalciteTipManager {
 
   // --------------------------------------------------------------------------
   //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  nextTip() {
+    this.direction = "advancing";
+    const nextIndex = this.selectedIndex + 1;
+    this.selectedIndex = (nextIndex + this.total) % this.total;
+  }
+
+  @Method()
+  previousTip() {
+    this.direction = "retreating";
+    const previousIndex = this.selectedIndex - 1;
+    this.selectedIndex = (previousIndex + this.total) % this.total;
+  }
+
+  // --------------------------------------------------------------------------
+  //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
@@ -100,18 +120,6 @@ export class CalciteTipManager {
   hideTipManager() {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
-  }
-
-  nextTip() {
-    this.direction = "advancing";
-    const nextIndex = this.selectedIndex + 1;
-    this.selectedIndex = (nextIndex + this.total) % this.total;
-  }
-
-  previousTip() {
-    this.direction = "retreating";
-    const previousIndex = this.selectedIndex - 1;
-    this.selectedIndex = (previousIndex + this.total) % this.total;
   }
 
   updateSelectedTip() {
