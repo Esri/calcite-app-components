@@ -42,15 +42,15 @@ $tip-manager-close-size: 24px;
   @include calcite-close-icon($size: $tip-manager-close-size, $gutter-size: $gutter-size);
 }
 
-.tipContainer {
+.tip-container {
   animation-name: none;
   animation-duration: $animation-time;
   animation-timing-function: ease-in-out;
 }
-.tipContainer.is-animating.advancing {
+.tip-container.is-animating.advancing {
   animation-name: tip-advance;
 }
-.tipContainer.is-animating.retreating {
+.tip-container.is-animating.retreating {
   animation-name: tip-retreat;
 }
 
@@ -72,7 +72,7 @@ $tip-manager-close-size: 24px;
   justify-content: center;
 }
 
-.pageControl {
+.page-control {
   all: unset;
   display: inline-block;
   width: 24px;

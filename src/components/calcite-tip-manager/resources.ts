@@ -4,10 +4,10 @@ export const CSS = {
   header: "header",
   title: "title",
   close: "close",
-  tipContainer: "tipContainer",
+  tipContainer: "tip-container",
   pagination: "pagination",
-  pageControl: "pageControl",
-  pageControlPrevious: "pageControl--previous",
-  pageControlNext: "pageControl--next",
+  pageControl: "page-control",
+  pageControlPrevious: "page-control--previous",
+  pageControlNext: "page-control--next",
   pagePosition: "pagePosition"
 };
