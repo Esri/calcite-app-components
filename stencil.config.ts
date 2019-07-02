@@ -36,7 +36,7 @@ export const config: Config = {
     })
   ],
   testing: {
-    setupTestFrameworkScriptFile: "../src/tests/setup.js",
+    setupFilesAfterEnv: ["<rootDir>/src/tests/setup.js"],
     browserHeadless: headlessMode,
     browserDevtools: !headlessMode,
     browserSlowMo: argv.browserSlowMo || 500,
