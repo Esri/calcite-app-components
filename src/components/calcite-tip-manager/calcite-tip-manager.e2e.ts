@@ -102,7 +102,7 @@ describe("calcite-tip-manager", () => {
     const selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual("two");
   });
-  it("should update if tips are added or removed after intial load", async () => {
+  it("should update if tips are added after intial load", async () => {
     const page = await newE2EPage();
     await page.setContent(
       `<calcite-tip-manager>
