@@ -42,8 +42,6 @@ export class CalciteTipManager {
 
   groupTitle = this.textDefaultTitle;
 
-  tipContainer = null;
-
   observer = null;
 
   // --------------------------------------------------------------------------
@@ -152,10 +150,8 @@ export class CalciteTipManager {
     return (
       <Host>
         <header class={CSS.header}>
-          <h2 class={CSS.title} data-test-id="title">
-            {this.groupTitle}
-          </h2>
-          <div class={CSS.close} onClick={() => this.hideTipManager()} data-test-id="close">
+          <h2 class={CSS.title}>{this.groupTitle}</h2>
+          <div class={CSS.close} onClick={() => this.hideTipManager()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
@@ -168,7 +164,6 @@ export class CalciteTipManager {
           <button
             class={`${CSS.pageControl} ${CSS.pageControlPrevious}`}
             onClick={() => this.previousTip()}
-            data-test-id="previous"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={chevronLeft24} />
@@ -180,7 +175,6 @@ export class CalciteTipManager {
           <button
             class={`${CSS.pageControl} ${CSS.pageControlNext}`}
             onClick={() => this.nextTip()}
-            data-test-id="next"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={chevronRight24} />
