@@ -41,7 +41,6 @@
     "@stencil/sass": "1.0.1",
     "@stencil/state-tunnel": "1.0.1",
     "@types/autoprefixer": "9.5.0",
-    "@types/core-js": "^2.5.2",
     "@types/jest": "24.0.15",
     "@types/puppeteer": "1.12.4",
     "autoprefixer": "9.6.0",
