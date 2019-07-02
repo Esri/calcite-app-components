@@ -51,7 +51,6 @@
     "jest-cli": "24.8.0",
     "jest-runner": "^24.8.0",
     "lint-staged": "8.2.1",
-    "minimist": "^1.2.0",
     "prettier": "1.17.1",
     "puppeteer": "1.17.0",
     "tslint": "5.17.0",
