@@ -67,7 +67,7 @@ export class CalciteTipManager {
 
   componentDidLoad() {
     this.observer = new MutationObserver(() => {
-      this.childTipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
+      this.tipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
     });
     this.observer.observe(this.el, { childList: true });
   }
@@ -102,7 +102,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  childTipsChangeHandler(newTipList) {
+  tipsChangeHandler(newTipList) {
     this.tips = newTipList;
     this.total = this.tips.length;
     if (this.selectedIndex > this.total - 1) {
