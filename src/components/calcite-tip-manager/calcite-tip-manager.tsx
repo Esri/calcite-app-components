@@ -84,14 +84,14 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   @Method()
-  nextTip() {
+  async nextTip() {
     this.direction = "advancing";
     const nextIndex = this.selectedIndex + 1;
     this.selectedIndex = (nextIndex + this.total) % this.total;
   }
 
   @Method()
-  previousTip() {
+  async previousTip() {
     this.direction = "retreating";
     const previousIndex = this.selectedIndex - 1;
     this.selectedIndex = (previousIndex + this.total) % this.total;
