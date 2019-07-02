@@ -2,19 +2,8 @@ import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import { isEqual } from "lodash-es";
 import classnames from "classnames";
-import { DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
+import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 
-const CSS = {
-  header: "header",
-  title: "title",
-  close: "close",
-  tipContainer: "tipContainer",
-  pagination: "pagination",
-  pageControl: "pageControl",
-  pageControlPrevious: "pageControl--previous",
-  pageControlNext: "pageControl--next",
-  pagePosition: "pagePosition"
-};
 @Component({
   tag: "calcite-tip-manager",
   styleUrl: "./calcite-tip-manager.scss",
@@ -45,7 +34,7 @@ export class CalciteTipManager {
     this.updateSelectedTip();
   }
 
-  @State() tips;
+  @State() tips: any[];
 
   @State() total: number;
 
