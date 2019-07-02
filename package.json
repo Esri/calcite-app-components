@@ -23,7 +23,7 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watch",
     "test.watchAll": "stencil test --spec --e2e --watchAll",
-    "test:headed": "cross-env PUPPETEER_HEADLESS=false stencil test --spec --e2e"
+    "test:headed": "stencil test --spec --e2e --devtools"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,6 @@
     "@types/jest": "24.0.15",
     "@types/puppeteer": "1.12.4",
     "autoprefixer": "9.6.0",
-    "cross-env": "^5.2.0",
     "gh-release": "^3.5.0",
     "husky": "2.4.1",
     "jest": "^24.8.0",
