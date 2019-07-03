@@ -52,16 +52,12 @@ export class CalciteTipManager {
   constructor() {
     this.tips = Array.from(this.el.querySelectorAll("calcite-tip"));
     this.total = this.tips.length;
-    this.tips.forEach((item, index) => {
-      item.setAttribute("dismissible", "false");
-      if (item.hasAttribute("selected")) {
-        this.selectedIndex = index;
-      }
-    });
-    this.selectedIndex = this.selectedIndex || 0; // need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
+    const selectedTip = this.el.querySelector("calcite-tip[selected]");
+    this.selectedIndex = selectedTip ? this.tips.indexOf(selectedTip) : 0; // need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
   }
 
   connectedCallback() {
+    this.setupTips();
     this.updateSelectedTip();
   }
 
@@ -102,6 +98,12 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
+  setupTips() {
+    this.tips.forEach((tip) => {
+      tip.setAttribute("dismissible", "false");
+    });
+  }
+
   tipsChangeHandler(newTipList) {
     this.tips = newTipList;
     this.total = this.tips.length;
@@ -109,7 +111,8 @@ export class CalciteTipManager {
     if (this.selectedIndex > lastTipIndex) {
       this.selectedIndex = lastTipIndex;
     }
-    this.updateSelectedTip();
+    this.setupTips();
+    this.updateSelectedTip(); // Only doing this here to handle edge case where a tip is added with the selected attribute;
   }
 
   hideTipManager() {
