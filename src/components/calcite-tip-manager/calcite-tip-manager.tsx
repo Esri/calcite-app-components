@@ -54,6 +54,9 @@ export class CalciteTipManager {
     this.total = this.tips.length;
     const selectedTip = this.el.querySelector("calcite-tip[selected]");
     this.selectedIndex = selectedTip ? this.tips.indexOf(selectedTip) : 0; // need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
+    this.observer = new MutationObserver(() => {
+      this.tipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
+    });
   }
 
   connectedCallback() {
@@ -62,9 +65,6 @@ export class CalciteTipManager {
   }
 
   componentDidLoad() {
-    this.observer = new MutationObserver(() => {
-      this.tipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
-    });
     this.observer.observe(this.el, { childList: true });
   }
 
