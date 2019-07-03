@@ -1,15 +1,14 @@
-import { CalciteTipManager } from './calcite-tip-manager';
+import { CalciteTipManager } from "./calcite-tip-manager";
 
-describe.skip("CalciteTipManager", () => {
-  it('should toggle the dismissed property when calling the public hide/show methods', () => {
+describe("CalciteTipManager", () => {
+  it("should increment/decrement the selectedIndex when the public next/prev methods are called", () => {
     // TODO: Uncomment this test when there's a resolution to this bug. https://github.com/ionic-team/stencil/issues/1669
     // const tipManager = new CalciteTipManager();
-    // expect(tipManager.dismissed).toBe(true);
-
-    // tipManager.showTipManager();
-    // expect(tipManager.dismissed).toBe(false);
-
-    // tipManager.hideTipManager();
-    // expect(tipManager.dismissed).toBe(true);
+    // tipManager.total = 2; //needed to
+    // expect(tipManager.selectedIndex).toBe(0);
+    // tipManager.nextTip();
+    // expect(tipManager.selectedIndex).toBe(1);
+    // tipManager.previousTip();
+    // expect(tipManager.selectedIndex).toBe(0);
   });
 });
