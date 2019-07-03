@@ -105,8 +105,9 @@ export class CalciteTipManager {
   tipsChangeHandler(newTipList) {
     this.tips = newTipList;
     this.total = this.tips.length;
-    if (this.selectedIndex > this.total - 1) {
-      this.selectedIndex = this.total - 1;
+    const lastTipIndex = this.total - 1;
+    if (this.selectedIndex > lastTipIndex) {
+      this.selectedIndex = lastTipIndex;
     }
     this.updateSelectedTip();
   }
