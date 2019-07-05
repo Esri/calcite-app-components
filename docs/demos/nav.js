@@ -1,3 +1,5 @@
+const root = window.location.pathname.split('demos').shift();
+
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
@@ -30,8 +32,12 @@ a.is-active {
 </style>
 <nav class="styleguide--nav">
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/demos/calcite-tip.html">Calcite Tip</a></li>
+      <li><a href="${root}">Home</a></li>
+      <li><a href="${root}demos/calcite-tip.html">Calcite Tip</a></li>
+      <!--<li><a href="${root}demos/calcite-tip-manager.html">Calcite Tip Manager</a></li>-->
+      <li><a href="${root}demos/calcite-action/">Calcite Action</a></li>
+      <li><a href="${root}demos/calcite-action-bar/">Calcite Action Bar</a></li>
+      <li><a href="${root}demos/calcite-action-pad/">Calcite Action Pad</a></li>
     </ul>
 </nav>
 `;
