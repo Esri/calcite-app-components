@@ -2,11 +2,10 @@ $gutter-size: 24px 12px;
 
 :host {
   position: relative;
-  display: block;
-  padding: $gutter-size;
-  background-color: #fff;
-  color: #6e6e6e;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-flow: column;
+  color: var(--calcite-app-foreground);
+  background-color: var(--calcite-app-background);
 }
 :host([hidden]) {
   display: none;
@@ -14,42 +13,37 @@ $gutter-size: 24px 12px;
 
 :host header {
   margin: 0;
-  padding: --calcite-app-cap-spacing --calcite-app-side-spacing;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-:host ::slotted(h2) {
+:host .title {
   font-size: var(--font-size-1);
   font-weight: var(--font-weight);
   padding: 0;
   margin: 0;
 }
 
-$tip-close-size: 16px;
-.close {
-  // position: absolute;
-  // top: 0px;
-  // right: 0px;
-  width: $tip-close-size;
-  height: $tip-close-size;
-  // margin: $gutter-size;
-  // font-size: 24px;
-  cursor: pointer;
-  :host-context([dir="rtl"]) & {
-    right: auto;
-    left: 0;
-  }
+:host .info {
+  padding: 0 var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
 }
-.content {
-  display: flex;
-  align-items: flex-start;
-  & > :last-child {
-    margin-left: 12px;
-    margin-right: auto;
-    :host-context([dir="rtl"]) & {
-      margin-right: 12px;
-      margin-left: auto;
-    }
+
+:host .info ::slotted(p) {
+  margin-top: 0;
+}
+
+:host .close {
+  width: var(--calcite-app-icon-size);
+  height: var(--calcite-app-icon-size);
+  cursor: pointer;
+}
+
+:host .image-frame {
+  width: 25%;
+  padding: 0 0 0 var(--calcite-app-side-spacing);
+  img {
+    width: 100%;
   }
 }
