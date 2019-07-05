@@ -1,5 +1,6 @@
+const root = window.location.pathname.split('demos').shift();
+
 const template = document.createElement('template');
-const root = /arcgis.github.io/.test(window.location.host) ? "/calcite-app-components/" : "/";
 template.innerHTML = `
 <style>
 nav {
