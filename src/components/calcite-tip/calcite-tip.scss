@@ -12,19 +12,29 @@ $gutter-size: 24px 12px;
   display: none;
 }
 
-.title {
-  font-size: 24px;
+:host header {
+  margin: 0;
+  padding: --calcite-app-cap-spacing --calcite-app-side-spacing;
+  display: flex;
+  align-items: center;
 }
 
-$tip-close-size: 24px;
+:host ::slotted(h2) {
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight);
+  padding: 0;
+  margin: 0;
+}
+
+$tip-close-size: 16px;
 .close {
-  position: absolute;
-  top: 0px;
-  right: 0px;
+  // position: absolute;
+  // top: 0px;
+  // right: 0px;
   width: $tip-close-size;
   height: $tip-close-size;
-  margin: $gutter-size;
-  font-size: 24px;
+  // margin: $gutter-size;
+  // font-size: 24px;
   cursor: pointer;
   :host-context([dir="rtl"]) & {
     right: auto;
