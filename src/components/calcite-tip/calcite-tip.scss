@@ -6,6 +6,9 @@ $gutter-size: 24px 12px;
   flex-flow: column;
   color: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+  box-shadow: var(--calcite-app-box-shadow);
+  border-radius: var(--calcite-app-border-radius);
 }
 :host([hidden]) {
   display: none;
@@ -13,7 +16,6 @@ $gutter-size: 24px 12px;
 
 :host header {
   margin: 0;
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,8 +28,14 @@ $gutter-size: 24px 12px;
   margin: 0;
 }
 
+:host .content {
+  display: flex;
+  padding-top: var(--calcite-app-cap-spacing);
+}
+
 :host .info {
   padding: 0 var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
+  width: 70%;
 }
 
 :host .info ::slotted(p) {
@@ -42,7 +50,6 @@ $gutter-size: 24px 12px;
 
 :host .image-frame {
   width: 25%;
-  padding: 0 0 0 var(--calcite-app-side-spacing);
   img {
     width: 100%;
   }
