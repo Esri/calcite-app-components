@@ -1,5 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
+import { CSS, TEXT } from "./resources";
+
 describe("calcite-flow-item", () => {
   it("renders", async () => {
     const page = await newE2EPage();
@@ -9,50 +11,42 @@ describe("calcite-flow-item", () => {
     expect(element).toHaveClass("hydrated");
   });
 
-  it("no menu actions", async () => {
+  it("should not render containers when there are no menu actions", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow-item></calcite-flow-item>");
 
-    const menuContainer = await page.find(
-      "calcite-flow-item >>> .menu-container"
-    );
+    const menuContainer = await page.find(`calcite-flow-item >>> .${CSS.menuContainer}`);
 
-    const singleActionContainer = await page.find(
-      "calcite-flow-item >>> .single-action-container"
-    );
+    const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
 
     expect(menuContainer).toBeNull();
     expect(singleActionContainer).toBeNull();
   });
 
-  it("single menu action", async () => {
+  it("should show single action container when one action exists", async () => {
     const page = await newE2EPage();
 
     await page.setContent(
       '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>'
     );
 
-    const singleActionContainer = await page.find(
-      "calcite-flow-item >>> .single-action-container"
-    );
+    const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
 
     expect(singleActionContainer).not.toBeNull();
   });
 
-  it("heading", async () => {
+  it("should have default heading and text", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(
-      '<calcite-flow-item heading="test"></calcite-flow-item>'
-    );
+    await page.setContent('<calcite-flow-item heading="test"></calcite-flow-item>');
 
-    const element = await page.find("calcite-flow-item >>> .heading");
+    const element = await page.find(`calcite-flow-item >>> .${CSS.heading}`);
 
     expect(element).toEqualText("test");
   });
 
-  it("text defaults", async () => {
+  it("text defaults should be present", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow-item></calcite-flow-item>");
@@ -65,12 +59,12 @@ describe("calcite-flow-item", () => {
     const textOpen = await element.getProperty("textOpen");
     const textClose = await element.getProperty("textClose");
 
-    expect(textBack).toEqual("Back");
-    expect(textOpen).toEqual("Open");
-    expect(textClose).toEqual("Close");
+    expect(textBack).toEqual(TEXT.back);
+    expect(textOpen).toEqual(TEXT.open);
+    expect(textClose).toEqual(TEXT.close);
   });
 
-  it("menuOpen", async () => {
+  it("menuOpen should show/hide when toggled", async () => {
     const page = await newE2EPage();
 
     await page.setContent(
@@ -87,7 +81,7 @@ describe("calcite-flow-item", () => {
 
     expect(element.getAttribute("menuOpen")).not.toBeNull();
 
-    const menuButton = await page.find("calcite-flow-item >>> .menu-button");
+    const menuButton = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
 
     expect(menuButton).not.toBeNull();
   });
@@ -108,7 +102,7 @@ it("back button / showBackButton", async () => {
 
   await page.waitForChanges();
 
-  const backButton = await page.find("calcite-flow-item >>> .back-button");
+  const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
 
   expect(backButton).not.toBeNull();
 

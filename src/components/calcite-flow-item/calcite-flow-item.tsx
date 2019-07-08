@@ -2,18 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 
 import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
 
-const CSS = {
-  container: "container",
-  header: "header",
-  heading: "heading",
-  backButton: "back-button",
-  singleActionContainer: "single-action-container",
-  menuContainer: "menu-container",
-  menuButton: "menu-button",
-  menu: "menu",
-  contentContainer: "content-container",
-  footer: "footer"
-};
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-flow-item",
@@ -29,15 +18,23 @@ export class CalciteFlowItem {
 
   @Prop() heading: string;
 
-  @Prop() textBack = "Back";
+  @Prop() textBack = TEXT.back;
 
-  @Prop() textOpen = "Open";
+  @Prop() textOpen = TEXT.open;
 
-  @Prop() textClose = "Close";
+  @Prop() textClose = TEXT.close;
 
   @Prop({ reflect: true }) menuOpen = false;
 
   @Prop() showBackButton = false;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
@@ -49,11 +46,17 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Properties
+  //  Private Methods
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  toggleMenuOpen(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  backButtonClick(): void {
+    this.calciteFlowItemBackClick.emit(this.el);
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -172,19 +175,5 @@ export class CalciteFlowItem {
         </article>
       </Host>
     );
-  }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  toggleMenuOpen(): void {
-    this.menuOpen = !this.menuOpen;
-  }
-
-  backButtonClick(): void {
-    this.calciteFlowItemBackClick.emit(this.el);
   }
 }
