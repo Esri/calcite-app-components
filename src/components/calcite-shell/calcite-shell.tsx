@@ -1,11 +1,6 @@
 import { Component, Element, Host, h } from "@stencil/core";
 
-const CSS = {
-  header: "header",
-  main: "main",
-  content: "content",
-  footer: "footer"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-shell",

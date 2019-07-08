@@ -1,9 +1,6 @@
 import { Component, Host, Prop, h } from "@stencil/core";
 
-const CSS = {
-  actionBar: "action-bar",
-  content: "content"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-shell-panel",
@@ -40,10 +37,7 @@ export class CalciteShellPanel {
       mainNodes.reverse();
     }
 
-    const floatingNodes = [
-      <slot name="floating-panel" />,
-      <slot name="action-pad" />
-    ];
+    const floatingNodes = [<slot name="floating-panel" />, <slot name="action-pad" />];
 
     return (
       <Host>
