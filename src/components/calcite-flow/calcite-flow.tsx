@@ -2,9 +2,7 @@ import { Component, Element, Host, Method, State, h } from "@stencil/core";
 
 import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
 
-import { CSS } from "./resources";
-
-type FlowDirection = "advancing" | "retreating";
+import { CSS, FlowDirection } from "./resources";
 
 @Component({
   tag: "calcite-flow",

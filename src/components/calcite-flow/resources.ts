@@ -3,3 +3,5 @@ export const CSS = {
   frameAdvancing: "frame--advancing",
   frameRetreating: "frame--retreating"
 };
+
+export type FlowDirection = "advancing" | "retreating";
