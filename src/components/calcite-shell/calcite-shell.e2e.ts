@@ -23,7 +23,7 @@ describe("calcite-shell", () => {
     expect(header).toBeNull();
   });
 
-  it("footer", async () => {
+  it("footer should be present when defined", async () => {
     const page = await newE2EPage();
 
     await page.setContent('<calcite-shell><div slot="footer">Footer</div></calcite-shell>');
@@ -33,7 +33,7 @@ describe("calcite-shell", () => {
     expect(footer).not.toBeNull();
   });
 
-  it("header", async () => {
+  it("header should be present when defined", async () => {
     const page = await newE2EPage();
 
     await page.setContent('<calcite-shell><div slot="header">Header</div></calcite-shell>');

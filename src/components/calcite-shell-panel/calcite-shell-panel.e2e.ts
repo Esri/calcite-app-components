@@ -21,7 +21,7 @@ describe("calcite-shell-panel", () => {
     expect(element.shadowRoot.firstElementChild.tagName).toBe("DIV");
   });
 
-  it("primary property", async () => {
+  it("primary property should have action slot first ", async () => {
     const page = await newE2EPage();
 
     await page.setContent(
