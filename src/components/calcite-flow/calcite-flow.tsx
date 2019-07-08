@@ -2,13 +2,9 @@ import { Component, Element, Host, Method, State, h } from "@stencil/core";
 
 import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
 
-type FlowDirection = "advancing" | "retreating";
+import { CSS } from "./resources";
 
-const CSS = {
-  frame: "frame",
-  frameAdvancing: "frame--advancing",
-  frameRetreating: "frame--retreating"
-};
+type FlowDirection = "advancing" | "retreating";
 
 @Component({
   tag: "calcite-flow",

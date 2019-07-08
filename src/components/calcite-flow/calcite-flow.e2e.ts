@@ -1,5 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
+import { CSS } from "./resources";
+
 describe("calcite-flow", () => {
   it("renders", async () => {
     const page = await newE2EPage();
@@ -16,11 +18,11 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow></calcite-flow>");
 
-    const element = await page.find("calcite-flow >>> .frame");
+    const element = await page.find(`calcite-flow >>> .${CSS.frame}`);
 
-    expect(element).toHaveClass("frame");
-    expect(element).not.toHaveClass("frame--advancing");
-    expect(element).not.toHaveClass("frame--retreating");
+    expect(element).toHaveClass(CSS.frame);
+    expect(element).not.toHaveClass(CSS.frameAdvancing);
+    expect(element).not.toHaveClass(CSS.frameRetreating);
   });
 
   it("back()", async () => {
@@ -56,9 +58,9 @@ describe("calcite-flow", () => {
 
     expect(items2).toHaveLength(2);
 
-    const frame = await page.find("calcite-flow >>> .frame");
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
 
-    expect(frame).toHaveClass("frame--advancing");
+    expect(frame).toHaveClass(CSS.frameAdvancing);
   });
 
   it("frame retreating", async () => {
@@ -72,10 +74,10 @@ describe("calcite-flow", () => {
 
     expect(items).toHaveLength(3);
 
-    const frame = await page.find("calcite-flow >>> .frame");
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
 
-    expect(frame).not.toHaveClass("frame--retreating");
-    expect(frame).not.toHaveClass("frame--advancing");
+    expect(frame).not.toHaveClass(CSS.frameRetreating);
+    expect(frame).not.toHaveClass(CSS.frameAdvancing);
 
     const element = await page.find("calcite-flow");
 
@@ -90,7 +92,7 @@ describe("calcite-flow", () => {
     /*
     // mutation observer not kicking in in tests
 
-    const frame2 = await page.find("calcite-flow >>> .frame");
+    const frame2 = await page.find(`calcite-flow >>> .${CSS.frame}`);
 
     expect(frame2).toHaveClass("frame--retreating");
     */
