@@ -79,9 +79,11 @@ describe("calcite-flow", () => {
     expect(frame).not.toHaveClass(CSS.frameRetreating);
     expect(frame).not.toHaveClass(CSS.frameAdvancing);
 
-    const element = await page.find("calcite-flow");
-
-    await element.callMethod("back");
+    await page.evaluate(() => {
+      const flow = document.querySelector("calcite-flow");
+      const lastChild = flow.querySelector("calcite-flow-item:last-child");
+      lastChild && lastChild.remove();
+    });
 
     await page.waitForChanges();
 
@@ -89,13 +91,9 @@ describe("calcite-flow", () => {
 
     expect(items2).toHaveLength(2);
 
-    /*
-    // mutation observer not kicking in in tests
+    // const frame2 = await page.find(`calcite-flow >>> .${CSS.frame}`);
 
-    const frame2 = await page.find(`calcite-flow >>> .${CSS.frame}`);
-
-    expect(frame2).toHaveClass("frame--retreating");
-    */
+    // expect(frame2).toHaveClass(CSS.frameRetreating);
   });
 
   it("flow-item properties", async () => {
