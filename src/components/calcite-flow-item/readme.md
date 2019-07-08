@@ -4,14 +4,14 @@
 
 ## Properties
 
-| Property         | Attribute          | Description | Type      | Default     |
-| ---------------- | ------------------ | ----------- | --------- | ----------- |
-| `heading`        | `heading`          |             | `string`  | `undefined` |
-| `menuOpen`       | `menu-open`        |             | `boolean` | `false`     |
-| `showBackButton` | `show-back-button` |             | `boolean` | `false`     |
-| `textBack`       | `text-back`        |             | `string`  | `"Back"`    |
-| `textClose`      | `text-close`       |             | `string`  | `"Close"`   |
-| `textOpen`       | `text-open`        |             | `string`  | `"Open"`    |
+| Property         | Attribute          | Description | Type      | Default      |
+| ---------------- | ------------------ | ----------- | --------- | ------------ |
+| `heading`        | `heading`          |             | `string`  | `undefined`  |
+| `menuOpen`       | `menu-open`        |             | `boolean` | `false`      |
+| `showBackButton` | `show-back-button` |             | `boolean` | `false`      |
+| `textBack`       | `text-back`        |             | `string`  | `TEXT.back`  |
+| `textClose`      | `text-close`       |             | `string`  | `TEXT.close` |
+| `textOpen`       | `text-open`        |             | `string`  | `TEXT.open`  |
 
 ## Events
 
