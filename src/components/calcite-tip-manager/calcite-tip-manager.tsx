@@ -16,6 +16,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
+
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
   // --------------------------------------------------------------------------
