@@ -8,7 +8,7 @@ assignees: ""
 
 ### Description
 
-### Acceptance Criteria <small>(a.k.a. Requirements)</small>
+### Acceptance Criteria <!--(a.k.a. Requirements)-->
 
 #### Desired New Behavior
 
@@ -16,7 +16,7 @@ assignees: ""
 
 #### Out of Scope
 
-### Relevant Info <small>(e.g. Dependencies, Blockers)</small>
+### Relevant Info <!--(e.g. Dependencies, Blockers)-->
 
 ### Helpful Details
 
