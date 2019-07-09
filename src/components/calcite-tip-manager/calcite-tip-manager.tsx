@@ -42,7 +42,9 @@ export class CalciteTipManager {
 
   groupTitle = this.textDefaultTitle;
 
-  observer = null;
+  observer = new MutationObserver(() => {
+    this.tipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
+  });
 
   // --------------------------------------------------------------------------
   //
@@ -55,9 +57,6 @@ export class CalciteTipManager {
     this.total = this.tips.length;
     const selectedTip = this.el.querySelector("calcite-tip[selected]");
     this.selectedIndex = selectedTip ? this.tips.indexOf(selectedTip) : 0; // need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
-    this.observer = new MutationObserver(() => {
-      this.tipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
-    });
   }
 
   connectedCallback() {
@@ -152,11 +151,11 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.title}>{this.groupTitle}</h2>
-          <div class={CSS.close} onClick={() => this.hideTipManager()}>
+          <button class={CSS.close} onClick={() => this.hideTipManager()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
-          </div>
+          </button>
         </header>
         <div class={tipContainerClasses} key={this.selectedIndex}>
           <slot />
