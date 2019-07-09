@@ -138,11 +138,6 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   render() {
-    const tipContainerClasses = classnames(
-      CSS.tipContainer,
-      { "is-animating": this.direction },
-      this.direction
-    );
     if (this.total === 0) {
       // TODO: Empty state
       return <Host />;
@@ -157,7 +152,7 @@ export class CalciteTipManager {
             </svg>
           </button>
         </header>
-        <div class={tipContainerClasses} key={this.selectedIndex}>
+        <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>

@@ -39,6 +39,7 @@ $animation-time: 250ms;
 
 $tip-manager-close-size: 24px;
 .close {
+  all: unset;
   @include calcite-close-icon($size: $tip-manager-close-size, $gutter-size: $gutter-size);
 }
 
@@ -47,10 +48,10 @@ $tip-manager-close-size: 24px;
   animation-duration: $animation-time;
   animation-timing-function: ease-in-out;
 }
-.tip-container.is-animating.advancing {
+.tip-container.advancing {
   animation-name: tip-advance;
 }
-.tip-container.is-animating.retreating {
+.tip-container.retreating {
   animation-name: tip-retreat;
 }
 
