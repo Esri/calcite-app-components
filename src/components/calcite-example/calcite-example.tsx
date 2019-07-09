@@ -43,8 +43,18 @@ export class CalciteExample {
 
   internalProp: string;
 
+  @Watch("someProp")
+  handleSomeProp(): void {
+    // ...
+  }
+
   @State()
   internalRenderableProp = 0;
+
+  @Watch("internalRenderableProp")
+  handleInternalSomeProp(): void {
+    // ...
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -83,16 +93,6 @@ export class CalciteExample {
   // --------------------------------------------------------------------------
 
   internalMethod(): void {
-    // ...
-  }
-
-  @Watch("someProp")
-  handleSomeProp(): void {
-    // ...
-  }
-
-  @Watch("internalRenderableProp")
-  handleInternalSomeProp(): void {
     // ...
   }
 
