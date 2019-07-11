@@ -16,4 +16,4 @@ assignees: ""
 
 1.
 
-### Relevant Info <small>(e.g. Browser, OS, Mobile,)</small>
+### Relevant Info <!--(e.g. Browser, OS, Mobile,)-->

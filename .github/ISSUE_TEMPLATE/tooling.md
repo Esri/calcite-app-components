@@ -14,4 +14,4 @@ assignees: ""
 
 **Desired outcome:**
 
-### Resources <small>(e.g. links to libraries or code snippets)</small>
+### Resources <!--(e.g. links to libraries or code snippets)-->
