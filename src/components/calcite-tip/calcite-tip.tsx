@@ -14,23 +14,43 @@ const CSS = {
   shadow: true
 })
 export class CalciteTip {
-  @Element() el: HTMLElement;
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
 
   @Prop() storageId: string;
   @Prop() dismissible = true;
 
-  @State() dismissed =
-    getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
+  @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
 
   hideTip() {
     this.dismissed = true;
     if (this.storageId) {
-      setItem(
-        `${this.el.tagName.toLowerCase()}-${this.storageId}`,
-        "dismissed"
-      );
+      setItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`, "dismissed");
     }
   }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
 
   render() {
     return (

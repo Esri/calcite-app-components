@@ -21,5 +21,4 @@ assignees: ""
 ### Helpful Details
 
 **Which Component:**
-
 **Example Use Case:**
