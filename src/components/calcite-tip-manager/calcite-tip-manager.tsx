@@ -42,7 +42,7 @@ export class CalciteTipManager {
 
   groupTitle = this.textDefaultTitle;
 
-  observer = new MutationObserver(() => this.setupTips());
+  observer = new MutationObserver(() => this.setUpTips());
 
   // --------------------------------------------------------------------------
   //
@@ -51,7 +51,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   componentDidLoad() {
-    this.setupTips();
+    this.setUpTips();
 
     this.observer.observe(this.el, { childList: true });
   }
@@ -86,7 +86,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  setupTips(): void {
+  setUpTips(): void {
     const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
 
     this.tips = tips;
