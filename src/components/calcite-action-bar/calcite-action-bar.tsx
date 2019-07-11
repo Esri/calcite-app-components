@@ -63,12 +63,7 @@ export class CalciteActionBar {
         textEnabled={expanded}
         text={expandText}
       >
-        <svg
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-        >
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path d={expanded ? expandIconDir : collapseIconDir} />
         </svg>
       </calcite-action>
@@ -78,8 +73,7 @@ export class CalciteActionBar {
   renderBottomActionGroup() {
     const expandToggleNode = this.renderExpandToggle();
 
-    return this.el.querySelector("[slot=bottom-actions]") ||
-      expandToggleNode ? (
+    return this.el.querySelector("[slot=bottom-actions]") || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
         <slot name="bottom-actions" />
         {expandToggleNode}
@@ -106,10 +100,8 @@ export class CalciteActionBar {
   watchHandler(newValue: boolean) {
     this.el
       .querySelectorAll("calcite-action")
-      .forEach(action =>
-        newValue
-          ? action.toggleAttribute("text-enabled")
-          : action.removeAttribute("text-enabled")
+      .forEach((action) =>
+        newValue ? action.toggleAttribute("text-enabled") : action.removeAttribute("text-enabled")
       );
   }
 

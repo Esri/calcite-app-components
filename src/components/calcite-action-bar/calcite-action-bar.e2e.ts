@@ -25,9 +25,7 @@ describe("calcite-action-bar", () => {
 
     await page.waitForChanges();
 
-    const expandAction = await page.find(
-      "calcite-action-bar >>> calcite-action"
-    );
+    const expandAction = await page.find("calcite-action-bar >>> calcite-action");
 
     expect(expandAction).not.toBeNull();
   });
@@ -35,15 +33,11 @@ describe("calcite-action-bar", () => {
   it("expand: false", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(
-      '<calcite-action-bar expand="false"></calcite-action-bar>'
-    );
+    await page.setContent('<calcite-action-bar expand="false"></calcite-action-bar>');
 
     await page.waitForChanges();
 
-    const expandAction = await page.find(
-      "calcite-action-bar >>> calcite-action"
-    );
+    const expandAction = await page.find("calcite-action-bar >>> calcite-action");
 
     expect(expandAction).toBeNull();
   });
@@ -56,9 +50,7 @@ describe("calcite-action-bar", () => {
     const bar = await page.find("calcite-action-bar");
 
     const eventSpy = await page.spyOnEvent("calciteActionClick", "window");
-    const buttonGroup = await page.find(
-      "calcite-action-bar >>> .action-group--bottom"
-    );
+    const buttonGroup = await page.find("calcite-action-bar >>> .action-group--bottom");
 
     const button = await buttonGroup.find("calcite-action >>> .button");
 

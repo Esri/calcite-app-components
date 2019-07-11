@@ -1,0 +1,91 @@
+/* Variables, mixins, @keyframes*/
+@import "../../assets/styles/mixins";
+
+$gutter-size: 24px 12px;
+$animation-time: 250ms;
+
+@keyframes tip-advance {
+  0% {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes tip-retreat {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Component Styles */
+:host {
+  position: relative;
+  display: block;
+  padding: $gutter-size;
+  background-color: #fff;
+  color: #6e6e6e;
+}
+:host([hidden]) {
+  display: none;
+}
+
+$tip-manager-close-size: 24px;
+.close {
+  all: unset;
+  @include calcite-close-icon($size: $tip-manager-close-size, $gutter-size: $gutter-size);
+}
+
+.tip-container {
+  animation-name: none;
+  animation-duration: $animation-time;
+  animation-timing-function: ease-in-out;
+}
+.tip-container.advancing {
+  animation-name: tip-advance;
+}
+.tip-container.retreating {
+  animation-name: tip-retreat;
+}
+
+/*Tip Content Styles*/
+::slotted(calcite-tip) {
+  display: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+::slotted(calcite-tip[selected]) {
+  display: block;
+}
+
+/* Pagination Styles*/
+.pagination {
+  display: flex;
+  margin-top: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-control {
+  all: unset;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  &--previous {
+    margin-right: 12px;
+  }
+  &--next {
+    margin-left: 12px;
+  }
+  &:hover {
+    background-color: #eee;
+  }
+}
