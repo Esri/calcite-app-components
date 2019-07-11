@@ -42,7 +42,7 @@ export class CalciteTipManager {
 
   groupTitle = this.textDefaultTitle;
 
-  observer = new MutationObserver(() => this.tipsChangeHandler());
+  observer = new MutationObserver(() => this.setupTips());
 
   // --------------------------------------------------------------------------
   //
@@ -51,7 +51,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   componentDidLoad() {
-    this.tipsChangeHandler();
+    this.setupTips();
 
     this.observer.observe(this.el, { childList: true });
   }
@@ -67,14 +67,14 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   @Method()
-  async nextTip() {
+  async nextTip(): Promise<void> {
     this.direction = "advancing";
     const nextIndex = this.selectedIndex + 1;
     this.selectedIndex = (nextIndex + this.total) % this.total;
   }
 
   @Method()
-  async previousTip() {
+  async previousTip(): Promise<void> {
     this.direction = "retreating";
     const previousIndex = this.selectedIndex - 1;
     this.selectedIndex = (previousIndex + this.total) % this.total;
@@ -86,7 +86,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  tipsChangeHandler() {
+  setupTips(): void {
     const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
 
     this.tips = tips;
@@ -108,12 +108,12 @@ export class CalciteTipManager {
     this.selectedIndex = selectedIndex || 0;
   }
 
-  hideTipManager() {
+  hideTipManager(): void {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
   }
 
-  updateSelectedTip() {
+  updateSelectedTip(): void {
     this.tips.forEach((tip, index) => {
       const selected = index === this.selectedIndex;
 
