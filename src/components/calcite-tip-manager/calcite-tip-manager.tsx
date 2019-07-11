@@ -34,7 +34,7 @@ export class CalciteTipManager {
     this.updateSelectedTip();
   }
 
-  @State() tips: any[];
+  @State() tips: HTMLCalciteTipElement[];
 
   @State() total: number;
 
@@ -55,7 +55,7 @@ export class CalciteTipManager {
   constructor() {
     this.tips = Array.from(this.el.querySelectorAll("calcite-tip"));
     this.total = this.tips.length;
-    const selectedTip = this.el.querySelector("calcite-tip[selected]");
+    const selectedTip: HTMLCalciteTipElement = this.el.querySelector("calcite-tip[selected]");
     this.selectedIndex = selectedTip ? this.tips.indexOf(selectedTip) : 0; // need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
   }
 
