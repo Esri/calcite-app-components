@@ -50,15 +50,15 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
-    this.observer.observe(this.el, { childList: true });
-  }
-
   componentWillLoad() {
     this.setUpTips();
   }
 
-  disconnectedCallback() {
+  componentDidLoad() {
+    this.observer.observe(this.el, { childList: true });
+  }
+
+  componentDidUnload() {
     this.observer.disconnect();
   }
 
