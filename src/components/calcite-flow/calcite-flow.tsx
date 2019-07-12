@@ -1,7 +1,5 @@
 import { Component, Element, Host, Method, State, h } from "@stencil/core";
 
-import { nodeListToArray } from "calcite-components/dist/collection/utils/dom";
-
 import { CSS, FlowDirection } from "./resources";
 
 @Component({
@@ -62,7 +60,7 @@ export class CalciteFlow {
   flowItemObserverCallback(): void {
     const { flows } = this;
 
-    const newFlows: HTMLCalciteFlowItemElement[] = nodeListToArray(
+    const newFlows: HTMLCalciteFlowItemElement[] = Array.from(
       this.el.querySelectorAll("calcite-flow-item")
     );
 
