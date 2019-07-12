@@ -34,7 +34,7 @@ export class CalciteTipManager {
     this.updateSelectedTip();
   }
 
-  @State() tips: any[];
+  @State() tips: HTMLCalciteTipElement[];
 
   @State() total: number;
 
@@ -42,9 +42,7 @@ export class CalciteTipManager {
 
   groupTitle = this.textDefaultTitle;
 
-  observer = new MutationObserver(() => {
-    this.tipsChangeHandler(Array.from(this.el.querySelectorAll("calcite-tip")));
-  });
+  observer = new MutationObserver(() => this.setUpTips());
 
   // --------------------------------------------------------------------------
   //
@@ -52,16 +50,8 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  constructor() {
-    this.tips = Array.from(this.el.querySelectorAll("calcite-tip"));
-    this.total = this.tips.length;
-    const selectedTip = this.el.querySelector("calcite-tip[selected]");
-    this.selectedIndex = selectedTip ? this.tips.indexOf(selectedTip) : 0; // need to set initial value here because of bug https://github.com/ionic-team/stencil/issues/1664.
-  }
-
-  connectedCallback() {
-    this.setupTips();
-    this.updateSelectedTip();
+  componentWillLoad() {
+    this.setUpTips();
   }
 
   componentDidLoad() {
@@ -79,14 +69,14 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   @Method()
-  async nextTip() {
+  async nextTip(): Promise<void> {
     this.direction = "advancing";
     const nextIndex = this.selectedIndex + 1;
     this.selectedIndex = (nextIndex + this.total) % this.total;
   }
 
   @Method()
-  async previousTip() {
+  async previousTip(): Promise<void> {
     this.direction = "retreating";
     const previousIndex = this.selectedIndex - 1;
     this.selectedIndex = (previousIndex + this.total) % this.total;
@@ -98,35 +88,41 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  setupTips() {
-    this.tips.forEach((tip) => {
-      tip.setAttribute("dismissible", "false");
+  setUpTips(): void {
+    const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
+
+    this.tips = tips;
+    this.total = tips.length;
+
+    let selectedIndex: number = null;
+
+    tips.forEach((tip, index) => {
+      tip.toggleAttribute("non-dismissible", true);
+
+      if (selectedIndex === null && tip.hasAttribute("selected")) {
+        selectedIndex = index;
+        return;
+      }
+
+      tip.removeAttribute("selected");
     });
+
+    this.selectedIndex = selectedIndex || 0;
   }
 
-  tipsChangeHandler(newTipList) {
-    this.tips = newTipList;
-    this.total = this.tips.length;
-    const lastTipIndex = this.total - 1;
-    if (this.selectedIndex > lastTipIndex) {
-      this.selectedIndex = lastTipIndex;
-    }
-    this.setupTips();
-    this.updateSelectedTip(); // Only doing this here to handle edge case where a tip is added with the selected attribute;
-  }
-
-  hideTipManager() {
+  hideTipManager(): void {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
   }
 
-  updateSelectedTip() {
+  updateSelectedTip(): void {
     this.tips.forEach((tip, index) => {
-      if (index === this.selectedIndex) {
+      const selected = index === this.selectedIndex;
+
+      tip.toggleAttribute("selected", selected);
+
+      if (selected) {
         this.groupTitle = tip.dataset.groupTitle || this.textDefaultTitle;
-        tip.toggleAttribute("selected", true);
-      } else {
-        tip.removeAttribute("selected");
       }
     });
   }

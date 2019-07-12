@@ -40,6 +40,9 @@ describe("calcite-tip-manager", () => {
         <calcite-tip id="two"><p>next/prev behavior</p></calcite-tip>
       </calcite-tip-manager>`
     );
+
+    await page.waitForChanges();
+
     const tipManager = await page.find("calcite-tip-manager");
 
     let selectedTip = await tipManager.find(`calcite-tip[selected]`);
@@ -72,7 +75,8 @@ describe("calcite-tip-manager", () => {
         <calcite-tip data-group-title=${title2}><p>different title</p></calcite-tip>
       </calcite-tip-manager>`
     );
-    const tipManager = await page.find("calcite-tip-manager");
+
+    await page.waitForChanges();
 
     const title = await page.find(`calcite-tip-manager >>> .${CSS.title}`);
     expect(title.innerText).toBe(sharedTitle);
@@ -94,9 +98,12 @@ describe("calcite-tip-manager", () => {
     await page.setContent(
       `<calcite-tip-manager>
         <calcite-tip id="one"><p>no pre-selected attribute</p></calcite-tip>
-        <calcite-tip id="two" selected=""><p>pre-selected and not first</p></calcite-tip>
+        <calcite-tip id="two" selected><p>pre-selected and not first</p></calcite-tip>
       </calcite-tip-manager>`
     );
+
+    await page.waitForChanges();
+
     const tipManager = await page.find("calcite-tip-manager");
 
     const selectedTip = await tipManager.find(`calcite-tip[selected]`);
