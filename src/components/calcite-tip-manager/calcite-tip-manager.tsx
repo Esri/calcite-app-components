@@ -50,13 +50,15 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  componentDidLoad() {
-    this.setUpTips();
-
+  connectedCallback() {
     this.observer.observe(this.el, { childList: true });
   }
 
-  componentDidUnload() {
+  componentWillLoad() {
+    this.setUpTips();
+  }
+
+  disconnectedCallback() {
     this.observer.disconnect();
   }
 
@@ -95,7 +97,7 @@ export class CalciteTipManager {
     let selectedIndex: number = null;
 
     tips.forEach((tip, index) => {
-      tip.removeAttribute("dismissible");
+      tip.toggleAttribute("dismissible", false);
 
       if (selectedIndex === null && tip.hasAttribute("selected")) {
         selectedIndex = index;
