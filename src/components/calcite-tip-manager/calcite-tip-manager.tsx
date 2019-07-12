@@ -97,7 +97,7 @@ export class CalciteTipManager {
     let selectedIndex: number = null;
 
     tips.forEach((tip, index) => {
-      tip.toggleAttribute("dismissible", false);
+      tip.toggleAttribute("non-dismissible", true);
 
       if (selectedIndex === null && tip.hasAttribute("selected")) {
         selectedIndex = index;

@@ -22,7 +22,7 @@ export class CalciteTip {
 
   @Prop() storageId: string;
 
-  @Prop({ reflect: true }) dismissible = true;
+  @Prop({ reflect: true }) nonDismissible = false;
 
   // --------------------------------------------------------------------------
   //
@@ -60,7 +60,7 @@ export class CalciteTip {
     return (
       <Host hidden={this.dismissed}>
         <slot name="heading" />
-        {this.dismissible ? (
+        {!this.nonDismissible ? (
           <div class={CSS.close} onClick={() => this.hideTip()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d={x24} />
