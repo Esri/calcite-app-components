@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
+import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 import { x24 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 
@@ -22,11 +22,6 @@ export class CalciteTip {
 
   @Prop() storageId: string;
 
-  @Watch("storageId")
-  storageIdHandler(newValue: string) {
-    this.storageUID = `${this.el.tagName.toLowerCase()}-${newValue}`;
-  }
-
   @Prop({ reflect: true }) dismissible = true;
 
   // --------------------------------------------------------------------------
@@ -35,11 +30,9 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  storageUID: string;
-
   @Element() el: HTMLElement;
 
-  @State() dismissed = getItem(this.storageUID) !== null;
+  @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
   // --------------------------------------------------------------------------
   //
@@ -48,12 +41,12 @@ export class CalciteTip {
   // --------------------------------------------------------------------------
 
   hideTip(): void {
-    const { storageId } = this;
-
     this.dismissed = true;
 
+    const { storageId } = this;
+
     if (storageId) {
-      setItem(this.storageUID, "dismissed");
+      setItem(`${this.el.tagName.toLowerCase()}-${storageId}`, "dismissed");
     }
   }
 
