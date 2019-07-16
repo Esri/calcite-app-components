@@ -30,11 +30,11 @@
     "url": "git+https://github.com/ArcGIS/calcite-app-components.git"
   },
   "dependencies": {
-    "@esri/calcite-base": "github:ArcGIS/calcite-base",
-    "@esri/calcite-colors": "^1.2.0",
-    "@esri/calcite-ui-icons": "^2.0.1",
-    "calcite-components": "github:ArcGIS/calcite-components.git#v0.0.0-alpha.4",
-    "calcite-fonts": "github:ArcGIS/calcite-fonts"
+    "@esri/calcite-base": "github:ArcGIS/calcite-base#3d18d24",
+    "@esri/calcite-colors": "1.2.1",
+    "@esri/calcite-ui-icons": "2.0.1",
+    "calcite-components": "github:ArcGIS/calcite-components#v0.0.0-alpha.4",
+    "calcite-fonts": "github:ArcGIS/calcite-fonts#v1.1.2"
   },
   "devDependencies": {
     "@stencil/core": "1.1.3",
@@ -45,9 +45,10 @@
     "@types/jest": "24.0.15",
     "@types/puppeteer": "1.12.4",
     "autoprefixer": "9.6.0",
+    "classnames": "2.2.6",
     "gh-release": "^3.5.0",
     "husky": "2.4.1",
-    "jest": "^24.8.0",
+    "jest": "24.8.0",
     "jest-cli": "24.8.0",
     "jest-runner": "^24.8.0",
     "lint-staged": "8.2.1",

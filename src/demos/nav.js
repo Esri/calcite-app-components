@@ -34,7 +34,7 @@ a.is-active {
     <ul>
       <li><a href="${root}">Home</a></li>
       <li><a href="${root}demos/calcite-tip.html">Calcite Tip</a></li>
-      <!--<li><a href="${root}demos/calcite-tip-manager.html">Calcite Tip Manager</a></li>-->
+      <li><a href="${root}demos/calcite-tip-manager.html">Calcite Tip Manager</a></li>
       <li><a href="${root}demos/calcite-action/">Calcite Action</a></li>
       <li><a href="${root}demos/calcite-action-bar/">Calcite Action Bar</a></li>
       <li><a href="${root}demos/calcite-action-pad/">Calcite Action Pad</a></li>

@@ -10,12 +10,12 @@ assignees: ""
 
 #### User Stories
 
-### Acceptance Criteria <small>(a.k.a. Requirements)</small>
+### Acceptance Criteria <!--(a.k.a. Requirements)-->
 
 #### Desired Behavior
 
 #### Desired Look & Feel
 
-#### Out of Scope <small>(anything not v1)</small>
+#### Out of Scope <!--(anything not v1)-->
 
 ### Helpful Details
