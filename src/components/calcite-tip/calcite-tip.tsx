@@ -28,6 +28,8 @@ export class CalciteTip {
   @Prop() heading: string;
   @Prop() thumbnail: string;
 
+  @Element() el: HTMLElement;
+
   @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
   // --------------------------------------------------------------------------
@@ -58,7 +60,7 @@ export class CalciteTip {
         {/* <slot name="heading" /> */}
         <header>
           <h2 class={CSS.title}>{this.heading}</h2>
-          {this.dismissible ? (
+          {this.dismissed ? (
             <div class={CSS.close} onClick={() => this.hideTip()}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d={x16} />

@@ -7,7 +7,7 @@ $gutter-size: 24px 12px;
   color: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
-  box-shadow: var(--calcite-app-box-shadow);
+  box-shadow: var(--calcite-app-shadow-2);
   border-radius: var(--calcite-app-border-radius);
 }
 :host([hidden]) {

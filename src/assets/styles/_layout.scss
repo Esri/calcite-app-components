@@ -30,5 +30,11 @@ $cap-spacing: 15px !default;
 
   --calcite-app-border-radius: 3px;
 
-  --calcite-app-box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  // shadows
+  --calcite-app-shadow-1: #{$shadow-1};
+  --calcite-app-shadow-1-hover: #{$shadow-1--hover};
+  --calcite-app-shadow-1--press: #{$shadow-1--press};
+  --calcite-app-shadow-2: #{$shadow-2};
+  --calcite-app-shadow-2-hover: #{$shadow-2--hover};
+  --calcite-app-shadow-2-press: #{$shadow-2--press};
 }
