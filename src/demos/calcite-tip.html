@@ -10,7 +10,7 @@
   <body>
     <calcite-styleguide-nav></calcite-styleguide-nav>
     <section class="example-container">
-      <h2>All the things</h2>
+      <h2>Tip</h2>
       <div>
         <calcite-tip
           heading="Celestial Bodies"
@@ -24,7 +24,8 @@
           <a slot="link" href="http://www.esri.com">View Esri</a>
         </calcite-tip>
       </div>
-      <h2>No thumbnail</h2>
+      <hr>
+      <h2>With no thumbnail</h2>
       <div>
         <calcite-tip heading="Celestial Bodies">
           <p slot="info">
@@ -36,7 +37,7 @@
         </calcite-tip>
       </div>
       <hr>
-      <h2>RTL Tip</h2>
+      <h2>RTL</h2>
       <div dir="rtl">
         <calcite-tip
           heading="Celestial Bodies"
@@ -51,7 +52,21 @@
         </calcite-tip>
       </div>
       <hr>
-      <h2>Tip with storageId</h2>
+      <h2>RTL with no thumbnail</h2>
+      <div dir="rtl">
+        <calcite-tip
+          heading="Celestial Bodies"
+        >
+          <p slot="info">
+            An astronomical object or celestial object is a naturally occurring physical entity, association, or
+            structure that exists in the observable universe.
+          </p>
+          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
+          <a slot="link" href="http://www.esri.com">View Esri</a>
+        </calcite-tip>
+      </div>
+      <hr>
+      <h2>With storage-id</h2>
       <p>Dismiss then Refresh and Tip will not re-appear.</p>
 
       <div>
