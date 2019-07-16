@@ -25,6 +25,8 @@ export class CalciteTip {
 
   @Prop() storageId: string;
 
+  @Prop({ reflect: true }) nonDismissible = false;
+
   @Prop() heading: string;
   @Prop() thumbnail: string;
 
@@ -60,7 +62,7 @@ export class CalciteTip {
         {/* <slot name="heading" /> */}
         <header>
           <h2 class={CSS.title}>{this.heading}</h2>
-          {this.dismissed ? (
+          {!this.nonDismissible ? (
             <div class={CSS.close} onClick={() => this.hideTip()}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path d={x16} />
