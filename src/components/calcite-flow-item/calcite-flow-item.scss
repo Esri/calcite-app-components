@@ -43,21 +43,23 @@
 }
 
 .heading {
-  font-weight: 400;
+  font-weight: var(--font-weight);
   margin: 0;
   overflow: hidden;
-  padding: 0 12px;
+  padding: 0 var(--calcite-app-side-spacing);
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 14px;
-  text-align: center;
-  width: calc(100% - 96px);
+  font-size: var(--font-size-0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
 .menu-button {
-  align-self: stretch;
-  display: flex;
+  // align-self: stretch;
+  // display: flex;
+  flex: 0;
   position: relative;
 }
 
@@ -71,14 +73,10 @@
   position: absolute;
   top: 100%;
   z-index: 1;
-  background-color: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: var(--calcite-app-background);
+  box-shadow: var(--calcite-app-shadow-0);
   padding: 0;
-  margin: 1px;
-  font-size: 14px;
-  line-height: 16px;
   width: 100%;
-  color: #6e6e6e;
   left: auto;
   min-width: 150px;
   right: 2px;
@@ -94,18 +92,17 @@
 
 .footer {
   align-items: center;
-  background-color: #ffffff;
-  border-top: 1px solid #e7e7e7;
-  bottom: 0;
+  background-color: var(--calcite-app-background);
+  border-top: 1px solid var(--calcite-app-border);
   display: flex;
-  height: 48px;
   justify-content: center;
   left: 0;
-  padding: 6px 6px;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
   right: 0;
 }
 
-slot[name="footer-actions"]::slotted(button).btn {
+// Saving this for now.
+slot[name="footer-actions"]::slotted(button) {
   background-color: #0079c1;
   padding: 1em;
 }
