@@ -59,7 +59,6 @@ export class CalciteTip {
   render() {
     return (
       <Host hidden={this.dismissed}>
-        {/* <slot name="heading" /> */}
         <header>
           <h2 class={CSS.title}>{this.heading}</h2>
           {!this.nonDismissible ? (
