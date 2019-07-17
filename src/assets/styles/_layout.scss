@@ -1,5 +1,6 @@
 $side-spacing: 15px !default;
 $cap-spacing: 15px !default;
+$animation-time: 250ms !default;
 
 :host {
   --calcite-app-side-spacing: #{$side-spacing};
@@ -29,4 +30,8 @@ $cap-spacing: 15px !default;
   --calcite-app-icon-size: 16px;
 
   --calcite-app-border-radius: 3px;
+
+  --calcite-app-animation-time: #{$animation-time};
+  --calcite-app-animation-time-fast: #{round($animation-time / 2)};
+  --calcite-app-animation-time-slow: #{round($animation-time * 2)};
 }

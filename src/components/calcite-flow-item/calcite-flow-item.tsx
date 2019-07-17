@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
+import { chevronLeft16, ellipsis16F } from "@esri/calcite-ui-icons";
 
 import { CSS, TEXT } from "./resources";
 
@@ -76,7 +76,7 @@ export class CalciteFlowItem {
         onClick={this.backButtonClick.bind(this)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-          <path d={chevronLeft16F} />
+          <path d={chevronLeft16} />
         </svg>
       </button>
     ) : null;
