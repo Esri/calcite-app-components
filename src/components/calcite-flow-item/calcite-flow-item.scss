@@ -31,15 +31,7 @@
 }
 
 .back-button {
-  -webkit-appearance: none;
-  align-items: center;
-  align-self: stretch;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-  transition: background-color 250ms ease-in-out;
+  flex: 0;
 }
 
 .heading {
@@ -67,7 +59,7 @@
   position: relative;
 }
 
-slot[name="menu-actions"] {
+.menu slot[name="menu-actions"] {
   position: absolute;
   top: 100%;
   z-index: 1;
@@ -82,16 +74,6 @@ slot[name="menu-actions"] {
   flex-flow: column nowrap;
   border: 1px solid var(--calcite-app-border);
   animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-  &::slotted(button) {
-    // text-align: auto;
-    display: flex;
-    border: none;
-    padding: 0.7rem 1rem;
-    cursor: pointer;
-  }
-  &::slotted(button:hover) {
-    background-color: var(--calcite-app-background-hover);
-  }
 }
 
 .content-container {
@@ -109,24 +91,4 @@ slot[name="footer-actions"] {
   justify-content: space-around;
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
   flex-flow: row nowrap;
-}
-
-// Temporary styles
-// calcite-components should deliver button components
-// or we should have them in calcite-app-components
-slot[name="footer-actions"]::slotted(.btn) {
-  background-color: $blue;
-  border: 1px solid $blue;
-  color: $white;
-  font-size: 1rem;
-  font-family: inherit;
-  padding: 0.4rem;
-  border-radius: 3px;
-  margin: 0 2%;
-  min-width: 46%;
-}
-
-slot[name="footer-actions"]::slotted(.btn.btn-secondary) {
-  background-color: transparent;
-  color: $blue;
 }

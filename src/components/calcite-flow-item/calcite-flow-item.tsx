@@ -72,6 +72,7 @@ export class CalciteFlowItem {
         key="back-button"
         aria-label={textBack}
         text={textBack}
+        class={CSS.backButton}
         onCalciteActionClick={this.backButtonClick.bind(this)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
