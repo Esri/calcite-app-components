@@ -57,8 +57,6 @@
 }
 
 .menu-button {
-  // align-self: stretch;
-  // display: flex;
   flex: 0;
   position: relative;
 }
@@ -69,6 +67,7 @@
   position: relative;
 }
 
+// slot[name="menu-actions"] {
 .menu {
   position: absolute;
   top: 100%;
@@ -76,11 +75,13 @@
   background-color: var(--calcite-app-background);
   box-shadow: var(--calcite-app-shadow-0);
   padding: 0;
-  width: 100%;
   left: auto;
-  min-width: 150px;
-  right: 2px;
+  min-width: var(--calcite-app-menu-min-width);
+  right: var(--calcite-app-menu-offset);
   visibility: visible;
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid var(--calcite-app-border);
 }
 
 .content-container {
@@ -90,19 +91,21 @@
   overflow: auto;
 }
 
+// slot[name="footer-actions"] {
 .footer {
   align-items: center;
   background-color: var(--calcite-app-background);
   border-top: 1px solid var(--calcite-app-border);
   display: flex;
   justify-content: center;
-  left: 0;
-  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
-  right: 0;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
 }
 
 // Saving this for now.
+// slot[name="menu-actions"]::slotted(button) {
+//   background-color: #ff0000; // temp style for testing
+// }
+
 slot[name="footer-actions"]::slotted(button) {
-  background-color: #0079c1;
-  padding: 1em;
+  background-color: #ff0000; // temp style for testing
 }
