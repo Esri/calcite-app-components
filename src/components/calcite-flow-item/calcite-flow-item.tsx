@@ -2,8 +2,6 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 
 import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
 
-import classnames from "classnames";
-
 import { CSS, TEXT } from "./resources";
 
 @Component({
@@ -154,15 +152,10 @@ export class CalciteFlowItem {
   }
 
   render() {
-    const headingClasses = {
-      [CSS.heading]: true,
-      [CSS.headingFirst]: !this.showBackButton
-    };
-
     const headerNode = (
-      <header class={CSS.header}>
+      <header class={this.showBackButton ? CSS.header : CSS.headerFirst}>
         {this.renderBackButton()}
-        <h2 class={classnames(headingClasses)}>{this.heading}</h2>
+        <h2 class={CSS.heading}>{this.heading}</h2>
         {this.renderHeaderActions()}
       </header>
     );
