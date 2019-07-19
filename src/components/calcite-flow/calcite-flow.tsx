@@ -88,7 +88,7 @@ export class CalciteFlow {
     }
 
     if (previousFlow) {
-      previousFlow.menuOpen = false; // @driskull is this gross?
+      previousFlow.menuOpen = false;
     }
 
     this.flows = newFlows;
