@@ -13,26 +13,26 @@
   display: none;
 }
 
-:host header {
+header {
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-:host .title {
+.title {
   font-size: var(--font-size-1);
   font-weight: var(--font-weight);
   padding: 0;
   margin: 0;
 }
 
-:host .content {
+.content {
   display: flex;
   padding-top: var(--calcite-app-cap-spacing);
 }
 
-:host .info {
+.info {
   padding: 0 var(--calcite-app-side-spacing);
   width: 70%;
   &:only-child {
@@ -42,17 +42,17 @@
   }
 }
 
-:host .info ::slotted(p) {
+.info ::slotted(p) {
   margin-top: 0;
 }
 
-:host .close {
+.close {
   width: var(--calcite-app-icon-size);
   height: var(--calcite-app-icon-size);
   cursor: pointer;
 }
 
-:host .image-frame {
+.image-frame {
   width: 25%;
   img {
     width: 100%;
