@@ -17,8 +17,7 @@
   position: relative;
 }
 
-.header,
-.header-first {
+.header {
   align-items: center;
   color: var(--calcite-app-foreground);
   display: flex;
@@ -49,7 +48,7 @@
   flex: 1;
 }
 
-.header-first .heading {
+.heading--first {
   justify-content: flex-start;
 }
 
