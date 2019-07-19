@@ -153,7 +153,7 @@ export class CalciteFlowItem {
 
   render() {
     const headerNode = (
-      <header class={CSS.header}>
+      <header class={this.showBackButton ? CSS.header : CSS.headerFirst}>
         {this.renderBackButton()}
         <h2 class={CSS.heading}>{this.heading}</h2>
         {this.renderHeaderActions()}
