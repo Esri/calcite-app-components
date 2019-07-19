@@ -78,17 +78,12 @@ export class CalciteFlow {
         : null;
 
     const activeFlow = newFlows[newFlowCount - 1];
-    const previousFlow = newFlows[newFlowCount - 2];
 
     if (newFlowCount && activeFlow) {
       newFlows.forEach((flowNode) => {
         flowNode.showBackButton = hasMultipleFlows;
         flowNode.hidden = flowNode !== activeFlow;
       });
-    }
-
-    if (previousFlow) {
-      previousFlow.menuOpen = false; // @driskull is this gross?
     }
 
     this.flows = newFlows;
