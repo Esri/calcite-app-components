@@ -122,7 +122,10 @@ export class CalciteTipManager {
       tip.toggleAttribute("selected", selected);
 
       if (selected) {
-        this.groupTitle = tip.dataset.groupTitle || this.textDefaultTitle;
+        const tipParent: HTMLCalciteTipGroupElement = tip.parentElement;
+        this.groupTitle = tipParent.matches("calcite-tip-group")
+          ? tipParent.textGroupTitle
+          : this.textDefaultTitle;
       }
     });
   }
