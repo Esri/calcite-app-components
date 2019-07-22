@@ -1,15 +1,17 @@
 # calcite-action-bar
 
-<!-- Auto Generated Below -->
+## Description
+
+The `calcite-action-bar` component is made up of multiple [calcite-actions](../calcite-action) (such as Tips, Legend, Add etc.) in the form of clickable icons. It can be expanded to view actions with descriptive text or made smaller to view with just icons.
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default      |
-| -------------- | --------------- | ----------- | --------- | ------------ |
-| `expand`       | `expand`        |             | `boolean` | `true`       |
-| `expanded`     | `expanded`      |             | `boolean` | `false`      |
-| `textCollapse` | `text-collapse` |             | `string`  | `"Collapse"` |
-| `textExpand`   | `text-expand`   |             | `string`  | `"Expand"`   |
+| Property       | Attribute       | Description                               | Type      | Default      |
+| -------------- | --------------- | ----------------------------------------- | --------- | ------------ |
+| `expand`       | `expand`        | Indicates whether widget can be expanded. | `boolean` | `true`       |
+| `expanded`     | `expanded`      | Indicates whether widget is expanded.     | `boolean` | `false`      |
+| `textCollapse` | `text-collapse` |                                           | `string`  | `"Collapse"` |
+| `textExpand`   | `text-expand`   |                                           | `string`  | `"Expand"`   |
 
 ## Dependencies
 
