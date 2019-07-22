@@ -23,6 +23,7 @@ The `calcite-action` component is an action item (such as Tip, Legend, Home etc.
 ### Used by
 
 - [calcite-action-bar](../calcite-action-bar)
+- [calcite-action-pad](../calcite-action-pad)
 
 ### Graph
 
