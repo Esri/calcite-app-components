@@ -1,6 +1,6 @@
 # calcite-action-group
 
-<!-- Auto Generated Below -->
+Groups together multiple `calcite-action`s and housed in [calcite-action-bar](../calcite-action-bar) and [calcite-action-pad](../calcite-action-pad).
 
 ## Dependencies
 
