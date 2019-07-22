@@ -1,45 +1,46 @@
-$animation-time: 250ms;
-$animation-time--fast: round($animation-time / 2);
-$animation-time--slow: round($animation-time * 2);
+$start-alpha: 0.5;
 
 :host {
   display: flex;
-}
-.frame {
-  width: 100%;
   height: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-flow: column;
-  position: relative;
-}
-.frame--advancing {
-  animation: calcite-flow-item-advance $animation-time ease-in-out;
-}
+  overflow: hidden;
 
-.frame--retreating {
-  animation: calcite-flow-item-retreat $animation-time ease-in-out;
-}
+  .frame {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+  }
+  .frame--advancing {
+    animation: calcite-flow-item-advance var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+  }
 
-@keyframes calcite-flow-item-advance {
-  0% {
-    opacity: 0;
-    transform: translate3d(50px, 0, 0) scale(0.99);
+  .frame--retreating {
+    animation: calcite-flow-item-retreat var(--calcite-app-animation-time) var(--calcite-app-easing-function);
   }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
 
-@keyframes calcite-flow-item-retreat {
-  0% {
-    opacity: 0;
-    transform: translate3d(-50px, 0, 0) scale(0.99);
+  @keyframes calcite-flow-item-advance {
+    0% {
+      opacity: $start-alpha;
+      transform: translate3d(50px, 0, 0) scale(0.99);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
   }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+
+  @keyframes calcite-flow-item-retreat {
+    0% {
+      opacity: $start-alpha;
+      transform: translate3d(-50px, 0, 0) scale(0.99);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
   }
 }

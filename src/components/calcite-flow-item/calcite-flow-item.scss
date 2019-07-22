@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  height: 100%;
 }
 
 :host([hidden]) {
@@ -17,51 +18,42 @@
 }
 
 .header {
-  flex: 1;
   align-items: center;
-  background-color: transparent;
-  color: #323232;
+  color: var(--calcite-app-foreground);
   display: flex;
-  height: 48px;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
   justify-content: flex-start;
   position: relative;
   z-index: 2;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--calcite-app-background);
+  border-bottom: 1px solid var(--calcite-app-border);
   justify-content: flex-start;
 }
 
 .back-button {
-  -webkit-appearance: none;
-  align-items: center;
-  align-self: stretch;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex: 0 0 48px;
-  justify-content: center;
-  padding: 0;
-  width: 48px;
-  transition: background-color 250ms ease-in-out;
+  flex: 0;
 }
 
 .heading {
-  font-weight: 400;
+  font-weight: var(--font-weight);
   margin: 0;
   overflow: hidden;
-  padding: 0 12px;
+  padding: 0 var(--calcite-app-side-spacing);
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 14px;
-  text-align: center;
-  width: calc(100% - 96px);
+  font-size: var(--font-size-0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
+.heading--first {
+  justify-content: flex-start;
+}
+
 .menu-button {
-  align-self: stretch;
-  display: flex;
+  flex: 0;
   position: relative;
 }
 
@@ -71,37 +63,36 @@
   position: relative;
 }
 
-.menu {
+.menu slot[name="menu-actions"] {
   position: absolute;
   top: 100%;
   z-index: 1;
-  background-color: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: var(--calcite-app-background);
+  box-shadow: var(--calcite-app-shadow-0);
   padding: 0;
-  margin: 1px;
-  font-size: 14px;
-  line-height: 16px;
-  width: 100%;
-  color: #6e6e6e;
   left: auto;
-  min-width: 150px;
-  right: 2px;
+  min-width: var(--calcite-app-menu-min-width);
+  right: var(--calcite-app-menu-offset);
   visibility: visible;
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid var(--calcite-app-border);
+  animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
 .content-container {
-  bottom: 60px;
+  flex: 1;
+  background-color: var(--calcite-app-background-content);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  overflow: auto;
 }
 
-.footer {
+slot[name="footer-actions"] {
   align-items: center;
-  background-color: #ffffff;
-  border-top: 1px solid #e7e7e7;
-  bottom: 0;
+  background-color: var(--calcite-app-background);
+  border-top: 1px solid var(--calcite-app-border);
   display: flex;
-  height: 48px;
-  justify-content: center;
-  left: 0;
-  padding: 6px 6px;
-  right: 0;
+  justify-content: space-around;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
+  flex-flow: row nowrap;
 }

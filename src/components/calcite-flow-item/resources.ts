@@ -2,6 +2,7 @@ export const CSS = {
   container: "container",
   header: "header",
   heading: "heading",
+  headingFirst: "heading--first",
   backButton: "back-button",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",

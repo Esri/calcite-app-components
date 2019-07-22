@@ -1,6 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16F, ellipsis16F } from "@esri/calcite-ui-icons";
+import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
+
+import classnames from "classnames";
 
 import { CSS, TEXT } from "./resources";
 
@@ -68,17 +70,17 @@ export class CalciteFlowItem {
     const { showBackButton, textBack } = this;
 
     return showBackButton ? (
-      <button
+      <calcite-action
         key="back-button"
-        class={CSS.backButton}
         aria-label={textBack}
-        title={textBack}
-        onClick={this.backButtonClick.bind(this)}
+        text={textBack}
+        class={CSS.backButton}
+        onCalciteActionClick={this.backButtonClick.bind(this)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-          <path d={chevronLeft16F} />
+          <path d={chevronLeft16} />
         </svg>
-      </button>
+      </calcite-action>
     ) : null;
   }
 
@@ -88,17 +90,17 @@ export class CalciteFlowItem {
     const menuLabel = menuOpen ? textClose : textOpen;
 
     return (
-      <button
+      <calcite-action
         key="menu-button"
         class={CSS.menuButton}
         aria-label={menuLabel}
-        title={menuLabel}
-        onClick={this.toggleMenuOpen.bind(this)}
+        text={menuLabel}
+        onCalciteActionClick={this.toggleMenuOpen.bind(this)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-          <path d={ellipsis16F} />
+          <path d={ellipsis16} />
         </svg>
-      </button>
+      </calcite-action>
     );
   }
 
@@ -152,10 +154,14 @@ export class CalciteFlowItem {
   }
 
   render() {
+    const headingClasses = {
+      [CSS.heading]: true,
+      [CSS.headingFirst]: !this.showBackButton
+    };
     const headerNode = (
       <header class={CSS.header}>
         {this.renderBackButton()}
-        <h2 class={CSS.heading}>{this.heading}</h2>
+        <h2 class={classnames(headingClasses)}>{this.heading}</h2>
         {this.renderHeaderActions()}
       </header>
     );
