@@ -56,7 +56,7 @@ export class CalciteActionBar {
         textEnabled={expanded}
         text={expandText}
       >
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path d={expanded ? expandIcon : collapseIcon} />
         </svg>
       </calcite-action>
