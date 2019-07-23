@@ -71,11 +71,11 @@ export class CalciteFlow {
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
 
-    const pastMultipleFlows = oldFlowCount > 1;
-    const presentMultipleFlows = newFlowCount > 1;
+    const prevHasMulti = oldFlowCount > 1;
+    const currHasMulti = newFlowCount > 1;
 
     const flowDirection =
-      (presentMultipleFlows && oldFlowCount) || pastMultipleFlows
+      (currHasMulti && oldFlowCount) || prevHasMulti
         ? newFlowCount < oldFlowCount
           ? "retreating"
           : "advancing"
@@ -86,7 +86,7 @@ export class CalciteFlow {
 
     if (newFlowCount && activeFlow) {
       newFlows.forEach((flowNode) => {
-        flowNode.showBackButton = presentMultipleFlows;
+        flowNode.showBackButton = currHasMulti;
         flowNode.hidden = flowNode !== activeFlow;
       });
     }
