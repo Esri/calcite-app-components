@@ -9,6 +9,11 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 | `dismissible` | `dismissible` | Indicates whether the tip can be dismissed. | `boolean` | `true`      |
 | `storageId`   | `storage-id`  | The id for an instance of a tip.            | `string`  | `undefined` |
 
+
+## Dependencies
+### Used by 
+- [calcite-tip-manager](../calcite-tip-manager)
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
