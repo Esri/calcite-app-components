@@ -25,7 +25,7 @@ describe("calcite-flow", () => {
     expect(element).not.toHaveClass(CSS.frameRetreating);
   });
 
-  it("back()", async () => {
+  it("back() method should remove item", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
@@ -39,7 +39,7 @@ describe("calcite-flow", () => {
     expect(element.innerHTML).toEqual("");
   });
 
-  it("frame advancing", async () => {
+  it("frame advancing should add animation class", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
@@ -63,7 +63,7 @@ describe("calcite-flow", () => {
     expect(frame).toHaveClass(CSS.frameAdvancing);
   });
 
-  it("frame retreating", async () => {
+  it("frame retreating should add animation class", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow></calcite-flow>");
@@ -99,7 +99,7 @@ describe("calcite-flow", () => {
     expect(frame2).not.toHaveClass(CSS.frameAdvancing);
   });
 
-  it("flow-item properties", async () => {
+  it("flow-item properties should be set", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow></calcite-flow>");
