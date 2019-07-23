@@ -66,9 +66,15 @@ describe("calcite-flow", () => {
   it("frame retreating", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(
-      "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
-    );
+    await page.setContent("<calcite-flow></calcite-flow>");
+
+    await page.$eval("calcite-flow", (elm: HTMLElement) => {
+      elm.innerHTML = `
+      <calcite-flow-item></calcite-flow-item>
+      <calcite-flow-item></calcite-flow-item>
+      <calcite-flow-item></calcite-flow-item>
+      `;
+    });
 
     const items = await page.findAll("calcite-flow-item");
 
@@ -79,11 +85,7 @@ describe("calcite-flow", () => {
     expect(frame).not.toHaveClass(CSS.frameRetreating);
     expect(frame).not.toHaveClass(CSS.frameAdvancing);
 
-    await page.evaluate(() => {
-      const flow = document.querySelector("calcite-flow");
-      const lastChild = flow.querySelector("calcite-flow-item:last-child");
-      lastChild && lastChild.remove();
-    });
+    await page.$eval("calcite-flow", (elm: HTMLCalciteFlowElement) => elm.back());
 
     await page.waitForChanges();
 
@@ -91,24 +93,28 @@ describe("calcite-flow", () => {
 
     expect(items2).toHaveLength(2);
 
-    // const frame2 = await page.find(`calcite-flow >>> .${CSS.frame}`);
+    const frame2 = await page.find(`calcite-flow >>> .${CSS.frame}`);
 
-    // expect(frame2).toHaveClass(CSS.frameRetreating);
+    expect(frame2).toHaveClass(CSS.frameRetreating);
+    expect(frame2).not.toHaveClass(CSS.frameAdvancing);
   });
 
   it("flow-item properties", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(
-      "<calcite-flow><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item><calcite-flow-item></calcite-flow-item></calcite-flow>"
-    );
+    await page.setContent("<calcite-flow></calcite-flow>");
+
+    await page.$eval("calcite-flow", (elm: HTMLElement) => {
+      elm.innerHTML = `
+      <calcite-flow-item></calcite-flow-item>
+      <calcite-flow-item></calcite-flow-item>
+      <calcite-flow-item></calcite-flow-item>
+      `;
+    });
 
     const items = await page.findAll("calcite-flow-item");
 
     expect(items).toHaveLength(3);
-
-    /*
-    // mutation observer not kicking in in tests
 
     const showBackButton0 = await items[0].getProperty("showBackButton");
     const showBackButton2 = await items[2].getProperty("showBackButton");
@@ -118,6 +124,5 @@ describe("calcite-flow", () => {
 
     expect(items[2].getAttribute("hidden")).toBe(null);
     expect(showBackButton2).not.toBe(null);
-    */
   });
 });

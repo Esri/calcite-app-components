@@ -30,6 +30,10 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
+  componentWillLoad() {
+    this.updateFlowProps();
+  }
+
   componentDidLoad() {
     this.flowItemObserver.observe(this.el, { childList: true });
   }
@@ -71,7 +75,7 @@ export class CalciteFlow {
     const presentMultipleFlows = newFlowCount > 1;
 
     const flowDirection =
-      presentMultipleFlows || pastMultipleFlows
+      (presentMultipleFlows && oldFlowCount) || pastMultipleFlows
         ? newFlowCount < oldFlowCount
           ? "retreating"
           : "advancing"
