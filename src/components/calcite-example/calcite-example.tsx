@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 
-import { CSS, TEXT_MY_STRING_DEFAULT } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-example",
@@ -30,7 +30,7 @@ export class CalciteExample {
   someProp = true;
 
   @Prop()
-  textMyString = TEXT_MY_STRING_DEFAULT;
+  textMyString = TEXT.myString;
 
   // --------------------------------------------------------------------------
   //
