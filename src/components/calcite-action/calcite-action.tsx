@@ -17,15 +17,25 @@ export class CalciteAction {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Indicates whether the action is highlighted.
+   */
   @Prop({ reflect: true }) active = false;
-
+  /**
+   * Indicates unread changes.
+   */
   @Prop({ reflect: true }) indicator = false;
-
+  /**
+   * Label of the action, exposed on hover.
+   */
   @Prop() label: string;
-
+  /**
+   * Text that accompanies the action icon.
+   */
   @Prop() text: string;
-
+  /**
+   * Indicates whether the text is displayed.
+   */
   @Prop({ reflect: true }) textEnabled = false;
 
   // --------------------------------------------------------------------------
@@ -33,7 +43,9 @@ export class CalciteAction {
   //  Events
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Fires on the click of an action.
+   */
   @Event() calciteActionClick: EventEmitter;
 
   // --------------------------------------------------------------------------
