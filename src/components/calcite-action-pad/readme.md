@@ -2,6 +2,10 @@
 
 The `calcite-action-pad` component is made up of [calcite-actions](../calcite-action) (such as Tips, Legend, Add etc.) in the form of clickable icons.
 
+<!-- Auto Generated Below -->
+
+## Dependencies
+
 ### Depends on
 
 - [calcite-action](../calcite-action)

@@ -2,6 +2,8 @@
 
 The `calcite-tip-manager` component contains multiple `calcite-tips` that a user can click through via clickable arrows to go back and forth through the tips in the deck.
 
+<!-- Auto Generated Below -->
+
 ## Properties
 
 | Property              | Attribute               | Description                                     | Type     | Default                    |
@@ -24,7 +26,9 @@ The `calcite-tip-manager` component contains multiple `calcite-tips` that a user
 - Type: `Promise<void>`
 
 ## Dependencies
+
 ### Depends on
+
 - [calcite-tip](../calcite-tip)
 
 ---
