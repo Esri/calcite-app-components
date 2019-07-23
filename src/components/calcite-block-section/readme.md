@@ -10,9 +10,21 @@
 
 ## Events
 
-| Event                       | Description | Type               |
-| --------------------------- | ----------- | ------------------ |
-| `calciteBlockSectionToggle` |             | `CustomEvent<any>` |
+| Event                       | Description                           | Type               |
+| --------------------------- | ------------------------------------- | ------------------ |
+| `calciteBlockSectionToggle` | Fires on click of a section's header. | `CustomEvent<any>` |
+
+## Dependencies
+
+### Used by
+
+- [calcite-block](../calcite-block)
+- [calcite-content](../calcite-content)
+
+### Can depend on
+
+- [calcite-content](../calcite-content)
+- [calcite-header](../calcite-header)
 
 ---
 
