@@ -23,6 +23,10 @@ Type: `Promise<void>`
 
 Type: `Promise<void>`
 
+## Dependencies
+### Depends on
+- [calcite-tip](../calcite-tip)
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
