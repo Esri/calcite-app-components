@@ -20,15 +20,15 @@ export class CalciteFlowItem {
 
   @Prop() heading: string;
 
-  @Prop() textBack = TEXT.back;
-
-  @Prop() textOpen = TEXT.open;
-
-  @Prop() textClose = TEXT.close;
-
   @Prop({ reflect: true }) menuOpen = false;
 
   @Prop() showBackButton = false;
+
+  @Prop() textBack = TEXT.back;
+
+  @Prop() textClose = TEXT.close;
+
+  @Prop() textOpen = TEXT.open;
 
   // --------------------------------------------------------------------------
   //
@@ -56,9 +56,9 @@ export class CalciteFlowItem {
     this.menuOpen = !this.menuOpen;
   }
 
-  backButtonClick(): void {
-    this.calciteFlowItemBackClick.emit(this.el);
-  }
+  backButtonClick = () => {
+    this.calciteFlowItemBackClick.emit();
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -75,7 +75,7 @@ export class CalciteFlowItem {
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
-        onCalciteActionClick={this.backButtonClick.bind(this)}
+        onCalciteActionClick={this.backButtonClick}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={chevronLeft16} />
@@ -91,7 +91,6 @@ export class CalciteFlowItem {
 
     return (
       <calcite-action
-        key="menu-button"
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
@@ -108,7 +107,7 @@ export class CalciteFlowItem {
     const { menuOpen } = this;
 
     return menuOpen ? (
-      <div key="menu-actions" class={CSS.menu}>
+      <div class={CSS.menu}>
         <slot name="menu-actions" />
       </div>
     ) : null;

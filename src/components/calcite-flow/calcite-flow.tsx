@@ -22,7 +22,7 @@ export class CalciteFlow {
 
   @State() flows: HTMLCalciteFlowItemElement[] = [];
 
-  flowItemObserver = new MutationObserver(this.flowItemObserverCallback.bind(this));
+  flowItemObserver = new MutationObserver(this.updateFlowProps.bind(this));
 
   // --------------------------------------------------------------------------
   //
@@ -57,7 +57,7 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  flowItemObserverCallback(): void {
+  updateFlowProps(): void {
     const { flows } = this;
 
     const newFlows: HTMLCalciteFlowItemElement[] = Array.from(
@@ -67,11 +67,11 @@ export class CalciteFlow {
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
 
-    const hadMultipleFlows = oldFlowCount > 1;
-    const hasMultipleFlows = newFlowCount > 1;
+    const pastMultipleFlows = oldFlowCount > 1;
+    const presentMultipleFlows = newFlowCount > 1;
 
     const flowDirection =
-      hasMultipleFlows || hadMultipleFlows
+      presentMultipleFlows || pastMultipleFlows
         ? newFlowCount < oldFlowCount
           ? "retreating"
           : "advancing"
@@ -82,7 +82,7 @@ export class CalciteFlow {
 
     if (newFlowCount && activeFlow) {
       newFlows.forEach((flowNode) => {
-        flowNode.showBackButton = hasMultipleFlows;
+        flowNode.showBackButton = presentMultipleFlows;
         flowNode.hidden = flowNode !== activeFlow;
       });
     }

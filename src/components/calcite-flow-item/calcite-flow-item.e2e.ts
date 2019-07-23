@@ -36,7 +36,7 @@ describe("calcite-flow-item", () => {
     expect(singleActionContainer).not.toBeNull();
   });
 
-  it("should have default heading and text", async () => {
+  it("should have default heading", async () => {
     const page = await newE2EPage();
 
     await page.setContent('<calcite-flow-item heading="test"></calcite-flow-item>');
@@ -68,22 +68,34 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action><calcite-action text="hello"></calcite-action></div></calcite-flow-item>'
+      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action><calcite-action text="hello2"></calcite-action></div></calcite-flow-item>'
     );
+
+    await page.waitForChanges();
 
     const element = await page.find("calcite-flow-item");
 
     expect(element.getAttribute("menuOpen")).toBeNull();
 
-    element.setAttribute("menuOpen", true);
+    element.setProperty("menuOpen", true);
 
     await page.waitForChanges();
 
-    expect(element.getAttribute("menuOpen")).not.toBeNull();
+    const menu = await page.find(`calcite-flow-item >>> .${CSS.menu}`);
+
+    expect(menu).not.toBeNull();
+
+    const menuVisible = await menu.isVisible();
+
+    expect(menuVisible).toBe(true);
 
     const menuButton = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
 
     expect(menuButton).not.toBeNull();
+
+    const menuButtonVisible = await menuButton.isVisible();
+
+    expect(menuButtonVisible).toBe(true);
   });
 });
 
@@ -98,17 +110,21 @@ it("back button / showBackButton", async () => {
 
   expect(showBackButton).toBe(false);
 
+  const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+
+  expect(backButton).toBeNull();
+
   element.setProperty("showBackButton", true);
 
   await page.waitForChanges();
 
-  const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+  const backButtonNew = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
 
-  expect(backButton).not.toBeNull();
+  expect(backButtonNew).not.toBeNull();
 
   const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
 
-  backButton.click();
+  backButtonNew.click();
 
   await page.waitForChanges();
 
