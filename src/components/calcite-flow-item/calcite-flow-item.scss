@@ -1,0 +1,98 @@
+:host {
+  display: flex;
+  height: 100%;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+
+.header {
+  align-items: center;
+  color: var(--calcite-app-foreground);
+  display: flex;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+  background-color: var(--calcite-app-background);
+  border-bottom: 1px solid var(--calcite-app-border);
+  justify-content: flex-start;
+}
+
+.back-button {
+  flex: 0;
+}
+
+.heading {
+  font-weight: var(--font-weight);
+  margin: 0;
+  overflow: hidden;
+  padding: 0 var(--calcite-app-side-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--font-size-0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.heading--first {
+  justify-content: flex-start;
+}
+
+.menu-button {
+  flex: 0;
+  position: relative;
+}
+
+.menu-container {
+  align-self: stretch;
+  display: flex;
+  position: relative;
+}
+
+.menu slot[name="menu-actions"] {
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  background-color: var(--calcite-app-background);
+  box-shadow: var(--calcite-app-shadow-0);
+  padding: 0;
+  left: auto;
+  min-width: var(--calcite-app-menu-min-width);
+  right: var(--calcite-app-menu-offset);
+  visibility: visible;
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid var(--calcite-app-border);
+  animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+.content-container {
+  flex: 1;
+  background-color: var(--calcite-app-background-content);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  overflow: auto;
+}
+
+slot[name="footer-actions"] {
+  align-items: center;
+  background-color: var(--calcite-app-background);
+  border-top: 1px solid var(--calcite-app-border);
+  display: flex;
+  justify-content: space-around;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
+  flex-flow: row nowrap;
+}

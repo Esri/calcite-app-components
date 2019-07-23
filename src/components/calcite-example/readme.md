@@ -4,10 +4,10 @@
 
 ## Properties
 
-| Property       | Attribute        | Description | Type      | Default                  |
-| -------------- | ---------------- | ----------- | --------- | ------------------------ |
-| `someProp`     | `some-prop`      |             | `boolean` | `true`                   |
-| `textMyString` | `text-my-string` |             | `string`  | `TEXT_MY_STRING_DEFAULT` |
+| Property       | Attribute        | Description | Type      | Default         |
+| -------------- | ---------------- | ----------- | --------- | --------------- |
+| `someProp`     | `some-prop`      |             | `boolean` | `true`          |
+| `textMyString` | `text-my-string` |             | `string`  | `TEXT.myString` |
 
 ## Events
 
