@@ -2,6 +2,13 @@
 
 A collection of calcite components for building single page applications.
 
+## Components 
+- [calcite-action](/src/components/calcite-action/readme.md)
+- [calcite-action-bar](/src/components/calcite-action-bar/readme.md)
+- [calcite-action-pad](/src/components/calcite-action-pad/readme.md)
+- [calcite-tip](/src/components/calcite-tip/readme.md)
+- [calcite-tip-manager](/src/components/calcite-tip-manager/readme.md)
+
 ## Features
 
 ### [Demos](https://arcgis.github.io/calcite-app-components/)
