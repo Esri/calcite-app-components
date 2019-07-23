@@ -6,13 +6,13 @@ The `calcite-action` component is an action item (such as Tip, Legend, Home etc.
 
 ## Properties
 
-| Property      | Attribute      | Description                             | Type      | Default     |
-| ------------- | -------------- | --------------------------------------- | --------- | ----------- |
-| `active`      | `active`       | Indicates whether the action is active. | `boolean` | `false`     |
-| `indicator`   | `indicator`    | Indicates unread changes.               | `boolean` | `false`     |
-| `label`       | `label`        | Label of the action, exposed on hover.  | `string`  | `undefined` |
-| `text`        | `text`         | Text that accompanies the action icon.  | `string`  | `undefined` |
-| `textEnabled` | `text-enabled` | Indicates whether the text is enabled.  | `boolean` | `false`     |
+| Property      | Attribute      | Description                                  | Type      | Default     |
+| ------------- | -------------- | -------------------------------------------- | --------- | ----------- |
+| `active`      | `active`       | Indicates whether the action is highlighted. | `boolean` | `false`     |
+| `indicator`   | `indicator`    | Indicates unread changes.                    | `boolean` | `false`     |
+| `label`       | `label`        | Label of the action, exposed on hover.       | `string`  | `undefined` |
+| `text`        | `text`         | Text that accompanies the action icon.       | `string`  | `undefined` |
+| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.     | `boolean` | `false`     |
 
 ## Events
 
