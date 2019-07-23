@@ -1,6 +1,6 @@
 # calcite-action
 
-The `calcite-action` component is an action item (such as Tip, Legend, Home etc.), typically housed in `calcite-action-bar` or `calcite-action-pad` in the form of a clickable icon with a text description option.
+The `calcite-action` component is an action item (such as Tip, Legend, Home etc.), typically housed in [calcite-action-bar](../calcite-action-bar) or [calcite-action-pad](../calcite-action-pad) in the form of a clickable icon with a text description option.
 
 ## Properties
 
