@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 
 import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
-import { CSS } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-block-section",
@@ -23,6 +23,18 @@ export class CalciteBlockSection {
     reflect: true
   })
   open = false;
+
+  /**
+   * Tooltip used for the toggle when collapsed.
+   */
+  @Prop()
+  textExpand = TEXT.expand;
+
+  /**
+   * Tooltip used for the toggle when expanded.
+   */
+  @Prop()
+  textCollapse = TEXT.collapse;
 
   // --------------------------------------------------------------------------
   //
@@ -87,15 +99,21 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, open } = this;
+    const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
     const arrowIcon = open ? caretDown16 : dir === "rtl" ? caretLeft16 : caretRight16;
     const hasHeader = !!this.el.querySelector<HTMLCalciteBlockHeaderElement>(
       "calcite-block-header"
     );
+    const toggleLabel = open ? textCollapse : textExpand;
 
     const headerNode = hasHeader ? (
-      <button class={CSS.toggle} onClick={this.onHeaderClick}>
+      <button
+        aria-label={toggleLabel}
+        class={CSS.toggle}
+        onClick={this.onHeaderClick}
+        title={toggleLabel}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={arrowIcon} />
         </svg>
@@ -105,10 +123,8 @@ export class CalciteBlockSection {
 
     return (
       <Host aria-expanded={open ? "true" : "false"}>
-        <section>
-          {headerNode}
-          {open ? <slot /> : null}
-        </section>
+        {headerNode}
+        {open ? <slot /> : null}
       </Host>
     );
   }

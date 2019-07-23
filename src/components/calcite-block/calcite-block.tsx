@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { chevronDown24, chevronUp24 } from "@esri/calcite-ui-icons";
-import { CSS } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-block",
@@ -26,6 +26,18 @@ export class CalciteBlock {
     reflect: true
   })
   open = false;
+
+  /**
+   * Tooltip used for the toggle when collapsed.
+   */
+  @Prop()
+  textExpand = TEXT.expand;
+
+  /**
+   * Tooltip used for the toggle when expanded.
+   */
+  @Prop()
+  textCollapse = TEXT.collapse;
 
   // --------------------------------------------------------------------------
   //
@@ -91,14 +103,20 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsible, open } = this;
+    const { collapsible, el, open, textCollapse, textExpand } = this;
+    const toggleLabel = open ? textCollapse : textExpand;
 
     const headerContent = <slot name="header" />;
 
     const headerNode = (
       <div class={CSS.header}>
         {collapsible ? (
-          <button class={CSS.toggle} onClick={this.onHeaderClick}>
+          <button
+            aria-label={toggleLabel}
+            class={CSS.toggle}
+            onClick={this.onHeaderClick}
+            title={toggleLabel}
+          >
             {headerContent}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,11 +134,13 @@ export class CalciteBlock {
       </div>
     );
 
+    const hasContent = !!el.querySelector("calcite-block-content");
+
     return (
       <Host aria-expanded={collapsible ? (open ? "true" : "false") : null}>
         <article>
           {headerNode}
-          {open ? (
+          {hasContent && open ? (
             <div class={CSS.content}>
               <slot />
             </div>

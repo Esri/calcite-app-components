@@ -1,5 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS } from "../calcite-block/resources";
+import { TEXT } from "./resources";
 
 describe("calcite-block-section", () => {
   it("renders", async () => {
@@ -34,9 +35,6 @@ describe("calcite-block-section", () => {
     await page.setContent("<calcite-block-section></calcite-block-section>");
     const element = await page.find("calcite-block-section");
 
-    const openAttr = element.getAttribute("open");
-    expect(openAttr).toBeNull();
-
     const openProp = await element.getProperty("open");
     expect(openProp).toBe(false);
   });
@@ -68,12 +66,17 @@ describe("calcite-block-section", () => {
     const toggleSpy = await element.spyOnEvent("calciteBlockSectionToggle");
     const toggle = await page.find(`calcite-block-section >>> .${CSS.toggle}`);
 
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
+    expect(toggle.getAttribute("title")).toBe(TEXT.expand);
+
     toggle.click();
     await page.waitForChanges();
 
     expect(toggleSpy).toHaveReceivedEventTimes(1);
     let open = await element.getProperty("open");
     expect(open).toBe(true);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
+    expect(toggle.getAttribute("title")).toBe(TEXT.collapse);
 
     toggle.click();
     await page.waitForChanges();
@@ -81,6 +84,8 @@ describe("calcite-block-section", () => {
     expect(toggleSpy).toHaveReceivedEventTimes(2);
     open = await element.getProperty("open");
     expect(open).toBe(false);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
+    expect(toggle.getAttribute("title")).toBe(TEXT.expand);
   });
 
   it("places header and content", async () => {
