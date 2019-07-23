@@ -1,6 +1,6 @@
 # calcite-tip-manager
 
-The `calcite-tip-manager` component contains multiple `calcite-tips` that a user can click through via clickable arrows to go back and forth through the tips in the deck.
+The `calcite-tip-manager` component contains multiple [calcite-tips](../calcite-tip) that a user can click through via clickable arrows to go back and forth through the tips in the deck.
 
 <!-- Auto Generated Below -->
 
