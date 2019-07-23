@@ -12,8 +12,8 @@ The `calcite-action-bar` component is made up of multiple [calcite-actions](../c
 | -------------- | --------------- | ----------------------------------------- | --------- | ------------ |
 | `expand`       | `expand`        | Indicates whether widget can be expanded. | `boolean` | `true`       |
 | `expanded`     | `expanded`      | Indicates whether widget is expanded.     | `boolean` | `false`      |
-| `textCollapse` | `text-collapse` |                                           | `string`  | `"Collapse"` |
-| `textExpand`   | `text-expand`   |                                           | `string`  | `"Expand"`   |
+| `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded. | `string`  | `"Collapse"` |
+| `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is collapsed. | `string`  | `"Expand"`   |
 
 ## Dependencies
 
