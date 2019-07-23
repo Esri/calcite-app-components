@@ -11,17 +11,17 @@ The `calcite-tip-manager` component contains multiple `calcite-tips` that a user
 
 ## Methods
 
-### `nextTip() => Promise<void>`
+#### `nextTip() => Promise<void>`
 
-#### Returns
+#### Returns:
 
-Type: `Promise<void>`
+- Type: `Promise<void>`
 
-### `previousTip() => Promise<void>`
+#### `previousTip() => Promise<void>`
 
-#### Returns
+#### Returns:
 
-Type: `Promise<void>`
+- Type: `Promise<void>`
 
 ## Dependencies
 ### Depends on
