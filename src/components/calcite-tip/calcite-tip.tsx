@@ -28,6 +28,7 @@ export class CalciteTip {
   @Prop({ reflect: true }) nonDismissible = false;
 
   @Prop() heading: string;
+
   @Prop() thumbnail: string;
 
   @Element() el: HTMLElement;
