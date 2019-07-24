@@ -65,11 +65,11 @@ export class CalciteTip {
         <header>
           <h2 class={CSS.title}>{this.heading}</h2>
           {!this.nonDismissible ? (
-            <div class={CSS.close} onClick={() => this.hideTip()}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <calcite-action onCalciteActionClick={this.hideTip}>
+              <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
                 <path d={x16} />
               </svg>
-            </div>
+            </calcite-action>
           ) : null}
         </header>
         <div class={CSS.content}>
