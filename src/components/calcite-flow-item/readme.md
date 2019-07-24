@@ -21,6 +21,10 @@ A flow item lives in a panel with a heading and content.
 | -------------------------- | ------------------------------------ | ------------------ |
 | `calciteFlowItemBackClick` | Takes the user to the previous flow. | `CustomEvent<any>` |
 
+## Dependencies
+### Used by
+- [calcite-flow](../calcite-flow)
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
