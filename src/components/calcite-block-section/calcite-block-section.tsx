@@ -59,7 +59,7 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
   /**
-   * Fires on click of a section's header.
+   * Toggles the section open or closed when the header is clicked.
    */
   @Event() calciteBlockSectionToggle: EventEmitter;
 

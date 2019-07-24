@@ -62,7 +62,7 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
   /**
-   * Fires when the header is clicked.
+   * Toggles the block open or closed when the header is clicked.
    */
   @Event()
   calciteBlockToggle: EventEmitter;
