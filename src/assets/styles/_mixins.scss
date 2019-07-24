@@ -1,14 +1,5 @@
-// @mixin calcite-close-icon($size: 24px, $gutter-size: 24px 12px) {
-//   position: absolute;
-//   top: 0px;
-//   right: 0px;
-//   width: $size;
-//   height: $size;
-//   margin: $gutter-size;
-//   font-size: 24px;
-//   cursor: pointer;
-//   :host-context([dir="rtl"]) & {
-//     right: auto;
-//     left: 0;
-//   }
+// @mixin title-base {
+//   font-weight: var(--font-weight);
+//   padding: 0;
+//   margin: 0;
 // }

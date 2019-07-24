@@ -142,11 +142,11 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.title}>{this.groupTitle}</h2>
-          <button class={CSS.close} onClick={() => this.hideTipManager()}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <calcite-action onCalciteActionClick={this.hideTipManager}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
-          </button>
+          </calcite-action>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />

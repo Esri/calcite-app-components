@@ -63,7 +63,7 @@ export class CalciteTip {
     return (
       <Host hidden={this.dismissed}>
         <header>
-          <h2 class={CSS.title}>{this.heading}</h2>
+          <h3 class={CSS.title}>{this.heading}</h3>
           {!this.nonDismissible ? (
             <calcite-action onCalciteActionClick={this.hideTip}>
               <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">

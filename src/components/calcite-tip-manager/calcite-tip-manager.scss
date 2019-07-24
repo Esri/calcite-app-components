@@ -1,7 +1,6 @@
 /* Variables, mixins, @keyframes*/
-
-$gutter-size: 24px 12px;
-$animation-time: 250ms;
+@import "../../assets/styles/mixins";
+$tip-max-width: 640px !default;
 
 @keyframes tip-advance {
   0% {
@@ -28,24 +27,24 @@ $animation-time: 250ms;
 :host {
   position: relative;
   display: block;
-  padding: var(--calcite-app-cap-spacing-double) var(--calcite-app-side-spacing);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   background-color: #fff;
-  color: #6e6e6e;
+  // color: #6e6e6e;
 }
 :host([hidden]) {
   display: none;
-}
-
-$tip-manager-close-size: 24px;
-.close {
-  // all: unset;
-  // @include calcite-close-icon($size: $tip-manager-close-size, $gutter-size: $gutter-size);
 }
 
 .tip-container {
   animation-name: none;
   animation-duration: var(--calcite-app-animation-time);
   animation-timing-function: var(--calcite-app-easing-function);
+  max-height: 20vh;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--calcite-app-background);
 }
 .tip-container.advancing {
   animation-name: tip-advance;
@@ -54,14 +53,22 @@ $tip-manager-close-size: 24px;
   animation-name: tip-retreat;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /*Tip Content Styles*/
 ::slotted(calcite-tip) {
   display: none;
-  background-color: transparent;
+  // background-color: transparent;
   box-shadow: none;
+  max-width: $tip-max-width;
+  width: 65%;
 }
 ::slotted(calcite-tip[selected]) {
-  display: block;
+  display: flex;
 }
 
 /* Pagination Styles*/
