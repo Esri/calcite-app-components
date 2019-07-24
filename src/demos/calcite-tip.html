@@ -15,13 +15,14 @@
         <calcite-tip
           heading="Celestial Bodies!"
           thumbnail="http://lorempixel.com/1000/600/nature/3"
-          text-thumbnail="This is astronomical!"
+          text-thumbnail="This is an image of nature."
         >
           <p slot="info">
-            This tip is how a tip should really look. It has a landscape or square image and a small amount of text content. This paragraph is in an "info" slot.
+            This tip is how a tip should really look. It has a landscape or square image and a small amount of text
+            content. This paragraph is in an "info" slot.
           </p>
           <p slot="info">
-            This is another paragraph in a subsequent "info" slot. 
+            This is another paragraph in a subsequent "info" slot.
           </p>
           <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
         </calcite-tip>
@@ -43,7 +44,11 @@
       <hr />
       <h2>RTL</h2>
       <div dir="rtl">
-        <calcite-tip heading="Celestial Bodies" thumbnail="http://lorempixel.com/600/1000/nature/4">
+        <calcite-tip
+          heading="Celestial Bodies"
+          thumbnail="http://lorempixel.com/600/1000/nature/4"
+          text-thumbnail="This is an image of nature."
+        >
           <p slot="info">
             This tip has an image that is a pretty tall. And the text will run out before the end of the image.
           </p>
@@ -68,7 +73,12 @@
       <p>Dismiss then Refresh and Tip will not re-appear.</p>
 
       <div>
-        <calcite-tip storage-id="foo" heading="Celestial Bodies" thumbnail="http://lorempixel.com/100/100/nature/5">
+        <calcite-tip
+          storage-id="foo"
+          heading="Celestial Bodies"
+          thumbnail="http://lorempixel.com/100/100/nature/5"
+          text-thumbnail="This is an image of nature."
+        >
           <p slot="info">
             This tip has an image that is only 100px by 100px. The image frame sets the width but doesn't force the
             image to be larger than it's native size.
