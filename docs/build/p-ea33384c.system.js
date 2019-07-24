@@ -1,1 +1,0 @@
-System.register([],function(n){"use strict";return{execute:function(){n("g",e);function t(){return window.crypto.getRandomValues(new Uint32Array(1))[0]/1e10}function r(n){var r="";for(var e=0;e<n;e++){r+=((1+t())*65536|0).toString(16).substring(1)}return r}function e(){return[r(2),r(1),r(1),r(1),r(3)].join("-")}}}});

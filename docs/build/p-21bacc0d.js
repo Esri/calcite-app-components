@@ -1,1 +1,0 @@
-function r(r){return Array.isArray(r)?r:Array.prototype.slice.call(r)}function t(r){return r.closest("[dir='rtl']")?"rtl":"ltr"}export{t as g,r as n};

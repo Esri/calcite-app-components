@@ -36,6 +36,9 @@ a.is-active {
       <li><a href="${root}demos/calcite-action/">Calcite Action</a></li>
       <li><a href="${root}demos/calcite-action-bar/">Calcite Action Bar</a></li>
       <li><a href="${root}demos/calcite-action-pad/">Calcite Action Pad</a></li>
+      <li><a href="${root}demos/calcite-block.html">Calcite Block</a></li>
+      <li><a href="${root}demos/calcite-flow/">Calcite Flow</a></li>
+      <li><a href="${root}demos/calcite-flow-item/">Calcite Flow Item</a></li>
       <li><a href="${root}demos/calcite-tip.html">Calcite Tip</a></li>
       <li><a href="${root}demos/calcite-tip-manager.html">Calcite Tip Manager</a></li>
     </ul>
