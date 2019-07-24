@@ -58,6 +58,7 @@ export class CalciteBlockSection {
   //  Events
   //
   // --------------------------------------------------------------------------
+
   /**
    * Toggles the section open or closed when the header is clicked.
    */
