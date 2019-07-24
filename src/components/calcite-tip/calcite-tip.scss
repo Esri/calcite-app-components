@@ -1,3 +1,8 @@
+$tip-content-only-width: 100% !default;
+$tip-content-width: 70% !default;
+$tip-image-frame-width: 25% !default;
+$tip-image-max-width: 100% !default;
+
 :host {
   position: relative;
   display: flex;
@@ -26,10 +31,6 @@ header {
   padding: 0;
   margin: 0;
 }
-$tip-content-only-width: 100% !default;
-$tip-content-width: 70% !default;
-$tip-image-frame-width: 25% !default;
-$tip-image-max-width: 100% !default;
 
 .content {
   display: flex;
