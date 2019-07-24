@@ -13,20 +13,47 @@
       <h2>Tip</h2>
       <div>
         <calcite-tip
-          heading="Celestial Bodies"
-          thumbnail="https://previews.123rf.com/images/macrovector/macrovector1507/macrovector150700398/41896889-universe-cosmic-celestial-bodies-mars-venus-planets-and-sun-educational-aid-poster-black-background-.jpg"
+          heading="Celestial Bodies!"
+          thumbnail="http://lorempixel.com/1000/600/nature/3"
+          text-thumbnail="This is astronomical!"
         >
           <p slot="info">
-            An astronomical object or celestial object is a naturally occurring physical entity, association, or
-            structure that exists in the observable universe.
+            This tip is how a tip should really look. It has a landscape or square image and a small amount of text content. This paragraph is in an "info" slot.
+          </p>
+          <p slot="info">
+            This is another paragraph in a subsequent "info" slot. 
+          </p>
+          <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
+        </calcite-tip>
+      </div>
+      <hr />
+      <h2>With no thumbnail</h2>
+      <div>
+        <calcite-tip heading="Celestial Bodies">
+          <p slot="info">
+            This tip has no image. As such, the content area will take up the entire width of the tip.
+          </p>
+          <p slot="info">
+            This is the next paragraph and should show how wide the content area is now. Of course, the width of the
+            overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
+          </p>
+          <a slot="link" href="http://www.esri.com">View Esri</a>
+        </calcite-tip>
+      </div>
+      <hr />
+      <h2>RTL</h2>
+      <div dir="rtl">
+        <calcite-tip heading="Celestial Bodies" thumbnail="http://lorempixel.com/600/1000/nature/4">
+          <p slot="info">
+            This tip has an image that is a pretty tall. And the text will run out before the end of the image.
           </p>
           <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
           <a slot="link" href="http://www.esri.com">View Esri</a>
         </calcite-tip>
       </div>
-      <hr>
-      <h2>With no thumbnail</h2>
-      <div>
+      <hr />
+      <h2>RTL with no thumbnail</h2>
+      <div dir="rtl">
         <calcite-tip heading="Celestial Bodies">
           <p slot="info">
             An astronomical object or celestial object is a naturally occurring physical entity, association, or
@@ -36,53 +63,20 @@
           <a slot="link" href="http://www.esri.com">View Esri</a>
         </calcite-tip>
       </div>
-      <hr>
-      <h2>RTL</h2>
-      <div dir="rtl">
-        <calcite-tip
-          heading="Celestial Bodies"
-          thumbnail="https://previews.123rf.com/images/macrovector/macrovector1507/macrovector150700398/41896889-universe-cosmic-celestial-bodies-mars-venus-planets-and-sun-educational-aid-poster-black-background-.jpg"
-        >
-          <p slot="info">
-            An astronomical object or celestial object is a naturally occurring physical entity, association, or
-            structure that exists in the observable universe.
-          </p>
-          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
-          <a slot="link" href="http://www.esri.com">View Esri</a>
-        </calcite-tip>
-      </div>
-      <hr>
-      <h2>RTL with no thumbnail</h2>
-      <div dir="rtl">
-        <calcite-tip
-          heading="Celestial Bodies"
-        >
-          <p slot="info">
-            An astronomical object or celestial object is a naturally occurring physical entity, association, or
-            structure that exists in the observable universe.
-          </p>
-          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
-          <a slot="link" href="http://www.esri.com">View Esri</a>
-        </calcite-tip>
-      </div>
-      <hr>
+      <hr />
       <h2>With storage-id</h2>
       <p>Dismiss then Refresh and Tip will not re-appear.</p>
 
       <div>
-          <calcite-tip
-            storage-id="foo"
-            heading="Celestial Bodies"
-            thumbnail="https://previews.123rf.com/images/macrovector/macrovector1507/macrovector150700398/41896889-universe-cosmic-celestial-bodies-mars-venus-planets-and-sun-educational-aid-poster-black-background-.jpg"
-          >
-            <p slot="info">
-              An astronomical object or celestial object is a naturally occurring physical entity, association, or
-              structure that exists in the observable universe.
-            </p>
-            <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
-            <a slot="link" href="http://www.esri.com">View Esri</a>
-          </calcite-tip>
-        </div>
+        <calcite-tip storage-id="foo" heading="Celestial Bodies" thumbnail="http://lorempixel.com/100/100/nature/5">
+          <p slot="info">
+            This tip has an image that is only 100px by 100px. The image frame sets the width but doesn't force the
+            image to be larger than it's native size.
+          </p>
+          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
+          <a slot="link" href="http://www.esri.com">View Esri</a>
+        </calcite-tip>
+      </div>
     </section>
   </body>
 </html>

@@ -31,6 +31,8 @@ export class CalciteTip {
 
   @Prop() thumbnail: string;
 
+  @Prop() textThumbnail: string;
+
   @Element() el: HTMLElement;
 
   @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
@@ -73,7 +75,8 @@ export class CalciteTip {
         <div class={CSS.content}>
           {this.thumbnail ? (
             <div class={CSS.imageFrame}>
-              <img src={this.thumbnail} alt="" />
+              <img src={this.thumbnail} alt={this.textThumbnail} />
+              {console.log(this.textThumbnail)}
             </div>
           ) : null}
 
