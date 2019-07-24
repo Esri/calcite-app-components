@@ -76,7 +76,6 @@ export class CalciteTip {
           {this.thumbnail ? (
             <div class={CSS.imageFrame}>
               <img src={this.thumbnail} alt={this.textThumbnail} />
-              {console.log(this.textThumbnail)}
             </div>
           ) : null}
 
