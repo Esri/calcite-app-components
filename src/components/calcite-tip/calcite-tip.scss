@@ -9,7 +9,7 @@ $tip-image-max-width: 100% !default;
   flex-flow: column;
   color: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-plus-half);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
   margin: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   box-shadow: var(--calcite-app-shadow-2);
   border-radius: var(--calcite-app-border-radius);
@@ -49,12 +49,6 @@ header {
 
 .info ::slotted(p) {
   margin-top: 0;
-}
-
-.close {
-  width: var(--calcite-app-icon-size);
-  height: var(--calcite-app-icon-size);
-  cursor: pointer;
 }
 
 .image-frame {
