@@ -6,8 +6,5 @@ export const CSS = {
   close: "close",
   tipContainer: "tip-container",
   pagination: "pagination",
-  pageControl: "page-control",
-  pageControlPrevious: "page-control--previous",
-  pageControlNext: "page-control--next",
-  pagePosition: "pagePosition"
+  pagePosition: "page-position"
 };

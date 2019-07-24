@@ -1,6 +1,7 @@
 /* Variables, mixins, @keyframes*/
 @import "../../assets/styles/mixins";
 $tip-max-width: 640px !default;
+$tip-width: 65% !default;
 
 @keyframes tip-advance {
   0% {
@@ -27,9 +28,8 @@ $tip-max-width: 640px !default;
 :host {
   position: relative;
   display: block;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
   background-color: #fff;
-  // color: #6e6e6e;
 }
 :host([hidden]) {
   display: none;
@@ -62,10 +62,9 @@ $tip-max-width: 640px !default;
 /*Tip Content Styles*/
 ::slotted(calcite-tip) {
   display: none;
-  // background-color: transparent;
   box-shadow: none;
   max-width: $tip-max-width;
-  width: 65%;
+  width: $tip-width;
 }
 ::slotted(calcite-tip[selected]) {
   display: flex;
@@ -74,24 +73,11 @@ $tip-max-width: 640px !default;
 /* Pagination Styles*/
 .pagination {
   display: flex;
-  margin-top: 12px;
   align-items: center;
   justify-content: center;
+  padding: var(--calcite-app-cap-spacing-quarter) 0;
 }
 
-.page-control {
-  all: unset;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  &--previous {
-    margin-right: 12px;
-  }
-  &--next {
-    margin-left: 12px;
-  }
-  &:hover {
-    background-color: #eee;
-  }
+.page-position {
+  font-size: var(--font-size--1);
 }

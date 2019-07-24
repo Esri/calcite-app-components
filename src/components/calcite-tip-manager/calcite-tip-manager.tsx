@@ -110,10 +110,10 @@ export class CalciteTipManager {
     this.selectedIndex = selectedIndex || 0;
   }
 
-  hideTipManager(): void {
+  hideTipManager = (): void => {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
-  }
+  };
 
   updateSelectedTip(): void {
     this.tips.forEach((tip, index) => {
@@ -152,25 +152,19 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <button
-            class={`${CSS.pageControl} ${CSS.pageControlPrevious}`}
-            onClick={() => this.previousTip()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <calcite-action onCalciteActionClick={this.previousTip}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronLeft24} />
             </svg>
-          </button>
+          </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <button
-            class={`${CSS.pageControl} ${CSS.pageControlNext}`}
-            onClick={() => this.nextTip()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <calcite-action onCalciteActionClick={this.nextTip}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronRight24} />
             </svg>
-          </button>
+          </calcite-action>
         </footer>
       </Host>
     );
