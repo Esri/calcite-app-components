@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 
-import { CSS, TEXT_MY_STRING_DEFAULT } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-example",
@@ -30,7 +30,7 @@ export class CalciteExample {
   someProp = true;
 
   @Prop()
-  textMyString = TEXT_MY_STRING_DEFAULT;
+  textMyString = TEXT.myString;
 
   // --------------------------------------------------------------------------
   //
@@ -43,8 +43,18 @@ export class CalciteExample {
 
   internalProp: string;
 
+  @Watch("someProp")
+  handleSomeProp(): void {
+    // ...
+  }
+
   @State()
   internalRenderableProp = 0;
+
+  @Watch("internalRenderableProp")
+  handleInternalSomeProp(): void {
+    // ...
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -83,16 +93,6 @@ export class CalciteExample {
   // --------------------------------------------------------------------------
 
   internalMethod(): void {
-    // ...
-  }
-
-  @Watch("someProp")
-  handleSomeProp(): void {
-    // ...
-  }
-
-  @Watch("internalRenderableProp")
-  handleInternalSomeProp(): void {
     // ...
   }
 
