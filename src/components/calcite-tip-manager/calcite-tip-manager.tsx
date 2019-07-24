@@ -2,7 +2,7 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
-import CalciteSVG from "../_support/CalciteSVG";
+import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
   tag: "calcite-tip-manager",
@@ -144,7 +144,7 @@ export class CalciteTipManager {
         <header class={CSS.header}>
           <h2 class={CSS.title}>{this.groupTitle}</h2>
           <button class={CSS.close} onClick={() => this.hideTipManager()}>
-            <CalciteSVG width="24" height="24" path={x24} />
+            <CalciteIcon width="24" height="24" path={x24} />
           </button>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
@@ -155,7 +155,7 @@ export class CalciteTipManager {
             class={`${CSS.pageControl} ${CSS.pageControlPrevious}`}
             onClick={() => this.previousTip()}
           >
-            <CalciteSVG width="24" height="24" path={chevronLeft24} />
+            <CalciteIcon width="24" height="24" path={chevronLeft24} />
           </button>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
@@ -164,7 +164,7 @@ export class CalciteTipManager {
             class={`${CSS.pageControl} ${CSS.pageControlNext}`}
             onClick={() => this.nextTip()}
           >
-            <CalciteSVG width="24" height="24" path={chevronRight24} />
+            <CalciteIcon width="24" height="24" path={chevronRight24} />
           </button>
         </footer>
       </Host>

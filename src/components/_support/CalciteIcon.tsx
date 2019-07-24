@@ -6,7 +6,7 @@ interface CalciteSVGProps {
   path: string;
 }
 
-export const CalciteSVG: FunctionalComponent<CalciteSVGProps> = ({
+export const CalciteIcon: FunctionalComponent<CalciteSVGProps> = ({
   path,
   width = 16,
   height = 16
@@ -21,4 +21,4 @@ export const CalciteSVG: FunctionalComponent<CalciteSVGProps> = ({
   </svg>
 );
 
-export default CalciteSVG;
+export default CalciteIcon;
