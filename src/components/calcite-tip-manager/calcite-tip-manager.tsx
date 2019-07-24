@@ -110,10 +110,10 @@ export class CalciteTipManager {
     this.selectedIndex = selectedIndex || 0;
   }
 
-  hideTipManager = (): void => {
+  hideTipManager(): void {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
-  };
+  }
 
   updateSelectedTip(): void {
     this.tips.forEach((tip, index) => {
@@ -126,6 +126,14 @@ export class CalciteTipManager {
       }
     });
   }
+
+  previousClicked = (): void => {
+    this.previousTip();
+  };
+
+  nextClicked = (): void => {
+    this.nextTip();
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -141,8 +149,8 @@ export class CalciteTipManager {
     return (
       <Host>
         <header class={CSS.header}>
-          <h2 class={CSS.title}>{this.groupTitle}</h2>
-          <calcite-action onCalciteActionClick={this.hideTipManager}>
+          <h2 class={CSS.heading}>{this.groupTitle}</h2>
+          <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
             <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
@@ -152,7 +160,7 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousTip}>
+          <calcite-action onCalciteActionClick={this.previousClicked}>
             <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronLeft24} />
             </svg>
@@ -160,7 +168,7 @@ export class CalciteTipManager {
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextTip}>
+          <calcite-action onCalciteActionClick={this.nextClicked}>
             <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronRight24} />
             </svg>

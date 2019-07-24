@@ -3,7 +3,8 @@ import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 
 const CSS = {
-  title: "title",
+  header: "header",
+  heading: "heading",
   close: "close",
   imageFrame: "image-frame",
   content: "content",
@@ -62,10 +63,10 @@ export class CalciteTip {
   render() {
     return (
       <Host hidden={this.dismissed}>
-        <header>
-          <h3 class={CSS.title}>{this.heading}</h3>
+        <header class={CSS.header}>
+          <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
-            <calcite-action onCalciteActionClick={this.hideTip}>
+            <calcite-action onCalciteActionClick={this.hideTip} class={CSS.close}>
               <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
                 <path d={x16} />
               </svg>

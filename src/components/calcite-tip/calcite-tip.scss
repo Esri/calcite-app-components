@@ -14,27 +14,14 @@ $tip-image-max-width: 100% !default;
   box-shadow: var(--calcite-app-shadow-2);
   border-radius: var(--calcite-app-border-radius);
 }
+
 :host([hidden]) {
   display: none;
 }
 
-header {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-// .title {
-//   font-size: var(--font-size-1);
-//   font-weight: var(--font-weight);
-//   padding: 0;
-//   margin: 0;
-// }
-
 .content {
   display: flex;
-  padding-top: var(--calcite-app-cap-spacing);
+  padding-top: var(--calcite-app-cap-spacing-half);
 }
 
 .info {

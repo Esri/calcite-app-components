@@ -1,6 +1,6 @@
 /* Variables, mixins, @keyframes*/
-@import "../../assets/styles/mixins";
-$tip-max-width: 640px !default;
+$tip-manager-height: 22vh !default;
+$tip-max-width: 540px !default;
 $tip-width: 65% !default;
 
 @keyframes tip-advance {
@@ -26,37 +26,40 @@ $tip-width: 65% !default;
 
 /* Component Styles */
 :host {
+  overflow: hidden;
   position: relative;
   display: block;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
-  background-color: #fff;
+  background-color: var(--calcite-app-background);
 }
+
 :host([hidden]) {
   display: none;
+}
+
+.header .heading {
+  padding-left: var(--calcite-app-side-spacing-half);
+  padding-right: var(--calcite-app-side-spacing-half);
 }
 
 .tip-container {
   animation-name: none;
   animation-duration: var(--calcite-app-animation-time);
   animation-timing-function: var(--calcite-app-easing-function);
-  max-height: 20vh;
+  height: $tip-manager-height;
   overflow: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background-color: var(--calcite-app-background);
 }
+
 .tip-container.advancing {
   animation-name: tip-advance;
 }
+
 .tip-container.retreating {
   animation-name: tip-retreat;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 /*Tip Content Styles*/
@@ -65,7 +68,10 @@ $tip-width: 65% !default;
   box-shadow: none;
   max-width: $tip-max-width;
   width: $tip-width;
+  margin: 0;
+  padding: 0;
 }
+
 ::slotted(calcite-tip[selected]) {
   display: flex;
 }
@@ -80,4 +86,5 @@ $tip-width: 65% !default;
 
 .page-position {
   font-size: var(--font-size--1);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
