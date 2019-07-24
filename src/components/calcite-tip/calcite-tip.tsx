@@ -43,7 +43,7 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  hideTip(): void {
+  hideTip = () => {
     this.dismissed = true;
 
     const { storageId } = this;
@@ -51,7 +51,7 @@ export class CalciteTip {
     if (storageId) {
       setItem(`${this.el.tagName.toLowerCase()}-${storageId}`, "dismissed");
     }
-  }
+  };
 
   // --------------------------------------------------------------------------
   //
