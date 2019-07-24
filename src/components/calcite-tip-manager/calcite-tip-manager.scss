@@ -1,5 +1,4 @@
 /* Variables, mixins, @keyframes*/
-@import "../../assets/styles/mixins";
 
 $gutter-size: 24px 12px;
 $animation-time: 250ms;
@@ -29,7 +28,7 @@ $animation-time: 250ms;
 :host {
   position: relative;
   display: block;
-  padding: $gutter-size;
+  padding: var(--calcite-app-cap-spacing-double) var(--calcite-app-side-spacing);
   background-color: #fff;
   color: #6e6e6e;
 }
@@ -39,14 +38,14 @@ $animation-time: 250ms;
 
 $tip-manager-close-size: 24px;
 .close {
-  all: unset;
-  @include calcite-close-icon($size: $tip-manager-close-size, $gutter-size: $gutter-size);
+  // all: unset;
+  // @include calcite-close-icon($size: $tip-manager-close-size, $gutter-size: $gutter-size);
 }
 
 .tip-container {
   animation-name: none;
-  animation-duration: $animation-time;
-  animation-timing-function: ease-in-out;
+  animation-duration: var(--calcite-app-animation-time);
+  animation-timing-function: var(--calcite-app-easing-function);
 }
 .tip-container.advancing {
   animation-name: tip-advance;
