@@ -63,7 +63,7 @@ export class CalciteTip {
         <slot name="heading" />
         {!this.nonDismissible ? (
           <div class={CSS.close} onClick={() => this.hideTip()}>
-            <CalciteIcon width="24" height="24" path={x24} />
+            <CalciteIcon size="24" path={x24} />
           </div>
         ) : null}
         <div class={CSS.content}>

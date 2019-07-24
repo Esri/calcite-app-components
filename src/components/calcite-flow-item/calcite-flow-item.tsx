@@ -78,7 +78,7 @@ export class CalciteFlowItem {
         class={CSS.backButton}
         onCalciteActionClick={this.backButtonClick}
       >
-        <CalciteIcon path={chevronLeft16} />
+        <CalciteIcon size="16" path={chevronLeft16} />
       </calcite-action>
     ) : null;
   }
@@ -95,7 +95,7 @@ export class CalciteFlowItem {
         text={menuLabel}
         onCalciteActionClick={this.toggleMenuOpen.bind(this)}
       >
-        <CalciteIcon path={ellipsis16} />
+        <CalciteIcon size="16" path={ellipsis16} />
       </calcite-action>
     );
   }

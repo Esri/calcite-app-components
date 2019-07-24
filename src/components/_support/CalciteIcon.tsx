@@ -1,21 +1,25 @@
 import { FunctionalComponent, h } from "@stencil/core";
 
+import { JSXBase } from "@stencil/core/internal";
+import SVGAttributes = JSXBase.SVGAttributes;
+
 interface CalciteSVGProps {
-  width?: string;
-  height?: string;
+  size: string;
   path: string;
+  svgAttributes?: SVGAttributes;
 }
 
 export const CalciteIcon: FunctionalComponent<CalciteSVGProps> = ({
   path,
-  width = 16,
-  height = 16
+  size,
+  svgAttributes
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    height={height}
-    width={width}
-    viewBox={`0 0 ${width} ${height}`}
+    height={size}
+    width={size}
+    viewBox={`0 0 ${size} ${size}`}
+    {...svgAttributes}
   >
     <path d={path} />
   </svg>

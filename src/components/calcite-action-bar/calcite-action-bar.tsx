@@ -57,7 +57,7 @@ export class CalciteActionBar {
         textEnabled={expanded}
         text={expandText}
       >
-        <CalciteIcon path={expanded ? expandIcon : collapseIcon} />
+        <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;
   }
