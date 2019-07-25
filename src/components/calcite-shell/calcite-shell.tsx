@@ -33,11 +33,11 @@ export class CalciteShell {
   }
 
   renderFooter() {
-    const hasFooter = !!this.el.querySelector("[slot=footer]");
+    const hasFooter = !!this.el.querySelector("[slot=app-footer]");
 
     return hasFooter ? (
       <footer class={CSS.footer}>
-        <slot name="footer" />
+        <slot name="app-footer" />
       </footer>
     ) : null;
   }
