@@ -19,9 +19,13 @@ export class CalciteTip {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * The local storage id used for an instance of a tip.
+   */
   @Prop() storageId: string;
-
+  /**
+   * Indicates whether the tip can be dismissed.
+   */
   @Prop({ reflect: true }) nonDismissible = false;
 
   // --------------------------------------------------------------------------

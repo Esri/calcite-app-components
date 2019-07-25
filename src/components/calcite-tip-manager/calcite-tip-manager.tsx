@@ -14,9 +14,13 @@ export class CalciteTipManager {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * The default group title for the Tip Manager.
+   */
   @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
-
+  /**
+   * Label that appears on hover of pagination icon.
+   */
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
   // --------------------------------------------------------------------------

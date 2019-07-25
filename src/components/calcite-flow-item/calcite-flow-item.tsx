@@ -18,16 +18,34 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * Heading text.
+   */
   @Prop() heading: string;
 
+  /**
+   * Opens the action menu.
+   */
   @Prop({ reflect: true }) menuOpen = false;
 
+  /**
+   * Shows a back button in the header.
+   */
   @Prop() showBackButton = false;
 
+  /**
+   * 'Back' text string.
+   */
   @Prop() textBack = TEXT.back;
 
+  /**
+   * 'Close' text string.
+   */
   @Prop() textClose = TEXT.close;
 
+  /**
+   * 'Open' text string.
+   */
   @Prop() textOpen = TEXT.open;
 
   // --------------------------------------------------------------------------
@@ -43,6 +61,10 @@ export class CalciteFlowItem {
   //  Events
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when the back button has been clicked.
+   */
 
   @Event() calciteFlowItemBackClick: EventEmitter;
 
