@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
+import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 import { CSS, TEXT } from "./resources";
 
@@ -101,7 +101,7 @@ export class CalciteBlockSection {
   render() {
     const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
-    const arrowIcon = open ? caretDown16 : dir === "rtl" ? caretLeft16 : caretRight16;
+    const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
     const hasHeader = !!this.el.querySelector<HTMLCalciteBlockHeaderElement>(
       "calcite-block-header"
     );
