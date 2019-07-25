@@ -63,7 +63,7 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Takes the user to the previous flow.
+   * Emitted when the back button has been clicked.
    */
 
   @Event() calciteFlowItemBackClick: EventEmitter;

@@ -44,7 +44,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
   /**
-   * Fires on the click of an action.
+   * Emitted when an action has been clicked.
    */
   @Event() calciteActionClick: EventEmitter;
 

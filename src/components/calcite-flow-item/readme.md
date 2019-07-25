@@ -17,12 +17,14 @@ A flow item is used by [calcite-flow](../calcite-flow) lives in a panel with a h
 
 ## Events
 
-| Event                      | Description                          | Type               |
-| -------------------------- | ------------------------------------ | ------------------ |
-| `calciteFlowItemBackClick` | Takes the user to the previous flow. | `CustomEvent<any>` |
+| Event                      | Description                                    | Type               |
+| -------------------------- | ---------------------------------------------- | ------------------ |
+| `calciteFlowItemBackClick` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
 
 ## Dependencies
+
 ### Used by
+
 - [calcite-flow](../calcite-flow)
 
 ---
