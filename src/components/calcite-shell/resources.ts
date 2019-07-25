@@ -1,5 +1,5 @@
 export const CSS = {
-  header: "header",
+  appHeader: "app-header",
   main: "main",
   content: "content",
   footer: "footer"

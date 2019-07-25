@@ -23,11 +23,11 @@ export class CalciteShell {
   // --------------------------------------------------------------------------
 
   renderHeader() {
-    const hasHeader = !!this.el.querySelector("[slot=header]");
+    const hasHeader = !!this.el.querySelector("[slot=app-header]");
 
     return hasHeader ? (
-      <header class={CSS.header}>
-        <slot name="header" />
+      <header class={CSS.appHeader}>
+        <slot name="app-header" />
       </header>
     ) : null;
   }

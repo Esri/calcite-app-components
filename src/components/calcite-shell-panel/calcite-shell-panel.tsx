@@ -25,7 +25,7 @@ export class CalciteShellPanel {
   render() {
     const contentNode = (
       <div class={CSS.content}>
-        <slot />
+        <slot name="content" />
       </div>
     );
 

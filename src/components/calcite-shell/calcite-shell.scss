@@ -18,12 +18,7 @@
   flex: 1;
 }
 
-.header {
-  background-color: #eee;
-  padding: 10px;
-}
-
 .footer {
-  background-color: #ddd;
-  padding: 10px;
+  background-color: var(--calcite-app-background);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
 }
