@@ -33,6 +33,8 @@ a.is-active {
 <nav class="styleguide--nav">
     <ul>
       <li><a href="${root}">Home</a></li>
+      <li><a href="${root}demos/calcite-shell/">Calcite Shell</a></li>
+      <li><a href="${root}demos/calcite-shell-panel/">Calcite Shell Panel</a></li>
       <li><a href="${root}demos/calcite-action/">Calcite Action</a></li>
       <li><a href="${root}demos/calcite-action-bar/">Calcite Action Bar</a></li>
       <li><a href="${root}demos/calcite-action-pad/">Calcite Action Pad</a></li>

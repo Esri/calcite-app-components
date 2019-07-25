@@ -5,7 +5,9 @@
   margin: 0;
 }
 
-:host ::slotted(calcite-action) {
+::slotted(calcite-action) {
   display: flex;
   width: 100%;
+  margin-top: var(--calcite-app-cap-spacing-quarter);
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }

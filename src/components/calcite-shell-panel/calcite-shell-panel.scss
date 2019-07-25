@@ -7,7 +7,12 @@
 
 .content {
   flex: 1;
-  // padding: 10px;
-  width: 15vw;
-  min-width: 280px;
+  width: 22vw;
+  min-width: 260px;
+  max-width: 360px;
+}
+
+slot[name="content"]::slotted(*) {
+  padding: 0;
+  margin: 0;
 }
