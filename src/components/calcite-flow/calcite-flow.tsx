@@ -22,8 +22,6 @@ export class CalciteFlow {
 
   @State() flows: HTMLCalciteFlowItemElement[] = [];
 
-  flowItemObserver = new MutationObserver(this.updateFlowProps.bind(this));
-
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -61,7 +59,7 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  updateFlowProps(): void {
+  updateFlowProps = (): void => {
     const { flows } = this;
 
     const newFlows: HTMLCalciteFlowItemElement[] = Array.from(
@@ -98,7 +96,9 @@ export class CalciteFlow {
     this.flows = newFlows;
     this.flowCount = newFlowCount;
     this.flowDirection = flowDirection;
-  }
+  };
+
+  flowItemObserver = new MutationObserver(this.updateFlowProps);
 
   // --------------------------------------------------------------------------
   //

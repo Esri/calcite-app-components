@@ -20,15 +20,25 @@ export class CalciteAction {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Indicates whether the action is highlighted.
+   */
   @Prop({ reflect: true }) active = false;
-
+  /**
+   * Indicates unread changes.
+   */
   @Prop({ reflect: true }) indicator = false;
-
+  /**
+   * Label of the action, exposed on hover.
+   */
   @Prop() label: string;
-
+  /**
+   * Text that accompanies the action icon.
+   */
   @Prop() text: string;
-
+  /**
+   * Indicates whether the text is displayed.
+   */
   @Prop({ reflect: true }) textEnabled = false;
 
   /**
@@ -41,7 +51,9 @@ export class CalciteAction {
   //  Events
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Emitted when an action has been clicked.
+   */
   @Event() calciteActionClick: EventEmitter;
 
   // --------------------------------------------------------------------------
@@ -75,7 +87,7 @@ export class CalciteAction {
           class={classnames(CSS.button, compactClass)}
           title={labelFallback}
           aria-label={labelFallback}
-          onClick={this.clickHandler.bind(this)}
+          onClick={this.clickHandler}
         >
           {iconContainerNode}
           {textContainerNode}
@@ -90,7 +102,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  clickHandler(): void {
+  clickHandler = (): void => {
     this.calciteActionClick.emit(this);
-  }
+  };
 }
