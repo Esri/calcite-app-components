@@ -1,3 +1,7 @@
+$shell-panel-width: 20vw !default;
+$shell-panel-min-width: 240px !default;
+$shell-panel-max-width: 360px !default;
+
 :host {
   height: 100%;
   position: relative;
@@ -6,10 +10,9 @@
 }
 
 .content {
-  flex: 1;
-  width: 22vw;
-  min-width: 260px;
-  max-width: 360px;
+  width: $shell-panel-width;
+  min-width: $shell-panel-min-width;
+  max-width: $shell-panel-max-width;
 }
 
 slot[name="content"]::slotted(*) {

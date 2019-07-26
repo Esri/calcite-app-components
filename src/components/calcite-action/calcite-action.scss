@@ -17,6 +17,11 @@
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
 }
 
+.button.compact {
+  padding-left: var(--calcite-app-side-spacing-quarter);
+  padding-right: var(--calcite-app-side-spacing-quarter);
+}
+
 :host .button:hover {
   background-color: var(--calcite-app-background-hover);
   color: var(--calcite-app-foreground-hover);

@@ -18,25 +18,20 @@
 
       <style>
         .calcite-shell-container {
-          width: 100%;
-          height: 80vh;
+          /* ipad size with browser */
+          width: 1024px;
+          height: 671px;
           margin: 0 auto;
-        }
-        .fake-block {
-          background-color: #fff;
-          margin: 6px;
-          border-radius: 3px;
-          box-shadow: 0 1px 0 #e0e0e0;
-          padding: 6px;
+          box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
         }
       </style>
 
       <style>
         #viewDiv {
-          padding: 0;
+          /* padding: 0;
           margin: 0;
           height: 100%;
-          width: 100%;
+          width: 100%; */
         }
       </style>
 
@@ -61,8 +56,8 @@
             <calcite-floating-panel id="floating-panel" slot="floating-panel" position-type="anchor" hidden
               ><p style="height:150px; width:100%;">
                 Floating Panel Content
-              </p></calcite-floating-panel
-            >
+              </p>
+            </calcite-floating-panel>
             <calcite-action-pad id="action-pad" position-type="side" slot="action-pad" hidden>
               <calcite-action-group>
                 <calcite-action text="Add">
@@ -73,6 +68,27 @@
               </calcite-action-group>
             </calcite-action-pad>
             <calcite-action-bar slot="action-bar">
+              <calcite-action-group>
+                <calcite-action text="Add">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                    <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+                  </svg>
+                </calcite-action>
+                <calcite-action text="Save">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                    <path
+                      d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
+                    />
+                  </svg>
+                </calcite-action>
+                <calcite-action text="Layers" active>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                    <path
+                      d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
+                    />
+                  </svg>
+                </calcite-action>
+              </calcite-action-group>
               <calcite-action-group>
                 <calcite-action text="Add">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
@@ -117,21 +133,42 @@
           </calcite-shell-panel>
 
           <calcite-shell-panel slot="contextual-panel">
-            <calcite-action-bar slot="action-bar" theme="dark">
+            <calcite-action-bar slot="action-bar">
               <calcite-action-group>
-                <calcite-action text="Add" theme="dark">
+                <calcite-action text="Add">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                     <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
                   </svg>
                 </calcite-action>
-                <calcite-action text="Save" theme="dark">
+                <calcite-action text="Save">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                     <path
                       d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
                     />
                   </svg>
                 </calcite-action>
-                <calcite-action text="Layers" theme="dark">
+                <calcite-action text="Layers">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                    <path
+                      d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
+                    />
+                  </svg>
+                </calcite-action>
+              </calcite-action-group>
+              <calcite-action-group>
+                <calcite-action text="Add">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                    <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+                  </svg>
+                </calcite-action>
+                <calcite-action text="Save">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                    <path
+                      d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
+                    />
+                  </svg>
+                </calcite-action>
+                <calcite-action text="Layers">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                     <path
                       d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
@@ -142,36 +179,44 @@
             </calcite-action-bar>
             <div slot="content">
               <calcite-block collapsible open>
-                <calcite-block-header heading="Contextual Content"></calcite-block-header>
-
+                <calcite-block-header heading="Contextual Content" summary="Select goodness">
+                  <select name="goodness">
+                    <option value="cool">Awesome</option>
+                    <option value="cool">Boss</option>
+                    <option value="cool">Cool</option>
+                    <option value="cool">Neat</option>
+                  </select>
+                </calcite-block-header>
                 <calcite-block-content>
                   <img src="https://placeimg.com/640/480/any" width="100%" />
-                  <!-- <img src="https://placeimg.com/480/480/any" width="100%" /> -->
-                  <calcite-block-section>
-                    <calcite-block-header heading="Section 1"></calcite-block-header>
+                  <calcite-block-section text="Cool things">
+                    <!-- <calcite-block-header heading="Section 1"></calcite-block-header> -->
                     <calcite-block-content>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                     </calcite-block-content>
                   </calcite-block-section>
-                  <calcite-block-section>
-                    <calcite-block-header heading="Section 2"></calcite-block-header>
+                  <calcite-block-section text="Neat things">
+                    <!-- <calcite-block-header heading="Section 2"></calcite-block-header> -->
                     <calcite-block-content>
-                      <calcite-action text-enabled text="cool thing"></calcite-action>
-                      <calcite-action text-enabled text="cool thing"></calcite-action>
-                      <calcite-action text-enabled text="cool thing"></calcite-action>
+                      <calcite-action text-enabled text="neat thing"></calcite-action>
+                      <calcite-action text-enabled text="neat thing"></calcite-action>
+                      <calcite-action text-enabled text="neat thing"></calcite-action>
                     </calcite-block-content>
                   </calcite-block-section>
                 </calcite-block-content>
               </calcite-block>
             </div>
           </calcite-shell-panel>
-          <header slot="app-header">
-            <h2 class="heading">My App</h2>
-          </header>
+          <div slot="app-header">
+            <header class="header">
+              <h2 class="heading">My App</h2>
+            </header>
+          </div>
           <!-- <calcite-tip-manager slot="tip-manager" /> -->
-          <div id="viewDiv"></div>
+          <div id="viewDiv" slot="content"></div>
+
           <footer slot="app-footer">Footer</footer>
         </calcite-shell>
       </div>

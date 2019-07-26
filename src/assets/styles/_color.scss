@@ -24,12 +24,12 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-background-hover: #{$darkest-gray};
   --calcite-app-foreground-hover: #{$lightest-gray};
 
-  --calcite-app-background-active: #{$darkest-gray};
+  --calcite-app-background-active: #{$off-black};
   --calcite-app-foreground-active: #{$vibrant-blue};
 
   --calcite-app-foreground-subtle: #{$lighter-gray};
 
   --calcite-app-background-content: #{$darkest-gray};
 
-  --calcite-app-border: #{$lighter-gray};
+  --calcite-app-border: #{$gray};
 }
