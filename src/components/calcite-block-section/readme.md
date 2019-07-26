@@ -10,9 +10,9 @@
 
 ## Events
 
-| Event                       | Description                                                    | Type               |
-| --------------------------- | -------------------------------------------------------------- | ------------------ |
-| `calciteBlockSectionToggle` | Toggles the section open or closed when the header is clicked. | `CustomEvent<any>` |
+| Event                       | Description                               | Type               |
+| --------------------------- | ----------------------------------------- | ------------------ |
+| `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
 ## Dependencies
 
