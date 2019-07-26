@@ -17,13 +17,21 @@ export class CalciteActionBar {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Indicates whether widget can be expanded.
+   */
   @Prop({ reflect: true }) expand = true;
-
+  /**
+   * Indicates whether widget is expanded.
+   */
   @Prop({ reflect: true }) expanded = false;
-
+  /**
+   * Updates the label of the expand icon when the component is collapsed.
+   */
   @Prop() textExpand = "Expand";
-
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   */
   @Prop() textCollapse = "Collapse";
 
   // --------------------------------------------------------------------------
@@ -52,7 +60,7 @@ export class CalciteActionBar {
 
     return expand ? (
       <calcite-action
-        onCalciteActionClick={this.toggleExpand.bind(this)}
+        onCalciteActionClick={this.toggleExpand}
         textEnabled={expanded}
         text={expandText}
       >
@@ -98,7 +106,7 @@ export class CalciteActionBar {
       );
   }
 
-  toggleExpand() {
+  toggleExpand = (): void => {
     this.expanded = !this.expanded;
-  }
+  };
 }

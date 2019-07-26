@@ -18,16 +18,34 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * Heading text.
+   */
   @Prop() heading: string;
 
+  /**
+   * Opens the action menu.
+   */
   @Prop({ reflect: true }) menuOpen = false;
 
+  /**
+   * Shows a back button in the header.
+   */
   @Prop() showBackButton = false;
 
+  /**
+   * 'Back' text string.
+   */
   @Prop() textBack = TEXT.back;
 
+  /**
+   * 'Close' text string.
+   */
   @Prop() textClose = TEXT.close;
 
+  /**
+   * 'Open' text string.
+   */
   @Prop() textOpen = TEXT.open;
 
   // --------------------------------------------------------------------------
@@ -44,6 +62,10 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * Emitted when the back button has been clicked.
+   */
+
   @Event() calciteFlowItemBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
@@ -52,11 +74,11 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  toggleMenuOpen(): void {
+  toggleMenuOpen = (): void => {
     this.menuOpen = !this.menuOpen;
-  }
+  };
 
-  backButtonClick = () => {
+  backButtonClick = (): void => {
     this.calciteFlowItemBackClick.emit();
   };
 
@@ -94,7 +116,7 @@ export class CalciteFlowItem {
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
-        onCalciteActionClick={this.toggleMenuOpen.bind(this)}
+        onCalciteActionClick={this.toggleMenuOpen}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={ellipsis16} />
