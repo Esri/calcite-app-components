@@ -74,6 +74,9 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * Emitted when the header has been clicked.
+   */
   @Event()
   calciteBlockToggle: EventEmitter;
 
