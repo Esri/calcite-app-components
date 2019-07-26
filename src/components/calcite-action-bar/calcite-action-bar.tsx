@@ -54,14 +54,13 @@ export class CalciteActionBar {
     const rtl = el.dir === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
-
-    const parentPrimary = el.parentElement.hasAttribute("primary");
     const icons = [chevronLeft16F, chevronRight16F];
 
     if (rtl) {
       icons.reverse();
     }
 
+    const parentPrimary = el.parentElement.hasAttribute("primary");
     const expandIcon = parentPrimary ? icons[0] : icons[1];
     const collapseIcon = parentPrimary ? icons[1] : icons[0];
 
