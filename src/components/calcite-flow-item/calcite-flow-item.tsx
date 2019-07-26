@@ -74,11 +74,11 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  toggleMenuOpen(): void {
+  toggleMenuOpen = (): void => {
     this.menuOpen = !this.menuOpen;
-  }
+  };
 
-  backButtonClick = () => {
+  backButtonClick = (): void => {
     this.calciteFlowItemBackClick.emit();
   };
 
@@ -116,7 +116,7 @@ export class CalciteFlowItem {
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
-        onCalciteActionClick={this.toggleMenuOpen.bind(this)}
+        onCalciteActionClick={this.toggleMenuOpen}
       >
         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={ellipsis16} />

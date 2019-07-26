@@ -77,7 +77,7 @@ export class CalciteAction {
           class={CSS.button}
           title={labelFallback}
           aria-label={labelFallback}
-          onClick={this.clickHandler.bind(this)}
+          onClick={this.clickHandler}
         >
           {iconContainerNode}
           {textContainerNode}
@@ -92,7 +92,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  clickHandler(): void {
+  clickHandler = (): void => {
     this.calciteActionClick.emit(this);
-  }
+  };
 }

@@ -60,7 +60,7 @@ export class CalciteActionBar {
 
     return expand ? (
       <calcite-action
-        onCalciteActionClick={this.toggleExpand.bind(this)}
+        onCalciteActionClick={this.toggleExpand}
         textEnabled={expanded}
         text={expandText}
       >
@@ -106,7 +106,7 @@ export class CalciteActionBar {
       );
   }
 
-  toggleExpand() {
+  toggleExpand = (): void => {
     this.expanded = !this.expanded;
-  }
+  };
 }
