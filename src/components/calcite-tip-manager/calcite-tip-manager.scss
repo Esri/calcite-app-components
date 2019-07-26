@@ -1,7 +1,7 @@
 /* Variables, mixins, @keyframes*/
-$tip-manager-height: 22vh !default;
-$tip-max-width: 540px !default;
-$tip-width: 65% !default;
+$tip-manager-height: 22vh;
+$tip-max-width: 540px;
+$tip-width: 65%;
 
 @keyframes tip-advance {
   0% {
