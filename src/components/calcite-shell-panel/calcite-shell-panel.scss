@@ -18,4 +18,5 @@ $shell-panel-max-width: 360px !default;
 slot[name="content"]::slotted(*) {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
