@@ -13,6 +13,8 @@ $shell-panel-max-width: 360px !default;
   width: $shell-panel-width;
   min-width: $shell-panel-min-width;
   max-width: $shell-panel-max-width;
+  border-left: 1px solid var(--calcite-app-border);
+  border-right: 1px solid var(--calcite-app-border);
 }
 
 slot[name="content"]::slotted(*) {

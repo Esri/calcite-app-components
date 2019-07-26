@@ -15,6 +15,7 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-background-content: #{$lighter-gray};
 
   --calcite-app-border: #{$lighter-gray};
+  --calcite-app-border-subtle: #{$lightest-gray};
 }
 
 :host([theme="dark"]) {
@@ -32,4 +33,5 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-background-content: #{$darkest-gray};
 
   --calcite-app-border: #{$gray};
+  --calcite-app-border-subtle: #{$dark-gray};
 }
