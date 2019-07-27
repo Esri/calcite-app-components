@@ -1,5 +1,7 @@
 # calcite-block
 
+The `block` component is intended for displaying information in stacked, collapsible sections in a panel.
+
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -11,9 +13,17 @@
 
 ## Events
 
-| Event                | Description | Type               |
-| -------------------- | ----------- | ------------------ |
-| `calciteBlockToggle` |             | `CustomEvent<any>` |
+| Event                | Description                               | Type               |
+| -------------------- | ----------------------------------------- | ------------------ |
+| `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
+
+## Dependencies
+
+### Depends on
+
+- [calcite-block-content](../calcite-block-content)
+- [calcite-block-header](../calcite-block-header)
+- [calcite-block-section](../calcite-block-section)
 
 ---
 

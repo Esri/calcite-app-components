@@ -34,6 +34,7 @@ $animation-time: 250ms !default;
 
   --calcite-app-border-radius: 3px;
 
+  // animation
   --calcite-app-animation-time: #{$animation-time};
   --calcite-app-animation-time-fast: #{round($animation-time / 2)};
   --calcite-app-animation-time-slow: #{round($animation-time * 2)};
