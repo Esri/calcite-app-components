@@ -58,7 +58,6 @@
       document.getElementById("add").addEventListener("click", () => {
         const mgr = document.querySelector("calcite-tip-manager");
         let newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
-        // newTip.querySelector('.heading').innerText = `new Tip ${++count}`;
         mgr.appendChild(newTip);
       });
       document.getElementById("remove").addEventListener("click", () => {
