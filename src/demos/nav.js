@@ -33,8 +33,6 @@ a.is-active {
 <nav class="styleguide--nav">
     <ul>
       <li><a href="${root}">Home</a></li>
-      <li><a href="${root}demos/calcite-shell/">Calcite Shell</a></li>
-      <li><a href="${root}demos/calcite-shell-panel/">Calcite Shell Panel</a></li>
       <li><a href="${root}demos/calcite-action/">Calcite Action</a></li>
       <li><a href="${root}demos/calcite-action-bar/">Calcite Action Bar</a></li>
       <li><a href="${root}demos/calcite-action-pad/">Calcite Action Pad</a></li>
@@ -42,6 +40,7 @@ a.is-active {
       <li><a href="${root}demos/calcite-flow/">Calcite Flow</a></li>
       <li><a href="${root}demos/calcite-flow-item/">Calcite Flow Item</a></li>
       <li><a href="${root}demos/calcite-shell/">Calcite Shell</a></li>
+      <li><a href="${root}demos/calcite-shell-panel/">Calcite Shell Panel</a></li>
       <li><a href="${root}demos/calcite-tip.html">Calcite Tip</a></li>
       <li><a href="${root}demos/calcite-tip-manager.html">Calcite Tip Manager</a></li>
     </ul>

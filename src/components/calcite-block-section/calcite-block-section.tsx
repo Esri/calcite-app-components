@@ -19,7 +19,7 @@ export class CalciteBlockSection {
   /**
    * Text displayed in the button.
    */
-  @Prop() text: string;
+  @Prop() textLabel: string;
 
   /**
    * When true, the block's section content will be displayed.
@@ -116,7 +116,7 @@ export class CalciteBlockSection {
       <calcite-action
         aria-label={toggleLabel}
         onClick={this.onHeaderClick}
-        text={this.text}
+        text={this.textLabel}
         text-enabled
         compact
       >
