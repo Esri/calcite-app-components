@@ -44,7 +44,7 @@ export class CalciteAction {
   /**
    * Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section.
    */
-  @Prop({ reflect: false }) compact = false;
+  @Prop({ reflect: true }) compact = false;
 
   // --------------------------------------------------------------------------
   //
@@ -79,7 +79,9 @@ export class CalciteAction {
 
     const labelFallback = label || text;
 
-    const compactClass = this.compact ? CSS.compact : "";
+    const compactClass = {
+      [CSS.compact]: this.compact
+    };
 
     return (
       <Host>

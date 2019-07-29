@@ -26,6 +26,6 @@
   padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter);
 }
 
-::slotted(*) {
-  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-three-quarters);
+.content {
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-three-quarters);
 }

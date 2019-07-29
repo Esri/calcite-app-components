@@ -31,10 +31,10 @@
 
       <style>
         #viewDiv {
-          /* padding: 0;
+          padding: 0;
           margin: 0;
           height: 100%;
-          width: 100%; */
+          width: 100%;
         }
       </style>
 
@@ -56,13 +56,25 @@
       <div class="calcite-shell-container">
         <calcite-shell>
           <calcite-shell-panel slot="primary-panel" primary>
-            <calcite-floating-panel id="floating-panel" slot="floating-panel" heading="Anchored Floating Panel" position-type="anchor" hidden
-            style="height:150px;"><span>
+            <calcite-floating-panel
+              id="floating-panel"
+              slot="floating-panel"
+              heading="Anchored Floating Panel"
+              position-type="anchor"
+              hidden
+              style="height:150px;"
+              ><span>
                 Floating Panel Content
               </span>
             </calcite-floating-panel>
-            <calcite-floating-panel id="floating-panel-over" slot="floating-panel" heading="Over Floating Panel" position-type="over" hidden
-            style="height:150px;"><span >
+            <calcite-floating-panel
+              id="floating-panel-over"
+              slot="floating-panel"
+              heading="Over Floating Panel"
+              position-type="over"
+              hidden
+              style="height:150px;"
+              ><span>
                 Floating Panel Content
               </span>
             </calcite-floating-panel>
@@ -119,7 +131,7 @@
                 </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
-            <div slot="content">
+            <div>
               <calcite-block collapsible open>
                 <calcite-block-header heading="Primary Content" summary="This is the primary."></calcite-block-header>
                 <calcite-block-content>
@@ -137,9 +149,33 @@
                   </calcite-action>
                   <calcite-action text="Over Floating Panel" text-enabled id="floating-panel-over-button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z"/>
+                      <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z" />
                     </svg>
                   </calcite-action>
+                </calcite-block-content>
+              </calcite-block>
+              <calcite-block collapsible open>
+                <calcite-block-header heading="Another Block" summary="This is the primary."></calcite-block-header>
+                <calcite-block-content>
+                  <div style="height: 300px; background-color: #f8f8f8;">
+                    <p>Cool thing.</p>
+                  </div>
+                </calcite-block-content>
+              </calcite-block>
+              <calcite-block collapsible open>
+                <calcite-block-header heading="Additional Block" summary="This is the primary."></calcite-block-header>
+                <calcite-block-content>
+                  <div style="height: 300px; background-color: #f8f8f8;">
+                    <p>Cool thing.</p>
+                  </div>
+                </calcite-block-content>
+              </calcite-block>
+              <calcite-block collapsible open>
+                <calcite-block-header heading="More Block" summary="This is the primary."></calcite-block-header>
+                <calcite-block-content>
+                  <div style="height: 300px; background-color: #f8f8f8;">
+                    <p>Cool thing.</p>
+                  </div>
                 </calcite-block-content>
               </calcite-block>
             </div>
@@ -190,107 +226,99 @@
                 </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
-            <div slot="content">
-              <calcite-flow id="flow">
-                <calcite-flow-item heading="Layer settings">
-                  <div slot="menu-actions">
-                    <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                    <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                    <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                  </div>
-                  <calcite-block collapsible open>
-                    <calcite-block-header heading="Contextual Content" summary="Select goodness">
-                      <select name="goodness">
-                        <option value="cool">Awesome</option>
-                        <option value="cool">Boss</option>
-                        <option value="cool">Cool</option>
-                        <option value="cool">Neat</option>
-                      </select>
-                    </calcite-block-header>
-                    <calcite-block-content>
-                      <img src="https://placeimg.com/640/480/any" width="100%" />
-                      <calcite-block-section text="Cool things">
-                        <!-- <calcite-block-header heading="Section 1"></calcite-block-header> -->
-                        <calcite-block-content>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                        </calcite-block-content>
-                      </calcite-block-section>
-                      <calcite-block-section text="Neat things">
-                        <!-- <calcite-block-header heading="Section 2"></calcite-block-header> -->
-                        <calcite-block-content>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                        </calcite-block-content>
-                      </calcite-block-section>
-                    </calcite-block-content>
-                  </calcite-block>
-                  <div slot="footer-actions">
-                    <button>Save</button>
-                    <button>Cancel</button>
-                  </div>
-                </calcite-flow-item>
-                <calcite-flow-item heading="Deeper flow item">
-                  <calcite-block collapsible open>
-                    <calcite-block-header heading="Contextual Content" summary="Select goodness">
-                      <select name="goodness">
-                        <option value="cool">Awesome</option>
-                        <option value="cool">Boss</option>
-                        <option value="cool">Cool</option>
-                        <option value="cool">Neat</option>
-                      </select>
-                    </calcite-block-header>
-                    <calcite-block-content>
-                      <calcite-block-section text="Cool things">
-                        <!-- <calcite-block-header heading="Section 1"></calcite-block-header> -->
-                        <calcite-block-content>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                        </calcite-block-content>
-                      </calcite-block-section>
-                      <img src="https://placeimg.com/640/480/any" width="100%" />
-                      <calcite-block-section text="Neat things">
-                        <!-- <calcite-block-header heading="Section 2"></calcite-block-header> -->
-                        <calcite-block-content>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                        </calcite-block-content>
-                      </calcite-block-section>
-                    </calcite-block-content>
-                  </calcite-block>
-                  <calcite-block collapsible open>
-                    <calcite-block-header heading="Even more content" summary="Select goodness"></calcite-block-header>
-                    <calcite-block-content>
-                      <calcite-block-section text="Cool things">
-                        <!-- <calcite-block-header heading="Section 1"></calcite-block-header> -->
-                        <calcite-block-content>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                          <calcite-action text-enabled text="cool thing"></calcite-action>
-                        </calcite-block-content>
-                      </calcite-block-section>
-                      <img src="https://placeimg.com/640/480/nature" width="100%" />
-                      <calcite-block-section text="Neat things">
-                        <!-- <calcite-block-header heading="Section 2"></calcite-block-header> -->
-                        <calcite-block-content>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                          <calcite-action text-enabled text="neat thing"></calcite-action>
-                        </calcite-block-content>
-                      </calcite-block-section>
-                    </calcite-block-content>
-                  </calcite-block>
-                  <div slot="footer-actions">
-                    <button>Save</button>
-                    <button>Cancel</button>
-                  </div>
-                </calcite-flow-item>
-              </calcite-flow>
-            </div>
+            <calcite-flow id="flow">
+              <calcite-flow-item heading="Layer settings">
+                <div slot="menu-actions">
+                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
+                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
+                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
+                </div>
+                <calcite-block collapsible open>
+                  <calcite-block-header heading="Contextual Content" summary="Select goodness">
+                    <select name="goodness">
+                      <option value="cool">Awesome</option>
+                      <option value="cool">Boss</option>
+                      <option value="cool">Cool</option>
+                      <option value="cool">Neat</option>
+                    </select>
+                  </calcite-block-header>
+                  <calcite-block-content>
+                    <img src="https://placeimg.com/640/480/any" width="100%" />
+                    <calcite-block-section text="Cool things">
+                      <calcite-block-content>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                      </calcite-block-content>
+                    </calcite-block-section>
+                    <calcite-block-section text="Neat things">
+                      <calcite-block-content>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                      </calcite-block-content>
+                    </calcite-block-section>
+                  </calcite-block-content>
+                </calcite-block>
+                <div slot="footer-actions">
+                  <button>Save</button>
+                  <button>Cancel</button>
+                </div>
+              </calcite-flow-item>
+              <calcite-flow-item heading="Deeper flow item">
+                <calcite-block collapsible open>
+                  <calcite-block-header heading="Contextual Content" summary="Select goodness">
+                    <select name="goodness">
+                      <option value="cool">Awesome</option>
+                      <option value="cool">Boss</option>
+                      <option value="cool">Cool</option>
+                      <option value="cool">Neat</option>
+                    </select>
+                  </calcite-block-header>
+                  <calcite-block-content>
+                    <calcite-block-section text="Cool things">
+                      <calcite-block-content>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                      </calcite-block-content>
+                    </calcite-block-section>
+                    <img src="https://placeimg.com/640/480/any" width="100%" />
+                    <calcite-block-section text="Neat things">
+                      <calcite-block-content>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                      </calcite-block-content>
+                    </calcite-block-section>
+                  </calcite-block-content>
+                </calcite-block>
+                <calcite-block collapsible open>
+                  <calcite-block-header heading="Even more content" summary="Select goodness"></calcite-block-header>
+                  <calcite-block-content>
+                    <calcite-block-section text="Cool things">
+                      <calcite-block-content>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                        <calcite-action text-enabled text="cool thing"></calcite-action>
+                      </calcite-block-content>
+                    </calcite-block-section>
+                    <img src="https://placeimg.com/640/480/nature" width="100%" />
+                    <calcite-block-section text="Neat things">
+                      <calcite-block-content>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                        <calcite-action text-enabled text="neat thing"></calcite-action>
+                      </calcite-block-content>
+                    </calcite-block-section>
+                  </calcite-block-content>
+                </calcite-block>
+                <div slot="footer-actions">
+                  <button>Save</button>
+                  <button>Cancel</button>
+                </div>
+              </calcite-flow-item>
+            </calcite-flow>
           </calcite-shell-panel>
           <div slot="app-header">
             <header class="header">
@@ -298,7 +326,7 @@
             </header>
           </div>
           <!-- <calcite-tip-manager slot="tip-manager" /> -->
-          <div id="viewDiv" slot="content"></div>
+          <div id="viewDiv"></div>
 
           <footer slot="app-footer">Footer</footer>
         </calcite-shell>
@@ -322,7 +350,6 @@
           : floatingPanel.toggleAttribute("hidden");
 
         floatingPanel.positionElement = floatingPanelButton;
-        
       });
 
       var floatingPanelOver = document.getElementById("floating-panel-over");
@@ -333,9 +360,8 @@
           : floatingPanelOver.toggleAttribute("hidden");
 
         floatingPanelOver.positionElement = floatingPanelOverButton;
-        
       });
-      
+
       var flowNode = document.getElementById("flow");
 
       flowNode.addEventListener("calciteFlowItemBackClick", function() {

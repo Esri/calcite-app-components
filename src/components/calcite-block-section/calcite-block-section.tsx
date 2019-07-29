@@ -110,9 +110,6 @@ export class CalciteBlockSection {
     const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
     const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
-    // const hasHeader = !!this.el.querySelector<HTMLCalciteBlockHeaderElement>(
-    //   "calcite-block-header"
-    // );
     const toggleLabel = open ? textCollapse : textExpand;
 
     const headerNode = (

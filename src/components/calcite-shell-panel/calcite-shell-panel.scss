@@ -15,10 +15,8 @@ $shell-panel-max-width: 360px !default;
   max-width: $shell-panel-max-width;
   border-left: 1px solid var(--calcite-app-border);
   border-right: 1px solid var(--calcite-app-border);
-}
-
-slot[name="content"]::slotted(*) {
   padding: 0;
   margin: 0;
   height: 100%;
+  overflow: auto;
 }

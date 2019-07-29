@@ -9,6 +9,7 @@ import { x16 } from "@esri/calcite-ui-icons";
 const CSS = {
   header: "header",
   heading: "heading",
+  content: "content",
   close: "close"
 };
 
@@ -68,7 +69,9 @@ export class CalciteFloatingPanel {
             </svg>
           </calcite-action>
         </header>
-        <slot />
+        <div class={CSS.content}>
+          <slot />
+        </div>
       </Host>
     );
   }
@@ -98,6 +101,6 @@ export class CalciteFloatingPanel {
   }
 
   hidePanel = () => {
-    this.el.hidden = true;
+    this.el.toggleAttribute("hidden", true);
   };
 }
