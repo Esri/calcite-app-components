@@ -7,6 +7,7 @@
   padding: var(--calcite-app-cap-spacing-eighth) var(--calcite-app-side-spacing-quarter);
   position: absolute;
   z-index: 1;
+  animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
 :host([hidden]) {

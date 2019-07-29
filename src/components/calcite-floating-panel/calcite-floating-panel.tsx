@@ -4,6 +4,14 @@ import { CalcitePositionType } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
 
+import { x16 } from "@esri/calcite-ui-icons";
+
+const CSS = {
+  header: "header",
+  heading: "heading",
+  close: "close"
+};
+
 @Component({
   tag: "calcite-floating-panel",
   styleUrl: "calcite-floating-panel.scss",
@@ -22,6 +30,8 @@ export class CalciteFloatingPanel {
   anchor: dynamically above or below based on how close trigger is to top or bottom of window.
   */
   @Prop({ reflect: true }) positionType: CalcitePositionType;
+
+  @Prop({ reflect: true }) heading: string;
 
   @Prop() positionElement: HTMLElement;
 
@@ -50,6 +60,14 @@ export class CalciteFloatingPanel {
 
     return (
       <Host style={style}>
+        <header class={CSS.header}>
+          <h3 class={CSS.heading}>{this.heading}</h3>
+          <calcite-action onCalciteActionClick={this.hidePanel}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
+              <path d={x16} />
+            </svg>
+          </calcite-action>
+        </header>
         <slot />
       </Host>
     );
@@ -78,4 +96,8 @@ export class CalciteFloatingPanel {
       positionElement: newValue
     });
   }
+
+  hidePanel = () => {
+    this.el.hidden = true;
+  };
 }

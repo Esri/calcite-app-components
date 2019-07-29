@@ -1,8 +1,11 @@
 :host {
-  background-color: #fff;
-  color: #4c4c4c;
+  background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
   position: absolute;
   z-index: 1;
+  box-shadow: var(--calcite-app-shadow-2);
+  border-radius: var(--calcite-app-border-radius);
+  animation: calcite-app-fade-in-scale var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
 :host([hidden]) {
@@ -13,12 +16,16 @@
   left: 100%;
 }
 
-:host([position-type="over"]) {
-  left: 0;
-  width: 350px;
+:host([position-type="over"]),
+:host([position-type="anchor"]) {
+  left: 12%;
+  width: 89%;
 }
 
-:host([position-type="anchor"]) {
-  left: 0;
-  width: 350px;
+.header {
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter);
+}
+
+::slotted(*) {
+  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-three-quarters);
 }
