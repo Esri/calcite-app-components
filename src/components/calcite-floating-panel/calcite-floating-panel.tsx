@@ -9,8 +9,7 @@ import { x16 } from "@esri/calcite-ui-icons";
 const CSS = {
   header: "header",
   heading: "heading",
-  content: "content",
-  close: "close"
+  content: "content"
 };
 
 @Component({
