@@ -23,9 +23,9 @@ export class CalciteShell {
   // --------------------------------------------------------------------------
 
   renderHeader() {
-    const hasHeader = !!this.el.querySelector("[slot=app-header]");
+    const hasHeader = !!this.el.querySelector("[slot=shell-header]");
 
-    return hasHeader ? <slot name="app-header" /> : null;
+    return hasHeader ? <slot name="shell-header" /> : null;
   }
 
   renderContent() {
@@ -37,11 +37,11 @@ export class CalciteShell {
   }
 
   renderFooter() {
-    const hasFooter = !!this.el.querySelector("[slot=app-footer]");
+    const hasFooter = !!this.el.querySelector("[slot=shell-footer]");
 
     return hasFooter ? (
       <div class={CSS.footer}>
-        <slot name="app-footer" />
+        <slot name="shell-footer" />
       </div>
     ) : null;
   }
