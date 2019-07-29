@@ -8,6 +8,9 @@ export const config: Config = {
   bundles: [
     {
       components: ["calcite-action", "calcite-action-group", "calcite-action-bar", "calcite-action-pad"]
+    },
+    {
+      components: ["calcite-flow", "calcite-flow-item"]
     }
   ],
   outputTargets: [

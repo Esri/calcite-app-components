@@ -1,5 +1,7 @@
 # calcite-action-group
 
+The `calcite-action-group` is a wrapper for multiple [calcite-actions](../calcite-action) and housed in [calcite-action-bar](../calcite-action-bar) and [calcite-action-pad](../calcite-action-pad).
+
 <!-- Auto Generated Below -->
 
 ## Dependencies
@@ -7,6 +9,7 @@
 ### Used by
 
 - [calcite-action-bar](../calcite-action-bar)
+- [calcite-action-pad](../calcite-action-pad)
 
 ### Graph
 

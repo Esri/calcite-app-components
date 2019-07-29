@@ -1,45 +1,46 @@
-$gutter-size: 24px 12px;
+$tip-content-only-width: 100% !default;
+$tip-content-width: 70% !default;
+$tip-image-frame-width: 25% !default;
+$tip-image-max-width: 100% !default;
 
 :host {
   position: relative;
-  display: block;
-  padding: $gutter-size;
-  background-color: #fff;
-  color: #6e6e6e;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-flow: column;
+  color: var(--calcite-app-foreground);
+  background-color: var(--calcite-app-background);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
+  margin: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+  box-shadow: var(--calcite-app-shadow-2);
+  border-radius: var(--calcite-app-border-radius);
 }
+
 :host([hidden]) {
   display: none;
 }
 
-.title {
-  font-size: 24px;
-}
-
-$tip-close-size: 24px;
-.close {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: $tip-close-size;
-  height: $tip-close-size;
-  margin: $gutter-size;
-  font-size: 24px;
-  cursor: pointer;
-  :host-context([dir="rtl"]) & {
-    right: auto;
-    left: 0;
-  }
-}
 .content {
   display: flex;
-  align-items: flex-start;
-  & > :last-child {
-    margin-left: 12px;
-    margin-right: auto;
-    :host-context([dir="rtl"]) & {
-      margin-right: 12px;
-      margin-left: auto;
-    }
+  padding-top: var(--calcite-app-cap-spacing-half);
+}
+
+.info {
+  padding: 0 var(--calcite-app-side-spacing);
+  width: $tip-content-width;
+  &:only-child {
+    width: $tip-content-only-width;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.info ::slotted(p) {
+  margin-top: 0;
+}
+
+.image-frame {
+  width: $tip-image-frame-width;
+  img {
+    max-width: $tip-image-max-width;
   }
 }

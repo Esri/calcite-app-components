@@ -14,9 +14,13 @@ export class CalciteTipManager {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * The default group title for the Tip Manager.
+   */
   @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
-
+  /**
+   * Label that appears on hover of pagination icon.
+   */
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
   // --------------------------------------------------------------------------
@@ -127,6 +131,14 @@ export class CalciteTipManager {
     });
   }
 
+  previousClicked = (): void => {
+    this.previousTip();
+  };
+
+  nextClicked = (): void => {
+    this.nextTip();
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -141,36 +153,30 @@ export class CalciteTipManager {
     return (
       <Host>
         <header class={CSS.header}>
-          <h2 class={CSS.title}>{this.groupTitle}</h2>
-          <button class={CSS.close} onClick={() => this.hideTipManager()}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <h2 class={CSS.heading}>{this.groupTitle}</h2>
+          <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={x24} />
             </svg>
-          </button>
+          </calcite-action>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <button
-            class={`${CSS.pageControl} ${CSS.pageControlPrevious}`}
-            onClick={() => this.previousTip()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <calcite-action onCalciteActionClick={this.previousClicked}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronLeft24} />
             </svg>
-          </button>
+          </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <button
-            class={`${CSS.pageControl} ${CSS.pageControlNext}`}
-            onClick={() => this.nextTip()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <calcite-action onCalciteActionClick={this.nextClicked}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronRight24} />
             </svg>
-          </button>
+          </calcite-action>
         </footer>
       </Host>
     );

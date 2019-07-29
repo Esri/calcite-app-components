@@ -2,8 +2,6 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronLeft16F, chevronRight16F } from "@esri/calcite-ui-icons";
 
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
-
 const CSS = {
   actionGroupBottom: "action-group--bottom"
 };
@@ -19,13 +17,21 @@ export class CalciteActionBar {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Indicates whether widget can be expanded.
+   */
   @Prop({ reflect: true }) expand = true;
-
+  /**
+   * Indicates whether widget is expanded.
+   */
   @Prop({ reflect: true }) expanded = false;
-
+  /**
+   * Updates the label of the expand icon when the component is collapsed.
+   */
   @Prop() textExpand = "Expand";
-
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   */
   @Prop() textCollapse = "Collapse";
 
   // --------------------------------------------------------------------------
@@ -45,7 +51,7 @@ export class CalciteActionBar {
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el } = this;
 
-    const rtl = getElementDir(el) === "rtl";
+    const rtl = el.dir === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
 
@@ -54,11 +60,11 @@ export class CalciteActionBar {
 
     return expand ? (
       <calcite-action
-        onCalciteActionClick={this.toggleExpand.bind(this)}
+        onCalciteActionClick={this.toggleExpand}
         textEnabled={expanded}
         text={expandText}
       >
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path d={expanded ? expandIcon : collapseIcon} />
         </svg>
       </calcite-action>
@@ -100,7 +106,7 @@ export class CalciteActionBar {
       );
   }
 
-  toggleExpand() {
+  toggleExpand = (): void => {
     this.expanded = !this.expanded;
-  }
+  };
 }
