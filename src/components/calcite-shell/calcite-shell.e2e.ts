@@ -16,8 +16,8 @@ describe("calcite-shell", () => {
 
     await page.setContent("<calcite-shell></calcite-shell>");
 
-    const footer = await page.find(`calcite-shell >>> .${CSS.footer}`);
-    const header = await page.find(`calcite-shell >>> .${CSS.header}`);
+    const footer = await page.find(`calcite-shell >>> slot[name="shell-footer"]`);
+    const header = await page.find(`calcite-shell >>> slot[name="shell-header"]`);
 
     expect(footer).toBeNull();
     expect(header).toBeNull();
@@ -26,9 +26,9 @@ describe("calcite-shell", () => {
   it("footer should be present when defined", async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<calcite-shell><div slot="footer">Footer</div></calcite-shell>');
+    await page.setContent('<calcite-shell><div slot="shell-footer">Footer</div></calcite-shell>');
 
-    const footer = await page.find(`calcite-shell >>> .${CSS.footer}`);
+    const footer = await page.find(`calcite-shell >>> slot[name="shell-footer"]`);
 
     expect(footer).not.toBeNull();
   });
@@ -36,9 +36,9 @@ describe("calcite-shell", () => {
   it("header should be present when defined", async () => {
     const page = await newE2EPage();
 
-    await page.setContent('<calcite-shell><div slot="header">Header</div></calcite-shell>');
+    await page.setContent('<calcite-shell><div slot="shell-header">Header</div></calcite-shell>');
 
-    const header = await page.find(`calcite-shell >>> .${CSS.header}`);
+    const header = await page.find(`calcite-shell >>> slot[name="shell-header"]`);
 
     expect(header).not.toBeNull();
   });
