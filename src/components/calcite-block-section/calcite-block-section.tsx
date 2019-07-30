@@ -19,7 +19,7 @@ export class CalciteBlockSection {
   /**
    * Text displayed in the button.
    */
-  @Prop() textLabel: string;
+  @Prop() text: string;
 
   /**
    * When true, the block's section content will be displayed.
@@ -88,11 +88,11 @@ export class CalciteBlockSection {
       <calcite-action
         aria-label={toggleLabel}
         onCalciteActionClick={this.onHeaderClick}
-        text={this.textLabel}
+        text={this.text}
         text-enabled
         compact
       >
-        <svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
           <path d={arrowIcon} />
         </svg>
       </calcite-action>
