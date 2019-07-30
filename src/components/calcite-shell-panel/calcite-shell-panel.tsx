@@ -14,6 +14,9 @@ export class CalciteShellPanel {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * When true, the panel is the primary panel for the application.
+   */
   @Prop({ reflect: true }) primary = false;
 
   // --------------------------------------------------------------------------
@@ -37,12 +40,11 @@ export class CalciteShellPanel {
       mainNodes.reverse();
     }
 
-    const floatingNodes = [<slot name="floating-panel" />, <slot name="action-pad" />];
-
     return (
       <Host>
         {mainNodes}
-        {floatingNodes}
+        <slot name="floating-panel" />
+        <slot name="action-pad" />
       </Host>
     );
   }

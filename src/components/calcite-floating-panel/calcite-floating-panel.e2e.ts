@@ -15,14 +15,14 @@ describe("calcite-floating-panel", () => {
     await page.setContent("<calcite-floating-panel></calcite-floating-panel>");
 
     const element = await page.find("calcite-floating-panel");
-    const positionType = await element.getProperty("positionType");
+    const placement = await element.getProperty("placement");
     const positionElement = await element.getProperty("positionElement");
 
     await page.waitForChanges();
 
     const style = element.getAttribute("style");
 
-    expect(positionType).toBeUndefined();
+    expect(placement).toBeUndefined();
     expect(positionElement).toBeUndefined();
     expect(style).toBeNull();
   });

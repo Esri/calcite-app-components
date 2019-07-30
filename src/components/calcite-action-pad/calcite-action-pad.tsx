@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 
-import { CalcitePositionType } from "../interfaces";
+import { CalcitePlacement } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
 
@@ -16,13 +16,17 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  /*
-  side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
-  over: centered on top of trigger and covers trigger.
-  anchor: dynamically above or below based on how close trigger is to top or bottom of window.
-  */
-  @Prop({ reflect: true }) positionType: CalcitePositionType;
+  /**
+   * Determines where the element will be displayed.
+   * side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
+   * over: centered on top of trigger and covers trigger.
+   * anchor: dynamically above or below based on how close trigger is to top or bottom of window.
+   */
+  @Prop({ reflect: true }) placement: CalcitePlacement;
 
+  /**
+   * HTMLElement used to position this element according to the placement.
+   */
   @Prop() positionElement: HTMLElement;
 
   // --------------------------------------------------------------------------
@@ -61,11 +65,11 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  @Watch("positionType")
-  positionTypeHandler(newValue: CalcitePositionType) {
+  @Watch("placement")
+  placementHandler(newValue: CalcitePlacement) {
     this.offsetTop = getOffsetTop({
       floatingElement: this.el,
-      positionType: newValue,
+      placement: newValue,
       positionElement: this.positionElement
     });
   }
@@ -74,7 +78,7 @@ export class CalciteActionPad {
   positionElementHandler(newValue: HTMLElement) {
     this.offsetTop = getOffsetTop({
       floatingElement: this.el,
-      positionType: this.positionType,
+      placement: this.placement,
       positionElement: newValue
     });
   }
