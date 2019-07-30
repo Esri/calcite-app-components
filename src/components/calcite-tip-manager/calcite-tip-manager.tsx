@@ -1,5 +1,5 @@
 import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
-import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
+import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
@@ -115,10 +115,10 @@ export class CalciteTipManager {
     this.selectedIndex = selectedIndex || 0;
   }
 
-  hideTipManager(): void {
+  hideTipManager = (): void => {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
-  }
+  };
 
   updateSelectedTip(): void {
     this.tips.forEach((tip, index) => {
@@ -156,21 +156,21 @@ export class CalciteTipManager {
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
           <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
-            <CalciteIcon size="24" path={x24} />
+            <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousClicked}>
-            <CalciteIcon size="24" path={chevronLeft24} />
+          <calcite-action onCalciteActionClick={this.previousClicked} class={CSS.pagePrevious}>
+            <CalciteIcon size="16" path={chevronLeft16} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextClicked}>
-            <CalciteIcon size="24" path={chevronRight24} />
+          <calcite-action onCalciteActionClick={this.nextClicked} class={CSS.pageNext}>
+            <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>
         </footer>
       </Host>
