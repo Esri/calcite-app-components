@@ -71,7 +71,7 @@ export class CalciteTip {
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
-            <calcite-action onCalciteActionClick={this.hideTip} class={CSS.close}>
+            <calcite-action onClick={this.hideTip} class={CSS.close}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           ) : null}

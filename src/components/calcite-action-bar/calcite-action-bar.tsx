@@ -66,11 +66,7 @@ export class CalciteActionBar {
     const collapseIcon = parentPrimary ? icons[1] : icons[0];
 
     return expand ? (
-      <calcite-action
-        onCalciteActionClick={this.toggleExpand}
-        textEnabled={expanded}
-        text={expandText}
-      >
+      <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
         <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;
