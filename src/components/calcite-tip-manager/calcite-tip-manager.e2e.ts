@@ -70,9 +70,13 @@ describe("calcite-tip-manager", () => {
 
     await page.setContent(
       `<calcite-tip-manager>
-        <calcite-tip data-group-title=${sharedTitle}><p>group title behavior</p></calcite-tip>
-        <calcite-tip data-group-title=${sharedTitle}><p>same title as first one</p></calcite-tip>
-        <calcite-tip data-group-title=${title2}><p>different title</p></calcite-tip>
+        <calcite-tip-group text-group-title=${sharedTitle}>
+          <calcite-tip><p>group title behavior</p></calcite-tip>
+          <calcite-tip><p>same title as first one</p></calcite-tip>
+        </calcite-tip-group>
+        <calcite-tip-group text-group-title=${title2}>
+          <calcite-tip ><p>different title</p></calcite-tip>
+        </calcite-tip-group>
       </calcite-tip-manager>`
     );
 
