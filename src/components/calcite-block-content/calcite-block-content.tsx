@@ -1,4 +1,5 @@
-import { Component, h } from "@stencil/core";
+import { Component, Element, Prop, h } from "@stencil/core";
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-block-content",
@@ -6,6 +7,26 @@ import { Component, h } from "@stencil/core";
   shadow: true
 })
 export class CalciteBlockContent {
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element()
+  el: HTMLElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods

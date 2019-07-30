@@ -2,7 +2,7 @@ import { Component, Element, Host, Prop, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
-import { CalciteTheme, getTheme } from "../../utils/dom";
+import { CalciteTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-shell",
@@ -27,7 +27,7 @@ export class CalciteShell {
   /**
    * Element styling
    */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //

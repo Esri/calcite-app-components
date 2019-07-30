@@ -1,6 +1,7 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
 
 import { CSS } from "./resources";
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-shell-panel",
@@ -8,6 +9,14 @@ import { CSS } from "./resources";
   shadow: true
 })
 export class CalciteShellPanel {
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -18,6 +27,11 @@ export class CalciteShellPanel {
    * When true, the panel is the primary panel for the application.
    */
   @Prop({ reflect: true }) primary = false;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //

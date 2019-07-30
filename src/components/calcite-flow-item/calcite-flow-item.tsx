@@ -7,12 +7,22 @@ import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 
+import { CalciteTheme, getTheme } from "../../utils/dom";
+
 @Component({
   tag: "calcite-flow-item",
   styleUrl: "calcite-flow-item.scss",
   shadow: true
 })
 export class CalciteFlowItem {
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -49,13 +59,10 @@ export class CalciteFlowItem {
    */
   @Prop() textOpen = TEXT.open;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLElement;
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //
@@ -90,7 +97,7 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton() {
-    const { showBackButton, textBack } = this;
+    const { showBackButton, textBack, theme } = this;
 
     return showBackButton ? (
       <calcite-action
@@ -98,6 +105,7 @@ export class CalciteFlowItem {
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
+        theme={theme}
         onCalciteActionClick={this.backButtonClick}
       >
         <CalciteIcon size="16" path={chevronLeft16} />
@@ -106,7 +114,7 @@ export class CalciteFlowItem {
   }
 
   renderMenuButton() {
-    const { menuOpen, textOpen, textClose } = this;
+    const { menuOpen, textOpen, textClose, theme } = this;
 
     const menuLabel = menuOpen ? textClose : textOpen;
 
@@ -115,6 +123,7 @@ export class CalciteFlowItem {
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
+        theme={theme}
         onCalciteActionClick={this.toggleMenuOpen}
       >
         <CalciteIcon size="16" path={ellipsis16} />

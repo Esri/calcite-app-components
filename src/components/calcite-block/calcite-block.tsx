@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-block",
@@ -9,6 +10,17 @@ import CalciteIcon from "../_support/CalciteIcon";
   shadow: true
 })
 export class CalciteBlock {
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element()
+  el: HTMLElement;
+
+  mutationObserver = new MutationObserver(() => this.placeHeader());
+
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -40,16 +52,10 @@ export class CalciteBlock {
   @Prop()
   textCollapse = TEXT.collapse;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element()
-  el: HTMLElement;
-
-  mutationObserver = new MutationObserver(() => this.placeHeader());
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //

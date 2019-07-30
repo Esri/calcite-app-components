@@ -3,6 +3,7 @@ import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-tip-manager",
@@ -10,20 +11,6 @@ import CalciteIcon from "../_support/CalciteIcon";
   shadow: true
 })
 export class CalciteTipManager {
-  // --------------------------------------------------------------------------
-  //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-  /**
-   * The default group title for the Tip Manager.
-   */
-  @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
-  /**
-   * Label that appears on hover of pagination icon.
-   */
-  @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -45,9 +32,28 @@ export class CalciteTipManager {
 
   @State() direction: "advancing" | "retreating";
 
-  groupTitle = this.textDefaultTitle;
-
   observer = new MutationObserver(() => this.setUpTips());
+
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+  /**
+   * The default group title for the Tip Manager.
+   */
+  @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
+  /**
+   * Label that appears on hover of pagination icon.
+   */
+  @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+
+  groupTitle = this.textDefaultTitle;
 
   // --------------------------------------------------------------------------
   //
@@ -155,7 +161,11 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
+          <calcite-action
+            onCalciteActionClick={this.hideTipManager}
+            class={CSS.close}
+            theme={this.theme}
+          >
             <CalciteIcon size="24" path={x24} />
           </calcite-action>
         </header>
@@ -163,13 +173,13 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousClicked}>
+          <calcite-action onCalciteActionClick={this.previousClicked} theme={this.theme}>
             <CalciteIcon size="24" path={chevronLeft24} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextClicked}>
+          <calcite-action onCalciteActionClick={this.nextClicked} theme={this.theme}>
             <CalciteIcon size="24" path={chevronRight24} />
           </calcite-action>
         </footer>

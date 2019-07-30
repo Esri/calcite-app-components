@@ -4,6 +4,7 @@ import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icon
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 import { TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-block-section",
@@ -11,6 +12,17 @@ import CalciteIcon from "../_support/CalciteIcon";
   shadow: true
 })
 export class CalciteBlockSection {
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element()
+  el: HTMLElement;
+
+  mutationObserver = new MutationObserver(() => this.placeHeader());
+
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -42,16 +54,10 @@ export class CalciteBlockSection {
   @Prop()
   textCollapse = TEXT.collapse;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element()
-  el: HTMLElement;
-
-  mutationObserver = new MutationObserver(() => this.placeHeader());
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //
@@ -108,7 +114,7 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, open, textCollapse, textExpand } = this;
+    const { el, open, textCollapse, textExpand, theme } = this;
     const dir = getElementDir(el);
     const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
     const toggleLabel = open ? textCollapse : textExpand;
@@ -118,6 +124,7 @@ export class CalciteBlockSection {
         aria-label={toggleLabel}
         onClick={this.onHeaderClick}
         text={this.textLabel}
+        theme={theme}
         text-enabled
         compact
       >

@@ -1,5 +1,6 @@
 import { Component, Element, Listen, Prop, h } from "@stencil/core";
 import { CSS } from "./resources";
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-block-header",
@@ -7,6 +8,15 @@ import { CSS } from "./resources";
   shadow: true
 })
 export class CalciteBlockHeader {
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element()
+  el: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -23,14 +33,10 @@ export class CalciteBlockHeader {
    */
   @Prop() summary: string;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element()
-  el: HTMLElement;
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //
