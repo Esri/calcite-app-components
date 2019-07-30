@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS } from "../calcite-block/resources";
+// import { CSS } from "../calcite-action/resources";
 import { TEXT } from "./resources";
 
 describe("calcite-block-section", () => {
@@ -86,7 +86,7 @@ describe("calcite-block-section", () => {
   it("places calcite-action and slotted content inside calcite-block-content", async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <calcite-block-section text-label="test label" open="true">
+      <calcite-block-section open>
         Slotted content.
       </calcite-block-section>
     `);
@@ -96,9 +96,18 @@ describe("calcite-block-section", () => {
     const children = await element.getProperty("children");
     // workaround since `children` value is missing `length`
     expect(Object.keys(children)).toHaveLength(1);
+  });
 
-    const action = await element.find("calcite-action");
-    const actionTextLabel = action.getAttribute("text-label");
-    expect(actionTextLabel).toBe("test label");
+  it("sets calcite-block-section text-label to be text of calcite-action", async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <calcite-block-section text-label="test label" open="true">
+        Slotted content.
+      </calcite-block-section>
+    `);
+    // need to point to innerHTML of calcite-action >>> .button >>> .text-container
+    const element = await page.find(`calcite-block-section >>> calcite-action`);
+    const actionTextContainer = element.getAttribute("text"); // should get the innerHTML of `text-container`
+    expect(actionTextContainer).toBe("test label");
   });
 });
