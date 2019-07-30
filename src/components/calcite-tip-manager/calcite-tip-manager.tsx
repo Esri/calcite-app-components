@@ -15,9 +15,13 @@ export class CalciteTipManager {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * The default group title for the Tip Manager.
+   */
   @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
-
+  /**
+   * Label that appears on hover of pagination icon.
+   */
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
   // --------------------------------------------------------------------------
@@ -128,6 +132,14 @@ export class CalciteTipManager {
     });
   }
 
+  previousClicked = (): void => {
+    this.previousTip();
+  };
+
+  nextClicked = (): void => {
+    this.nextTip();
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -142,30 +154,24 @@ export class CalciteTipManager {
     return (
       <Host>
         <header class={CSS.header}>
-          <h2 class={CSS.title}>{this.groupTitle}</h2>
-          <button class={CSS.close} onClick={() => this.hideTipManager()}>
+          <h2 class={CSS.heading}>{this.groupTitle}</h2>
+          <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
             <CalciteIcon size="24" path={x24} />
-          </button>
+          </calcite-action>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <button
-            class={`${CSS.pageControl} ${CSS.pageControlPrevious}`}
-            onClick={() => this.previousTip()}
-          >
+          <calcite-action onCalciteActionClick={this.previousClicked}>
             <CalciteIcon size="24" path={chevronLeft24} />
-          </button>
+          </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <button
-            class={`${CSS.pageControl} ${CSS.pageControlNext}`}
-            onClick={() => this.nextTip()}
-          >
+          <calcite-action onCalciteActionClick={this.nextClicked}>
             <CalciteIcon size="24" path={chevronRight24} />
-          </button>
+          </calcite-action>
         </footer>
       </Host>
     );
