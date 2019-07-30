@@ -1,1 +1,1 @@
-export type CalcitePositionType = "side" | "over" | "anchor";
+export type CalcitePlacement = "side" | "over" | "anchor";

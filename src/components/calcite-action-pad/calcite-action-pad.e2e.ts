@@ -15,14 +15,14 @@ describe("calcite-action-pad", () => {
     await page.setContent("<calcite-action-pad></calcite-action-pad>");
 
     const element = await page.find("calcite-action-pad");
-    const positionType = await element.getProperty("positionType");
+    const placement = await element.getProperty("placement");
     const positionElement = await element.getProperty("positionElement");
 
     await page.waitForChanges();
 
     const style = element.getAttribute("style");
 
-    expect(positionType).toBeUndefined();
+    expect(placement).toBeUndefined();
     expect(positionElement).toBeUndefined();
     expect(style).toBeNull();
   });

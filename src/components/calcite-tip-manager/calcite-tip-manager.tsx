@@ -2,6 +2,7 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
+import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
   tag: "calcite-tip-manager",
@@ -155,27 +156,21 @@ export class CalciteTipManager {
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
           <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-              <path d={x24} />
-            </svg>
+            <CalciteIcon size="24" path={x24} />
           </calcite-action>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousClicked} class={CSS.pagePrevious}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-              <path d={chevronLeft24} />
-            </svg>
+          <calcite-action onCalciteActionClick={this.previousClicked}>
+            <CalciteIcon size="24" path={chevronLeft24} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextClicked} class={CSS.pageNext}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-              <path d={chevronRight24} />
-            </svg>
+          <calcite-action onCalciteActionClick={this.nextClicked}>
+            <CalciteIcon size="24" path={chevronRight24} />
           </calcite-action>
         </footer>
       </Host>

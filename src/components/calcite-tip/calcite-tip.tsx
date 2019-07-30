@@ -1,6 +1,7 @@
 import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
+import CalciteIcon from "../_support/CalciteIcon";
 
 const CSS = {
   header: "header",
@@ -71,9 +72,7 @@ export class CalciteTip {
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
             <calcite-action onCalciteActionClick={this.hideTip} class={CSS.close}>
-              <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-                <path d={x16} />
-              </svg>
+              <CalciteIcon size="16" path={x16} />
             </calcite-action>
           ) : null}
         </header>

@@ -23,9 +23,17 @@ A flow item is used by [calcite-flow](../calcite-flow) lives in a panel with a h
 
 ## Dependencies
 
-### Used by
+### Depends on
 
-- [calcite-flow](../calcite-flow)
+- [calcite-action](../calcite-action)
+
+### Graph
+
+```mermaid
+graph TD;
+  calcite-flow-item --> calcite-action
+  style calcite-flow-item fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 
