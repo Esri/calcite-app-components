@@ -1,5 +1,4 @@
 import { newE2EPage } from "@stencil/core/testing";
-// import { CSS } from "../calcite-action/resources";
 import { TEXT } from "./resources";
 
 describe("calcite-block-section", () => {
