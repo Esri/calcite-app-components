@@ -122,13 +122,13 @@ export class CalciteBlockSection {
         compact
       >
         <CalciteIcon size="16" path={arrowIcon} />
-        <slot name="header" />
       </calcite-action>
     );
 
     return (
       <Host aria-expanded={open ? "true" : "false"}>
         {headerNode}
+        <slot name="header" />
         {open ? <slot /> : null}
       </Host>
     );
