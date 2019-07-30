@@ -1,7 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
 
-import { CSS } from "./resources";
-
 describe("calcite-shell", () => {
   it("renders", async () => {
     const page = await newE2EPage();
