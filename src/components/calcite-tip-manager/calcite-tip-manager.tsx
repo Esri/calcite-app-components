@@ -114,10 +114,10 @@ export class CalciteTipManager {
     this.selectedIndex = selectedIndex || 0;
   }
 
-  hideTipManager(): void {
+  hideTipManager = (): void => {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
-  }
+  };
 
   updateSelectedTip(): void {
     this.tips.forEach((tip, index) => {
