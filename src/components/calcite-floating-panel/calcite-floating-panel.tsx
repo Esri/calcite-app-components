@@ -4,12 +4,22 @@ import { CalcitePlacement } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
 
+import { x16 } from "@esri/calcite-ui-icons";
+
+import CalciteIcon from "../_support/CalciteIcon";
+
+const CSS = {
+  header: "header",
+  heading: "heading",
+  content: "content"
+};
+
 @Component({
-  tag: "calcite-action-pad",
-  styleUrl: "calcite-action-pad.scss",
+  tag: "calcite-floating-panel",
+  styleUrl: "calcite-floating-panel.scss",
   shadow: true
 })
-export class CalciteActionPad {
+export class CalciteFloatingPanel {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -23,6 +33,11 @@ export class CalciteActionPad {
    * anchor: dynamically above or below based on how close trigger is to top or bottom of window.
    */
   @Prop({ reflect: true }) placement: CalcitePlacement;
+
+  /**
+   * Panel heading
+   */
+  @Prop({ reflect: true }) heading: string;
 
   /**
    * HTMLElement used to position this element according to the placement.
@@ -54,7 +69,15 @@ export class CalciteActionPad {
 
     return (
       <Host style={style}>
-        <slot />
+        <header class={CSS.header}>
+          <h3 class={CSS.heading}>{this.heading}</h3>
+          <calcite-action onCalciteActionClick={this.hidePanel}>
+            <CalciteIcon size="16" path={x16} />
+          </calcite-action>
+        </header>
+        <div class={CSS.content}>
+          <slot />
+        </div>
       </Host>
     );
   }
@@ -82,4 +105,8 @@ export class CalciteActionPad {
       positionElement: newValue
     });
   }
+
+  hidePanel = () => {
+    this.el.toggleAttribute("hidden", true);
+  };
 }

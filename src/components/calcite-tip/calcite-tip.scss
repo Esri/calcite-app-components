@@ -19,6 +19,11 @@ $tip-image-max-width: 100% !default;
   display: none;
 }
 
+.header .heading {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .content {
   display: flex;
   padding-top: var(--calcite-app-cap-spacing-half);

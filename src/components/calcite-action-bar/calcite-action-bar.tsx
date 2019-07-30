@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
-import { chevronLeft16F, chevronRight16F } from "@esri/calcite-ui-icons";
+import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
 
 const CSS = {
@@ -55,9 +55,15 @@ export class CalciteActionBar {
     const rtl = el.dir === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
+    const icons = [chevronsLeft16, chevronsRight16];
 
-    const expandIcon = rtl ? chevronRight16F : chevronLeft16F;
-    const collapseIcon = rtl ? chevronLeft16F : chevronRight16F;
+    if (rtl) {
+      icons.reverse();
+    }
+
+    const parentPrimary = el.parentElement.hasAttribute("primary");
+    const expandIcon = parentPrimary ? icons[0] : icons[1];
+    const collapseIcon = parentPrimary ? icons[1] : icons[0];
 
     return expand ? (
       <calcite-action
