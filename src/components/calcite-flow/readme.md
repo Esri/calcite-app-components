@@ -13,7 +13,9 @@ The `calcite-flow` component is a series of panels that provides a user with a w
 Type: `Promise<void>`
 
 ## Dependencies
-### Depends on 
+
+### Depends on
+
 -[calcite-flow-item](../calcite-flow-item)
 
 ---

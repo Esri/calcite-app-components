@@ -3,6 +3,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 import { CSS, TEXT } from "./resources";
+import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
   tag: "calcite-block-section",
@@ -117,9 +118,7 @@ export class CalciteBlockSection {
         onClick={this.onHeaderClick}
         title={toggleLabel}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-          <path d={arrowIcon} />
-        </svg>
+        <CalciteIcon size="16" path={arrowIcon} />
         <slot name="header" />
       </button>
     ) : null;

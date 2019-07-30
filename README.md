@@ -2,7 +2,8 @@
 
 A collection of calcite components for building single page applications.
 
-## Components 
+## Components
+
 - [calcite-action](/src/components/calcite-action/readme.md)
 - [calcite-action-bar](/src/components/calcite-action-bar/readme.md)
 - [calcite-action-pad](/src/components/calcite-action-pad/readme.md)
