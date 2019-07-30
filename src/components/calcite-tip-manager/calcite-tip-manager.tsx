@@ -164,7 +164,7 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousClicked}>
+          <calcite-action onCalciteActionClick={this.previousClicked} class={CSS.pagePrevious}>
             <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronLeft24} />
             </svg>
@@ -172,7 +172,7 @@ export class CalciteTipManager {
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextClicked}>
+          <calcite-action onCalciteActionClick={this.nextClicked} class={CSS.pageNext}>
             <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
               <path d={chevronRight24} />
             </svg>

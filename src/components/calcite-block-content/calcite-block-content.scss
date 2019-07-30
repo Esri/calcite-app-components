@@ -2,4 +2,5 @@
   display: block;
   background-color: var(--calcite-app-background);
   padding: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-half);
+  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }

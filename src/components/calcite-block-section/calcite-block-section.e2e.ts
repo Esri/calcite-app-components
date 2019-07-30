@@ -15,7 +15,7 @@ describe("calcite-block-section", () => {
     const page = await newE2EPage();
     await page.setContent(`
       <calcite-block-section>
-        <calcite-block-content>needed to receive clicks</calcite-block-content>
+        needed to receive clicks
       </calcite-block-section>
     `);
 
@@ -65,7 +65,6 @@ describe("calcite-block-section", () => {
     const toggle = await page.find(`calcite-block-section >>> calcite-action`);
 
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
-    // expect(toggle.getAttribute("text")).toBe(TEXT.expand);
 
     toggle.click();
     await page.waitForChanges();
@@ -74,7 +73,6 @@ describe("calcite-block-section", () => {
     let open = await element.getProperty("open");
     expect(open).toBe(true);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
-    // expect(toggle.getAttribute("text")).toBe(TEXT.collapse);
 
     toggle.click();
     await page.waitForChanges();
@@ -83,26 +81,24 @@ describe("calcite-block-section", () => {
     open = await element.getProperty("open");
     expect(open).toBe(false);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
-    // expect(toggle.getAttribute("text")).toBe(TEXT.expand);
   });
 
-  it("places header and content", async () => {
+  it("places calcite-action and slotted content inside calcite-block-content", async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <calcite-block-section>
-        <calcite-block-header></calcite-block-header>
-        <calcite-block-content></calcite-block-content>
+      <calcite-block-section text-label="test label" open="true">
+        Slotted content.
       </calcite-block-section>
     `);
 
-    const element = await page.find("calcite-block-section");
+    const element = await page.find("calcite-block-section >>> calcite-block-content");
 
     const children = await element.getProperty("children");
     // workaround since `children` value is missing `length`
-    expect(Object.keys(children)).toHaveLength(2);
+    expect(Object.keys(children)).toHaveLength(1);
 
-    const header = await element.find("calcite-block-header");
-    const headerSlotName = await header.getProperty("slot");
-    expect(headerSlotName).toBe("header");
+    const action = await element.find("calcite-action");
+    const actionTextLabel = action.getAttribute("text-label");
+    expect(actionTextLabel).toBe("test label");
   });
 });
