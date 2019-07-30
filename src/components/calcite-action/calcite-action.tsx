@@ -1,4 +1,6 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+
+import { CalciteTheme, getTheme } from "../../utils/dom";
 
 const CSS = {
   button: "button",
@@ -12,6 +14,14 @@ const CSS = {
   shadow: true
 })
 export class CalciteAction {
+  // --------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -37,6 +47,11 @@ export class CalciteAction {
    * Indicates whether the text is displayed.
    */
   @Prop({ reflect: true }) textEnabled = false;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //
