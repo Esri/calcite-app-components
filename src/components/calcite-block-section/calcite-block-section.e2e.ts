@@ -105,9 +105,8 @@ describe("calcite-block-section", () => {
         Slotted content.
       </calcite-block-section>
     `);
-    // need to point to innerHTML of calcite-action >>> .button >>> .text-container
+
     const element = await page.find(`calcite-block-section >>> calcite-action`);
-    const actionTextContainer = element.getAttribute("text"); // should get the innerHTML of `text-container`
-    expect(actionTextContainer).toBe("test label");
+    expect(element.shadowRoot.textContent).toEqualText("test label");
   });
 });
