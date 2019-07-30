@@ -1,11 +1,22 @@
+$shell-panel-width: 20vw !default;
+$shell-panel-min-width: 240px !default;
+$shell-panel-max-width: 360px !default;
+
 :host {
   height: 100%;
-  width: 350px;
   position: relative;
   display: flex;
+  background-color: var(--calcite-app-background-content);
 }
 
 .content {
-  flex: 1;
-  padding: 10px;
+  width: $shell-panel-width;
+  min-width: $shell-panel-min-width;
+  max-width: $shell-panel-max-width;
+  border-left: 1px solid var(--calcite-app-border);
+  border-right: 1px solid var(--calcite-app-border);
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: auto;
 }

@@ -1,8 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
+import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
-import { CSS, TEXT } from "./resources";
+import { TEXT } from "./resources";
 
 @Component({
   tag: "calcite-block-section",
@@ -15,6 +15,11 @@ export class CalciteBlockSection {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Text displayed in the button.
+   */
+  @Prop() textLabel: string;
 
   /**
    * When true, the block's section content will be displayed.
@@ -104,25 +109,22 @@ export class CalciteBlockSection {
   render() {
     const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
-    const arrowIcon = open ? caretDown16 : dir === "rtl" ? caretLeft16 : caretRight16;
-    const hasHeader = !!this.el.querySelector<HTMLCalciteBlockHeaderElement>(
-      "calcite-block-header"
-    );
+    const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
     const toggleLabel = open ? textCollapse : textExpand;
 
-    const headerNode = hasHeader ? (
-      <button
+    const headerNode = (
+      <calcite-action
         aria-label={toggleLabel}
-        class={CSS.toggle}
         onClick={this.onHeaderClick}
-        title={toggleLabel}
+        text={this.textLabel}
+        text-enabled
+        compact
       >
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 16 16">
           <path d={arrowIcon} />
         </svg>
-        <slot name="header" />
-      </button>
-    ) : null;
+      </calcite-action>
+    );
 
     return (
       <Host aria-expanded={open ? "true" : "false"}>
