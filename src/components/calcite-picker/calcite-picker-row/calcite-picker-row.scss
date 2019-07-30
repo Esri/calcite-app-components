@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: white;
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.75);
+}
+.label {
+  flex-grow: 1;
+  margin: 0 12px;
+  min-width: 60px;
+}
+.heading,
+.description {
+  margin: 0;
+}
