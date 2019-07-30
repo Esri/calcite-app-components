@@ -1,8 +1,7 @@
 import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
-import { chevronLeft16F, chevronRight16F } from "@esri/calcite-ui-icons";
-
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
+import CalciteIcon from "../_support/CalciteIcon";
 
 const CSS = {
   actionGroupBottom: "action-group--bottom"
@@ -19,13 +18,21 @@ export class CalciteActionBar {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * Indicates whether widget can be expanded.
+   */
   @Prop({ reflect: true }) expand = true;
-
+  /**
+   * Indicates whether widget is expanded.
+   */
   @Prop({ reflect: true }) expanded = false;
-
+  /**
+   * Updates the label of the expand icon when the component is collapsed.
+   */
   @Prop() textExpand = "Expand";
-
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   */
   @Prop() textCollapse = "Collapse";
 
   // --------------------------------------------------------------------------
@@ -45,22 +52,26 @@ export class CalciteActionBar {
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el } = this;
 
-    const rtl = getElementDir(el) === "rtl";
+    const rtl = el.dir === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
+    const icons = [chevronsLeft16, chevronsRight16];
 
-    const expandIcon = rtl ? chevronRight16F : chevronLeft16F;
-    const collapseIcon = rtl ? chevronLeft16F : chevronRight16F;
+    if (rtl) {
+      icons.reverse();
+    }
+
+    const parentPrimary = el.parentElement.hasAttribute("primary");
+    const expandIcon = parentPrimary ? icons[0] : icons[1];
+    const collapseIcon = parentPrimary ? icons[1] : icons[0];
 
     return expand ? (
       <calcite-action
-        onCalciteActionClick={this.toggleExpand.bind(this)}
+        onCalciteActionClick={this.toggleExpand}
         textEnabled={expanded}
         text={expandText}
       >
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d={expanded ? expandIcon : collapseIcon} />
-        </svg>
+        <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;
   }
@@ -100,7 +111,7 @@ export class CalciteActionBar {
       );
   }
 
-  toggleExpand() {
+  toggleExpand = (): void => {
     this.expanded = !this.expanded;
-  }
+  };
 }

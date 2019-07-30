@@ -1,0 +1,45 @@
+$header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+
+:host {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--calcite-app-border-radius);
+  overflow: hidden;
+  box-shadow: 0 1px 0 var(--calcite-app-border);
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  background-color: var(--calcite-app-background);
+}
+
+:host([open]) {
+  box-shadow: 0 0 0 1px var(--calcite-app-border);
+}
+
+::slotted(calcite-block-header) {
+  flex-grow: 1;
+}
+
+.header {
+  background-color: var(--calcite-app-background);
+
+  & > ::slotted(*) {
+    padding: $header-content-padding;
+  }
+}
+
+.toggle {
+  padding: $header-content-padding;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  margin: 0;
+  text-align: unset;
+  width: 100%;
+}
+
+.toggle-icon {
+  margin: 0 4px;
+}

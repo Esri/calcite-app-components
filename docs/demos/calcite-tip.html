@@ -10,33 +10,80 @@
   <body>
     <calcite-styleguide-nav></calcite-styleguide-nav>
     <section class="example-container">
-      <h2>Normal Tip</h2>
+      <h2>Tip</h2>
       <div>
-        <calcite-tip thumbnail="https://via.placeholder.com/150">
-          <h2 slot="heading">Celestial Bodies</h2>
-          <img slot="thumbnail" src="https://via.placeholder.com/150" alt="150x150" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <calcite-tip
+          heading="Celestial Bodies!"
+          thumbnail="http://lorempixel.com/1000/600/nature/3"
+          text-thumbnail="This is an image of nature."
+        >
+          <p slot="info">
+            This tip is how a tip should really look. It has a landscape or square image and a small amount of text
+            content. This paragraph is in an "info" slot.
+          </p>
+          <p slot="info">
+            This is another paragraph in a subsequent "info" slot.
+          </p>
+          <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
+        </calcite-tip>
+      </div>
+      <hr />
+      <h2>With no thumbnail</h2>
+      <div>
+        <calcite-tip heading="Celestial Bodies">
+          <p slot="info">
+            This tip has no image. As such, the content area will take up the entire width of the tip.
+          </p>
+          <p slot="info">
+            This is the next paragraph and should show how wide the content area is now. Of course, the width of the
+            overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
+          </p>
           <a slot="link" href="http://www.esri.com">View Esri</a>
         </calcite-tip>
       </div>
-      <h2>RTL Tip</h2>
+      <hr />
+      <h2>RTL</h2>
       <div dir="rtl">
-        <calcite-tip thumbnail="https://via.placeholder.com/150">
-          <h2 slot="heading">Celestial Bodies</h2>
-          <img slot="thumbnail" src="https://via.placeholder.com/150" alt="150x150" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <calcite-tip
+          heading="Celestial Bodies"
+          thumbnail="http://lorempixel.com/600/1000/nature/4"
+          text-thumbnail="This is an image of nature."
+        >
+          <p slot="info">
+            This tip has an image that is a pretty tall. And the text will run out before the end of the image.
+          </p>
+          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
           <a slot="link" href="http://www.esri.com">View Esri</a>
         </calcite-tip>
       </div>
-      <h2>Tip with storageId <small><em>Dismiss then Refresh and Tip will not re-appear</em></small></h2>
+      <hr />
+      <h2>RTL with no thumbnail</h2>
+      <div dir="rtl">
+        <calcite-tip heading="Celestial Bodies">
+          <p slot="info">
+            An astronomical object or celestial object is a naturally occurring physical entity, association, or
+            structure that exists in the observable universe.
+          </p>
+          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
+          <a slot="link" href="http://www.esri.com">View Esri</a>
+        </calcite-tip>
+      </div>
+      <hr />
+      <h2>With storage-id</h2>
+      <p>Dismiss then Refresh and Tip will not re-appear.</p>
+
       <div>
-        <calcite-tip storage-id="foo" thumbnail="https://via.placeholder.com/150">
-          <h2 slot="heading">Celestial Bodies</h2>
-          <img slot="thumbnail" src="https://via.placeholder.com/150" alt="150x150" />
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <calcite-tip
+          storage-id="foo"
+          heading="Celestial Bodies"
+          thumbnail="http://lorempixel.com/100/100/nature/5"
+          text-thumbnail="This is an image of nature."
+        >
+          <p slot="info">
+            This tip has an image that is only 100px by 100px. The image frame sets the width but doesn't force the
+            image to be larger than it's native size.
+          </p>
+          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
           <a slot="link" href="http://www.esri.com">View Esri</a>
         </calcite-tip>
       </div>

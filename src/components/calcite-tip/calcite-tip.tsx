@@ -1,10 +1,15 @@
 import { Component, Element, Host, Prop, State, h } from "@stencil/core";
-import { x24 } from "@esri/calcite-ui-icons";
+import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
+import CalciteIcon from "../_support/CalciteIcon";
 
 const CSS = {
+  header: "header",
+  heading: "heading",
   close: "close",
+  imageFrame: "image-frame",
   content: "content",
+  info: "info",
   link: "link"
 };
 
@@ -19,16 +24,20 @@ export class CalciteTip {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
+  /**
+   * The local storage id used for an instance of a tip.
+   */
   @Prop() storageId: string;
-
+  /**
+   * Indicates whether the tip can be dismissed.
+   */
   @Prop({ reflect: true }) nonDismissible = false;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
+  @Prop() heading: string;
+
+  @Prop() thumbnail: string;
+
+  @Prop() textThumbnail: string;
 
   @Element() el: HTMLElement;
 
@@ -40,7 +49,7 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  hideTip(): void {
+  hideTip = () => {
     this.dismissed = true;
 
     const { storageId } = this;
@@ -48,7 +57,7 @@ export class CalciteTip {
     if (storageId) {
       setItem(`${this.el.tagName.toLowerCase()}-${storageId}`, "dismissed");
     }
-  }
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -59,18 +68,24 @@ export class CalciteTip {
   render() {
     return (
       <Host hidden={this.dismissed}>
-        <slot name="heading" />
-        {!this.nonDismissible ? (
-          <div class={CSS.close} onClick={() => this.hideTip()}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d={x24} />
-            </svg>
-          </div>
-        ) : null}
+        <header class={CSS.header}>
+          <h3 class={CSS.heading}>{this.heading}</h3>
+          {!this.nonDismissible ? (
+            <calcite-action onCalciteActionClick={this.hideTip} class={CSS.close}>
+              <CalciteIcon size="16" path={x16} />
+            </calcite-action>
+          ) : null}
+        </header>
         <div class={CSS.content}>
-          <slot name="thumbnail" />
-          <div>
-            <slot />
+          {this.thumbnail ? (
+            <div class={CSS.imageFrame}>
+              <img src={this.thumbnail} alt={this.textThumbnail} />
+            </div>
+          ) : null}
+
+          <div class={CSS.info}>
+            {this.el.querySelector("[slot=info]") ? <slot name="info" /> : null}
+
             {this.el.querySelector("[slot=link]") ? (
               <p class={CSS.link}>
                 <slot name="link" />
