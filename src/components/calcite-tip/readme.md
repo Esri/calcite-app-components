@@ -8,14 +8,25 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 | Property         | Attribute         | Description                                         | Type      | Default     |
 | ---------------- | ----------------- | --------------------------------------------------- | --------- | ----------- |
+| `heading`        | `heading`         |                                                     | `string`  | `undefined` |
 | `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.         | `boolean` | `false`     |
 | `storageId`      | `storage-id`      | The local storage id used for an instance of a tip. | `string`  | `undefined` |
+| `textThumbnail`  | `text-thumbnail`  |                                                     | `string`  | `undefined` |
+| `thumbnail`      | `thumbnail`       |                                                     | `string`  | `undefined` |
 
 ## Dependencies
 
-### Used by
+### Depends on
 
-- [calcite-tip-manager](../calcite-tip-manager)
+- [calcite-action](../calcite-action)
+
+### Graph
+
+```mermaid
+graph TD;
+  calcite-tip --> calcite-action
+  style calcite-tip fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 

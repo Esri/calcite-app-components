@@ -4,9 +4,12 @@
 
 ## Properties
 
-| Property | Attribute | Description                                               | Type      | Default |
-| -------- | --------- | --------------------------------------------------------- | --------- | ------- |
-| `open`   | `open`    | When true, the block's section content will be displayed. | `boolean` | `false` |
+| Property       | Attribute       | Description                                               | Type      | Default         |
+| -------------- | --------------- | --------------------------------------------------------- | --------- | --------------- |
+| `open`         | `open`          | When true, the block's section content will be displayed. | `boolean` | `false`         |
+| `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.                | `string`  | `TEXT.collapse` |
+| `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.               | `string`  | `TEXT.expand`   |
+| `textLabel`    | `text-label`    | Text displayed in the button.                             | `string`  | `undefined`     |
 
 ## Events
 
@@ -16,15 +19,17 @@
 
 ## Dependencies
 
-### Used by
+### Depends on
 
-- [calcite-block](../calcite-block)
-- [calcite-content](../calcite-content)
+- [calcite-action](../calcite-action)
 
-### Can depend on
+### Graph
 
-- [calcite-content](../calcite-content)
-- [calcite-header](../calcite-header)
+```mermaid
+graph TD;
+  calcite-block-section --> calcite-action
+  style calcite-block-section fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 
