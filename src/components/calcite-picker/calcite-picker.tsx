@@ -125,6 +125,14 @@ export class CalcitePicker {
     return type;
   }
 
+  renderSecondaryAction(action) {
+    return action ? (
+      <calcite-action slot="secondaryAction" onClick={action.onclick || void 0}>
+        <CalciteIcon size={action.icon.size} path={action.icon.path} />
+      </calcite-action>
+    ) : null;
+  }
+
   render() {
     return (
       <Host>
@@ -135,17 +143,6 @@ export class CalcitePicker {
           </header>
           {this.data.map((item) => {
             const { heading, description, value, selected } = item;
-            const secondaryAction = item.secondaryAction ? (
-              <calcite-action
-                slot="secondaryAction"
-                onCalciteActionClick={item.secondaryAction.onclick || void 0}
-              >
-                <CalciteIcon
-                  size={item.secondaryAction.icon.size}
-                  path={item.secondaryAction.icon.path}
-                />
-              </calcite-action>
-            ) : null;
             return (
               <calcite-picker-row
                 heading={heading}
@@ -154,7 +151,7 @@ export class CalcitePicker {
                 selected={selected}
                 icon={this.getIconType()}
               >
-                {secondaryAction}
+                {this.renderSecondaryAction(item.secondaryAction)}
               </calcite-picker-row>
             );
           })}
