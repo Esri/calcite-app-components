@@ -15,6 +15,7 @@
   font-size: var(--font-size--1);
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
+  text-align: unset;
 }
 
 .button.compact {
@@ -44,10 +45,9 @@
   display: flex;
 }
 
-:host .text-container {
+.text-container {
   flex: 1;
   line-height: 1rem;
   margin: 0 var(--calcite-app-side-spacing-half);
   word-break: break-word;
-  text-align: left;
 }
