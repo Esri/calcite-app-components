@@ -1,6 +1,17 @@
-import Sortable from "sortablejs";
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+// import Sortable from "sortablejs";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Listen,
+  Prop,
+  State,
+  h
+} from "@stencil/core";
 import { CSS } from "./resources";
+import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
   tag: "calcite-picker",
@@ -16,11 +27,15 @@ export class CalcitePicker {
 
   @Prop({ reflect: true }) heading: string;
 
+  @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
+
   @Prop({ reflect: true }) multiple = false;
 
-  // @Prop({reflect:true}) draggable = false; /* ignored unless mode is configuration */
+  @Prop({ reflect: true }) dragEnabled = false; /* ignored unless mode is configuration */
 
-  @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
+  @Prop({ reflect: false }) data = [];
+
+  @State() selectedValues = new Set();
 
   // --------------------------------------------------------------------------
   //
@@ -56,6 +71,27 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
+  @Event() pickerSelectionChange: EventEmitter;
+
+  @Listen("rowToggled")
+  rowToggledHandler(event) {
+    const { row, value, selected } = event.detail;
+    if (selected) {
+      this.selectedValues.add(value);
+    } else {
+      this.selectedValues.delete(value);
+    }
+    if (!this.multiple && selected) {
+      const rows = Array.from(this.el.shadowRoot.querySelectorAll("calcite-picker-row"));
+      rows.forEach((item) => {
+        if (item !== row) {
+          this.deselectRow(item);
+        }
+      });
+    }
+    this.pickerSelectionChange.emit(this.selectedValues);
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -66,11 +102,28 @@ export class CalcitePicker {
     return;
   }
 
+  deselectRow(item) {
+    item.toggleAttribute("selected", false);
+    this.selectedValues.delete(item.value);
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
+
+  getIconType() {
+    let type = null;
+    if (this.mode === "configuration" && this.dragEnabled) {
+      type = "grip";
+    } else if (this.mode === "selection" && this.multiple) {
+      type = "square";
+    } else if (this.mode === "selection" && !this.multiple) {
+      type = "circle";
+    }
+    return type;
+  }
 
   render() {
     return (
@@ -80,7 +133,32 @@ export class CalcitePicker {
             <h2>{this.heading}</h2>
             {/* <filter /> */}
           </header>
-          <div>{}</div>
+          {this.data.map((item) => {
+            const { heading, description, value, selected } = item;
+            const secondaryAction = item.secondaryAction ? (
+              <calcite-action
+                slot="secondaryAction"
+                onCalciteActionClick={item.secondaryAction.onclick || void 0}
+              >
+                <CalciteIcon
+                  size={item.secondaryAction.icon.size}
+                  path={item.secondaryAction.icon.path}
+                />
+              </calcite-action>
+            ) : null;
+            return (
+              <calcite-picker-row
+                heading={heading}
+                description={description}
+                value={value}
+                selected={selected}
+                icon={this.getIconType()}
+              >
+                {secondaryAction}
+              </calcite-picker-row>
+            );
+          })}
+          <slot />
         </section>
       </Host>
     );
