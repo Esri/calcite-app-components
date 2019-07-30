@@ -11,10 +11,10 @@ describe("calcite-block-section", () => {
     expect(element).toHaveClass("hydrated");
   });
 
-  it("is not collapsible by default", async () => {
+  it("should be collapsible by default", async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <calcite-block-section open>
+      <calcite-block-section>
         <calcite-block-content>needed to receive clicks</calcite-block-content>
       </calcite-block-section>
     `);
@@ -27,7 +27,7 @@ describe("calcite-block-section", () => {
 
     await element.click();
     open = await element.getProperty("open");
-    expect(open).toBe(true);
+    expect(open).toBe(false);
   });
 
   it("is closed by default", async () => {
@@ -59,15 +59,13 @@ describe("calcite-block-section", () => {
 
   it("can be toggled", async () => {
     const page = await newE2EPage();
-    await page.setContent(
-      "<calcite-block-section><calcite-block-header></calcite-block-header></calcite-block-section>"
-    );
+    await page.setContent("<calcite-block-section></calcite-block-section>");
     const element = await page.find("calcite-block-section");
     const toggleSpy = await element.spyOnEvent("calciteBlockSectionToggle");
-    const toggle = await page.find(`calcite-block-section >>> .${CSS.toggle}`);
+    const toggle = await page.find(`calcite-block-section >>> calcite-action`);
 
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
-    expect(toggle.getAttribute("title")).toBe(TEXT.expand);
+    // expect(toggle.getAttribute("text")).toBe(TEXT.expand);
 
     toggle.click();
     await page.waitForChanges();
@@ -76,7 +74,7 @@ describe("calcite-block-section", () => {
     let open = await element.getProperty("open");
     expect(open).toBe(true);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
-    expect(toggle.getAttribute("title")).toBe(TEXT.collapse);
+    // expect(toggle.getAttribute("text")).toBe(TEXT.collapse);
 
     toggle.click();
     await page.waitForChanges();
@@ -85,7 +83,7 @@ describe("calcite-block-section", () => {
     open = await element.getProperty("open");
     expect(open).toBe(false);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
-    expect(toggle.getAttribute("title")).toBe(TEXT.expand);
+    // expect(toggle.getAttribute("text")).toBe(TEXT.expand);
   });
 
   it("places header and content", async () => {
