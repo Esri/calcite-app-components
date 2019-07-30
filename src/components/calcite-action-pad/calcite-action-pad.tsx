@@ -1,4 +1,8 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
+
+import { CalcitePlacement } from "../interfaces";
+
+import { getOffsetTop } from "../utils/position";
 
 import { CalciteTheme, getTheme } from "../../utils/dom";
 
@@ -10,17 +14,32 @@ import { CalciteTheme, getTheme } from "../../utils/dom";
 export class CalciteActionPad {
   // --------------------------------------------------------------------------
   //
-  //  Variables
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFloatingPanelElement;
+
+  @State() offsetTop = 0;
 
   // --------------------------------------------------------------------------
   //
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Determines where the element will be displayed.
+   * side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
+   * over: centered on top of trigger and covers trigger.
+   * anchor: dynamically above or below based on how close trigger is to top or bottom of window.
+   */
+  @Prop({ reflect: true }) placement: CalcitePlacement;
+
+  /**
+   * HTMLElement used to position this element according to the placement.
+   */
+  @Prop() positionElement: HTMLElement;
 
   /**
    * Element styling
@@ -34,10 +53,40 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   render() {
+    const { offsetTop } = this;
+
+    const style = {
+      top: `${offsetTop}px`
+    };
+
     return (
-      <Host>
+      <Host style={style}>
         <slot />
       </Host>
     );
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Watch("placement")
+  placementHandler(newValue: CalcitePlacement) {
+    this.offsetTop = getOffsetTop({
+      floatingElement: this.el,
+      placement: newValue,
+      positionElement: this.positionElement
+    });
+  }
+
+  @Watch("positionElement")
+  positionElementHandler(newValue: HTMLElement) {
+    this.offsetTop = getOffsetTop({
+      floatingElement: this.el,
+      placement: this.placement,
+      positionElement: newValue
+    });
   }
 }

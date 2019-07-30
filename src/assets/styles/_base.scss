@@ -9,6 +9,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--calcite-app-background);
 }
 
 .heading {
@@ -19,7 +20,7 @@ html {
 
 .header .heading {
   flex: 1;
-  padding: var(--calcite-app-cap-spacing-half) 0;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
 h1.heading {
@@ -37,4 +38,8 @@ h4.heading,
 h5.heading {
   font-size: var(--font-size-0);
   font-weight: var(--font-weight-bold);
+}
+
+button {
+  font-family: $avenir-family;
 }

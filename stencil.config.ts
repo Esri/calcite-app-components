@@ -11,6 +11,9 @@ export const config: Config = {
     },
     {
       components: ["calcite-flow", "calcite-flow-item"]
+    },
+    {
+      components: ["calcite-shell", "calcite-shell-panel"]
     }
   ],
   outputTargets: [

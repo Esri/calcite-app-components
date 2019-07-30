@@ -3,3 +3,43 @@ html {
   font-size: $base-font-size;
   line-height: $line-height;
 }
+
+.header {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--calcite-app-background);
+}
+
+.heading {
+  padding: 0;
+  margin: 0;
+  color: var(--calcite-app-foreground);
+}
+
+.header .heading {
+  flex: 1;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+h1.heading {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight);
+}
+
+h2.heading {
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight);
+}
+
+h3.heading,
+h4.heading,
+h5.heading {
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-bold);
+}
+
+button {
+  font-family: $avenir-family;
+}

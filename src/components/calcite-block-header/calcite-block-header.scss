@@ -3,15 +3,10 @@
 }
 
 .title {
-  margin: var(--calcite-app-side-spacing-quarter);
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0;
 }
 
 .summary {
   font-size: var(--font-size--1);
+  padding: 0 var(--calcite-app-side-spacing-half);
 }

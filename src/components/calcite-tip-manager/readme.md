@@ -13,23 +13,31 @@ The `calcite-tip-manager` component contains multiple [calcite-tips](../calcite-
 
 ## Methods
 
-#### `nextTip() => Promise<void>`
+### `nextTip() => Promise<void>`
 
-#### Returns:
+#### Returns
 
-- Type: `Promise<void>`
+Type: `Promise<void>`
 
-#### `previousTip() => Promise<void>`
+### `previousTip() => Promise<void>`
 
-#### Returns:
+#### Returns
 
-- Type: `Promise<void>`
+Type: `Promise<void>`
 
 ## Dependencies
 
 ### Depends on
 
-- [calcite-tip](../calcite-tip)
+- [calcite-action](../calcite-action)
+
+### Graph
+
+```mermaid
+graph TD;
+  calcite-tip-manager --> calcite-action
+  style calcite-tip-manager fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 
