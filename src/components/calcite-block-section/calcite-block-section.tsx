@@ -121,7 +121,7 @@ export class CalciteBlockSection {
         text-enabled
         compact
       >
-        <CalciteIcon size="12" path={arrowIcon} />
+        <CalciteIcon size="16" path={arrowIcon} />
         <slot name="header" />
       </calcite-action>
     );
