@@ -12,6 +12,9 @@ export class CalciteTipGroup {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * The title used for all nested tips
+   */
   @Prop({ reflect: true }) textGroupTitle = DEFAULT_GROUP_TITLE;
 
   render() {
