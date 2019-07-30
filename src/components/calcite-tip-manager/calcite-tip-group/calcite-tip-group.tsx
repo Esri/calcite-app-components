@@ -1,5 +1,5 @@
 import { Component, Prop, h } from "@stencil/core";
-import { DEFAULT_GROUP_TITLE } from "./resources";
+import { DEFAULT_GROUP_TITLE } from "../resources";
 
 @Component({
   tag: "calcite-tip-group",
