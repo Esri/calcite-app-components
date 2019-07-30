@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
 import { CSS, TEXT } from "./resources";
+import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
   tag: "calcite-block",
@@ -121,15 +122,11 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="16"
-              viewBox="0 0 16 16"
-              class={CSS.toggleIcon}
-            >
-              <path d={open ? chevronUp16 : chevronDown16} />
-            </svg>
+            <CalciteIcon
+              size="16"
+              path={open ? chevronUp16 : chevronDown16}
+              svgAttributes={{ class: CSS.toggleIcon }}
+            />
           </button>
         ) : (
           headerContent

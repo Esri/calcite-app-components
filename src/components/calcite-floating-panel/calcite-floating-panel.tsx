@@ -6,6 +6,8 @@ import { getOffsetTop } from "../utils/position";
 
 import { x16 } from "@esri/calcite-ui-icons";
 
+import CalciteIcon from "../_support/CalciteIcon";
+
 const CSS = {
   header: "header",
   heading: "heading",
@@ -63,9 +65,7 @@ export class CalciteFloatingPanel {
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           <calcite-action onCalciteActionClick={this.hidePanel}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-              <path d={x16} />
-            </svg>
+            <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
         <div class={CSS.content}>

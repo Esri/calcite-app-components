@@ -5,6 +5,7 @@ import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 
 import { CSS, TEXT } from "./resources";
+import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
   tag: "calcite-flow-item",
@@ -99,9 +100,7 @@ export class CalciteFlowItem {
         class={CSS.backButton}
         onCalciteActionClick={this.backButtonClick}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-          <path d={chevronLeft16} />
-        </svg>
+        <CalciteIcon size="16" path={chevronLeft16} />
       </calcite-action>
     ) : null;
   }
@@ -118,9 +117,7 @@ export class CalciteFlowItem {
         text={menuLabel}
         onCalciteActionClick={this.toggleMenuOpen}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
-          <path d={ellipsis16} />
-        </svg>
+        <CalciteIcon size="16" path={ellipsis16} />
       </calcite-action>
     );
   }

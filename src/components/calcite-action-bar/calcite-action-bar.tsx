@@ -1,6 +1,7 @@
 import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
+import CalciteIcon from "../_support/CalciteIcon";
 
 const CSS = {
   actionGroupBottom: "action-group--bottom"
@@ -70,9 +71,7 @@ export class CalciteActionBar {
         textEnabled={expanded}
         text={expandText}
       >
-        <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d={expanded ? expandIcon : collapseIcon} />
-        </svg>
+        <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;
   }
