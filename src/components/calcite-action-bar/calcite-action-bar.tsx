@@ -66,6 +66,16 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
+  getClosestShellLayout(): CalciteLayout {
+    const shellNode = this.el.closest("calcite-shell-panel");
+
+    if (!shellNode) {
+      return;
+    }
+
+    return shellNode.layout;
+  }
+
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el, layout } = this;
 
@@ -78,8 +88,7 @@ export class CalciteActionBar {
       icons.reverse();
     }
 
-    const layoutFallback =
-      layout || (el.parentElement.getAttribute("layout") as CalciteLayout) || "leading";
+    const layoutFallback = layout || this.getClosestShellLayout() || "leading";
 
     const trailing = layoutFallback === "trailing";
     const expandIcon = trailing ? icons[1] : icons[0];
