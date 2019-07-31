@@ -6,6 +6,7 @@ import {
   EventEmitter,
   Host,
   Listen,
+  Method,
   Prop,
   State,
   h
@@ -106,6 +107,16 @@ export class CalcitePicker {
   deselectRow(item) {
     item.toggleAttribute("selected", false);
     this.selectedValues.delete(item.value);
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method() async getSelectedRows() {
+    return this.selectedValues;
   }
 
   // --------------------------------------------------------------------------
