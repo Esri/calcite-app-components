@@ -133,10 +133,8 @@ export class CalciteTipManager {
       tip.toggleAttribute("hidden", !selected);
 
       if (selected) {
-        const tipParent = tip.parentElement;
-        this.groupTitle = tipParent.matches("calcite-tip-group")
-          ? tipParent.getAttribute("text-group-title")
-          : this.textDefaultTitle;
+        const tipParent = tip.closest("calcite-tip-group");
+        this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
       }
     });
   }
