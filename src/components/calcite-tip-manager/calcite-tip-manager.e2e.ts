@@ -140,4 +140,24 @@ describe("calcite-tip-manager", () => {
     const selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual(newTipId);
   });
+  it("should update visible tip if active tip is removed", async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      `<calcite-tip-manager>
+        <calcite-tip id="one"><p>dynamically adding/removing tips</p></calcite-tip>
+        <calcite-tip id="two"><p>dynamically adding/removing tips</p></calcite-tip>
+      </calcite-tip-manager>`
+    );
+    const tipManager = await page.find("calcite-tip-manager");
+
+    await page.evaluate(() => {
+      const mgr = document.querySelector("calcite-tip-manager");
+      const firstTip = mgr.querySelector("calcite-tip:first-child");
+      firstTip.parentNode.removeChild(firstTip);
+    });
+    await page.waitForChanges();
+
+    const selectedTip = await tipManager.find(`calcite-tip[selected]`);
+    expect(selectedTip.id).toEqual("two");
+  });
 });
