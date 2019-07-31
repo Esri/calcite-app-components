@@ -4,12 +4,7 @@ import { CalciteTheme, getTheme } from "../../utils/dom";
 
 import classnames from "classnames";
 
-const CSS = {
-  button: "button",
-  compact: "compact",
-  iconContainer: "icon-container",
-  textContainer: "text-container"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-action",

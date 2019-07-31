@@ -21,8 +21,6 @@ export class CalciteBlockSection {
   @Element()
   el: HTMLElement;
 
-  mutationObserver = new MutationObserver(() => this.placeHeader());
-
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -32,7 +30,7 @@ export class CalciteBlockSection {
   /**
    * Text displayed in the button.
    */
-  @Prop() textLabel: string;
+  @Prop() text: string;
 
   /**
    * When true, the block's section content will be displayed.
@@ -61,24 +59,6 @@ export class CalciteBlockSection {
 
   // --------------------------------------------------------------------------
   //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.mutationObserver.observe(this.el, { childList: true });
-  }
-
-  componentWillLoad(): void {
-    this.placeHeader();
-  }
-
-  disconnectedCallback(): void {
-    this.mutationObserver.disconnect();
-  }
-
-  // --------------------------------------------------------------------------
-  //
   //  Events
   //
   // --------------------------------------------------------------------------
@@ -99,14 +79,6 @@ export class CalciteBlockSection {
     this.calciteBlockSectionToggle.emit();
   };
 
-  placeHeader() {
-    const header = this.el.querySelector("calcite-block-header");
-
-    if (header && !header.slot) {
-      header.slot = "header";
-    }
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -122,21 +94,24 @@ export class CalciteBlockSection {
     const headerNode = (
       <calcite-action
         aria-label={toggleLabel}
-        onClick={this.onHeaderClick}
-        text={this.textLabel}
+        onCalciteActionClick={this.onHeaderClick}
+        text={this.text}
         theme={theme}
         text-enabled
         compact
       >
         <CalciteIcon size="16" path={arrowIcon} />
-        <slot name="header" />
       </calcite-action>
     );
 
     return (
       <Host aria-expanded={open ? "true" : "false"}>
         {headerNode}
-        {open ? <slot /> : null}
+        {open ? (
+          <calcite-block-content>
+            <slot />
+          </calcite-block-content>
+        ) : null}
       </Host>
     );
   }
