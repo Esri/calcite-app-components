@@ -164,7 +164,7 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
+          <calcite-action onClick={this.hideTipManager} class={CSS.close}>
             <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
@@ -172,13 +172,13 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousClicked} class={CSS.pagePrevious}>
+          <calcite-action onClick={this.previousClicked} class={CSS.pagePrevious}>
             <CalciteIcon size="16" path={chevronLeft16} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextClicked} class={CSS.pageNext}>
+          <calcite-action onClick={this.nextClicked} class={CSS.pageNext}>
             <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>
         </footer>

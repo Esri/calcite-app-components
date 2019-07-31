@@ -49,7 +49,6 @@ describe("calcite-action-bar", () => {
 
     const bar = await page.find("calcite-action-bar");
 
-    const eventSpy = await page.spyOnEvent("calciteActionClick", "window");
     const buttonGroup = await page.find("calcite-action-bar >>> .action-group--bottom");
 
     const button = await buttonGroup.find("calcite-action >>> .button");
@@ -60,7 +59,6 @@ describe("calcite-action-bar", () => {
 
     await page.waitForChanges();
 
-    expect(eventSpy).toHaveReceivedEvent();
     expect(bar).toHaveAttribute("expanded");
   });
 });

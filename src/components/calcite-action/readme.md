@@ -15,12 +15,6 @@ The `calcite-action` component is an action item (such as Tip, Legend, Home etc.
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`  | `undefined` |
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean` | `false`     |
 
-## Events
-
-| Event                | Description                              | Type               |
-| -------------------- | ---------------------------------------- | ------------------ |
-| `calciteActionClick` | Emitted when an action has been clicked. | `CustomEvent<any>` |
-
 ## Dependencies
 
 ### Used by

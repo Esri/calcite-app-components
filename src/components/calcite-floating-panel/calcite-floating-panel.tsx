@@ -71,7 +71,7 @@ export class CalciteFloatingPanel {
       <Host style={style}>
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
-          <calcite-action onCalciteActionClick={this.hidePanel}>
+          <calcite-action onClick={this.hidePanel}>
             <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>

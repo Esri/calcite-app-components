@@ -88,7 +88,7 @@ export class CalciteBlockSection {
     const headerNode = (
       <calcite-action
         aria-label={toggleLabel}
-        onCalciteActionClick={this.onHeaderClick}
+        onClick={this.onHeaderClick}
         text={this.text}
         text-enabled
         compact

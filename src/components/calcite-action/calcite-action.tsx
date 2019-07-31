@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Host, Prop, h } from "@stencil/core";
 
 import { CalciteTheme } from "../interfaces";
 
@@ -54,16 +54,6 @@ export class CalciteAction {
 
   // --------------------------------------------------------------------------
   //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-  /**
-   * Emitted when an action has been clicked.
-   */
-  @Event() calciteActionClick: EventEmitter;
-
-  // --------------------------------------------------------------------------
-  //
   //  Component Methods
   //
   // --------------------------------------------------------------------------
@@ -95,7 +85,6 @@ export class CalciteAction {
           class={classnames(CSS.button, compactClass)}
           title={labelFallback}
           aria-label={labelFallback}
-          onClick={this.clickHandler}
         >
           {iconContainerNode}
           {textContainerNode}
@@ -103,14 +92,4 @@ export class CalciteAction {
       </Host>
     );
   }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  clickHandler = (): void => {
-    this.calciteActionClick.emit(this);
-  };
 }
