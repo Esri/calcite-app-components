@@ -1,4 +1,4 @@
-:host .button {
+.button {
   display: flex;
   color: var(--calcite-app-foreground);
   fill: var(--calcite-app-foreground);
@@ -23,7 +23,7 @@
   padding-right: var(--calcite-app-side-spacing-quarter);
 }
 
-:host .button:hover {
+.button:hover {
   background-color: var(--calcite-app-background-hover);
   color: var(--calcite-app-foreground-hover);
   fill: var(--calcite-app-foreground-hover);
@@ -36,7 +36,7 @@
   background-color: var(--calcite-app-background-active);
 }
 
-:host .button .icon-container {
+.button .icon-container {
   max-width: var(--calcite-app-icon-size);
   max-height: var(--calcite-app-icon-size);
   margin: 0;
@@ -45,7 +45,7 @@
   display: flex;
 }
 
-:host .text-container {
+.text-container {
   flex: 1;
   line-height: 1rem;
   margin: 0 var(--calcite-app-side-spacing-half);
