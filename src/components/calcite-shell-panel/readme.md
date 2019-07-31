@@ -4,9 +4,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                    | Type      | Default |
-| --------- | --------- | -------------------------------------------------------------- | --------- | ------- |
-| `primary` | `primary` | When true, the panel is the primary panel for the application. | `boolean` | `false` |
+| Property | Attribute | Description                   | Type                      | Default     |
+| -------- | --------- | ----------------------------- | ------------------------- | ----------- |
+| `layout` | `layout`  | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
 
 ---
 
