@@ -4,7 +4,7 @@ import { CalcitePlacement } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
 
-import { CalciteTheme, getTheme } from "../../utils/dom";
+import { CalciteTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-action-pad",
@@ -12,16 +12,6 @@ import { CalciteTheme, getTheme } from "../../utils/dom";
   shadow: true
 })
 export class CalciteActionPad {
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLCalciteFloatingPanelElement;
-
-  @State() offsetTop = 0;
-
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -44,7 +34,17 @@ export class CalciteActionPad {
   /**
    * Element styling
    */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteFloatingPanelElement;
+
+  @State() offsetTop = 0;
 
   // --------------------------------------------------------------------------
   //

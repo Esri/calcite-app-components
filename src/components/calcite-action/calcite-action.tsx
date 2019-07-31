@@ -1,6 +1,6 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { CalciteTheme, getTheme } from "../../utils/dom";
+import { CalciteTheme } from "../../utils/dom";
 
 import classnames from "classnames";
 
@@ -12,14 +12,6 @@ import { CSS } from "./resources";
   shadow: true
 })
 export class CalciteAction {
-  // --------------------------------------------------------------------------
-  //
-  //  Variables
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLElement;
-
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -58,7 +50,7 @@ export class CalciteAction {
   /**
    * Element styling
    */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //

@@ -8,8 +8,6 @@ import { x16 } from "@esri/calcite-ui-icons";
 
 import CalciteIcon from "../_support/CalciteIcon";
 
-import { CalciteTheme, getTheme } from "../../utils/dom";
-
 const CSS = {
   header: "header",
   heading: "heading",
@@ -22,16 +20,6 @@ const CSS = {
   shadow: true
 })
 export class CalciteFloatingPanel {
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLCalciteFloatingPanelElement;
-
-  @State() offsetTop = 0;
-
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -56,10 +44,15 @@ export class CalciteFloatingPanel {
    */
   @Prop() positionElement: HTMLElement;
 
-  /**
-   * Element styling
-   */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteFloatingPanelElement;
+
+  @State() offsetTop = 0;
 
   // --------------------------------------------------------------------------
   //
@@ -68,7 +61,7 @@ export class CalciteFloatingPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { offsetTop, theme } = this;
+    const { offsetTop } = this;
 
     const style = {
       top: `${offsetTop}px`
@@ -78,7 +71,7 @@ export class CalciteFloatingPanel {
       <Host style={style}>
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
-          <calcite-action onCalciteActionClick={this.hidePanel} theme={theme}>
+          <calcite-action onCalciteActionClick={this.hidePanel}>
             <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>

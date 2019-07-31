@@ -2,7 +2,7 @@ import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 import CalciteIcon from "../_support/CalciteIcon";
-import { CalciteTheme, getTheme } from "../../utils/dom";
+import { CalciteTheme } from "../../utils/dom";
 
 const CSS = {
   header: "header",
@@ -51,7 +51,7 @@ export class CalciteTip {
   /**
    * Element styling
    */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
@@ -83,11 +83,7 @@ export class CalciteTip {
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
-            <calcite-action
-              onCalciteActionClick={this.hideTip}
-              class={CSS.close}
-              theme={this.theme}
-            >
+            <calcite-action onCalciteActionClick={this.hideTip} class={CSS.close}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           ) : null}

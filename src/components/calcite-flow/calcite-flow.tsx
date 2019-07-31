@@ -2,7 +2,7 @@ import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core"
 
 import { CSS, FlowDirection } from "./resources";
 
-import { CalciteTheme, getTheme } from "../../utils/dom";
+import { CalciteTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-flow",
@@ -10,6 +10,17 @@ import { CalciteTheme, getTheme } from "../../utils/dom";
   shadow: true
 })
 export class CalciteFlow {
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -23,17 +34,6 @@ export class CalciteFlow {
   @State() flowDirection: FlowDirection = null;
 
   @State() flows: HTMLCalciteFlowItemElement[] = [];
-
-  // --------------------------------------------------------------------------
-  //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-
-  /**
-   * Element styling
-   */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
 
   // --------------------------------------------------------------------------
   //

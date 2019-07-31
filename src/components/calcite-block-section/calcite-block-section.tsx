@@ -4,7 +4,6 @@ import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icon
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 import { TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
-import { CalciteTheme, getTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-block-section",
@@ -12,15 +11,6 @@ import { CalciteTheme, getTheme } from "../../utils/dom";
   shadow: true
 })
 export class CalciteBlockSection {
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element()
-  el: HTMLElement;
-
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -52,10 +42,14 @@ export class CalciteBlockSection {
   @Prop()
   textCollapse = TEXT.collapse;
 
-  /**
-   * Element styling
-   */
-  @Prop({ reflect: true }) theme: CalciteTheme = getTheme(this.el);
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element()
+  el: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
@@ -86,7 +80,7 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, open, textCollapse, textExpand, theme } = this;
+    const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
     const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
     const toggleLabel = open ? textCollapse : textExpand;
@@ -96,7 +90,6 @@ export class CalciteBlockSection {
         aria-label={toggleLabel}
         onCalciteActionClick={this.onHeaderClick}
         text={this.text}
-        theme={theme}
         text-enabled
         compact
       >
