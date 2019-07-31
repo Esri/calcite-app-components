@@ -79,7 +79,7 @@ export class CalciteActionBar {
     }
 
     const layoutFallback =
-      layout || (this.el.parentElement.getAttribute("layout") as CalciteLayout) || "leading";
+      layout || (el.parentElement.getAttribute("layout") as CalciteLayout) || "leading";
 
     const trailing = layoutFallback === "trailing";
     const expandIcon = trailing ? icons[1] : icons[0];
