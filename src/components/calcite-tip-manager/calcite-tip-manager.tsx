@@ -172,13 +172,13 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onClick={this.previousClicked}>
+          <calcite-action onClick={this.previousClicked} class={CSS.pagePrevious}>
             <CalciteIcon size="16" path={chevronLeft16} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onClick={this.nextClicked}>
+          <calcite-action onClick={this.nextClicked} class={CSS.pageNext}>
             <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>
         </footer>
