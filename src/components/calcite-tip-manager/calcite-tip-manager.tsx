@@ -3,7 +3,7 @@ import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
-import { CalciteTheme } from "../../utils/dom";
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-tip-manager",

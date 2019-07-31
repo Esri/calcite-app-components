@@ -1,10 +1,8 @@
 import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 
-import { CalcitePlacement } from "../interfaces";
+import { CalcitePlacement, CalciteTheme } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
-
-import { CalciteTheme } from "../../utils/dom";
 
 @Component({
   tag: "calcite-action-pad",

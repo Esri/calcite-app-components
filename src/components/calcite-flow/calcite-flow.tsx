@@ -2,7 +2,7 @@ import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core"
 
 import { CSS, FlowDirection } from "./resources";
 
-import { CalciteTheme } from "../../utils/dom";
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-flow",

@@ -2,7 +2,7 @@ import { Component, Element, Host, Prop, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
-import { CalciteTheme } from "../../utils/dom";
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-shell",

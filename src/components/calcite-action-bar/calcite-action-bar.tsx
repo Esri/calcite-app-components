@@ -3,7 +3,7 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
 
-import { CalciteTheme } from "../../utils/dom";
+import { CalciteTheme } from "../interfaces";
 
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 

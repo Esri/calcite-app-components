@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { CalciteTheme } from "../../utils/dom";
+import { CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
