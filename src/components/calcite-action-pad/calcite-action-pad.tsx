@@ -18,7 +18,7 @@ export class CalciteActionPad {
 
   /**
    * Determines where the element will be displayed.
-   * side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
+   * side: dynamically left or right based on whether we're in a leading or trailing shell-panel.
    * over: centered on top of trigger and covers trigger.
    * anchor: dynamically above or below based on how close trigger is to top or bottom of window.
    */
