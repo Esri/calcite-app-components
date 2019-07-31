@@ -21,9 +21,9 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) heading: string;
+  @Prop({ reflect: true }) textHeading: string;
 
-  @Prop({ reflect: true }) description: string;
+  @Prop({ reflect: true }) textDescription: string;
 
   @Prop({ reflect: true }) value: string;
 
@@ -65,6 +65,9 @@ export class CalcitePickerRow {
   // --------------------------------------------------------------------------
 
   renderIcon() {
+    if (!this.icon) {
+      return null;
+    }
     if (this.icon === "grip") {
       return (
         <span class="handle">
@@ -97,8 +100,8 @@ export class CalcitePickerRow {
       <Host class={this.icon === "grip" ? "highlight" : null} onClick={() => this.toggle()}>
         {this.renderIcon()}
         <div class={CSS.label}>
-          <h4 class={CSS.heading}>{this.heading}</h4>
-          <p class={CSS.description}>{this.description}</p>
+          <h4 class={CSS.heading}>{this.textHeading}</h4>
+          <p class={CSS.description}>{this.textDescription}</p>
         </div>
         <div
           onClick={(e) => {
