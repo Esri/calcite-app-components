@@ -9,7 +9,6 @@ The `calcite-action-group` is a wrapper for multiple [calcite-actions](../calcit
 ### Used by
 
 - [calcite-action-bar](../calcite-action-bar)
-- [calcite-action-pad](../calcite-action-pad)
 
 ### Graph
 

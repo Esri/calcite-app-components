@@ -1,5 +1,5 @@
 export const CSS = {
-  toggle: "toggle"
+  label: "label"
 };
 
 export const TEXT = {

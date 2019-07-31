@@ -5,7 +5,7 @@
   background-color: var(--calcite-app-background);
   border-radius: var(--calcite-app-border-radius);
   padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-three-quarters);
-  margin: var(--calcite-app-cap-spacing-quarter) 0;
+  margin: 0;
   justify-content: flex-start;
   align-items: center;
   border: none;
@@ -15,6 +15,12 @@
   font-size: var(--font-size--1);
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
+  text-align: unset;
+}
+
+.button.compact {
+  padding-left: var(--calcite-app-side-spacing-quarter);
+  padding-right: var(--calcite-app-side-spacing-quarter);
 }
 
 :host .button:hover {
@@ -44,5 +50,4 @@
   line-height: 1rem;
   margin: 0 var(--calcite-app-side-spacing-half);
   word-break: break-word;
-  text-align: left;
 }

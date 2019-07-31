@@ -12,31 +12,33 @@
     <section class="example-container">
       <h2>Tip Manager</h2>
       <calcite-tip-manager>
-        <calcite-tip
-          heading="The Red Rocks and Blue Water"
-          thumbnail="http://lorempixel.com/1000/600/nature/3"
-          text-thumbnail="This is an image of nature."
-        >
-          <p slot="info">
-            This tip is how a tip should really look. It has a landscape or square image and a small amount of text
-            content. This paragraph is in an "info" slot.
-          </p>
-          <p slot="info">
-            This is another paragraph in a subsequent "info" slot.
-          </p>
-          <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
-        </calcite-tip>
-        <calcite-tip
-          heading="The Long Trees"
-          thumbnail="http://lorempixel.com/600/1000/nature/4"
-          text-thumbnail="This is an image of nature."
-        >
-          <p slot="info">
-            This tip has an image that is a pretty tall. And the text will run out before the end of the image.
-          </p>
-          <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
-          <a slot="link" href="http://www.esri.com">View Esri</a>
-        </calcite-tip>
+        <calcite-tip-group text-group-title="Astronomy">
+            <calcite-tip
+            heading="The Red Rocks and Blue Water"
+            thumbnail="http://lorempixel.com/1000/600/nature/3"
+            text-thumbnail="This is an image of nature."
+          >
+            <p slot="info">
+              This tip is how a tip should really look. It has a landscape or square image and a small amount of text
+              content. This paragraph is in an "info" slot.
+            </p>
+            <p slot="info">
+              This is another paragraph in a subsequent "info" slot.
+            </p>
+            <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
+          </calcite-tip>
+          <calcite-tip
+            heading="The Long Trees"
+            thumbnail="http://lorempixel.com/600/1000/nature/4"
+            text-thumbnail="This is an image of nature."
+          >
+            <p slot="info">
+              This tip has an image that is a pretty tall. And the text will run out before the end of the image.
+            </p>
+            <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
+            <a slot="link" href="http://www.esri.com">View Esri</a>
+          </calcite-tip>
+        </calcite-tip-group>
         <calcite-tip heading="The lack of imagery">
           <p slot="info">
             This tip has no image. As such, the content area will take up the entire width of the tip.

@@ -15,10 +15,18 @@ ul {
   padding: 0;
 }
 li {
+  display: flex;
   border-left: 1px solid white;
 }
+li:first-child {
+  border-left: none;
+}
+li:last-child {
+  border-right: 1px solid white;
+}
 a {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 12px 24px;
   color: inherit;
   text-decoration: none;
@@ -32,16 +40,26 @@ a.is-active {
 </style>
 <nav class="styleguide--nav">
     <ul>
-      <li><a href="${root}">Home</a></li>
-      <li><a href="${root}demos/calcite-action/">Calcite Action</a></li>
-      <li><a href="${root}demos/calcite-action-bar/">Calcite Action Bar</a></li>
-      <li><a href="${root}demos/calcite-action-pad/">Calcite Action Pad</a></li>
-      <li><a href="${root}demos/calcite-block.html">Calcite Block</a></li>
-      <li><a href="${root}demos/calcite-flow/">Calcite Flow</a></li>
-      <li><a href="${root}demos/calcite-flow-item/">Calcite Flow Item</a></li>
-      <li><a href="${root}demos/calcite-picker.html">Calcite Picker</a></li>
-      <li><a href="${root}demos/calcite-tip.html">Calcite Tip</a></li>
-      <li><a href="${root}demos/calcite-tip-manager.html">Calcite Tip Manager</a></li>
+      <li>
+      <a href="${root}">
+        <!-- taken from https://esri.github.io/calcite-ui-icons/#home -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
+          <title>Home</title>
+          <path fill="#fff" d="M16 8h-1v8h-5v-5H7v5H2V8H1l2-2.133V0h3v2.667L8.5 0z"/>
+        </svg>
+      </a>
+      </li>
+      <li><a href="${root}demos/calcite-action/">Action</a></li>
+      <li><a href="${root}demos/calcite-action-bar/">Action Bar</a></li>
+      <li><a href="${root}demos/calcite-action-pad/">Action Pad</a></li>
+      <li><a href="${root}demos/calcite-block.html">Block</a></li>
+      <li><a href="${root}demos/calcite-flow/">Flow</a></li>
+      <li><a href="${root}demos/calcite-flow-item/">Flow Item</a></li>
+      <li><a href="${root}demos/calcite-shell/">Shell</a></li>
+      <li><a href="${root}demos/calcite-shell-panel/">Shell Panel</a></li>
+      <li><a href="${root}demos/calcite-picker.html">Picker</a></li>
+      <li><a href="${root}demos/calcite-tip.html">Tip</a></li>
+      <li><a href="${root}demos/calcite-tip-manager.html">Tip Manager</a></li>
     </ul>
 </nav>
 `;

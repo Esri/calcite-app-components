@@ -1,10 +1,8 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-const CSS = {
-  button: "button",
-  iconContainer: "icon-container",
-  textContainer: "text-container"
-};
+import classnames from "classnames";
+
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-action",
@@ -21,18 +19,27 @@ export class CalciteAction {
    * Indicates whether the action is highlighted.
    */
   @Prop({ reflect: true }) active = false;
+
+  /**
+   * Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section.
+   */
+  @Prop({ reflect: true }) compact = false;
+
   /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
+
   /**
    * Label of the action, exposed on hover.
    */
   @Prop() label: string;
+
   /**
    * Text that accompanies the action icon.
    */
   @Prop() text: string;
+
   /**
    * Indicates whether the text is displayed.
    */
@@ -71,10 +78,14 @@ export class CalciteAction {
 
     const labelFallback = label || text;
 
+    const compactClass = {
+      [CSS.compact]: this.compact
+    };
+
     return (
       <Host>
         <button
-          class={CSS.button}
+          class={classnames(CSS.button, compactClass)}
           title={labelFallback}
           aria-label={labelFallback}
           onClick={this.clickHandler}

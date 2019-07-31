@@ -1,8 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
+import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
-import { CSS, TEXT } from "./resources";
+import { TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
@@ -16,6 +16,11 @@ export class CalciteBlockSection {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Text displayed in the button.
+   */
+  @Prop() text: string;
 
   /**
    * When true, the block's section content will be displayed.
@@ -46,26 +51,6 @@ export class CalciteBlockSection {
   @Element()
   el: HTMLElement;
 
-  mutationObserver = new MutationObserver(() => this.placeHeader());
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.mutationObserver.observe(this.el, { childList: true });
-  }
-
-  componentWillLoad(): void {
-    this.placeHeader();
-  }
-
-  disconnectedCallback(): void {
-    this.mutationObserver.disconnect();
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -88,14 +73,6 @@ export class CalciteBlockSection {
     this.calciteBlockSectionToggle.emit();
   };
 
-  placeHeader() {
-    const header = this.el.querySelector("calcite-block-header");
-
-    if (header && !header.slot) {
-      header.slot = "header";
-    }
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -105,28 +82,29 @@ export class CalciteBlockSection {
   render() {
     const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
-    const arrowIcon = open ? caretDown16 : dir === "rtl" ? caretLeft16 : caretRight16;
-    const hasHeader = !!this.el.querySelector<HTMLCalciteBlockHeaderElement>(
-      "calcite-block-header"
-    );
+    const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
     const toggleLabel = open ? textCollapse : textExpand;
 
-    const headerNode = hasHeader ? (
-      <button
+    const headerNode = (
+      <calcite-action
         aria-label={toggleLabel}
-        class={CSS.toggle}
-        onClick={this.onHeaderClick}
-        title={toggleLabel}
+        onCalciteActionClick={this.onHeaderClick}
+        text={this.text}
+        text-enabled
+        compact
       >
         <CalciteIcon size="16" path={arrowIcon} />
-        <slot name="header" />
-      </button>
-    ) : null;
+      </calcite-action>
+    );
 
     return (
       <Host aria-expanded={open ? "true" : "false"}>
         {headerNode}
-        {open ? <slot /> : null}
+        {open ? (
+          <calcite-block-content>
+            <slot />
+          </calcite-block-content>
+        ) : null}
       </Host>
     );
   }

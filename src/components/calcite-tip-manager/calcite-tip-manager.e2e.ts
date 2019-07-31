@@ -11,7 +11,7 @@ describe("calcite-tip-manager", () => {
     const isVisible = await tipManager.isVisible();
     expect(isVisible).toBe(true);
 
-    const title = await page.find(`calcite-tip-manager >>> .${CSS.title}`);
+    const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
     expect(title.innerText).toBe(DEFAULT_GROUP_TITLE);
   });
 
@@ -48,14 +48,14 @@ describe("calcite-tip-manager", () => {
     let selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual("one"); // default selected tip is index 0
 
-    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageControl}.${CSS.pageControlNext}`);
+    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
     nextButton.click();
     await page.waitForChanges();
 
     selectedTip = await tipManager.find(`calcite-tip[selected]`);
     expect(selectedTip.id).toEqual("two");
 
-    const previousButton = await page.find(`calcite-tip-manager >>> .${CSS.pageControl}.${CSS.pageControlPrevious}`);
+    const previousButton = await page.find(`calcite-tip-manager >>> .${CSS.pagePrevious}`);
     previousButton.click();
     await page.waitForChanges();
 
@@ -78,10 +78,10 @@ describe("calcite-tip-manager", () => {
 
     await page.waitForChanges();
 
-    const title = await page.find(`calcite-tip-manager >>> .${CSS.title}`);
+    const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
     expect(title.innerText).toBe(sharedTitle);
 
-    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageControl}.${CSS.pageControlNext}`);
+    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
     nextButton.click();
     await page.waitForChanges();
 
@@ -129,7 +129,7 @@ describe("calcite-tip-manager", () => {
     const tips = await page.findAll("calcite-tip-manager calcite-tip");
     expect(tips.length).toBe(2);
 
-    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageControl}.${CSS.pageControlNext}`);
+    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
     nextButton.click();
     await page.waitForChanges();
 
