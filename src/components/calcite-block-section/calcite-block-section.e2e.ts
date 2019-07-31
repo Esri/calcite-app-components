@@ -100,12 +100,12 @@ describe("calcite-block-section", () => {
   it("sets calcite-block-section text-label to be text of calcite-action", async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <calcite-block-section text-label="test label" open="true">
+      <calcite-block-section text="test text" open="true">
         Slotted content.
       </calcite-block-section>
     `);
 
     const element = await page.find(`calcite-block-section >>> calcite-action`);
-    expect(element.shadowRoot.textContent).toEqualText("test label");
+    expect(element.shadowRoot.textContent).toEqualText("test text");
   });
 });
