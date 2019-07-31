@@ -1,3 +1,8 @@
-::slotted(calcite-picker-row:not(:first-child)) {
-  margin-top: 12px;
+:host {
+  display: block;
+  margin: 10px 0;
+  padding: 20px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0px 0px 9px 2px rgba(204, 204, 204, 1);
 }
