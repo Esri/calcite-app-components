@@ -3,7 +3,15 @@
   align-items: center;
   padding: 12px;
   background-color: white;
-  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+:host(.highlight) {
+  border-left: 3px solid transparent;
+}
+:host(.highlight[selected]) {
+  border-left-color: blue;
 }
 .label {
   flex-grow: 1;
@@ -13,4 +21,7 @@
 .heading,
 .description {
   margin: 0;
+}
+.handle {
+  cursor: move;
 }
