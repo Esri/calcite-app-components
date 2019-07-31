@@ -7,6 +7,8 @@ import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 
+import { CalciteTheme } from "../interfaces";
+
 @Component({
   tag: "calcite-flow-item",
   styleUrl: "calcite-flow-item.scss",
@@ -48,6 +50,11 @@ export class CalciteFlowItem {
    * 'Open' text string.
    */
   @Prop() textOpen = TEXT.open;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //

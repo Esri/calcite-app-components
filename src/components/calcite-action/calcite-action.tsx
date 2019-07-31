@@ -1,13 +1,10 @@
 import { Component, Host, Prop, h } from "@stencil/core";
 
+import { CalciteTheme } from "../interfaces";
+
 import classnames from "classnames";
 
-const CSS = {
-  button: "button",
-  compact: "compact",
-  iconContainer: "icon-container",
-  textContainer: "text-container"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-action",
@@ -49,6 +46,11 @@ export class CalciteAction {
    * Indicates whether the text is displayed.
    */
   @Prop({ reflect: true }) textEnabled = false;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //

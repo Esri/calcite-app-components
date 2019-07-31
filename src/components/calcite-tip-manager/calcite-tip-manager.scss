@@ -1,7 +1,5 @@
 /* Variables, mixins, @keyframes*/
 $tip-manager-height: 22vh;
-$tip-max-width: 540px;
-$tip-width: 65%;
 
 @keyframes tip-advance {
   0% {
@@ -62,20 +60,6 @@ $tip-width: 65%;
   animation-name: tip-retreat;
 }
 
-/*Tip Content Styles*/
-::slotted(calcite-tip) {
-  display: none;
-  box-shadow: none;
-  max-width: $tip-max-width;
-  width: $tip-width;
-  margin: 0;
-  padding: 0;
-}
-
-::slotted(calcite-tip[selected]) {
-  display: flex;
-}
-
 /* Pagination Styles*/
 .pagination {
   display: flex;
@@ -87,4 +71,5 @@ $tip-width: 65%;
 .page-position {
   font-size: var(--font-size--1);
   margin: 0 var(--calcite-app-side-spacing-half);
+  color: var(--calcite-app-foreground);
 }

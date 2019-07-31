@@ -2,6 +2,7 @@ import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteTheme } from "../interfaces";
 
 const CSS = {
   header: "header",
@@ -28,6 +29,7 @@ export class CalciteTip {
    * The local storage id used for an instance of a tip.
    */
   @Prop() storageId: string;
+
   /**
    * Indicates whether the tip can be dismissed.
    */
@@ -38,6 +40,17 @@ export class CalciteTip {
   @Prop() thumbnail: string;
 
   @Prop() textThumbnail: string;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
 
   @Element() el: HTMLElement;
 
@@ -67,7 +80,7 @@ export class CalciteTip {
 
   render() {
     return (
-      <Host hidden={this.dismissed}>
+      <Host dismissed={this.dismissed}>
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
