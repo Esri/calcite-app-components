@@ -2,7 +2,9 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
-import { CalciteLayout } from "../interfaces";
+import { CalciteLayout, CalciteTheme } from "../interfaces";
+
+import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
 const CSS = {
   actionGroupBottom: "action-group--bottom"
@@ -14,14 +16,6 @@ const CSS = {
   shadow: true
 })
 export class CalciteActionBar {
-  // --------------------------------------------------------------------------
-  //
-  //  Variables
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLElement;
-
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -50,8 +44,21 @@ export class CalciteActionBar {
   /**
    * Arrangement of the component.
    */
-  @Prop({ reflect: true }) layout: CalciteLayout =
-    (this.el.parentElement.getAttribute("layout") as CalciteLayout) || "leading";
+  @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
+   * Element styling
+   */
+
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
@@ -62,7 +69,7 @@ export class CalciteActionBar {
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el, layout } = this;
 
-    const rtl = el.dir === "rtl";
+    const rtl = getElementDir(el) === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
     const icons = [chevronsLeft16, chevronsRight16];
@@ -71,7 +78,10 @@ export class CalciteActionBar {
       icons.reverse();
     }
 
-    const trailing = layout === "trailing";
+    const layoutFallback =
+      layout || (this.el.parentElement.getAttribute("layout") as CalciteLayout) || "leading";
+
+    const trailing = layoutFallback === "trailing";
     const expandIcon = trailing ? icons[1] : icons[0];
     const collapseIcon = trailing ? icons[0] : icons[1];
 

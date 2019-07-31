@@ -3,6 +3,7 @@ import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-tip-manager",
@@ -23,6 +24,11 @@ export class CalciteTipManager {
    * Label that appears on hover of pagination icon.
    */
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //
@@ -129,7 +135,7 @@ export class CalciteTipManager {
       if (selected) {
         const tipParent = tip.parentElement;
         this.groupTitle = tipParent.matches("calcite-tip-group")
-          ? tipParent.getAttribute("textGroupTitle")
+          ? tipParent.getAttribute("text-group-title")
           : this.textDefaultTitle;
       }
     });

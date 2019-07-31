@@ -1,6 +1,8 @@
-import { Component, Element, Host, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
 
 import { CSS } from "./resources";
+
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-shell",
@@ -8,6 +10,17 @@ import { CSS } from "./resources";
   shadow: true
 })
 export class CalciteShell {
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties

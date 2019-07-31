@@ -54,6 +54,10 @@ $tip-width: 65%;
   margin-top: 0;
 }
 
+slot[name="link"]::slotted(a) {
+  color: var(--calcite-app-foreground);
+}
+
 .image-frame {
   width: $tip-image-frame-width;
   img {

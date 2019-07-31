@@ -1,5 +1,7 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
+import { CalciteTheme } from "../interfaces";
+
 import classnames from "classnames";
 
 import { CSS } from "./resources";
@@ -44,6 +46,11 @@ export class CalciteAction {
    * Indicates whether the text is displayed.
    */
   @Prop({ reflect: true }) textEnabled = false;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //
