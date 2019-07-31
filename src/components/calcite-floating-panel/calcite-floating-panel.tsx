@@ -8,11 +8,7 @@ import { x16 } from "@esri/calcite-ui-icons";
 
 import CalciteIcon from "../_support/CalciteIcon";
 
-const CSS = {
-  header: "header",
-  heading: "heading",
-  content: "content"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-floating-panel",
