@@ -1,4 +1,4 @@
-// import Sortable from "sortablejs";
+import Sortable from "sortablejs";
 import {
   Component,
   Element,
@@ -25,7 +25,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) heading: string;
+  @Prop({ reflect: true }) textHeading: string;
 
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
 
@@ -45,7 +45,7 @@ export class CalcitePicker {
 
   @Element() el: HTMLElement;
 
-  observer = new MutationObserver(() => this.setUpLists());
+  sortable = null;
 
   // --------------------------------------------------------------------------
   //
@@ -53,16 +53,10 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
-    this.setUpLists();
-  }
-
   componentDidLoad() {
-    this.observer.observe(this.el, { childList: true });
-  }
-
-  componentDidUnload() {
-    this.observer.disconnect();
+    if (this.dragEnabled && this.mode === "configuration") {
+      this.setupDragAndDrop();
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -98,8 +92,15 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  setUpLists(): void {
-    return;
+  setupDragAndDrop(): void {
+    const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
+    sortGroups.forEach((sortGroup) => {
+      Sortable.create(sortGroup, {
+        group: "whateva",
+        handle: ".handle",
+        draggable: "calcite-picker-row"
+      });
+    });
   }
 
   deselectRow(item) {
@@ -138,15 +139,15 @@ export class CalcitePicker {
       <Host>
         <section class={CSS.container}>
           <header>
-            <h2>{this.heading}</h2>
+            <h2>{this.textHeading}</h2>
             {/* <filter /> */}
           </header>
           {this.data.map((item) => {
             const { heading, description, value, selected } = item;
             return (
               <calcite-picker-row
-                heading={heading}
-                description={description}
+                textHeading={heading}
+                textDescription={description}
                 value={value}
                 selected={selected}
                 icon={this.getIconType()}
