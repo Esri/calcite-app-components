@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
 
-import { CalcitePlacement } from "../interfaces";
+import { CalcitePlacement, CalciteTheme } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
 
@@ -28,6 +28,11 @@ export class CalciteActionPad {
    * HTMLElement used to position this element according to the placement.
    */
   @Prop() positionElement: HTMLElement;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //

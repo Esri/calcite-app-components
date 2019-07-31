@@ -3,6 +3,10 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
 
+import { CalciteTheme } from "../interfaces";
+
+import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+
 const CSS = {
   actionGroupBottom: "action-group--bottom"
 };
@@ -35,6 +39,11 @@ export class CalciteActionBar {
    */
   @Prop() textCollapse = "Collapse";
 
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
   // --------------------------------------------------------------------------
   //
   //  Variables
@@ -52,7 +61,7 @@ export class CalciteActionBar {
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el } = this;
 
-    const rtl = el.dir === "rtl";
+    const rtl = getElementDir(el) === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
     const icons = [chevronsLeft16, chevronsRight16];
