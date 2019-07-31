@@ -135,7 +135,7 @@ export class CalciteTipManager {
       if (selected) {
         const tipParent = tip.parentElement;
         this.groupTitle = tipParent.matches("calcite-tip-group")
-          ? tipParent.getAttribute("textGroupTitle")
+          ? tipParent.getAttribute("text-group-title")
           : this.textDefaultTitle;
       }
     });
