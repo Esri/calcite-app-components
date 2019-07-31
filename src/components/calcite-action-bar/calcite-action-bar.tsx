@@ -2,6 +2,7 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteLayout } from "../interfaces";
 
 const CSS = {
   actionGroupBottom: "action-group--bottom"
@@ -15,28 +16,6 @@ const CSS = {
 export class CalciteActionBar {
   // --------------------------------------------------------------------------
   //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-  /**
-   * Indicates whether widget can be expanded.
-   */
-  @Prop({ reflect: true }) expand = true;
-  /**
-   * Indicates whether widget is expanded.
-   */
-  @Prop({ reflect: true }) expanded = false;
-  /**
-   * Updates the label of the expand icon when the component is collapsed.
-   */
-  @Prop() textExpand = "Expand";
-  /**
-   * Updates the label of the collapse icon when the component is expanded.
-   */
-  @Prop() textCollapse = "Collapse";
-
-  // --------------------------------------------------------------------------
-  //
   //  Variables
   //
   // --------------------------------------------------------------------------
@@ -45,12 +24,43 @@ export class CalciteActionBar {
 
   // --------------------------------------------------------------------------
   //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+  /**
+   * Indicates whether widget can be expanded.
+   */
+  @Prop({ reflect: true }) expand = true;
+
+  /**
+   * Indicates whether widget is expanded.
+   */
+  @Prop({ reflect: true }) expanded = false;
+
+  /**
+   * Updates the label of the expand icon when the component is collapsed.
+   */
+  @Prop() textExpand = "Expand";
+
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   */
+  @Prop() textCollapse = "Collapse";
+
+  /**
+   * Arrangement of the component.
+   */
+  @Prop({ reflect: true }) layout: CalciteLayout =
+    (this.el.parentElement.getAttribute("layout") as CalciteLayout) || "leading";
+
+  // --------------------------------------------------------------------------
+  //
   //  Component Methods
   //
   // --------------------------------------------------------------------------
 
   renderExpandToggle() {
-    const { expanded, expand, textExpand, textCollapse, el } = this;
+    const { expanded, expand, textExpand, textCollapse, el, layout } = this;
 
     const rtl = el.dir === "rtl";
 
@@ -61,9 +71,9 @@ export class CalciteActionBar {
       icons.reverse();
     }
 
-    const parentPrimary = el.parentElement.hasAttribute("primary");
-    const expandIcon = parentPrimary ? icons[0] : icons[1];
-    const collapseIcon = parentPrimary ? icons[1] : icons[0];
+    const trailing = layout === "trailing";
+    const expandIcon = trailing ? icons[1] : icons[0];
+    const collapseIcon = trailing ? icons[0] : icons[1];
 
     return expand ? (
       <calcite-action
