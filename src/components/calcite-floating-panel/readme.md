@@ -1,5 +1,7 @@
 # calcite-floating-panel
 
+The `floating-panel` component is a container that appears as a result of the click of a `calcite-action`. They are used for more temporary, simple bits of information.
+
 <!-- Auto Generated Below -->
 
 ## Properties

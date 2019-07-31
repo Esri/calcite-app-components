@@ -1,5 +1,7 @@
 # calcite-shell-panel
 
+The `calcite-shell-panel` component is a container used by [calcite-shell](../calcite-shell).
+
 <!-- Auto Generated Below -->
 
 ## Properties
