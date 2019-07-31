@@ -51,9 +51,9 @@ export class CalciteTipManager {
 
   @State() direction: "advancing" | "retreating";
 
-  observer = new MutationObserver(() => this.setUpTips());
-
   groupTitle = this.textDefaultTitle;
+
+  observer = new MutationObserver(() => this.setUpTips());
 
   // --------------------------------------------------------------------------
   //
@@ -178,7 +178,6 @@ export class CalciteTipManager {
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-
           <calcite-action onCalciteActionClick={this.nextClicked} class={CSS.pageNext}>
             <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>

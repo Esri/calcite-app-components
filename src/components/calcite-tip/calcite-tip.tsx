@@ -22,14 +22,6 @@ const CSS = {
 export class CalciteTip {
   // --------------------------------------------------------------------------
   //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLElement;
-
-  // --------------------------------------------------------------------------
-  //
   //  Properties
   //
   // --------------------------------------------------------------------------
@@ -37,6 +29,7 @@ export class CalciteTip {
    * The local storage id used for an instance of a tip.
    */
   @Prop() storageId: string;
+
   /**
    * Indicates whether the tip can be dismissed.
    */
@@ -52,6 +45,14 @@ export class CalciteTip {
    * Element styling
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
 
   @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
