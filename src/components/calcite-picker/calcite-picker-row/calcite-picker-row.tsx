@@ -69,7 +69,6 @@ export class CalcitePickerRow {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
-          {/* {CalciteIcon({size:"24", path: handleVertical24})} */}
         </span>
       );
     } else {
@@ -80,8 +79,12 @@ export class CalcitePickerRow {
       } else {
         path = this.selected ? circleFilled16 : circle16;
       }
-      return <CalciteIcon size="16" path={path} />;
-      // return CalciteIcon({size:"16", path});
+      /* tslint:enable */
+      return (
+        <span class="icon">
+          <CalciteIcon size="16" path={path} />
+        </span>
+      );
     }
   }
 
@@ -91,13 +94,19 @@ export class CalcitePickerRow {
 
   render() {
     return (
-      <Host class={this.icon === "grip" ? "highlight" : null}>
+      <Host class={this.icon === "grip" ? "highlight" : null} onClick={() => this.toggle()}>
         {this.renderIcon()}
-        <div class={CSS.label} onClick={() => this.toggle()}>
+        <div class={CSS.label}>
           <h4 class={CSS.heading}>{this.heading}</h4>
           <p class={CSS.description}>{this.description}</p>
         </div>
-        {this.renderSecondaryAction()}
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          {this.renderSecondaryAction()}
+        </div>
       </Host>
     );
   }
