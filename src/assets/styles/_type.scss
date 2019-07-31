@@ -2,7 +2,7 @@
 $line-height: 1.3rem !default;
 $base-font-size: 14px !default;
 
-:host {
+:root {
   --line-height: #{$line-height};
 
   --base-font-size: #{$base-font-size};
