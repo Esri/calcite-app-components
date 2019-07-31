@@ -6,13 +6,14 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 ## Properties
 
-| Property         | Attribute         | Description                                         | Type      | Default     |
-| ---------------- | ----------------- | --------------------------------------------------- | --------- | ----------- |
-| `heading`        | `heading`         |                                                     | `string`  | `undefined` |
-| `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.         | `boolean` | `false`     |
-| `storageId`      | `storage-id`      | The local storage id used for an instance of a tip. | `string`  | `undefined` |
-| `textThumbnail`  | `text-thumbnail`  |                                                     | `string`  | `undefined` |
-| `thumbnail`      | `thumbnail`       |                                                     | `string`  | `undefined` |
+| Property         | Attribute         | Description                                         | Type                | Default     |
+| ---------------- | ----------------- | --------------------------------------------------- | ------------------- | ----------- |
+| `heading`        | `heading`         |                                                     | `string`            | `undefined` |
+| `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.         | `boolean`           | `false`     |
+| `storageId`      | `storage-id`      | The local storage id used for an instance of a tip. | `string`            | `undefined` |
+| `textThumbnail`  | `text-thumbnail`  |                                                     | `string`            | `undefined` |
+| `theme`          | `theme`           | Element styling                                     | `"dark" \| "light"` | `undefined` |
+| `thumbnail`      | `thumbnail`       |                                                     | `string`            | `undefined` |
 
 ## Dependencies
 
