@@ -100,7 +100,6 @@ export class CalciteTipManager {
     this.total = tips.length;
 
     let selectedIndex: number = null;
-
     tips.forEach((tip, index) => {
       tip.toggleAttribute("non-dismissible", true);
 
@@ -125,9 +124,13 @@ export class CalciteTipManager {
       const selected = index === this.selectedIndex;
 
       tip.toggleAttribute("selected", selected);
+      tip.toggleAttribute("hidden", !selected);
 
       if (selected) {
-        this.groupTitle = tip.dataset.groupTitle || this.textDefaultTitle;
+        const tipParent = tip.parentElement;
+        this.groupTitle = tipParent.matches("calcite-tip-group")
+          ? tipParent.getAttribute("textGroupTitle")
+          : this.textDefaultTitle;
       }
     });
   }
