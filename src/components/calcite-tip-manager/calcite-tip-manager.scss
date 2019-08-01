@@ -1,5 +1,6 @@
 /* Variables, mixins, @keyframes*/
 $tip-manager-height: 22vh;
+$tip-max-width: 540px;
 
 @keyframes tip-advance {
   0% {
@@ -50,6 +51,12 @@ $tip-manager-height: 22vh;
   justify-content: center;
   align-items: flex-start;
   background-color: var(--calcite-app-background);
+}
+
+slot::slotted(calcite-tip-group),
+slot::slotted(calcite-tip) {
+  max-width: $tip-max-width;
+  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 .tip-container.advancing {
