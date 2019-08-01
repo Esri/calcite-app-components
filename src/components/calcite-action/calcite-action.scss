@@ -16,6 +16,7 @@
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
   text-align: unset;
+  position: relative;
 }
 
 .button.compact {
@@ -34,6 +35,18 @@
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
+}
+
+:host([indicator]) .button::after {
+  content: "";
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--calcite-app-foreground-active);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 1;
 }
 
 :host .button .icon-container {
