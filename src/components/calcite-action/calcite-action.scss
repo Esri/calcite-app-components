@@ -40,13 +40,18 @@
 :host([indicator]) .button::after {
   content: "";
   border-radius: 50%;
-  width: 4px;
-  height: 4px;
+  width: var(--calcite-app-side-spacing-half);
+  height: var(--calcite-app-side-spacing-half);
+  border: var(--calcite-app-side-spacing-eighth) solid var(--calcite-app-background);
   background-color: var(--calcite-app-foreground-active);
   position: absolute;
-  top: 4px;
-  left: 4px;
+  bottom: var(--calcite-app-cap-spacing-half);
+  right: var(--calcite-app-side-spacing-quarter);
   z-index: 1;
+}
+
+:host([indicator][active]) .button::after {
+  border-color: var(--calcite-app-background-active);
 }
 
 :host .button .icon-container {
