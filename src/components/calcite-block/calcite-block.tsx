@@ -88,9 +88,10 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   onHeaderClick = (event: MouseEvent) => {
-    const [control] = this.el.shadowRoot
-      .querySelector<HTMLSlotElement>(`slot[name=${controlSlotName}]`)
-      .assignedNodes();
+    const controlSlot = this.el.shadowRoot.querySelector<HTMLSlotElement>(
+      `slot[name=${controlSlotName}]`
+    );
+    const control = controlSlot && controlSlot.assignedNodes()[0];
 
     if (control && control.contains(event.target as Node)) {
       event.stopPropagation();
