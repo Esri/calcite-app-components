@@ -1,9 +1,3 @@
-html {
-  font-family: $avenir-family;
-  font-size: var(--base-font-size);
-  line-height: var(--line-height);
-}
-
 .header {
   margin: 0;
   display: flex;
@@ -38,8 +32,4 @@ h4.heading,
 h5.heading {
   font-size: var(--font-size-0);
   font-weight: var(--font-weight-bold);
-}
-
-button {
-  font-family: $avenir-family;
 }

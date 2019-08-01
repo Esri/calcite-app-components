@@ -1,4 +1,5 @@
 .button {
+  font-family: var(--font-family);
   display: flex;
   color: var(--calcite-app-foreground);
   fill: var(--calcite-app-foreground);
@@ -11,7 +12,6 @@
   border: none;
   width: 100%;
   cursor: pointer;
-  font: inherit;
   font-size: var(--font-size--1);
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
