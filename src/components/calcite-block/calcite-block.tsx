@@ -151,11 +151,9 @@ export class CalciteBlock {
       <Host aria-expanded={collapsible ? (open ? "true" : "false") : null}>
         <article>
           {headerNode}
-          {hasContent && open ? (
-            <div class={CSS.content}>
-              <slot />
-            </div>
-          ) : null}
+          <div class={CSS.content} hidden={!hasContent || !open}>
+            <slot />
+          </div>
         </article>
       </Host>
     );

@@ -100,11 +100,9 @@ export class CalciteBlockSection {
     return (
       <Host aria-expanded={open ? "true" : "false"}>
         {headerNode}
-        {open ? (
-          <div class={CSS.content}>
-            <slot />
-          </div>
-        ) : null}
+        <div class={CSS.content} hidden={!open}>
+          <slot />
+        </div>
       </Host>
     );
   }
