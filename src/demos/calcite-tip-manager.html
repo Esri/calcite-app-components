@@ -66,8 +66,7 @@
       document.getElementById("remove").addEventListener("click", () => {
         const mgr = document.querySelector("calcite-tip-manager");
         const tips = mgr.querySelectorAll("calcite-tip");
-        lastTip = tips[tips.length - 1];
-        lastTip.parentNode.removeChild(lastTip);
+        tips[tips.length - 1].remove();
       });
     </script>
   </body>

@@ -102,11 +102,10 @@ export class CalciteTipManager {
 
   setUpTips(): void {
     const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
-    const selectedTip = this.el.querySelector("calcite-tip[selected]");
+    const selectedTip = this.el.querySelector<HTMLCalciteTipElement>("calcite-tip[selected]");
 
     this.tips = tips;
     this.total = tips.length;
-    // @ts-ignore
     this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
     tips.forEach((tip) => {
@@ -130,10 +129,8 @@ export class CalciteTipManager {
 
   updateGroupTitle() {
     const selectedTip = this.tips[this.selectedIndex];
-    const tipParent = selectedTip.parentElement;
-    this.groupTitle = tipParent.matches("calcite-tip-group")
-      ? tipParent.getAttribute("text-group-title")
-      : this.textDefaultTitle;
+    const tipParent = selectedTip.closest("calcite-tip-group");
+    this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
   }
 
   previousClicked = (): void => {

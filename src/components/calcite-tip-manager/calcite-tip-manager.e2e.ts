@@ -77,6 +77,7 @@ describe("calcite-tip-manager", () => {
         <calcite-tip-group text-group-title=${title2}>
           <calcite-tip ><p>different title</p></calcite-tip>
         </calcite-tip-group>
+        <calcite-tip><p>default title</p></calcite-tip>
       </calcite-tip-manager>`
     );
 
@@ -95,6 +96,11 @@ describe("calcite-tip-manager", () => {
     await page.waitForChanges();
 
     expect(title.innerText).toBe(title2);
+
+    nextButton.click();
+    await page.waitForChanges();
+
+    expect(title.innerText).toBe(DEFAULT_GROUP_TITLE);
   });
 
   it("should pre-select the correct tip if the selected attribute is set", async () => {
@@ -151,9 +157,7 @@ describe("calcite-tip-manager", () => {
     const tipManager = await page.find("calcite-tip-manager");
 
     await page.evaluate(() => {
-      const mgr = document.querySelector("calcite-tip-manager");
-      const firstTip = mgr.querySelector("calcite-tip:first-child");
-      firstTip.parentNode.removeChild(firstTip);
+      document.querySelector("calcite-tip:first-child").remove();
     });
     await page.waitForChanges();
 
