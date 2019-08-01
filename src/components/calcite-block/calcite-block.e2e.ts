@@ -28,16 +28,15 @@ describe("calcite-block", () => {
     let element = await page.find("calcite-block");
     let content = await page.find(`calcite-block >>> .${CSS.content}`);
 
-    expect(content).toBeNull();
+    expect(await content.isVisible()).toBe(false);
 
     element.setProperty("open", true);
     await page.waitForChanges();
     element = await page.find("calcite-block[open]");
     content = await page.find(`calcite-block >>> .${CSS.content}`);
 
-    const visible = await content.isVisible();
     expect(element).toBeTruthy();
-    expect(visible).toBe(true);
+    expect(await content.isVisible()).toBe(true);
 
     element.setProperty("open", false);
     await page.waitForChanges();
@@ -45,7 +44,7 @@ describe("calcite-block", () => {
     content = await page.find(`calcite-block >>> .${CSS.content}`);
 
     expect(element).toBeNull();
-    expect(content).toBeNull();
+    expect(await content.isVisible()).toBe(false);
   });
 
   it("allows toggling its content", async () => {
