@@ -4,7 +4,7 @@ import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 
-const controlSlotName = "control";
+const CONTROL_SLOT_NAME = "control";
 
 @Component({
   tag: "calcite-block",
@@ -89,7 +89,7 @@ export class CalciteBlock {
 
   onHeaderClick = (event: MouseEvent) => {
     const controlSlot = this.el.shadowRoot.querySelector<HTMLSlotElement>(
-      `slot[name=${controlSlotName}]`
+      `slot[name=${CONTROL_SLOT_NAME}]`
     );
     const control = controlSlot && controlSlot.assignedNodes()[0];
 
@@ -119,7 +119,7 @@ export class CalciteBlock {
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
         </div>
-        <slot name={controlSlotName} />
+        <slot name={CONTROL_SLOT_NAME} />
       </header>
     );
 
@@ -145,7 +145,7 @@ export class CalciteBlock {
       </div>
     );
 
-    const hasContent = !!Array.from(el.children).some((child) => child.slot !== controlSlotName);
+    const hasContent = !!Array.from(el.children).some((child) => child.slot !== CONTROL_SLOT_NAME);
 
     return (
       <Host aria-expanded={collapsible ? (open ? "true" : "false") : null}>
