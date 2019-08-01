@@ -1,8 +1,14 @@
 export const CSS = {
   content: "content",
-  header: "header",
+  headerContainer: "header-container",
   toggle: "toggle",
-  toggleIcon: "toggle-icon"
+  toggleIcon: "toggle-icon",
+  title: "title",
+  heading: "heading",
+  header: "header",
+  button: "button",
+  summary: "summary",
+  control: "control"
 };
 
 export const TEXT = {

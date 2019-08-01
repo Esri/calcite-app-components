@@ -22,14 +22,12 @@
 ### Depends on
 
 - [calcite-action](../calcite-action)
-- [calcite-block-content](../calcite-block-content)
 
 ### Graph
 
 ```mermaid
 graph TD;
   calcite-block-section --> calcite-action
-  calcite-block-section --> calcite-block-content
   style calcite-block-section fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
