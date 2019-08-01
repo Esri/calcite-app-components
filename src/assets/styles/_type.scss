@@ -3,21 +3,21 @@ $line-height: 1.3rem !default;
 $base-font-size: 14px !default;
 
 :root {
-  --line-height: #{$line-height};
+  --calcite-app-line-height: #{$line-height};
 
-  --base-font-size: #{$base-font-size};
-  --font-family: #{$avenir-family};
+  --calcite-app-base-font-size: #{$base-font-size};
+  --calcite-app-font-family: #{$avenir-family};
 
-  --font-size-2: 1.429rem;
-  --font-size-1: 1.143rem;
-  --font-size-0: 1rem;
-  --font-size--1: 0.858rem;
+  --calcite-app-font-size-2: 1.429rem;
+  --calcite-app-font-size-1: 1.143rem;
+  --calcite-app-font-size-0: 1rem;
+  --calcite-app-font-size--1: 0.858rem;
 
-  --font-weight: 400;
-  --font-weight-heading: 600;
-  --font-weight-bold: 600;
+  --calcite-app-font-weight: 400;
+  --calcite-app-font-weight-heading: 600;
+  --calcite-app-font-weight-bold: 600;
 
-  font-family: var(--font-family);
-  font-size: var(--base-font-size);
-  line-height: var(--line-height);
+  font-family: var(--calcite-app-font-family);
+  font-size: var(--calcite-app-base-font-size);
+  line-height: var(--calcite-app-line-height);
 }

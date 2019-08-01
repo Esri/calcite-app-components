@@ -1,3 +1,9 @@
+:host {
+  font-family: var(--calcite-app-font-family);
+  font-size: var(--calcite-app-base-font-size);
+  line-height: var(--calcite-app-line-height);
+}
+
 .header {
   margin: 0;
   display: flex;
@@ -18,18 +24,18 @@
 }
 
 h1.heading {
-  font-size: var(--font-size-2);
-  font-weight: var(--font-weight);
+  font-size: var(--calcite-app-font-size-2);
+  font-weight: var(--calcite-app-font-weight);
 }
 
 h2.heading {
-  font-size: var(--font-size-1);
-  font-weight: var(--font-weight);
+  font-size: var(--calcite-app-font-size-1);
+  font-weight: var(--calcite-app-font-weight);
 }
 
 h3.heading,
 h4.heading,
 h5.heading {
-  font-size: var(--font-size-0);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--calcite-app-font-size-0);
+  font-weight: var(--calcite-app-font-weight-bold);
 }
