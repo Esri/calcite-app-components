@@ -82,30 +82,13 @@ describe("calcite-block-section", () => {
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
   });
 
-  it("places calcite-action and slotted content inside calcite-block-content", async () => {
+  it("sets calcite-block-section renders section text", async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <calcite-block-section open>
-        Slotted content.
-      </calcite-block-section>
-    `);
-
-    const element = await page.find("calcite-block-section >>> calcite-block-content");
-
-    const children = await element.getProperty("children");
-    // workaround since `children` value is missing `length`
-    expect(Object.keys(children)).toHaveLength(1);
-  });
-
-  it("sets calcite-block-section text-label to be text of calcite-action", async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <calcite-block-section text="test text" open="true">
-        Slotted content.
-      </calcite-block-section>
+      <calcite-block-section text="test text" open="true"></calcite-block-section>
     `);
 
     const element = await page.find(`calcite-block-section >>> calcite-action`);
-    expect(element.shadowRoot.textContent).toEqualText("test text");
+    expect(await element.getProperty("text")).toBe("test text");
   });
 });

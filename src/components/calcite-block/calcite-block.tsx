@@ -4,6 +4,8 @@ import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 
+const CONTROL_SLOT_NAME = "control";
+
 @Component({
   tag: "calcite-block",
   styleUrl: "calcite-block.scss",
@@ -22,12 +24,24 @@ export class CalciteBlock {
   @Prop() collapsible = false;
 
   /**
+   * Block heading.
+   */
+  @Prop()
+  heading: string;
+
+  /**
    * When true, the block's content will be displayed.
    */
   @Prop({
     reflect: true
   })
   open = false;
+
+  /**
+   * Block summary.
+   */
+  @Prop()
+  summary: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
@@ -55,26 +69,6 @@ export class CalciteBlock {
   @Element()
   el: HTMLElement;
 
-  mutationObserver = new MutationObserver(() => this.placeHeader());
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.mutationObserver.observe(this.el, { childList: true });
-  }
-
-  componentWillLoad(): void {
-    this.placeHeader();
-  }
-
-  disconnectedCallback(): void {
-    this.mutationObserver.disconnect();
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -93,18 +87,21 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  onHeaderClick = () => {
+  onHeaderClick = (event: MouseEvent) => {
+    const controlSlot = this.el.shadowRoot.querySelector<HTMLSlotElement>(
+      `slot[name=${CONTROL_SLOT_NAME}]`
+    );
+    const control = controlSlot && controlSlot.assignedNodes()[0];
+
+    if (control && control.contains(event.target as Node)) {
+      event.stopPropagation();
+      event.preventDefault();
+      return;
+    }
+
     this.open = !this.open;
     this.calciteBlockToggle.emit();
   };
-
-  placeHeader() {
-    const header = this.el.querySelector("calcite-block-header");
-
-    if (header && !header.slot) {
-      header.slot = "header";
-    }
-  }
 
   // --------------------------------------------------------------------------
   //
@@ -113,13 +110,21 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsible, el, open, textCollapse, textExpand } = this;
+    const { collapsible, el, heading, open, summary, textCollapse, textExpand } = this;
     const toggleLabel = open ? textCollapse : textExpand;
 
-    const headerContent = <slot name="header" />;
+    const headerContent = (
+      <header class={CSS.header}>
+        <div class={CSS.title}>
+          <h3 class={CSS.heading}>{heading}</h3>
+          {summary ? <div class={CSS.summary}>{summary}</div> : null}
+        </div>
+        <slot name={CONTROL_SLOT_NAME} />
+      </header>
+    );
 
     const headerNode = (
-      <div class={CSS.header}>
+      <div class={CSS.headerContainer}>
         {collapsible ? (
           <button
             aria-label={toggleLabel}
@@ -140,7 +145,7 @@ export class CalciteBlock {
       </div>
     );
 
-    const hasContent = !!el.querySelector("calcite-block-content");
+    const hasContent = !!Array.from(el.children).some((child) => child.slot !== CONTROL_SLOT_NAME);
 
     return (
       <Host aria-expanded={collapsible ? (open ? "true" : "false") : null}>
