@@ -59,6 +59,7 @@ a.is-active {
       <li><a href="${root}demos/calcite-shell-panel/">Shell Panel</a></li>
       <li><a href="${root}demos/calcite-tip.html">Tip</a></li>
       <li><a href="${root}demos/calcite-tip-manager.html">Tip Manager</a></li>
+      <li><a href="${root}demos/calcite-typography/">Typography</a></li>
     </ul>
 </nav>
 `;
