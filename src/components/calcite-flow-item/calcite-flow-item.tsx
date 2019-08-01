@@ -105,7 +105,7 @@ export class CalciteFlowItem {
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
-        onCalciteActionClick={this.backButtonClick}
+        onClick={this.backButtonClick}
       >
         <CalciteIcon size="16" path={chevronLeft16} />
       </calcite-action>
@@ -122,7 +122,7 @@ export class CalciteFlowItem {
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
-        onCalciteActionClick={this.toggleMenuOpen}
+        onClick={this.toggleMenuOpen}
       >
         <CalciteIcon size="16" path={ellipsis16} />
       </calcite-action>

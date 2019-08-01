@@ -6,20 +6,15 @@ The `calcite-action` component is an action item (such as Tip, Legend, Home etc.
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                       | Type      | Default     |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `active`      | `active`       | Indicates whether the action is highlighted.                                                      | `boolean` | `false`     |
-| `compact`     | `compact`      | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean` | `false`     |
-| `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean` | `false`     |
-| `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`  | `undefined` |
-| `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`  | `undefined` |
-| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean` | `false`     |
-
-## Events
-
-| Event                | Description                              | Type               |
-| -------------------- | ---------------------------------------- | ------------------ |
-| `calciteActionClick` | Emitted when an action has been clicked. | `CustomEvent<any>` |
+| Property      | Attribute      | Description                                                                                       | Type                | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `active`      | `active`       | Indicates whether the action is highlighted.                                                      | `boolean`           | `false`     |
+| `compact`     | `compact`      | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean`           | `false`     |
+| `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`           | `false`     |
+| `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`            | `undefined` |
+| `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`            | `undefined` |
+| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
+| `theme`       | `theme`        | Element styling                                                                                   | `"dark" \| "light"` | `undefined` |
 
 ## Dependencies
 
