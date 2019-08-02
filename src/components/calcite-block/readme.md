@@ -15,9 +15,9 @@ The `block` component is intended for displaying information in stacked, collaps
 
 ## Events
 
-| Event                | Description                               | Type               |
-| -------------------- | ----------------------------------------- | ------------------ |
-| `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
+| Event                | Description                                              | Type               |
+| -------------------- | -------------------------------------------------------- | ------------------ |
+| `calciteBlockToggle` | Emitted when the header has been toggled open or closed. | `CustomEvent<any>` |
 
 ---
 

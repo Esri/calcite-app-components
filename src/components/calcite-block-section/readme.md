@@ -13,9 +13,9 @@
 
 ## Events
 
-| Event                       | Description                               | Type               |
-| --------------------------- | ----------------------------------------- | ------------------ |
-| `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
+| Event                       | Description                                              | Type               |
+| --------------------------- | -------------------------------------------------------- | ------------------ |
+| `calciteBlockSectionToggle` | Emitted when the header has been toggled open or closed. | `CustomEvent<any>` |
 
 ## Dependencies
 

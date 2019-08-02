@@ -1,6 +1,6 @@
 # calcite-shell
 
-The `calcite-shell` component encapsulates other components, such as panels, tip manager, headers, footers etc as well as the center content or the view.
+The `calcite-shell` component is used for application layout management. It is a container for the view as well as other calcite app components like `calcite-shell-panel`, `floating-panel` and `tip-manager`.
 
 <!-- Auto Generated Below -->
 
