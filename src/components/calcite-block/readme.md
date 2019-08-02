@@ -1,6 +1,6 @@
 # calcite-block
 
-The `block` component is intended for displaying information in stacked, collapsible sections in a panel.
+The `block` component is intended for displaying information in stacked, collapsible `calcite-headers` and `calcite-sections` in a panel.
 
 <!-- Auto Generated Below -->
 

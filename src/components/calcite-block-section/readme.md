@@ -1,5 +1,7 @@
 # calcite-block-section
 
+The `calcite-block-section` component is a child element of `calcite-block` that can house it's own `calcite-block-header` and `calcite-block-content` and be toggled open and closed.
+
 <!-- Auto Generated Below -->
 
 ## Properties
