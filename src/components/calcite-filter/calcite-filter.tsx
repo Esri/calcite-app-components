@@ -1,5 +1,5 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-import { forIn } from "lodash-es";
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import { debounce, forIn } from "lodash-es";
 
 @Component({
   tag: "calcite-filter",
@@ -14,6 +14,7 @@ export class CalciteFilter {
   // --------------------------------------------------------------------------
 
   @Prop() textLabel: string;
+
   @Prop() data: object[];
 
   // --------------------------------------------------------------------------
@@ -22,8 +23,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  @Element()
-  el: HTMLElement;
+  @Element() el: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
@@ -39,7 +39,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  filter(value) {
+  filter = debounce((value) => {
     const regex = new RegExp(value, "ig");
     const find = (input, regex) => {
       let found = false;
@@ -60,7 +60,7 @@ export class CalciteFilter {
     });
 
     this.calciteFilterChange.emit(result);
-  }
+  }, 250);
 
   // --------------------------------------------------------------------------
   //
@@ -75,9 +75,9 @@ export class CalciteFilter {
           {this.textLabel}
           <input
             type="text"
-            onInput={(e) => {
+            onInput={(event) => {
               // @ts-ignore
-              this.filter(e.target.value);
+              this.filter(event.target.value);
             }}
           />
         </label>
