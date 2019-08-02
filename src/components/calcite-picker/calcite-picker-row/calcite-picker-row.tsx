@@ -4,7 +4,8 @@ import {
   circle16,
   circleFilled16,
   handleVertical24,
-  square16
+  square16,
+  trash16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
 import CalciteIcon from "../../_support/CalciteIcon";
@@ -27,9 +28,11 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true }) value: string;
 
-  @Prop({ reflect: true }) selected = false;
+  @Prop({ reflect: true, mutable: true }) selected = false;
 
   @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
+
+  @Prop({ reflect: true }) editing = false;
 
   // --------------------------------------------------------------------------
   //
@@ -46,6 +49,18 @@ export class CalcitePickerRow {
   // --------------------------------------------------------------------------
 
   @Event() rowToggled: EventEmitter;
+  @Event() rowDeleted: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method() async toggle() {
+    this.selected = !this.selected;
+    this.rowToggled.emit({ row: this.el, value: this.value, selected: this.selected });
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -53,9 +68,8 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle() {
-    this.selected = !this.selected;
-    this.rowToggled.emit({ row: this.el, value: this.value, selected: this.selected });
+  deleteRow() {
+    this.rowDeleted.emit({ row: this.el, value: this.value });
   }
 
   // --------------------------------------------------------------------------
@@ -92,12 +106,25 @@ export class CalcitePickerRow {
   }
 
   renderSecondaryAction() {
-    return <slot name="secondaryAction" />;
+    return this.editing ? (
+      <calcite-action
+        onClick={() => {
+          this.deleteRow();
+        }}
+      >
+        <CalciteIcon size="16" path={trash16} />
+      </calcite-action>
+    ) : (
+      <slot name="secondaryAction" />
+    );
   }
 
   render() {
     return (
-      <Host class={this.icon === "grip" ? "highlight" : null} onClick={() => this.toggle()}>
+      <Host
+        class={this.icon !== "square" && this.icon !== "circle" ? "highlight" : null}
+        onClick={() => this.toggle()}
+      >
         {this.renderIcon()}
         <div class={CSS.label}>
           <h4 class={CSS.heading}>{this.textHeading}</h4>

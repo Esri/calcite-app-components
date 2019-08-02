@@ -7,6 +7,10 @@
   margin-bottom: 12px;
   cursor: pointer;
 }
+:host([hidden]) {
+  display: none;
+}
+
 :host(.highlight) {
   border-left: 3px solid transparent;
 }
