@@ -11,6 +11,24 @@
     <calcite-styleguide-nav></calcite-styleguide-nav>
     <section class="example-container">
       <calcite-filter text-label="Find it"></calcite-filter>
+      <p>Open browser console to see results.</p>
+<pre><code>[{
+  name: "harry",
+  description: "smart",
+  metadata: {
+    middlename: "dean",
+    tags: ["redhead", "developer"]
+  }
+},
+{
+  name: "chris",
+  description: "funny",
+  metadata: {
+    other: {
+      tags: ["purplehair", "developer"]
+    }
+  }
+}]</code></pre>
       <script>
         const filter = document.querySelector("calcite-filter");
         filter.data = [{
