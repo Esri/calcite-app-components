@@ -42,7 +42,8 @@ export class CalciteTipManager {
 
   @Watch("selectedIndex")
   selectedChangeHandler() {
-    this.updateSelectedTip();
+    this.showSelectedTip();
+    this.updateGroupTitle();
   }
 
   @State() tips: HTMLCalciteTipElement[];
@@ -61,12 +62,12 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  connectedCallback() {
     this.setUpTips();
   }
 
   componentDidLoad() {
-    this.observer.observe(this.el, { childList: true });
+    this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
   componentDidUnload() {
@@ -101,23 +102,17 @@ export class CalciteTipManager {
 
   setUpTips(): void {
     const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
+    const selectedTip = this.el.querySelector<HTMLCalciteTipElement>("calcite-tip[selected]");
 
     this.tips = tips;
     this.total = tips.length;
+    this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
-    let selectedIndex: number = null;
-    tips.forEach((tip, index) => {
+    tips.forEach((tip) => {
       tip.toggleAttribute("non-dismissible", true);
-
-      if (selectedIndex === null && tip.hasAttribute("selected")) {
-        selectedIndex = index;
-        return;
-      }
-
-      tip.removeAttribute("selected");
     });
-
-    this.selectedIndex = selectedIndex || 0;
+    this.showSelectedTip();
+    this.updateGroupTitle();
   }
 
   hideTipManager = (): void => {
@@ -125,18 +120,17 @@ export class CalciteTipManager {
     this.el.toggleAttribute("aria-hidden");
   };
 
-  updateSelectedTip(): void {
+  showSelectedTip() {
     this.tips.forEach((tip, index) => {
-      const selected = index === this.selectedIndex;
-
-      tip.toggleAttribute("selected", selected);
-      tip.toggleAttribute("hidden", !selected);
-
-      if (selected) {
-        const tipParent = tip.closest("calcite-tip-group");
-        this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
-      }
+      tip.toggleAttribute("selected", this.selectedIndex === index);
+      tip.toggleAttribute("hidden", this.selectedIndex !== index);
     });
+  }
+
+  updateGroupTitle() {
+    const selectedTip = this.tips[this.selectedIndex];
+    const tipParent = selectedTip.closest("calcite-tip-group");
+    this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
   }
 
   previousClicked = (): void => {

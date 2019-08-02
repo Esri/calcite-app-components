@@ -71,13 +71,14 @@
       let count = 0;
       document.getElementById("add").addEventListener("click", () => {
         const mgr = document.querySelector("calcite-tip-manager");
-        let newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
+        const tips = mgr.querySelectorAll("calcite-tip");
+        newTip = tips[tips.length - 1].cloneNode(true);
         mgr.appendChild(newTip);
       });
       document.getElementById("remove").addEventListener("click", () => {
         const mgr = document.querySelector("calcite-tip-manager");
-        lastTip = mgr.querySelector("calcite-tip:last-child");
-        mgr.removeChild(lastTip);
+        const tips = mgr.querySelectorAll("calcite-tip");
+        tips[tips.length - 1].remove();
       });
     </script>
   </body>
