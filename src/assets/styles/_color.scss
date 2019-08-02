@@ -1,6 +1,7 @@
 $vibrant-blue: $v-bb-120;
 
-:root {
+:root,
+:host([theme="light"]) {
   --calcite-app-background: #{$white};
   --calcite-app-foreground: #{$darker-gray};
 
