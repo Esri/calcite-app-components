@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Demos - Tips</title>
+
+    <script src="head.js"></script>
+  </head>
+  <body>
+    <calcite-styleguide-nav></calcite-styleguide-nav>
+    <section class="example-container">
+      <calcite-filter text-label="Find it"></calcite-filter>
+      <script>
+        const filter = document.querySelector("calcite-filter");
+        filter.data = [{
+          name: "harry",
+          description: "smart",
+          metadata: {
+            middlename: "dean",
+            tags: ["redhead", "developer"]
+          }
+        },
+        {
+          name: "chris",
+          description: "funny",
+          metadata: {
+            other: {
+              tags: ["purplehair", "developer"]
+            }
+          }
+        }];
+        filter.addEventListener("calciteFilterChange", (event) => {
+          console.log(event.detail);
+        })
+      </script>
+    </section>
+  </body>
+</html>

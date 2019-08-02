@@ -53,6 +53,7 @@ a.is-active {
       <li><a href="${root}demos/calcite-action-bar/">Action Bar</a></li>
       <li><a href="${root}demos/calcite-action-pad/">Action Pad</a></li>
       <li><a href="${root}demos/calcite-block.html">Block</a></li>
+      <li><a href="${root}demos/calcite-filter.html">Filter</a></li>
       <li><a href="${root}demos/calcite-flow/">Flow</a></li>
       <li><a href="${root}demos/calcite-flow-item/">Flow Item</a></li>
       <li><a href="${root}demos/calcite-shell/">Shell</a></li>
