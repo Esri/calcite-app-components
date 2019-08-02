@@ -10,7 +10,7 @@ describe("calcite-block-section", () => {
     expect(element).toHaveClass("hydrated");
   });
 
-  it("should be collapsible by default", async () => {
+  it("should be collapsed by default", async () => {
     const page = await newE2EPage();
     await page.setContent(`
       <calcite-block-section>
@@ -19,12 +19,13 @@ describe("calcite-block-section", () => {
     `);
 
     const element = await page.find("calcite-block-section");
+    const toggle = await page.find("calcite-block-section >>> calcite-action");
 
-    await element.click();
+    await toggle.click();
     let open = await element.getProperty("open");
     expect(open).toBe(true);
 
-    await element.click();
+    await toggle.click();
     open = await element.getProperty("open");
     expect(open).toBe(false);
   });

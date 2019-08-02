@@ -1,5 +1,6 @@
 /* Variables, mixins, @keyframes*/
 $tip-manager-height: 22vh;
+$tip-max-width: 540px;
 
 @keyframes tip-advance {
   0% {
@@ -52,6 +53,12 @@ $tip-manager-height: 22vh;
   background-color: var(--calcite-app-background);
 }
 
+slot::slotted(calcite-tip-group),
+slot::slotted(calcite-tip) {
+  max-width: $tip-max-width;
+  padding: 0 var(--calcite-app-side-spacing-half);
+}
+
 .tip-container.advancing {
   animation-name: tip-advance;
 }
@@ -69,7 +76,7 @@ $tip-manager-height: 22vh;
 }
 
 .page-position {
-  font-size: var(--font-size--1);
+  font-size: var(--calcite-app-font-size--1);
   margin: 0 var(--calcite-app-side-spacing-half);
   color: var(--calcite-app-foreground);
 }

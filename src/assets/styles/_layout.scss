@@ -2,7 +2,7 @@ $side-spacing: 15px !default;
 $cap-spacing: 15px !default;
 $animation-time: 250ms !default;
 
-:host {
+:root {
   --calcite-app-side-spacing: #{$side-spacing};
   --calcite-app-cap-spacing: #{$cap-spacing};
 
@@ -33,13 +33,6 @@ $animation-time: 250ms !default;
   --calcite-app-icon-size: 16px;
 
   --calcite-app-border-radius: 3px;
-
-  // animation
-  --calcite-app-animation-time: #{$animation-time};
-  --calcite-app-animation-time-fast: #{round($animation-time / 3)};
-  --calcite-app-animation-time-slow: #{round($animation-time * 2)};
-
-  --calcite-app-easing-function: ease-in-out;
 
   // shadows
   --calcite-app-shadow-0: 0 2px 4px rgba(0, 0, 0, 0.1);
