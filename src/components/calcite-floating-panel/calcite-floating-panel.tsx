@@ -8,11 +8,7 @@ import { x16 } from "@esri/calcite-ui-icons";
 
 import CalciteIcon from "../_support/CalciteIcon";
 
-const CSS = {
-  header: "header",
-  heading: "heading",
-  content: "content"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-floating-panel",
@@ -28,7 +24,7 @@ export class CalciteFloatingPanel {
 
   /**
    * Determines where the element will be displayed.
-   * side: dynamically left or right based on whether we're in the primary or secondary shell-panel.
+   * side: dynamically left or right based on whether we're in a leading or trailing shell-panel.
    * over: centered on top of trigger and covers trigger.
    * anchor: dynamically above or below based on how close trigger is to top or bottom of window.
    */

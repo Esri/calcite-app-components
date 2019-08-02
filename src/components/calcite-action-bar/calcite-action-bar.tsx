@@ -2,8 +2,7 @@ import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
-
-import { CalciteTheme } from "../interfaces";
+import { CalciteLayout, CalciteTheme } from "../interfaces";
 
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
@@ -26,22 +25,31 @@ export class CalciteActionBar {
    * Indicates whether widget can be expanded.
    */
   @Prop({ reflect: true }) expand = true;
+
   /**
    * Indicates whether widget is expanded.
    */
   @Prop({ reflect: true }) expanded = false;
+
   /**
    * Updates the label of the expand icon when the component is collapsed.
    */
   @Prop() textExpand = "Expand";
+
   /**
    * Updates the label of the collapse icon when the component is expanded.
    */
   @Prop() textCollapse = "Collapse";
 
   /**
+   * Arrangement of the component.
+   */
+  @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
    * Element styling
    */
+
   @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
@@ -58,8 +66,18 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
+  getClosestShellLayout(): CalciteLayout {
+    const shellNode = this.el.closest("calcite-shell-panel");
+
+    if (!shellNode) {
+      return;
+    }
+
+    return shellNode.layout;
+  }
+
   renderExpandToggle() {
-    const { expanded, expand, textExpand, textCollapse, el } = this;
+    const { expanded, expand, textExpand, textCollapse, el, layout } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -70,9 +88,11 @@ export class CalciteActionBar {
       icons.reverse();
     }
 
-    const parentPrimary = el.parentElement.hasAttribute("primary");
-    const expandIcon = parentPrimary ? icons[0] : icons[1];
-    const collapseIcon = parentPrimary ? icons[1] : icons[0];
+    const layoutFallback = layout || this.getClosestShellLayout() || "leading";
+
+    const trailing = layoutFallback === "trailing";
+    const expandIcon = trailing ? icons[1] : icons[0];
+    const collapseIcon = trailing ? icons[0] : icons[1];
 
     return expand ? (
       <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>

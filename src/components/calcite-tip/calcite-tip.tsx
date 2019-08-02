@@ -3,16 +3,7 @@ import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 import CalciteIcon from "../_support/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
-
-const CSS = {
-  header: "header",
-  heading: "heading",
-  close: "close",
-  imageFrame: "image-frame",
-  content: "content",
-  info: "info",
-  link: "link"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-tip",

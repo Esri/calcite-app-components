@@ -1,4 +1,5 @@
-:host .button {
+.button {
+  font-family: var(--calcite-app-font-family);
   display: flex;
   color: var(--calcite-app-foreground);
   fill: var(--calcite-app-foreground);
@@ -11,22 +12,28 @@
   border: none;
   width: 100%;
   cursor: pointer;
-  font: inherit;
-  font-size: var(--font-size--1);
+  font-size: var(--calcite-app-font-size--1);
   line-height: normal;
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
   text-align: unset;
+  &:hover {
+    background-color: var(--calcite-app-background-hover);
+    color: var(--calcite-app-foreground-hover);
+    fill: var(--calcite-app-foreground-hover);
+  }
+  .icon-container {
+    max-width: var(--calcite-app-icon-size);
+    max-height: var(--calcite-app-icon-size);
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
 }
 
 .button.compact {
   padding-left: var(--calcite-app-side-spacing-quarter);
   padding-right: var(--calcite-app-side-spacing-quarter);
-}
-
-:host .button:hover {
-  background-color: var(--calcite-app-background-hover);
-  color: var(--calcite-app-foreground-hover);
-  fill: var(--calcite-app-foreground-hover);
 }
 
 :host([active]) .button,
@@ -36,16 +43,7 @@
   background-color: var(--calcite-app-background-active);
 }
 
-:host .button .icon-container {
-  max-width: var(--calcite-app-icon-size);
-  max-height: var(--calcite-app-icon-size);
-  margin: 0;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-:host .text-container {
+.text-container {
   flex: 1;
   line-height: 1rem;
   margin: 0 var(--calcite-app-side-spacing-half);
