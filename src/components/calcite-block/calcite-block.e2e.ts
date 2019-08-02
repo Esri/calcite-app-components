@@ -60,16 +60,14 @@ describe("calcite-block", () => {
     await toggle.click();
 
     expect(toggleSpy).toHaveReceivedEventTimes(1);
-    let open = await element.getProperty("open");
-    expect(open).toBe(true);
+    expect(await element.getProperty("open")).toBe(true);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
     expect(toggle.getAttribute("title")).toBe(TEXT.collapse);
 
     await toggle.click();
 
     expect(toggleSpy).toHaveReceivedEventTimes(2);
-    open = await element.getProperty("open");
-    expect(open).toBe(false);
+    expect(await element.getProperty("open")).toBe(false);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
     expect(toggle.getAttribute("title")).toBe(TEXT.expand);
   });
