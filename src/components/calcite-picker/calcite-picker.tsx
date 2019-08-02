@@ -81,6 +81,7 @@ export class CalcitePicker {
     if (this.dragEnabled && this.mode === "configuration") {
       this.setupDragAndDrop();
     }
+    // console.log(this.slottedRows);
   }
 
   // --------------------------------------------------------------------------
@@ -169,6 +170,10 @@ export class CalcitePicker {
     this.editing = false;
   }
 
+  handleFilter(filteredData) {
+    console.log(filteredData);
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -228,7 +233,10 @@ export class CalcitePicker {
         <section class={CSS.container}>
           <header>
             <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
+            <calcite-filter
+              data={this.data}
+              onCalciteFilterChange={(e) => this.handleFilter(e.detail)}
+            />
           </header>
           {this.renderEditButton()}
           {this.data.map((item, index) => {
