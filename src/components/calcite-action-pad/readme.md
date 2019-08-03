@@ -4,6 +4,7 @@ The `calcite-action-pad` component is made up of [calcite-actions](../calcite-ac
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property          | Attribute   | Description                                                                                                                                                                                                                                                                                    | Type                           | Default     |
@@ -12,6 +13,7 @@ The `calcite-action-pad` component is made up of [calcite-actions](../calcite-ac
 | `positionElement` | --          | HTMLElement used to position this element according to the placement.                                                                                                                                                                                                                          | `HTMLElement`                  | `undefined` |
 | `theme`           | `theme`     | Element styling                                                                                                                                                                                                                                                                                | `"dark" \| "light"`            | `undefined` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

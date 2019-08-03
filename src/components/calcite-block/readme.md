@@ -4,6 +4,7 @@ The `block` component is intended for displaying information in stacked, collaps
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                       | Type                | Default         |
@@ -16,12 +17,14 @@ The `block` component is intended for displaying information in stacked, collaps
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.       | `string`            | `TEXT.expand`   |
 | `theme`        | `theme`         | Element styling                                   | `"dark" \| "light"` | `undefined`     |
 
+
 ## Events
 
 | Event                | Description                               | Type               |
 | -------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

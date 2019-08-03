@@ -4,6 +4,7 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property         | Attribute         | Description                                         | Type                | Default     |
@@ -15,6 +16,7 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 | `theme`          | `theme`           | Element styling                                     | `"dark" \| "light"` | `undefined` |
 | `thumbnail`      | `thumbnail`       |                                                     | `string`            | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -22,13 +24,12 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-tip --> calcite-action
   style calcite-tip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

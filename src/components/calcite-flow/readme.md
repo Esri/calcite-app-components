@@ -4,20 +4,27 @@ The `calcite-flow` component is a series of panels that provides a user with a w
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description     | Type                | Default     |
 | -------- | --------- | --------------- | ------------------- | ----------- |
 | `theme`  | `theme`   | Element styling | `"dark" \| "light"` | `undefined` |
 
+
 ## Methods
 
 ### `back() => Promise<void>`
+
+
 
 #### Returns
 
 Type: `Promise<void>`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
