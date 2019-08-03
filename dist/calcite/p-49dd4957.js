@@ -1,0 +1,1 @@
+const e="Tips",a="Tip",i={header:"header",heading:"heading",close:"close",tipContainer:"tip-container",pagination:"pagination",pagePosition:"page-position",pageNext:"page-next",pagePrevious:"page-previous"};export{i as C,e as D,a};
