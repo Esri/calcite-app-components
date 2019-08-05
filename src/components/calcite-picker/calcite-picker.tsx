@@ -75,6 +75,13 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
+  connectedCallback() {
+    const rows = this.el.querySelectorAll("calcite-picker-row");
+    rows.forEach((row) => {
+      row.setAttribute("icon", this.getIconType());
+    });
+  }
+
   componentDidLoad() {
     const slot = this.el.shadowRoot.querySelector("slot");
     this.slottedRows = slot.assignedElements();
