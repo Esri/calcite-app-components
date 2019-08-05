@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 
 @Component({
@@ -14,6 +14,8 @@ export class CalciteFilter {
   // --------------------------------------------------------------------------
 
   @Prop() textLabel: string;
+
+  @Prop() textPlaceholder: string;
 
   @Prop() data: object[];
 
@@ -44,6 +46,9 @@ export class CalciteFilter {
     const find = (input, regex) => {
       let found = false;
       forIn(input, (value) => {
+        if (typeof value === "function") {
+          return;
+        }
         if (Array.isArray(value) || (typeof value === "object" && value !== null)) {
           if (find(value, regex)) {
             found = true;
@@ -75,6 +80,7 @@ export class CalciteFilter {
           {this.textLabel}
           <input
             type="text"
+            placeholder={this.textPlaceholder}
             onInput={(event) => {
               // @ts-ignore
               this.filter(event.target.value);
