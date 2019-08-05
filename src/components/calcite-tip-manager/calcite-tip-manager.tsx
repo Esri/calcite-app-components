@@ -26,7 +26,7 @@ export class CalciteTipManager {
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
   /**
-   * Element styling
+   * Element styling.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 

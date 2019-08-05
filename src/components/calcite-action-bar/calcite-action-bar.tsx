@@ -47,7 +47,7 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) layout: CalciteLayout;
 
   /**
-   * Element styling
+   * Element styling.
    */
 
   @Prop({ reflect: true }) theme: CalciteTheme;

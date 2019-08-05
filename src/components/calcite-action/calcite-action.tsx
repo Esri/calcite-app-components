@@ -48,7 +48,7 @@ export class CalciteAction {
   @Prop({ reflect: true }) textEnabled = false;
 
   /**
-   * Element styling
+   * Element styling.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 

@@ -10,7 +10,7 @@ The `calcite-tip-manager` component contains multiple [calcite-tips](../calcite-
 | --------------------- | ----------------------- | ----------------------------------------------- | ------------------- | -------------------------- |
 | `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.    | `string`            | `DEFAULT_GROUP_TITLE`      |
 | `textPaginationLabel` | `text-pagination-label` | Label that appears on hover of pagination icon. | `string`            | `DEFAULT_PAGINATION_LABEL` |
-| `theme`               | `theme`                 | Element styling                                 | `"dark" \| "light"` | `undefined`                |
+| `theme`               | `theme`                 | Element styling.                                | `"dark" \| "light"` | `undefined`                |
 
 ## Methods
 

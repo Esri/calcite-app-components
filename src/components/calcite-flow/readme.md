@@ -1,6 +1,6 @@
 # calcite-flow
 
-The `calcite-flow` component is a series of panels that provides a user with a workflow (eg. editing experience), by which the user can switch from panel to panel of [calcite-flow-items](../calcite-flow-item).
+The `calcite-flow` component is a series of panels that provides a user with a workflow (eg. editing experience), by which the user can switch from panel to panel of `calcite-flow-items`.
 
 <!-- Auto Generated Below -->
 

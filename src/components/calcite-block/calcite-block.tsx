@@ -56,7 +56,7 @@ export class CalciteBlock {
   textCollapse = TEXT.collapse;
 
   /**
-   * Element styling
+   * Element styling.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 

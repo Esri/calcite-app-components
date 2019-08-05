@@ -2,7 +2,7 @@
 
 ## Description
 
-The `calcite-action-bar` component is made up of multiple [calcite-actions](../calcite-action) (such as Tips, Legend, Add etc.) in the form of clickable icons. The action bar can be expanded to view actions with descriptive text or made smaller to view with just icons.
+The `calcite-action-bar` component is made up of multiple `calcite-actions` (such as Tips, Legend, Add etc.) in the form of clickable icons. The action bar can be expanded to view actions with descriptive text or made smaller to view with just icons.
 
 <!-- Auto Generated Below -->
 
@@ -15,7 +15,7 @@ The `calcite-action-bar` component is made up of multiple [calcite-actions](../c
 | `layout`       | `layout`        | Arrangement of the component.                                          | `"leading" \| "trailing"` | `undefined`  |
 | `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded. | `string`                  | `"Collapse"` |
 | `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is collapsed.  | `string`                  | `"Expand"`   |
-| `theme`        | `theme`         | Element styling                                                        | `"dark" \| "light"`       | `undefined`  |
+| `theme`        | `theme`         | Element styling.                                                       | `"dark" \| "light"`       | `undefined`  |
 
 ## Dependencies
 

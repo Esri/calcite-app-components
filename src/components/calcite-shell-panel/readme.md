@@ -1,6 +1,6 @@
 # calcite-shell-panel
 
-The `calcite-shell-panel` is a child component of [calcite-shell](../calcite-shell) used to house and display other components like `calcite-block`, `calcite-flow` and `floating-panel`.
+The `calcite-shell-panel` is a child component of `calcite-shell` used to house and display other components like `calcite-block`, `calcite-flow` and `floating-panel`.
 
 <!-- Auto Generated Below -->
 

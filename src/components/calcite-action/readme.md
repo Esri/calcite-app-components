@@ -1,6 +1,6 @@
 # calcite-action
 
-The `calcite-action` component is an action item (such as Tip, Legend, Home etc.), typically housed in [calcite-action-bar](../calcite-action-bar) or [calcite-action-pad](../calcite-action-pad) in the form of a clickable icon with a text description option.
+The `calcite-action` component lives in either a `calcite-action-bar` or `calcite-action-pad`. Actions look like an icon with a text description option of the component that will be revealed when clicked or selected (such as a Tip, Legend, Home, etc.).
 
 <!-- Auto Generated Below -->
 
@@ -14,7 +14,7 @@ The `calcite-action` component is an action item (such as Tip, Legend, Home etc.
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`            | `undefined` |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`            | `undefined` |
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
-| `theme`       | `theme`        | Element styling                                                                                   | `"dark" \| "light"` | `undefined` |
+| `theme`       | `theme`        | Element styling.                                                                                  | `"dark" \| "light"` | `undefined` |
 
 ## Dependencies
 

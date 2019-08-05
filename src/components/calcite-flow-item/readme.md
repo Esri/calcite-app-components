@@ -1,6 +1,6 @@
 # calcite-flow-item
 
-A flow item is used by [calcite-flow](../calcite-flow) lives in a panel with a heading and content.
+A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel with a heading and content.
 
 <!-- Auto Generated Below -->
 
