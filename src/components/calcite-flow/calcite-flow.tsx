@@ -1,6 +1,8 @@
-import { Component, Element, Host, Method, State, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core";
 
 import { CSS, FlowDirection } from "./resources";
+
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-flow",
@@ -8,6 +10,17 @@ import { CSS, FlowDirection } from "./resources";
   shadow: true
 })
 export class CalciteFlow {
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties

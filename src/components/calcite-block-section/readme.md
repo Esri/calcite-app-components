@@ -9,9 +9,9 @@ The `calcite-block-section` component is a child element of `calcite-block` that
 | Property       | Attribute       | Description                                               | Type      | Default         |
 | -------------- | --------------- | --------------------------------------------------------- | --------- | --------------- |
 | `open`         | `open`          | When true, the block's section content will be displayed. | `boolean` | `false`         |
+| `text`         | `text`          | Text displayed in the button.                             | `string`  | `undefined`     |
 | `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.                | `string`  | `TEXT.collapse` |
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.               | `string`  | `TEXT.expand`   |
-| `textLabel`    | `text-label`    | Text displayed in the button.                             | `string`  | `undefined`     |
 
 ## Events
 

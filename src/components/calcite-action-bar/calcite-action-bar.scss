@@ -7,15 +7,15 @@
   max-width: 15vw;
 }
 
-:host ::slotted(calcite-action-group) {
+::slotted(calcite-action-group) {
   border-bottom: 1px solid var(--calcite-app-border);
 }
 
-:host ::slotted(calcite-action-group:last-child) {
+::slotted(calcite-action-group:last-child) {
   border-bottom: none;
 }
 
-:host .action-group--bottom {
+.action-group--bottom {
   flex-grow: 1;
   justify-content: flex-end;
 }

@@ -15,17 +15,17 @@ describe("calcite-shell-panel", () => {
     await page.setContent("<calcite-shell-panel></calcite-shell-panel>");
     const element = await page.find("calcite-shell-panel");
 
-    const primary = await element.getProperty("primary");
+    const layout = await element.getProperty("layout");
 
-    expect(primary).toBe(false);
-    expect(element.shadowRoot.firstElementChild.tagName).toBe("DIV");
+    expect(layout).toBe("leading");
+    expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
   });
 
-  it("primary property should have action slot first ", async () => {
+  it("leading layout property should have action slot first ", async () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-shell-panel primary><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
+      '<calcite-shell-panel layout="leading"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
     );
 
     const element = await page.find("calcite-shell-panel");
@@ -33,5 +33,19 @@ describe("calcite-shell-panel", () => {
     await page.waitForChanges();
 
     expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
+  });
+
+  it("trailing layout property should have DIV first ", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      '<calcite-shell-panel layout="trailing"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
+    );
+
+    const element = await page.find("calcite-shell-panel");
+
+    await page.waitForChanges();
+
+    expect(element.shadowRoot.firstElementChild.tagName).toBe("DIV");
   });
 });

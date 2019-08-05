@@ -1,6 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS } from "../calcite-block/resources";
-import { TEXT } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 describe("calcite-block-section", () => {
   it("renders", async () => {
@@ -9,34 +8,6 @@ describe("calcite-block-section", () => {
     await page.setContent("<calcite-block-section></calcite-block-section>");
     const element = await page.find("calcite-block-section");
     expect(element).toHaveClass("hydrated");
-  });
-
-  it("is not collapsible by default", async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-      <calcite-block-section open>
-        <calcite-block-content>needed to receive clicks</calcite-block-content>
-      </calcite-block-section>
-    `);
-
-    const element = await page.find("calcite-block-section");
-
-    await element.click();
-    let open = await element.getProperty("open");
-    expect(open).toBe(true);
-
-    await element.click();
-    open = await element.getProperty("open");
-    expect(open).toBe(true);
-  });
-
-  it("is closed by default", async () => {
-    const page = await newE2EPage();
-    await page.setContent("<calcite-block-section></calcite-block-section>");
-    const element = await page.find("calcite-block-section");
-
-    const openProp = await element.getProperty("open");
-    expect(openProp).toBe(false);
   });
 
   it("open property is reflected", async () => {
@@ -57,54 +28,60 @@ describe("calcite-block-section", () => {
     expect(element).toBeNull();
   });
 
-  it("can be toggled", async () => {
+  it("can display/hide content", async () => {
     const page = await newE2EPage();
-    await page.setContent(
-      "<calcite-block-section><calcite-block-header></calcite-block-header></calcite-block-section>"
-    );
-    const element = await page.find("calcite-block-section");
-    const toggleSpy = await element.spyOnEvent("calciteBlockSectionToggle");
-    const toggle = await page.find(`calcite-block-section >>> .${CSS.toggle}`);
+    await page.setContent("<calcite-block-section><div>some content</div></calcite-block-section>");
+    let element = await page.find("calcite-block-section");
+    let content = await page.find(`calcite-block-section >>> .${CSS.content}`);
 
-    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
-    expect(toggle.getAttribute("title")).toBe(TEXT.expand);
+    expect(await content.isVisible()).toBe(false);
 
-    toggle.click();
+    element.setProperty("open", true);
     await page.waitForChanges();
+    element = await page.find("calcite-block-section[open]");
+    content = await page.find(`calcite-block-section >>> .${CSS.content}`);
 
-    expect(toggleSpy).toHaveReceivedEventTimes(1);
-    let open = await element.getProperty("open");
-    expect(open).toBe(true);
-    expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
-    expect(toggle.getAttribute("title")).toBe(TEXT.collapse);
+    expect(element).toBeTruthy();
+    expect(await content.isVisible()).toBe(true);
 
-    toggle.click();
+    element.setProperty("open", false);
     await page.waitForChanges();
+    element = await page.find("calcite-block-section[open]");
+    content = await page.find(`calcite-block-section >>> .${CSS.content}`);
 
-    expect(toggleSpy).toHaveReceivedEventTimes(2);
-    open = await element.getProperty("open");
-    expect(open).toBe(false);
-    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
-    expect(toggle.getAttribute("title")).toBe(TEXT.expand);
+    expect(element).toBeNull();
+    expect(await content.isVisible()).toBe(false);
   });
 
-  it("places header and content", async () => {
+  it("can be toggled", async () => {
+    const page = await newE2EPage();
+    await page.setContent("<calcite-block-section></calcite-block-section>");
+    const element = await page.find("calcite-block-section");
+    const toggleSpy = await element.spyOnEvent("calciteBlockSectionToggle");
+    const toggle = await page.find(`calcite-block-section >>> calcite-action`);
+
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
+
+    await toggle.click();
+
+    expect(toggleSpy).toHaveReceivedEventTimes(1);
+    expect(await element.getProperty("open")).toBe(true);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
+
+    await toggle.click();
+
+    expect(toggleSpy).toHaveReceivedEventTimes(2);
+    expect(await element.getProperty("open")).toBe(false);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
+  });
+
+  it("sets calcite-block-section renders section text", async () => {
     const page = await newE2EPage();
     await page.setContent(`
-      <calcite-block-section>
-        <calcite-block-header></calcite-block-header>
-        <calcite-block-content></calcite-block-content>
-      </calcite-block-section>
+      <calcite-block-section text="test text" open="true"></calcite-block-section>
     `);
 
-    const element = await page.find("calcite-block-section");
-
-    const children = await element.getProperty("children");
-    // workaround since `children` value is missing `length`
-    expect(Object.keys(children)).toHaveLength(2);
-
-    const header = await element.find("calcite-block-header");
-    const headerSlotName = await header.getProperty("slot");
-    expect(headerSlotName).toBe("header");
+    const element = await page.find(`calcite-block-section >>> calcite-action`);
+    expect(await element.getProperty("text")).toBe("test text");
   });
 });

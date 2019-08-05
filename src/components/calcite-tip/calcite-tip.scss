@@ -15,8 +15,15 @@ $tip-image-max-width: 100% !default;
   border-radius: var(--calcite-app-border-radius);
 }
 
-:host([hidden]) {
+:host([hidden]),
+:host([dismissed]) {
   display: none;
+}
+
+:host([selected]) {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 .header .heading {
@@ -41,6 +48,10 @@ $tip-image-max-width: 100% !default;
 
 .info ::slotted(p) {
   margin-top: 0;
+}
+
+slot[name="link"]::slotted(a) {
+  color: var(--calcite-app-foreground);
 }
 
 .image-frame {

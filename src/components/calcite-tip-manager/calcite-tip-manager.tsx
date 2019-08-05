@@ -1,8 +1,9 @@
 import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
-import { chevronLeft24, chevronRight24, x24 } from "@esri/calcite-ui-icons";
+import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-tip-manager",
@@ -24,6 +25,11 @@ export class CalciteTipManager {
    */
   @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
 
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -36,7 +42,8 @@ export class CalciteTipManager {
 
   @Watch("selectedIndex")
   selectedChangeHandler() {
-    this.updateSelectedTip();
+    this.showSelectedTip();
+    this.updateGroupTitle();
   }
 
   @State() tips: HTMLCalciteTipElement[];
@@ -55,12 +62,12 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  connectedCallback() {
     this.setUpTips();
   }
 
   componentDidLoad() {
-    this.observer.observe(this.el, { childList: true });
+    this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
   componentDidUnload() {
@@ -95,41 +102,35 @@ export class CalciteTipManager {
 
   setUpTips(): void {
     const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
+    const selectedTip = this.el.querySelector<HTMLCalciteTipElement>("calcite-tip[selected]");
 
     this.tips = tips;
     this.total = tips.length;
+    this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
-    let selectedIndex: number = null;
-
-    tips.forEach((tip, index) => {
+    tips.forEach((tip) => {
       tip.toggleAttribute("non-dismissible", true);
-
-      if (selectedIndex === null && tip.hasAttribute("selected")) {
-        selectedIndex = index;
-        return;
-      }
-
-      tip.removeAttribute("selected");
     });
-
-    this.selectedIndex = selectedIndex || 0;
+    this.showSelectedTip();
+    this.updateGroupTitle();
   }
 
-  hideTipManager(): void {
+  hideTipManager = (): void => {
     this.el.toggleAttribute("hidden");
     this.el.toggleAttribute("aria-hidden");
+  };
+
+  showSelectedTip() {
+    this.tips.forEach((tip, index) => {
+      tip.toggleAttribute("selected", this.selectedIndex === index);
+      tip.toggleAttribute("hidden", this.selectedIndex !== index);
+    });
   }
 
-  updateSelectedTip(): void {
-    this.tips.forEach((tip, index) => {
-      const selected = index === this.selectedIndex;
-
-      tip.toggleAttribute("selected", selected);
-
-      if (selected) {
-        this.groupTitle = tip.dataset.groupTitle || this.textDefaultTitle;
-      }
-    });
+  updateGroupTitle() {
+    const selectedTip = this.tips[this.selectedIndex];
+    const tipParent = selectedTip.closest("calcite-tip-group");
+    this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
   }
 
   previousClicked = (): void => {
@@ -155,22 +156,22 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action onCalciteActionClick={this.hideTipManager} class={CSS.close}>
-            <CalciteIcon size="24" path={x24} />
+          <calcite-action onClick={this.hideTipManager} class={CSS.close}>
+            <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onCalciteActionClick={this.previousClicked}>
-            <CalciteIcon size="24" path={chevronLeft24} />
+          <calcite-action onClick={this.previousClicked} class={CSS.pagePrevious}>
+            <CalciteIcon size="16" path={chevronLeft16} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onCalciteActionClick={this.nextClicked}>
-            <CalciteIcon size="24" path={chevronRight24} />
+          <calcite-action onClick={this.nextClicked} class={CSS.pageNext}>
+            <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>
         </footer>
       </Host>

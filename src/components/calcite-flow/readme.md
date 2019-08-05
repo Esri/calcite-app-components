@@ -4,6 +4,12 @@ The `calcite-flow` component is a series of panels that provides a user with a w
 
 <!-- Auto Generated Below -->
 
+## Properties
+
+| Property | Attribute | Description     | Type                | Default     |
+| -------- | --------- | --------------- | ------------------- | ----------- |
+| `theme`  | `theme`   | Element styling | `"dark" \| "light"` | `undefined` |
+
 ## Methods
 
 ### `back() => Promise<void>`

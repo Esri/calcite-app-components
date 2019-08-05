@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 
 import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
-import { TEXT } from "./resources";
+import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
@@ -18,17 +18,17 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   /**
-   * Text displayed in the button.
-   */
-  @Prop() textLabel: string;
-
-  /**
    * When true, the block's section content will be displayed.
    */
   @Prop({
     reflect: true
   })
   open = false;
+
+  /**
+   * Text displayed in the button.
+   */
+  @Prop() text: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
@@ -50,26 +50,6 @@ export class CalciteBlockSection {
 
   @Element()
   el: HTMLElement;
-
-  mutationObserver = new MutationObserver(() => this.placeHeader());
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.mutationObserver.observe(this.el, { childList: true });
-  }
-
-  componentWillLoad(): void {
-    this.placeHeader();
-  }
-
-  disconnectedCallback(): void {
-    this.mutationObserver.disconnect();
-  }
 
   // --------------------------------------------------------------------------
   //
@@ -93,14 +73,6 @@ export class CalciteBlockSection {
     this.calciteBlockSectionToggle.emit();
   };
 
-  placeHeader() {
-    const header = this.el.querySelector("calcite-block-header");
-
-    if (header && !header.slot) {
-      header.slot = "header";
-    }
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -117,7 +89,7 @@ export class CalciteBlockSection {
       <calcite-action
         aria-label={toggleLabel}
         onClick={this.onHeaderClick}
-        text={this.textLabel}
+        text={this.text}
         text-enabled
         compact
       >
@@ -128,8 +100,9 @@ export class CalciteBlockSection {
     return (
       <Host aria-expanded={open ? "true" : "false"}>
         {headerNode}
-        <slot name="header" />
-        {open ? <slot /> : null}
+        <div class={CSS.content} hidden={!open}>
+          <slot />
+        </div>
       </Host>
     );
   }
