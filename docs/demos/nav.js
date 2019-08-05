@@ -49,17 +49,17 @@ a.is-active {
         </svg>
       </a>
       </li>
-      <li><a href="${root}demos/calcite-action/">Action</a></li>
-      <li><a href="${root}demos/calcite-action-bar/">Action Bar</a></li>
-      <li><a href="${root}demos/calcite-action-pad/">Action Pad</a></li>
+      <li><a href="${root}demos/calcite-action.html">Action</a></li>
+      <li><a href="${root}demos/calcite-action-bar.html">Action Bar</a></li>
+      <li><a href="${root}demos/calcite-action-pad.html">Action Pad</a></li>
       <li><a href="${root}demos/calcite-block.html">Block</a></li>
-      <li><a href="${root}demos/calcite-flow/">Flow</a></li>
-      <li><a href="${root}demos/calcite-flow-item/">Flow Item</a></li>
-      <li><a href="${root}demos/calcite-shell/">Shell</a></li>
-      <li><a href="${root}demos/calcite-shell-panel/">Shell Panel</a></li>
+      <li><a href="${root}demos/calcite-flow.html">Flow</a></li>
+      <li><a href="${root}demos/calcite-flow-item.html">Flow Item</a></li>
+      <li><a href="${root}demos/calcite-shell.html">Shell</a></li>
+      <li><a href="${root}demos/calcite-shell-panel.html">Shell Panel</a></li>
       <li><a href="${root}demos/calcite-tip.html">Tip</a></li>
       <li><a href="${root}demos/calcite-tip-manager.html">Tip Manager</a></li>
-      <li><a href="${root}demos/calcite-typography/">Typography</a></li>
+      <li><a href="${root}demos/calcite-typography.html">Typography</a></li>
     </ul>
 </nav>
 `;
