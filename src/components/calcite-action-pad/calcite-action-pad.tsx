@@ -30,7 +30,7 @@ export class CalciteActionPad {
   @Prop() positionElement: HTMLElement;
 
   /**
-   * Element styling
+   * Element styling.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
