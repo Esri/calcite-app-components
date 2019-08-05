@@ -56,6 +56,8 @@ export class CalcitePicker {
     });
   }
 
+  @State() dataForFilter = this.data;
+
   deletedRows = new Set();
   slottedRows: any;
 
@@ -77,11 +79,13 @@ export class CalcitePicker {
 
   componentDidLoad() {
     const slot = this.el.shadowRoot.querySelector("slot");
-    this.slottedRows = slot.assignedElements();
+    this.slottedRows = slot ? slot.assignedElements() : null;
     if (this.dragEnabled && this.mode === "configuration") {
       this.setupDragAndDrop();
     }
-    // console.log(this.slottedRows);
+    if (this.slottedRows) {
+      this.dataForFilter = [...this.data, ...this.getSlottedData()];
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -171,7 +175,26 @@ export class CalcitePicker {
   }
 
   handleFilter(filteredData) {
-    console.log(filteredData);
+    const values = filteredData.map((item) => item.value);
+    const rows = [
+      ...this.slottedRows,
+      ...Array.from(this.el.shadowRoot.querySelectorAll("calcite-picker-row"))
+    ];
+    rows.forEach((row) => {
+      row.toggleAttribute("hidden", values.indexOf(row.value) === -1);
+    });
+  }
+
+  getSlottedData() {
+    const result = [];
+    this.slottedRows.forEach((row) => {
+      const obj = {};
+      Array.from(row.attributes).forEach((item: any) => {
+        obj[item.name] = item.value;
+      });
+      result.push(obj);
+    });
+    return result;
   }
 
   // --------------------------------------------------------------------------
@@ -234,16 +257,16 @@ export class CalcitePicker {
           <header>
             <h2>{this.textHeading}</h2>
             <calcite-filter
-              data={this.data}
+              data={this.dataForFilter}
+              textPlaceholder="filter results"
               onCalciteFilterChange={(e) => this.handleFilter(e.detail)}
             />
           </header>
           {this.renderEditButton()}
-          {this.data.map((item, index) => {
+          {this.data.map((item) => {
             const { heading, description, value, selected } = item;
             return (
               <calcite-picker-row
-                key={index}
                 textHeading={heading}
                 textDescription={description}
                 value={value}
