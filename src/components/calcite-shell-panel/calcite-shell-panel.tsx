@@ -2,6 +2,8 @@ import { Component, Host, Prop, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
+import { CalciteLayout } from "../interfaces";
+
 @Component({
   tag: "calcite-shell-panel",
   styleUrl: "calcite-shell-panel.scss",
@@ -15,9 +17,9 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, the panel is the primary panel for the application.
+   * Arrangement of the component.
    */
-  @Prop({ reflect: true }) primary = false;
+  @Prop({ reflect: true }) layout: CalciteLayout = "leading";
 
   // --------------------------------------------------------------------------
   //
@@ -26,6 +28,8 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
+    const { layout } = this;
+
     const contentNode = (
       <div class={CSS.content}>
         <slot />
@@ -34,9 +38,9 @@ export class CalciteShellPanel {
 
     const actionBarNode = <slot name="action-bar" />;
 
-    const mainNodes = [contentNode, actionBarNode];
+    const mainNodes = [actionBarNode, contentNode];
 
-    if (this.primary) {
+    if (layout === "trailing") {
       mainNodes.reverse();
     }
 

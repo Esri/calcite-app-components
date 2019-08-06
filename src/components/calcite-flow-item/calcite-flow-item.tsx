@@ -7,6 +7,8 @@ import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 
+import { CalciteTheme } from "../interfaces";
+
 @Component({
   tag: "calcite-flow-item",
   styleUrl: "calcite-flow-item.scss",
@@ -48,6 +50,11 @@ export class CalciteFlowItem {
    * 'Open' text string.
    */
   @Prop() textOpen = TEXT.open;
+
+  /**
+   * Element styling
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //
@@ -98,7 +105,7 @@ export class CalciteFlowItem {
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
-        onCalciteActionClick={this.backButtonClick}
+        onClick={this.backButtonClick}
       >
         <CalciteIcon size="16" path={chevronLeft16} />
       </calcite-action>
@@ -115,7 +122,7 @@ export class CalciteFlowItem {
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
-        onCalciteActionClick={this.toggleMenuOpen}
+        onClick={this.toggleMenuOpen}
       >
         <CalciteIcon size="16" path={ellipsis16} />
       </calcite-action>

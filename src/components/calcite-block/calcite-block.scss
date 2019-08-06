@@ -14,16 +14,26 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
   box-shadow: 0 0 0 1px var(--calcite-app-border);
 }
 
-::slotted(calcite-block-header) {
-  flex-grow: 1;
+.header-container {
+  background-color: var(--calcite-app-background);
+
+  & > .header {
+    padding: $header-content-padding;
+  }
 }
 
 .header {
-  background-color: var(--calcite-app-background);
+  flex-grow: 1;
+}
 
-  & > ::slotted(*) {
-    padding: $header-content-padding;
-  }
+.title {
+  margin: 0;
+}
+
+.summary {
+  font-size: var(--font-size--1);
+  padding: 0 var(--calcite-app-side-spacing-half);
+  color: var(--calcite-app-foreground);
 }
 
 .toggle {
@@ -42,4 +52,11 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 
 .toggle-icon {
   margin: 0 4px;
+  fill: var(--calcite-app-foreground);
+}
+
+.content {
+  background-color: var(--calcite-app-background);
+  padding: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-half);
+  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }

@@ -1,6 +1,7 @@
 :host {
   display: flex;
   height: 100%;
+  font-size: var(--calcite-app-base-font-size);
 }
 
 :host([hidden]) {
@@ -34,14 +35,13 @@
   flex: 0;
 }
 
-.heading {
-  font-weight: var(--font-weight);
+h2.heading {
   margin: 0;
   overflow: hidden;
   padding: 0 var(--calcite-app-side-spacing);
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: var(--font-size-0);
+  font-size: var(--calcite-app-font-size-0);
   display: flex;
   justify-content: center;
   align-items: center;

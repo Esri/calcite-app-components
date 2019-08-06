@@ -4,11 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Demos - Picker</title>
-
     <script src="head.js"></script>
   </head>
   <body>
-    <calcite-styleguide-nav></calcite-styleguide-nav>
+    <calcite-demo-nav page-id="calcite-picker"></calcite-demo-nav>
     <section class="example-container">
       <calcite-picker id="one" text-heading="Selection Picker - Multi" multiple>
         <calcite-picker-row text-heading="hi" text-description="there" value="helloWorld" icon="square">
@@ -35,7 +34,6 @@
           secondaryAction: {
             onclick: function() {
               console.log('clicked');
-              console.log(this);
             },
             icon: {
               size: 16,
@@ -52,6 +50,7 @@
           },
           selected: false
         }];
+
         picker.addEventListener("pickerSelectionChange", event => {
           console.log(event.detail);
         });

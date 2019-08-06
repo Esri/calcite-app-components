@@ -34,6 +34,8 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true }) editing = false;
 
+  @Prop() metadata: object;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -57,9 +59,14 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle() {
+  @Method() async toggle(shiftPressed) {
     this.selected = !this.selected;
-    this.rowToggled.emit({ row: this.el, value: this.value, selected: this.selected });
+    this.rowToggled.emit({
+      row: this.el,
+      value: this.value,
+      selected: this.selected,
+      shiftPressed
+    });
   }
 
   // --------------------------------------------------------------------------
@@ -123,7 +130,7 @@ export class CalcitePickerRow {
     return (
       <Host
         class={this.icon !== "square" && this.icon !== "circle" ? "highlight" : null}
-        onClick={() => this.toggle()}
+        onClick={(e) => this.toggle(e.shiftKey)}
       >
         {this.renderIcon()}
         <div class={CSS.label}>
