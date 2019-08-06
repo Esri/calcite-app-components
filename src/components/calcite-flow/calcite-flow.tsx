@@ -64,6 +64,8 @@ export class CalciteFlow {
     const lastItem = this.el.querySelector("calcite-flow-item:last-child");
 
     lastItem && lastItem.remove();
+
+    this.updateFlowProps();
   }
 
   // --------------------------------------------------------------------------
