@@ -1,11 +1,11 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from "@stencil/core";
 import {
   checkSquare16,
-  circle16,
-  circleFilled16,
+  circle16F,
+  circleFilled16F,
   handleVertical24,
   square16,
-  trash16
+  x16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
 import CalciteIcon from "../../_support/CalciteIcon";
@@ -94,7 +94,7 @@ export class CalcitePickerRow {
       if (this.icon === "square") {
         path = this.selected ? checkSquare16 : square16;
       } else {
-        path = this.selected ? circleFilled16 : circle16;
+        path = this.selected ? circleFilled16F : circle16F;
       }
       /* tslint:enable */
       return (
@@ -112,7 +112,7 @@ export class CalcitePickerRow {
           this.deleteRow();
         }}
       >
-        <CalciteIcon size="16" path={trash16} />
+        <CalciteIcon size="16" path={x16} />
       </calcite-action>
     ) : (
       <slot name="secondaryAction" />
