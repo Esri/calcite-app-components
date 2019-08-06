@@ -2,8 +2,6 @@ $tip-content-only-width: 100% !default;
 $tip-content-width: 70% !default;
 $tip-image-frame-width: 25% !default;
 $tip-image-max-width: 100% !default;
-$tip-max-width: 540px;
-$tip-width: 65%;
 
 :host {
   position: relative;
@@ -24,8 +22,6 @@ $tip-width: 65%;
 
 :host([selected]) {
   box-shadow: none;
-  max-width: $tip-max-width;
-  width: $tip-width;
   margin: 0;
   padding: 0;
 }
@@ -52,6 +48,10 @@ $tip-width: 65%;
 
 .info ::slotted(p) {
   margin-top: 0;
+}
+
+slot[name="link"]::slotted(a) {
+  color: var(--calcite-app-foreground);
 }
 
 .image-frame {

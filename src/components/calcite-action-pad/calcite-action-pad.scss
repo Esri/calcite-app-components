@@ -28,10 +28,10 @@
   margin-left: -21px;
 }
 
-:host ::slotted(calcite-action-group) {
+::slotted(calcite-action-group) {
   border-bottom: 1px solid var(--calcite-app-border);
 }
 
-:host ::slotted(calcite-action-group:last-child) {
+::slotted(calcite-action-group:last-child) {
   border-bottom: none;
 }

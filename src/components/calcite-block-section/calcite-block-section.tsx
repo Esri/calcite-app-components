@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 
 import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
-import { TEXT } from "./resources";
+import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 
 @Component({
@@ -18,17 +18,17 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   /**
-   * Text displayed in the button.
-   */
-  @Prop() text: string;
-
-  /**
    * When true, the block's section content will be displayed.
    */
   @Prop({
     reflect: true
   })
   open = false;
+
+  /**
+   * Text displayed in the button.
+   */
+  @Prop() text: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
@@ -88,7 +88,7 @@ export class CalciteBlockSection {
     const headerNode = (
       <calcite-action
         aria-label={toggleLabel}
-        onCalciteActionClick={this.onHeaderClick}
+        onClick={this.onHeaderClick}
         text={this.text}
         text-enabled
         compact
@@ -100,11 +100,9 @@ export class CalciteBlockSection {
     return (
       <Host aria-expanded={open ? "true" : "false"}>
         {headerNode}
-        {open ? (
-          <calcite-block-content>
-            <slot />
-          </calcite-block-content>
-        ) : null}
+        <div class={CSS.content} hidden={!open}>
+          <slot />
+        </div>
       </Host>
     );
   }

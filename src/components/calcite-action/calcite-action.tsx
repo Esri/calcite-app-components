@@ -1,4 +1,6 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Host, Prop, h } from "@stencil/core";
+
+import { CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -45,15 +47,10 @@ export class CalciteAction {
    */
   @Prop({ reflect: true }) textEnabled = false;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
   /**
-   * Emitted when an action has been clicked.
+   * Element styling
    */
-  @Event() calciteActionClick: EventEmitter;
+  @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
   //
@@ -88,7 +85,6 @@ export class CalciteAction {
           class={classnames(CSS.button, compactClass)}
           title={labelFallback}
           aria-label={labelFallback}
-          onClick={this.clickHandler}
         >
           {iconContainerNode}
           {textContainerNode}
@@ -96,14 +92,4 @@ export class CalciteAction {
       </Host>
     );
   }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  clickHandler = (): void => {
-    this.calciteActionClick.emit(this);
-  };
 }

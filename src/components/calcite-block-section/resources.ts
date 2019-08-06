@@ -1,5 +1,5 @@
 export const CSS = {
-  label: "label"
+  content: "content"
 };
 
 export const TEXT = {

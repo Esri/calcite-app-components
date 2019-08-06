@@ -12,11 +12,9 @@ describe("calcite-action", () => {
   it("should not have text container", async () => {
     const page = await newE2EPage();
 
-    await page
-      .setContent(`<calcite-action text="hello world"></calcite-action>`)
-      .catch(error => {
-        console.error(error);
-      });
+    await page.setContent(`<calcite-action text="hello world"></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
 
     const textcontainer = await page.find("calcite-action >>> .text-container");
     expect(textcontainer).toBeNull();
@@ -25,13 +23,9 @@ describe("calcite-action", () => {
   it("should have text container", async () => {
     const page = await newE2EPage();
 
-    await page
-      .setContent(
-        `<calcite-action text="hello world" text-enabled></calcite-action>`
-      )
-      .catch(error => {
-        console.error(error);
-      });
+    await page.setContent(`<calcite-action text="hello world" text-enabled></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
 
     const textcontainer = await page.find("calcite-action >>> .text-container");
     expect(textcontainer).not.toBeNull();
@@ -40,11 +34,9 @@ describe("calcite-action", () => {
   it("should have icon container", async () => {
     const page = await newE2EPage();
 
-    await page
-      .setContent(`<calcite-action><svg><path></svg></calcite-action>`)
-      .catch(error => {
-        console.error(error);
-      });
+    await page.setContent(`<calcite-action><svg><path></svg></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
 
     const iconContainer = await page.find("calcite-action >>> .icon-container");
     expect(iconContainer).not.toBeNull();
@@ -53,7 +45,7 @@ describe("calcite-action", () => {
   it("should always have icon container", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`<calcite-action></calcite-action>`).catch(error => {
+    await page.setContent(`<calcite-action></calcite-action>`).catch((error) => {
       console.error(error);
     });
 
@@ -64,11 +56,9 @@ describe("calcite-action", () => {
   it("should have fallback label", async () => {
     const page = await newE2EPage();
 
-    await page
-      .setContent(`<calcite-action text="hello world"></calcite-action>`)
-      .catch(error => {
-        console.error(error);
-      });
+    await page.setContent(`<calcite-action text="hello world"></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
 
     const button = await page.find("calcite-action >>> .button");
     expect(button.getAttribute("title")).toBe("hello world");
@@ -78,35 +68,12 @@ describe("calcite-action", () => {
   it("should have label", async () => {
     const page = await newE2EPage();
 
-    await page
-      .setContent(
-        `<calcite-action text="hello world" label="hi"></calcite-action>`
-      )
-      .catch(error => {
-        console.error(error);
-      });
+    await page.setContent(`<calcite-action text="hello world" label="hi"></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
 
     const button = await page.find("calcite-action >>> .button");
     expect(button.getAttribute("title")).toBe("hi");
     expect(button.getAttribute("aria-label")).toBe("hi");
-  });
-
-  it("calciteActionClick", async () => {
-    const page = await newE2EPage();
-
-    await page
-      .setContent(`<calcite-action text="hello world"></calcite-action>`)
-      .catch(error => {
-        console.error(error);
-      });
-
-    const eventSpy = await page.spyOnEvent("calciteActionClick", "window");
-    const button = await page.find("calcite-action >>> .button");
-
-    button.click();
-
-    await page.waitForChanges();
-
-    expect(eventSpy).toHaveReceivedEvent();
   });
 });
