@@ -10,13 +10,19 @@ export const config: Config = {
       components: ["calcite-action", "calcite-action-group", "calcite-action-bar", "calcite-action-pad"]
     },
     {
+      components: ["calcite-block", "calcite-block-section"]
+    },
+    {
+      components: ["calcite-demo-nav", "calcite-example"]
+    },
+    {
       components: ["calcite-flow", "calcite-flow-item"]
     },
     {
-      components: ["calcite-shell", "calcite-shell-panel"]
+      components: ["calcite-shell", "calcite-shell-panel", "calcite-floating-panel"]
     },
     {
-      components: ["calcite-demo-nav"]
+      components: ["calcite-tip", "calcite-tip-group", "calcite-tip-manager"]
     }
   ],
   outputTargets: [
@@ -33,7 +39,6 @@ export const config: Config = {
     sass({
       injectGlobalPaths: ["src/assets/styles/includes.scss"]
     }),
-
     postcss({
       plugins: [autoprefixer()]
     })
