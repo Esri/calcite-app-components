@@ -7,12 +7,14 @@ interface CalciteSVGProps {
   size: string;
   path: string;
   svgAttributes?: SVGAttributes;
+  title?: string;
 }
 
 export const CalciteIcon: FunctionalComponent<CalciteSVGProps> = ({
   path,
   size,
-  svgAttributes
+  svgAttributes,
+  title
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +23,7 @@ export const CalciteIcon: FunctionalComponent<CalciteSVGProps> = ({
     viewBox={`0 0 ${size} ${size}`}
     {...svgAttributes}
   >
+    {title ? <title>{title}</title> : null}
     <path d={path} />
   </svg>
 );

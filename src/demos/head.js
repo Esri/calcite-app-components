@@ -25,5 +25,4 @@
   loadCss("build/calcite.css");
   loadScript("build/calcite.esm.js", { type: "module" });
   loadScript("build/calcite.js", { noModule: true });
-  loadScript("demos/nav.js");
 })();
