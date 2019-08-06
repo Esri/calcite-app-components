@@ -96,9 +96,7 @@ export class CalcitePicker {
     if (this.dragEnabled && this.mode === "configuration") {
       this.setupDragAndDrop();
     }
-    if (this.slottedRows) {
-      this.dataForFilter = [...this.data, ...this.getSlottedData()];
-    }
+    this.dataForFilter = [...this.data, ...this.getSlottedData()];
   }
 
   // --------------------------------------------------------------------------
