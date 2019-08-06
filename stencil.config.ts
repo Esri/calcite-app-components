@@ -14,6 +14,9 @@ export const config: Config = {
     },
     {
       components: ["calcite-shell", "calcite-shell-panel"]
+    },
+    {
+      components: ["calcite-demo-nav"]
     }
   ],
   outputTargets: [
