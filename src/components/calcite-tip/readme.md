@@ -12,7 +12,7 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 | `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.         | `boolean`           | `false`     |
 | `storageId`      | `storage-id`      | The local storage id used for an instance of a tip. | `string`            | `undefined` |
 | `textThumbnail`  | `text-thumbnail`  | Alternate text for description of the thumbnail.    | `string`            | `undefined` |
-| `theme`          | `theme`           | Element styling.                                    | `"dark" \| "light"` | `undefined` |
+| `theme`          | `theme`           | Used to set the component's color scheme.           | `"dark" \| "light"` | `undefined` |
 | `thumbnail`      | `thumbnail`       | A string of the path to the thumbnail.              | `string`            | `undefined` |
 
 ## Dependencies

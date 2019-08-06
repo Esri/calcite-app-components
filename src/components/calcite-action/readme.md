@@ -14,7 +14,7 @@ The `calcite-action` component lives in either a `calcite-action-bar` or `calcit
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`            | `undefined` |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`            | `undefined` |
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
-| `theme`       | `theme`        | Element styling.                                                                                  | `"dark" \| "light"` | `undefined` |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"` | `undefined` |
 
 ## Dependencies
 

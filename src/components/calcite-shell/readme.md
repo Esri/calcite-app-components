@@ -6,9 +6,9 @@ The `calcite-shell` component is used for application layout management. It is a
 
 ## Properties
 
-| Property | Attribute | Description     | Type                | Default     |
-| -------- | --------- | --------------- | ------------------- | ----------- |
-| `theme`  | `theme`   | Element styling | `"dark" \| "light"` | `undefined` |
+| Property | Attribute | Description                               | Type                | Default     |
+| -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
 ---
 

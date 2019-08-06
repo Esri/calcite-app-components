@@ -52,7 +52,7 @@ export class CalciteFlowItem {
   @Prop() textOpen = TEXT.open;
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 

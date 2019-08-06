@@ -14,7 +14,7 @@ The `calcite-block` component is intended for displaying content on it's own as 
 | `summary`      | `summary`       | Block summary.                                    | `string`            | `undefined`     |
 | `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.        | `string`            | `TEXT.collapse` |
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.       | `string`            | `TEXT.expand`   |
-| `theme`        | `theme`         | Element styling.                                  | `"dark" \| "light"` | `undefined`     |
+| `theme`        | `theme`         | Used to set the component's color scheme.         | `"dark" \| "light"` | `undefined`     |
 
 ## Events
 

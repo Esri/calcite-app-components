@@ -6,15 +6,15 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 
 ## Properties
 
-| Property         | Attribute          | Description                        | Type                | Default      |
-| ---------------- | ------------------ | ---------------------------------- | ------------------- | ------------ |
-| `heading`        | `heading`          | Heading text.                      | `string`            | `undefined`  |
-| `menuOpen`       | `menu-open`        | Opens the action menu.             | `boolean`           | `false`      |
-| `showBackButton` | `show-back-button` | Shows a back button in the header. | `boolean`           | `false`      |
-| `textBack`       | `text-back`        | 'Back' text string.                | `string`            | `TEXT.back`  |
-| `textClose`      | `text-close`       | 'Close' text string.               | `string`            | `TEXT.close` |
-| `textOpen`       | `text-open`        | 'Open' text string.                | `string`            | `TEXT.open`  |
-| `theme`          | `theme`            | Element styling                    | `"dark" \| "light"` | `undefined`  |
+| Property         | Attribute          | Description                               | Type                | Default      |
+| ---------------- | ------------------ | ----------------------------------------- | ------------------- | ------------ |
+| `heading`        | `heading`          | Heading text.                             | `string`            | `undefined`  |
+| `menuOpen`       | `menu-open`        | Opens the action menu.                    | `boolean`           | `false`      |
+| `showBackButton` | `show-back-button` | Shows a back button in the header.        | `boolean`           | `false`      |
+| `textBack`       | `text-back`        | 'Back' text string.                       | `string`            | `TEXT.back`  |
+| `textClose`      | `text-close`       | 'Close' text string.                      | `string`            | `TEXT.close` |
+| `textOpen`       | `text-open`        | 'Open' text string.                       | `string`            | `TEXT.open`  |
+| `theme`          | `theme`            | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined`  |
 
 ## Events
 

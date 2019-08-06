@@ -6,9 +6,9 @@ The `calcite-flow` component is a series of panels that provides a user with a w
 
 ## Properties
 
-| Property | Attribute | Description     | Type                | Default     |
-| -------- | --------- | --------------- | ------------------- | ----------- |
-| `theme`  | `theme`   | Element styling | `"dark" \| "light"` | `undefined` |
+| Property | Attribute | Description                               | Type                | Default     |
+| -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
 ## Methods
 
