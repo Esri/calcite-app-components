@@ -1,12 +1,79 @@
 import { Component, Host, Prop, h } from "@stencil/core";
-
+import CalciteIcon from "../_support/CalciteIcon";
 import { home16 } from "@esri/calcite-ui-icons";
 
-import CalciteIcon from "../_support/CalciteIcon";
+interface NavItem {
+  id: string;
+  path: string;
+  content: any;
+}
 
 const CSS = {
   isActive: "is-active"
 };
+
+const NAV_ITEMS: NavItem[] = [
+  {
+    id: "home",
+    path: "",
+    content: <CalciteIcon size="16" path={home16} title="Home" />
+  },
+  {
+    id: "calcite-action",
+    path: "demos/calcite-action.html",
+    content: "Action"
+  },
+  {
+    id: "calcite-action-bar",
+    path: "demos/calcite-action-bar.html",
+    content: "Action Bar"
+  },
+  {
+    id: "calcite-action-pad",
+    path: "demos/calcite-action-pad.html",
+    content: "Action Pad"
+  },
+  {
+    id: "calcite-block",
+    path: "demos/calcite-block.html",
+    content: "Block"
+  },
+  {
+    id: "calcite-flow",
+    path: "demos/calcite-flow.html",
+    content: "Flow"
+  },
+  {
+    id: "calcite-flow-item",
+    path: "demos/calcite-flow-item.html",
+    content: "Flow Item"
+  },
+  {
+    id: "calcite-shell",
+    path: "demos/calcite-shell.html",
+    content: "Shell"
+  },
+  {
+    id: "calcite-shell-panel",
+    path: "demos/calcite-shell-panel.html",
+    content: "Shell Panel"
+  },
+  {
+    id: "calcite-tip",
+    path: "demos/calcite-tip.html",
+    content: "Tip"
+  },
+  {
+    id: "calcite-tip-manager",
+    path: "demos/calcite-tip-manager.html",
+    content: "Tip Manager"
+  },
+  {
+    id: "calcite-typography",
+    path: "demos/calcite-typography.html",
+    content: "Typography"
+  }
+];
 
 @Component({
   tag: "calcite-demo-nav",
@@ -21,7 +88,7 @@ export class CalciteDemoNav {
   // --------------------------------------------------------------------------
 
   @Prop()
-  page: string;
+  pageId: string;
 
   // --------------------------------------------------------------------------
   //
@@ -37,106 +104,23 @@ export class CalciteDemoNav {
   //
   // --------------------------------------------------------------------------
 
-  render() {
-    const { page, root } = this;
+  renderNavItem(item: NavItem) {
+    const { pageId, root } = this;
+    const { content, id, path } = item;
 
     return (
+      <li>
+        <a class={id === pageId ? CSS.isActive : null} href={`${root}${path}`}>
+          {content}
+        </a>
+      </li>
+    );
+  }
+
+  render() {
+    return (
       <Host>
-        <ul>
-          <li>
-            <a class={page === "home" ? CSS.isActive : null} href={root}>
-              <CalciteIcon size="16" path={home16} title="Home" />
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-action" ? CSS.isActive : null}
-              href={`${root}demos/calcite-action.html`}
-            >
-              Action
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-action-bar" ? CSS.isActive : null}
-              href={`${root}demos/calcite-action-bar.html`}
-            >
-              Action Bar
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-action-pad" ? CSS.isActive : null}
-              href={`${root}demos/calcite-action-pad.html`}
-            >
-              Action Pad
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-block" ? CSS.isActive : null}
-              href={`${root}demos/calcite-block.html`}
-            >
-              Block
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-flow" ? CSS.isActive : null}
-              href={`${root}demos/calcite-flow.html`}
-            >
-              Flow
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-flow-item" ? CSS.isActive : null}
-              href={`${root}demos/calcite-flow-item.html`}
-            >
-              Flow Item
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-shell" ? CSS.isActive : null}
-              href={`${root}demos/calcite-shell.html`}
-            >
-              Shell
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-shell-panel" ? CSS.isActive : null}
-              href={`${root}demos/calcite-shell-panel.html`}
-            >
-              Shell Panel
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-tip" ? CSS.isActive : null}
-              href={`${root}demos/calcite-tip.html`}
-            >
-              Tip
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-tip-manager" ? CSS.isActive : null}
-              href={`${root}demos/calcite-tip-manager.html`}
-            >
-              Tip Manager
-            </a>
-          </li>
-          <li>
-            <a
-              class={page === "calcite-typography" ? CSS.isActive : null}
-              href={`${root}demos/calcite-typography.html`}
-            >
-              Typography
-            </a>
-          </li>
-        </ul>
+        <ul>{NAV_ITEMS.map((item) => this.renderNavItem(item))}</ul>
       </Host>
     );
   }
