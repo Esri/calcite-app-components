@@ -4,38 +4,27 @@ The `calcite-tip-manager` component contains multiple [calcite-tips](../calcite-
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property              | Attribute               | Description                                     | Type                | Default                    |
-| --------------------- | ----------------------- | ----------------------------------------------- | ------------------- | -------------------------- |
-| `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.    | `string`            | `DEFAULT_GROUP_TITLE`      |
-| `textPaginationLabel` | `text-pagination-label` | Label that appears on hover of pagination icon. | `string`            | `DEFAULT_PAGINATION_LABEL` |
-| `theme`               | `theme`                 | Element styling                                 | `"dark" \| "light"` | `undefined`                |
-
+| Property              | Attribute               | Description                                     | Type                | Default                       |
+| --------------------- | ----------------------- | ----------------------------------------------- | ------------------- | ----------------------------- |
+| `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.    | `string`            | `TEXT.defaultGroupTitle`      |
+| `textPaginationLabel` | `text-pagination-label` | Label that appears on hover of pagination icon. | `string`            | `TEXT.defaultPaginationLabel` |
+| `theme`               | `theme`                 | Element styling                                 | `"dark" \| "light"` | `undefined`                   |
 
 ## Methods
 
 ### `nextTip() => Promise<void>`
 
-
-
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `previousTip() => Promise<void>`
 
-
-
 #### Returns
 
 Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 
@@ -44,12 +33,13 @@ Type: `Promise<void>`
 - [calcite-action](../calcite-action)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-tip-manager --> calcite-action
   style calcite-tip-manager fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

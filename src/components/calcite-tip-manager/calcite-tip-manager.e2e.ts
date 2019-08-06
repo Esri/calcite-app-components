@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, DEFAULT_GROUP_TITLE } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 describe("calcite-tip-manager", () => {
   it("should render and show the default title", async () => {
@@ -12,7 +12,7 @@ describe("calcite-tip-manager", () => {
     expect(isVisible).toBe(true);
 
     const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
-    expect(title.innerText).toBe(DEFAULT_GROUP_TITLE);
+    expect(title.innerText).toBe(TEXT.defaultGroupTitle);
   });
 
   it("should be hidden after the close button is clicked", async () => {
@@ -100,7 +100,7 @@ describe("calcite-tip-manager", () => {
     nextButton.click();
     await page.waitForChanges();
 
-    expect(title.innerText).toBe(DEFAULT_GROUP_TITLE);
+    expect(title.innerText).toBe(TEXT.defaultGroupTitle);
   });
 
   it("should pre-select the correct tip if the selected attribute is set", async () => {

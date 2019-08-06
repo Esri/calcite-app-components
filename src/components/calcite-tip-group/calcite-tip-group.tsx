@@ -1,5 +1,5 @@
 import { Component, Prop, h } from "@stencil/core";
-import { DEFAULT_GROUP_TITLE } from "../resources";
+import { TEXT } from "../calcite-tip-manager/resources";
 
 @Component({
   tag: "calcite-tip-group",
@@ -15,7 +15,7 @@ export class CalciteTipGroup {
   /**
    * The title used for all nested tips
    */
-  @Prop({ reflect: true }) textGroupTitle = DEFAULT_GROUP_TITLE;
+  @Prop({ reflect: true }) textGroupTitle = TEXT.defaultGroupTitle;
 
   render() {
     return <slot />;

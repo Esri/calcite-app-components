@@ -1,0 +1,1 @@
+import{r as t,h as r}from"./p-65eb7859.js";import{T as e}from"./p-e5f29ee9.js";class o{constructor(r){t(this,r),this.textGroupTitle=e.defaultGroupTitle}render(){return r("slot",null)}}export{o as calcite_tip_group};
