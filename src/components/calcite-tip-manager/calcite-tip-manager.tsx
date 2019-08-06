@@ -109,21 +109,22 @@ export class CalciteTipManager {
     this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
     tips.forEach((tip) => {
-      tip.toggleAttribute("non-dismissible", true);
+      tip.setAttribute("non-dismissible", "");
     });
     this.showSelectedTip();
     this.updateGroupTitle();
   }
 
   hideTipManager = (): void => {
-    this.el.toggleAttribute("hidden");
-    this.el.toggleAttribute("aria-hidden");
+    this.el.setAttribute("hidden", "");
+    this.el.setAttribute("aria-hidden", "");
   };
 
   showSelectedTip() {
     this.tips.forEach((tip, index) => {
-      tip.toggleAttribute("selected", this.selectedIndex === index);
-      tip.toggleAttribute("hidden", this.selectedIndex !== index);
+      const isSelected = this.selectedIndex === index;
+      isSelected ? tip.setAttribute("selected", "") : tip.removeAttribute("selected");
+      isSelected ? tip.removeAttribute("hidden") : tip.setAttribute("hidden", "");
     });
   }
 
