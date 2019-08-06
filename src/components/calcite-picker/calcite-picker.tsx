@@ -58,6 +58,8 @@ export class CalcitePicker {
 
   deletedRows = new Set();
   slottedRows: any;
+  rows: any;
+  lastSelectedRow = null;
 
   // --------------------------------------------------------------------------
   //
@@ -84,7 +86,11 @@ export class CalcitePicker {
 
   componentDidLoad() {
     const slot = this.el.shadowRoot.querySelector("slot");
-    this.slottedRows = slot.assignedElements();
+    this.slottedRows = slot ? slot.assignedElements() : [];
+    this.rows = [
+      ...Array.from(this.el.shadowRoot.querySelectorAll("calcite-picker-row")),
+      ...this.slottedRows
+    ];
     if (this.dragEnabled && this.mode === "configuration") {
       this.setupDragAndDrop();
     }
@@ -102,20 +108,29 @@ export class CalcitePicker {
 
   @Listen("rowToggled")
   rowToggledHandler(event) {
-    const { row, value, selected } = event.detail;
+    const { row, selected, shiftPressed } = event.detail;
     if (selected) {
-      this.selectedValues.add(value);
+      if (this.multiple && shiftPressed && this.lastSelectedRow) {
+        const start = this.rows.indexOf(this.lastSelectedRow);
+        const end = this.rows.indexOf(row);
+        this.rows.slice(Math.min(start, end), Math.max(start, end)).forEach((currentRow) => {
+          currentRow.toggleAttribute("selected", true);
+          this.selectedValues.add(currentRow);
+        });
+      } else {
+        this.selectedValues.add(row);
+      }
     } else {
-      this.selectedValues.delete(value);
+      this.selectedValues.delete(row);
     }
     if (!this.multiple && selected) {
-      const rows = Array.from(this.el.shadowRoot.querySelectorAll("calcite-picker-row"));
-      rows.forEach((item) => {
+      this.rows.forEach((item) => {
         if (item !== row) {
           this.deselectRow(item);
         }
       });
     }
+    this.lastSelectedRow = row;
     this.pickerSelectionChange.emit(this.selectedValues);
   }
 
@@ -145,7 +160,7 @@ export class CalcitePicker {
 
   deselectRow(item) {
     item.toggleAttribute("selected", false);
-    this.selectedValues.delete(item.value);
+    this.selectedValues.delete(item);
   }
 
   startEdit() {
