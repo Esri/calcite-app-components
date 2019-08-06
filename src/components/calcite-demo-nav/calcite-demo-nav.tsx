@@ -49,6 +49,11 @@ const NAV_ITEMS: NavItem[] = [
     content: "Flow Item"
   },
   {
+    id: "calcite-picker",
+    path: "demos/calcite-picker.html",
+    content: "Picker"
+  },
+  {
     id: "calcite-shell",
     path: "demos/calcite-shell.html",
     content: "Shell"
