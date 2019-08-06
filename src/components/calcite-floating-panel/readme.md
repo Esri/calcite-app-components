@@ -1,6 +1,6 @@
 # calcite-floating-panel
 
-The `floating-panel` component is a positioned container that appears relative to a `calcite-shell-panel` used to house temporary content.
+The `floating-panel` component is a positioned container that appears relative to a `calcite-shell-panel` and is used to house temporary content.
 
 <!-- Auto Generated Below -->
 

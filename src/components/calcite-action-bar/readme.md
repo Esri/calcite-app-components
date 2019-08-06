@@ -15,7 +15,7 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 | `layout`       | `layout`        | Arrangement of the component.                                          | `"leading" \| "trailing"` | `undefined`  |
 | `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded. | `string`                  | `"Collapse"` |
 | `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is collapsed.  | `string`                  | `"Expand"`   |
-| `theme`        | `theme`         | Element styling.                                                       | `"dark" \| "light"`       | `undefined`  |
+| `theme`        | `theme`         | Used to set the component's color scheme.                              | `"dark" \| "light"`       | `undefined`  |
 
 ## Dependencies
 

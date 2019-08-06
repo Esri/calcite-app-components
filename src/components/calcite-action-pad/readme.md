@@ -1,6 +1,6 @@
 # calcite-action-pad
 
-The `calcite-action-pad` component is made up of `calcite-actions` in the form of clickable icons.
+The `calcite-action-pad` component is made up of `calcite-actions` in the form of clickable icons. This does not have an expandable option and is a smaller and simpler component than `calcite-action-bar`.
 
 <!-- Auto Generated Below -->
 

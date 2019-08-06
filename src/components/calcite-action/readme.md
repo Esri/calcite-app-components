@@ -1,6 +1,6 @@
 # calcite-action
 
-The `calcite-action` component lives in either a `calcite-action-bar` or `calcite-action-pad`. Actions look like an icon with a text description option of the component that will be revealed when clicked or selected (such as a Tip, Legend, Home, etc.).
+The `calcite-action` component lives in either a `calcite-action-bar` or `calcite-action-pad`. Actions look like an icon with a text description option of the component that will be revealed when the icon/ text is clicked or selected.
 
 <!-- Auto Generated Below -->
 
