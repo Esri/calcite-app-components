@@ -1,1 +1,0 @@
-System.register(["./p-581369cc.system.js","./p-79fd99b6.system.js"],function(t){"use strict";var e,n,r;return{setters:[function(t){e=t.r;n=t.h},function(t){r=t.D}],execute:function(){var s=function(){function t(t){e(this,t);this.textGroupTitle=r}t.prototype.render=function(){return n("slot",null)};return t}();t("calcite_tip_group",s)}}});

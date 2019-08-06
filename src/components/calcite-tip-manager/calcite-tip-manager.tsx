@@ -1,7 +1,7 @@
 import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
 import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
-import { CSS, DEFAULT_GROUP_TITLE, DEFAULT_PAGINATION_LABEL } from "./resources";
+import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../_support/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 
@@ -19,11 +19,11 @@ export class CalciteTipManager {
   /**
    * The default group title for the Tip Manager.
    */
-  @Prop({ reflect: true }) textDefaultTitle = DEFAULT_GROUP_TITLE;
+  @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
   /**
    * Label that appears on hover of pagination icon.
    */
-  @Prop({ reflect: true }) textPaginationLabel = DEFAULT_PAGINATION_LABEL;
+  @Prop({ reflect: true }) textPaginationLabel = TEXT.defaultPaginationLabel;
 
   /**
    * Element styling.
