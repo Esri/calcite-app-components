@@ -40,8 +40,6 @@ export class CalciteDemoNav {
   render() {
     const { page, root } = this;
 
-    console.log(root);
-
     return (
       <Host>
         <ul>
