@@ -10,7 +10,7 @@
   <body>
     <calcite-styleguide-nav></calcite-styleguide-nav>
     <section class="example-container">
-      <calcite-picker id="one" text-heading="Selection Picker" multiple>
+      <calcite-picker id="one" text-heading="Selection Picker - Multi" multiple>
         <calcite-picker-row text-heading="hi" text-description="there" value="helloWorld" icon="square">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -57,7 +57,7 @@
         });
       </script>
 
-      <calcite-picker id="two" text-heading="Selection Picker - Multi"></calcite-picker>
+      <calcite-picker id="two" text-heading="Selection Picker"></calcite-picker>
       <script>
         const picker2 = document.querySelector("#two");
         picker2.data = [{
