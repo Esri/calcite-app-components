@@ -132,7 +132,7 @@ export class CalciteActionBar {
     this.el
       .querySelectorAll("calcite-action")
       .forEach((action) =>
-        newValue ? action.toggleAttribute("text-enabled") : action.removeAttribute("text-enabled")
+        newValue ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
       );
   }
 

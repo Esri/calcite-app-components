@@ -103,6 +103,6 @@ export class CalciteFloatingPanel {
   }
 
   hidePanel = () => {
-    this.el.toggleAttribute("hidden", true);
+    this.el.setAttribute("hidden", "");
   };
 }

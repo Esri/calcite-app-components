@@ -580,7 +580,7 @@
       var actionPad = document.getElementById("action-pad");
       var actionPadButton = document.getElementById("action-pad-button");
       actionPadButton.addEventListener("click", function() {
-        actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.toggleAttribute("hidden");
+        actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
 
         actionPad.positionElement = actionPadButton;
       });
@@ -590,7 +590,7 @@
       floatingPanelButton.addEventListener("click", function() {
         floatingPanel.hasAttribute("hidden")
           ? floatingPanel.removeAttribute("hidden")
-          : floatingPanel.toggleAttribute("hidden");
+          : floatingPanel.setAttribute("hidden", "");
 
         floatingPanel.positionElement = floatingPanelButton;
       });
@@ -600,7 +600,7 @@
       floatingPanelOverButton.addEventListener("click", function() {
         floatingPanelOver.hasAttribute("hidden")
           ? floatingPanelOver.removeAttribute("hidden")
-          : floatingPanelOver.toggleAttribute("hidden");
+          : floatingPanelOver.setAttribute("hidden", "");
 
         floatingPanelOver.positionElement = floatingPanelOverButton;
       });
