@@ -1,3 +1,3 @@
-export const UTILITY_CSS = {
-  rtl: "calcite-component--rtl"
+export const CSS_UTILITY = {
+  rtl: "calcite--rtl"
 };

@@ -6,7 +6,7 @@ import classnames from "classnames";
 
 import { CSS } from "./resources";
 
-import { UTILITY_CSS } from "../_support/resources";
+import { CSS_UTILITY } from "../_support/resources";
 
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
@@ -91,7 +91,7 @@ export class CalciteAction {
 
     const buttonClasses = {
       [CSS.compact]: compact,
-      [UTILITY_CSS.rtl]: rtl
+      [CSS_UTILITY.rtl]: rtl
     };
 
     return (
