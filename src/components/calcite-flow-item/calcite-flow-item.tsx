@@ -132,11 +132,11 @@ export class CalciteFlowItem {
   renderMenuActions() {
     const { menuOpen } = this;
 
-    return menuOpen ? (
-      <div class={CSS.menu}>
+    return (
+      <div class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}>
         <slot name="menu-actions" />
       </div>
-    ) : null;
+    );
   }
 
   renderFooterActions() {
