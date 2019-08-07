@@ -63,7 +63,7 @@
   z-index: 1;
 }
 
-:host([indicator]) .button--rtl::after {
+:host([indicator]) .calcite-component--rtl::after {
   right: unset;
   left: var(--calcite-app-side-spacing-quarter);
 }
@@ -81,7 +81,7 @@
   right: var(--calcite-app-side-spacing-half);
 }
 
-:host([indicator][text-enabled]) .button--rtl::after {
+:host([indicator][text-enabled]) .calcite-component--rtl::after {
   right: unset;
   left: var(--calcite-app-side-spacing-half);
 }
