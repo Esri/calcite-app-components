@@ -3,6 +3,7 @@ import { TEXT } from "../calcite-tip-manager/resources";
 
 @Component({
   tag: "calcite-tip-group",
+  styleUrl: "./calcite-tip-group.scss",
   shadow: true
 })
 export class CalciteTipGroup {

@@ -6,9 +6,7 @@ import { CalciteLayout, CalciteTheme } from "../interfaces";
 
 import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
-const CSS = {
-  actionGroupBottom: "action-group--bottom"
-};
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-action-bar",
@@ -106,7 +104,9 @@ export class CalciteActionBar {
 
     return this.el.querySelector("[slot=bottom-actions]") || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
-        <slot name="bottom-actions" />
+        <div class={CSS.actionGroupBottomContainer}>
+          <slot name="bottom-actions" />
+        </div>
         {expandToggleNode}
       </calcite-action-group>
     ) : null;
