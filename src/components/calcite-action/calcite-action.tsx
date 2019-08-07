@@ -1,10 +1,14 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
 
 import { CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
 import { CSS } from "./resources";
+
+import { CSS_UTILITY } from "../_support/resources";
+
+import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
 @Component({
   tag: "calcite-action",
@@ -54,12 +58,20 @@ export class CalciteAction {
 
   // --------------------------------------------------------------------------
   //
+  //  Variables
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
+  // --------------------------------------------------------------------------
+  //
   //  Component Methods
   //
   // --------------------------------------------------------------------------
 
   render() {
-    const { textEnabled, label, text } = this;
+    const { compact, el, textEnabled, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -75,14 +87,17 @@ export class CalciteAction {
 
     const labelFallback = label || text;
 
-    const compactClass = {
-      [CSS.compact]: this.compact
+    const rtl = getElementDir(el) === "rtl";
+
+    const buttonClasses = {
+      [CSS.compact]: compact,
+      [CSS_UTILITY.rtl]: rtl
     };
 
     return (
       <Host>
         <button
-          class={classnames(CSS.button, compactClass)}
+          class={classnames(CSS.button, buttonClasses)}
           title={labelFallback}
           aria-label={labelFallback}
         >

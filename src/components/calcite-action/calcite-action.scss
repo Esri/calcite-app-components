@@ -63,6 +63,11 @@
   z-index: 1;
 }
 
+:host([indicator]) .calcite--rtl::after {
+  right: unset;
+  left: var(--calcite-app-side-spacing-quarter);
+}
+
 :host([indicator]) .button:hover::after {
   border-color: var(--calcite-app-background-hover);
 }
@@ -74,4 +79,9 @@
 :host([indicator][text-enabled]) .button::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
+}
+
+:host([indicator][text-enabled]) .calcite--rtl::after {
+  right: unset;
+  left: var(--calcite-app-side-spacing-half);
 }
