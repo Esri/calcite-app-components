@@ -46,7 +46,7 @@ export class CalciteFlow {
   }
 
   componentDidLoad() {
-    this.flowItemObserver.observe(this.el, { childList: true });
+    this.flowItemObserver.observe(this.el, { childList: true, subtree: true });
   }
 
   componentDidUnload() {
@@ -64,8 +64,6 @@ export class CalciteFlow {
     const lastItem = this.el.querySelector("calcite-flow-item:last-child");
 
     lastItem && lastItem.remove();
-
-    this.updateFlowProps();
   }
 
   // --------------------------------------------------------------------------
