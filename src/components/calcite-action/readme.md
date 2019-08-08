@@ -1,9 +1,8 @@
 # calcite-action
 
-The `calcite-action` component is an action item (such as Tip, Legend, Home etc.), typically housed in [calcite-action-bar](../calcite-action-bar) or [calcite-action-pad](../calcite-action-pad) in the form of a clickable icon with a text description option.
+The `calcite-action` component lives in either a `calcite-action-bar` or `calcite-action-pad`. Actions look like an icon with a text description option of the component that will be revealed when the icon/ text is clicked or selected.
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -15,21 +14,21 @@ The `calcite-action` component is an action item (such as Tip, Legend, Home etc.
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`            | `undefined` |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`            | `undefined` |
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
-| `theme`       | `theme`        | Element styling                                                                                   | `"dark" \| "light"` | `undefined` |
-
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"` | `undefined` |
 
 ## Dependencies
 
 ### Used by
 
- - [calcite-action-bar](../calcite-action-bar)
- - [calcite-block-section](../calcite-block-section)
- - [calcite-floating-panel](../calcite-floating-panel)
- - [calcite-flow-item](../calcite-flow-item)
- - [calcite-tip](../calcite-tip)
- - [calcite-tip-manager](../calcite-tip-manager)
+- [calcite-action-bar](../calcite-action-bar)
+- [calcite-block-section](../calcite-block-section)
+- [calcite-floating-panel](../calcite-floating-panel)
+- [calcite-flow-item](../calcite-flow-item)
+- [calcite-tip](../calcite-tip)
+- [calcite-tip-manager](../calcite-tip-manager)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action
@@ -41,6 +40,6 @@ graph TD;
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

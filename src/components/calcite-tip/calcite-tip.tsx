@@ -26,14 +26,23 @@ export class CalciteTip {
    */
   @Prop({ reflect: true }) nonDismissible = false;
 
+  /**
+   * The heading of the tip.
+   */
   @Prop() heading: string;
 
+  /**
+   * A string of the path to the thumbnail.
+   */
   @Prop() thumbnail: string;
 
+  /**
+   * Alternate text for description of the thumbnail.
+   */
   @Prop() textThumbnail: string;
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 

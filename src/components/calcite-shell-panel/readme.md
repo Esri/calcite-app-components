@@ -1,7 +1,8 @@
 # calcite-shell-panel
 
-<!-- Auto Generated Below -->
+The `calcite-shell-panel` is a child component of `calcite-shell` used to house and display other components like `calcite-block`, `calcite-flow` and `floating-panel`.
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -9,7 +10,6 @@
 | -------- | --------- | ----------------------------- | ------------------------- | ----------- |
 | `layout` | `layout`  | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

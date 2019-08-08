@@ -17,7 +17,7 @@ export class CalciteShell {
   // --------------------------------------------------------------------------
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
