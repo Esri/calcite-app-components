@@ -1,7 +1,6 @@
 $vibrant-blue: $v-bb-120;
 
-:root,
-:host([theme="light"]) {
+@mixin calciteLightThemeVars {
   --calcite-app-background: #{$white};
   --calcite-app-foreground: #{$darker-gray};
 
@@ -19,7 +18,7 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-border-subtle: #{$lightest-gray};
 }
 
-:host([theme="dark"]) {
+@mixin calciteDarkThemeVars {
   --calcite-app-background: #{$darker-gray};
   --calcite-app-foreground: #{$light-gray};
 
@@ -35,4 +34,16 @@ $vibrant-blue: $v-bb-120;
 
   --calcite-app-border: #{$darkest-gray};
   --calcite-app-border-subtle: #{$darkest-gray};
+}
+
+:root {
+  @include calciteLightThemeVars();
+}
+
+:host([theme="light"]) {
+  @include calciteLightThemeVars();
+}
+
+:host([theme="dark"]) {
+  @include calciteDarkThemeVars();
 }
