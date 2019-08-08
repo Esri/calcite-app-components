@@ -2,9 +2,9 @@
 
 A collection of calcite components for building single page applications.
 
-​[View it live](https://arcgis.github.io/calcite-app-components/)
-
 [![App](src/assets/view-it-live.png)​](https://arcgis.github.io/calcite-app-components/)
+
+​[View it live](https://arcgis.github.io/calcite-app-components/)
 
 ## Components
 
