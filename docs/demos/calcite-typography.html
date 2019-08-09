@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Calcite App Components</title>
+    <title>Calcite App Components: calcite-typography</title>
 
     <!-- Loads the link and script tags-->
     <script src="head.js"></script>
@@ -13,11 +13,13 @@
         max-width: 640px;
         margin: 0 auto;
       }
+
       hr {
         border: none;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         margin: 2rem 0;
       }
+
       .small {
         font-size: var(--calcite-app-font-size--1);
       }
@@ -25,8 +27,10 @@
   </head>
 
   <body>
-    <calcite-demo-nav page-id="calcite-typography"></calcite-demo-nav>
-    <div class="example-container">
+    <nav>
+      <calcite-demo-nav page-id="calcite-typography"></calcite-demo-nav>
+    </nav>
+    <main class="example-container">
       <div class="typography-container">
         <h1 class="heading">Header Level 1 : (font-size-2 &amp; font-weight)</h1>
         <p>
@@ -80,6 +84,6 @@
         </p>
         <p class="small">This is small. It uses font-size--1.</p>
       </div>
-    </div>
+    </main>
   </body>
 </html>

@@ -3,64 +3,72 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Demos - Block</title>
+    <title>Calcite App Components: calcite-block</title>
 
+    <!-- Loads the link and script tags-->
     <script src="head.js"></script>
   </head>
+
   <body>
-    <calcite-demo-nav page-id="calcite-block"></calcite-demo-nav>
-    <section class="example-container">
-      <style>
-        calcite-block {
-          width: 280px;
-        }
+    <nav>
+      <calcite-demo-nav page-id="calcite-block"></calcite-demo-nav>
+    </nav>
+    <main>
+      <section class="example-container">
+        <style>
+          calcite-block {
+            width: 280px;
+          }
 
-        calcite-block img {
-          width: 100%;
-          max-width: 100%;
-        }
-      </style>
+          calcite-block img {
+            width: 100%;
+            max-width: 100%;
+          }
+        </style>
 
-      <h2>Simple header only (non-collapsible - default)</h2>
+        <h1>Block</h1>
 
-      <calcite-block heading="Heading" summary="summary"></calcite-block>
+        <h2>Simple header only (non-collapsible - default)</h2>
 
-      <h2>Header + control</h2>
+        <calcite-block heading="Heading" summary="summary"></calcite-block>
 
-      <calcite-block heading="With control" summary="has inline input">
-        <input placeholder="I'm a header control" slot="control" />
-      </calcite-block>
+        <h2>Header + control</h2>
 
-      <h2>Header + content (collapsible)</h2>
+        <calcite-block heading="With control" summary="has inline input">
+          <label>test <input placeholder="I'm a header control" slot="control"/></label>
+        </calcite-block>
 
-      <calcite-block heading="Heading" summary="summary" open collapsible>
-        <img src="https://placeimg.com/640/480/tech" />
+        <h2>Header + content (collapsible)</h2>
 
-        <calcite-block-section text="Section 1" open>
-          <img src="https://placeimg.com/640/480/people" />
-        </calcite-block-section>
+        <calcite-block heading="Heading" summary="summary" open collapsible>
+          <img alt="demo" src="https://placeimg.com/640/480/tech" />
 
-        <calcite-block-section text="Section 2" open>
-          <label>
-            <input type="checkbox" name="check-please" />
-            Check-ch-check-check-check-ch-check it out</label
-          >
-        </calcite-block-section>
+          <calcite-block-section text="Section 1" open>
+            <img alt="demo" src="https://placeimg.com/640/480/people" />
+          </calcite-block-section>
 
-        <img src="https://placeimg.com/640/480/arch" />
-      </calcite-block>
+          <calcite-block-section text="Section 2" open>
+            <label>
+              <input type="checkbox" name="check-please" />
+              Check-ch-check-check-check-ch-check it out</label
+            >
+          </calcite-block-section>
 
-      <h2>RTL</h2>
+          <img alt="demo" src="https://placeimg.com/640/480/arch" />
+        </calcite-block>
 
-      <calcite-block dir="rtl" heading="Heading" summary="summary" open collapsible>
-        <calcite-block-section text="Animals" open>
-          <img src="https://placeimg.com/640/480/animals" />
-        </calcite-block-section>
+        <h2>RTL</h2>
 
-        <calcite-block-section text="Nature" open>
-          <img src="https://placeimg.com/640/480/nature" />
-        </calcite-block-section>
-      </calcite-block>
-    </section>
+        <calcite-block dir="rtl" heading="Heading" summary="summary" open collapsible>
+          <calcite-block-section text="Animals" open>
+            <img alt="demo" src="https://placeimg.com/640/480/animals" />
+          </calcite-block-section>
+
+          <calcite-block-section text="Nature" open>
+            <img alt="demo" src="https://placeimg.com/640/480/nature" />
+          </calcite-block-section>
+        </calcite-block>
+      </section>
+    </main>
   </body>
 </html>
