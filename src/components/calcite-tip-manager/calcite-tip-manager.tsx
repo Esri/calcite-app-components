@@ -19,12 +19,18 @@ export class CalciteTipManager {
   /**
    * Alternate text for closing the Tip Manager.
    */
-  @Prop() textClose = "Close";
+  @Prop() textClose = TEXT.close;
 
   /**
    * The default group title for the Tip Manager.
    */
   @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
+
+  /**
+   * Alternate text for navigating to the next tip.
+   */
+  @Prop() textNext = TEXT.next;
+
   /**
    * Label that appears on hover of pagination icon.
    */
@@ -33,12 +39,7 @@ export class CalciteTipManager {
   /**
    * Alternate text for navigating to the previous tip.
    */
-  @Prop() textPrevious = "Previous";
-
-  /**
-   * Alternate text for navigating to the next tip.
-   */
-  @Prop() textNext = "Next";
+  @Prop() textPrevious = TEXT.previous;
 
   /**
    * Used to set the component's color scheme.
