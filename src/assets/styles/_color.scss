@@ -16,6 +16,7 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-background-content: #{$lighter-gray};
 
   --calcite-app-border: #{$lighter-gray};
+  --calcite-app-border-active: #{$blue};
   --calcite-app-border-subtle: #{$lightest-gray};
 }
 
@@ -34,5 +35,6 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-background-content: #{$darkest-gray};
 
   --calcite-app-border: #{$darkest-gray};
+  --calcite-app-border-active: #{$vibrant-blue};
   --calcite-app-border-subtle: #{$darkest-gray};
 }

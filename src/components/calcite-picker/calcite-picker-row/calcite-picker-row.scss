@@ -1,10 +1,10 @@
 :host {
   display: flex;
   align-items: center;
-  padding: 12px;
-  background-color: white;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
-  margin-bottom: 12px;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  background-color: var(--calcite-app-background);
+  box-shadow: 0 1px 0 var(--calcite-app-border);
+  margin-bottom: var(--calcite-app-cap-spacing-half);
   cursor: pointer;
 }
 :host([hidden]) {
@@ -15,7 +15,7 @@
   border-left: 3px solid transparent;
 }
 :host(.highlight[selected]) {
-  border-left-color: blue;
+  border-left-color: var(--calcite-app-border-active);
 }
 .label {
   flex-grow: 1;
