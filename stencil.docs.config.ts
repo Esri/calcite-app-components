@@ -18,7 +18,6 @@ export const config: Config = {
     sass({
       injectGlobalPaths: ["src/assets/styles/includes.scss"]
     }),
-
     postcss({
       plugins: [autoprefixer()]
     })
