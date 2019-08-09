@@ -3,7 +3,7 @@ import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
 import CalciteIcon from "../_support/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
-import { CSS } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-tip",
@@ -32,14 +32,19 @@ export class CalciteTip {
   @Prop() heading: string;
 
   /**
-   * A string of the path to the thumbnail.
+   * Alternate text for closing the tip.
    */
-  @Prop() thumbnail: string;
+  @Prop() textClose = TEXT.close;
 
   /**
    * Alternate text for description of the thumbnail.
    */
   @Prop() textThumbnail: string;
+
+  /**
+   * A string of the path to the thumbnail.
+   */
+  @Prop() thumbnail: string;
 
   /**
    * Used to set the component's color scheme.
@@ -84,7 +89,7 @@ export class CalciteTip {
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
-            <calcite-action onClick={this.hideTip} class={CSS.close}>
+            <calcite-action text={this.textClose} onClick={this.hideTip} class={CSS.close}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           ) : null}
