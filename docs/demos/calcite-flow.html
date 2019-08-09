@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
+    <title>Calcite App Components: calcite-flow</title>
+
+    <!-- Loads the link and script tags-->
     <script src="head.js"></script>
     <style>
       .demo-block {
@@ -16,62 +19,67 @@
       }
     </style>
   </head>
+
   <body>
-    <calcite-demo-nav page-id="calcite-flow"></calcite-demo-nav>
-    <section class="example-container">
-      <h1>calcite-flow</h1>
+    <nav>
+      <calcite-demo-nav page-id="calcite-flow"></calcite-demo-nav>
+    </nav>
+    <main>
+      <section class="example-container">
+        <h1>calcite-flow</h1>
 
-      <style>
-        .flow-container {
-          width: 350px;
-          height: 800px;
-        }
-        .demo-btn {
-          background-color: transparent;
-          border: 1px solid #007ac2;
-          color: #007ac2;
-          font-size: 1rem;
-          font-family: inherit;
-          padding: 0.7rem;
-          border-radius: 3px;
-          margin: 1rem 0.2rem;
-          min-width: 5rem;
-        }
-      </style>
+        <style>
+          .flow-container {
+            width: 350px;
+            height: 800px;
+          }
 
-      <div class="flow-container">
-        <calcite-flow id="flow">
-          <calcite-flow-item heading="First Panel">
-            <div slot="menu-actions">
-              <button>Reset</button>
-              <button>Rename</button>
-            </div>
-            <div slot="footer-actions">
-              <button class="btn">Save</button>
-              <button class="btn btn-secondary">Cancel</button>
-            </div>
-            <!-- <p>content 1</p> -->
-            <div class="demo-block"></div>
-            <div class="demo-block"></div>
-            <div class="demo-block"></div>
-            <div class="demo-block"></div>
-          </calcite-flow-item>
-        </calcite-flow>
+          .demo-btn {
+            background-color: transparent;
+            border: 1px solid #007ac2;
+            color: #007ac2;
+            font-size: 1rem;
+            font-family: inherit;
+            padding: 0.7rem;
+            border-radius: 3px;
+            margin: 1rem 0.2rem;
+            min-width: 5rem;
+          }
+        </style>
 
-        <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
-        <script>
-          var flowNode = document.getElementById("flow");
+        <div class="flow-container">
+          <calcite-flow id="flow">
+            <calcite-flow-item heading="First Panel">
+              <div slot="menu-actions">
+                <button>Reset</button>
+                <button>Rename</button>
+              </div>
+              <div slot="footer-actions">
+                <button class="btn">Save</button>
+                <button class="btn btn-secondary">Cancel</button>
+              </div>
+              <!-- <p>content 1</p> -->
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+            </calcite-flow-item>
+          </calcite-flow>
 
-          flowNode.addEventListener("calciteFlowItemBackClick", function() {
-            flowNode.back();
-          });
+          <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
+          <script>
+            var flowNode = document.getElementById("flow");
 
-          var addFlowButtonNode = document.getElementById("add-flow-item");
+            flowNode.addEventListener("calciteFlowItemBackClick", function() {
+              flowNode.back();
+            });
 
-          addFlowButtonNode.addEventListener("click", function() {
-            var newNode = document.createElement("calcite-flow-item");
-            newNode.heading = "New Panel " + (flowNode.childElementCount + 1);
-            newNode.innerHTML = `
+            var addFlowButtonNode = document.getElementById("add-flow-item");
+
+            addFlowButtonNode.addEventListener("click", function() {
+              var newNode = document.createElement("calcite-flow-item");
+              newNode.heading = "New Panel " + (flowNode.childElementCount + 1);
+              newNode.innerHTML = `
             <div class="demo-block"></div>
               <div class="demo-block"></div>
               <div class="demo-block"></div>
@@ -86,10 +94,11 @@
                 <button>Cancel</button>
               </div>
             `;
-            flowNode.appendChild(newNode);
-          });
-        </script>
-      </div>
-    </section>
+              flowNode.appendChild(newNode);
+            });
+          </script>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
