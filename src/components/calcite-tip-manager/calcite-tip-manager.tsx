@@ -17,6 +17,11 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
   /**
+   * Alternate text for closing the Tip Manager.
+   */
+  @Prop() textClose = "Close";
+
+  /**
    * The default group title for the Tip Manager.
    */
   @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
@@ -24,6 +29,16 @@ export class CalciteTipManager {
    * Label that appears on hover of pagination icon.
    */
   @Prop({ reflect: true }) textPaginationLabel = TEXT.defaultPaginationLabel;
+
+  /**
+   * Alternate text for navigating to the previous tip.
+   */
+  @Prop() textPrevious = "Previous";
+
+  /**
+   * Alternate text for navigating to the next tip.
+   */
+  @Prop() textNext = "Next";
 
   /**
    * Used to set the component's color scheme.
@@ -157,7 +172,7 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action onClick={this.hideTipManager} class={CSS.close}>
+          <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
             <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
@@ -165,13 +180,17 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onClick={this.previousClicked} class={CSS.pagePrevious}>
+          <calcite-action
+            text={this.textPrevious}
+            onClick={this.previousClicked}
+            class={CSS.pagePrevious}
+          >
             <CalciteIcon size="16" path={chevronLeft16} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onClick={this.nextClicked} class={CSS.pageNext}>
+          <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
             <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>
         </footer>

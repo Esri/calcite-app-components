@@ -37,6 +37,11 @@ export class CalciteTip {
   @Prop() thumbnail: string;
 
   /**
+   * Alternate text for closing the tip.
+   */
+  @Prop() textClose = "Close";
+
+  /**
    * Alternate text for description of the thumbnail.
    */
   @Prop() textThumbnail: string;
@@ -84,7 +89,7 @@ export class CalciteTip {
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (
-            <calcite-action onClick={this.hideTip} class={CSS.close}>
+            <calcite-action text={this.textClose} onClick={this.hideTip} class={CSS.close}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           ) : null}
