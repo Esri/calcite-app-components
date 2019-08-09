@@ -1,0 +1,1 @@
+System.register([],function(r){"use strict";return{execute:function(){r({g:e,n:t});function t(r){if(Array.isArray(r)){return r}else{return Array.prototype.slice.call(r)}}function e(r){return r.closest("[dir='rtl']")&&"rtl"||"ltr"}}}});

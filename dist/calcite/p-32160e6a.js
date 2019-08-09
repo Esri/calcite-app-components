@@ -1,0 +1,1 @@
+function n(n){for(var r="",t=0;t<n;t++)r+=(65536*(1+window.crypto.getRandomValues(new Uint32Array(1))[0]/1e10)|0).toString(16).substring(1);return r}function r(){return[n(2),n(1),n(1),n(1),n(3)].join("-")}export{r as g};
