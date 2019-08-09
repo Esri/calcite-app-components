@@ -6,6 +6,7 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                            | Type                      | Default      |
@@ -17,6 +18,7 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 | `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is collapsed.  | `string`                  | `"Expand"`   |
 | `theme`        | `theme`         | Used to set the component's color scheme.                              | `"dark" \| "light"`       | `undefined`  |
 
+
 ## Dependencies
 
 ### Depends on
@@ -25,7 +27,6 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 - [calcite-action-group](../calcite-action-group)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action
@@ -33,6 +34,6 @@ graph TD;
   style calcite-action-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
