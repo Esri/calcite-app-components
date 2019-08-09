@@ -20,10 +20,6 @@ A collection of calcite components for building single page applications.
 - [calcite-tip](/src/components/calcite-tip/readme.md)
 - [calcite-tip-manager](/src/components/calcite-tip-manager/readme.md)
 
-## Features
-
-### [Demos](https://arcgis.github.io/calcite-app-components/)
-
 ## Local Dev
 
 ### Instructions

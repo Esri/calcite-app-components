@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
+    <title>Calcite App Components: calcite-shell</title>
+
+    <!-- Loads the link and script tags-->
     <script src="head.js"></script>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
@@ -11,8 +14,10 @@
   </head>
 
   <body>
-    <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
-    <section class="example-container">
+    <nav>
+      <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
+    </nav>
+    <div class="example-container">
       <h1>calcite-shell</h1>
 
       <style>
@@ -239,7 +244,7 @@
                 </div>
                 <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
                   <calcite-block-content>
-                    <img src="https://placeimg.com/640/480/any" width="100%" />
+                    <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
                     <calcite-block-section text="Cool things">
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
@@ -265,7 +270,7 @@
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                     </calcite-block-section>
-                    <img src="https://placeimg.com/640/480/any" width="100%" />
+                    <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
                     <calcite-block-section text="Neat things">
                       <calcite-action text-enabled text="neat thing"></calcite-action>
                       <calcite-action text-enabled text="neat thing"></calcite-action>
@@ -280,7 +285,7 @@
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                     </calcite-block-section>
-                    <img src="https://placeimg.com/640/480/nature" width="100%" />
+                    <img alt="demo" src="https://placeimg.com/640/480/nature" width="100%" />
                     <calcite-block-section text="Neat things">
                       <calcite-action text-enabled text="neat thing"></calcite-action>
                       <calcite-action text-enabled text="neat thing"></calcite-action>
@@ -485,7 +490,7 @@
                 </div>
                 <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
                   <calcite-block-content>
-                    <img src="https://placeimg.com/640/480/any" width="100%" />
+                    <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
                     <calcite-block-section text="Cool things">
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
@@ -511,7 +516,7 @@
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                     </calcite-block-section>
-                    <img src="https://placeimg.com/640/480/any" width="100%" />
+                    <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
                     <calcite-block-section text="Neat things">
                       <calcite-action text-enabled text="neat thing"></calcite-action>
                       <calcite-action text-enabled text="neat thing"></calcite-action>
@@ -526,7 +531,7 @@
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                       <calcite-action text-enabled text="cool thing"></calcite-action>
                     </calcite-block-section>
-                    <img src="https://placeimg.com/640/480/nature" width="100%" />
+                    <img alt="demo" src="https://placeimg.com/640/480/nature" width="100%" />
                     <calcite-block-section text="Neat things">
                       <calcite-action text-enabled text="neat thing"></calcite-action>
                       <calcite-action text-enabled text="neat thing"></calcite-action>
@@ -552,7 +557,7 @@
           <footer slot="shell-footer">Footer</footer>
         </calcite-shell>
       </div>
-    </section>
+    </div>
     <p style="text-align: center;">Box Shadow added to show app edges.</p>
     <script>
       var actionPad = document.getElementById("action-pad");
