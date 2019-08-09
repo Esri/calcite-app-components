@@ -18,9 +18,9 @@ The `calcite-block` component is intended for displaying content on it's own as 
 
 ## Events
 
-| Event                | Description                                              | Type               |
-| -------------------- | -------------------------------------------------------- | ------------------ |
-| `calciteBlockToggle` | Emitted when the header has been toggled open or closed. | `CustomEvent<any>` |
+| Event                | Description                               | Type               |
+| -------------------- | ----------------------------------------- | ------------------ |
+| `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
 ---
 

@@ -15,9 +15,9 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 
 ## Events
 
-| Event                       | Description                                              | Type               |
-| --------------------------- | -------------------------------------------------------- | ------------------ |
-| `calciteBlockSectionToggle` | Emitted when the header has been toggled open or closed. | `CustomEvent<any>` |
+| Event                       | Description                               | Type               |
+| --------------------------- | ----------------------------------------- | ------------------ |
+| `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
 ## Dependencies
 
