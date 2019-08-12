@@ -2,8 +2,9 @@
 
 The `calcite-action-pad` component is made up of `calcite-actions` in the form of clickable icons. This does not have an expandable option and is a smaller and simpler component than `calcite-action-bar`.
 
-<!-- Auto Generated Below -->
+See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-action-pad.html).
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -13,7 +14,6 @@ The `calcite-action-pad` component is made up of `calcite-actions` in the form o
 | `positionElement` | --          | HTMLElement used to position this element according to the placement.                                                                                                                                                                                                                          | `HTMLElement`                  | `undefined` |
 | `theme`           | `theme`     | Used to set the component's color scheme.                                                                                                                                                                                                                                                      | `"dark" \| "light"`            | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

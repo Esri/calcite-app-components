@@ -2,8 +2,9 @@
 
 The `calcite-flow` component is a series of panels that provides a user with a workflow (eg. editing experience), by which the user can switch from panel to panel of `calcite-flow-items`.
 
-<!-- Auto Generated Below -->
+See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-flow.html).
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -11,20 +12,14 @@ The `calcite-flow` component is a series of panels that provides a user with a w
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
 | `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
-
 ## Methods
 
 ### `back() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
 
+---
 
-
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

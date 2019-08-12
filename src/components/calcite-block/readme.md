@@ -2,8 +2,9 @@
 
 The `calcite-block` component is intended for displaying content on it's own as well as in stacked, collapsible `calcite-block-sections` in a panel.
 
-<!-- Auto Generated Below -->
+See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-block.html).
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -17,14 +18,12 @@ The `calcite-block` component is intended for displaying content on it's own as 
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.       | `string`            | `TEXT.expand`   |
 | `theme`        | `theme`         | Used to set the component's color scheme.         | `"dark" \| "light"` | `undefined`     |
 
-
 ## Events
 
 | Event                | Description                               | Type               |
 | -------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

@@ -2,8 +2,9 @@
 
 The `calcite-shell-panel` is a child component of `calcite-shell` used to house and display other components like `calcite-block`, `calcite-flow` and `floating-panel`.
 
-<!-- Auto Generated Below -->
+See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-shell-panel.html).
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -11,7 +12,6 @@ The `calcite-shell-panel` is a child component of `calcite-shell` used to house 
 | -------- | --------- | ----------------------------- | ------------------------- | ----------- |
 | `layout` | `layout`  | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
