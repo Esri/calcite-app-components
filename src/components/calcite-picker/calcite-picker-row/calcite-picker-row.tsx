@@ -30,7 +30,7 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true, mutable: true }) selected = false;
 
-  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
+  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" = null;
 
   @Prop({ reflect: true }) editing = false;
 

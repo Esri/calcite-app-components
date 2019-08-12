@@ -38,8 +38,6 @@ export class CalcitePicker {
 
   @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
 
-  @Prop({ reflect: false }) data = [];
-
   @State() selectedValues = new Set();
 
   @Watch("selectedValues")
@@ -52,7 +50,7 @@ export class CalcitePicker {
   @Watch("editing")
   editingChangeHandler() {
     this.slottedRows.forEach((item) => {
-      item.toggleAttribute("editing", this.editing);
+      this.editing ? item.setAttribute("editing", "") : item.removeAttribute("editing");
     });
   }
 
@@ -85,12 +83,7 @@ export class CalcitePicker {
   }
 
   componentDidLoad() {
-    const slot = this.el.shadowRoot.querySelector("slot");
-    this.slottedRows = slot ? slot.assignedElements() : [];
-    this.rows = [
-      ...Array.from(this.el.shadowRoot.querySelectorAll("calcite-picker-row")),
-      ...this.slottedRows
-    ];
+    this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
     if (this.dragEnabled && this.mode === "configuration") {
       this.setupDragAndDrop();
     }
@@ -114,7 +107,7 @@ export class CalcitePicker {
         const start = this.rows.indexOf(this.lastSelectedRow);
         const end = this.rows.indexOf(row);
         this.rows.slice(Math.min(start, end), Math.max(start, end)).forEach((currentRow) => {
-          currentRow.toggleAttribute("selected", true);
+          currentRow.setAttribute("selected", "");
           this.selectedValues.add(currentRow);
         });
       } else {
@@ -137,7 +130,7 @@ export class CalcitePicker {
   @Listen("rowDeleted")
   rowDeletedHandler(event) {
     const { row } = event.detail;
-    row.toggleAttribute("hidden", true);
+    row.setAttribute("hidden", "");
     this.deletedRows.add(row);
   }
 
@@ -159,7 +152,7 @@ export class CalcitePicker {
   }
 
   deselectRow(item) {
-    item.toggleAttribute("selected", false);
+    item.removeAttribute("selected");
     this.selectedValues.delete(item);
   }
 
@@ -169,7 +162,7 @@ export class CalcitePicker {
 
   cancelDelete() {
     this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      row.toggleAttribute("hidden", false);
+      row.removeAttribute("hidden");
     });
     this.deletedRows = new Set();
     this.editing = false;
@@ -253,22 +246,6 @@ export class CalcitePicker {
             {/* <filter /> */}
           </header>
           {this.renderEditButton()}
-          {this.data.map((item, index) => {
-            const { heading, description, value, selected } = item;
-            return (
-              <calcite-picker-row
-                key={index}
-                textHeading={heading}
-                textDescription={description}
-                value={value}
-                selected={selected}
-                icon={this.getIconType()}
-                editing={this.editing}
-              >
-                {this.renderSecondaryAction(item.secondaryAction)}
-              </calcite-picker-row>
-            );
-          })}
           <slot />
         </section>
       </Host>
