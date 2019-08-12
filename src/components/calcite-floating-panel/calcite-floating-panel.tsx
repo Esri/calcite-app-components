@@ -6,7 +6,7 @@ import { getOffsetTop } from "../utils/position";
 
 import { x16 } from "@esri/calcite-ui-icons";
 
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 
 import { CSS } from "./resources";
 

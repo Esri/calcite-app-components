@@ -1,7 +1,7 @@
 import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../../utils/localStorage";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 import { CSS, TEXT } from "./resources";
 

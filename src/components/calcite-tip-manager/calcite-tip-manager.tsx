@@ -2,7 +2,7 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 
 @Component({
