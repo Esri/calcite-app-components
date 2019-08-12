@@ -2,7 +2,7 @@
 
 The `calcite-tip-manager` component contains multiple `calcite-tips` that a user can view through via interactive arrows to go back and forth through the tips in the deck.
 
-See the [demo](https://esri.github.io/calcite-app-components/demos/calcite-tip-manager.html).
+See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components/demos/calcite-tip-manager.html).
 
 <!-- Auto Generated Below -->
 

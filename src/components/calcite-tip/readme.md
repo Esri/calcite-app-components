@@ -2,7 +2,7 @@
 
 The `calcite-tip` component can comprise of an image, text and hyperlink to give helpful hints to a user about using the platform.
 
-See the [demo](https://esri.github.io/calcite-app-components/demos/calcite-tip.html).
+See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/calcite-tip.html).
 
 <!-- Auto Generated Below -->
 
