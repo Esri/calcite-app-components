@@ -6,11 +6,14 @@ The `calcite-tip-manager` component contains multiple `calcite-tips` that a user
 
 ## Properties
 
-| Property              | Attribute               | Description                                     | Type                | Default                    |
-| --------------------- | ----------------------- | ----------------------------------------------- | ------------------- | -------------------------- |
-| `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.    | `string`            | `DEFAULT_GROUP_TITLE`      |
-| `textPaginationLabel` | `text-pagination-label` | Label that appears on hover of pagination icon. | `string`            | `DEFAULT_PAGINATION_LABEL` |
-| `theme`               | `theme`                 | Used to set the component's color scheme.       | `"dark" \| "light"` | `undefined`                |
+| Property              | Attribute               | Description                                        | Type                | Default                       |
+| --------------------- | ----------------------- | -------------------------------------------------- | ------------------- | ----------------------------- |
+| `textClose`           | `text-close`            | Alternate text for closing the Tip Manager.        | `string`            | `TEXT.close`                  |
+| `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.       | `string`            | `TEXT.defaultGroupTitle`      |
+| `textNext`            | `text-next`             | Alternate text for navigating to the next tip.     | `string`            | `TEXT.next`                   |
+| `textPaginationLabel` | `text-pagination-label` | Label that appears on hover of pagination icon.    | `string`            | `TEXT.defaultPaginationLabel` |
+| `textPrevious`        | `text-previous`         | Alternate text for navigating to the previous tip. | `string`            | `TEXT.previous`               |
+| `theme`               | `theme`                 | Used to set the component's color scheme.          | `"dark" \| "light"` | `undefined`                   |
 
 ## Methods
 

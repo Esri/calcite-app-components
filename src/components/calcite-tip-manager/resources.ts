@@ -1,6 +1,9 @@
 export const TEXT = {
   defaultGroupTitle: "Tips",
-  defaultPaginationLabel: "Tip"
+  defaultPaginationLabel: "Tip",
+  close: "Close",
+  previous: "Previous",
+  next: "Next"
 };
 
 export const CSS = {

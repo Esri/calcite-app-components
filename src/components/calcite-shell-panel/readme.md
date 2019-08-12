@@ -4,12 +4,14 @@ The `calcite-shell-panel` is a child component of `calcite-shell` used to house 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description                   | Type                      | Default     |
 | -------- | --------- | ----------------------------- | ------------------------- | ----------- |
 | `layout` | `layout`  | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
