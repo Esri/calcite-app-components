@@ -2,7 +2,7 @@
 
 A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel with a heading and content.
 
-See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-flow-item.html).
+See the [demo](https://esri.github.io/calcite-app-components/demos/calcite-flow-item.html).
 
 <!-- Auto Generated Below -->
 

@@ -2,7 +2,7 @@
 
 The `calcite-shell` component is used for application layout management. It is a container for the view as well as other calcite app components like `calcite-shell-panel`, `floating-panel` and `tip-manager`.
 
-See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-shell.html).
+See the [demo](https://esri.github.io/calcite-app-components/demos/calcite-shell.html).
 
 <!-- Auto Generated Below -->
 

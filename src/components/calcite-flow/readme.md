@@ -2,7 +2,7 @@
 
 The `calcite-flow` component is a series of panels that provides a user with a workflow (eg. editing experience), by which the user can switch from panel to panel of `calcite-flow-items`.
 
-See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-flow.html).
+See the [demo](https://esri.github.io/calcite-app-components/demos/calcite-flow.html).
 
 <!-- Auto Generated Below -->
 

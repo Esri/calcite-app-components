@@ -2,7 +2,7 @@
 
 The `calcite-block` component is intended for displaying content on it's own as well as in stacked, collapsible `calcite-block-sections` in a panel.
 
-See the demo [here](https://esri.github.io/calcite-app-components/demos/calcite-block.html).
+See the [demo](https://esri.github.io/calcite-app-components/demos/calcite-block.html).
 
 <!-- Auto Generated Below -->
 
