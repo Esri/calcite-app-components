@@ -49,13 +49,12 @@ export class CalcitePicker {
 
   @Watch("editing")
   editingChangeHandler() {
-    this.slottedRows.forEach((item) => {
+    this.rows.forEach((item) => {
       this.editing ? item.setAttribute("editing", "") : item.removeAttribute("editing");
     });
   }
 
   deletedRows = new Set();
-  slottedRows: any;
   rows: any;
   lastSelectedRow = null;
 
