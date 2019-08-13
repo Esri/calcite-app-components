@@ -28,14 +28,16 @@
 
         <h1>Block</h1>
 
+        <p>see the <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-block/readme.md">calcite-block readme.</a></p>
+
         <h2>Simple header only (non-collapsible - default)</h2>
 
         <calcite-block heading="Heading" summary="summary"></calcite-block>
 
         <h2>Header + control</h2>
 
-        <calcite-block heading="With control" summary="has inline input">
-          <label>test <input placeholder="I'm a header control" slot="control"/></label>
+        <calcite-block heading="With control" summary="has inline input" collapsible>
+          <label slot="control">test <input placeholder="I'm a header control"/></label>
         </calcite-block>
 
         <h2>Header + content (collapsible)</h2>
