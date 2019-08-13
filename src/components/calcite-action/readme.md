@@ -2,8 +2,9 @@
 
 The `calcite-action` component lives in either a `calcite-action-bar` or `calcite-action-pad`. Actions look like an icon with a text description option of the component that will be revealed when the icon/ text is clicked or selected.
 
-<!-- Auto Generated Below -->
+See the [calcite-action demo](https://esri.github.io/calcite-app-components/demos/calcite-action.html).
 
+<!-- Auto Generated Below -->
 
 ## Properties
 
@@ -17,19 +18,19 @@ The `calcite-action` component lives in either a `calcite-action-bar` or `calcit
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
 | `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"` | `undefined` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [calcite-action-bar](../calcite-action-bar)
- - [calcite-block-section](../calcite-block-section)
- - [calcite-floating-panel](../calcite-floating-panel)
- - [calcite-flow-item](../calcite-flow-item)
- - [calcite-tip](../calcite-tip)
- - [calcite-tip-manager](../calcite-tip-manager)
+- [calcite-action-bar](../calcite-action-bar)
+- [calcite-block-section](../calcite-block-section)
+- [calcite-floating-panel](../calcite-floating-panel)
+- [calcite-flow-item](../calcite-flow-item)
+- [calcite-tip](../calcite-tip)
+- [calcite-tip-manager](../calcite-tip-manager)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action
@@ -41,6 +42,6 @@ graph TD;
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
