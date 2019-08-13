@@ -107,7 +107,7 @@ describe("calcite-block", () => {
       const elementToggleSpy = await element.spyOnEvent("calciteBlockToggle");
 
       const control = await element.find(".nested-control");
-      expect(control).toBeTruthy();
+      expect(await control.isVisible()).toBe(true);
 
       await control.click();
       expect(elementToggleSpy).toHaveReceivedEventTimes(0);
