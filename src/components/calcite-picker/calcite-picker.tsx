@@ -40,11 +40,6 @@ export class CalcitePicker {
 
   @State() selectedValues = new Set();
 
-  @Watch("selectedValues")
-  selectedValuesChangeHandler() {
-    this.pickerSelectionChange.emit(this.selectedValues);
-  }
-
   @State() editing = false;
 
   @Watch("editing")
@@ -94,9 +89,9 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Event() pickerSelectionChange: EventEmitter;
+  @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Event() pickerRowsDeleted: EventEmitter;
+  @Event() calcitePickerRowsDeleted: EventEmitter;
 
   @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event) {
     event.stopPropagation(); // private event
@@ -123,7 +118,7 @@ export class CalcitePicker {
       });
     }
     this.lastSelectedRow = row;
-    this.pickerSelectionChange.emit(this.selectedValues);
+    this.calcitePickerSelectionChange.emit(this.selectedValues);
   }
 
   @Listen("calcitePickerRowDeleted")
@@ -178,8 +173,9 @@ export class CalcitePicker {
       row.remove();
     });
     if (selectedChanged) {
-      this.pickerSelectionChange.emit(this.selectedValues);
+      this.calcitePickerSelectionChange.emit(this.selectedValues);
     }
+    this.calcitePickerRowsDeleted.emit(this.deletedRows);
     this.deletedRows = new Set();
     this.editing = false;
   }
