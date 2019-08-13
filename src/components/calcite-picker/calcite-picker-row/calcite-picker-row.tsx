@@ -50,8 +50,8 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Event() rowToggled: EventEmitter;
-  @Event() rowDeleted: EventEmitter;
+  @Event() calcitePickerRowToggled: EventEmitter;
+  @Event() calcitePickerRowDeleted: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -61,7 +61,7 @@ export class CalcitePickerRow {
 
   @Method() async toggle(shiftPressed) {
     this.selected = !this.selected;
-    this.rowToggled.emit({
+    this.calcitePickerRowToggled.emit({
       row: this.el,
       value: this.value,
       selected: this.selected,
@@ -76,7 +76,7 @@ export class CalcitePickerRow {
   // --------------------------------------------------------------------------
 
   deleteRow() {
-    this.rowDeleted.emit({ row: this.el, value: this.value });
+    this.calcitePickerRowDeleted.emit({ row: this.el, value: this.value });
   }
 
   // --------------------------------------------------------------------------

@@ -49,13 +49,12 @@ export class CalcitePicker {
 
   @Watch("editing")
   editingChangeHandler() {
-    this.slottedRows.forEach((item) => {
+    this.rows.forEach((item) => {
       this.editing ? item.setAttribute("editing", "") : item.removeAttribute("editing");
     });
   }
 
   deletedRows = new Set();
-  slottedRows: any;
   rows: any;
   lastSelectedRow = null;
 
@@ -99,8 +98,8 @@ export class CalcitePicker {
 
   @Event() pickerRowsDeleted: EventEmitter;
 
-  @Listen("rowToggled")
-  rowToggledHandler(event) {
+  @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event) {
+    event.stopPropagation(); // private event
     const { row, selected, shiftPressed } = event.detail;
     if (selected) {
       if (this.multiple && shiftPressed && this.lastSelectedRow) {
@@ -127,8 +126,9 @@ export class CalcitePicker {
     this.pickerSelectionChange.emit(this.selectedValues);
   }
 
-  @Listen("rowDeleted")
-  rowDeletedHandler(event) {
+  @Listen("calcitePickerRowDeleted")
+  calcitePickerRowDeletedHandler(event) {
+    event.stopPropagation(); // private event
     const { row } = event.detail;
     row.setAttribute("hidden", "");
     this.deletedRows.add(row);
