@@ -32,6 +32,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) compact = false;
 
   /**
+   * Disabled is used to prevent the action from occurring.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
@@ -71,7 +76,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, el, textEnabled, label, text } = this;
+    const { compact, disabled, el, textEnabled, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -100,6 +105,7 @@ export class CalciteAction {
           class={classnames(CSS.button, buttonClasses)}
           title={labelFallback}
           aria-label={labelFallback}
+          disabled={disabled}
         >
           {iconContainerNode}
           {textContainerNode}
