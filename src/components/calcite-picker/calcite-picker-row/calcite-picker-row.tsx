@@ -8,6 +8,7 @@ import {
   trash16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
+import { ICON_TYPES } from "../resources";
 import CalciteIcon from "../../_support/CalciteIcon";
 
 @Component({
@@ -30,7 +31,11 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true, mutable: true }) selected = false;
 
-  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
+  @Prop({ reflect: true }) icon:
+    | ICON_TYPES["square"]
+    | ICON_TYPES["circle"]
+    | ICON_TYPES["grip"]
+    | null = null;
 
   @Prop({ reflect: true }) editing = false;
 
@@ -89,7 +94,7 @@ export class CalcitePickerRow {
     if (!this.icon) {
       return null;
     }
-    if (this.icon === "grip") {
+    if (this.icon === ICON_TYPES["grip"]) {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
@@ -98,7 +103,7 @@ export class CalcitePickerRow {
     } else {
       /* tslint:disable */
       let path;
-      if (this.icon === "square") {
+      if (this.icon === ICON_TYPES["square"]) {
         path = this.selected ? checkSquare16 : square16;
       } else {
         path = this.selected ? circleFilled16 : circle16;
@@ -129,7 +134,11 @@ export class CalcitePickerRow {
   render() {
     return (
       <Host
-        class={this.icon !== "square" && this.icon !== "circle" ? "highlight" : null}
+        class={
+          this.icon !== ICON_TYPES["square"] && this.icon !== ICON_TYPES["circle"]
+            ? CSS.highlight
+            : null
+        }
         onClick={(e) => this.toggle(e.shiftKey)}
       >
         {this.renderIcon()}
