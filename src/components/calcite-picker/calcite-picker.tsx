@@ -14,7 +14,7 @@ import {
 } from "@stencil/core";
 import { pencil16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../_support/CalciteIcon";
-import { CSS } from "./resources";
+import { CSS, ICON_TYPES } from "./resources";
 
 @Component({
   tag: "calcite-picker",
@@ -201,11 +201,11 @@ export class CalcitePicker {
   getIconType() {
     let type = null;
     if (this.mode === "configuration" && this.dragEnabled) {
-      type = "grip";
+      type = ICON_TYPES["grip"];
     } else if (this.mode === "selection" && this.multiple) {
-      type = "square";
+      type = ICON_TYPES["square"];
     } else if (this.mode === "selection" && !this.multiple) {
-      type = "circle";
+      type = ICON_TYPES["circle"];
     }
     return type;
   }

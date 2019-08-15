@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICON_TYPES } from "./resources";
 
 describe("calcite-picker", () => {
   it("should render", async () => {
@@ -57,6 +57,49 @@ describe("calcite-picker", () => {
         expect(toggleSpy.events[2].detail["one"]).not.toBeUndefined();
         expect(toggleSpy.events[2].detail["two"]).toBeUndefined();
       });
+    });
+  });
+
+  describe("icon logic", () => {
+    it("should be 'circle' when in `selection` mode and multi-select is disabled", async () => {
+      const page = await newE2EPage();
+      await page.setContent(`<calcite-picker mode="selection">
+        <calcite-picker-row value="one"></calcite-picker-row>
+      </calcite-picker>`);
+
+      const row = await page.find("calcite-picker-row");
+      const icon = await row.getProperty("icon");
+      expect(icon).toBe(ICON_TYPES["circle"]);
+    });
+    it("should be 'square' when in `selection` mode and multi-select is enabled", async () => {
+      const page = await newE2EPage();
+      await page.setContent(`<calcite-picker mode="selection" multiple>
+        <calcite-picker-row value="one"></calcite-picker-row>
+      </calcite-picker>`);
+
+      const row = await page.find("calcite-picker-row");
+      const icon = await row.getProperty("icon");
+      expect(icon).toBe(ICON_TYPES["square"]);
+    });
+    it("should be 'grip' when in `configuration` mode drag and drop is enabled ", async () => {
+      const page = await newE2EPage();
+      await page.setContent(`<calcite-picker mode='configuration' drag-enabled>
+        <calcite-picker-row value="one"></calcite-picker-row>
+      </calcite-picker>`);
+
+      const row = await page.find("calcite-picker-row");
+      const icon = await row.getProperty("icon");
+      expect(icon).toBe(ICON_TYPES["grip"]);
+    });
+    it("should be null when in `configuration` mode drag and drop is enabled", async () => {
+      const page = await newE2EPage();
+      await page.setContent(`<calcite-picker mode='configuration'>
+        <calcite-picker-row value="one"></calcite-picker-row>
+      </calcite-picker>`);
+
+      const row = await page.find("calcite-picker-row");
+      const icon = await row.getProperty("icon");
+      expect(icon).toBe("null");
     });
   });
 });
