@@ -38,7 +38,7 @@ export class CalcitePicker {
 
   @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
 
-  @State() selectedValues = new Set();
+  @State() selectedValues = {};
 
   @State() editing = false;
 
@@ -95,20 +95,20 @@ export class CalcitePicker {
 
   @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event) {
     event.stopPropagation(); // private event
-    const { row, selected, shiftPressed } = event.detail;
+    const { row, value, selected, shiftPressed } = event.detail;
     if (selected) {
       if (this.multiple && shiftPressed && this.lastSelectedRow) {
         const start = this.rows.indexOf(this.lastSelectedRow);
         const end = this.rows.indexOf(row);
         this.rows.slice(Math.min(start, end), Math.max(start, end)).forEach((currentRow) => {
           currentRow.setAttribute("selected", "");
-          this.selectedValues.add(currentRow);
+          this.selectedValues[currentRow.value] = currentRow;
         });
       } else {
-        this.selectedValues.add(row);
+        this.selectedValues[value] = row;
       }
     } else {
-      this.selectedValues.delete(row);
+      delete this.selectedValues[value];
     }
     if (!this.multiple && selected) {
       this.rows.forEach((item) => {
@@ -148,7 +148,9 @@ export class CalcitePicker {
 
   deselectRow(item) {
     item.removeAttribute("selected");
-    this.selectedValues.delete(item);
+    if (item.value in this.selectedValues) {
+      delete this.selectedValues[item.value];
+    }
   }
 
   startEdit() {
@@ -166,8 +168,8 @@ export class CalcitePicker {
   confirmDelete() {
     let selectedChanged = false;
     this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      if (this.selectedValues.has(row.value)) {
-        this.selectedValues.delete(row.value);
+      if (row.value in this.selectedValues) {
+        delete this.selectedValues[row.value];
         selectedChanged = true;
       }
       row.remove();
