@@ -8,9 +8,10 @@ See the [calcite-shell-panel demo](https://esri.github.io/calcite-app-components
 
 ## Properties
 
-| Property | Attribute | Description                   | Type                      | Default     |
-| -------- | --------- | ----------------------------- | ------------------------- | ----------- |
-| `layout` | `layout`  | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
+| Property    | Attribute   | Description                   | Type                      | Default     |
+| ----------- | ----------- | ----------------------------- | ------------------------- | ----------- |
+| `collapsed` | `collapsed` | Hide the content panel.       | `boolean`                 | `false`     |
+| `layout`    | `layout`    | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
 
 ---
 
