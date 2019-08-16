@@ -4,6 +4,8 @@ The `calcite-shell` component is used for application layout management. It is a
 
 See the [calcite-shell demo](https://esri.github.io/calcite-app-components/demos/calcite-shell.html).
 
+## Slots
+
 | Name              | Description                                                                                       | Type                    |
 | ----------------- | ------------------------------------------------------------------------------------------------- | ----------------------- |
 | `shell-header`    | A slot for adding header content. The slot content will be positioned at the top of the shell.    | `HTMLElement`           |

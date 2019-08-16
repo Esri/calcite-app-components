@@ -4,6 +4,8 @@ The `calcite-shell-panel` is a child component of `calcite-shell` used to house 
 
 See the [calcite-shell-panel demo](https://esri.github.io/calcite-app-components/demos/calcite-shell-panel.html).
 
+## Slots
+
 | Name             | Description                                                                                                                                | Type                       |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
 | `action-bar`     | A slot for adding a `calcite-action-bar` to the panel.                                                                                     | `HTMLCalciteActionBar`     |
