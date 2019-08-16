@@ -8,9 +8,9 @@ See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/
 
 ## Slots
 
-| Attribute        | Description                                                                                                            | Type             |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `bottom-actions` | A slot for adding `calcite-actions` that will apear at the bottom of the action bar, above the collapse/expand button. | `calcite-action` |
+| Name             | Description                                                                                                            | Type                |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `bottom-actions` | A slot for adding `calcite-actions` that will apear at the bottom of the action bar, above the collapse/expand button. | `HTMLCalciteAction` |
 
 <!-- Auto Generated Below -->
 

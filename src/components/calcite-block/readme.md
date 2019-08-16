@@ -4,6 +4,12 @@ The `calcite-block` component is intended for displaying content on it's own as 
 
 See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos/calcite-block.html).
 
+## Slots
+
+| Name      | Description                                                | Type               |
+| --------- | ---------------------------------------------------------- | ------------------ |
+| `control` | A slot for adding a single HTML input element in a header. | `HTMLInputElement` |
+
 <!-- Auto Generated Below -->
 
 ## Properties
