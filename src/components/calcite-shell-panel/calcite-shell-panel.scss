@@ -20,3 +20,7 @@ $shell-panel-max-width: 360px !default;
   height: 100%;
   overflow: auto;
 }
+
+.content[hidden] {
+  display: none;
+}

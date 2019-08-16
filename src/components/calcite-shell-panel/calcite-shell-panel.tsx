@@ -17,6 +17,11 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   /**
+   * Hide the content panel.
+   */
+  @Prop({ reflect: true }) collapsed = false;
+
+  /**
    * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "leading";
@@ -28,10 +33,10 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { layout } = this;
+    const { collapsed, layout } = this;
 
     const contentNode = (
-      <div class={CSS.content}>
+      <div class={CSS.content} hidden={collapsed}>
         <slot />
       </div>
     );
