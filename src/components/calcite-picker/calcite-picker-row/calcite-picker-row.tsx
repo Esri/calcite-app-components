@@ -59,7 +59,7 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle(shiftPressed) {
+  @Method() async toggle(shiftPressed: boolean) {
     this.selected = !this.selected;
     this.calcitePickerRowToggled.emit({
       row: this.el,
@@ -86,10 +86,11 @@ export class CalcitePickerRow {
   // --------------------------------------------------------------------------
 
   renderIcon() {
-    if (!this.icon) {
+    const { icon } = this;
+    if (!icon) {
       return null;
     }
-    if (this.icon === "grip") {
+    if (icon === "grip") {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
@@ -98,7 +99,7 @@ export class CalcitePickerRow {
     } else {
       /* tslint:disable */
       let path;
-      if (this.icon === "square") {
+      if (icon === "square") {
         path = this.selected ? checkSquare16 : square16;
       } else {
         path = this.selected ? circleFilled16 : circle16;
@@ -127,9 +128,10 @@ export class CalcitePickerRow {
   }
 
   render() {
+    const { icon } = this;
     return (
       <Host
-        class={this.icon !== "square" && this.icon !== "circle" ? "highlight" : null}
+        class={icon !== "square" && icon !== "circle" ? "highlight" : null}
         onClick={(e) => this.toggle(e.shiftKey)}
       >
         {this.renderIcon()}
