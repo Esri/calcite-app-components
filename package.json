@@ -37,7 +37,7 @@
     "calcite-fonts": "github:ArcGIS/calcite-fonts#v1.1.2"
   },
   "devDependencies": {
-    "@stencil/core": "1.2.4",
+    "@stencil/core": "1.2.5",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.0.1",
     "@stencil/state-tunnel": "1.0.1",
