@@ -6,10 +6,10 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 ## Slots
 
-| Name             | Description                                                                                                             | Type                |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `menu-actions`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These are displayed when the menu is open. | `HTMLCalciteAction` |
-| `footer-actions` | A slot for adding `calcite-actions` to the footer.                                                                      | `HTMLCalciteAction` |
+| Name             | Description                                                                                                                     | Type                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `menu-actions`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. | `HTMLCalciteAction` |
+| `footer-actions` | A slot for adding `calcite-actions` to the footer.                                                                              | `HTMLCalciteAction` |
 
 <!-- Auto Generated Below -->
 
