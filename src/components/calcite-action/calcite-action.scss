@@ -50,6 +50,14 @@
   background-color: var(--calcite-app-background-active);
 }
 
+:host([disabled]) .button,
+:host([disabled]) .button:hover {
+  cursor: default;
+  background-color: gray;
+  fill: white;
+  color: white;
+}
+
 :host([indicator]) .button::after {
   content: "";
   border-radius: 50%;
