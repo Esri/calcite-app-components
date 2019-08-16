@@ -39,7 +39,9 @@ describe("calcite-shell-panel", () => {
 
     const element = await page.find(`calcite-shell-panel >>> .${CSS.content}`);
 
-    expect(await element.isVisible()).toBe(true);
+    const isVisible = await element.isVisible();
+
+    expect(isVisible).toBe(true);
   });
 
   it("collapsed property should hide panel content", async () => {
@@ -53,7 +55,9 @@ describe("calcite-shell-panel", () => {
 
     const element = await page.find(`calcite-shell-panel >>> .${CSS.content}`);
 
-    expect(element).toBeNull();
+    const isVisible = await element.isVisible();
+
+    expect(isVisible).toBe(false);
   });
 
   it("leading layout property should have action slot first ", async () => {

@@ -35,11 +35,11 @@ export class CalciteShellPanel {
   render() {
     const { collapsed, layout } = this;
 
-    const contentNode = !collapsed ? (
-      <div class={CSS.content}>
+    const contentNode = (
+      <div class={CSS.content} hidden={collapsed}>
         <slot />
       </div>
-    ) : null;
+    );
 
     const actionBarNode = <slot name="action-bar" />;
 
