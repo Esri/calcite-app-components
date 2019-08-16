@@ -28,15 +28,15 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) dragEnabled = false; /* ignored unless mode is configuration */
+
+  @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
 
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
 
   @Prop({ reflect: true }) multiple = false;
 
-  @Prop({ reflect: true }) dragEnabled = false; /* ignored unless mode is configuration */
-
-  @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
+  @Prop({ reflect: true }) textHeading: string;
 
   @State() selectedValues = new Set();
 

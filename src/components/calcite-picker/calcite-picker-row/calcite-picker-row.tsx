@@ -22,19 +22,19 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
+  @Prop({ reflect: true }) editing = false;
+
+  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
+
+  @Prop() metadata: object;
+
+  @Prop({ reflect: true, mutable: true }) selected = false;
+
   @Prop({ reflect: true }) textHeading: string;
 
   @Prop({ reflect: true }) textDescription: string;
 
   @Prop({ reflect: true }) value: string;
-
-  @Prop({ reflect: true, mutable: true }) selected = false;
-
-  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
-
-  @Prop({ reflect: true }) editing = false;
-
-  @Prop() metadata: object;
 
   // --------------------------------------------------------------------------
   //
