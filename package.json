@@ -35,7 +35,7 @@
     "@esri/calcite-ui-icons": "2.0.1",
     "calcite-components": "github:ArcGIS/calcite-components#v0.0.0-alpha.4",
     "calcite-fonts": "github:ArcGIS/calcite-fonts#v1.1.2",
-    "sortablejs": "^1.10.0-rc3"
+    "sortablejs": "1.10.0-rc3"
   },
   "devDependencies": {
     "@stencil/core": "1.1.3",
