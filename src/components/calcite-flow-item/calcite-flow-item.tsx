@@ -5,7 +5,7 @@ import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 
 import { CSS, TEXT } from "./resources";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
 

@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from "@stencil/core";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 import { home16 } from "@esri/calcite-ui-icons";
 
 interface NavItem {
