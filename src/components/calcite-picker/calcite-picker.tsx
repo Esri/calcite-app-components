@@ -44,14 +44,14 @@ export class CalcitePicker {
 
   @Watch("editing")
   editingChangeHandler() {
-    this.rows.forEach((item) => {
+    this.items.forEach((item) => {
       this.editing ? item.setAttribute("editing", "") : item.removeAttribute("editing");
     });
   }
 
-  deletedRows = new Set();
-  rows: any;
-  lastSelectedRow = null;
+  deletedItems = new Set();
+  items: any;
+  lastSelectedItem = null;
 
   // --------------------------------------------------------------------------
   //
@@ -70,14 +70,14 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    const rows = this.el.querySelectorAll("calcite-picker-row");
-    rows.forEach((row) => {
-      row.setAttribute("icon", this.getIconType());
+    const items = this.el.querySelectorAll("calcite-picker-item");
+    items.forEach((item) => {
+      item.setAttribute("icon", this.getIconType());
     });
   }
 
   componentDidLoad() {
-    this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
+    this.items = Array.from(this.el.querySelectorAll("calcite-picker-item"));
     if (this.dragEnabled && this.mode === "configuration") {
       this.setupDragAndDrop();
     }
@@ -91,42 +91,42 @@ export class CalcitePicker {
 
   @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Event() calcitePickerRowsDeleted: EventEmitter;
+  @Event() calcitePickerItemsDeleted: EventEmitter;
 
-  @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event) {
+  @Listen("calcitePickerItemToggled") calcitePickerItemToggledHandler(event) {
     event.stopPropagation(); // private event
-    const { row, selected, shiftPressed } = event.detail;
+    const { item, selected, shiftPressed } = event.detail;
     if (selected) {
-      if (this.multiple && shiftPressed && this.lastSelectedRow) {
-        const start = this.rows.indexOf(this.lastSelectedRow);
-        const end = this.rows.indexOf(row);
-        this.rows.slice(Math.min(start, end), Math.max(start, end)).forEach((currentRow) => {
-          currentRow.setAttribute("selected", "");
-          this.selectedValues.add(currentRow);
+      if (this.multiple && shiftPressed && this.lastSelectedItem) {
+        const start = this.items.indexOf(this.lastSelectedItem);
+        const end = this.items.indexOf(item);
+        this.items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
+          currentItem.setAttribute("selected", "");
+          this.selectedValues.add(currentItem);
         });
       } else {
-        this.selectedValues.add(row);
+        this.selectedValues.add(item);
       }
     } else {
-      this.selectedValues.delete(row);
+      this.selectedValues.delete(item);
     }
     if (!this.multiple && selected) {
-      this.rows.forEach((item) => {
-        if (item !== row) {
-          this.deselectRow(item);
+      this.items.forEach((currentItem) => {
+        if (currentItem !== item) {
+          this.deselectItem(currentItem);
         }
       });
     }
-    this.lastSelectedRow = row;
+    this.lastSelectedItem = item;
     this.calcitePickerSelectionChange.emit(this.selectedValues);
   }
 
-  @Listen("calcitePickerRowDeleted")
-  calcitePickerRowDeletedHandler(event) {
+  @Listen("calcitePickerItemDeleted")
+  calcitePickerItemDeletedHandler(event) {
     event.stopPropagation(); // private event
-    const { row } = event.detail;
-    row.setAttribute("hidden", "");
-    this.deletedRows.add(row);
+    const { item } = event.detail;
+    item.setAttribute("hidden", "");
+    this.deletedItems.add(item);
   }
 
   // --------------------------------------------------------------------------
@@ -141,12 +141,12 @@ export class CalcitePicker {
       Sortable.create(sortGroup, {
         group: "whateva",
         handle: ".handle",
-        draggable: "calcite-picker-row"
+        draggable: "calcite-picker-item"
       });
     });
   }
 
-  deselectRow(item) {
+  deselectItem(item) {
     item.removeAttribute("selected");
     this.selectedValues.delete(item);
   }
@@ -156,27 +156,27 @@ export class CalcitePicker {
   }
 
   cancelDelete() {
-    this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      row.removeAttribute("hidden");
+    this.deletedItems.forEach((item: HTMLCalcitePickerItemElement) => {
+      item.removeAttribute("hidden");
     });
-    this.deletedRows = new Set();
+    this.deletedItems = new Set();
     this.editing = false;
   }
 
   confirmDelete() {
     let selectedChanged = false;
-    this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      if (this.selectedValues.has(row.value)) {
-        this.selectedValues.delete(row.value);
+    this.deletedItems.forEach((item: HTMLCalcitePickerItemElement) => {
+      if (this.selectedValues.has(item.value)) {
+        this.selectedValues.delete(item.value);
         selectedChanged = true;
       }
-      row.remove();
+      item.remove();
     });
     if (selectedChanged) {
       this.calcitePickerSelectionChange.emit(this.selectedValues);
     }
-    this.calcitePickerRowsDeleted.emit(this.deletedRows);
-    this.deletedRows = new Set();
+    this.calcitePickerItemsDeleted.emit(this.deletedItems);
+    this.deletedItems = new Set();
     this.editing = false;
   }
 
@@ -186,7 +186,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedRows() {
+  @Method() async getSelectedItems() {
     return this.selectedValues;
   }
 

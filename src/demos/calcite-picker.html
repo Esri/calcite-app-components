@@ -10,27 +10,27 @@
     <calcite-demo-nav page-id="calcite-picker"></calcite-demo-nav>
     <section class="example-container">
       <calcite-picker id="one" text-heading="Selection Picker - Multi" multiple>
-        <calcite-picker-row text-heading="T. Rex" text-description="arm strength impaired" value="trex" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
+        <calcite-picker-item text-heading="T. Rex" text-description="arm strength impaired" value="trex" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
-        </calcite-picker-row>
-        <calcite-picker-row text-heading="Triceratops" text-description="3 horn" value="helloWorld" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
+        </calcite-picker-item>
+        <calcite-picker-item text-heading="Triceratops" text-description="3 horn" value="helloWorld" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
-        </calcite-picker-row>
-        <calcite-picker-row text-heading="hi" text-description="there" value="helloWorld" metadata='["one", "two"]'>
+        </calcite-picker-item>
+        <calcite-picker-item text-heading="hi" text-description="there" value="helloWorld" metadata='["one", "two"]'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
-        </calcite-picker-row>
+        </calcite-picker-item>
       </calcite-picker>
       <script>
         const picker = document.querySelector("#one");
@@ -40,20 +40,20 @@
       </script>
 
       <calcite-picker id="two" text-heading="Selection Picker">
-        <calcite-picker-row text-heading="Vanilla" text-description="plain" value="vanilla" metadata='{"category":"icecream", "tags":["white"]}'>
+        <calcite-picker-item text-heading="Vanilla" text-description="plain" value="vanilla" metadata='{"category":"icecream", "tags":["white"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
-        </calcite-picker-row>
-        <calcite-picker-row text-heading="Chocolate" text-description="savory" value="chocolate" metadata='{"category":"icecream", "tags":["brown"]}'>
+        </calcite-picker-item>
+        <calcite-picker-item text-heading="Chocolate" text-description="savory" value="chocolate" metadata='{"category":"icecream", "tags":["bitemn"]}'>
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <circle cx="8" cy="8" r="8"/>
               </svg>
             </calcite-action>
-          </calcite-picker-row>
+          </calcite-picker-item>
       </calcite-picker>
       <script>
         const picker2 = document.querySelector("#two");
@@ -63,7 +63,7 @@
       </script>
       <calcite-picker id="three" text-heading="Configuration Picker Draggable" mode="configuration" drag-enabled>
         <calcite-picker-group text-group-title="numbers">
-          <calcite-picker-row text-heading="one" text-description="fish" value="one" icon="grip">
+          <calcite-picker-item text-heading="one" text-description="fish" value="one" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path
@@ -71,8 +71,8 @@
                 />
               </svg>
             </calcite-action>
-          </calcite-picker-row>
-          <calcite-picker-row text-heading="two" text-description="fish" value="two" icon="grip">
+          </calcite-picker-item>
+          <calcite-picker-item text-heading="two" text-description="fish" value="two" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path
@@ -80,10 +80,10 @@
                 />
               </svg>
             </calcite-action>
-          </calcite-picker-row>
+          </calcite-picker-item>
         </calcite-picker-group>
         <calcite-picker-group text-group-title="colors">
-          <calcite-picker-row text-heading="red" text-description="fish" value="red" icon="grip">
+          <calcite-picker-item text-heading="red" text-description="fish" value="red" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path
@@ -91,8 +91,8 @@
                 />
               </svg>
             </calcite-action>
-          </calcite-picker-row>
-          <calcite-picker-row text-heading="blue" text-description="fish" value="blue" icon="grip">
+          </calcite-picker-item>
+          <calcite-picker-item text-heading="blue" text-description="fish" value="blue" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <path
@@ -100,7 +100,7 @@
                 />
               </svg>
             </calcite-action>
-          </calcite-picker-row>
+          </calcite-picker-item>
         </calcite-picker-group>
       </calcite-picker>
       <script>
@@ -111,7 +111,7 @@
       </script>
 
       <calcite-picker id="four" text-heading="Configuration Picker Editable" mode="configuration" edit-enabled>
-        <calcite-picker-row text-heading="one" text-description="fish" value="one" icon="grip">
+        <calcite-picker-item text-heading="one" text-description="fish" value="one" icon="grip">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <path
@@ -119,8 +119,8 @@
               />
             </svg>
           </calcite-action>
-        </calcite-picker-row>
-        <calcite-picker-row text-heading="two" text-description="fish" value="two" icon="grip">
+        </calcite-picker-item>
+        <calcite-picker-item text-heading="two" text-description="fish" value="two" icon="grip">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <path
@@ -128,14 +128,14 @@
               />
             </svg>
           </calcite-action>
-        </calcite-picker-row>
+        </calcite-picker-item>
       </calcite-picker>
       <script>
         const picker4 = document.querySelector("#four");
         picker4.addEventListener("pickerSelectionChange", event => {
           console.log(event.detail);
         });
-        picker4.addEventListener("pickerRowsDeleted", event => {
+        picker4.addEventListener("pickerItemsDeleted", event => {
           console.log(event.detail);
         });
       </script>
