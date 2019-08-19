@@ -8,6 +8,7 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
   box-shadow: 0 1px 0 var(--calcite-app-border);
   margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
 }
 
 :host([open]) {
