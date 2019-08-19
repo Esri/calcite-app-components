@@ -53,9 +53,14 @@
 :host([disabled]) .button,
 :host([disabled]) .button:hover {
   cursor: default;
-  background-color: gray;
-  fill: white;
-  color: white;
+  opacity: var(--calcite-app-disabled-opacity);
+  background-color: var(--calcite-app-background);
+}
+
+:host([disabled][active]) .button,
+:host([disabled][active]) .button:hover {
+  opacity: var(--calcite-app-disabled-opacity);
+  background-color: var(--calcite-app-background-active);
 }
 
 :host([indicator]) .button::after {
