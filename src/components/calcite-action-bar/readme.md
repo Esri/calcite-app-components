@@ -6,6 +6,12 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 
 See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/demos/calcite-action-bar.html).
 
+## Slots
+
+| Name             | Description                                                                                                            | Type                |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `bottom-actions` | A slot for adding `calcite-actions` that will apear at the bottom of the action bar, above the collapse/expand button. | `HTMLCalciteAction` |
+
 <!-- Auto Generated Below -->
 
 ## Properties
