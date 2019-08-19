@@ -35,5 +35,6 @@ $shell-min-height: 671px !default; // ipad + browser with tabs
 
 .footer {
   background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
 }
