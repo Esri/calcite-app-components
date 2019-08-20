@@ -52,7 +52,7 @@ export class CalciteShellPanel {
     return (
       <Host>
         {mainNodes}
-        <slot name="floating-panel" />
+        <slot name="shell-floating-panel" />
         <slot name="action-pad" />
       </Host>
     );
