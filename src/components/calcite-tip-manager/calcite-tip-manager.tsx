@@ -1,4 +1,15 @@
-import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h
+} from "@stencil/core";
 import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
@@ -112,6 +123,17 @@ export class CalciteTipManager {
 
   // --------------------------------------------------------------------------
   //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when the component has been closed.
+   */
+  @Event() calciteTipManagerClose: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
@@ -134,6 +156,7 @@ export class CalciteTipManager {
   hideTipManager = (): void => {
     this.el.setAttribute("hidden", "");
     this.el.setAttribute("aria-hidden", "");
+    this.calciteTipManagerClose.emit();
   };
 
   showSelectedTip() {

@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../utils/localStorage";
 import CalciteIcon from "../utils/CalciteIcon";
@@ -63,6 +63,17 @@ export class CalciteTip {
 
   // --------------------------------------------------------------------------
   //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when the component has been dismissed.
+   */
+  @Event() calciteTipDismiss: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
@@ -75,6 +86,8 @@ export class CalciteTip {
     if (storageId) {
       setItem(`${this.el.tagName.toLowerCase()}-${storageId}`, "dismissed");
     }
+
+    this.calciteTipDismiss.emit();
   };
 
   // --------------------------------------------------------------------------
