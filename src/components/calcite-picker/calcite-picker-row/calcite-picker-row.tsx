@@ -25,17 +25,11 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true }) editing = false;
 
-  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
-
   @Prop() metadata: object;
 
   @Prop({ reflect: true, mutable: true }) selected = false;
 
-  @Prop({ reflect: true }) icon:
-    | ICON_TYPES["square"]
-    | ICON_TYPES["circle"]
-    | ICON_TYPES["grip"]
-    | null = null;
+  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
   @Prop({ reflect: true }) textHeading: string;
 
@@ -105,7 +99,7 @@ export class CalcitePickerRow {
     if (!icon) {
       return null;
     }
-    if (icon === ICON_TYPES["grip"]) {
+    if (icon === ICON_TYPES.grip) {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
@@ -114,7 +108,7 @@ export class CalcitePickerRow {
     } else {
       /* tslint:disable */
       let path;
-      if (icon === ICON_TYPES["square"]) {
+      if (icon === ICON_TYPES.square) {
         path = this.selected ? checkSquare16 : square16;
       } else {
         path = this.selected ? circleFilled16 : circle16;
@@ -142,9 +136,7 @@ export class CalcitePickerRow {
     const { icon } = this;
     return (
       <Host
-        class={
-          icon !== ICON_TYPES["square"] && icon !== ICON_TYPES["circle"] ? CSS.highlight : null
-        }
+        class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
         onClick={this.iconClickHandler.bind(this)}
       >
         {this.renderIcon()}

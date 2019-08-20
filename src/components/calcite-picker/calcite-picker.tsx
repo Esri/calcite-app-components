@@ -76,7 +76,11 @@ export class CalcitePicker {
   connectedCallback() {
     const rows = this.el.querySelectorAll("calcite-picker-row");
     rows.forEach((row) => {
-      row.setAttribute("icon", this.getIconType());
+      if (this.getIconType()) {
+        row.setAttribute("icon", this.getIconType());
+      } else {
+        row.removeAttribute("icon");
+      }
     });
   }
 
@@ -202,14 +206,14 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  getIconType() {
+  getIconType(): ICON_TYPES | null {
     let type = null;
     if (this.mode === "configuration" && this.dragEnabled) {
-      type = ICON_TYPES["grip"];
+      type = ICON_TYPES.grip;
     } else if (this.mode === "selection" && this.multiple) {
-      type = ICON_TYPES["square"];
+      type = ICON_TYPES.square;
     } else if (this.mode === "selection" && !this.multiple) {
-      type = ICON_TYPES["circle"];
+      type = ICON_TYPES.circle;
     }
     return type;
   }

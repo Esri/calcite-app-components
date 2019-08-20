@@ -99,7 +99,7 @@ describe("calcite-picker", () => {
 
       const row = await page.find("calcite-picker-row");
       const icon = await row.getProperty("icon");
-      expect(icon).toBe("null");
+      expect(icon).toBeNull();
     });
   });
 });
