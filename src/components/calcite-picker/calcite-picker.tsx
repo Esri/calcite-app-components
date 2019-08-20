@@ -38,6 +38,12 @@ export class CalcitePicker {
 
   @Prop({ reflect: true }) textHeading: string;
 
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
   @State() selectedValues = new Set();
 
   @State() editing = false;
@@ -60,8 +66,6 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLElement;
-
-  sortable = null;
 
   // --------------------------------------------------------------------------
   //
