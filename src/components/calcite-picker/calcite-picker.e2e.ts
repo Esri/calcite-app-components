@@ -51,10 +51,10 @@ describe("calcite-picker", () => {
         await row2.click();
         await row2.click(); // deselect
         expect(toggleSpy).toHaveReceivedEventTimes(3);
-        expect(toggleSpy.events[0].detail["one"]).not.toBeUndefined();
-        expect(toggleSpy.events[1].detail["one"]).not.toBeUndefined();
-        expect(toggleSpy.events[1].detail["two"]).not.toBeUndefined();
-        expect(toggleSpy.events[2].detail["one"]).not.toBeUndefined();
+        expect(toggleSpy.events[0].detail["one"]).toBeDefined();
+        expect(toggleSpy.events[1].detail["one"]).toBeDefined();
+        expect(toggleSpy.events[1].detail["two"]).toBeDefined();
+        expect(toggleSpy.events[2].detail["one"]).toBeDefined();
         expect(toggleSpy.events[2].detail["two"]).toBeUndefined();
       });
     });
