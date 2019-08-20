@@ -6,7 +6,6 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property      | Attribute      | Description                                                                                       | Type                | Default     |
@@ -20,30 +19,30 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
 | `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"` | `undefined` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [calcite-action-bar](../calcite-action-bar)
- - [calcite-block-section](../calcite-block-section)
- - [calcite-floating-panel](../calcite-floating-panel)
- - [calcite-flow-item](../calcite-flow-item)
- - [calcite-tip](../calcite-tip)
- - [calcite-tip-manager](../calcite-tip-manager)
+- [calcite-action-bar](../calcite-action-bar)
+- [calcite-block-section](../calcite-block-section)
+- [calcite-shell-floating-panel](../calcite-shell-floating-panel)
+- [calcite-flow-item](../calcite-flow-item)
+- [calcite-tip](../calcite-tip)
+- [calcite-tip-manager](../calcite-tip-manager)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action
   calcite-block-section --> calcite-action
-  calcite-floating-panel --> calcite-action
+  calcite-shell-floating-panel --> calcite-action
   calcite-flow-item --> calcite-action
   calcite-tip --> calcite-action
   calcite-tip-manager --> calcite-action
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

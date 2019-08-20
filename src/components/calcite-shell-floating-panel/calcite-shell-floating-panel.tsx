@@ -21,11 +21,11 @@ import CalciteIcon from "../utils/CalciteIcon";
 import { CSS } from "./resources";
 
 @Component({
-  tag: "calcite-floating-panel",
-  styleUrl: "calcite-floating-panel.scss",
+  tag: "calcite-shell-floating-panel",
+  styleUrl: "calcite-shell-floating-panel.scss",
   shadow: true
 })
-export class CalciteFloatingPanel {
+export class CalciteShellFloatingPanel {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -56,7 +56,7 @@ export class CalciteFloatingPanel {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCalciteFloatingPanelElement;
+  @Element() el: HTMLCalciteShellFloatingPanelElement;
 
   @State() offsetTop = 0;
 
@@ -69,7 +69,7 @@ export class CalciteFloatingPanel {
   /**
    * Emitted when the component has been closed.
    */
-  @Event() calciteFloatingPanelClose: EventEmitter;
+  @Event() calciteShellFloatingPanelClose: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -97,7 +97,7 @@ export class CalciteFloatingPanel {
 
   hidePanel = () => {
     this.el.setAttribute("hidden", "");
-    this.calciteFloatingPanelClose.emit();
+    this.calciteShellFloatingPanelClose.emit();
   };
 
   // --------------------------------------------------------------------------
