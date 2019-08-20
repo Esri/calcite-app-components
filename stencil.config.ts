@@ -4,7 +4,7 @@ import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 
 export const config: Config = {
-  namespace: "calcite",
+  namespace: "calcite-app",
   bundles: [
     {
       components: ["calcite-action", "calcite-action-group", "calcite-action-bar", "calcite-action-pad"]
