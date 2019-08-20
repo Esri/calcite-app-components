@@ -76,8 +76,9 @@ export class CalcitePicker {
   connectedCallback() {
     const rows = this.el.querySelectorAll("calcite-picker-row");
     rows.forEach((row) => {
-      if (this.getIconType()) {
-        row.setAttribute("icon", this.getIconType());
+      const iconType = this.getIconType();
+      if (iconType) {
+        row.setAttribute("icon", iconType);
       } else {
         row.removeAttribute("icon");
       }
