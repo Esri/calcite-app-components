@@ -1,1 +1,0 @@
-import{h as t}from"./p-a1c9af82.js";const s=({path:s,size:e,svgAttributes:i,title:l})=>t("svg",Object.assign({xmlns:"http://www.w3.org/2000/svg",height:e,width:e,viewBox:`0 0 ${e} ${e}`},i),l?t("title",null,l):null,t("path",{d:s}));export{s as C};
