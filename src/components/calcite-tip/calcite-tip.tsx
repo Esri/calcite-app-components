@@ -70,7 +70,7 @@ export class CalciteTip {
   /**
    * Emitted when the component has been dismissed.
    */
-  @Event() calciteTipDismissed: EventEmitter;
+  @Event() calciteTipDismiss: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -87,7 +87,7 @@ export class CalciteTip {
       setItem(`${this.el.tagName.toLowerCase()}-${storageId}`, "dismissed");
     }
 
-    this.calciteTipDismissed.emit();
+    this.calciteTipDismiss.emit();
   };
 
   // --------------------------------------------------------------------------
