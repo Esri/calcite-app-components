@@ -75,6 +75,14 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
+  iconClickHandler(e) {
+    this.toggle(e.shiftKey);
+  }
+
+  secondaryActionContainerClickHandler(e) {
+    e.stopPropagation();
+  }
+
   deleteRow() {
     this.calcitePickerRowDeleted.emit({ row: this.el, value: this.value });
   }
@@ -115,11 +123,7 @@ export class CalcitePickerRow {
 
   renderSecondaryAction() {
     return this.editing ? (
-      <calcite-action
-        onClick={() => {
-          this.deleteRow();
-        }}
-      >
+      <calcite-action onClick={this.deleteRow.bind(this)}>
         <CalciteIcon size="16" path={trash16} />
       </calcite-action>
     ) : (
@@ -132,18 +136,14 @@ export class CalcitePickerRow {
     return (
       <Host
         class={icon !== "square" && icon !== "circle" ? "highlight" : null}
-        onClick={(e) => this.toggle(e.shiftKey)}
+        onClick={this.iconClickHandler.bind(this)}
       >
         {this.renderIcon()}
         <div class={CSS.label}>
           <h4 class={CSS.heading}>{this.textHeading}</h4>
           <p class={CSS.description}>{this.textDescription}</p>
         </div>
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
+        <div onClick={this.secondaryActionContainerClickHandler}>
           {this.renderSecondaryAction()}
         </div>
       </Host>
