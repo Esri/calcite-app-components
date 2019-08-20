@@ -17,8 +17,8 @@ describe("calcite-picker-row", () => {
 
     await page.setContent(`<calcite-picker-row></calcite-picker-row>`);
     const row = await page.find("calcite-picker-row");
-    expect(row.selected).toBe(false);
+    expect(await row.getProperty("selected")).toBe(false);
     await row.click();
-    expect(row.selected).toBe(true);
+    expect(await row.getProperty("selected")).toBe(true);
   });
 });
