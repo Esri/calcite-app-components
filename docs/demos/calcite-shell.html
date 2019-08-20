@@ -71,7 +71,7 @@
         <div class="calcite-shell-container">
           <calcite-shell>
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-floating-panel
+              <calcite-shell-floating-panel
                 id="floating-panel"
                 slot="floating-panel"
                 heading="Anchored Floating Panel"
@@ -79,10 +79,10 @@
                 hidden
                 style="height:150px;"
                 ><span>
-                  Floating Panel Content
+                  Shell Floating Panel Content
                 </span>
-              </calcite-floating-panel>
-              <calcite-floating-panel
+              </calcite-shell-floating-panel>
+              <calcite-shell-floating-panel
                 id="floating-panel-over"
                 slot="floating-panel"
                 heading="Over Floating Panel"
@@ -90,9 +90,9 @@
                 hidden
                 style="height:150px;"
                 ><span>
-                  Floating Panel Content
+                  Shell Floating Panel Content
                 </span>
-              </calcite-floating-panel>
+              </calcite-shell-floating-panel>
               <calcite-action-pad id="action-pad" position-type="side" slot="action-pad" hidden>
                 <calcite-action-group>
                   <calcite-action text="Add">
@@ -319,7 +319,7 @@
         <div class="calcite-shell-container">
           <calcite-shell theme="dark">
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-floating-panel
+              <calcite-shell-floating-panel
                 slot="floating-panel"
                 heading="Anchored Floating Panel"
                 position-type="anchor"
@@ -328,8 +328,8 @@
                 ><span>
                   Floating Panel Content
                 </span>
-              </calcite-floating-panel>
-              <calcite-floating-panel
+              </calcite-shell-floating-panel>
+              <calcite-shell-floating-panel
                 slot="floating-panel"
                 heading="Over Floating Panel"
                 position-type="over"
@@ -338,7 +338,7 @@
                 ><span>
                   Floating Panel Content
                 </span>
-              </calcite-floating-panel>
+              </calcite-shell-floating-panel>
               <calcite-action-pad position-type="side" slot="action-pad" hidden>
                 <calcite-action-group>
                   <calcite-action text="Add">
@@ -570,24 +570,24 @@
           actionPad.positionElement = actionPadButton;
         });
 
-        var floatingPanel = document.getElementById("floating-panel");
-        var floatingPanelButton = document.getElementById("floating-panel-button");
-        floatingPanelButton.addEventListener("click", function() {
-          floatingPanel.hasAttribute("hidden")
-            ? floatingPanel.removeAttribute("hidden")
-            : floatingPanel.setAttribute("hidden", "");
+        var shellFloatingPanel = document.getElementById("floating-panel");
+        var shellFloatingPanelButton = document.getElementById("floating-panel-button");
+        shellFloatingPanelButton.addEventListener("click", function() {
+          shellFloatingPanel.hasAttribute("hidden")
+            ? shellFloatingPanel.removeAttribute("hidden")
+            : shellFloatingPanel.setAttribute("hidden", "");
 
-          floatingPanel.positionElement = floatingPanelButton;
+          shellFloatingPanel.positionElement = shellFloatingPanelButton;
         });
 
-        var floatingPanelOver = document.getElementById("floating-panel-over");
-        var floatingPanelOverButton = document.getElementById("floating-panel-over-button");
-        floatingPanelOverButton.addEventListener("click", function() {
-          floatingPanelOver.hasAttribute("hidden")
-            ? floatingPanelOver.removeAttribute("hidden")
-            : floatingPanelOver.setAttribute("hidden", "");
+        var shellFloatingPanelOver = document.getElementById("floating-panel-over");
+        var shellFloatingPanelOverButton = document.getElementById("floating-panel-over-button");
+        shellFloatingPanelOverButton.addEventListener("click", function() {
+          shellFloatingPanelOver.hasAttribute("hidden")
+            ? shellFloatingPanelOver.removeAttribute("hidden")
+            : shellFloatingPanelOver.setAttribute("hidden", "");
 
-          floatingPanelOver.positionElement = floatingPanelOverButton;
+          shellFloatingPanelOver.positionElement = shellFloatingPanelOverButton;
         });
 
         var flowNode = document.getElementById("flow");

@@ -40,7 +40,7 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCalciteFloatingPanelElement;
+  @Element() el: HTMLCalciteShellFloatingPanelElement;
 
   @State() offsetTop = 0;
 

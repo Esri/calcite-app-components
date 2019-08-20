@@ -1,6 +1,6 @@
-# calcite-floating-panel
+# calcite-shell-floating-panel
 
-The `floating-panel` component is a positioned container that appears relative to a `calcite-shell-panel` and is used to house temporary content.
+The `calcite-shell-floating-panel` component is a positioned container that appears relative to a `calcite-shell-panel` and is used to house temporary content.
 
 <!-- Auto Generated Below -->
 
@@ -23,8 +23,8 @@ The `floating-panel` component is a positioned container that appears relative t
 ### Graph
 ```mermaid
 graph TD;
-  calcite-floating-panel --> calcite-action
-  style calcite-floating-panel fill:#f9f,stroke:#333,stroke-width:4px
+  calcite-shell-floating-panel --> calcite-action
+  style calcite-shell-floating-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
