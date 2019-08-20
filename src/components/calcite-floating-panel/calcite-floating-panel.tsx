@@ -1,4 +1,14 @@
-import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  Watch,
+  h
+} from "@stencil/core";
 
 import { CalcitePlacement } from "../interfaces";
 
@@ -52,31 +62,14 @@ export class CalciteFloatingPanel {
 
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Events
   //
   // --------------------------------------------------------------------------
 
-  render() {
-    const { offsetTop } = this;
-
-    const style = {
-      top: `${offsetTop}px`
-    };
-
-    return (
-      <Host style={style}>
-        <header class={CSS.header}>
-          <h3 class={CSS.heading}>{this.heading}</h3>
-          <calcite-action onClick={this.hidePanel}>
-            <CalciteIcon size="16" path={x16} />
-          </calcite-action>
-        </header>
-        <div class={CSS.content}>
-          <slot />
-        </div>
-      </Host>
-    );
-  }
+  /**
+   * Emitted when the component has been closed.
+   */
+  @Event() calciteFloatingPanelClose: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -104,5 +97,34 @@ export class CalciteFloatingPanel {
 
   hidePanel = () => {
     this.el.setAttribute("hidden", "");
+    this.calciteFloatingPanelClose.emit();
   };
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
+
+  render() {
+    const { offsetTop } = this;
+
+    const style = {
+      top: `${offsetTop}px`
+    };
+
+    return (
+      <Host style={style}>
+        <header class={CSS.header}>
+          <h3 class={CSS.heading}>{this.heading}</h3>
+          <calcite-action onClick={this.hidePanel}>
+            <CalciteIcon size="16" path={x16} />
+          </calcite-action>
+        </header>
+        <div class={CSS.content}>
+          <slot />
+        </div>
+      </Host>
+    );
+  }
 }
