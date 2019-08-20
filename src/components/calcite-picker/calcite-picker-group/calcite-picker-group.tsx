@@ -17,6 +17,12 @@ export class CalcitePickerGroup {
    */
   @Prop({ reflect: true }) textGroupTitle: string;
 
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
+
   render() {
     return (
       <Host>

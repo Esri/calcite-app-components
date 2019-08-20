@@ -23,11 +23,11 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) editing = false;
 
-  @Prop({ reflect: true }) textDescription: string;
+  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
 
-  @Prop({ reflect: true }) value: string;
+  @Prop() metadata: object;
 
   @Prop({ reflect: true, mutable: true }) selected = false;
 
@@ -37,9 +37,11 @@ export class CalcitePickerRow {
     | ICON_TYPES["grip"]
     | null = null;
 
-  @Prop({ reflect: true }) editing = false;
+  @Prop({ reflect: true }) textHeading: string;
 
-  @Prop() metadata: object;
+  @Prop({ reflect: true }) textDescription: string;
+
+  @Prop({ reflect: true }) value: string;
 
   // --------------------------------------------------------------------------
   //
@@ -64,7 +66,7 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle(shiftPressed) {
+  @Method() async toggle(shiftPressed: boolean) {
     this.selected = !this.selected;
     this.calcitePickerRowToggled.emit({
       row: this.el,
@@ -80,6 +82,14 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
+  iconClickHandler(e) {
+    this.toggle(e.shiftKey);
+  }
+
+  secondaryActionContainerClickHandler(e) {
+    e.stopPropagation();
+  }
+
   deleteRow() {
     this.calcitePickerRowDeleted.emit({ row: this.el, value: this.value });
   }
@@ -91,10 +101,11 @@ export class CalcitePickerRow {
   // --------------------------------------------------------------------------
 
   renderIcon() {
-    if (!this.icon) {
+    const { icon } = this;
+    if (!icon) {
       return null;
     }
-    if (this.icon === ICON_TYPES["grip"]) {
+    if (icon === ICON_TYPES["grip"]) {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
@@ -103,7 +114,7 @@ export class CalcitePickerRow {
     } else {
       /* tslint:disable */
       let path;
-      if (this.icon === ICON_TYPES["square"]) {
+      if (icon === ICON_TYPES["square"]) {
         path = this.selected ? checkSquare16 : square16;
       } else {
         path = this.selected ? circleFilled16 : circle16;
@@ -119,11 +130,7 @@ export class CalcitePickerRow {
 
   renderSecondaryAction() {
     return this.editing ? (
-      <calcite-action
-        onClick={() => {
-          this.deleteRow();
-        }}
-      >
+      <calcite-action onClick={this.deleteRow.bind(this)}>
         <CalciteIcon size="16" path={trash16} />
       </calcite-action>
     ) : (
@@ -132,25 +139,20 @@ export class CalcitePickerRow {
   }
 
   render() {
+    const { icon } = this;
     return (
       <Host
         class={
-          this.icon !== ICON_TYPES["square"] && this.icon !== ICON_TYPES["circle"]
-            ? CSS.highlight
-            : null
+          icon !== ICON_TYPES["square"] && icon !== ICON_TYPES["circle"] ? CSS.highlight : null
         }
-        onClick={(e) => this.toggle(e.shiftKey)}
+        onClick={this.iconClickHandler.bind(this)}
       >
         {this.renderIcon()}
         <div class={CSS.label}>
           <h4 class={CSS.heading}>{this.textHeading}</h4>
           <p class={CSS.description}>{this.textDescription}</p>
         </div>
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
+        <div onClick={this.secondaryActionContainerClickHandler}>
           {this.renderSecondaryAction()}
         </div>
       </Host>

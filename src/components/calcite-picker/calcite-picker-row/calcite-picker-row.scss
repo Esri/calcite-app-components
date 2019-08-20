@@ -7,6 +7,7 @@
   margin-bottom: 12px;
   cursor: pointer;
 }
+
 :host([hidden]) {
   display: none;
 }
@@ -14,18 +15,22 @@
 :host(.highlight) {
   border-left: 3px solid transparent;
 }
+
 :host(.highlight[selected]) {
   border-left-color: blue;
 }
+
 .label {
   flex-grow: 1;
   margin: 0 12px;
   min-width: 60px;
 }
+
 .heading,
 .description {
   margin: 0;
 }
+
 .handle {
   cursor: move;
 }

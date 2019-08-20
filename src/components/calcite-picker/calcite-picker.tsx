@@ -28,15 +28,21 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) dragEnabled = false; /* ignored unless mode is configuration */
+
+  @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
 
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
 
   @Prop({ reflect: true }) multiple = false;
 
-  @Prop({ reflect: true }) dragEnabled = false; /* ignored unless mode is configuration */
+  @Prop({ reflect: true }) textHeading: string;
 
-  @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
 
   @State() selectedValues = {};
 
@@ -60,8 +66,6 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLElement;
-
-  sortable = null;
 
   // --------------------------------------------------------------------------
   //
