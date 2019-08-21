@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
 import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
 
@@ -68,7 +68,7 @@ export class CalciteFlowItem {
 
   @Element() el: HTMLElement;
 
-  @State() rtl: boolean = getElementDir(this.el) === "rtl";
+  rtl = false;
 
   // --------------------------------------------------------------------------
   //
@@ -187,14 +187,20 @@ export class CalciteFlowItem {
   }
 
   render() {
+    const { el, showBackButton, heading } = this;
+
+    const rtl = getElementDir(el) === "rtl";
+    this.rtl = rtl;
+
     const headingClasses = {
       [CSS.heading]: true,
-      [CSS.headingFirst]: !this.showBackButton
+      [CSS.headingFirst]: !showBackButton
     };
+
     const headerNode = (
       <header class={CSS.header}>
         {this.renderBackButton()}
-        <h2 class={classnames(headingClasses)}>{this.heading}</h2>
+        <h2 class={classnames(headingClasses)}>{heading}</h2>
         {this.renderHeaderActions()}
       </header>
     );
@@ -209,7 +215,7 @@ export class CalciteFlowItem {
       <Host>
         <article
           class={classnames(CSS.container, {
-            [CSS_UTILITY.rtl]: this.rtl
+            [CSS_UTILITY.rtl]: rtl
           })}
         >
           {headerNode}
