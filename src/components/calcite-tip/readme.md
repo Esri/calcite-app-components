@@ -13,6 +13,7 @@ See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/c
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property         | Attribute         | Description                                         | Type                | Default      |
@@ -25,11 +26,13 @@ See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/c
 | `theme`          | `theme`           | Used to set the component's color scheme.           | `"dark" \| "light"` | `undefined`  |
 | `thumbnail`      | `thumbnail`       | A string of the path to the thumbnail.              | `string`            | `undefined`  |
 
+
 ## Events
 
 | Event               | Description                                    | Type               |
 | ------------------- | ---------------------------------------------- | ------------------ |
 | `calciteTipDismiss` | Emitted when the component has been dismissed. | `CustomEvent<any>` |
+
 
 ## Dependencies
 
@@ -38,13 +41,12 @@ See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/c
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-tip --> calcite-action
   style calcite-tip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

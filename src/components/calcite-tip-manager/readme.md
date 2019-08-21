@@ -6,6 +6,7 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute               | Description                                        | Type                | Default                       |
@@ -17,25 +18,36 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 | `textPrevious`        | `text-previous`         | Alternate text for navigating to the previous tip. | `string`            | `TEXT.previous`               |
 | `theme`               | `theme`                 | Used to set the component's color scheme.          | `"dark" \| "light"` | `undefined`                   |
 
+
 ## Events
 
 | Event                    | Description                                 | Type               |
 | ------------------------ | ------------------------------------------- | ------------------ |
 | `calciteTipManagerClose` | Emitted when the component has been closed. | `CustomEvent<any>` |
 
+
 ## Methods
 
 ### `nextTip() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `previousTip() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 
@@ -44,13 +56,12 @@ Type: `Promise<void>`
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-tip-manager --> calcite-action
   style calcite-tip-manager fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
