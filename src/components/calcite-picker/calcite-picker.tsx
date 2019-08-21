@@ -13,7 +13,8 @@ import {
   h
 } from "@stencil/core";
 import { pencil16 } from "@esri/calcite-ui-icons";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
+import guid from "../utils/guid";
 import { CSS } from "./resources";
 
 @Component({
@@ -58,6 +59,7 @@ export class CalcitePicker {
   deletedRows = new Set();
   rows: any;
   lastSelectedRow = null;
+  guid = `calcite-picker-${guid()}`;
 
   // --------------------------------------------------------------------------
   //
@@ -143,7 +145,7 @@ export class CalcitePicker {
     const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
     sortGroups.forEach((sortGroup) => {
       Sortable.create(sortGroup, {
-        group: "whateva",
+        group: this.el.id,
         handle: ".handle",
         draggable: "calcite-picker-row"
       });
@@ -238,8 +240,9 @@ export class CalcitePicker {
   }
 
   render() {
+    const id = this.el.id || this.guid;
     return (
-      <Host>
+      <Host id={id}>
         <section class={CSS.container}>
           <header>
             <h2>{this.textHeading}</h2>
