@@ -22,7 +22,7 @@ import { CSS } from "./resources";
 
 import classnames from "classnames";
 
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+import { getElementDir } from "../utils/dom";
 
 import { CSS_UTILITY } from "../utils/resources";
 

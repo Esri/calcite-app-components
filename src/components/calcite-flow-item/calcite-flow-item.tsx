@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 
 import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
 
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+import { getElementDir } from "../utils/dom";
 
 import classnames from "classnames";
 
