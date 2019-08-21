@@ -81,8 +81,7 @@ export class CalciteFilter {
           <input
             type="text"
             placeholder={this.textPlaceholder}
-            onInput={(event) => {
-              // @ts-ignore
+            onInput={(event: any) => {
               this.filter(event.target.value);
             }}
           />
