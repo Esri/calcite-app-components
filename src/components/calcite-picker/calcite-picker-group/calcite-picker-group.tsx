@@ -1,4 +1,5 @@
 import { Component, Host, Prop, h } from "@stencil/core";
+import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-picker-group",
@@ -16,10 +17,16 @@ export class CalcitePickerGroup {
    */
   @Prop({ reflect: true }) textGroupTitle: string;
 
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
+
   render() {
     return (
       <Host>
-        {this.textGroupTitle ? <h3>{this.textGroupTitle}</h3> : null}
+        {this.textGroupTitle ? <h3 class={CSS.heading}>{this.textGroupTitle}</h3> : null}
         <slot />
       </Host>
     );

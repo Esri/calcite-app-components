@@ -1,8 +1,19 @@
-import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h
+} from "@stencil/core";
 import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 
 @Component({
@@ -17,16 +28,32 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
   /**
+   * Alternate text for closing the Tip Manager.
+   */
+  @Prop() textClose = TEXT.close;
+
+  /**
    * The default group title for the Tip Manager.
    */
   @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
+
+  /**
+   * Alternate text for navigating to the next tip.
+   */
+  @Prop() textNext = TEXT.next;
+
   /**
    * Label that appears on hover of pagination icon.
    */
   @Prop({ reflect: true }) textPaginationLabel = TEXT.defaultPaginationLabel;
 
   /**
-   * Element styling
+   * Alternate text for navigating to the previous tip.
+   */
+  @Prop() textPrevious = TEXT.previous;
+
+  /**
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
@@ -96,6 +123,17 @@ export class CalciteTipManager {
 
   // --------------------------------------------------------------------------
   //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when the component has been closed.
+   */
+  @Event() calciteTipManagerClose: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
@@ -109,21 +147,23 @@ export class CalciteTipManager {
     this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
     tips.forEach((tip) => {
-      tip.toggleAttribute("non-dismissible", true);
+      tip.setAttribute("non-dismissible", "");
     });
     this.showSelectedTip();
     this.updateGroupTitle();
   }
 
   hideTipManager = (): void => {
-    this.el.toggleAttribute("hidden");
-    this.el.toggleAttribute("aria-hidden");
+    this.el.setAttribute("hidden", "");
+    this.el.setAttribute("aria-hidden", "");
+    this.calciteTipManagerClose.emit();
   };
 
   showSelectedTip() {
     this.tips.forEach((tip, index) => {
-      tip.toggleAttribute("selected", this.selectedIndex === index);
-      tip.toggleAttribute("hidden", this.selectedIndex !== index);
+      const isSelected = this.selectedIndex === index;
+      isSelected ? tip.setAttribute("selected", "") : tip.removeAttribute("selected");
+      isSelected ? tip.removeAttribute("hidden") : tip.setAttribute("hidden", "");
     });
   }
 
@@ -156,7 +196,7 @@ export class CalciteTipManager {
       <Host>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action onClick={this.hideTipManager} class={CSS.close}>
+          <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
             <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
@@ -164,13 +204,17 @@ export class CalciteTipManager {
           <slot />
         </div>
         <footer class={CSS.pagination}>
-          <calcite-action onClick={this.previousClicked} class={CSS.pagePrevious}>
+          <calcite-action
+            text={this.textPrevious}
+            onClick={this.previousClicked}
+            class={CSS.pagePrevious}
+          >
             <CalciteIcon size="16" path={chevronLeft16} />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
-          <calcite-action onClick={this.nextClicked} class={CSS.pageNext}>
+          <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
             <CalciteIcon size="16" path={chevronRight16} />
           </calcite-action>
         </footer>

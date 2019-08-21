@@ -50,6 +50,19 @@
   background-color: var(--calcite-app-background-active);
 }
 
+:host([disabled]) .button,
+:host([disabled]) .button:hover {
+  cursor: default;
+  opacity: var(--calcite-app-disabled-opacity);
+  background-color: var(--calcite-app-background);
+}
+
+:host([disabled][active]) .button,
+:host([disabled][active]) .button:hover {
+  opacity: var(--calcite-app-disabled-opacity);
+  background-color: var(--calcite-app-background-active);
+}
+
 :host([indicator]) .button::after {
   content: "";
   border-radius: 50%;
@@ -63,6 +76,11 @@
   z-index: 1;
 }
 
+:host([indicator]) .calcite--rtl::after {
+  right: unset;
+  left: var(--calcite-app-side-spacing-quarter);
+}
+
 :host([indicator]) .button:hover::after {
   border-color: var(--calcite-app-background-hover);
 }
@@ -74,4 +92,9 @@
 :host([indicator][text-enabled]) .button::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
+}
+
+:host([indicator][text-enabled]) .calcite--rtl::after {
+  right: unset;
+  left: var(--calcite-app-side-spacing-half);
 }

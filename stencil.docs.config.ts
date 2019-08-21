@@ -4,7 +4,7 @@ import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 
 export const config: Config = {
-  namespace: "calcite",
+  namespace: "calcite-app",
   outputTargets: [
     {
       type: "www",
@@ -18,7 +18,6 @@ export const config: Config = {
     sass({
       injectGlobalPaths: ["src/assets/styles/includes.scss"]
     }),
-
     postcss({
       plugins: [autoprefixer()]
     })
