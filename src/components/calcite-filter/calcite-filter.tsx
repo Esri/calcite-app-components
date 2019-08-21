@@ -67,6 +67,11 @@ export class CalciteFilter {
     this.calciteFilterChange.emit(result);
   }, 250);
 
+  inputHandler(event) {
+    const target = event.target as HTMLInputElement;
+    this.filter(target.value);
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -81,9 +86,7 @@ export class CalciteFilter {
           <input
             type="text"
             placeholder={this.textPlaceholder}
-            onInput={(event: any) => {
-              this.filter(event.target.value);
-            }}
+            onInput={this.inputHandler.bind(this)}
           />
         </label>
       </Host>
