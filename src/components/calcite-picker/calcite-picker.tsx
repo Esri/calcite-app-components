@@ -77,7 +77,7 @@ export class CalcitePicker {
     });
   }
 
-  @State() dataForFilter = this.data;
+  @State() dataForFilter: object[] = [];
 
   deletedRows = new Set();
 
