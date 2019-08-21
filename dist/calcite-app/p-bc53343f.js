@@ -1,0 +1,1 @@
+function t(t){const{placement:n}=t;return"anchor"===n?function(t){const{positionElement:n}=t,{offsetTop:o}=n,{height:e}=n.getBoundingClientRect();return o+e}(t):"over"===n?function(t){const{positionElement:n,floatingElement:o}=t,{offsetTop:e}=n,{offsetHeight:f}=o;return e-f/2}(t):function(t){const{positionElement:n}=t,{offsetTop:o}=n;return o}(t)}export{t as g};
