@@ -11,11 +11,11 @@ import { ICON_TYPES } from "../calcite-picker/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
-  tag: "calcite-picker-row",
-  styleUrl: "./calcite-picker-row.scss",
+  tag: "calcite-picker-item",
+  styleUrl: "./calcite-picker-item.scss",
   shadow: true
 })
-export class CalcitePickerRow {
+export class CalcitePickerItem {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -50,7 +50,7 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickerRowToggled: EventEmitter;
+  @Event() calcitePickerItemToggled: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -60,8 +60,8 @@ export class CalcitePickerRow {
 
   @Method() async toggle(shiftPressed: boolean) {
     this.selected = !this.selected;
-    this.calcitePickerRowToggled.emit({
-      row: this.el,
+    this.calcitePickerItemToggled.emit({
+      item: this.el,
       value: this.value,
       selected: this.selected,
       shiftPressed
