@@ -81,6 +81,11 @@ h2.heading {
   display: none;
 }
 
+.calcite--rtl .menu {
+  left: var(--calcite-app-menu-offset);
+  right: auto;
+}
+
 .menu--open {
   display: block;
 }

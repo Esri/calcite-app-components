@@ -1,6 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
+import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
+
+import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
 import classnames from "classnames";
 
@@ -8,6 +10,8 @@ import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
+
+import { CSS_UTILITY } from "../utils/resources";
 
 @Component({
   tag: "calcite-flow-item",
@@ -96,8 +100,10 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  renderBackButton() {
+  renderBackButton(rtl: boolean) {
     const { showBackButton, textBack } = this;
+
+    const path = rtl ? chevronRight16 : chevronLeft16;
 
     return showBackButton ? (
       <calcite-action
@@ -107,7 +113,7 @@ export class CalciteFlowItem {
         class={CSS.backButton}
         onClick={this.backButtonClick}
       >
-        <CalciteIcon size="16" path={chevronLeft16} />
+        <CalciteIcon size="16" path={path} />
       </calcite-action>
     ) : null;
   }
@@ -179,14 +185,19 @@ export class CalciteFlowItem {
   }
 
   render() {
+    const { el, showBackButton, heading } = this;
+
+    const rtl = getElementDir(el) === "rtl";
+
     const headingClasses = {
       [CSS.heading]: true,
-      [CSS.headingFirst]: !this.showBackButton
+      [CSS.headingFirst]: !showBackButton
     };
+
     const headerNode = (
       <header class={CSS.header}>
-        {this.renderBackButton()}
-        <h2 class={classnames(headingClasses)}>{this.heading}</h2>
+        {this.renderBackButton(rtl)}
+        <h2 class={classnames(headingClasses)}>{heading}</h2>
         {this.renderHeaderActions()}
       </header>
     );
@@ -199,7 +210,11 @@ export class CalciteFlowItem {
 
     return (
       <Host>
-        <article class={CSS.container}>
+        <article
+          class={classnames(CSS.container, {
+            [CSS_UTILITY.rtl]: rtl
+          })}
+        >
           {headerNode}
           {contentContainerNode}
           {this.renderFooterActions()}
