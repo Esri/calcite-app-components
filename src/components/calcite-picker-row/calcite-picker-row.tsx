@@ -1,8 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from "@stencil/core";
 import {
   checkSquare16,
-  circle16,
-  circleFilled16,
+  circle16F,
+  circleFilled16F,
   handleVertical24,
   square16,
   trash16
@@ -111,8 +111,8 @@ export class CalcitePickerRow {
             ? checkSquare16
             : square16
           : this.selected
-          ? circleFilled16
-          : circle16;
+          ? circleFilled16F
+          : circle16F;
       return (
         <span class="icon">
           <CalciteIcon size="16" path={path} />
