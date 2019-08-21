@@ -1,6 +1,6 @@
 (function() {
 
-  const root = window.location.origin + window.location.pathname.split('demos').shift();
+  const root = window.location.pathname.split('demos').shift();
 
   function loadCss(url) {
     let link = document.createElement("link");
@@ -22,7 +22,7 @@
   }
 
   loadCss("demos/demos.css");
-  loadCss("build/calcite.css");
-  loadScript("build/calcite.esm.js", { type: "module" });
-  loadScript("build/calcite.js", { noModule: true });
+  loadCss("build/calcite-app.css");
+  loadScript("build/calcite-app.esm.js", { type: "module" });
+  loadScript("build/calcite-app.js", { noModule: true });
 })();

@@ -8,7 +8,7 @@ Each component stylesheet (.scss) should access the CSS variables defined in the
 
 The CSS variable names are meant to be instructive. Note that in `_color.scss`, "foreground" generally indicates the color to be used for text and icons.
 
-The partials use Sass variable to reference values from [calcite-colors](https://github.com/Esri/calcite-colors) and [calcite-base](https://github.com/ArcGIS/calcite-base). These are the same libraries being used by [calcite-components](https://github.com/ArcGIS/calcite-components).
+The partials use Sass variable to reference values from [calcite-colors](https://github.com/Esri/calcite-colors) and [calcite-base](https://github.com/Esri/calcite-base). These are the same libraries being used by [calcite-components](https://github.com/Esri/calcite-components).
 
 ## Themes
 

@@ -17,7 +17,7 @@ export class CalciteFlow {
   // --------------------------------------------------------------------------
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
@@ -46,7 +46,7 @@ export class CalciteFlow {
   }
 
   componentDidLoad() {
-    this.flowItemObserver.observe(this.el, { childList: true });
+    this.flowItemObserver.observe(this.el, { childList: true, subtree: true });
   }
 
   componentDidUnload() {

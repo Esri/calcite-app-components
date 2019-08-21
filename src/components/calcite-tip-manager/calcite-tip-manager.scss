@@ -53,8 +53,12 @@ $tip-max-width: 540px;
   background-color: var(--calcite-app-background);
 }
 
-slot::slotted(calcite-tip-group),
-slot::slotted(calcite-tip) {
+::slotted(calcite-tip-group) {
+  max-width: $tip-max-width;
+  padding: 0 var(--calcite-app-side-spacing-half);
+}
+
+::slotted(calcite-tip) {
   max-width: $tip-max-width;
   padding: 0 var(--calcite-app-side-spacing-half);
 }

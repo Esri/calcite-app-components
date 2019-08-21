@@ -5,7 +5,7 @@ import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 
 import { CSS, TEXT } from "./resources";
-import CalciteIcon from "../_support/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
 
@@ -52,7 +52,7 @@ export class CalciteFlowItem {
   @Prop() textOpen = TEXT.open;
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
@@ -132,11 +132,11 @@ export class CalciteFlowItem {
   renderMenuActions() {
     const { menuOpen } = this;
 
-    return menuOpen ? (
-      <div class={CSS.menu}>
+    return (
+      <div class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}>
         <slot name="menu-actions" />
       </div>
-    ) : null;
+    );
   }
 
   renderFooterActions() {
