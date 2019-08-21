@@ -4,7 +4,7 @@ import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteLayout, CalciteTheme } from "../interfaces";
 
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+import { getElementDir } from "../utils/dom";
 
 import { CSS } from "./resources";
 
