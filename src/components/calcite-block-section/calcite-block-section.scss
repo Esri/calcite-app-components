@@ -1,5 +1,34 @@
+$header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+
 :host {
   display: block;
+}
+
+.header-container {
+  background-color: var(--calcite-app-background);
+}
+
+.header {
+  flex-grow: 1;
+}
+
+.toggle {
+  padding: $header-content-padding;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  margin: 0;
+  text-align: unset;
+  width: 100%;
+}
+
+.toggle-icon {
+  margin: 0 4px;
+  fill: var(--calcite-app-foreground);
 }
 
 .content {

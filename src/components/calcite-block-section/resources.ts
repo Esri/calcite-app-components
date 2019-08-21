@@ -1,5 +1,11 @@
 export const CSS = {
-  content: "content"
+  content: "content",
+  headerContainer: "header-container",
+  toggle: "toggle",
+  toggleIcon: "toggle-icon",
+  heading: "heading",
+  header: "header",
+  control: "control"
 };
 
 export const TEXT = {
