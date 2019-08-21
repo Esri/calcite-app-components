@@ -4,8 +4,6 @@ export const CSS = {
   heading: "heading",
   headingFirst: "heading--first",
   backButton: "back-button",
-  chevronLeft: "chevron-left",
-  chevronRight: "chevron-right",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",
   menuButton: "menu-button",
