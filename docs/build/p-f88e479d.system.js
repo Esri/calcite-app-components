@@ -1,1 +1,0 @@
-System.register(["./p-581369cc.system.js"],function(t){"use strict";var e;return{setters:[function(t){e=t.h}],execute:function(){var s=function(t){var s=t.path,i=t.size,n=t.svgAttributes,r=t.title;return e("svg",Object.assign({xmlns:"http://www.w3.org/2000/svg",height:i,width:i,viewBox:"0 0 "+i+" "+i},n),r?e("title",null,r):null,e("path",{d:s}))};t("C",s)}}});

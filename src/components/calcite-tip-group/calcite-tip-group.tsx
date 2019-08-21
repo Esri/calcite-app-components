@@ -3,6 +3,7 @@ import { TEXT } from "../calcite-tip-manager/resources";
 
 @Component({
   tag: "calcite-tip-group",
+  styleUrl: "./calcite-tip-group.scss",
   shadow: true
 })
 export class CalciteTipGroup {
@@ -13,7 +14,7 @@ export class CalciteTipGroup {
   // --------------------------------------------------------------------------
 
   /**
-   * The title used for all nested tips
+   * The title used for all nested tips.
    */
   @Prop({ reflect: true }) textGroupTitle = TEXT.defaultGroupTitle;
 
