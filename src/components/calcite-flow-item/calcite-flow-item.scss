@@ -63,7 +63,7 @@ h2.heading {
   position: relative;
 }
 
-.menu slot[name="menu-actions"] {
+.menu {
   position: absolute;
   top: 100%;
   z-index: 1;
@@ -78,6 +78,11 @@ h2.heading {
   flex-flow: column nowrap;
   border: 1px solid var(--calcite-app-border);
   animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  display: none;
+}
+
+.menu--open {
+  display: block;
 }
 
 .content-container {
@@ -87,7 +92,7 @@ h2.heading {
   overflow: auto;
 }
 
-slot[name="footer-actions"] {
+.footer {
   align-items: center;
   background-color: var(--calcite-app-background);
   border-top: 1px solid var(--calcite-app-border);

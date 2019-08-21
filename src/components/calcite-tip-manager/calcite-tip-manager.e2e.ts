@@ -23,12 +23,16 @@ describe("calcite-tip-manager", () => {
     );
     const tipManager = await page.find("calcite-tip-manager");
 
+    const eventSpy = await page.spyOnEvent("calciteTipManagerClose", "window");
+
     const closeButton = await page.find(`calcite-tip-manager >>> .${CSS.close}`);
     closeButton.click();
     await page.waitForChanges();
 
     const isVisible = await tipManager.isVisible();
     expect(isVisible).toBe(false);
+
+    expect(eventSpy).toHaveReceivedEvent();
   });
 
   it("should select the first tip by default and change the selectedIndex when the previous or next buttons are clicked", async () => {

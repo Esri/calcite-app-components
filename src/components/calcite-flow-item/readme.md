@@ -1,20 +1,29 @@
 # calcite-flow-item
 
-A flow item is used by [calcite-flow](../calcite-flow) lives in a panel with a heading and content.
+A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel with a heading and content.
+
+See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/demos/calcite-flow-item.html).
+
+## Slots
+
+| Name             | Description                                                                                                                     | Type                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `menu-actions`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. | `HTMLCalciteAction` |
+| `footer-actions` | A slot for adding `calcite-actions` to the footer.                                                                              | `HTMLCalciteAction` |
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property         | Attribute          | Description                        | Type                | Default      |
-| ---------------- | ------------------ | ---------------------------------- | ------------------- | ------------ |
-| `heading`        | `heading`          | Heading text.                      | `string`            | `undefined`  |
-| `menuOpen`       | `menu-open`        | Opens the action menu.             | `boolean`           | `false`      |
-| `showBackButton` | `show-back-button` | Shows a back button in the header. | `boolean`           | `false`      |
-| `textBack`       | `text-back`        | 'Back' text string.                | `string`            | `TEXT.back`  |
-| `textClose`      | `text-close`       | 'Close' text string.               | `string`            | `TEXT.close` |
-| `textOpen`       | `text-open`        | 'Open' text string.                | `string`            | `TEXT.open`  |
-| `theme`          | `theme`            | Element styling                    | `"dark" \| "light"` | `undefined`  |
+| Property         | Attribute          | Description                               | Type                | Default      |
+| ---------------- | ------------------ | ----------------------------------------- | ------------------- | ------------ |
+| `heading`        | `heading`          | Heading text.                             | `string`            | `undefined`  |
+| `menuOpen`       | `menu-open`        | Opens the action menu.                    | `boolean`           | `false`      |
+| `showBackButton` | `show-back-button` | Shows a back button in the header.        | `boolean`           | `false`      |
+| `textBack`       | `text-back`        | 'Back' text string.                       | `string`            | `TEXT.back`  |
+| `textClose`      | `text-close`       | 'Close' text string.                      | `string`            | `TEXT.close` |
+| `textOpen`       | `text-open`        | 'Open' text string.                       | `string`            | `TEXT.open`  |
+| `theme`          | `theme`            | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined`  |
 
 ## Events
 

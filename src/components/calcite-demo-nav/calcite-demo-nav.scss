@@ -1,5 +1,5 @@
 :host {
-  width: 100vw;
+  width: 100%;
   background-color: #333;
   color: #fff;
   fill: #fff;
@@ -32,7 +32,7 @@ a:hover {
   background-color: black;
 }
 a.is-active {
-  background-color: #008de4;
+  background-color: #007bc7;
 }
 svg {
   fill: inherit;

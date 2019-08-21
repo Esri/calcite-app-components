@@ -30,7 +30,7 @@ export class CalciteActionPad {
   @Prop() positionElement: HTMLElement;
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
@@ -40,7 +40,7 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCalciteFloatingPanelElement;
+  @Element() el: HTMLCalciteShellFloatingPanelElement;
 
   @State() offsetTop = 0;
 

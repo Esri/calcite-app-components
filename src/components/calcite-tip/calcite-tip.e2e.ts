@@ -30,6 +30,9 @@ describe("calcite-tip", () => {
     await page.setContent(`<calcite-tip><p>testing close button</p></calcite-tip>`).catch((error) => {
       console.error(error);
     });
+
+    const eventSpy = await page.spyOnEvent("calciteTipDismiss", "window");
+
     const tip = await page.find("calcite-tip");
     const closeButton = await page.find("calcite-tip >>> .close");
 
@@ -37,6 +40,8 @@ describe("calcite-tip", () => {
     await page.waitForChanges();
     const isVisible = await tip.isVisible();
     expect(isVisible).toBe(false);
+
+    expect(eventSpy).toHaveReceivedEvent();
   });
 
   it("should hide by default if tip with an id is dismissed", async () => {

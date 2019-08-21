@@ -7,3 +7,7 @@ export const CSS = {
   info: "info",
   link: "link"
 };
+
+export const TEXT = {
+  close: "Close"
+};
