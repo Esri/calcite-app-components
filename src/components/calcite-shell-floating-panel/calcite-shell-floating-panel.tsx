@@ -20,6 +20,8 @@ import CalciteIcon from "../utils/CalciteIcon";
 
 import { CSS } from "./resources";
 
+import classnames from "classnames";
+
 @Component({
   tag: "calcite-shell-floating-panel",
   styleUrl: "calcite-shell-floating-panel.scss",
@@ -113,16 +115,27 @@ export class CalciteShellFloatingPanel {
       top: `${offsetTop}px`
     };
 
+    const closest = this.el.closest("calcite-shell-panel");
+    const layout = (closest && closest.layout) || "leading";
+
     return (
-      <Host style={style}>
-        <header class={CSS.header}>
-          <h3 class={CSS.heading}>{this.heading}</h3>
-          <calcite-action onClick={this.hidePanel}>
-            <CalciteIcon size="16" path={x16} />
-          </calcite-action>
-        </header>
-        <div class={CSS.content}>
-          <slot />
+      <Host>
+        <div
+          class={classnames(CSS.container, {
+            [CSS.containerLeading]: layout === "leading",
+            [CSS.containerTrailing]: layout === "trailing"
+          })}
+          style={style}
+        >
+          <header class={CSS.header}>
+            <h3 class={CSS.heading}>{this.heading}</h3>
+            <calcite-action onClick={this.hidePanel}>
+              <CalciteIcon size="16" path={x16} />
+            </calcite-action>
+          </header>
+          <div class={CSS.content}>
+            <slot />
+          </div>
         </div>
       </Host>
     );
