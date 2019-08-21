@@ -105,14 +105,14 @@ export class CalcitePickerRow {
         </span>
       );
     } else {
-      /* tslint:disable */
-      let path;
-      if (icon === "square") {
-        path = this.selected ? checkSquare16 : square16;
-      } else {
-        path = this.selected ? circleFilled16 : circle16;
-      }
-      /* tslint:enable */
+      const path =
+        icon === "square"
+          ? this.selected
+            ? checkSquare16
+            : square16
+          : this.selected
+          ? circleFilled16
+          : circle16;
       return (
         <span class="icon">
           <CalciteIcon size="16" path={path} />
