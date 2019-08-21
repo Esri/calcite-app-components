@@ -16,6 +16,7 @@
   "scripts": {
     "build": "stencil build",
     "docs": "stencil build --config stencil.docs.config.ts",
+    "lint": "tslint src/components/**/*.ts?(x)",
     "prerelease:prepare": "npm run build",
     "release:prepare": "npm version prerelease --preid=alpha --no-git-tag-version",
     "release:publish": "./support/release.sh",
