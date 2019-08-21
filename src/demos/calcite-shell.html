@@ -20,7 +20,12 @@
     <main>
       <div class="example-container">
         <h1>calcite-shell</h1>
-        <p>see the <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell/readme.md">calcite-shell readme.</a></p>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell/readme.md"
+            >calcite-shell readme.</a
+          >
+        </p>
 
         <style>
           .calcite-shell-container {
@@ -32,6 +37,9 @@
             margin: 0 auto;
             box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
             position: relative;
+          }
+          .button {
+            margin: 20px;
           }
         </style>
 
@@ -68,7 +76,7 @@
         </script>
 
         <h2>Light Theme</h2>
-        <div class="calcite-shell-container" dir="rtl">
+        <div id="light_theme_container" class="calcite-shell-container">
           <calcite-shell>
             <calcite-shell-panel slot="primary-panel" layout="leading">
               <calcite-shell-floating-panel
@@ -313,6 +321,8 @@
             <footer slot="shell-footer">Footer</footer>
           </calcite-shell>
         </div>
+
+        <button class="button" id="toggle_rtl">Toggle RTL</button>
 
         <h2>Dark Theme</h2>
 
@@ -562,6 +572,19 @@
       </div>
       <p style="text-align: center;">Box Shadow added to show app edges.</p>
       <script>
+        var toggle_rtl = document.getElementById("toggle_rtl");
+        toggle_rtl &&
+          toggle_rtl.addEventListener("click", function() {
+            var light_theme_container = document.getElementById("light_theme_container");
+            if (!light_theme_container) {
+              return;
+            }
+
+            var rtl = light_theme_container.getAttribute("dir") === "rtl";
+
+            light_theme_container.setAttribute("dir", rtl ? "ltr" : "rtl");
+          });
+
         var actionPad = document.getElementById("action-pad");
         var actionPadButton = document.getElementById("action-pad-button");
         actionPadButton.addEventListener("click", function() {
