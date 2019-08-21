@@ -18,6 +18,18 @@
   position: relative;
 }
 
+.chevron-right {
+  display: none;
+}
+
+.calcite--rtl .chevron-left {
+  display: none;
+}
+
+.calcite--rtl .chevron-right {
+  display: block;
+}
+
 .header {
   align-items: center;
   color: var(--calcite-app-foreground);
@@ -79,6 +91,11 @@ h2.heading {
   border: 1px solid var(--calcite-app-border);
   animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   display: none;
+}
+
+.calcite--rtl .menu {
+  left: var(--calcite-app-menu-offset);
+  right: auto;
 }
 
 .menu--open {

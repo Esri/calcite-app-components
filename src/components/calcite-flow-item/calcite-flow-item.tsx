@@ -1,6 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16, ellipsis16 } from "@esri/calcite-ui-icons";
+import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
+
+import { getElementDir } from "calcite-components/dist/collection/utils/dom";
 
 import classnames from "classnames";
 
@@ -8,6 +10,8 @@ import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
+
+import { CSS_UTILITY } from "../utils/resources";
 
 @Component({
   tag: "calcite-flow-item",
@@ -107,7 +111,8 @@ export class CalciteFlowItem {
         class={CSS.backButton}
         onClick={this.backButtonClick}
       >
-        <CalciteIcon size="16" path={chevronLeft16} />
+        <CalciteIcon svgAttributes={{ class: CSS.chevronLeft }} size="16" path={chevronLeft16} />
+        <CalciteIcon svgAttributes={{ class: CSS.chevronRight }} size="16" path={chevronRight16} />
       </calcite-action>
     ) : null;
   }
@@ -197,9 +202,15 @@ export class CalciteFlowItem {
       </section>
     );
 
+    const rtl = getElementDir(this.el) === "rtl";
+
     return (
       <Host>
-        <article class={CSS.container}>
+        <article
+          class={classnames(CSS.container, {
+            [CSS_UTILITY.rtl]: rtl
+          })}
+        >
           {headerNode}
           {contentContainerNode}
           {this.renderFooterActions()}
