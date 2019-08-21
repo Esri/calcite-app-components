@@ -9,11 +9,8 @@ import {
   Method,
   Prop,
   State,
-  Watch,
   h
 } from "@stencil/core";
-import { pencil16 } from "@esri/calcite-ui-icons";
-import CalciteIcon from "../utils/CalciteIcon";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES } from "./resources";
 
@@ -68,17 +65,6 @@ export class CalcitePicker {
 
   @State() selectedValues = {};
 
-  @State() editing = false;
-
-  @Watch("editing")
-  editingChangeHandler() {
-    this.rows.forEach((item) => {
-      this.editing ? item.setAttribute("editing", "") : item.removeAttribute("editing");
-    });
-  }
-
-  deletedRows = new Set();
-
   rows: any;
 
   lastSelectedRow = null;
@@ -121,8 +107,6 @@ export class CalcitePicker {
 
   @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Event() calcitePickerRowsDeleted: EventEmitter;
-
   @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event): void {
     event.stopPropagation(); // private event
     const { row, value, selected, shiftPressed } = event.detail;
@@ -149,14 +133,6 @@ export class CalcitePicker {
     }
     this.lastSelectedRow = row;
     this.calcitePickerSelectionChange.emit(this.selectedValues);
-  }
-
-  @Listen("calcitePickerRowDeleted")
-  calcitePickerRowDeletedHandler(event): void {
-    event.stopPropagation(); // private event
-    const { row } = event.detail;
-    row.setAttribute("hidden", "");
-    this.deletedRows.add(row);
   }
 
   // --------------------------------------------------------------------------
@@ -198,35 +174,6 @@ export class CalcitePicker {
     }
   }
 
-  startEdit(): void {
-    this.editing = true;
-  }
-
-  cancelDelete(): void {
-    this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      row.removeAttribute("hidden");
-    });
-    this.deletedRows = new Set();
-    this.editing = false;
-  }
-
-  confirmDelete(): void {
-    let selectedChanged = false;
-    this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      if (row.value in this.selectedValues) {
-        delete this.selectedValues[row.value];
-        selectedChanged = true;
-      }
-      row.remove();
-    });
-    if (selectedChanged) {
-      this.calcitePickerSelectionChange.emit(this.selectedValues);
-    }
-    this.calcitePickerRowsDeleted.emit(this.deletedRows);
-    this.deletedRows = new Set();
-    this.editing = false;
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -255,31 +202,6 @@ export class CalcitePicker {
     return type;
   }
 
-  renderSecondaryAction(action) {
-    return action ? (
-      <calcite-action slot="secondaryAction" onClick={action.onclick || void 0}>
-        <CalciteIcon size={action.icon.size} path={action.icon.path} />
-      </calcite-action>
-    ) : null;
-  }
-
-  renderEditButton() {
-    return this.editEnabled ? (
-      !this.editing ? (
-        <section>
-          <calcite-action onClick={() => this.startEdit()}>
-            <CalciteIcon size="16" path={pencil16} />
-          </calcite-action>
-        </section>
-      ) : (
-        <section>
-          <button onClick={() => this.cancelDelete()}>Cancel</button>
-          <button onClick={() => this.confirmDelete()}>OK</button>
-        </section>
-      )
-    ) : null;
-  }
-
   render() {
     const id = this.el.id || this.guid;
     return (
@@ -289,7 +211,6 @@ export class CalcitePicker {
             <h2>{this.textHeading}</h2>
             {/* <filter /> */}
           </header>
-          {this.renderEditButton()}
           <slot />
         </section>
       </Host>

@@ -4,8 +4,7 @@ import {
   circle16F,
   circleFilled16F,
   handleVertical24,
-  square16,
-  trash16
+  square16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-picker/resources";
@@ -52,7 +51,6 @@ export class CalcitePickerRow {
   // --------------------------------------------------------------------------
 
   @Event() calcitePickerRowToggled: EventEmitter;
-  @Event() calcitePickerRowDeleted: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -82,10 +80,6 @@ export class CalcitePickerRow {
 
   secondaryActionContainerClickHandler(e) {
     e.stopPropagation();
-  }
-
-  deleteRow() {
-    this.calcitePickerRowDeleted.emit({ row: this.el, value: this.value });
   }
 
   // --------------------------------------------------------------------------
@@ -122,16 +116,6 @@ export class CalcitePickerRow {
     }
   }
 
-  renderSecondaryAction() {
-    return this.editing ? (
-      <calcite-action onClick={this.deleteRow.bind(this)}>
-        <CalciteIcon size="16" path={trash16} />
-      </calcite-action>
-    ) : (
-      <slot name="secondaryAction" />
-    );
-  }
-
   render() {
     const { icon } = this;
     return (
@@ -145,7 +129,7 @@ export class CalcitePickerRow {
           <p class={CSS.description}>{this.textDescription}</p>
         </div>
         <div onClick={this.secondaryActionContainerClickHandler}>
-          {this.renderSecondaryAction()}
+          <slot name="secondaryAction" />
         </div>
       </Host>
     );
