@@ -18,18 +18,6 @@
   position: relative;
 }
 
-.chevron-right {
-  display: none;
-}
-
-.calcite--rtl .chevron-left {
-  display: none;
-}
-
-.calcite--rtl .chevron-right {
-  display: block;
-}
-
 .header {
   align-items: center;
   color: var(--calcite-app-foreground);
