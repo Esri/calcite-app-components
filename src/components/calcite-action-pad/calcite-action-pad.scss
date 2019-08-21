@@ -1,4 +1,8 @@
-:host {
+:host([hidden]) {
+  display: none;
+}
+
+.container {
   background-color: var(--calcite-app-background);
   display: flex;
   color: var(--calcite-app-foreground);
@@ -10,20 +14,68 @@
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
-:host([hidden]) {
-  display: none;
-}
-
-:host([position-type="side"]) {
+:host([position-type="side"]) .container--leading {
   left: 100%;
 }
 
-:host([position-type="over"]) {
+:host([position-type="side"]) .container--leading.calcite--rtl {
+  left: unset;
+  right: 100%;
+}
+
+:host([position-type="side"]) .container--trailing {
+  right: 100%;
+}
+
+:host([position-type="side"]) .container--trailing.calcite--rtl {
+  right: unset;
+  left: 100%;
+}
+
+:host([position-type="over"]) .container--leading {
   left: 50%;
   margin-left: -21px;
 }
 
-:host([position-type="anchor"]) {
+:host([position-type="over"]) .container--leading.calcite--rtl {
+  left: unset;
+  margin-left: unset;
+  right: 50%;
+  margin-right: -21px;
+}
+
+:host([position-type="over"]) .container--trailing {
+  right: 50%;
+  margin-right: -21px;
+}
+
+:host([position-type="over"]) .container--trailing.calcite--rtl {
+  right: unset;
+  margin-right: unset;
+  left: 50%;
+  margin-left: -21px;
+}
+
+:host([position-type="anchor"]) .container--leading {
+  left: 50%;
+  margin-left: -21px;
+}
+
+:host([position-type="anchor"]) .container--leading.calcite--rtl {
+  left: unset;
+  margin-left: unset;
+  right: 50%;
+  margin-right: -21px;
+}
+
+:host([position-type="anchor"]) .container--trailing {
+  right: 50%;
+  margin-right: -21px;
+}
+
+:host([position-type="anchor"]) .container--trailing.calcite--rtl {
+  right: unset;
+  margin-right: unset;
   left: 50%;
   margin-left: -21px;
 }
