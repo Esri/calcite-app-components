@@ -167,7 +167,7 @@ export class CalcitePicker {
 
   setupRows(): void {
     this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
-    rows.forEach((row) => {
+    this.rows.forEach((row) => {
       const iconType = this.getIconType();
       if (iconType) {
         row.setAttribute("icon", iconType);
@@ -233,7 +233,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedRows(): Promise<Set<object>> {
+  @Method() async getSelectedRows(): Promise<object> {
     return this.selectedValues;
   }
 
