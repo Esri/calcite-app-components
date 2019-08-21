@@ -21,10 +21,10 @@ git commit -am "v$VERSION - add built files" --no-verify
 git tag v$VERSION
 
 # push everything up to this point to master
-git push https://github.com/ArcGIS/calcite-app-components.git master
+git push https://github.com/Esri/calcite-app-components.git master
 
 # push the new tag, not the old tags
-git push https://github.com/ArcGIS/calcite-app-components.git v$VERSION
+git push https://github.com/Esri/calcite-app-components.git v$VERSION
 
 # create a ZIP archive of the dist files
 TEMP_FOLDER=calcite-components-v$VERSION;

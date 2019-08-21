@@ -1,10 +1,14 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
 
 import { CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
 import { CSS } from "./resources";
+
+import { CSS_UTILITY } from "../utils/resources";
+
+import { getElementDir } from "../utils/dom";
 
 @Component({
   tag: "calcite-action",
@@ -28,6 +32,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) compact = false;
 
   /**
+   * Disabled is used to prevent the action from occurring.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
@@ -48,9 +57,17 @@ export class CalciteAction {
   @Prop({ reflect: true }) textEnabled = false;
 
   /**
-   * Element styling
+   * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
@@ -59,7 +76,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { textEnabled, label, text } = this;
+    const { compact, disabled, el, textEnabled, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -75,16 +92,20 @@ export class CalciteAction {
 
     const labelFallback = label || text;
 
-    const compactClass = {
-      [CSS.compact]: this.compact
+    const rtl = getElementDir(el) === "rtl";
+
+    const buttonClasses = {
+      [CSS.compact]: compact,
+      [CSS_UTILITY.rtl]: rtl
     };
 
     return (
       <Host>
         <button
-          class={classnames(CSS.button, compactClass)}
+          class={classnames(CSS.button, buttonClasses)}
           title={labelFallback}
           aria-label={labelFallback}
+          disabled={disabled}
         >
           {iconContainerNode}
           {textContainerNode}

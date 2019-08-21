@@ -76,4 +76,16 @@ describe("calcite-action", () => {
     expect(button.getAttribute("title")).toBe("hi");
     expect(button.getAttribute("aria-label")).toBe("hi");
   });
+
+  it("should be disabled", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-action disabled></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
+
+    const button = await page.find("calcite-action >>> .button");
+
+    expect(button).toHaveAttribute("disabled");
+  });
 });

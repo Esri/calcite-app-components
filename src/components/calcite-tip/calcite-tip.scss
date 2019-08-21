@@ -50,7 +50,7 @@ $tip-image-max-width: 100% !default;
   margin-top: 0;
 }
 
-slot[name="link"]::slotted(a) {
+.info ::slotted(a) {
   color: var(--calcite-app-foreground);
 }
 

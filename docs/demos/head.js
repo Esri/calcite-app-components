@@ -1,6 +1,6 @@
 (function() {
 
-  const root = window.location.origin + window.location.pathname.split('demos').shift();
+  const root = window.location.pathname.split('demos').shift();
 
   function loadCss(url) {
     let link = document.createElement("link");

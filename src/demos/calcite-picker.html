@@ -17,7 +17,7 @@
             </svg>
           </calcite-action>
         </calcite-picker-row>
-        <calcite-picker-row text-heading="Triceratops" text-description="3 horn" value="helloWorld" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
+        <calcite-picker-row text-heading="Triceratops" text-description="3 horn" value="triceratops" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
@@ -34,7 +34,7 @@
       </calcite-picker>
       <script>
         const picker = document.querySelector("#one");
-        picker.addEventListener("pickerSelectionChange", event => {
+        picker.addEventListener("calcitePickerSelectionChange", event => {
           console.log(event.detail);
         });
       </script>
@@ -57,7 +57,7 @@
       </calcite-picker>
       <script>
         const picker2 = document.querySelector("#two");
-        picker2.addEventListener("pickerSelectionChange", event => {
+        picker2.addEventListener("calcitePickerSelectionChange", event => {
           console.log(event.detail);
         });
       </script>
@@ -97,11 +97,10 @@
       </calcite-picker>
       <script>
         const picker3 = document.querySelector("#three");
-        picker3.addEventListener("pickerSelectionChange", event => {
+        picker3.addEventListener("calcitePickerSelectionChange", event => {
           console.log(event.detail);
         });
       </script>
-
     </section>
   </body>
 </html>

@@ -1,6 +1,14 @@
 # calcite-block
 
-The `block` component is intended for displaying information in stacked, collapsible sections in a panel.
+The `calcite-block` component is intended for displaying content on it's own as well as in stacked, collapsible `calcite-block-sections` in a panel.
+
+See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos/calcite-block.html).
+
+## Slots
+
+| Name      | Description                                                | Type               |
+| --------- | ---------------------------------------------------------- | ------------------ |
+| `control` | A slot for adding a single HTML input element in a header. | `HTMLInputElement` |
 
 <!-- Auto Generated Below -->
 
@@ -14,7 +22,7 @@ The `block` component is intended for displaying information in stacked, collaps
 | `summary`      | `summary`       | Block summary.                                    | `string`            | `undefined`     |
 | `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.        | `string`            | `TEXT.collapse` |
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.       | `string`            | `TEXT.expand`   |
-| `theme`        | `theme`         | Element styling                                   | `"dark" \| "light"` | `undefined`     |
+| `theme`        | `theme`         | Used to set the component's color scheme.         | `"dark" \| "light"` | `undefined`     |
 
 ## Events
 
