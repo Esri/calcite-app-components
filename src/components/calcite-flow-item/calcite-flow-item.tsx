@@ -68,8 +68,6 @@ export class CalciteFlowItem {
 
   @Element() el: HTMLElement;
 
-  rtl = false;
-
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -102,8 +100,8 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  renderBackButton() {
-    const { rtl, showBackButton, textBack } = this;
+  renderBackButton(rtl: boolean) {
+    const { showBackButton, textBack } = this;
 
     const path = rtl ? chevronRight16 : chevronLeft16;
 
@@ -190,7 +188,6 @@ export class CalciteFlowItem {
     const { el, showBackButton, heading } = this;
 
     const rtl = getElementDir(el) === "rtl";
-    this.rtl = rtl;
 
     const headingClasses = {
       [CSS.heading]: true,
@@ -199,7 +196,7 @@ export class CalciteFlowItem {
 
     const headerNode = (
       <header class={CSS.header}>
-        {this.renderBackButton()}
+        {this.renderBackButton(rtl)}
         <h2 class={classnames(headingClasses)}>{heading}</h2>
         {this.renderHeaderActions()}
       </header>
