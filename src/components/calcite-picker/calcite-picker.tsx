@@ -45,7 +45,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues = new Set();
+  @State() selectedValues: Set<object> = new Set();
 
   @State() editing = false;
 
@@ -99,7 +99,7 @@ export class CalcitePicker {
 
   @Event() calcitePickerRowsDeleted: EventEmitter;
 
-  @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event) {
+  @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event): void {
     event.stopPropagation(); // private event
     const { row, selected, shiftPressed } = event.detail;
     if (selected) {
@@ -128,7 +128,7 @@ export class CalcitePicker {
   }
 
   @Listen("calcitePickerRowDeleted")
-  calcitePickerRowDeletedHandler(event) {
+  calcitePickerRowDeletedHandler(event): void {
     event.stopPropagation(); // private event
     const { row } = event.detail;
     row.setAttribute("hidden", "");
@@ -141,27 +141,32 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  setupDragAndDrop(): void {
+  setupRows(): void {
+    return;
+  }
+
+  setUpDragAndDrop(): void {
     const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
+    console.log(sortGroups);
     sortGroups.forEach((sortGroup) => {
       Sortable.create(sortGroup, {
         group: this.el.id,
-        handle: ".handle",
+        handle: `.${CSS.dragHandle}`,
         draggable: "calcite-picker-row"
       });
     });
   }
 
-  deselectRow(item) {
+  deselectRow(item: HTMLCalcitePickerRowElement): void {
     item.removeAttribute("selected");
     this.selectedValues.delete(item);
   }
 
-  startEdit() {
+  startEdit(): void {
     this.editing = true;
   }
 
-  cancelDelete() {
+  cancelDelete(): void {
     this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
       row.removeAttribute("hidden");
     });
@@ -169,11 +174,11 @@ export class CalcitePicker {
     this.editing = false;
   }
 
-  confirmDelete() {
+  confirmDelete(): void {
     let selectedChanged = false;
     this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      if (this.selectedValues.has(row.value)) {
-        this.selectedValues.delete(row.value);
+      if (this.selectedValues.has(row)) {
+        this.selectedValues.delete(row);
         selectedChanged = true;
       }
       row.remove();
@@ -192,7 +197,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedRows() {
+  @Method() async getSelectedRows(): Promise<Set<object>> {
     return this.selectedValues;
   }
 
