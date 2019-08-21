@@ -33,7 +33,6 @@
     "@esri/calcite-base": "github:Esri/calcite-base#3d18d24",
     "@esri/calcite-colors": "1.2.1",
     "@esri/calcite-ui-icons": "2.0.1",
-    "calcite-components": "github:Esri/calcite-components#v0.0.0-alpha.4",
     "calcite-fonts": "github:ArcGIS/calcite-fonts#v1.1.2"
   },
   "devDependencies": {
