@@ -8,6 +8,7 @@ import {
   trash16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
+import { ICON_TYPES } from "../calcite-picker/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
@@ -24,11 +25,11 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true }) editing = false;
 
-  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
-
   @Prop() metadata: object;
 
   @Prop({ reflect: true, mutable: true }) selected = false;
+
+  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
   @Prop({ reflect: true }) textHeading: string;
 
@@ -98,7 +99,7 @@ export class CalcitePickerRow {
     if (!icon) {
       return null;
     }
-    if (icon === "grip") {
+    if (icon === ICON_TYPES.grip) {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
@@ -106,7 +107,7 @@ export class CalcitePickerRow {
       );
     } else {
       const path =
-        icon === "square"
+        icon === ICON_TYPES.square
           ? this.selected
             ? checkSquare16
             : square16
@@ -135,7 +136,7 @@ export class CalcitePickerRow {
     const { icon } = this;
     return (
       <Host
-        class={icon !== "square" && icon !== "circle" ? "highlight" : null}
+        class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
         onClick={this.iconClickHandler.bind(this)}
       >
         {this.renderIcon()}

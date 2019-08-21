@@ -15,7 +15,7 @@ import {
 import { pencil16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../utils/CalciteIcon";
 import guid from "../utils/guid";
-import { CSS } from "./resources";
+import { CSS, ICON_TYPES } from "./resources";
 
 @Component({
   tag: "calcite-picker",
@@ -66,7 +66,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Set<object> = new Set();
+  @State() selectedValues = {};
 
   @State() editing = false;
 
@@ -125,20 +125,20 @@ export class CalcitePicker {
 
   @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event): void {
     event.stopPropagation(); // private event
-    const { row, selected, shiftPressed } = event.detail;
+    const { row, value, selected, shiftPressed } = event.detail;
     if (selected) {
       if (this.multiple && shiftPressed && this.lastSelectedRow) {
         const start = this.rows.indexOf(this.lastSelectedRow);
         const end = this.rows.indexOf(row);
         this.rows.slice(Math.min(start, end), Math.max(start, end)).forEach((currentRow) => {
           currentRow.setAttribute("selected", "");
-          this.selectedValues.add(currentRow);
+          this.selectedValues[currentRow.value] = currentRow;
         });
       } else {
-        this.selectedValues.add(row);
+        this.selectedValues[value] = row;
       }
     } else {
-      this.selectedValues.delete(row);
+      delete this.selectedValues[value];
     }
     if (!this.multiple && selected) {
       this.rows.forEach((item) => {
@@ -168,7 +168,12 @@ export class CalcitePicker {
   setupRows(): void {
     this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
     this.rows.forEach((row) => {
-      row.setAttribute("icon", this.getIconType());
+      const iconType = this.getIconType();
+      if (iconType) {
+        row.setAttribute("icon", iconType);
+      } else {
+        row.removeAttribute("icon");
+      }
     });
     if (this.dragEnabled && this.mode === "configuration") {
       this.setUpDragAndDrop();
@@ -188,7 +193,9 @@ export class CalcitePicker {
 
   deselectRow(item: HTMLCalcitePickerRowElement): void {
     item.removeAttribute("selected");
-    this.selectedValues.delete(item);
+    if (item.value in this.selectedValues) {
+      delete this.selectedValues[item.value];
+    }
   }
 
   startEdit(): void {
@@ -206,8 +213,8 @@ export class CalcitePicker {
   confirmDelete(): void {
     let selectedChanged = false;
     this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      if (this.selectedValues.has(row)) {
-        this.selectedValues.delete(row);
+      if (row.value in this.selectedValues) {
+        delete this.selectedValues[row.value];
         selectedChanged = true;
       }
       row.remove();
@@ -226,7 +233,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedRows(): Promise<Set<object>> {
+  @Method() async getSelectedRows(): Promise<object> {
     return this.selectedValues;
   }
 
@@ -236,14 +243,14 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  getIconType() {
+  getIconType(): ICON_TYPES | null {
     let type = null;
     if (this.mode === "configuration" && this.dragEnabled) {
-      type = "grip";
+      type = ICON_TYPES.grip;
     } else if (this.mode === "selection" && this.multiple) {
-      type = "square";
+      type = ICON_TYPES.square;
     } else if (this.mode === "selection" && !this.multiple) {
-      type = "circle";
+      type = ICON_TYPES.circle;
     }
     return type;
   }
