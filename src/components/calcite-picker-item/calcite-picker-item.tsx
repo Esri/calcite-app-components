@@ -7,8 +7,8 @@ import {
   square16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
-import { ICON_TYPES } from "../resources";
-import CalciteIcon from "../../utils/CalciteIcon";
+import { ICON_TYPES } from "../calcite-picker/resources";
+import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
   tag: "calcite-picker-item",
@@ -44,13 +44,25 @@ export class CalcitePickerItem {
 
   @Element() el: HTMLElement;
 
+  dir: "rtl" | "ltr";
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  connectedCallback() {
+    this.dir = this.el.closest('[dir="rtl"]') ? "rtl" : "ltr";
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Events
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickerItemToggled: EventEmitter;
+  @Event() calcitePickerItemToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -58,9 +70,9 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle(shiftPressed: boolean) {
+  @Method() async toggle(shiftPressed?: boolean) {
     this.selected = !this.selected;
-    this.calcitePickerItemToggled.emit({
+    this.calcitePickerItemToggle.emit({
       item: this.el,
       value: this.value,
       selected: this.selected,
@@ -120,6 +132,7 @@ export class CalcitePickerItem {
     const { icon } = this;
     return (
       <Host
+        dir={this.dir}
         class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
         onClick={this.iconClickHandler.bind(this)}
       >

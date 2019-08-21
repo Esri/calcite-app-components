@@ -65,9 +65,9 @@ export class CalcitePicker {
 
   @State() selectedValues = {};
 
-  items: any;
+  items: HTMLCalcitePickerItemElement[];
 
-  lastSelectedItem = null;
+  lastSelectedItem: HTMLCalcitePickerItemElement = null;
 
   guid = `calcite-picker-${guid()}`;
 
@@ -107,32 +107,33 @@ export class CalcitePicker {
 
   @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Listen("calcitePickerItemToggled") calcitePickerItemToggledHandler(event) {
+  @Listen("calcitePickerItemToggle") calcitePickerItemToggleHandler(event) {
     event.stopPropagation(); // private event
+    const { items, selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
       if (this.multiple && shiftPressed && this.lastSelectedItem) {
-        const start = this.items.indexOf(this.lastSelectedItem);
-        const end = this.items.indexOf(item);
-        this.items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
+        const start = items.indexOf(this.lastSelectedItem);
+        const end = items.indexOf(item);
+        items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
           currentItem.setAttribute("selected", "");
-          this.selectedValues[currentItem.value] = currentItem;
+          selectedValues[currentItem.value] = currentItem;
         });
       } else {
-        this.selectedValues[value] = item;
+        selectedValues[value] = item;
       }
     } else {
-      delete this.selectedValues[value];
+      delete selectedValues[value];
     }
     if (!this.multiple && selected) {
-      this.items.forEach((currentItem) => {
+      items.forEach((currentItem) => {
         if (currentItem !== item) {
           this.deselectItem(currentItem);
         }
       });
     }
     this.lastSelectedItem = item;
-    this.calcitePickerSelectionChange.emit(this.selectedValues);
+    this.calcitePickerSelectionChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -142,7 +143,7 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   setupItems(): void {
-    this.items = this.el.querySelectorAll("calcite-picker-item");
+    this.items = Array.from(this.el.querySelectorAll("calcite-picker-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
       if (iconType) {
@@ -191,12 +192,13 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   getIconType(): ICON_TYPES | null {
+    const { multiple } = this;
     let type = null;
     if (this.mode === "configuration" && this.dragEnabled) {
       type = ICON_TYPES.grip;
-    } else if (this.mode === "selection" && this.multiple) {
+    } else if (this.mode === "selection" && multiple) {
       type = ICON_TYPES.square;
-    } else if (this.mode === "selection" && !this.multiple) {
+    } else if (this.mode === "selection" && !multiple) {
       type = ICON_TYPES.circle;
     }
     return type;
