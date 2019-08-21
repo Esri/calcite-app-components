@@ -31,8 +31,8 @@ npm install --save @esri/calcite-app-components
 `calcite-app-components` can be loaded via two `<script>` tags in the head of your HTML document:
 
 ```html
-<script type="module" src="<path-to-calcite-app-components-package>/dist/calcite/calcite.esm.js"></script>
-<script nomodule="" src="<path-to-calcite-app-components-package>/dist/calcite/calcite.js"></script>
+<script type="module" src="<path-to-calcite-app-components-package>/dist/calcite-app/calcite-app.esm.js"></script>
+<script nomodule="" src="<path-to-calcite-app-components-package>/dist/calcite-app/calcite-app.js"></script>
 ```
 
 Browsers that support modules will load the first, while older browsers will load the second, bundled version. It's worth noting that only components that are actually used will be loaded.
@@ -40,10 +40,7 @@ Browsers that support modules will load the first, while older browsers will loa
 You will also need to add a `<link>` tag for the shared component styles:
 
 ```html
-<link
-  rel="stylesheet"
-  href="<path-to-calcite-app-components-package>/dist/calcite/calcite.esm.js/dist/calcite/calcite.css"
-/>
+<link rel="stylesheet" href="<path-to-calcite-app-components-package>/dist/calcite-app/calcite-app.css" />
 ```
 
 Once these tags are added, components can be used just like any other HTML element.
@@ -74,7 +71,7 @@ module.exports = {
 Lastly, add the import in your main bundle js (or ts) file:
 
 ```
-import '@esri/calcite-app-components/dist/calcite.js';
+import '@esri/calcite-app-components/dist/calcite-app.js';
 ```
 
 This will add the initial Stencil loader to your bundle, and copy over the actual component code to the output directory you've configured for Webpack. Components will still be lazy-loaded as they are needed. _Note:_ you must use the `.js` file path for the Webpack plugin to work correctly, even if your bundle file is a TypeScript file.
