@@ -57,9 +57,14 @@ export class CalcitePicker {
   }
 
   deletedRows = new Set();
+
   rows: any;
+
   lastSelectedRow = null;
+
   guid = `calcite-picker-${guid()}`;
+
+  observer = new MutationObserver(() => this.setupRows());
 
   // --------------------------------------------------------------------------
   //
@@ -76,17 +81,16 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    const rows = this.el.querySelectorAll("calcite-picker-row");
-    rows.forEach((row) => {
-      row.setAttribute("icon", this.getIconType());
-    });
+    this.setupRows();
+
   }
 
   componentDidLoad() {
-    this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
-    if (this.dragEnabled && this.mode === "configuration") {
-      this.setupDragAndDrop();
-    }
+    this.observer.observe(this.el, { childList: true, subtree: true });
+  }
+
+  componentDidUnload() {
+    this.observer.disconnect();
   }
 
   // --------------------------------------------------------------------------
@@ -142,12 +146,17 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   setupRows(): void {
-    return;
+    this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
+    this.rows.forEach((row) => {
+      row.setAttribute("icon", this.getIconType());
+    });
+    if (this.dragEnabled && this.mode === "configuration") {
+      this.setUpDragAndDrop();
+    }
   }
 
   setUpDragAndDrop(): void {
     const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
-    console.log(sortGroups);
     sortGroups.forEach((sortGroup) => {
       Sortable.create(sortGroup, {
         group: this.el.id,
