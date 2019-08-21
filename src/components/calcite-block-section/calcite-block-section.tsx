@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
 import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+import { getElementDir } from "../utils/dom";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 

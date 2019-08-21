@@ -8,7 +8,7 @@ import { CSS } from "./resources";
 
 import { CSS_UTILITY } from "../utils/resources";
 
-import { getElementDir } from "calcite-components/dist/collection/utils/dom";
+import { getElementDir } from "../utils/dom";
 
 @Component({
   tag: "calcite-action",
