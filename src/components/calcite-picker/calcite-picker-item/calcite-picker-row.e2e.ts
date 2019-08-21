@@ -1,24 +1,24 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
 
-describe("calcite-picker-row", () => {
+describe("calcite-picker-item", () => {
   it("should render", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`<calcite-picker-row></calcite-picker-row>`);
-    const row = await page.find("calcite-picker-row");
-    expect(row).not.toBeNull();
-    const isVisible = await row.isVisible();
+    await page.setContent(`<calcite-picker-item></calcite-picker-item>`);
+    const item = await page.find("calcite-picker-item");
+    expect(item).not.toBeNull();
+    const isVisible = await item.isVisible();
     expect(isVisible).toBe(true);
   });
 
   it("should toggle selected attribute when clicked", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`<calcite-picker-row></calcite-picker-row>`);
-    const row = await page.find("calcite-picker-row");
-    expect(await row.getProperty("selected")).toBe(false);
-    await row.click();
-    expect(await row.getProperty("selected")).toBe(true);
+    await page.setContent(`<calcite-picker-item></calcite-picker-item>`);
+    const item = await page.find("calcite-picker-item");
+    expect(await item.getProperty("selected")).toBe(false);
+    await item.click();
+    expect(await item.getProperty("selected")).toBe(true);
   });
 });
