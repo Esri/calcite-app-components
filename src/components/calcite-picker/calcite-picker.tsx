@@ -168,7 +168,6 @@ export class CalcitePicker {
   }
 
   deselectItem(item: HTMLCalcitePickerItemElement): void {
-    console.log("deselectItem");
     item.removeAttribute("selected");
     if (item.value in this.selectedValues) {
       delete this.selectedValues[item.value];
