@@ -8,7 +8,7 @@ import {
   trash16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
-import CalciteIcon from "../../utils/CalciteIcon";
+import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
   tag: "calcite-picker-row",
