@@ -61,4 +61,20 @@ describe("calcite-action-bar", () => {
 
     expect(bar).toHaveAttribute("expanded");
   });
+
+  it("expanded change should fire event", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-action-bar></calcite-action-bar>");
+
+    const element = await page.find("calcite-action-bar");
+
+    const eventSpy = await page.spyOnEvent("calciteActionBarExpandedChange", "window");
+
+    element.setProperty("expanded", true);
+
+    await page.waitForChanges();
+
+    expect(eventSpy).toHaveReceivedEvent();
+  });
 });
