@@ -124,9 +124,7 @@ it("back button / showBackButton", async () => {
 
   const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
 
-  backButtonNew.click();
-
-  await page.waitForChanges();
+  await backButtonNew.click();
 
   expect(eventSpy).toHaveReceivedEvent();
 });
