@@ -32,10 +32,6 @@ $tip-max-width: 540px;
   background-color: var(--calcite-app-background);
 }
 
-:host([hidden]) {
-  display: none;
-}
-
 .header .heading {
   padding-left: var(--calcite-app-side-spacing-half);
   padding-right: var(--calcite-app-side-spacing-half);
