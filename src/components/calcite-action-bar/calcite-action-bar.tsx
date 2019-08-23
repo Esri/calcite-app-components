@@ -44,7 +44,7 @@ export class CalciteActionBar {
   }
 
   /**
-   * Updates the label of the expand icon when the component is collapsed.
+   * Updates the label of the expand icon when the component is not expanded.
    */
   @Prop() textExpand = "Expand";
 
