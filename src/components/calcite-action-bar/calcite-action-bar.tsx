@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../utils/CalciteIcon";
@@ -29,6 +29,20 @@ export class CalciteActionBar {
    */
   @Prop({ reflect: true }) expanded = false;
 
+  @Watch("expanded")
+  watchHandler(newValue: boolean, oldValue: boolean) {
+    this.el
+      .querySelectorAll("calcite-action")
+      .forEach((action) =>
+        newValue ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
+      );
+
+    this.calciteActionBarExpandedChange.emit({
+      newValue,
+      oldValue
+    });
+  }
+
   /**
    * Updates the label of the expand icon when the component is collapsed.
    */
@@ -49,6 +63,17 @@ export class CalciteActionBar {
    */
 
   @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when expanded has changed.
+   */
+  @Event() calciteActionBarExpandedChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -126,15 +151,6 @@ export class CalciteActionBar {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
-
-  @Watch("expanded")
-  watchHandler(newValue: boolean) {
-    this.el
-      .querySelectorAll("calcite-action")
-      .forEach((action) =>
-        newValue ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
-      );
-  }
 
   toggleExpand = (): void => {
     this.expanded = !this.expanded;
