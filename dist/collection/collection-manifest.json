@@ -1,0 +1,68 @@
+{
+  "entries": [
+    "components/calcite-action-group/calcite-action-group.js",
+    "components/calcite-demo-nav/calcite-demo-nav.js",
+    "components/calcite-shell/calcite-shell.js",
+    "components/calcite-tip-group/calcite-tip-group.js",
+    "components/calcite-shell-panel/calcite-shell-panel.js",
+    "components/calcite-action-pad/calcite-action-pad.js",
+    "components/calcite-action-bar/calcite-action-bar.js",
+    "components/calcite-block-section/calcite-block-section.js",
+    "components/calcite-action/calcite-action.js",
+    "components/calcite-block/calcite-block.js",
+    "components/calcite-example/calcite-example.js",
+    "components/calcite-flow-item/calcite-flow-item.js",
+    "components/calcite-flow/calcite-flow.js",
+    "components/calcite-tip/calcite-tip.js",
+    "components/calcite-shell-floating-panel/calcite-shell-floating-panel.js",
+    "components/calcite-tip-manager/calcite-tip-manager.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.2.4",
+    "typescriptVersion": "3.5.3"
+  },
+  "collections": [],
+  "bundles": [
+    {
+      "components": [
+        "calcite-block",
+        "calcite-block-section"
+      ]
+    },
+    {
+      "components": [
+        "calcite-demo-nav",
+        "calcite-example"
+      ]
+    },
+    {
+      "components": [
+        "calcite-flow",
+        "calcite-flow-item"
+      ]
+    },
+    {
+      "components": [
+        "calcite-shell",
+        "calcite-shell-floating-panel",
+        "calcite-shell-panel"
+      ]
+    },
+    {
+      "components": [
+        "calcite-tip",
+        "calcite-tip-group",
+        "calcite-tip-manager"
+      ]
+    },
+    {
+      "components": [
+        "calcite-action",
+        "calcite-action-bar",
+        "calcite-action-group",
+        "calcite-action-pad"
+      ]
+    }
+  ]
+}
