@@ -187,6 +187,26 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
+  renderPagination() {
+    return this.tips.length > 1 ? (
+      <footer class={CSS.pagination}>
+        <calcite-action
+          text={this.textPrevious}
+          onClick={this.previousClicked}
+          class={CSS.pagePrevious}
+        >
+          <CalciteIcon size="16" path={chevronLeft16} />
+        </calcite-action>
+        <span class={CSS.pagePosition}>
+          {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
+        </span>
+        <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
+          <CalciteIcon size="16" path={chevronRight16} />
+        </calcite-action>
+      </footer>
+    ) : null;
+  }
+
   render() {
     if (this.total === 0) {
       // TODO: Empty state
@@ -203,21 +223,7 @@ export class CalciteTipManager {
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
-        <footer class={CSS.pagination}>
-          <calcite-action
-            text={this.textPrevious}
-            onClick={this.previousClicked}
-            class={CSS.pagePrevious}
-          >
-            <CalciteIcon size="16" path={chevronLeft16} />
-          </calcite-action>
-          <span class={CSS.pagePosition}>
-            {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
-          </span>
-          <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
-            <CalciteIcon size="16" path={chevronRight16} />
-          </calcite-action>
-        </footer>
+        {this.renderPagination()}
       </Host>
     );
   }

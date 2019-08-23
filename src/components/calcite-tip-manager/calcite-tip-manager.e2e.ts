@@ -2,170 +2,187 @@ import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
 
 describe("calcite-tip-manager", () => {
-  it("should render and show the default title", async () => {
-    const page = await newE2EPage();
+  describe("first render", () => {
+    it("should render and show the default title", async () => {
+      const page = await newE2EPage();
 
-    await page.setContent(`<calcite-tip-manager><calcite-tip><p>basic render</p></calcite-tip></calcite-tip-manager>`);
-    const tipManager = await page.find("calcite-tip-manager");
-    expect(tipManager).not.toBeNull();
-    const isVisible = await tipManager.isVisible();
-    expect(isVisible).toBe(true);
+      await page.setContent(
+        `<calcite-tip-manager><calcite-tip><p>basic render</p></calcite-tip></calcite-tip-manager>`
+      );
+      const tipManager = await page.find("calcite-tip-manager");
+      expect(tipManager).not.toBeNull();
+      const isVisible = await tipManager.isVisible();
+      expect(isVisible).toBe(true);
 
-    const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
-    expect(title.innerText).toBe(TEXT.defaultGroupTitle);
-  });
-
-  it("should be hidden after the close button is clicked", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
-      `<calcite-tip-manager><calcite-tip><p>Close behavior</p></calcite-tip></calcite-tip-manager>`
-    );
-    const tipManager = await page.find("calcite-tip-manager");
-
-    const eventSpy = await page.spyOnEvent("calciteTipManagerClose", "window");
-
-    const closeButton = await page.find(`calcite-tip-manager >>> .${CSS.close}`);
-    closeButton.click();
-    await page.waitForChanges();
-
-    const isVisible = await tipManager.isVisible();
-    expect(isVisible).toBe(false);
-
-    expect(eventSpy).toHaveReceivedEvent();
-  });
-
-  it("should select the first tip by default and change the selectedIndex when the previous or next buttons are clicked", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
-      `<calcite-tip-manager>
-        <calcite-tip id="one"><p>first tip default selected</p></calcite-tip>
-        <calcite-tip id="two"><p>next/prev behavior</p></calcite-tip>
-      </calcite-tip-manager>`
-    );
-
-    await page.waitForChanges();
-
-    const tipManager = await page.find("calcite-tip-manager");
-
-    let selectedTip = await tipManager.find(`calcite-tip[selected]`);
-    expect(selectedTip.id).toEqual("one"); // default selected tip is index 0
-
-    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
-    nextButton.click();
-    await page.waitForChanges();
-
-    selectedTip = await tipManager.find(`calcite-tip[selected]`);
-    expect(selectedTip.id).toEqual("two");
-
-    const previousButton = await page.find(`calcite-tip-manager >>> .${CSS.pagePrevious}`);
-    previousButton.click();
-    await page.waitForChanges();
-
-    selectedTip = await tipManager.find(`calcite-tip[selected]`);
-    expect(selectedTip.id).toEqual("one");
-  });
-
-  it("should update the group title to match the selected tips attribute", async () => {
-    const page = await newE2EPage();
-    const sharedTitle = "group1";
-    const title2 = "group2";
-
-    await page.setContent(
-      `<calcite-tip-manager>
-        <calcite-tip-group text-group-title=${sharedTitle}>
-          <calcite-tip><p>group title behavior</p></calcite-tip>
-          <calcite-tip><p>same title as first one</p></calcite-tip>
-        </calcite-tip-group>
-        <calcite-tip-group text-group-title=${title2}>
-          <calcite-tip ><p>different title</p></calcite-tip>
-        </calcite-tip-group>
-        <calcite-tip><p>default title</p></calcite-tip>
-      </calcite-tip-manager>`
-    );
-
-    await page.waitForChanges();
-
-    const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
-    expect(title.innerText).toBe(sharedTitle);
-
-    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
-    nextButton.click();
-    await page.waitForChanges();
-
-    expect(title.innerText).toBe(sharedTitle);
-
-    nextButton.click();
-    await page.waitForChanges();
-
-    expect(title.innerText).toBe(title2);
-
-    nextButton.click();
-    await page.waitForChanges();
-
-    expect(title.innerText).toBe(TEXT.defaultGroupTitle);
-  });
-
-  it("should pre-select the correct tip if the selected attribute is set", async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      `<calcite-tip-manager>
-        <calcite-tip id="one"><p>no pre-selected attribute</p></calcite-tip>
-        <calcite-tip id="two" selected><p>pre-selected and not first</p></calcite-tip>
-      </calcite-tip-manager>`
-    );
-
-    await page.waitForChanges();
-
-    const tipManager = await page.find("calcite-tip-manager");
-
-    const selectedTip = await tipManager.find(`calcite-tip[selected]`);
-    expect(selectedTip.id).toEqual("two");
-  });
-  it("should update if tips are added after intial load", async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      `<calcite-tip-manager>
-        <calcite-tip><p>dynamically adding/removing tips</p></calcite-tip>
-      </calcite-tip-manager>`
-    );
-    const tipManager = await page.find("calcite-tip-manager");
-    const newTipId = "newTip";
-    await page.evaluate((newTipId) => {
-      const mgr = document.querySelector("calcite-tip-manager");
-      const newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
-      newTip.id = newTipId;
-      mgr.appendChild(newTip);
-    }, newTipId);
-    await page.waitForChanges();
-
-    const tips = await page.findAll("calcite-tip-manager calcite-tip");
-    expect(tips.length).toBe(2);
-
-    const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
-    nextButton.click();
-    await page.waitForChanges();
-
-    const selectedTip = await tipManager.find(`calcite-tip[selected]`);
-    expect(selectedTip.id).toEqual(newTipId);
-  });
-  it("should update visible tip if active tip is removed", async () => {
-    const page = await newE2EPage();
-    await page.setContent(
-      `<calcite-tip-manager>
-        <calcite-tip id="one"><p>dynamically adding/removing tips</p></calcite-tip>
-        <calcite-tip id="two"><p>dynamically adding/removing tips</p></calcite-tip>
-      </calcite-tip-manager>`
-    );
-    const tipManager = await page.find("calcite-tip-manager");
-
-    await page.evaluate(() => {
-      document.querySelector("calcite-tip:first-child").remove();
+      const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
+      expect(title.innerText).toBe(TEXT.defaultGroupTitle);
     });
-    await page.waitForChanges();
+    it("should pre-select the correct tip if the selected attribute is set", async () => {
+      const page = await newE2EPage();
+      await page.setContent(
+        `<calcite-tip-manager>
+          <calcite-tip id="one"><p>no pre-selected attribute</p></calcite-tip>
+          <calcite-tip id="two" selected><p>pre-selected and not first</p></calcite-tip>
+        </calcite-tip-manager>`
+      );
 
-    const selectedTip = await tipManager.find(`calcite-tip[selected]`);
-    expect(selectedTip.id).toEqual("two");
+      await page.waitForChanges();
+
+      const tipManager = await page.find("calcite-tip-manager");
+
+      const selectedTip = await tipManager.find(`calcite-tip[selected]`);
+      expect(selectedTip.id).toEqual("two");
+    });
+  });
+  describe("close button", () => {
+    it("should be hidden after the close button is clicked", async () => {
+      const page = await newE2EPage();
+
+      await page.setContent(
+        `<calcite-tip-manager><calcite-tip><p>Close behavior</p></calcite-tip></calcite-tip-manager>`
+      );
+      const tipManager = await page.find("calcite-tip-manager");
+
+      const eventSpy = await page.spyOnEvent("calciteTipManagerClose", "window");
+
+      const closeButton = await page.find(`calcite-tip-manager >>> .${CSS.close}`);
+      closeButton.click();
+      await page.waitForChanges();
+
+      const isVisible = await tipManager.isVisible();
+      expect(isVisible).toBe(false);
+
+      expect(eventSpy).toHaveReceivedEvent();
+    });
+  });
+  describe("pagination", () => {
+    it("should select the first tip by default and change the selectedIndex when the previous or next buttons are clicked", async () => {
+      const page = await newE2EPage();
+
+      await page.setContent(
+        `<calcite-tip-manager>
+          <calcite-tip id="one"><p>first tip default selected</p></calcite-tip>
+          <calcite-tip id="two"><p>next/prev behavior</p></calcite-tip>
+        </calcite-tip-manager>`
+      );
+
+      await page.waitForChanges();
+
+      const tipManager = await page.find("calcite-tip-manager");
+
+      let selectedTip = await tipManager.find(`calcite-tip[selected]`);
+      expect(selectedTip.id).toEqual("one"); // default selected tip is index 0
+
+      const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
+      nextButton.click();
+      await page.waitForChanges();
+
+      selectedTip = await tipManager.find(`calcite-tip[selected]`);
+      expect(selectedTip.id).toEqual("two");
+
+      const previousButton = await page.find(`calcite-tip-manager >>> .${CSS.pagePrevious}`);
+      previousButton.click();
+      await page.waitForChanges();
+
+      selectedTip = await tipManager.find(`calcite-tip[selected]`);
+      expect(selectedTip.id).toEqual("one");
+    });
+
+    // TODO: split the group-title test into one for first render, and another for pagination
+    it("should update the group title to match the selected tips attribute", async () => {
+      const page = await newE2EPage();
+      const sharedTitle = "group1";
+      const title2 = "group2";
+
+      await page.setContent(
+        `<calcite-tip-manager>
+          <calcite-tip-group text-group-title=${sharedTitle}>
+            <calcite-tip><p>group title behavior</p></calcite-tip>
+            <calcite-tip><p>same title as first one</p></calcite-tip>
+          </calcite-tip-group>
+          <calcite-tip-group text-group-title=${title2}>
+            <calcite-tip ><p>different title</p></calcite-tip>
+          </calcite-tip-group>
+          <calcite-tip><p>default title</p></calcite-tip>
+        </calcite-tip-manager>`
+      );
+
+      await page.waitForChanges();
+
+      const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
+      expect(title.innerText).toBe(sharedTitle);
+
+      const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
+      nextButton.click();
+      await page.waitForChanges();
+
+      expect(title.innerText).toBe(sharedTitle);
+
+      nextButton.click();
+      await page.waitForChanges();
+
+      expect(title.innerText).toBe(title2);
+
+      nextButton.click();
+      await page.waitForChanges();
+
+      expect(title.innerText).toBe(TEXT.defaultGroupTitle);
+    });
+    it("pagination should be hidden if there is 1 or fewer tips", async () => {
+      const page = await newE2EPage();
+      await page.setContent(
+        `<calcite-tip-manager><calcite-tip><p>basic render</p></calcite-tip></calcite-tip-manager>`
+      );
+
+      const pagination = await page.find(`calcite-tip-manager >>> .${CSS.pagination}`);
+      expect(pagination).toBeNull();
+    });
+  });
+  describe("handling dom updates after initial render", () => {
+    it("should update if tips are added after intial load", async () => {
+      const page = await newE2EPage();
+      await page.setContent(
+        `<calcite-tip-manager>
+          <calcite-tip><p>dynamically adding/removing tips</p></calcite-tip>
+        </calcite-tip-manager>`
+      );
+      const tipManager = await page.find("calcite-tip-manager");
+      const newTipId = "newTip";
+      await page.evaluate((newTipId) => {
+        const mgr = document.querySelector("calcite-tip-manager");
+        const newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
+        newTip.id = newTipId;
+        mgr.appendChild(newTip);
+      }, newTipId);
+      await page.waitForChanges();
+
+      const tips = await page.findAll("calcite-tip-manager calcite-tip");
+      expect(tips.length).toBe(2);
+
+      const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
+      nextButton.click();
+      await page.waitForChanges();
+
+      const selectedTip = await tipManager.find(`calcite-tip[selected]`);
+      expect(selectedTip.id).toEqual(newTipId);
+    });
+    it("should update visible tip if active tip is removed", async () => {
+      const page = await newE2EPage();
+      await page.setContent(
+        `<calcite-tip-manager>
+          <calcite-tip id="one"><p>dynamically adding/removing tips</p></calcite-tip>
+          <calcite-tip id="two"><p>dynamically adding/removing tips</p></calcite-tip>
+        </calcite-tip-manager>`
+      );
+      const tipManager = await page.find("calcite-tip-manager");
+
+      await page.evaluate(() => {
+        document.querySelector("calcite-tip:first-child").remove();
+      });
+      await page.waitForChanges();
+
+      const selectedTip = await tipManager.find(`calcite-tip[selected]`);
+      expect(selectedTip.id).toEqual("two");
+    });
   });
 });
