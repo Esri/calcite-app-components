@@ -16,7 +16,6 @@
   "scripts": {
     "build": "stencil build",
     "docs": "stencil build --config stencil.docs.config.ts",
-    "prerelease:prepare": "npm run build",
     "release:prepare": "npm version prerelease --no-git-tag-version",
     "release:publish": "./support/release.sh",
     "start": "stencil build --dev --watch --serve",
