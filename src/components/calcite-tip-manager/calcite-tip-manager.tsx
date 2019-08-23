@@ -192,6 +192,7 @@ export class CalciteTipManager {
       // TODO: Empty state
       return <Host />;
     }
+    const environmentDir = this.el.closest("[dir=rtl]") ? "rtl" : "ltr";
     return (
       <Host>
         <header class={CSS.header}>
@@ -209,13 +210,19 @@ export class CalciteTipManager {
             onClick={this.previousClicked}
             class={CSS.pagePrevious}
           >
-            <CalciteIcon size="16" path={chevronLeft16} />
+            <CalciteIcon
+              size="16"
+              path={environmentDir === "ltr" ? chevronLeft16 : chevronRight16}
+            />
           </calcite-action>
           <span class={CSS.pagePosition}>
             {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
           </span>
           <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
-            <CalciteIcon size="16" path={chevronRight16} />
+            <CalciteIcon
+              size="16"
+              path={environmentDir === "ltr" ? chevronRight16 : chevronLeft16}
+            />
           </calcite-action>
         </footer>
       </Host>
