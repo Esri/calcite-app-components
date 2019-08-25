@@ -1,26 +1,23 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
+import { defaults, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-block", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
-    await page.setContent("<calcite-block></calcite-block>");
-    const element = await page.find("calcite-block");
+  it("renders", async () => renders("calcite-block"));
 
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-block"));
 
-  it("defaults", async () => {
-    const page = await newE2EPage();
-    await page.setContent("<calcite-block></calcite-block>");
-    const element = await page.find("calcite-block");
-
-    const collapsibleProp = await element.getProperty("collapsible");
-    expect(collapsibleProp).toBe(false);
-
-    const openProp = await element.getProperty("open");
-    expect(openProp).toBe(false);
-  });
+  it("has property defaults", async () =>
+    defaults("calcite-block", [
+      {
+        propertyName: "collapsible",
+        defaultValue: false
+      },
+      {
+        propertyName: "open",
+        defaultValue: false
+      }
+    ]));
 
   it("can display/hide content", async () => {
     const page = await newE2EPage();
