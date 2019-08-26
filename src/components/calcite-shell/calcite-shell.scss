@@ -39,8 +39,7 @@ $shell-min-height: 671px !default; // ipad + browser with tabs
   z-index: 0;
 }
 
-slot[name="primary-panel"],
-slot[name="contextual-panel"] {
+::slotted(calcite-shell-panel) {
   position: relative;
   z-index: 1;
 }
