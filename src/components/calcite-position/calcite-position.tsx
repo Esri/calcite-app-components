@@ -37,6 +37,16 @@ export class CalcitePosition {
    */
   @Prop() positionElement: HTMLElement;
 
+  /**
+   * TODO
+   */
+  @Prop({ reflect: true }) xOffset: number;
+
+  /**
+   * TODO
+   */
+  @Prop({ reflect: true }) yOffset: number;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -79,7 +89,10 @@ export class CalcitePosition {
     const { el, offsetTop } = this;
 
     const style = {
-      top: `${offsetTop}px`
+      top: `${offsetTop}px`,
+      right: null,
+      bottom: null,
+      left: null
     };
 
     const rtl = getElementDir(el) === "rtl";
