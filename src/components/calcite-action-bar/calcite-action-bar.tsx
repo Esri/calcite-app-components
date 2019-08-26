@@ -29,6 +29,11 @@ export class CalciteActionBar {
    */
   @Prop({ reflect: true }) expanded = false;
 
+  @Watch("expanded")
+  expandedHandler(newValue: boolean) {
+    this.setTextEnabled(newValue);
+  }
+
   /**
    * Updates the label of the expand icon when the component is collapsed.
    */
@@ -52,7 +57,7 @@ export class CalciteActionBar {
 
   // --------------------------------------------------------------------------
   //
-  //  Variables
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
 
@@ -60,7 +65,17 @@ export class CalciteActionBar {
 
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  connectedCallback() {
+    this.setTextEnabled(this.expanded);
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
   //
   // --------------------------------------------------------------------------
 
@@ -73,6 +88,24 @@ export class CalciteActionBar {
 
     return shellNode.layout;
   }
+
+  setTextEnabled(expanded: boolean): void {
+    this.el
+      .querySelectorAll("calcite-action")
+      .forEach((action) =>
+        expanded ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
+      );
+  }
+
+  toggleExpand = (): void => {
+    this.expanded = !this.expanded;
+  };
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
 
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el, layout } = this;
@@ -120,23 +153,4 @@ export class CalciteActionBar {
       </Host>
     );
   }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  @Watch("expanded")
-  watchHandler(newValue: boolean) {
-    this.el
-      .querySelectorAll("calcite-action")
-      .forEach((action) =>
-        newValue ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
-      );
-  }
-
-  toggleExpand = (): void => {
-    this.expanded = !this.expanded;
-  };
 }

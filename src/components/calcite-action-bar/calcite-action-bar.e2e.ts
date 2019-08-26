@@ -61,4 +61,18 @@ describe("calcite-action-bar", () => {
 
     expect(bar).toHaveAttribute("expanded");
   });
+
+  it("expanded by default", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-action-bar expanded></calcite-action-bar>");
+
+    const buttonGroup = await page.find("calcite-action-bar >>> .action-group--bottom");
+
+    const button = await buttonGroup.find("calcite-action");
+
+    const textEnabled = await button.getProperty("textEnabled");
+
+    expect(textEnabled).toBe(true);
+  });
 });
