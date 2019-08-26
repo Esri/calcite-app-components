@@ -69,7 +69,7 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
+  componentWillLoad() {
     this.setTextEnabled(this.expanded);
   }
 
