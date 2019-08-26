@@ -3,66 +3,76 @@ import { CalcitePlacement } from "../interfaces";
 interface CalcitePositionParams {
   placement: CalcitePlacement;
   positionElement: HTMLElement;
+  xOffset: number;
+  yOffset: number;
 }
 
-interface CalciteOffset {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
+interface StylesParams {
+  outerRect: ClientRect | DOMRect;
+  elemRect: ClientRect | DOMRect;
+  xOffset: number;
+  yOffset: number;
 }
 
-function getAnchorPosition(params: CalcitePositionParams): CalciteOffset {
-  const { positionElement } = params;
+export interface CalcitePositionStyle {
+  [key: string]: string | undefined;
+}
 
-  const rect = positionElement.getBoundingClientRect();
+function getOuterElement(positionElement: HTMLElement): HTMLElement {
+  return positionElement.closest("calcite-shell") || document.body;
+}
 
-  const { top, right, bottom, left } = rect;
+function getAnchorStyles(params: StylesParams): CalcitePositionStyle {
+  const { elemRect, outerRect, xOffset, yOffset } = params;
+
+  const top = elemRect.top - outerRect.top + yOffset;
+  const left = elemRect.left - outerRect.left + xOffset;
 
   return {
-    top,
-    right,
-    bottom,
-    left
+    top: `${top}px`,
+    left: `${left}px`
   };
 }
 
-function getTrailingPosition(params: CalcitePositionParams): CalciteOffset {
-  const { positionElement } = params;
+function getTrailingStyles(params: StylesParams): CalcitePositionStyle {
+  const { elemRect, outerRect, xOffset, yOffset } = params;
 
-  const rect = positionElement.getBoundingClientRect();
-
-  const { top, right, bottom, left } = rect;
+  const top = elemRect.top - outerRect.top - elemRect.height + yOffset;
+  const left = elemRect.left - outerRect.left + elemRect.width + xOffset;
 
   return {
-    top,
-    right,
-    bottom,
-    left
+    top: `${top}px`,
+    left: `${left}px`
   };
 }
 
-function getLeadingPosition(params: CalcitePositionParams): CalciteOffset {
-  const { positionElement } = params;
+function getLeadingStyles(params: StylesParams): CalcitePositionStyle {
+  const { elemRect, outerRect, xOffset, yOffset } = params;
 
-  const rect = positionElement.getBoundingClientRect();
-
-  const { top, right, bottom, left } = rect;
+  const top = elemRect.top - outerRect.top - elemRect.height + yOffset;
+  const right = outerRect.right - elemRect.right + elemRect.width + xOffset;
 
   return {
-    top,
-    right,
-    bottom,
-    left
+    top: `${top}px`,
+    right: `${right}px`
   };
 }
 
-export function getRect(params: CalcitePositionParams): CalciteOffset {
-  const { placement } = params;
+export function getPositionStyle(params: CalcitePositionParams): CalcitePositionStyle {
+  const { placement, positionElement, xOffset = 0, yOffset = 0 } = params;
+
+  if (!positionElement || !placement) {
+    return {};
+  }
+
+  const outerElement = getOuterElement(positionElement);
+
+  const outerRect = outerElement.getBoundingClientRect(),
+    elemRect = positionElement.getBoundingClientRect();
 
   return placement === "anchor"
-    ? getAnchorPosition(params)
-    : placement === "trailing"
-    ? getTrailingPosition(params)
-    : getLeadingPosition(params);
+    ? getAnchorStyles({ outerRect, elemRect, xOffset, yOffset })
+    : placement === "leading"
+    ? getLeadingStyles({ outerRect, elemRect, xOffset, yOffset })
+    : getTrailingStyles({ outerRect, elemRect, xOffset, yOffset });
 }

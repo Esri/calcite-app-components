@@ -1,16 +1,10 @@
-import { Component, Element, Host, Prop, State, Watch, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
 import { CalcitePlacement } from "../interfaces";
 
-import classnames from "classnames";
-
-import { getElementDir } from "../utils/dom";
-
-import { CSS_UTILITY } from "../utils/resources";
-
-import { getRect } from "../utils/position";
+import { CalcitePositionStyle, getPositionStyle } from "../utils/position";
 
 @Component({
   tag: "calcite-position",
@@ -33,14 +27,8 @@ export class CalcitePosition {
   @Prop({ reflect: true }) placement: CalcitePlacement;
 
   @Watch("placement")
-  placementHandler(newValue: CalcitePlacement) {
-    const rect = getRect({
-      placement: newValue,
-      positionElement: this.positionElement
-    });
-
-    this.top = rect.top;
-    this.left = rect.left;
+  placementHandler() {
+    this.reposition();
   }
 
   /**
@@ -49,14 +37,8 @@ export class CalcitePosition {
   @Prop() positionElement: HTMLElement;
 
   @Watch("positionElement")
-  positionElementHandler(newValue: HTMLElement) {
-    const rect = getRect({
-      placement: this.placement,
-      positionElement: newValue
-    });
-
-    this.top = rect.top;
-    this.left = rect.left;
+  positionElementHandler() {
+    this.reposition();
   }
 
   /**
@@ -64,10 +46,20 @@ export class CalcitePosition {
    */
   @Prop({ reflect: true }) xOffset: number;
 
+  @Watch("xOffset")
+  xOffsetHandler() {
+    this.reposition();
+  }
+
   /**
    * TODO
    */
   @Prop({ reflect: true }) yOffset: number;
+
+  @Watch("yOffset")
+  yOffsetHandler() {
+    this.reposition();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -77,13 +69,22 @@ export class CalcitePosition {
 
   @Element() el: HTMLCalciteShellFloatingPanelElement;
 
-  @State() top = 0;
+  @State() positionStyle: CalcitePositionStyle;
 
-  @State() left = 0;
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
 
-  @State() bottom = 0;
-
-  @State() right = 0;
+  @Method() async reposition(): Promise<void> {
+    this.positionStyle = getPositionStyle({
+      placement: this.placement,
+      positionElement: this.positionElement,
+      xOffset: this.xOffset,
+      yOffset: this.yOffset
+    });
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -92,25 +93,11 @@ export class CalcitePosition {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, top, left } = this;
-
-    const style = {
-      top: `${top}px`,
-      right: null,
-      bottom: null,
-      left: `${left}px`
-    };
-
-    const rtl = getElementDir(el) === "rtl";
+    const { positionStyle } = this;
 
     return (
       <Host>
-        <div
-          style={style}
-          class={classnames(CSS.container, {
-            [CSS_UTILITY.rtl]: rtl
-          })}
-        >
+        <div style={positionStyle} class={CSS.container}>
           <slot />
         </div>
       </Host>
