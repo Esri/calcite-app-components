@@ -1,7 +1,7 @@
-import { CalcitePlacement } from "../interfaces";
+import { CalcitePlacementValue } from "../interfaces";
 
 interface CalcitePositionParams {
-  placement: CalcitePlacement;
+  placement: CalcitePlacementValue;
   positionElement: HTMLElement;
   xOffset: number;
   yOffset: number;

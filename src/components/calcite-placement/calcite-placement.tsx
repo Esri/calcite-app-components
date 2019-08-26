@@ -2,16 +2,16 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CSS } from "./resources";
 
-import { CalcitePlacement } from "../interfaces";
+import { CalcitePlacementValue } from "../interfaces";
 
 import { CalcitePositionStyle, getPositionStyle } from "../utils/position";
 
 @Component({
-  tag: "calcite-position",
-  styleUrl: "calcite-position.scss",
+  tag: "calcite-placement",
+  styleUrl: "calcite-placement.scss",
   shadow: true
 })
-export class CalcitePosition {
+export class CalcitePlacement {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -24,7 +24,7 @@ export class CalcitePosition {
    * leading: TODO
    * trailing: TODO
    */
-  @Prop({ reflect: true }) placement: CalcitePlacement;
+  @Prop({ reflect: true }) placement: CalcitePlacementValue;
 
   @Watch("placement")
   placementHandler() {
