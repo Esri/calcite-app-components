@@ -20,7 +20,12 @@
     <main>
       <div class="example-container">
         <h1>calcite-shell</h1>
-        <p>see the <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell/readme.md">calcite-shell readme.</a></p>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell/readme.md"
+            >calcite-shell readme.</a
+          >
+        </p>
 
         <h2>RTL</h2>
         <p>View the <a href="calcite-shell-rtl.html">RTL demo</a>.</p>
@@ -76,9 +81,7 @@
             <calcite-shell-panel slot="primary-panel" layout="leading">
               <calcite-shell-floating-panel
                 id="shell-floating-panel"
-                slot="shell-floating-panel"
                 heading="Anchored Shell Floating Panel"
-                placement="anchor"
                 hidden
                 style="height:150px;"
                 ><span>
@@ -87,16 +90,14 @@
               </calcite-shell-floating-panel>
               <calcite-shell-floating-panel
                 id="shell-floating-panel-over"
-                slot="shell-floating-panel"
                 heading="Over Shell Floating Panel"
-                placement="over"
                 hidden
                 style="height:150px;"
                 ><span>
                   Shell Floating Panel Content
                 </span>
               </calcite-shell-floating-panel>
-              <calcite-action-pad id="action-pad" placement="side" slot="action-pad" hidden>
+              <calcite-action-pad id="action-pad" hidden>
                 <calcite-action-group>
                   <calcite-action text="Add">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -322,27 +323,17 @@
         <div class="calcite-shell-container">
           <calcite-shell theme="dark">
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-shell-floating-panel
-                slot="shell-floating-panel"
-                heading="Anchored Shell Floating Panel"
-                placement="anchor"
-                hidden
-                style="height:150px;"
+              <calcite-shell-floating-panel heading="Anchored Shell Floating Panel" hidden style="height:150px;"
                 ><span>
                   Shell Floating Panel Content
                 </span>
               </calcite-shell-floating-panel>
-              <calcite-shell-floating-panel
-                slot="shell-floating-panel"
-                heading="Over Shell Floating Panel"
-                placement="over"
-                hidden
-                style="height:150px;"
+              <calcite-shell-floating-panel heading="Over Shell Floating Panel" hidden style="height:150px;"
                 ><span>
                   Shell Floating Panel Content
                 </span>
               </calcite-shell-floating-panel>
-              <calcite-action-pad placement="side" slot="action-pad" hidden>
+              <calcite-action-pad hidden>
                 <calcite-action-group>
                   <calcite-action text="Add">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -569,8 +560,6 @@
         var actionPadButton = document.getElementById("action-pad-button");
         actionPadButton.addEventListener("click", function() {
           actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
-
-          actionPad.positionElement = actionPadButton;
         });
 
         var shellFloatingPanel = document.getElementById("shell-floating-panel");
@@ -579,8 +568,6 @@
           shellFloatingPanel.hasAttribute("hidden")
             ? shellFloatingPanel.removeAttribute("hidden")
             : shellFloatingPanel.setAttribute("hidden", "");
-
-          shellFloatingPanel.positionElement = shellFloatingPanelButton;
         });
 
         var shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
@@ -589,8 +576,6 @@
           shellFloatingPanelOver.hasAttribute("hidden")
             ? shellFloatingPanelOver.removeAttribute("hidden")
             : shellFloatingPanelOver.setAttribute("hidden", "");
-
-          shellFloatingPanelOver.positionElement = shellFloatingPanelOverButton;
         });
 
         var flowNode = document.getElementById("flow");

@@ -1,30 +1,10 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Prop,
-  State,
-  Watch,
-  h
-} from "@stencil/core";
-
-import { CalcitePlacement } from "../interfaces";
-
-import { getOffsetTop } from "../utils/position";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
 import { x16 } from "@esri/calcite-ui-icons";
 
 import CalciteIcon from "../utils/CalciteIcon";
 
-import { CSS } from "./resources";
-
-import classnames from "classnames";
-
-import { getElementDir } from "../utils/dom";
-
-import { CSS_UTILITY } from "../utils/resources";
+import { CSS, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-shell-floating-panel",
@@ -39,22 +19,14 @@ export class CalciteShellFloatingPanel {
   // --------------------------------------------------------------------------
 
   /**
-   * Determines where the element will be displayed.
-   * side: dynamically left or right based on whether we're in a leading or trailing shell-panel.
-   * over: centered on top of trigger and covers trigger.
-   * anchor: dynamically above or below based on how close trigger is to top or bottom of window.
-   */
-  @Prop({ reflect: true }) placement: CalcitePlacement;
-
-  /**
    * Panel heading
    */
   @Prop({ reflect: true }) heading: string;
 
   /**
-   * HTMLElement used to position this element according to the placement.
+   * Alternate text for closing the panel.
    */
-  @Prop() positionElement: HTMLElement;
+  @Prop() textClose = TEXT.close;
 
   // --------------------------------------------------------------------------
   //
@@ -63,8 +35,6 @@ export class CalciteShellFloatingPanel {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteShellFloatingPanelElement;
-
-  @State() offsetTop = 0;
 
   // --------------------------------------------------------------------------
   //
@@ -83,24 +53,6 @@ export class CalciteShellFloatingPanel {
   //
   // --------------------------------------------------------------------------
 
-  @Watch("placement")
-  placementHandler(newValue: CalcitePlacement) {
-    this.offsetTop = getOffsetTop({
-      floatingElement: this.el,
-      placement: newValue,
-      positionElement: this.positionElement
-    });
-  }
-
-  @Watch("positionElement")
-  positionElementHandler(newValue: HTMLElement) {
-    this.offsetTop = getOffsetTop({
-      floatingElement: this.el,
-      placement: this.placement,
-      positionElement: newValue
-    });
-  }
-
   hidePanel = () => {
     this.el.setAttribute("hidden", "");
     this.calciteShellFloatingPanelClose.emit();
@@ -113,30 +65,12 @@ export class CalciteShellFloatingPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { offsetTop, el } = this;
-
-    const style = {
-      top: `${offsetTop}px`
-    };
-
-    const closest = el.closest("calcite-shell-panel");
-    const layout = (closest && closest.layout) || "leading";
-
-    const rtl = getElementDir(el) === "rtl";
-
     return (
       <Host>
-        <div
-          class={classnames(CSS.container, {
-            [CSS_UTILITY.rtl]: rtl,
-            [CSS.containerLeading]: layout === "leading",
-            [CSS.containerTrailing]: layout === "trailing"
-          })}
-          style={style}
-        >
+        <div class={CSS.container}>
           <header class={CSS.header}>
             <h3 class={CSS.heading}>{this.heading}</h3>
-            <calcite-action onClick={this.hidePanel}>
+            <calcite-action onClick={this.hidePanel} text={this.textClose}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           </header>
