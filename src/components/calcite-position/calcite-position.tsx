@@ -10,7 +10,7 @@ import { getElementDir } from "../utils/dom";
 
 import { CSS_UTILITY } from "../utils/resources";
 
-import { getOffsetTop } from "../utils/position";
+import { getRect } from "../utils/position";
 
 @Component({
   tag: "calcite-position",
@@ -32,10 +32,32 @@ export class CalcitePosition {
    */
   @Prop({ reflect: true }) placement: CalcitePlacement;
 
+  @Watch("placement")
+  placementHandler(newValue: CalcitePlacement) {
+    const rect = getRect({
+      placement: newValue,
+      positionElement: this.positionElement
+    });
+
+    this.top = rect.top;
+    this.left = rect.left;
+  }
+
   /**
    * HTMLElement used to position this element according to the placement.
    */
   @Prop() positionElement: HTMLElement;
+
+  @Watch("positionElement")
+  positionElementHandler(newValue: HTMLElement) {
+    const rect = getRect({
+      placement: this.placement,
+      positionElement: newValue
+    });
+
+    this.top = rect.top;
+    this.left = rect.left;
+  }
 
   /**
    * TODO
@@ -55,44 +77,28 @@ export class CalcitePosition {
 
   @Element() el: HTMLCalciteShellFloatingPanelElement;
 
-  @State() offsetTop = 0;
+  @State() top = 0;
+
+  @State() left = 0;
+
+  @State() bottom = 0;
+
+  @State() right = 0;
 
   // --------------------------------------------------------------------------
   //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  @Watch("placement")
-  placementHandler(newValue: CalcitePlacement) {
-    this.offsetTop = getOffsetTop({
-      placement: newValue,
-      positionElement: this.positionElement
-    });
-  }
-
-  @Watch("positionElement")
-  positionElementHandler(newValue: HTMLElement) {
-    this.offsetTop = getOffsetTop({
-      placement: this.placement,
-      positionElement: newValue
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Component Methods
+  //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, offsetTop } = this;
+    const { el, top, left } = this;
 
     const style = {
-      top: `${offsetTop}px`,
+      top: `${top}px`,
       right: null,
       bottom: null,
-      left: null
+      left: `${left}px`
     };
 
     const rtl = getElementDir(el) === "rtl";

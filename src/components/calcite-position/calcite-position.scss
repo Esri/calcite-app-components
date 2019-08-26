@@ -2,33 +2,3 @@
   position: absolute;
   z-index: 1;
 }
-
-:host([placement="leading"]) .container {
-  left: 100%;
-}
-
-:host([placement="leading"]) .container.calcite--rtl {
-  left: unset;
-  right: 100%;
-}
-
-:host([placement="trailing"]) .container {
-  right: 100%;
-}
-
-:host([placement="trailing"]) .container.calcite--rtl {
-  right: unset;
-  left: 100%;
-}
-
-:host([placement="anchor"]) .container {
-  left: 50%;
-  margin-left: -21px;
-}
-
-:host([placement="anchor"]) .container.calcite--rtl {
-  left: unset;
-  margin-left: unset;
-  right: 50%;
-  margin-right: -21px;
-}

@@ -82,33 +82,6 @@
         <div id="light_theme_container" class="calcite-shell-container" dir="rtl">
           <calcite-shell>
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-shell-floating-panel
-                id="shell-floating-panel"
-                heading="Anchored Shell Floating Panel"
-                hidden
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-shell-floating-panel
-                id="shell-floating-panel-over"
-                heading="Over Shell Floating Panel"
-                hidden
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-action-pad id="action-pad" hidden>
-                <calcite-action-group>
-                  <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
-                  </calcite-action>
-                </calcite-action-group>
-              </calcite-action-pad>
               <calcite-action-bar slot="action-bar" theme="dark">
                 <calcite-action-group>
                   <calcite-action text="Add">
@@ -326,25 +299,6 @@
         <div class="calcite-shell-container" dir="rtl">
           <calcite-shell theme="dark">
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-shell-floating-panel heading="Anchored Shell Floating Panel" hidden style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-shell-floating-panel heading="Over Shell Floating Panel" hidden style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-action-pad hidden>
-                <calcite-action-group>
-                  <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
-                  </calcite-action>
-                </calcite-action-group>
-              </calcite-action-pad>
               <calcite-action-bar slot="action-bar">
                 <calcite-action-group>
                   <calcite-action text="Add">
@@ -559,28 +513,6 @@
       </div>
       <p style="text-align: center;">Box Shadow added to show app edges.</p>
       <script>
-        var actionPad = document.getElementById("action-pad");
-        var actionPadButton = document.getElementById("action-pad-button");
-        actionPadButton.addEventListener("click", function() {
-          actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
-        });
-
-        var shellFloatingPanel = document.getElementById("shell-floating-panel");
-        var shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
-        shellFloatingPanelButton.addEventListener("click", function() {
-          shellFloatingPanel.hasAttribute("hidden")
-            ? shellFloatingPanel.removeAttribute("hidden")
-            : shellFloatingPanel.setAttribute("hidden", "");
-        });
-
-        var shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
-        var shellFloatingPanelOverButton = document.getElementById("shell-floating-panel-over-button");
-        shellFloatingPanelOverButton.addEventListener("click", function() {
-          shellFloatingPanelOver.hasAttribute("hidden")
-            ? shellFloatingPanelOver.removeAttribute("hidden")
-            : shellFloatingPanelOver.setAttribute("hidden", "");
-        });
-
         var flowNode = document.getElementById("flow");
 
         flowNode.addEventListener("calciteFlowItemBackClick", function() {
