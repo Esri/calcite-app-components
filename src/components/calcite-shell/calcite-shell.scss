@@ -25,12 +25,24 @@ $shell-min-height: 671px !default; // ipad + browser with tabs
   position: relative;
   border-top: 1px solid var(--calcite-app-border-subtle);
   border-bottom: 1px solid var(--calcite-app-border-subtle);
+  justify-content: space-between;
 }
 
 .content {
   height: 100%;
   width: 100%;
-  flex: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 0;
+}
+
+slot[name="primary-panel"],
+slot[name="contextual-panel"] {
+  position: relative;
+  z-index: 1;
 }
 
 .footer {

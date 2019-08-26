@@ -62,8 +62,8 @@ export class CalciteShell {
   renderMain() {
     return (
       <div class={CSS.main}>
-        <slot name="primary-panel" />
         {this.renderContent()}
+        <slot name="primary-panel" />
         <slot name="contextual-panel" />
         <slot name="tip-manager" />
       </div>
