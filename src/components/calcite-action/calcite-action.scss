@@ -39,7 +39,9 @@
     flex: 1;
     line-height: 1rem;
     margin: 0 var(--calcite-app-side-spacing-half);
-    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
