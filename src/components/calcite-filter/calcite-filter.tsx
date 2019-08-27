@@ -41,7 +41,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  filter = debounce((value) => {
+  filter = debounce((value: string) => {
     const regex = new RegExp(value, "ig");
     const find = (input, regex) => {
       let found = false;
@@ -67,7 +67,7 @@ export class CalciteFilter {
     this.calciteFilterChange.emit(result);
   }, 250);
 
-  inputHandler(event) {
+  inputHandler(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.filter(target.value);
   }
