@@ -97,34 +97,38 @@ describe("calcite-flow-item", () => {
 
     expect(menuButtonVisible).toBe(true);
   });
-});
 
-it("back button / showBackButton", async () => {
-  const page = await newE2EPage();
+  it("back button / showBackButton", async () => {
+    const page = await newE2EPage();
 
-  await page.setContent("<calcite-flow-item></calcite-flow-item>");
+    await page.setContent("<calcite-flow-item></calcite-flow-item>");
 
-  const element = await page.find("calcite-flow-item");
+    const element = await page.find("calcite-flow-item");
 
-  const showBackButton = await element.getProperty("showBackButton");
+    const showBackButton = await element.getProperty("showBackButton");
 
-  expect(showBackButton).toBe(false);
+    expect(showBackButton).toBe(false);
 
-  const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+    const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
 
-  expect(backButton).toBeNull();
+    expect(backButton).toBeNull();
 
-  element.setProperty("showBackButton", true);
+    element.setProperty("showBackButton", true);
 
-  await page.waitForChanges();
+    await page.waitForChanges();
 
-  const backButtonNew = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+    const showBackButtonNew = await element.getProperty("showBackButton");
 
-  expect(backButtonNew).not.toBeNull();
+    expect(showBackButtonNew).toBe(true);
 
-  const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
+    const backButtonNew = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
 
-  await backButtonNew.click();
+    expect(backButtonNew).not.toBeNull();
 
-  expect(eventSpy).toHaveReceivedEvent();
+    const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
+
+    await backButtonNew.click();
+
+    expect(eventSpy).toHaveReceivedEvent();
+  });
 });
