@@ -125,6 +125,8 @@ describe("calcite-flow-item", () => {
 
     expect(backButtonNew).not.toBeNull();
 
+    expect(await backButtonNew.isVisible()).toBe(true);
+
     const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
 
     await backButtonNew.click();
