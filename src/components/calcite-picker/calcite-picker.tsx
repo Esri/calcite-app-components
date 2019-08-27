@@ -9,13 +9,10 @@ import {
   Method,
   Prop,
   State,
-  Watch,
   h
 } from "@stencil/core";
-import { pencil16 } from "@esri/calcite-ui-icons";
-import CalciteIcon from "../utils/CalciteIcon";
 import guid from "../utils/guid";
-import { CSS } from "./resources";
+import { CSS, ICON_TYPES } from "./resources";
 
 @Component({
   tag: "calcite-picker",
@@ -30,7 +27,7 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, the rows will be sortable via drag and drop.
+   * When true, the items will be sortable via drag and drop.
    * Only applies when mode is configuration
    */
   @Prop({ reflect: true }) dragEnabled = false;
@@ -38,9 +35,9 @@ export class CalcitePicker {
   @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
 
   /**
-   * Mode controls the presentation of the rows in their selected and deselected states.
+   * Mode controls the presentation of the items in their selected and deselected states.
    * Selection mode shows either radio buttons or checkboxes depending on the value of multiple
-   * Configuration mode relies on a color highlight on the edge of the row for selected
+   * Configuration mode relies on a color highlight on the edge of the item for selected
    * Mode must be set to configuration for drag and drop behavior to work.
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
@@ -48,15 +45,15 @@ export class CalcitePicker {
   /**
    * Multpile Works similar to standard radio buttons and checkboxes.
    * It also affects the presented icon when in Selection mode.
-   * When true, a user can select multiple rows at a time.
-   * When false, only a single row can be selected at a time,
-   * When false, selecting a new row will deselect any other selected rows.
+   * When true, a user can select multiple items at a time.
+   * When false, only a single item can be selected at a time,
+   * When false, selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
 
   /**
    * The heading label for the entire Picker.
-   * Not to be confused with the heading for an individual row or for a sub-group of rows.
+   * Not to be confused with the heading for an individual item or for a sub-group of items.
    */
   @Prop({ reflect: true }) textHeading: string;
 
@@ -66,28 +63,17 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Set<object> = new Set();
-
-  @State() editing = false;
-
-  @Watch("editing")
-  editingChangeHandler() {
-    this.rows.forEach((item) => {
-      this.editing ? item.setAttribute("editing", "") : item.removeAttribute("editing");
-    });
-  }
+  @State() selectedValues = {};
 
   @State() dataForFilter: object[] = [];
 
-  deletedRows = new Set();
+  items: HTMLCalcitePickerItemElement[];
 
-  rows: any;
-
-  lastSelectedRow = null;
+  lastSelectedItem: HTMLCalcitePickerItemElement = null;
 
   guid = `calcite-picker-${guid()}`;
 
-  observer = new MutationObserver(() => this.setupRows());
+  observer = new MutationObserver(() => this.setupItems());
 
   // --------------------------------------------------------------------------
   //
@@ -104,7 +90,7 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    this.setupRows();
+    this.setupItems();
   }
 
   componentDidLoad() {
@@ -123,42 +109,33 @@ export class CalcitePicker {
 
   @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Event() calcitePickerRowsDeleted: EventEmitter;
-
-  @Listen("calcitePickerRowToggled") calcitePickerRowToggledHandler(event): void {
+  @Listen("calcitePickerItemToggle") calcitePickerItemToggleHandler(event) {
     event.stopPropagation(); // private event
-    const { row, selected, shiftPressed } = event.detail;
+    const { items, selectedValues } = this;
+    const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
-      if (this.multiple && shiftPressed && this.lastSelectedRow) {
-        const start = this.rows.indexOf(this.lastSelectedRow);
-        const end = this.rows.indexOf(row);
-        this.rows.slice(Math.min(start, end), Math.max(start, end)).forEach((currentRow) => {
-          currentRow.setAttribute("selected", "");
-          this.selectedValues.add(currentRow);
+      if (this.multiple && shiftPressed && this.lastSelectedItem) {
+        const start = items.indexOf(this.lastSelectedItem);
+        const end = items.indexOf(item);
+        items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
+          currentItem.setAttribute("selected", "");
+          selectedValues[currentItem.value] = currentItem;
         });
       } else {
-        this.selectedValues.add(row);
+        selectedValues[value] = item;
       }
     } else {
-      this.selectedValues.delete(row);
+      delete selectedValues[value];
     }
     if (!this.multiple && selected) {
-      this.rows.forEach((item) => {
-        if (item !== row) {
-          this.deselectRow(item);
+      items.forEach((currentItem) => {
+        if (currentItem !== item) {
+          this.deselectItem(currentItem);
         }
       });
     }
-    this.lastSelectedRow = row;
-    this.calcitePickerSelectionChange.emit(this.selectedValues);
-  }
-
-  @Listen("calcitePickerRowDeleted")
-  calcitePickerRowDeletedHandler(event): void {
-    event.stopPropagation(); // private event
-    const { row } = event.detail;
-    row.setAttribute("hidden", "");
-    this.deletedRows.add(row);
+    this.lastSelectedItem = item;
+    this.calcitePickerSelectionChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -167,10 +144,15 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  setupRows(): void {
-    this.rows = Array.from(this.el.querySelectorAll("calcite-picker-row"));
-    this.rows.forEach((row) => {
-      row.setAttribute("icon", this.getIconType());
+  setupItems(): void {
+    this.items = Array.from(this.el.querySelectorAll("calcite-picker-item"));
+    this.items.forEach((item) => {
+      const iconType = this.getIconType();
+      if (iconType) {
+        item.setAttribute("icon", iconType);
+      } else {
+        item.removeAttribute("icon");
+      }
     });
     if (this.dragEnabled && this.mode === "configuration") {
       this.setUpDragAndDrop();
@@ -184,55 +166,28 @@ export class CalcitePicker {
       Sortable.create(sortGroup, {
         group: this.el.id,
         handle: `.${CSS.dragHandle}`,
-        draggable: "calcite-picker-row"
+        draggable: "calcite-picker-item"
       });
     });
   }
 
-  deselectRow(item: HTMLCalcitePickerRowElement): void {
+  deselectItem(item: HTMLCalcitePickerItemElement): void {
     item.removeAttribute("selected");
-    this.selectedValues.delete(item);
-  }
-
-  startEdit(): void {
-    this.editing = true;
-  }
-
-  cancelDelete(): void {
-    this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      row.removeAttribute("hidden");
-    });
-    this.deletedRows = new Set();
-    this.editing = false;
-  }
-
-  confirmDelete(): void {
-    let selectedChanged = false;
-    this.deletedRows.forEach((row: HTMLCalcitePickerRowElement) => {
-      if (this.selectedValues.has(row)) {
-        this.selectedValues.delete(row);
-        selectedChanged = true;
-      }
-      row.remove();
-    });
-    if (selectedChanged) {
-      this.calcitePickerSelectionChange.emit(this.selectedValues);
+    if (item.value in this.selectedValues) {
+      delete this.selectedValues[item.value];
     }
-    this.calcitePickerRowsDeleted.emit(this.deletedRows);
-    this.deletedRows = new Set();
-    this.editing = false;
   }
 
   handleFilter(filteredData) {
     const values = filteredData.map((item) => item.value);
-    this.rows.forEach((row) => {
+    this.items.forEach((row) => {
       row.toggleAttribute("hidden", values.indexOf(row.value) === -1);
     });
   }
 
   getRowData() {
     const result = [];
-    this.rows.forEach((row) => {
+    this.items.forEach((row) => {
       const obj = {};
       Array.from(row.attributes).forEach((item: any) => {
         obj[item.name] = item.value;
@@ -248,7 +203,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedRows(): Promise<Set<object>> {
+  @Method() async getSelectedItems(): Promise<object> {
     return this.selectedValues;
   }
 
@@ -258,41 +213,17 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  getIconType() {
+  getIconType(): ICON_TYPES | null {
+    const { multiple } = this;
     let type = null;
     if (this.mode === "configuration" && this.dragEnabled) {
-      type = "grip";
-    } else if (this.mode === "selection" && this.multiple) {
-      type = "square";
-    } else if (this.mode === "selection" && !this.multiple) {
-      type = "circle";
+      type = ICON_TYPES.grip;
+    } else if (this.mode === "selection" && multiple) {
+      type = ICON_TYPES.square;
+    } else if (this.mode === "selection" && !multiple) {
+      type = ICON_TYPES.circle;
     }
     return type;
-  }
-
-  renderSecondaryAction(action) {
-    return action ? (
-      <calcite-action slot="secondaryAction" onClick={action.onclick || void 0}>
-        <CalciteIcon size={action.icon.size} path={action.icon.path} />
-      </calcite-action>
-    ) : null;
-  }
-
-  renderEditButton() {
-    return this.editEnabled ? (
-      !this.editing ? (
-        <section>
-          <calcite-action onClick={() => this.startEdit()}>
-            <CalciteIcon size="16" path={pencil16} />
-          </calcite-action>
-        </section>
-      ) : (
-        <section>
-          <button onClick={() => this.cancelDelete()}>Cancel</button>
-          <button onClick={() => this.confirmDelete()}>OK</button>
-        </section>
-      )
-    ) : null;
   }
 
   render() {
@@ -308,7 +239,6 @@ export class CalcitePicker {
               onCalciteFilterChange={(e) => this.handleFilter(e.detail)}
             />
           </header>
-          {this.renderEditButton()}
           <slot />
         </section>
       </Host>

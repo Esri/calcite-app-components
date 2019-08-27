@@ -4,18 +4,18 @@ import {
   circle16F,
   circleFilled16F,
   handleVertical24,
-  square16,
-  x16
+  square16
 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
+import { ICON_TYPES } from "../calcite-picker/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
-  tag: "calcite-picker-row",
-  styleUrl: "./calcite-picker-row.scss",
+  tag: "calcite-picker-item",
+  styleUrl: "./calcite-picker-item.scss",
   shadow: true
 })
-export class CalcitePickerRow {
+export class CalcitePickerItem {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -24,11 +24,11 @@ export class CalcitePickerRow {
 
   @Prop({ reflect: true }) editing = false;
 
-  @Prop({ reflect: true }) icon: "square" | "circle" | "grip" | null = null;
-
   @Prop() metadata: object;
 
   @Prop({ reflect: true, mutable: true }) selected = false;
+
+  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
   @Prop({ reflect: true }) textHeading: string;
 
@@ -44,14 +44,25 @@ export class CalcitePickerRow {
 
   @Element() el: HTMLElement;
 
+  dir: "rtl" | "ltr";
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  connectedCallback() {
+    this.dir = this.el.closest('[dir="rtl"]') ? "rtl" : "ltr";
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Events
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickerRowToggled: EventEmitter;
-  @Event() calcitePickerRowDeleted: EventEmitter;
+  @Event() calcitePickerItemToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -59,10 +70,10 @@ export class CalcitePickerRow {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle(shiftPressed: boolean) {
+  @Method() async toggle(shiftPressed?: boolean) {
     this.selected = !this.selected;
-    this.calcitePickerRowToggled.emit({
-      row: this.el,
+    this.calcitePickerItemToggle.emit({
+      item: this.el,
       value: this.value,
       selected: this.selected,
       shiftPressed
@@ -83,10 +94,6 @@ export class CalcitePickerRow {
     e.stopPropagation();
   }
 
-  deleteRow() {
-    this.calcitePickerRowDeleted.emit({ row: this.el, value: this.value });
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -98,7 +105,7 @@ export class CalcitePickerRow {
     if (!icon) {
       return null;
     }
-    if (icon === "grip") {
+    if (icon === ICON_TYPES.grip) {
       return (
         <span class="handle">
           <CalciteIcon size="24" path={handleVertical24} />
@@ -106,7 +113,7 @@ export class CalcitePickerRow {
       );
     } else {
       const path =
-        icon === "square"
+        icon === ICON_TYPES.square
           ? this.selected
             ? checkSquare16
             : square16
@@ -121,21 +128,12 @@ export class CalcitePickerRow {
     }
   }
 
-  renderSecondaryAction() {
-    return this.editing ? (
-      <calcite-action onClick={this.deleteRow.bind(this)}>
-        <CalciteIcon size="16" path={x16} />
-      </calcite-action>
-    ) : (
-      <slot name="secondaryAction" />
-    );
-  }
-
   render() {
     const { icon } = this;
     return (
       <Host
-        class={icon !== "square" && icon !== "circle" ? "highlight" : null}
+        dir={this.dir}
+        class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
         onClick={this.iconClickHandler.bind(this)}
       >
         {this.renderIcon()}
@@ -144,7 +142,7 @@ export class CalcitePickerRow {
           <p class={CSS.description}>{this.textDescription}</p>
         </div>
         <div onClick={this.secondaryActionContainerClickHandler}>
-          {this.renderSecondaryAction()}
+          <slot name="secondaryAction" />
         </div>
       </Host>
     );
