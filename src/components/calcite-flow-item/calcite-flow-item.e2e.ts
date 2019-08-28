@@ -1,15 +1,12 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS, TEXT } from "./resources";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-flow-item"));
 
-    await page.setContent("<calcite-flow-item></calcite-flow-item>");
-    const element = await page.find("calcite-flow-item");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-flow-item"));
 
   it("should not render containers when there are no menu actions", async () => {
     const page = await newE2EPage();
