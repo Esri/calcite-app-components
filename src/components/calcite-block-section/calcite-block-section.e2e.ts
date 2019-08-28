@@ -1,32 +1,19 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
+import { hidden, reflects, renders } from "../../tests/commonTests";
 
 describe("calcite-block-section", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-block-section"));
 
-    await page.setContent("<calcite-block-section></calcite-block-section>");
-    const element = await page.find("calcite-block-section");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-block-section"));
 
-  it("open property is reflected", async () => {
-    const page = await newE2EPage();
-    await page.setContent("<calcite-block-section></calcite-block-section>");
-    let element = await page.find("calcite-block-section");
-
-    element.setProperty("open", true);
-    await page.waitForChanges();
-
-    element = await page.find("calcite-block-section[open]");
-    expect(element).toBeTruthy();
-
-    element.setProperty("open", false);
-    await page.waitForChanges();
-
-    element = await page.find("calcite-block-section[open]");
-    expect(element).toBeNull();
-  });
+  it("reflects properties", async () =>
+    reflects("calcite-block-section", [
+      {
+        propertyName: "open",
+        value: true
+      }
+    ]));
 
   it("can display/hide content", async () => {
     const page = await newE2EPage();

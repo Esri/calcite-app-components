@@ -30,12 +30,8 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) expanded = false;
 
   @Watch("expanded")
-  watchHandler(newValue: boolean, oldValue: boolean) {
-    this.el
-      .querySelectorAll("calcite-action")
-      .forEach((action) =>
-        newValue ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
-      );
+  expandedHandler(newValue: boolean, oldValue: boolean) {
+    this.setTextEnabled(newValue);
 
     this.calciteActionBarExpandedChange.emit({
       newValue,
@@ -75,9 +71,7 @@ export class CalciteActionBar {
    */
   @Event() calciteActionBarExpandedChange: EventEmitter;
 
-  // --------------------------------------------------------------------------
-  //
-  //  Variables
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
 
@@ -85,7 +79,17 @@ export class CalciteActionBar {
 
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  componentWillLoad() {
+    this.setTextEnabled(this.expanded);
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
   //
   // --------------------------------------------------------------------------
 
@@ -98,6 +102,24 @@ export class CalciteActionBar {
 
     return shellNode.layout;
   }
+
+  setTextEnabled(expanded: boolean): void {
+    this.el
+      .querySelectorAll("calcite-action")
+      .forEach((action) =>
+        expanded ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
+      );
+  }
+
+  toggleExpand = (): void => {
+    this.expanded = !this.expanded;
+  };
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
 
   renderExpandToggle() {
     const { expanded, expand, textExpand, textCollapse, el, layout } = this;
@@ -145,14 +167,4 @@ export class CalciteActionBar {
       </Host>
     );
   }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  toggleExpand = (): void => {
-    this.expanded = !this.expanded;
-  };
 }

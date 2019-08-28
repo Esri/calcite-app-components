@@ -1,11 +1,7 @@
-import { newE2EPage } from "@stencil/core/testing";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-action-group", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-action-group"));
 
-    await page.setContent("<calcite-action-group></calcite-action-group>");
-    const element = await page.find("calcite-action-group");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-action-group"));
 });
