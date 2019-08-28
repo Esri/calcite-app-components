@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, TEXT_MY_STRING_DEFAULT } from "./resources";
+import { CSS, TEXT } from "./resources";
 
 describe.skip("calcite-example", () => {
   it("renders and shows myString by default", async () => {
@@ -10,7 +10,7 @@ describe.skip("calcite-example", () => {
     expect(element).toHaveClass("hydrated");
 
     const div = await page.find(`calcite-example >>> .${CSS.foo}`);
-    expect(div.innerText).toBe(TEXT_MY_STRING_DEFAULT);
+    expect(div.innerText).toBe(TEXT.myString);
   });
 
   it("hides myString when someProp is false", async () => {
