@@ -63,7 +63,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues = {};
+  @State() selectedValues: Map<string, HTMLCalcitePickerItemElement> = new Map();
 
   items: HTMLCalcitePickerItemElement[];
 
@@ -117,13 +117,13 @@ export class CalcitePicker {
         const end = items.indexOf(item);
         items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
           currentItem.setAttribute("selected", "");
-          selectedValues[currentItem.value] = currentItem;
+          selectedValues.set(currentItem.value, currentItem);
         });
       } else {
-        selectedValues[value] = item;
+        selectedValues.set(value, item);
       }
     } else {
-      delete selectedValues[value];
+      selectedValues.delete(value);
     }
     if (!this.multiple && selected) {
       items.forEach((currentItem) => {
@@ -170,8 +170,8 @@ export class CalcitePicker {
 
   deselectItem(item: HTMLCalcitePickerItemElement): void {
     item.removeAttribute("selected");
-    if (item.value in this.selectedValues) {
-      delete this.selectedValues[item.value];
+    if (this.selectedValues.has(item.value)) {
+      this.selectedValues.delete(item.value);
     }
   }
 
