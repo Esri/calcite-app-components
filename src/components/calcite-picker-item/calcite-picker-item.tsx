@@ -86,12 +86,12 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  iconClickHandler(e) {
-    this.toggle(e.shiftKey);
+  iconClickHandler(event: MouseEvent) {
+    this.toggle(event.shiftKey);
   }
 
-  secondaryActionContainerClickHandler(e) {
-    e.stopPropagation();
+  secondaryActionContainerClickHandler(event: MouseEvent) {
+    event.stopPropagation();
   }
 
   // --------------------------------------------------------------------------
