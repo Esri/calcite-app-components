@@ -26,6 +26,9 @@ function getVerticalStyles(params: StylesParams): CalcitePositionStyle {
   // TODO: FIGURE OUT TOP OR BOTTOM
   const { elemRect, outerRect, xOffset, yOffset } = params;
 
+  // TODO: FIGURE OUT IF OUT OF SCROLL AREA
+  // TODO: FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
+
   const top = elemRect.top - outerRect.top + yOffset;
   const left = elemRect.left - outerRect.left + xOffset;
 
@@ -37,7 +40,11 @@ function getVerticalStyles(params: StylesParams): CalcitePositionStyle {
 
 function getHorizontalStyles(params: StylesParams): CalcitePositionStyle {
   // TODO: FIGURE OUT LEFT OR RIGHT
+  // TODO: FIGURE OUT IF IN LEADING OR TRAILING PANEL
+  // TODO: TAKE RTL INTO CONSIDERATION
   const { elemRect, outerRect, xOffset, yOffset } = params;
+
+  // TODO: FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
 
   const top = elemRect.top - outerRect.top - elemRect.height + yOffset;
   const left = elemRect.left - outerRect.left + elemRect.width + xOffset;
