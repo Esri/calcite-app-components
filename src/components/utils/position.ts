@@ -22,7 +22,8 @@ function getOuterElement(positionElement: HTMLElement): HTMLElement {
   return positionElement.closest("calcite-shell") || document.body;
 }
 
-function getAnchorStyles(params: StylesParams): CalcitePositionStyle {
+function getVerticalStyles(params: StylesParams): CalcitePositionStyle {
+  // TODO: FIGURE OUT TOP OR BOTTOM
   const { elemRect, outerRect, xOffset, yOffset } = params;
 
   const top = elemRect.top - outerRect.top + yOffset;
@@ -34,7 +35,8 @@ function getAnchorStyles(params: StylesParams): CalcitePositionStyle {
   };
 }
 
-function getTrailingStyles(params: StylesParams): CalcitePositionStyle {
+function getHorizontalStyles(params: StylesParams): CalcitePositionStyle {
+  // TODO: FIGURE OUT LEFT OR RIGHT
   const { elemRect, outerRect, xOffset, yOffset } = params;
 
   const top = elemRect.top - outerRect.top - elemRect.height + yOffset;
@@ -43,18 +45,6 @@ function getTrailingStyles(params: StylesParams): CalcitePositionStyle {
   return {
     top: `${top}px`,
     left: `${left}px`
-  };
-}
-
-function getLeadingStyles(params: StylesParams): CalcitePositionStyle {
-  const { elemRect, outerRect, xOffset, yOffset } = params;
-
-  const top = elemRect.top - outerRect.top - elemRect.height + yOffset;
-  const right = outerRect.right - elemRect.right + elemRect.width + xOffset;
-
-  return {
-    top: `${top}px`,
-    right: `${right}px`
   };
 }
 
@@ -70,9 +60,7 @@ export function getPositionStyle(params: CalcitePositionParams): CalcitePosition
   const outerRect = outerElement.getBoundingClientRect(),
     elemRect = positionElement.getBoundingClientRect();
 
-  return placement === "anchor"
-    ? getAnchorStyles({ outerRect, elemRect, xOffset, yOffset })
-    : placement === "leading"
-    ? getLeadingStyles({ outerRect, elemRect, xOffset, yOffset })
-    : getTrailingStyles({ outerRect, elemRect, xOffset, yOffset });
+  return placement === "vertical"
+    ? getVerticalStyles({ outerRect, elemRect, xOffset, yOffset })
+    : getHorizontalStyles({ outerRect, elemRect, xOffset, yOffset });
 }
