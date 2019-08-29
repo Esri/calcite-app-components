@@ -1,13 +1,10 @@
 import { newE2EPage } from "@stencil/core/testing";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-action-pad", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-action-pad"));
 
-    await page.setContent("<calcite-action-pad></calcite-action-pad>");
-    const element = await page.find("calcite-action-pad");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-action-pad"));
 
   it("position defaults", async () => {
     const page = await newE2EPage();

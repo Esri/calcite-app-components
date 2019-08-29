@@ -71,23 +71,23 @@
               <div class="demo-block"></div>
             </calcite-flow-item>
           </calcite-flow>
+        </div>
+        <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
+        <script>
+          var flowNode = document.getElementById("flow");
 
-          <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
-          <script>
-            var flowNode = document.getElementById("flow");
+          flowNode.addEventListener("calciteFlowItemBackClick", function() {
+            flowNode.back();
+          });
 
-            flowNode.addEventListener("calciteFlowItemBackClick", function() {
-              flowNode.back();
-            });
+          var addFlowButtonNode = document.getElementById("add-flow-item");
 
-            var addFlowButtonNode = document.getElementById("add-flow-item");
-
-            addFlowButtonNode.addEventListener("click", function() {
-              var newNode = document.createElement("calcite-flow-item");
-              newNode.heading = "New Panel " + (flowNode.childElementCount + 1);
-              newNode.innerHTML = `
-            <div class="demo-block"></div>
-              <div class="demo-block"><a href="#">A example link</a> goes here.</div>
+          addFlowButtonNode.addEventListener("click", function() {
+            var newNode = document.createElement("calcite-flow-item");
+            newNode.heading = "New Panel " + (flowNode.childElementCount + 1);
+            newNode.innerHTML = `
+              <div class="demo-block"></div>
+              <div class="demo-block"><a target="_blank" href="http://www.esri.com/">An example link</a> goes here.</div>
               <div class="demo-block"></div>
               <div class="demo-block"></div>
               <div slot="menu-actions">
@@ -100,10 +100,62 @@
                 <button>Cancel</button>
               </div>
             `;
-              flowNode.appendChild(newNode);
-            });
-          </script>
+            flowNode.appendChild(newNode);
+          });
+        </script>
+
+        <h2>Flow RTL</h2>
+
+        <div class="flow-container" dir="rtl">
+          <calcite-flow id="flow2">
+            <calcite-flow-item heading="First Panel">
+              <div slot="menu-actions">
+                <button>Reset</button>
+                <button>Rename</button>
+              </div>
+              <div slot="footer-actions">
+                <button class="btn">Save</button>
+                <button class="btn btn-secondary">Cancel</button>
+              </div>
+              <!-- <p>content 1</p> -->
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+            </calcite-flow-item>
+          </calcite-flow>
         </div>
+        <button class="demo-btn" id="add-flow-item2">Add Flow Item</button>
+        <script>
+          var flowNode2 = document.getElementById("flow2");
+
+          flowNode2.addEventListener("calciteFlowItemBackClick", function() {
+            flowNode.back();
+          });
+
+          var addFlowButtonNode2 = document.getElementById("add-flow-item2");
+
+          addFlowButtonNode2.addEventListener("click", function() {
+            var newNode = document.createElement("calcite-flow-item");
+            newNode.heading = "New Panel " + (flowNode.childElementCount + 1);
+            newNode.innerHTML = `
+              <div class="demo-block"></div>
+              <div class="demo-block"><a target="_blank" href="http://www.esri.com/">An example link</a> goes here.</div>
+              <div class="demo-block"></div>
+              <div class="demo-block"></div>
+              <div slot="menu-actions">
+                <calcite-action>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M14.792 2.666l-1.414-1.413a.965.965 0 0 0-1.385-.03l-1.444 1.444-8.763 8.72L.03 15.481a.371.371 0 0 0 .488.488l4.096-1.756 8.763-8.72-.001-.001.002.002 1.443-1.444a.965.965 0 0 0-.03-1.385zM1.569 14.431l.554-1.293.74.739zm2.338-.924l-1.414-1.414 7.963-7.92 1.414 1.415zm8.67-8.626l-1.413-1.414 1.29-1.29a.306.306 0 0 1 .433 0l.981.98a.306.306 0 0 1 0 .433z"/></svg>
+                </calcite-action>
+              </div>
+              <div slot="footer-actions">
+                <button>Save</button>
+                <button>Cancel</button>
+              </div>
+            `;
+            flowNode2.appendChild(newNode);
+          });
+        </script>
       </section>
     </main>
   </body>
