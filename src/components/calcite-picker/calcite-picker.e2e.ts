@@ -69,7 +69,7 @@ describe("calcite-picker", () => {
 
       const item = await page.find("calcite-picker-item");
       const icon = await item.getProperty("icon");
-      expect(icon).toBe(ICON_TYPES["circle"]);
+      expect(icon).toBe(ICON_TYPES.circle);
     });
     it("should be 'square' when in `selection` mode and multi-select is enabled", async () => {
       const page = await newE2EPage();
@@ -79,7 +79,7 @@ describe("calcite-picker", () => {
 
       const item = await page.find("calcite-picker-item");
       const icon = await item.getProperty("icon");
-      expect(icon).toBe(ICON_TYPES["square"]);
+      expect(icon).toBe(ICON_TYPES.square);
     });
     it("should be 'grip' when in `configuration` mode drag and drop is enabled ", async () => {
       const page = await newE2EPage();
@@ -89,7 +89,7 @@ describe("calcite-picker", () => {
 
       const item = await page.find("calcite-picker-item");
       const icon = await item.getProperty("icon");
-      expect(icon).toBe(ICON_TYPES["grip"]);
+      expect(icon).toBe(ICON_TYPES.grip);
     });
     it("should be null when in `configuration` mode drag and drop is enabled", async () => {
       const page = await newE2EPage();
