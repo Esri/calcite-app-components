@@ -104,7 +104,7 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  iconClickHandler(event: MouseEvent) {
+  pickerClickHandler(event: MouseEvent) {
     this.isSelected = !this.isSelected;
     this.emitToggleEvent(event.shiftKey);
   }
@@ -162,7 +162,7 @@ export class CalcitePickerItem {
       <Host
         dir={this.dir}
         class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
-        onClick={this.iconClickHandler.bind(this)}
+        onClick={this.pickerClickHandler.bind(this)}
         selected={this.isSelected}
       >
         {this.renderIcon()}
