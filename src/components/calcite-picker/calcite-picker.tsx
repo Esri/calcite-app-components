@@ -32,8 +32,6 @@ export class CalcitePicker {
    */
   @Prop({ reflect: true }) dragEnabled = false;
 
-  @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
-
   /**
    * Mode controls the presentation of the items in their selected and deselected states.
    * Selection mode shows either radio buttons or checkboxes depending on the value of multiple
@@ -109,28 +107,18 @@ export class CalcitePicker {
 
   @Listen("calcitePickerItemToggle") calcitePickerItemToggleHandler(event) {
     event.stopPropagation(); // private event
-    const { items, selectedValues } = this;
+    const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
-      if (this.multiple && shiftPressed && this.lastSelectedItem) {
-        const start = items.indexOf(this.lastSelectedItem);
-        const end = items.indexOf(item);
-        items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-          currentItem.setAttribute("selected", "");
-          selectedValues.set(currentItem.value, currentItem);
-        });
-      } else {
-        selectedValues.set(value, item);
+      if (!this.multiple) {
+        this.deselectSiblingItems(item);
       }
+      if (this.multiple && shiftPressed) {
+        this.selectSiblings(item);
+      }
+      selectedValues.set(value, item);
     } else {
       selectedValues.delete(value);
-    }
-    if (!this.multiple && selected) {
-      items.forEach((currentItem) => {
-        if (currentItem !== item) {
-          this.deselectItem(currentItem);
-        }
-      });
     }
     this.lastSelectedItem = item;
     this.calcitePickerSelectionChange.emit(selectedValues);
@@ -168,11 +156,28 @@ export class CalcitePicker {
     });
   }
 
-  deselectItem(item: HTMLCalcitePickerItemElement): void {
-    item.removeAttribute("selected");
-    if (this.selectedValues.has(item.value)) {
-      this.selectedValues.delete(item.value);
+  deselectSiblingItems(item: HTMLCalcitePickerItemElement) {
+    this.items.forEach((currentItem) => {
+      if (currentItem !== item) {
+        currentItem.toggle(false);
+        if (this.selectedValues.has(currentItem.value)) {
+          this.selectedValues.delete(currentItem.value);
+        }
+      }
+    });
+  }
+
+  selectSiblings(item: HTMLCalcitePickerItemElement) {
+    if (!this.lastSelectedItem) {
+      return;
     }
+    const { items } = this;
+    const start = items.indexOf(this.lastSelectedItem);
+    const end = items.indexOf(item);
+    items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
+      currentItem.toggle(true);
+      this.selectedValues.set(currentItem.value, currentItem);
+    });
   }
 
   // --------------------------------------------------------------------------

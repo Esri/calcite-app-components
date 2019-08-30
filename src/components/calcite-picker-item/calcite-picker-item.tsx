@@ -1,4 +1,15 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h
+} from "@stencil/core";
 import {
   checkSquare16,
   circle16F,
@@ -26,7 +37,15 @@ export class CalcitePickerItem {
 
   @Prop() metadata: object;
 
-  @Prop({ reflect: true, mutable: true }) selected = false;
+  @Prop() selected = false;
+
+  @Watch("selected")
+  selectedWatchHandler(newValue, oldValue) {
+    if (this.isSelected !== newValue) {
+      this.isSelected = newValue;
+      this.emitToggleEvent();
+    }
+  }
 
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
@@ -43,6 +62,8 @@ export class CalcitePickerItem {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLElement;
+
+  @State() isSelected = this.selected;
 
   dir: "rtl" | "ltr";
 
@@ -70,14 +91,11 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle(shiftPressed?: boolean) {
-    this.selected = !this.selected;
-    this.calcitePickerItemToggle.emit({
-      item: this.el,
-      value: this.value,
-      selected: this.selected,
-      shiftPressed
-    });
+  @Method() async toggle(coerce?: boolean, emit = false) {
+    this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
+    if (emit) {
+      this.emitToggleEvent();
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -87,11 +105,21 @@ export class CalcitePickerItem {
   // --------------------------------------------------------------------------
 
   iconClickHandler(event: MouseEvent) {
-    this.toggle(event.shiftKey);
+    this.isSelected = !this.isSelected;
+    this.emitToggleEvent(event.shiftKey);
   }
 
   secondaryActionContainerClickHandler(event: MouseEvent) {
     event.stopPropagation();
+  }
+
+  emitToggleEvent(shiftPressed = false) {
+    this.calcitePickerItemToggle.emit({
+      item: this.el,
+      value: this.value,
+      selected: this.isSelected,
+      shiftPressed
+    });
   }
 
   // --------------------------------------------------------------------------
@@ -114,10 +142,10 @@ export class CalcitePickerItem {
     } else {
       const path =
         icon === ICON_TYPES.square
-          ? this.selected
+          ? this.isSelected
             ? checkSquare16
             : square16
-          : this.selected
+          : this.isSelected
           ? circleFilled16F
           : circle16F;
       return (
@@ -135,6 +163,7 @@ export class CalcitePickerItem {
         dir={this.dir}
         class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
         onClick={this.iconClickHandler.bind(this)}
+        selected={this.isSelected}
       >
         {this.renderIcon()}
         <div class={CSS.label}>
