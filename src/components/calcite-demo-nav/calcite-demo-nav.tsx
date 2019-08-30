@@ -9,7 +9,10 @@ interface NavItem {
 }
 
 const CSS = {
-  isActive: "is-active"
+  isActive: "is-active",
+  link: "link",
+  open: "open",
+  close: "close"
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -126,7 +129,7 @@ export class CalciteDemoNav {
     const { content, id, path } = item;
     return (
       <li>
-        <a class={id === pageId ? `${CSS.isActive} link` : "link"} href={`${root}${path}`}>
+        <a class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link} href={`${root}${path}`}>
           {content}
         </a>
       </li>
@@ -136,8 +139,8 @@ export class CalciteDemoNav {
   render() {
     return (
       <Host onBlur={this.blurHandler.bind(this)}>
-        <a href="#" class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}></a>
-        <ul class={this.open ? "open" : "closed"}>
+        <button href="#" class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}></button>
+        <ul class={this.open ? CSS.open : CSS.closed}>
           {NAV_ITEMS.map((item) => this.renderNavItem(item))}
         </ul>
       </Host>

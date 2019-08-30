@@ -7,12 +7,16 @@ $largeScreen: 600px;
   display: inline-block;
   position: relative;
   margin: 6px;
-  padding-left: 1.25em;
+  height: 1em;
+  width: 1em;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
   &:before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.25em;
+    top: 0.15em;
     width: 1em;
     height: 0.15em;
     background: black;
