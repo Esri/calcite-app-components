@@ -139,8 +139,8 @@ export class CalciteDemoNav {
   render() {
     return (
       <Host onBlur={this.blurHandler.bind(this)}>
-        <button href="#" class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}></button>
-        <ul class={this.open ? CSS.open : CSS.closed}>
+        <button class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}></button>
+        <ul class={this.open ? CSS.open : CSS.close}>
           {NAV_ITEMS.map((item) => this.renderNavItem(item))}
         </ul>
       </Host>
