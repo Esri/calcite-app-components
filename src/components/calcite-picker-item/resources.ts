@@ -2,5 +2,6 @@ export const CSS = {
   label: "label",
   heading: "heading",
   description: "description",
-  highlight: "highlight"
+  highlight: "highlight",
+  handle: "handle"
 };

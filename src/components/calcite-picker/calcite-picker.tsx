@@ -69,7 +69,7 @@ export class CalcitePicker {
 
   guid = `calcite-picker-${guid()}`;
 
-  observer = new MutationObserver(() => this.setupItems());
+  observer = new MutationObserver(() => this.setUpItems());
 
   // --------------------------------------------------------------------------
   //
@@ -86,7 +86,7 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    this.setupItems();
+    this.setUpItems();
   }
 
   componentDidLoad() {
@@ -130,7 +130,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  setupItems(): void {
+  setUpItems(): void {
     this.items = Array.from(this.el.querySelectorAll("calcite-picker-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();

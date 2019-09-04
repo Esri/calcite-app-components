@@ -104,10 +104,10 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  pickerClickHandler(event: MouseEvent) {
+  pickerClickHandler = (event: MouseEvent): void => {
     this.isSelected = !this.isSelected;
     this.emitToggleEvent(event.shiftKey);
-  }
+  };
 
   secondaryActionContainerClickHandler(event: MouseEvent) {
     event.stopPropagation();
@@ -135,7 +135,7 @@ export class CalcitePickerItem {
     }
     if (icon === ICON_TYPES.grip) {
       return (
-        <span class="handle">
+        <span class={CSS.handle}>
           <CalciteIcon size="24" path={handleVertical24} />
         </span>
       );
@@ -162,7 +162,7 @@ export class CalcitePickerItem {
       <Host
         dir={this.dir}
         class={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle ? CSS.highlight : null}
-        onClick={this.pickerClickHandler.bind(this)}
+        onClick={this.pickerClickHandler}
         selected={this.isSelected}
       >
         {this.renderIcon()}
