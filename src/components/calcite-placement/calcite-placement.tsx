@@ -2,7 +2,7 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CSS } from "./resources";
 
-import { CalciteLayout, CalcitePlacementValue } from "../interfaces";
+import { CalcitePlacementValue } from "../interfaces";
 
 import { CalcitePositionStyle, getPositionStyle } from "../utils/position";
 
@@ -17,16 +17,6 @@ export class CalcitePlacement {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
-  /**
-   * todo
-   */
-  @Prop({ reflect: true }) layout: CalciteLayout;
-
-  @Watch("layout")
-  layoutHandler() {
-    this.reposition();
-  }
 
   /**
    * Determines where the element will be positioned.
@@ -88,7 +78,6 @@ export class CalcitePlacement {
 
   @Method() async reposition(): Promise<void> {
     this.positionStyle = getPositionStyle({
-      layout: this.layout,
       placement: this.placement,
       positionElement: this.positionElement,
       xOffset: this.xOffset,

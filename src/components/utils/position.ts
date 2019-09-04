@@ -3,7 +3,6 @@ import { CalciteLayout, CalcitePlacementValue } from "../interfaces";
 import { getElementDir } from "./dom";
 
 interface CalcitePositionParams {
-  layout: CalciteLayout;
   placement: CalcitePlacementValue;
   positionElement: HTMLElement;
   xOffset: number;
@@ -27,9 +26,7 @@ function getOuterElement(positionElement: HTMLElement): HTMLElement {
   return positionElement.closest("calcite-shell") || document.body;
 }
 
-function getVerticalStyles(params: StylesParams): CalcitePositionStyle {
-  const { layout, elemRect, outerRect, xOffset, yOffset } = params;
-
+function getVerticalStyles({ layout, elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
   // TODO: FIGURE OUT TOP OR BOTTOM POSITIONING
   // - FIGURE OUT IF OUT OF SCROLL AREA
   // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
@@ -38,19 +35,24 @@ function getVerticalStyles(params: StylesParams): CalcitePositionStyle {
   const bottom = outerRect.bottom - elemRect.bottom + yOffset;
   const left = elemRect.left - outerRect.left + xOffset;
 
-  const useBottom = layout === "leading";
-  const useTop = layout === "trailing";
+  const useBottom = layout === "leading"; // TODO: DONT USE LAYOUT
+  const useTop = layout === "trailing"; // TODO: DONT USE LAYOUT
 
   return {
     top: useTop ? `${top}px` : undefined,
     bottom: useBottom ? `${bottom}px` : undefined,
-    left: `${left}px`
+    left: `${left}px` // TODO: REMOVE
   };
 }
 
-function getHorizontalStyles(params: StylesParams): CalcitePositionStyle {
-  const { layout, elemRect, rtl, outerRect, xOffset, yOffset } = params;
-
+function getHorizontalStyles({
+  layout,
+  elemRect,
+  rtl,
+  outerRect,
+  xOffset,
+  yOffset
+}: StylesParams): CalcitePositionStyle {
   // TODO: FIGURE OUT WHERTHER TO POSITION LEFT OR RIGHT IF CAN'T GET LEADING/TRAILING VALUE
   // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
 
@@ -62,15 +64,18 @@ function getHorizontalStyles(params: StylesParams): CalcitePositionStyle {
   const useRight = rtl ? layout === "trailing" : layout === "leading";
 
   return {
-    top: `${top}px`,
+    top: `${top}px`, // TODO: REMOVE
     left: useLeft ? `${left}px` : undefined,
     right: useRight ? `${right}px` : undefined
   };
 }
 
-export function getPositionStyle(params: CalcitePositionParams): CalcitePositionStyle {
-  const { layout, placement, positionElement, xOffset = 0, yOffset = 0 } = params;
-
+export function getPositionStyle({
+  placement,
+  positionElement,
+  xOffset = 0,
+  yOffset = 0
+}: CalcitePositionParams): CalcitePositionStyle {
   if (!positionElement || !placement) {
     return {};
   }
@@ -79,7 +84,7 @@ export function getPositionStyle(params: CalcitePositionParams): CalcitePosition
 
   const closestPanel = positionElement.closest("calcite-shell-panel");
   const closestTrailing = closestPanel ? closestPanel.layout === "trailing" : false;
-  const layoutToUse = layout || closestTrailing ? "leading" : "trailing";
+  const layoutToUse = closestTrailing ? "leading" : "trailing";
   const rtl = getElementDir(positionElement) === "rtl";
 
   const outerRect = outerElement.getBoundingClientRect(),
