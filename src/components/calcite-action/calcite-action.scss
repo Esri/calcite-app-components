@@ -10,7 +10,7 @@
   justify-content: flex-start;
   align-items: center;
   border: none;
-  width: 100%;
+  width: auto;
   cursor: pointer;
   font-size: var(--calcite-app-font-size--1);
   line-height: normal;
@@ -39,8 +39,14 @@
     flex: 1;
     line-height: 1rem;
     margin: 0 var(--calcite-app-side-spacing-half);
-    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
+
+:host([text-enabled]) .button {
+  width: 100%;
 }
 
 :host([active]) .button,
@@ -63,6 +69,10 @@
   background-color: var(--calcite-app-background-active);
 }
 
+:host([indicator][text-enabled]) .button {
+  padding-right: var(--calcite-app-side-spacing);
+}
+
 :host([indicator]) .button::after {
   content: "";
   border-radius: 50%;
@@ -79,6 +89,11 @@
 :host([indicator]) .calcite--rtl::after {
   right: unset;
   left: var(--calcite-app-side-spacing-quarter);
+}
+
+:host([indicator][text-enabled]) .calcite--rtl {
+  padding-right: var(--calcite-app-side-spacing-three-quarters);
+  padding-left: var(--calcite-app-side-spacing);
 }
 
 :host([indicator]) .button:hover::after {

@@ -14,6 +14,7 @@ import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
+import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
 @Component({
@@ -198,13 +199,13 @@ export class CalciteTipManager {
           onClick={this.previousClicked}
           class={CSS.pagePrevious}
         >
-          <CalciteIcon size="16" path={chevronLeft16} />
+          <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
         </calcite-action>
         <span class={CSS.pagePosition}>
           {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
-          <CalciteIcon size="16" path={chevronRight16} />
+          <CalciteIcon size="16" path={dir === "ltr" ? chevronRight16 : chevronLeft16} />
         </calcite-action>
       </footer>
     ) : null;
@@ -215,6 +216,7 @@ export class CalciteTipManager {
       // TODO: Empty state
       return <Host />;
     }
+    const dir = getElementDir(this.el);
     return (
       <Host>
         <header class={CSS.header}>
