@@ -44,6 +44,7 @@
     "@types/autoprefixer": "9.5.0",
     "@types/jest": "24.0.17",
     "@types/puppeteer": "1.19.0",
+    "@types/sortablejs": "1.7.2",
     "autoprefixer": "9.6.1",
     "classnames": "2.2.6",
     "gh-release": "3.5.0",

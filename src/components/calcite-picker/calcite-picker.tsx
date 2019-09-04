@@ -71,6 +71,8 @@ export class CalcitePicker {
 
   observer = new MutationObserver(() => this.setUpItems());
 
+  sortables: Sortable[] = [];
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -95,6 +97,9 @@ export class CalcitePicker {
 
   componentDidUnload() {
     this.observer.disconnect();
+    if (this.dragEnabled && this.mode === "configuration") {
+      this.cleanUpDragAndDrop();
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -105,7 +110,7 @@ export class CalcitePicker {
 
   @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Listen("calcitePickerItemToggle") calcitePickerItemToggleHandler(event) {
+  @Listen("calcitePickerItemSelectedChange") calcitePickerItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
@@ -148,18 +153,26 @@ export class CalcitePicker {
   setUpDragAndDrop(): void {
     const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
     sortGroups.forEach((sortGroup) => {
-      Sortable.create(sortGroup, {
-        group: this.el.id,
-        handle: `.${CSS.dragHandle}`,
-        draggable: "calcite-picker-item"
-      });
+      this.sortables.push(
+        Sortable.create(sortGroup, {
+          group: this.el.id,
+          handle: `.${CSS.dragHandle}`,
+          draggable: "calcite-picker-item"
+        })
+      );
+    });
+  }
+
+  cleanUpDragAndDrop(): void {
+    this.sortables.forEach((sortable) => {
+      sortable.destroy();
     });
   }
 
   deselectSiblingItems(item: HTMLCalcitePickerItemElement) {
     this.items.forEach((currentItem) => {
       if (currentItem !== item) {
-        currentItem.toggle(false);
+        currentItem.toggleSelected(false);
         if (this.selectedValues.has(currentItem.value)) {
           this.selectedValues.delete(currentItem.value);
         }
@@ -175,7 +188,7 @@ export class CalcitePicker {
     const start = items.indexOf(this.lastSelectedItem);
     const end = items.indexOf(item);
     items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-      currentItem.toggle(true);
+      currentItem.toggleSelected(true);
       this.selectedValues.set(currentItem.value, currentItem);
     });
   }

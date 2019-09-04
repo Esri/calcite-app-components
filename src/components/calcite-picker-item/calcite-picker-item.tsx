@@ -20,6 +20,7 @@ import {
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-picker/resources";
 import CalciteIcon from "../utils/CalciteIcon";
+import { getElementDir } from "../utils/dom";
 
 @Component({
   tag: "calcite-picker-item",
@@ -40,10 +41,10 @@ export class CalcitePickerItem {
   @Prop() selected = false;
 
   @Watch("selected")
-  selectedWatchHandler(newValue, oldValue) {
+  selectedWatchHandler(newValue) {
     if (this.isSelected !== newValue) {
       this.isSelected = newValue;
-      this.emitToggleEvent();
+      this.emitChangeEvent();
     }
   }
 
@@ -74,7 +75,7 @@ export class CalcitePickerItem {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    this.dir = this.el.closest('[dir="rtl"]') ? "rtl" : "ltr";
+    this.dir = getElementDir(this.el);
   }
 
   // --------------------------------------------------------------------------
@@ -83,7 +84,7 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickerItemToggle: EventEmitter;
+  @Event() calcitePickerItemSelectedChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -91,10 +92,10 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggle(coerce?: boolean, emit = false) {
+  @Method() async toggleSelected(coerce?: boolean, emit = false) {
     this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
     if (emit) {
-      this.emitToggleEvent();
+      this.emitChangeEvent();
     }
   }
 
@@ -106,15 +107,15 @@ export class CalcitePickerItem {
 
   pickerClickHandler = (event: MouseEvent): void => {
     this.isSelected = !this.isSelected;
-    this.emitToggleEvent(event.shiftKey);
+    this.emitChangeEvent(event.shiftKey);
   };
 
   secondaryActionContainerClickHandler(event: MouseEvent) {
     event.stopPropagation();
   }
 
-  emitToggleEvent(shiftPressed = false) {
-    this.calcitePickerItemToggle.emit({
+  emitChangeEvent(shiftPressed = false) {
+    this.calcitePickerItemSelectedChange.emit({
       item: this.el,
       value: this.value,
       selected: this.isSelected,
