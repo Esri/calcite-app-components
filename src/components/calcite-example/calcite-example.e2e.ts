@@ -1,16 +1,19 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, TEXT_MY_STRING_DEFAULT } from "./resources";
+import { CSS, TEXT } from "./resources";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe.skip("calcite-example", () => {
-  it("renders and shows myString by default", async () => {
+  it("renders", async () => renders("calcite-example"));
+
+  it("honors hidden attribute", async () => hidden("calcite-example"));
+
+  it("shows myString by default", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-example></calcite-example>");
-    const element = await page.find("calcite-example");
-    expect(element).toHaveClass("hydrated");
 
     const div = await page.find(`calcite-example >>> .${CSS.foo}`);
-    expect(div.innerText).toBe(TEXT_MY_STRING_DEFAULT);
+    expect(div.innerText).toBe(TEXT.myString);
   });
 
   it("hides myString when someProp is false", async () => {

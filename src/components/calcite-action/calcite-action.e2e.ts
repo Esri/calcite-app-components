@@ -1,13 +1,10 @@
 import { newE2EPage } from "@stencil/core/testing";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-action", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-action"));
 
-    await page.setContent("<calcite-action></calcite-action>");
-    const element = await page.find("calcite-action");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-action"));
 
   it("should not have text container", async () => {
     const page = await newE2EPage();

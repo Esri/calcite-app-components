@@ -32,8 +32,6 @@ export class CalcitePicker {
    */
   @Prop({ reflect: true }) dragEnabled = false;
 
-  @Prop({ reflect: true }) editEnabled = false; /* ignored unless mode is configuration */
-
   /**
    * Mode controls the presentation of the items in their selected and deselected states.
    * Selection mode shows either radio buttons or checkboxes depending on the value of multiple
@@ -63,7 +61,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues = {};
+  @State() selectedValues: Map<string, HTMLCalcitePickerItemElement> = new Map();
 
   @State() dataForFilter: object[] = [];
 
@@ -73,7 +71,9 @@ export class CalcitePicker {
 
   guid = `calcite-picker-${guid()}`;
 
-  observer = new MutationObserver(() => this.setupItems());
+  observer = new MutationObserver(() => this.setUpItems());
+
+  sortables: Sortable[] = [];
 
   // --------------------------------------------------------------------------
   //
@@ -90,7 +90,7 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    this.setupItems();
+    this.setUpItems();
   }
 
   componentDidLoad() {
@@ -99,6 +99,9 @@ export class CalcitePicker {
 
   componentDidUnload() {
     this.observer.disconnect();
+    if (this.dragEnabled && this.mode === "configuration") {
+      this.cleanUpDragAndDrop();
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -109,30 +112,20 @@ export class CalcitePicker {
 
   @Event() calcitePickerSelectionChange: EventEmitter;
 
-  @Listen("calcitePickerItemToggle") calcitePickerItemToggleHandler(event) {
+  @Listen("calcitePickerItemSelectedChange") calcitePickerItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
-    const { items, selectedValues } = this;
+    const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
-      if (this.multiple && shiftPressed && this.lastSelectedItem) {
-        const start = items.indexOf(this.lastSelectedItem);
-        const end = items.indexOf(item);
-        items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-          currentItem.setAttribute("selected", "");
-          selectedValues[currentItem.value] = currentItem;
-        });
-      } else {
-        selectedValues[value] = item;
+      if (!this.multiple) {
+        this.deselectSiblingItems(item);
       }
+      if (this.multiple && shiftPressed) {
+        this.selectSiblings(item);
+      }
+      selectedValues.set(value, item);
     } else {
-      delete selectedValues[value];
-    }
-    if (!this.multiple && selected) {
-      items.forEach((currentItem) => {
-        if (currentItem !== item) {
-          this.deselectItem(currentItem);
-        }
-      });
+      selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
     this.calcitePickerSelectionChange.emit(selectedValues);
@@ -144,7 +137,7 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  setupItems(): void {
+  setUpItems(): void {
     this.items = Array.from(this.el.querySelectorAll("calcite-picker-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
@@ -163,19 +156,44 @@ export class CalcitePicker {
   setUpDragAndDrop(): void {
     const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
     sortGroups.forEach((sortGroup) => {
-      Sortable.create(sortGroup, {
-        group: this.el.id,
-        handle: `.${CSS.dragHandle}`,
-        draggable: "calcite-picker-item"
-      });
+      this.sortables.push(
+        Sortable.create(sortGroup, {
+          group: this.el.id,
+          handle: `.${CSS.dragHandle}`,
+          draggable: "calcite-picker-item"
+        })
+      );
     });
   }
 
-  deselectItem(item: HTMLCalcitePickerItemElement): void {
-    item.removeAttribute("selected");
-    if (item.value in this.selectedValues) {
-      delete this.selectedValues[item.value];
+  cleanUpDragAndDrop(): void {
+    this.sortables.forEach((sortable) => {
+      sortable.destroy();
+    });
+  }
+
+  deselectSiblingItems(item: HTMLCalcitePickerItemElement) {
+    this.items.forEach((currentItem) => {
+      if (currentItem !== item) {
+        currentItem.toggleSelected(false);
+        if (this.selectedValues.has(currentItem.value)) {
+          this.selectedValues.delete(currentItem.value);
+        }
+      }
+    });
+  }
+
+  selectSiblings(item: HTMLCalcitePickerItemElement) {
+    if (!this.lastSelectedItem) {
+      return;
     }
+    const { items } = this;
+    const start = items.indexOf(this.lastSelectedItem);
+    const end = items.indexOf(item);
+    items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
+      currentItem.toggleSelected(true);
+      this.selectedValues.set(currentItem.value, currentItem);
+    });
   }
 
   handleFilter(filteredData) {

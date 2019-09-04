@@ -4,6 +4,10 @@
   line-height: var(--calcite-app-line-height);
 }
 
+:host([hidden]) {
+  display: none;
+}
+
 .header {
   margin: 0;
   display: flex;

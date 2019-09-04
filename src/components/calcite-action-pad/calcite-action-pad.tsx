@@ -4,6 +4,14 @@ import { CalcitePlacement, CalciteTheme } from "../interfaces";
 
 import { getOffsetTop } from "../utils/position";
 
+import { CSS } from "./resources";
+
+import classnames from "classnames";
+
+import { getElementDir } from "../utils/dom";
+
+import { CSS_UTILITY } from "../utils/resources";
+
 @Component({
   tag: "calcite-action-pad",
   styleUrl: "calcite-action-pad.scss",
@@ -51,15 +59,29 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   render() {
-    const { offsetTop } = this;
+    const { el, offsetTop } = this;
 
     const style = {
       top: `${offsetTop}px`
     };
 
+    const rtl = getElementDir(el) === "rtl";
+
+    const closest = el.closest("calcite-shell-panel");
+    const layout = (closest && closest.layout) || "leading";
+
     return (
-      <Host style={style}>
-        <slot />
+      <Host>
+        <div
+          style={style}
+          class={classnames(CSS.container, {
+            [CSS_UTILITY.rtl]: rtl,
+            [CSS.containerLeading]: layout === "leading",
+            [CSS.containerTrailing]: layout === "trailing"
+          })}
+        >
+          <slot />
+        </div>
       </Host>
     );
   }

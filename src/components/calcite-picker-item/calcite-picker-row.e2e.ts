@@ -20,5 +20,7 @@ describe("calcite-picker-item", () => {
     expect(await item.getProperty("selected")).toBe(false);
     await item.click();
     expect(await item.getProperty("selected")).toBe(true);
+    await item.click();
+    expect(await item.getProperty("selected")).toBe(false);
   });
 });

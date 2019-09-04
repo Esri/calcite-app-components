@@ -1,4 +1,4 @@
-function gen(counts: number[]): string {
+function generateId(counts: number[]): string {
   return counts
     .map((count) => {
       let out = "";
@@ -10,5 +10,5 @@ function gen(counts: number[]): string {
     .join("-");
 }
 
-export const guid = (): string => gen([2, 1, 1, 1, 3]);
+export const guid = (): string => generateId([2, 1, 1, 1, 3]);
 export default guid;
