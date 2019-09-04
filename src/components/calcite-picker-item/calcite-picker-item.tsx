@@ -36,8 +36,6 @@ export class CalcitePickerItem {
 
   @Prop({ reflect: true }) editing = false;
 
-  @Prop() metadata: object;
-
   @Prop() selected = false;
 
   @Watch("selected")
