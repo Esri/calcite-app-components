@@ -41,7 +41,7 @@ function getVerticalStyles({ layout, elemRect, outerRect, xOffset, yOffset }: St
   return {
     top: useTop ? `${top}px` : undefined,
     bottom: useBottom ? `${bottom}px` : undefined,
-    left: `${left}px` // TODO: REMOVE
+    left: `${left}px`
   };
 }
 
@@ -64,7 +64,7 @@ function getHorizontalStyles({
   const useRight = rtl ? layout === "trailing" : layout === "leading";
 
   return {
-    top: `${top}px`, // TODO: REMOVE
+    top: `${top}px`,
     left: useLeft ? `${left}px` : undefined,
     right: useRight ? `${right}px` : undefined
   };
