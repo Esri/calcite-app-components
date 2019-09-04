@@ -48,6 +48,8 @@ export class CalcitePickerItem {
 
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
+  @Prop() metadata: object;
+
   @Prop({ reflect: true }) textHeading: string;
 
   @Prop({ reflect: true }) textDescription: string;
