@@ -35,10 +35,8 @@ function getVerticalStyles(params: StylesParams): CalcitePositionStyle {
   // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
 
   const top = elemRect.top - outerRect.top + yOffset;
-  const bottom = elemRect.bottom - outerRect.bottom + yOffset;
+  const bottom = outerRect.bottom - elemRect.bottom + yOffset;
   const left = elemRect.left - outerRect.left + xOffset;
-
-  console.log(layout);
 
   const useBottom = layout === "leading";
   const useTop = layout === "trailing";
