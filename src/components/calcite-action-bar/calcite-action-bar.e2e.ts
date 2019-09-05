@@ -66,7 +66,7 @@ describe("calcite-action-bar", () => {
 
     const element = await page.find("calcite-action-bar");
 
-    const eventSpy = await page.spyOnEvent("calciteActionBarExpandedToggle", "window");
+    const eventSpy = await page.spyOnEvent("calciteActionBarToggle", "window");
 
     element.setProperty("expanded", true);
 

@@ -33,7 +33,7 @@ export class CalciteActionBar {
   expandedHandler(newValue: boolean) {
     this.setTextEnabled(newValue);
 
-    this.calciteActionBarExpandedToggle.emit();
+    this.calciteActionBarToggle.emit();
   }
 
   /**
@@ -66,7 +66,7 @@ export class CalciteActionBar {
   /**
    * Emitted when expanded has been toggled.
    */
-  @Event() calciteActionBarExpandedToggle: EventEmitter;
+  @Event() calciteActionBarToggle: EventEmitter;
 
   //  Private Properties
   //

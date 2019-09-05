@@ -23,7 +23,7 @@ export class CalciteShellPanel {
 
   @Watch("collapsed")
   watchHandler() {
-    this.calciteShellPanelCollapsedToggle.emit();
+    this.calciteShellPanelToggle.emit();
   }
 
   /**
@@ -40,7 +40,7 @@ export class CalciteShellPanel {
   /**
    * Emitted when collapse has been toggled.
    */
-  @Event() calciteShellPanelCollapsedToggle: EventEmitter;
+  @Event() calciteShellPanelToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
