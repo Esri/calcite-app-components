@@ -69,7 +69,7 @@ describe("calcite-shell-panel", () => {
 
     const element = await page.find(`calcite-shell-panel`);
 
-    const eventSpy = await page.spyOnEvent("calciteShellPanelCollapsedChange", "window");
+    const eventSpy = await page.spyOnEvent("calciteShellPanelCollapsedToggle", "window");
 
     element.setProperty("collapsed", true);
 

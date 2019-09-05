@@ -22,11 +22,8 @@ export class CalciteShellPanel {
   @Prop({ reflect: true }) collapsed = false;
 
   @Watch("collapsed")
-  watchHandler(newValue: boolean, oldValue: boolean) {
-    this.calciteShellPanelCollapsedChange.emit({
-      newValue,
-      oldValue
-    });
+  watchHandler() {
+    this.calciteShellPanelCollapsedToggle.emit();
   }
 
   /**
@@ -41,9 +38,9 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   /**
-   * Emitted when collapse has changed.
+   * Emitted when collapse has been toggled.
    */
-  @Event() calciteShellPanelCollapsedChange: EventEmitter;
+  @Event() calciteShellPanelCollapsedToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
