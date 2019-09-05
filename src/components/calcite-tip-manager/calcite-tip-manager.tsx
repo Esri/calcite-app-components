@@ -192,6 +192,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   renderPagination() {
+    const dir = getElementDir(this.el);
     return this.tips.length > 1 ? (
       <footer class={CSS.pagination}>
         <calcite-action
@@ -213,10 +214,8 @@ export class CalciteTipManager {
 
   render() {
     if (this.total === 0) {
-      // TODO: Empty state
       return <Host />;
     }
-    const dir = getElementDir(this.el);
     return (
       <Host>
         <header class={CSS.header}>
