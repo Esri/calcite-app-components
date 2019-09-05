@@ -199,7 +199,13 @@ export class CalciteTipManager {
       case "ArrowLeft":
         this.previousTip();
         break;
-      default:
+      case "Home":
+        event.preventDefault();
+        this.selectedIndex = 0;
+        break;
+      case "End":
+        event.preventDefault();
+        this.selectedIndex = this.total - 1;
         break;
     }
   };
