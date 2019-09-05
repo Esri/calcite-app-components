@@ -1,6 +1,4 @@
-import { CalciteLayout, CalcitePlacementValue } from "../interfaces";
-
-import { getElementDir } from "./dom";
+import { CalcitePlacementValue } from "../interfaces";
 
 interface CalcitePositionParams {
   placement: CalcitePlacementValue;
@@ -14,8 +12,6 @@ interface StylesParams {
   elemRect: ClientRect | DOMRect;
   xOffset: number;
   yOffset: number;
-  layout?: CalciteLayout;
-  rtl?: boolean;
 }
 
 export interface CalcitePositionStyle {
@@ -23,50 +19,47 @@ export interface CalcitePositionStyle {
 }
 
 function getOuterElement(positionElement: HTMLElement): HTMLElement {
-  return positionElement.closest("calcite-shell") || document.body;
+  return positionElement.closest("calcite-shell") || window.document.body;
 }
 
-function getVerticalStyles({ layout, elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
+function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
   // TODO: FIGURE OUT TOP OR BOTTOM POSITIONING
   // - FIGURE OUT IF OUT OF SCROLL AREA
   // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
 
-  const top = elemRect.top - outerRect.top + yOffset;
-  const bottom = outerRect.bottom - elemRect.bottom + yOffset;
-  const left = elemRect.left - outerRect.left + xOffset;
+  const useLeft = elemRect.left <= elemRect.right;
+  const useTop = elemRect.top <= elemRect.bottom;
 
-  const useBottom = layout === "leading"; // TODO: DONT USE LAYOUT
-  const useTop = layout === "trailing"; // TODO: DONT USE LAYOUT
+  const left = useLeft ? `${elemRect.left - outerRect.left + xOffset}px` : undefined;
+  const right = !useLeft ? `${elemRect.right - outerRect.right + xOffset}px` : undefined;
+  const top = useTop ? `${elemRect.top - outerRect.top + yOffset}px` : undefined;
+  const bottom = !useTop ? `${elemRect.bottom - outerRect.bottom + yOffset}px` : undefined;
 
   return {
-    top: useTop ? `${top}px` : undefined,
-    bottom: useBottom ? `${bottom}px` : undefined,
-    left: `${left}px`
+    top,
+    bottom,
+    right,
+    left
   };
 }
 
-function getHorizontalStyles({
-  layout,
-  elemRect,
-  rtl,
-  outerRect,
-  xOffset,
-  yOffset
-}: StylesParams): CalcitePositionStyle {
+function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
   // TODO: FIGURE OUT WHERTHER TO POSITION LEFT OR RIGHT IF CAN'T GET LEADING/TRAILING VALUE
   // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
 
-  const top = elemRect.top - outerRect.top - elemRect.height + yOffset;
-  const left = elemRect.left - outerRect.left + elemRect.width + xOffset;
-  const right = outerRect.right - elemRect.right + elemRect.width + xOffset;
+  const useLeft = elemRect.left <= elemRect.right;
+  const useTop = elemRect.top <= elemRect.bottom;
 
-  const useLeft = rtl ? layout === "leading" : layout === "trailing";
-  const useRight = rtl ? layout === "trailing" : layout === "leading";
+  const left = useLeft ? `${elemRect.right - outerRect.left + xOffset}px` : undefined;
+  const right = !useLeft ? `${elemRect.left - outerRect.right + xOffset}px` : undefined;
+  const top = useTop ? `${elemRect.top - outerRect.top - elemRect.height - yOffset}px` : undefined;
+  const bottom = !useTop ? `${elemRect.bottom - outerRect.bottom - elemRect.height - yOffset}px` : undefined;
 
   return {
-    top: `${top}px`,
-    left: useLeft ? `${left}px` : undefined,
-    right: useRight ? `${right}px` : undefined
+    top,
+    bottom,
+    right,
+    left
   };
 }
 
@@ -82,15 +75,10 @@ export function getPositionStyle({
 
   const outerElement = getOuterElement(positionElement);
 
-  const closestPanel = positionElement.closest("calcite-shell-panel");
-  const closestTrailing = closestPanel ? closestPanel.layout === "trailing" : false;
-  const layoutToUse = closestTrailing ? "leading" : "trailing";
-  const rtl = getElementDir(positionElement) === "rtl";
-
   const outerRect = outerElement.getBoundingClientRect(),
     elemRect = positionElement.getBoundingClientRect();
 
-  return placement === "vertical"
-    ? getVerticalStyles({ outerRect, elemRect, xOffset, yOffset, layout: layoutToUse, rtl })
-    : getHorizontalStyles({ outerRect, elemRect, xOffset, yOffset, layout: layoutToUse, rtl });
+  const params = { outerRect, elemRect, xOffset, yOffset };
+
+  return placement === "vertical" ? getVerticalStyles(params) : getHorizontalStyles(params);
 }
