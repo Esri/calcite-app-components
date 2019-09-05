@@ -58,6 +58,8 @@ export class CalciteTipManager {
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
+  @Prop({ reflect: true }) tabindex = 0;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -185,6 +187,23 @@ export class CalciteTipManager {
     this.nextTip();
   };
 
+  tipManagerKeyDownHandler = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case "ArrowUp":
+        event.preventDefault();
+      case "ArrowRight":
+        this.nextTip();
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+      case "ArrowLeft":
+        this.previousTip();
+        break;
+      default:
+        break;
+    }
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -192,6 +211,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   renderPagination() {
+    const dir = getElementDir(this.el);
     return this.tips.length > 1 ? (
       <footer class={CSS.pagination}>
         <calcite-action
@@ -216,9 +236,8 @@ export class CalciteTipManager {
       // TODO: Empty state
       return <Host />;
     }
-    const dir = getElementDir(this.el);
     return (
-      <Host>
+      <Host onKeydown={this.tipManagerKeyDownHandler}>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
           <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
