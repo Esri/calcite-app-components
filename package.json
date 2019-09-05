@@ -31,8 +31,7 @@
   "dependencies": {
     "@esri/calcite-base": "github:Esri/calcite-base#3d18d24",
     "@esri/calcite-colors": "1.2.1",
-    "@esri/calcite-ui-icons": "2.0.1",
-    "calcite-fonts": "github:ArcGIS/calcite-fonts#v1.1.2"
+    "@esri/calcite-ui-icons": "2.0.1"
   },
   "devDependencies": {
     "@stencil/core": "1.3.2",
