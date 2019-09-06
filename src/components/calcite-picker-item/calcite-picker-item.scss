@@ -14,7 +14,7 @@
 
 :host(.highlight) {
   border-left: 3px solid transparent;
-  &[dir="rtl"] {
+  &:host(.calcite--rtl) {
     border-left: none;
     border-right: 3px solid transparent;
   }
@@ -22,7 +22,7 @@
 
 :host(.highlight[selected]) {
   border-left-color: blue;
-  &[dir="rtl"] {
+  &:host(.calcite--rtl) {
     border-left-color: none;
     border-right-color: blue;
   }
