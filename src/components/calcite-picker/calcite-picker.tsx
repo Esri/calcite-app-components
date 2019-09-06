@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { CSS, ICON_TYPES } from "./resources";
+import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-picker",
@@ -196,12 +196,17 @@ export class CalcitePicker {
     });
   }
 
-  handleFilter(filteredData) {
+  handleFilter = (event) => {
+    const filteredData = event.detail;
     const values = filteredData.map((item) => item.value);
     this.items.forEach((row) => {
-      row.toggleAttribute("hidden", values.indexOf(row.value) === -1);
+      if (values.indexOf(row.value) === -1) {
+        row.setAttribute("hidden", "");
+      } else {
+        row.removeAttribute("hidden");
+      }
     });
-  }
+  };
 
   getRowData() {
     const result = [];
@@ -253,8 +258,8 @@ export class CalcitePicker {
             <h2>{this.textHeading}</h2>
             <calcite-filter
               data={this.dataForFilter}
-              textPlaceholder="filter results"
-              onCalciteFilterChange={(e) => this.handleFilter(e.detail)}
+              textPlaceholder={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
             />
           </header>
           <slot />

@@ -1,6 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 
+const filterDebounceAmount = 250; // milliseconds
+
 @Component({
   tag: "calcite-filter",
   styleUrl: "calcite-filter.scss",
@@ -41,7 +43,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  filter = debounce((value: string) => {
+  filter = debounce((value: string): void => {
     const regex = new RegExp(value, "ig");
     const find = (input, regex) => {
       let found = false;
@@ -65,12 +67,12 @@ export class CalciteFilter {
     });
 
     this.calciteFilterChange.emit(result);
-  }, 250);
+  }, filterDebounceAmount);
 
-  inputHandler(event: Event): void {
+  inputHandler = (event: Event): void => {
     const target = event.target as HTMLInputElement;
     this.filter(target.value);
-  }
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -83,11 +85,7 @@ export class CalciteFilter {
       <Host>
         <label>
           {this.textLabel}
-          <input
-            type="text"
-            placeholder={this.textPlaceholder}
-            onInput={this.inputHandler.bind(this)}
-          />
+          <input type="text" placeholder={this.textPlaceholder} onInput={this.inputHandler} />
         </label>
       </Host>
     );
