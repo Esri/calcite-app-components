@@ -43,6 +43,7 @@ function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPara
 }
 
 function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
+  // TODO: GET THIS POSITIONED RIGHT.
   const elemRelativeLeft = elemRect.left - outerRect.left;
   const elemRelativeRight = outerRect.right - elemRect.right;
   const elemRelativeTop = elemRect.top - outerRect.top;
@@ -57,14 +58,6 @@ function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPa
   const right = positionRight ? `${elemRelativeRight + xOffset}px` : undefined;
   const top = positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
   const bottom = !positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
-
-  // const useLeft = elemRect.left <= elemRect.right;
-  // const useTop = elemRect.top <= elemRect.bottom;
-
-  // const left = useLeft ? `${elemRect.right - outerRect.left + xOffset}px` : undefined;
-  // const right = !useLeft ? `${elemRect.left - outerRect.right + xOffset}px` : undefined;
-  // const top = useTop ? `${elemRect.top - outerRect.top - elemRect.height - yOffset}px` : undefined;
-  // const bottom = !useTop ? `${elemRect.bottom - outerRect.bottom - elemRect.height - yOffset}px` : undefined;
 
   return {
     top,
@@ -86,8 +79,8 @@ export function getPositionStyle({
 
   const outerElement = getOuterElement(positionElement);
 
-  const outerRect = outerElement.getBoundingClientRect(),
-    elemRect = positionElement.getBoundingClientRect();
+  const outerRect = outerElement.getBoundingClientRect();
+  const elemRect = positionElement.getBoundingClientRect();
 
   const params = { outerRect, elemRect, xOffset, yOffset };
 
