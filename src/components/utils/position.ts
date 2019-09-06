@@ -44,20 +44,18 @@ function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPara
 
 function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
   // TODO: GET THIS POSITIONED RIGHT.
-  const elemRelativeLeft = elemRect.left - outerRect.left;
-  const elemRelativeRight = outerRect.right - elemRect.right;
+  const elemRelativeLeft = elemRect.right - outerRect.left;
+  const elemRelativeRight = elemRect.left - outerRect.right;
   const elemRelativeTop = elemRect.top - outerRect.top;
   const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
 
-  const positionAbove = elemRelativeTop <= elemRelativeBottom;
-  const positionRight = elemRelativeLeft <= elemRelativeRight;
+  const alignWithTop = elemRelativeTop <= elemRelativeBottom;
+  const positionRight = elemRelativeRight <= elemRelativeLeft;
 
-  console.log({ positionAbove, positionRight });
-
-  const left = !positionRight ? `${elemRelativeLeft + xOffset}px` : undefined;
-  const right = positionRight ? `${elemRelativeRight + xOffset}px` : undefined;
-  const top = positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
-  const bottom = !positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
+  const left = positionRight ? `${elemRelativeLeft + xOffset}px` : undefined;
+  const right = !positionRight ? `${elemRelativeRight + xOffset}px` : undefined;
+  const top = alignWithTop ? `${elemRelativeTop - elemRect.height + yOffset}px` : undefined;
+  const bottom = !alignWithTop ? `${elemRelativeBottom - elemRect.height + yOffset}px` : undefined;
 
   return {
     top,
