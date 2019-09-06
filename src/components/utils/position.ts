@@ -23,17 +23,16 @@ function getOuterElement(positionElement: HTMLElement): HTMLElement {
 }
 
 function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
-  // TODO: FIGURE OUT TOP OR BOTTOM POSITIONING
-  // - FIGURE OUT IF OUT OF SCROLL AREA
-  // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
-
-  const useLeft = elemRect.left <= elemRect.right;
-  const useTop = elemRect.top <= elemRect.bottom;
-
-  const left = useLeft ? `${elemRect.left - outerRect.left + xOffset}px` : undefined;
-  const right = !useLeft ? `${elemRect.right - outerRect.right + xOffset}px` : undefined;
-  const top = useTop ? `${elemRect.top - outerRect.top + yOffset}px` : undefined;
-  const bottom = !useTop ? `${elemRect.bottom - outerRect.bottom + yOffset}px` : undefined;
+  const elemRelativeLeft = elemRect.left - outerRect.left;
+  const elemRelativeRight = outerRect.right - elemRect.right;
+  const elemRelativeTop = elemRect.top - outerRect.top;
+  const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
+  const positionAbove = elemRelativeTop <= elemRelativeBottom;
+  const positionLeft = elemRelativeLeft <= elemRelativeRight;
+  const left = positionLeft ? `${elemRelativeLeft + xOffset}px` : undefined;
+  const right = !positionLeft ? `${elemRelativeRight + xOffset}px` : undefined;
+  const top = positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
+  const bottom = !positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
 
   return {
     top,
@@ -44,16 +43,28 @@ function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPara
 }
 
 function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
-  // TODO: FIGURE OUT WHERTHER TO POSITION LEFT OR RIGHT IF CAN'T GET LEADING/TRAILING VALUE
-  // - FIGURE OUT IF OUT OF THE "OUTER ELEMENT"
+  const elemRelativeLeft = elemRect.left - outerRect.left;
+  const elemRelativeRight = outerRect.right - elemRect.right;
+  const elemRelativeTop = elemRect.top - outerRect.top;
+  const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
 
-  const useLeft = elemRect.left <= elemRect.right;
-  const useTop = elemRect.top <= elemRect.bottom;
+  const positionAbove = elemRelativeTop <= elemRelativeBottom;
+  const positionRight = elemRelativeLeft <= elemRelativeRight;
 
-  const left = useLeft ? `${elemRect.right - outerRect.left + xOffset}px` : undefined;
-  const right = !useLeft ? `${elemRect.left - outerRect.right + xOffset}px` : undefined;
-  const top = useTop ? `${elemRect.top - outerRect.top - elemRect.height - yOffset}px` : undefined;
-  const bottom = !useTop ? `${elemRect.bottom - outerRect.bottom - elemRect.height - yOffset}px` : undefined;
+  console.log({ positionAbove, positionRight });
+
+  const left = !positionRight ? `${elemRelativeLeft + xOffset}px` : undefined;
+  const right = positionRight ? `${elemRelativeRight + xOffset}px` : undefined;
+  const top = positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
+  const bottom = !positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
+
+  // const useLeft = elemRect.left <= elemRect.right;
+  // const useTop = elemRect.top <= elemRect.bottom;
+
+  // const left = useLeft ? `${elemRect.right - outerRect.left + xOffset}px` : undefined;
+  // const right = !useLeft ? `${elemRect.left - outerRect.right + xOffset}px` : undefined;
+  // const top = useTop ? `${elemRect.top - outerRect.top - elemRect.height - yOffset}px` : undefined;
+  // const bottom = !useTop ? `${elemRect.bottom - outerRect.bottom - elemRect.height - yOffset}px` : undefined;
 
   return {
     top,
