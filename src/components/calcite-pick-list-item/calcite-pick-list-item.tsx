@@ -29,7 +29,7 @@ import { getElementDir } from "../utils/dom";
   styleUrl: "./calcite-pick-list-item.scss",
   shadow: true
 })
-export class CalcitePickLItem {
+export class CalcitePickListItem {
   // --------------------------------------------------------------------------
   //
   //  Properties
