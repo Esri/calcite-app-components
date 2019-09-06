@@ -2,10 +2,10 @@ import { Component, Host, Prop, h } from "@stencil/core";
 import { CSS } from "./resources";
 
 @Component({
-  tag: "calcite-picker-group",
+  tag: "calcite-pick-list-group",
   shadow: true
 })
-export class CalcitePickerGroup {
+export class CalcitePickListGroup {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -13,7 +13,7 @@ export class CalcitePickerGroup {
   // --------------------------------------------------------------------------
 
   /**
-   * The title used for all nested picker rows
+   * The title used for all nested pick-list rows
    */
   @Prop({ reflect: true }) textGroupTitle: string;
 
