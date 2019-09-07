@@ -35,6 +35,7 @@ export class CalcitePopover {
 
   @Watch("positionElement")
   positionElementHandler() {
+    this.destroyPopper();
     this.reposition();
   }
 
@@ -81,11 +82,7 @@ export class CalcitePopover {
   }
 
   componentDidUnload() {
-    const { popper } = this;
-
-    popper && popper.destroy();
-
-    this.popper = null;
+    this.destroyPopper();
   }
 
   // --------------------------------------------------------------------------
@@ -122,6 +119,20 @@ export class CalcitePopover {
         modifiers
       });
     }
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  destroyPopper(): void {
+    const { popper } = this;
+
+    popper && popper.destroy();
+
+    this.popper = null;
   }
 
   // --------------------------------------------------------------------------

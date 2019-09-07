@@ -37,18 +37,6 @@
         </calcite-action-group>
       </calcite-action-pad>
     </calcite-popover>
-
-    <calcite-popover placement="horizontal" id="calcite-position-floating-panel-2">
-      <calcite-shell-floating-panel
-        hidden
-        id="calcite-shell-floating-panel-2"
-        heading="Vertical Shell Floating Panel"
-        style="height:150px;"
-        ><span>
-          Shell Floating Panel Content
-        </span>
-      </calcite-shell-floating-panel>
-    </calcite-popover>
     <nav>
       <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
     </nav>
@@ -159,6 +147,17 @@
                 </calcite-action-group>
               </calcite-action-bar>
               <div>
+                <calcite-popover placement="horizontal" id="calcite-position-floating-panel-2">
+                  <calcite-shell-floating-panel
+                    hidden
+                    id="calcite-shell-floating-panel-2"
+                    heading="Vertical Shell Floating Panel"
+                    style="height:150px;"
+                    ><span>
+                      Shell Floating Panel Content
+                    </span>
+                  </calcite-shell-floating-panel>
+                </calcite-popover>
                 <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
                   <calcite-block-content>
                     <calcite-action text="horizontal ActionPad" text-enabled id="action-pad-button" indicator>
