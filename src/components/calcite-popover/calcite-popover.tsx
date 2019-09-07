@@ -21,7 +21,7 @@ export class CalcitePopover {
    * horizontal: Positioned to the left or right of the positionElement.
    * vertical: Positioned above or below the positionElement.
    */
-  @Prop({ reflect: true }) placement: CalcitePlacement;
+  @Prop({ reflect: true }) placement: CalcitePlacement = "horizontal";
 
   @Watch("placement")
   placementHandler() {
