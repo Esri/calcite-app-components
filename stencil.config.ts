@@ -13,9 +13,6 @@ export const config: Config = {
       components: ["calcite-block", "calcite-block-section"]
     },
     {
-      components: ["calcite-demo-nav", "calcite-example"]
-    },
-    {
       components: ["calcite-flow", "calcite-flow-item"]
     },
     {
@@ -45,5 +42,6 @@ export const config: Config = {
   ],
   testing: {
     setupFilesAfterEnv: ["<rootDir>/src/tests/setup.js"]
-  }
+  },
+  excludeSrc: ["**/tests/**", "**/*example*/**"]
 };
