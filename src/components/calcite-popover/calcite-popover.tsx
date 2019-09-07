@@ -1,12 +1,8 @@
 import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
 
-import { CSS } from "./resources";
-
 import { CalcitePlacement } from "../interfaces";
 
 import Popper from "popper.js";
-
-// TODO: use popper.js
 
 @Component({
   tag: "calcite-popover",
@@ -43,7 +39,7 @@ export class CalcitePopover {
   }
 
   /**
-   * TODO
+   * Offset the position of the popover in the horizontal direction.
    */
   @Prop({ reflect: true }) xOffset = 0;
 
@@ -53,7 +49,7 @@ export class CalcitePopover {
   }
 
   /**
-   * TODO
+   * Offset the position of the popover in the vertical direction.
    */
   @Prop({ reflect: true }) yOffset = 0;
 
@@ -70,7 +66,27 @@ export class CalcitePopover {
 
   @Element() el: HTMLCalciteShellFloatingPanelElement;
 
+  // https://www.npmjs.com/package/popper.js
+  // https://popper.js.org/
   @State() popper: Popper;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  componentDidLoad() {
+    this.reposition();
+  }
+
+  componentDidUnload() {
+    const { popper } = this;
+
+    popper && popper.destroy();
+
+    this.popper = null;
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -79,9 +95,33 @@ export class CalcitePopover {
   // --------------------------------------------------------------------------
 
   @Method() async reposition(): Promise<void> {
-    this.popper = new Popper(this.positionElement, this.el, {
-      // popper options here
-    });
+    const { el, placement: componentPlacement, popper, positionElement, xOffset, yOffset } = this;
+
+    const placement = componentPlacement === "vertical" ? "bottom-start" : "auto-start";
+
+    const modifiers =
+      yOffset || xOffset
+        ? {
+            offset: {
+              enabled: true,
+              offset: `${yOffset}, ${xOffset}`
+            }
+          }
+        : null;
+
+    if (popper) {
+      popper.options.placement = placement;
+      popper.options.modifiers = { ...popper.options.modifiers, ...modifiers };
+      popper.scheduleUpdate();
+      return;
+    }
+
+    if (el && placement && positionElement) {
+      this.popper = new Popper(positionElement, el, {
+        placement,
+        modifiers
+      });
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -93,9 +133,7 @@ export class CalcitePopover {
   render() {
     return (
       <Host>
-        <div class={CSS.container}>
-          <slot />
-        </div>
+        <slot />
       </Host>
     );
   }
