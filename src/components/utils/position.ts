@@ -22,19 +22,19 @@ function getOuterElement(positionElement: HTMLElement): HTMLElement {
   return positionElement.closest("calcite-shell") || window.document.body;
 }
 
-function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
-  const elemRelativeLeft = elemRect.left - outerRect.left;
-  const elemRelativeRight = outerRect.right - elemRect.right;
-  const elemRelativeTop = elemRect.top - outerRect.top;
-  const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
+function getVerticalStyles({ elemRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
+  const elemRelativeLeft = elemRect.left + window.scrollX;
+  const elemRelativeRight = elemRect.right + window.scrollX;
+  const elemRelativeTop = elemRect.top + window.scrollY;
+  const elemRelativeBottom = elemRect.bottom + window.scrollY;
 
   const positionAbove = elemRelativeTop <= elemRelativeBottom;
   const positionToLeft = elemRelativeLeft <= elemRelativeRight;
 
   const left = positionToLeft ? `${elemRelativeLeft + xOffset}px` : undefined;
   const right = !positionToLeft ? `${elemRelativeRight + xOffset}px` : undefined;
-  const top = positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
-  const bottom = !positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
+  const top = positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
+  const bottom = !positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
 
   return {
     top,
@@ -44,19 +44,28 @@ function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPara
   };
 }
 
-function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
-  const elemRelativeLeft = elemRect.right - outerRect.left;
-  const elemRelativeRight = outerRect.right - elemRect.left;
-  const elemRelativeTop = elemRect.top - outerRect.top;
-  const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
+function getHorizontalStyles({ elemRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
+  const elemRelativeLeft = elemRect.left + window.scrollX;
+  const elemRelativeRight = elemRect.right + window.scrollX;
+  const elemRelativeTop = elemRect.top + window.scrollY;
+  const elemRelativeBottom = elemRect.bottom + window.scrollY;
 
-  const alignTop = elemRelativeTop <= elemRelativeBottom;
+  const alignTop = elemRelativeTop - window.scrollY <= window.innerHeight + window.scrollY - elemRelativeBottom;
   const positionToRight = elemRelativeRight <= elemRelativeLeft;
 
-  const left = !positionToRight ? `${elemRelativeLeft + xOffset}px` : undefined;
-  const right = positionToRight ? `${elemRelativeRight + xOffset}px` : undefined;
-  const top = alignTop ? `${elemRelativeTop - elemRect.height + yOffset}px` : undefined;
-  const bottom = !alignTop ? `${elemRelativeBottom - elemRect.height + yOffset}px` : undefined;
+  // document.body.clientHeight - window.scrollY - window.innerHeight;
+
+  console.log({
+    elemRelativeTop,
+    clientHeight: document.body.clientHeight,
+    scrollY: window.scrollY,
+    innerHeight: window.innerHeight
+  });
+
+  const left = !positionToRight ? `${elemRelativeRight + xOffset}px` : undefined;
+  const right = positionToRight ? `${elemRelativeLeft + xOffset}px` : undefined;
+  const top = alignTop ? `${elemRelativeTop - yOffset}px` : undefined;
+  const bottom = !alignTop ? `${elemRelativeBottom - +yOffset}px` : undefined;
 
   return {
     top,

@@ -14,6 +14,41 @@
   </head>
 
   <body>
+    <calcite-placement placement="vertical" id="calcite-position-floating-panel">
+      <calcite-shell-floating-panel
+        hidden
+        id="calcite-shell-floating-panel"
+        heading="Vertical Shell Floating Panel"
+        style="height:150px;"
+        ><span>
+          Shell Floating Panel Content
+        </span>
+      </calcite-shell-floating-panel>
+    </calcite-placement>
+
+    <calcite-placement placement="horizontal" id="calcite-position-action-pad">
+      <calcite-action-pad id="action-pad" hidden>
+        <calcite-action-group>
+          <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </calcite-action-group>
+      </calcite-action-pad>
+    </calcite-placement>
+
+    <calcite-placement placement="horizontal" id="calcite-position-floating-panel-2">
+      <calcite-shell-floating-panel
+        hidden
+        id="calcite-shell-floating-panel-2"
+        heading="Vertical Shell Floating Panel"
+        style="height:150px;"
+        ><span>
+          Shell Floating Panel Content
+        </span>
+      </calcite-shell-floating-panel>
+    </calcite-placement>
     <nav>
       <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
     </nav>
@@ -78,42 +113,6 @@
         <h2>Light Theme</h2>
         <div class="calcite-shell-container">
           <calcite-shell>
-            <calcite-placement placement="vertical" id="calcite-position-floating-panel">
-              <calcite-shell-floating-panel
-                hidden
-                id="calcite-shell-floating-panel"
-                heading="Vertical Shell Floating Panel"
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-            </calcite-placement>
-
-            <calcite-placement placement="horizontal" id="calcite-position-action-pad">
-              <calcite-action-pad id="action-pad" hidden>
-                <calcite-action-group>
-                  <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
-                  </calcite-action>
-                </calcite-action-group>
-              </calcite-action-pad>
-            </calcite-placement>
-
-            <calcite-placement placement="horizontal" id="calcite-position-floating-panel-2">
-              <calcite-shell-floating-panel
-                hidden
-                id="calcite-shell-floating-panel-2"
-                heading="Vertical Shell Floating Panel"
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-            </calcite-placement>
-
             <calcite-shell-panel slot="primary-panel" layout="leading">
               <calcite-action-bar slot="action-bar" theme="dark">
                 <calcite-action-group>
@@ -174,7 +173,11 @@
                         <path d="M2 14h4v1H1v-5h1zm12-8h1V1h-5v1h4zm0 4v4h-4v1h5v-5zM1 6h1V2h4V1H1z" />
                       </svg>
                     </calcite-action>
-                    <calcite-action text="horizontal Shell Floating Panel" text-enabled id="shell-floating-panel-button-2">
+                    <calcite-action
+                      text="horizontal Shell Floating Panel"
+                      text-enabled
+                      id="shell-floating-panel-button-2"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                         <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z" />
                       </svg>

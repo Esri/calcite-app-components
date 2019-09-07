@@ -43,7 +43,7 @@ export class CalcitePlacement {
   /**
    * TODO
    */
-  @Prop({ reflect: true }) xOffset = 10;
+  @Prop({ reflect: true }) xOffset = 0;
 
   @Watch("xOffset")
   xOffsetHandler() {
@@ -53,7 +53,7 @@ export class CalcitePlacement {
   /**
    * TODO
    */
-  @Prop({ reflect: true }) yOffset = 10;
+  @Prop({ reflect: true }) yOffset = 0;
 
   @Watch("yOffset")
   yOffsetHandler() {
