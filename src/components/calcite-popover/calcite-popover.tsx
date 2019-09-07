@@ -2,21 +2,18 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CSS } from "./resources";
 
-import { CalcitePlacementValue } from "../interfaces";
+import { CalcitePlacement } from "../interfaces";
 
-import { CalcitePositionStyle, getPositionStyle } from "../utils/position";
+import Popper from "popper.js";
 
-// TODO: rename to `calcite-popover`
-// TODO: always use top/left for positioning
-// TODO: create popover in document.body
-// TODO: wrap reference element instead of using positionElement
+// TODO: use popper.js
 
 @Component({
-  tag: "calcite-placement",
-  styleUrl: "calcite-placement.scss",
+  tag: "calcite-popover",
+  styleUrl: "calcite-popover.scss",
   shadow: true
 })
-export class CalcitePlacement {
+export class CalcitePopover {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -28,7 +25,7 @@ export class CalcitePlacement {
    * horizontal: Positioned to the left or right of the positionElement.
    * vertical: Positioned above or below the positionElement.
    */
-  @Prop({ reflect: true }) placement: CalcitePlacementValue;
+  @Prop({ reflect: true }) placement: CalcitePlacement;
 
   @Watch("placement")
   placementHandler() {
@@ -73,7 +70,7 @@ export class CalcitePlacement {
 
   @Element() el: HTMLCalciteShellFloatingPanelElement;
 
-  @State() positionStyle: CalcitePositionStyle;
+  @State() popper: Popper;
 
   // --------------------------------------------------------------------------
   //
@@ -82,11 +79,8 @@ export class CalcitePlacement {
   // --------------------------------------------------------------------------
 
   @Method() async reposition(): Promise<void> {
-    this.positionStyle = getPositionStyle({
-      placement: this.placement,
-      positionElement: this.positionElement,
-      xOffset: this.xOffset,
-      yOffset: this.yOffset
+    this.popper = new Popper(this.positionElement, this.el, {
+      // popper options here
     });
   }
 
@@ -97,11 +91,9 @@ export class CalcitePlacement {
   // --------------------------------------------------------------------------
 
   render() {
-    const { positionStyle } = this;
-
     return (
       <Host>
-        <div style={positionStyle} class={CSS.container}>
+        <div class={CSS.container}>
           <slot />
         </div>
       </Host>

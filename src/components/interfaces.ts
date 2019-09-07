@@ -1,6 +1,6 @@
 /* Note: using `.d.ts` file extension will exclude it from the output build */
 
-export type CalcitePlacementValue = "horizontal" | "vertical";
+export type CalcitePlacement = "horizontal" | "vertical";
 
 export type CalciteLayout = "leading" | "trailing";
 

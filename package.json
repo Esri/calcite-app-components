@@ -31,7 +31,8 @@
   "dependencies": {
     "@esri/calcite-base": "github:Esri/calcite-base#3d18d24",
     "@esri/calcite-colors": "1.2.1",
-    "@esri/calcite-ui-icons": "2.0.1"
+    "@esri/calcite-ui-icons": "2.0.1",
+    "popper.js": "1.15.0"
   },
   "devDependencies": {
     "@stencil/core": "1.3.2",
