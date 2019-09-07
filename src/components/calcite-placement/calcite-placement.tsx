@@ -20,8 +20,8 @@ export class CalcitePlacement {
 
   /**
    * Determines where the element will be positioned.
-   * horizontal: TODO
-   * vertical: TODO
+   * horizontal: Positioned to the left or right of the positionElement.
+   * vertical: Positioned above or below the positionElement.
    */
   @Prop({ reflect: true }) placement: CalcitePlacementValue;
 
@@ -43,7 +43,7 @@ export class CalcitePlacement {
   /**
    * TODO
    */
-  @Prop({ reflect: true }) xOffset: number;
+  @Prop({ reflect: true }) xOffset = 10;
 
   @Watch("xOffset")
   xOffsetHandler() {
@@ -53,7 +53,7 @@ export class CalcitePlacement {
   /**
    * TODO
    */
-  @Prop({ reflect: true }) yOffset: number;
+  @Prop({ reflect: true }) yOffset = 10;
 
   @Watch("yOffset")
   yOffsetHandler() {

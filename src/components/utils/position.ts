@@ -27,10 +27,12 @@ function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPara
   const elemRelativeRight = outerRect.right - elemRect.right;
   const elemRelativeTop = elemRect.top - outerRect.top;
   const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
+
   const positionAbove = elemRelativeTop <= elemRelativeBottom;
-  const positionLeft = elemRelativeLeft <= elemRelativeRight;
-  const left = positionLeft ? `${elemRelativeLeft + xOffset}px` : undefined;
-  const right = !positionLeft ? `${elemRelativeRight + xOffset}px` : undefined;
+  const positionToLeft = elemRelativeLeft <= elemRelativeRight;
+
+  const left = positionToLeft ? `${elemRelativeLeft + xOffset}px` : undefined;
+  const right = !positionToLeft ? `${elemRelativeRight + xOffset}px` : undefined;
   const top = positionAbove ? `${elemRelativeTop + yOffset}px` : undefined;
   const bottom = !positionAbove ? `${elemRelativeBottom + yOffset}px` : undefined;
 
@@ -43,19 +45,18 @@ function getVerticalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesPara
 }
 
 function getHorizontalStyles({ elemRect, outerRect, xOffset, yOffset }: StylesParams): CalcitePositionStyle {
-  // TODO: GET THIS POSITIONED RIGHT.
   const elemRelativeLeft = elemRect.right - outerRect.left;
-  const elemRelativeRight = elemRect.left - outerRect.right;
+  const elemRelativeRight = outerRect.right - elemRect.left;
   const elemRelativeTop = elemRect.top - outerRect.top;
   const elemRelativeBottom = outerRect.bottom - elemRect.bottom;
 
-  const alignWithTop = elemRelativeTop <= elemRelativeBottom;
-  const positionRight = elemRelativeRight <= elemRelativeLeft;
+  const alignTop = elemRelativeTop <= elemRelativeBottom;
+  const positionToRight = elemRelativeRight <= elemRelativeLeft;
 
-  const left = positionRight ? `${elemRelativeLeft + xOffset}px` : undefined;
-  const right = !positionRight ? `${elemRelativeRight + xOffset}px` : undefined;
-  const top = alignWithTop ? `${elemRelativeTop - elemRect.height + yOffset}px` : undefined;
-  const bottom = !alignWithTop ? `${elemRelativeBottom - elemRect.height + yOffset}px` : undefined;
+  const left = !positionToRight ? `${elemRelativeLeft + xOffset}px` : undefined;
+  const right = positionToRight ? `${elemRelativeRight + xOffset}px` : undefined;
+  const top = alignTop ? `${elemRelativeTop - elemRect.height + yOffset}px` : undefined;
+  const bottom = !alignTop ? `${elemRelativeBottom - elemRect.height + yOffset}px` : undefined;
 
   return {
     top,
@@ -76,7 +77,6 @@ export function getPositionStyle({
   }
 
   const outerElement = getOuterElement(positionElement);
-
   const outerRect = outerElement.getBoundingClientRect();
   const elemRect = positionElement.getBoundingClientRect();
 
