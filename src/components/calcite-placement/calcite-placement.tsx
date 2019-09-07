@@ -6,6 +6,11 @@ import { CalcitePlacementValue } from "../interfaces";
 
 import { CalcitePositionStyle, getPositionStyle } from "../utils/position";
 
+// TODO: rename to `calcite-popover`
+// TODO: always use top/left for positioning
+// TODO: create popover in document.body
+// TODO: wrap reference element instead of using positionElement
+
 @Component({
   tag: "calcite-placement",
   styleUrl: "calcite-placement.scss",
