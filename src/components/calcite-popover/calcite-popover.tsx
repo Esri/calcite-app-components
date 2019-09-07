@@ -95,16 +95,19 @@ export class CalcitePopover {
     const { el, placement: componentPlacement, popper, positionElement, xOffset, yOffset } = this;
 
     const placement = componentPlacement === "vertical" ? "bottom-start" : "auto-start";
+    const boundariesElement: Popper.Boundary = "window";
+    const offsetEnabled = yOffset || xOffset;
 
-    const modifiers =
-      yOffset || xOffset
-        ? {
-            offset: {
-              enabled: true,
-              offset: `${yOffset}, ${xOffset}`
-            }
-          }
-        : null;
+    const modifiers = {
+      offset: {
+        enabled: !!offsetEnabled,
+        offset: `${yOffset}, ${xOffset}`
+      },
+      preventOverflow: {
+        enabled: false,
+        boundariesElement
+      }
+    };
 
     if (popper) {
       popper.options.placement = placement;
@@ -115,6 +118,7 @@ export class CalcitePopover {
 
     if (el && placement && positionElement) {
       this.popper = new Popper(positionElement, el, {
+        eventsEnabled: false,
         placement,
         modifiers
       });
