@@ -4,12 +4,12 @@
 
 ## Properties
 
-| Property          | Attribute   | Description                                                                                                                                                               | Type                                  | Default     |
-| ----------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ----------- |
-| `placement`       | `placement` | Determines where the element will be displayed. anchor: dynamically above or below based on how close trigger is to top or bottom of window. leading: TODO trailing: TODO | `"anchor" \| "leading" \| "trailing"` | `undefined` |
-| `positionElement` | --          | HTMLElement used to position this element according to the placement.                                                                                                     | `HTMLElement`                         | `undefined` |
-| `xOffset`         | `x-offset`  | TODO                                                                                                                                                                      | `number`                              | `undefined` |
-| `yOffset`         | `y-offset`  | TODO                                                                                                                                                                      | `number`                              | `undefined` |
+| Property          | Attribute   | Description                                                                                                                                                                   | Type                         | Default     |
+| ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
+| `placement`       | `placement` | Determines where the element will be positioned. horizontal: Positioned to the left or right of the positionElement. vertical: Positioned above or below the positionElement. | `"horizontal" \| "vertical"` | `undefined` |
+| `positionElement` | --          | HTMLElement used to position this element according to the placement.                                                                                                         | `HTMLElement`                | `undefined` |
+| `xOffset`         | `x-offset`  | Offset the position of the popover in the horizontal direction.                                                                                                               | `number`                     | `0`         |
+| `yOffset`         | `y-offset`  | Offset the position of the popover in the vertical direction.                                                                                                                 | `number`                     | `0`         |
 
 ## Methods
 
