@@ -1,13 +1,10 @@
 import { newE2EPage } from "@stencil/core/testing";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-shell-floating-panel", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-shell-floating-panel"));
 
-    await page.setContent("<calcite-shell-floating-panel></calcite-shell-floating-panel>");
-    const element = await page.find("calcite-shell-floating-panel");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-shell-floating-panel"));
 
   it("should fire event when closed", async () => {
     const page = await newE2EPage();

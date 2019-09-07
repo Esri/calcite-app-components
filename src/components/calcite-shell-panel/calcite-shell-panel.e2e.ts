@@ -1,30 +1,30 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS } from "./resources";
+import { defaults, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-shell-panel", () => {
-  it("renders", async () => {
+  it("renders", async () => renders("calcite-shell-panel"));
+
+  it("honors hidden attribute", async () => hidden("calcite-shell-panel"));
+
+  it("defaults", async () =>
+    defaults("calcite-shell-panel", [
+      {
+        propertyName: "layout",
+        defaultValue: "leading"
+      },
+      {
+        propertyName: "collapsed",
+        defaultValue: false
+      }
+    ]));
+
+  it("has a slot", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-shell-panel></calcite-shell-panel>");
     const element = await page.find("calcite-shell-panel");
-    expect(element).toHaveClass("hydrated");
-  });
-
-  it("defaults", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-shell-panel></calcite-shell-panel>");
-    const element = await page.find("calcite-shell-panel");
-
-    const layout = await element.getProperty("layout");
-
-    expect(layout).toBe("leading");
-
-    const collapsed = await element.getProperty("collapsed");
-
-    expect(collapsed).toBe(false);
-
     expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
   });
 
@@ -58,6 +58,24 @@ describe("calcite-shell-panel", () => {
     const isVisible = await element.isVisible();
 
     expect(isVisible).toBe(false);
+  });
+
+  it("collapsed change should fire event", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      '<calcite-shell-panel><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
+    );
+
+    const element = await page.find(`calcite-shell-panel`);
+
+    const eventSpy = await page.spyOnEvent("calciteShellPanelToggle", "window");
+
+    element.setProperty("collapsed", true);
+
+    await page.waitForChanges();
+
+    expect(eventSpy).toHaveReceivedEvent();
   });
 
   it("leading layout property should have action slot first ", async () => {

@@ -1,11 +1,7 @@
-import { newE2EPage } from "@stencil/core/testing";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-tip-group", () => {
-  it("should render without errors", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-tip-group"));
 
-    await page.setContent(`<calcite-tip-group></calcite-tip-group>`);
-    const tipGroup = await page.find("calcite-tip-group");
-    expect(tipGroup).not.toBeNull();
-  });
+  it("honors hidden attribute", async () => hidden("calcite-tip-group"));
 });

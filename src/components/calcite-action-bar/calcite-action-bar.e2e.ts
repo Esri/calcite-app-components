@@ -1,13 +1,10 @@
 import { newE2EPage } from "@stencil/core/testing";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-action-bar", () => {
-  it("renders", async () => {
-    const page = await newE2EPage();
+  it("renders", async () => renders("calcite-action-bar"));
 
-    await page.setContent("<calcite-action-bar></calcite-action-bar>");
-    const element = await page.find("calcite-action-bar");
-    expect(element).toHaveClass("hydrated");
-  });
+  it("honors hidden attribute", async () => hidden("calcite-action-bar"));
 
   it("defaults", async () => {
     const page = await newE2EPage();
@@ -60,5 +57,35 @@ describe("calcite-action-bar", () => {
     await page.waitForChanges();
 
     expect(bar).toHaveAttribute("expanded");
+  });
+
+  it("expanded change should fire event", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-action-bar></calcite-action-bar>");
+
+    const element = await page.find("calcite-action-bar");
+
+    const eventSpy = await page.spyOnEvent("calciteActionBarToggle", "window");
+
+    element.setProperty("expanded", true);
+
+    await page.waitForChanges();
+
+    expect(eventSpy).toHaveReceivedEvent();
+  });
+
+  it("expanded by default", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-action-bar expanded></calcite-action-bar>");
+
+    const buttonGroup = await page.find("calcite-action-bar >>> .action-group--bottom");
+
+    const button = await buttonGroup.find("calcite-action");
+
+    const textEnabled = await button.getProperty("textEnabled");
+
+    expect(textEnabled).toBe(true);
   });
 });

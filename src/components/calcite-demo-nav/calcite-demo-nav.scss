@@ -1,37 +1,89 @@
+$largeScreen: 600px;
+
 :host {
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  fill: #fff;
-  display: flex;
+  position: relative;
+}
+.hamburger {
+  display: inline-block;
+  position: relative;
+  margin: 6px;
+  height: 1em;
+  width: 1em;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    width: 1em;
+    height: 0.15em;
+    background: black;
+    box-shadow: 0 0.25em 0 0 black, 0 0.5em 0 0 black;
+  }
+  @media (min-width: $largeScreen) {
+    display: none;
+  }
 }
 ul {
-  display: flex;
+  @media (max-width: $largeScreen - 1) {
+    display: none;
+    &.open {
+      display: block;
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 24px;
+    z-index: 9999;
+  }
+  @media (min-width: $largeScreen) {
+    display: flex;
+    position: static;
+  }
   list-style: none;
   margin: 0;
   padding: 0;
+  color: #fff;
+  fill: #fff;
+  background-color: #333;
 }
 li {
-  display: flex;
-  border-left: 1px solid white;
+  border-top: 1px solid white;
+  @media (min-width: $largeScreen) {
+    border-top: none;
+    border-left: 1px solid white;
+  }
 }
 li:first-child {
-  border-left: none;
+  border-top: none;
+  @media (min-width: $largeScreen) {
+    border-left: none;
+  }
 }
 li:last-child {
-  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  @media (min-width: $largeScreen) {
+    border-bottom: none;
+    border-right: 1px solid white;
+  }
 }
-a {
+.link {
   display: flex;
   align-items: center;
-  padding: 12px 24px;
+  padding: 0.5em 1em;
+  @media (min-width: $largeScreen) {
+    padding: 12px 24px;
+  }
   color: inherit;
   text-decoration: none;
+  white-space: nowrap;
 }
-a:hover {
+.link:hover {
   background-color: black;
 }
-a.is-active {
+.link.is-active {
   background-color: #007bc7;
 }
 svg {
