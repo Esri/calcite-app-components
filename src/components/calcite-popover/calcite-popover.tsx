@@ -95,17 +95,15 @@ export class CalcitePopover {
     const { el, placement: componentPlacement, popper, positionElement, xOffset, yOffset } = this;
 
     const placement = componentPlacement === "vertical" ? "bottom-start" : "auto-start";
-    const boundariesElement: Popper.Boundary = "window";
-    const offsetEnabled = yOffset || xOffset;
+    const offsetEnabled = !!(yOffset || xOffset);
 
     const modifiers = {
       offset: {
-        enabled: !!offsetEnabled,
+        enabled: offsetEnabled,
         offset: `${yOffset}, ${xOffset}`
       },
       preventOverflow: {
-        enabled: false,
-        boundariesElement
+        enabled: false
       }
     };
 
@@ -117,11 +115,15 @@ export class CalcitePopover {
     }
 
     if (el && placement && positionElement) {
-      this.popper = new Popper(positionElement, el, {
+      const popper = new Popper(positionElement, el, {
         eventsEnabled: false,
         placement,
         modifiers
       });
+
+      window.addEventListener("resize", popper.scheduleUpdate, { passive: true });
+
+      this.popper = popper;
     }
   }
 
@@ -133,6 +135,8 @@ export class CalcitePopover {
 
   destroyPopper(): void {
     const { popper } = this;
+
+    popper && window.removeEventListener("resize", popper.scheduleUpdate);
 
     popper && popper.destroy();
 
