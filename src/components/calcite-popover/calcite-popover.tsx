@@ -2,6 +2,8 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CalcitePlacement } from "../interfaces";
 
+// https://www.npmjs.com/package/popper.js
+// https://popper.js.org/
 import Popper from "popper.js";
 
 @Component({
@@ -29,7 +31,7 @@ export class CalcitePopover {
   }
 
   /**
-   * HTMLElement used to position this element according to the placement.
+   * Reference HTMLElement used to position this component according to the placement property.
    */
   @Prop() positionElement: HTMLElement;
 
@@ -67,8 +69,6 @@ export class CalcitePopover {
 
   @Element() el: HTMLCalciteShellFloatingPanelElement;
 
-  // https://www.npmjs.com/package/popper.js
-  // https://popper.js.org/
   @State() popper: Popper;
 
   // --------------------------------------------------------------------------
@@ -136,9 +136,10 @@ export class CalcitePopover {
   destroyPopper(): void {
     const { popper } = this;
 
-    popper && window.removeEventListener("resize", popper.scheduleUpdate);
-
-    popper && popper.destroy();
+    if (popper) {
+      window.removeEventListener("resize", popper.scheduleUpdate);
+      popper.destroy();
+    }
 
     this.popper = null;
   }
