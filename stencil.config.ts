@@ -3,6 +3,13 @@ import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 
+// Exclude demo components for prod build
+const isDevBuild = process.argv.includes("--dev");
+const DEFAULT_EXCLUDE_SRC = ["**/tests/**", "**/*example*/**"];
+if (!isDevBuild) {
+  DEFAULT_EXCLUDE_SRC.push("**/*demo*/**");
+}
+
 export const config: Config = {
   namespace: "calcite-app",
   bundles: [
@@ -27,7 +34,7 @@ export const config: Config = {
     { type: "docs-readme" },
     {
       type: "www",
-      copy: [{ src: "demos" }],
+      copy: [{ src: "../demos", dest: "demos" }],
       serviceWorker: null // disable service workers
     }
   ],
@@ -43,5 +50,7 @@ export const config: Config = {
   testing: {
     setupFilesAfterEnv: ["<rootDir>/src/tests/setup.js"]
   },
-  excludeSrc: ["**/tests/**", "**/*example*/**"]
+  srcDir: "src/components",
+  excludeSrc: DEFAULT_EXCLUDE_SRC,
+  srcIndexHtml: "src/index.html"
 };
