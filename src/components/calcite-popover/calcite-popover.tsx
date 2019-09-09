@@ -115,15 +115,15 @@ export class CalcitePopover {
     }
 
     if (el && placement && positionElement) {
-      const popper = new Popper(positionElement, el, {
+      const newPopper = new Popper(positionElement, el, {
         eventsEnabled: false,
         placement,
         modifiers
       });
 
-      window.addEventListener("resize", popper.scheduleUpdate, { passive: true });
+      window.addEventListener("resize", newPopper.scheduleUpdate, { passive: true });
 
-      this.popper = popper;
+      this.popper = newPopper;
     }
   }
 
