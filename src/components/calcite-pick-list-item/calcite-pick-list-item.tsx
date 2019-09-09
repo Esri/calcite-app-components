@@ -19,17 +19,17 @@ import {
 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS } from "./resources";
-import { ICON_TYPES } from "../calcite-picker/resources";
+import { ICON_TYPES } from "../calcite-pick-list/resources";
 import { CSS_UTILITY } from "../utils/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { getElementDir } from "../utils/dom";
 
 @Component({
-  tag: "calcite-picker-item",
-  styleUrl: "./calcite-picker-item.scss",
+  tag: "calcite-pick-list-item",
+  styleUrl: "./calcite-pick-list-item.scss",
   shadow: true
 })
-export class CalcitePickerItem {
+export class CalcitePickListItem {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -84,7 +84,7 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickerItemSelectedChange: EventEmitter;
+  @Event() calcitePickListItemSelectedChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -105,7 +105,7 @@ export class CalcitePickerItem {
   //
   // --------------------------------------------------------------------------
 
-  pickerClickHandler = (event: MouseEvent): void => {
+  pickListClickHandler = (event: MouseEvent): void => {
     this.isSelected = !this.isSelected;
     this.emitChangeEvent(event.shiftKey);
   };
@@ -115,7 +115,7 @@ export class CalcitePickerItem {
   }
 
   emitChangeEvent(shiftPressed = false) {
-    this.calcitePickerItemSelectedChange.emit({
+    this.calcitePickListItemSelectedChange.emit({
       item: this.el,
       value: this.value,
       selected: this.isSelected,
@@ -166,7 +166,7 @@ export class CalcitePickerItem {
           [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
-        onClick={this.pickerClickHandler}
+        onClick={this.pickListClickHandler}
         selected={this.isSelected}
       >
         {this.renderIcon()}

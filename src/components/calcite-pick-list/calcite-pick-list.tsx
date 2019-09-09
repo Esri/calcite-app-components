@@ -15,11 +15,11 @@ import guid from "../utils/guid";
 import { CSS, ICON_TYPES } from "./resources";
 
 @Component({
-  tag: "calcite-picker",
-  styleUrl: "./calcite-picker.scss",
+  tag: "calcite-pick-list",
+  styleUrl: "./calcite-pick-list.scss",
   shadow: true
 })
-export class CalcitePicker {
+export class CalcitePickList {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -50,7 +50,7 @@ export class CalcitePicker {
   @Prop({ reflect: true }) multiple = false;
 
   /**
-   * The heading label for the entire Picker.
+   * The heading label for the entire Pick List.
    * Not to be confused with the heading for an individual item or for a sub-group of items.
    */
   @Prop({ reflect: true }) textHeading: string;
@@ -61,13 +61,13 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Map<string, HTMLCalcitePickerItemElement> = new Map();
+  @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
 
-  items: HTMLCalcitePickerItemElement[];
+  items: HTMLCalcitePickListItemElement[];
 
-  lastSelectedItem: HTMLCalcitePickerItemElement = null;
+  lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  guid = `calcite-picker-${guid()}`;
+  guid = `calcite-pick-list-${guid()}`;
 
   observer = new MutationObserver(() => this.setUpItems());
 
@@ -108,9 +108,9 @@ export class CalcitePicker {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickerSelectionChange: EventEmitter;
+  @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calcitePickerItemSelectedChange") calcitePickerItemSelectedChangeHandler(event) {
+  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
@@ -126,7 +126,7 @@ export class CalcitePicker {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calcitePickerSelectionChange.emit(selectedValues);
+    this.calcitePickListSelectionChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -136,7 +136,7 @@ export class CalcitePicker {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    this.items = Array.from(this.el.querySelectorAll("calcite-picker-item"));
+    this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
       if (iconType) {
@@ -151,13 +151,13 @@ export class CalcitePicker {
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-picker-group"))];
+    const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))];
     sortGroups.forEach((sortGroup) => {
       this.sortables.push(
         Sortable.create(sortGroup, {
           group: this.el.id,
           handle: `.${CSS.dragHandle}`,
-          draggable: "calcite-picker-item"
+          draggable: "calcite-pick-list-item"
         })
       );
     });
@@ -169,7 +169,7 @@ export class CalcitePicker {
     });
   }
 
-  deselectSiblingItems(item: HTMLCalcitePickerItemElement) {
+  deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
     this.items.forEach((currentItem) => {
       if (currentItem !== item) {
         currentItem.toggleSelected(false);
@@ -180,7 +180,7 @@ export class CalcitePicker {
     });
   }
 
-  selectSiblings(item: HTMLCalcitePickerItemElement) {
+  selectSiblings(item: HTMLCalcitePickListItemElement) {
     if (!this.lastSelectedItem) {
       return;
     }
