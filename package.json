@@ -22,7 +22,9 @@
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",
-    "test:watchAll": "stencil test --spec --e2e --watchAll"
+    "test:watchAll": "stencil test --spec --e2e --watchAll",
+    "preversion": "npm test",
+    "version": "npm run build"
   },
   "repository": {
     "type": "git",
