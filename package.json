@@ -1,6 +1,6 @@
 {
   "name": "@esri/calcite-app-components",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "description": "A collection of web components for building single-page mapping applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -16,16 +16,15 @@
   "scripts": {
     "build": "stencil build",
     "docs": "stencil build --config stencil.docs.config.ts",
-    "release:prepare": "npm version prerelease --no-git-tag-version",
-    "release:publish": "./support/release.sh",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",
     "test:watchAll": "stencil test --spec --e2e --watchAll",
-    "preversion": "npm test",
+    "preversion": "npm install && npm test",
     "version": "npm run build && npm run docs && git add .",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "node ./support/prepublish.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +44,7 @@
     "@types/jest": "24.0.17",
     "@types/puppeteer": "1.19.0",
     "autoprefixer": "9.6.1",
+    "chalk": "2.4.2",
     "classnames": "2.2.6",
     "gh-release": "3.5.0",
     "husky": "3.0.3",
