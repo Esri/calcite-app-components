@@ -1,6 +1,6 @@
 {
   "name": "@esri/calcite-app-components",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A collection of web components for building single-page mapping applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,7 +24,10 @@
     "preversion": "npm install && npm test",
     "version": "npm run build && npm run docs && git add .",
     "postversion": "git push && git push --tags",
-    "prepublishOnly": "node ./support/prepublish.js"
+    "prepublishOnly": "node ./support/prepublish.js",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
