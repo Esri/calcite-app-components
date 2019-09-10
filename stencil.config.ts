@@ -3,7 +3,7 @@ import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 
-// Exclude demo components for prod build
+// Exclude demo components for production build
 const isDevBuild = process.argv.includes("--dev");
 const DEFAULT_EXCLUDE_SRC = ["**/tests/**", "**/*example*/**"];
 if (!isDevBuild) {

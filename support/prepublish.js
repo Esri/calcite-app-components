@@ -1,6 +1,6 @@
 const chalk = require('chalk');
-const child_process = require("child_process");
-const branch = child_process.execSync("git rev-parse --abbrev-ref HEAD");
+const childProcess = require("child_process");
+const branch = childProcess.execSync("git rev-parse --abbrev-ref HEAD");
 
 if( branch.toString() === "master" ) {
   process.exit();
