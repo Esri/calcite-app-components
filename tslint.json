@@ -12,6 +12,9 @@
     },
     "no-consecutive-blank-lines": {
       "options": [1]
+    },
+    "prefer-conditional-expression": {
+      "severity": "warn"
     }
   },
   "rulesDirectory": ["node_modules/tslint-lines-between-class-members"]
