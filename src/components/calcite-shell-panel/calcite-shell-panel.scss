@@ -9,6 +9,10 @@ $shell-panel-max-width: 360px !default;
   background-color: var(--calcite-app-background-content);
 }
 
+:host([layout="trailing"]) {
+  margin-left: auto;
+}
+
 .content {
   width: $shell-panel-width;
   min-width: $shell-panel-min-width;
