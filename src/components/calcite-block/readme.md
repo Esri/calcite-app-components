@@ -12,7 +12,6 @@ See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property       | Attribute       | Description                                       | Type                | Default         |
@@ -25,14 +24,12 @@ See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.       | `string`            | `TEXT.expand`   |
 | `theme`        | `theme`         | Used to set the component's color scheme.         | `"dark" \| "light"` | `undefined`     |
 
-
 ## Events
 
 | Event                | Description                               | Type               |
 | -------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

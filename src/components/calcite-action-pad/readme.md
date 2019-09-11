@@ -6,7 +6,6 @@ See the [calcite-action-pad demo](https://esri.github.io/calcite-app-components/
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property          | Attribute   | Description                                                                                                                                                                                                                                                                                    | Type                           | Default     |
@@ -15,7 +14,6 @@ See the [calcite-action-pad demo](https://esri.github.io/calcite-app-components/
 | `positionElement` | --          | HTMLElement used to position this element according to the placement.                                                                                                                                                                                                                          | `HTMLElement`                  | `undefined` |
 | `theme`           | `theme`     | Used to set the component's color scheme.                                                                                                                                                                                                                                                      | `"dark" \| "light"`            | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
