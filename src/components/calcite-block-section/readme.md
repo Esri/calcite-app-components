@@ -4,7 +4,6 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property       | Attribute       | Description                                               | Type      | Default         |
@@ -14,27 +13,26 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 | `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.                | `string`  | `TEXT.collapse` |
 | `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.               | `string`  | `TEXT.expand`   |
 
-
 ## Events
 
 | Event                       | Description                               | Type               |
 | --------------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
-
 ## Dependencies
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-block-section --> calcite-action
   style calcite-block-section fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
