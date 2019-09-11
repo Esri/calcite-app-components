@@ -14,9 +14,8 @@
   </head>
 
   <body>
-    <calcite-popover placement="vertical" id="calcite-position-floating-panel">
+    <calcite-popover placement="vertical" id="popover" hidden>
       <calcite-shell-floating-panel
-        hidden
         id="calcite-shell-floating-panel"
         heading="Vertical Shell Floating Panel"
         style="height:150px;"
@@ -26,8 +25,8 @@
       </calcite-shell-floating-panel>
     </calcite-popover>
 
-    <calcite-popover placement="horizontal" id="calcite-position-action-pad">
-      <calcite-action-pad id="action-pad" hidden>
+    <calcite-popover placement="horizontal" id="popover-action-pad" hidden>
+      <calcite-action-pad id="action-pad">
         <calcite-action-group>
           <calcite-action text="Add">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -38,9 +37,8 @@
       </calcite-action-pad>
     </calcite-popover>
 
-    <calcite-popover placement="horizontal" id="calcite-position-floating-panel-2">
+    <calcite-popover placement="horizontal" id="popover-2" hidden>
       <calcite-shell-floating-panel
-        hidden
         id="calcite-shell-floating-panel-2"
         heading="Vertical Shell Floating Panel"
         style="height:150px;"
@@ -558,37 +556,41 @@
       </div>
       <p style="text-align: center;">Box Shadow added to show app edges.</p>
       <script>
-        var actionPad = document.getElementById("action-pad");
-        var calcitePositionActionPad = document.getElementById("calcite-position-action-pad");
+        var popoverActionPad = document.getElementById("popover-action-pad");
         var actionPadButton = document.getElementById("action-pad-button");
         actionPadButton.addEventListener("click", function() {
-          actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
-          calcitePositionActionPad.positionElement = actionPadButton;
-          calcitePositionActionPad.reposition();
+          popoverActionPad.hasAttribute("hidden")
+            ? popoverActionPad.removeAttribute("hidden")
+            : popoverActionPad.setAttribute("hidden", "");
+          popoverActionPad.referenceElement = actionPadButton;
         });
 
-        var calcitePositionFloatingPanel = document.getElementById("calcite-position-floating-panel");
-        var shellFloatingPanel = document.getElementById("calcite-shell-floating-panel");
+        var popoverFloatingPanel = document.getElementById("popover");
         var shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
         shellFloatingPanelButton.addEventListener("click", function() {
-          shellFloatingPanel.hasAttribute("hidden")
-            ? shellFloatingPanel.removeAttribute("hidden")
-            : shellFloatingPanel.setAttribute("hidden", "");
+          popoverFloatingPanel.hasAttribute("hidden")
+            ? popoverFloatingPanel.removeAttribute("hidden")
+            : popoverFloatingPanel.setAttribute("hidden", "");
 
-          calcitePositionFloatingPanel.positionElement = shellFloatingPanelButton;
-          calcitePositionFloatingPanel.reposition();
+          popoverFloatingPanel.referenceElement = shellFloatingPanelButton;
+        });
+        var floatingPanel = document.getElementById("calcite-shell-floating-panel");
+        floatingPanel.addEventListener("calciteShellFloatingPanelClose", function() {
+          popoverFloatingPanel.setAttribute("hidden", "");
         });
 
-        var calcitePositionFloatingPanel2 = document.getElementById("calcite-position-floating-panel-2");
-        var shellFloatingPanel2 = document.getElementById("calcite-shell-floating-panel-2");
+        var popoverFloatingPanel2 = document.getElementById("popover-2");
         var shellFloatingPanelButton2 = document.getElementById("shell-floating-panel-button-2");
         shellFloatingPanelButton2.addEventListener("click", function() {
-          shellFloatingPanel2.hasAttribute("hidden")
-            ? shellFloatingPanel2.removeAttribute("hidden")
-            : shellFloatingPanel2.setAttribute("hidden", "");
+          popoverFloatingPanel2.hasAttribute("hidden")
+            ? popoverFloatingPanel2.removeAttribute("hidden")
+            : popoverFloatingPanel2.setAttribute("hidden", "");
 
-          calcitePositionFloatingPanel2.positionElement = shellFloatingPanelButton2;
-          calcitePositionFloatingPanel2.reposition();
+          popoverFloatingPanel2.referenceElement = shellFloatingPanelButton2;
+        });
+        var floatingPanel2 = document.getElementById("calcite-shell-floating-panel-2");
+        floatingPanel2.addEventListener("calciteShellFloatingPanelClose", function() {
+          popoverFloatingPanel2.setAttribute("hidden", "");
         });
 
         var flowNode = document.getElementById("flow");

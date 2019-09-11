@@ -53,8 +53,7 @@ export class CalciteShellFloatingPanel {
   //
   // --------------------------------------------------------------------------
 
-  hidePanel = () => {
-    this.el.setAttribute("hidden", "");
+  close = () => {
     this.calciteShellFloatingPanelClose.emit();
   };
 
@@ -70,7 +69,7 @@ export class CalciteShellFloatingPanel {
         <div class={CSS.container}>
           <header class={CSS.header}>
             <h3 class={CSS.heading}>{this.heading}</h3>
-            <calcite-action onClick={this.hidePanel} text={this.textClose}>
+            <calcite-action onClick={this.close} text={this.textClose}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           </header>

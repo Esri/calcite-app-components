@@ -2,8 +2,6 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CalcitePlacement } from "../interfaces";
 
-// https://www.npmjs.com/package/popper.js
-// https://popper.js.org/
 import Popper from "popper.js";
 
 @Component({
@@ -20,8 +18,8 @@ export class CalcitePopover {
 
   /**
    * Determines where the element will be positioned.
-   * horizontal: Positioned to the left or right of the positionElement.
-   * vertical: Positioned above or below the positionElement.
+   * horizontal: Positioned to the left or right of the referenceElement.
+   * vertical: Positioned above or below the referenceElement.
    */
   @Prop({ reflect: true }) placement: CalcitePlacement = "horizontal";
 
@@ -33,10 +31,10 @@ export class CalcitePopover {
   /**
    * Reference HTMLElement used to position this component according to the placement property.
    */
-  @Prop() positionElement: HTMLElement;
+  @Prop() referenceElement: HTMLElement;
 
-  @Watch("positionElement")
-  positionElementHandler() {
+  @Watch("referenceElement")
+  referenceElementHandler() {
     this.destroyPopper();
     this.reposition();
   }
@@ -67,7 +65,7 @@ export class CalcitePopover {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCalciteShellFloatingPanelElement;
+  @Element() el: HTMLCalcitePopoverElement;
 
   @State() popper: Popper;
 
@@ -92,12 +90,15 @@ export class CalcitePopover {
   // --------------------------------------------------------------------------
 
   @Method() async reposition(): Promise<void> {
-    const { el, placement: componentPlacement, popper, positionElement, xOffset, yOffset } = this;
+    const { el, placement: componentPlacement, popper, referenceElement, xOffset, yOffset } = this;
 
     const placement = componentPlacement === "vertical" ? "bottom-start" : "auto-start";
     const offsetEnabled = !!(yOffset || xOffset);
 
-    const modifiers = {
+    const modifiers: Popper.Modifiers = {
+      hide: {
+        enabled: false
+      },
       offset: {
         enabled: offsetEnabled,
         offset: `${yOffset}, ${xOffset}`
@@ -114,8 +115,8 @@ export class CalcitePopover {
       return;
     }
 
-    if (el && placement && positionElement) {
-      const newPopper = new Popper(positionElement, el, {
+    if (referenceElement) {
+      const newPopper = new Popper(referenceElement, el, {
         eventsEnabled: false,
         placement,
         modifiers
