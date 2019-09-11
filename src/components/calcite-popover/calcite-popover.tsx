@@ -119,7 +119,16 @@ export class CalcitePopover {
       const newPopper = new Popper(referenceElement, el, {
         eventsEnabled: false,
         placement,
-        modifiers
+        modifiers,
+        onCreate: (data) => {
+          if (
+            data.originalPlacement === "bottom-start" &&
+            data.offsets.reference.left > document.body.clientWidth / 2
+          ) {
+            data.instance.options.placement = "bottom-end";
+            data.instance.scheduleUpdate();
+          }
+        }
       });
 
       window.addEventListener("resize", newPopper.scheduleUpdate, { passive: true });
