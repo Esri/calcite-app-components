@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Demos - PickList</title>
+    <script src="head.js"></script>
+  </head>
+  <body>
+    <calcite-demo-nav page-id="calcite-pick-list"></calcite-demo-nav>
+    <section class="example-container">
+      <calcite-pick-list id="one" text-heading="Selection Pick List - Multi" multiple>
+        <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8"/>
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8"/>
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8"/>
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+      </calcite-pick-list>
+      <script>
+        const pickList = document.querySelector("#one");
+        pickList.addEventListener("calcitePickListSelectionChange", event => {
+          console.log(event.detail);
+        });
+      </script>
+
+      <calcite-pick-list id="two" text-heading="Selection Pick List">
+        <calcite-pick-list-item text-heading="Vanilla" text-description="plain" value="vanilla">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8"/>
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="Chocolate" text-description="savory" value="chocolate">
+            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+            </calcite-action>
+          </calcite-pick-list-item>
+      </calcite-pick-list>
+      <script>
+        const pickList2 = document.querySelector("#two");
+        pickList2.addEventListener("calcitePickListSelectionChange", event => {
+          console.log(event.detail);
+        });
+      </script>
+      <calcite-pick-list id="three" text-heading="Configuration Pick List - Draggable" mode="configuration" drag-enabled>
+        <calcite-pick-list-group text-group-title="numbers">
+          <calcite-pick-list-item text-heading="one" text-description="fish" value="one" icon="grip">
+            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+            </calcite-action>
+          </calcite-pick-list-item>
+          <calcite-pick-list-item text-heading="two" text-description="fish" value="two" icon="grip">
+            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+            </calcite-action>
+          </calcite-pick-list-item>
+        </calcite-pick-list-group>
+        <calcite-pick-list-group text-group-title="colors">
+          <calcite-pick-list-item text-heading="red" text-description="fish" value="red" icon="grip">
+            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+            </calcite-action>
+          </calcite-pick-list-item>
+          <calcite-pick-list-item text-heading="blue" text-description="fish" value="blue" icon="grip">
+            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+            </calcite-action>
+          </calcite-pick-list-item>
+        </calcite-pick-list-group>
+      </calcite-pick-list>
+      <script>
+        const pickList3 = document.querySelector("#three");
+        pickList3.addEventListener("calcitePickListSelectionChange", event => {
+          console.log(event.detail);
+        });
+      </script>
+    </section>
+  </body>
+</html>
