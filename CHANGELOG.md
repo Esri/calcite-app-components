@@ -3,12 +3,12 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [UNRELEASED]
+## [v2.2.0]
 
 ### Features
 
 - Tip manager pagination supports arrow keys
-- New Component: PickList
+- New Component: [PickList](./src/components/calcite-pick-list/readme.md)
 
 ## [v2.1.0]
 
