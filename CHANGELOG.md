@@ -3,6 +3,13 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [UNRELEASED]
+
+### Features
+
+- Tip manager pagination supports arrow keys
+- New Component: PickList
+
 ## [v2.1.0]
 
 ### Features
