@@ -123,6 +123,9 @@ export class CalcitePopover {
         onCreate: (data) => {
           if (
             data.originalPlacement === "bottom-start" &&
+            document.body.clientWidth &&
+            data.offsets &&
+            data.offsets.reference &&
             data.offsets.reference.left > document.body.clientWidth / 2
           ) {
             data.instance.options.placement = "bottom-end";
