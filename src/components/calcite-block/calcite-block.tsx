@@ -38,6 +38,11 @@ export class CalciteBlock {
   open = false;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Block summary.
    */
   @Prop()

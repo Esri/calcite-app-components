@@ -15,6 +15,9 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
   box-shadow: 0 0 0 1px var(--calcite-app-border);
 }
 
+:host([loading]) {
+}
+
 .header-container {
   background-color: var(--calcite-app-background);
 

@@ -33,6 +33,11 @@ export class CalcitePickList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Mode controls the presentation of the items in their selected and deselected states.
    * Selection mode shows either radio buttons or checkboxes depending on the value of multiple
    * Configuration mode relies on a color highlight on the edge of the item for selected
@@ -151,7 +156,10 @@ export class CalcitePickList {
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))];
+    const sortGroups = [
+      this.el,
+      ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))
+    ];
     sortGroups.forEach((sortGroup) => {
       this.sortables.push(
         Sortable.create(sortGroup, {

@@ -47,6 +47,11 @@ export class CalciteAction {
   @Prop() label: string;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Text that accompanies the action icon.
    */
   @Prop() text: string;
