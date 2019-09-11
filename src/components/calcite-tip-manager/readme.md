@@ -6,11 +6,11 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute               | Description                                        | Type                | Default                       |
 | --------------------- | ----------------------- | -------------------------------------------------- | ------------------- | ----------------------------- |
+| `tabindex`            | `tabindex`              |                                                    | `number`            | `0`                           |
 | `textClose`           | `text-close`            | Alternate text for closing the Tip Manager.        | `string`            | `TEXT.close`                  |
 | `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.       | `string`            | `TEXT.defaultGroupTitle`      |
 | `textNext`            | `text-next`             | Alternate text for navigating to the next tip.     | `string`            | `TEXT.next`                   |
@@ -18,50 +18,40 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 | `textPrevious`        | `text-previous`         | Alternate text for navigating to the previous tip. | `string`            | `TEXT.previous`               |
 | `theme`               | `theme`                 | Used to set the component's color scheme.          | `"dark" \| "light"` | `undefined`                   |
 
-
 ## Events
 
 | Event                    | Description                                 | Type               |
 | ------------------------ | ------------------------------------------- | ------------------ |
 | `calciteTipManagerClose` | Emitted when the component has been closed. | `CustomEvent<any>` |
 
-
 ## Methods
 
 ### `nextTip() => Promise<void>`
 
-
-
 #### Returns
 
 Type: `Promise<void>`
-
-
 
 ### `previousTip() => Promise<void>`
 
-
-
 #### Returns
 
 Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-tip-manager --> calcite-action
   style calcite-tip-manager fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

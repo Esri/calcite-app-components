@@ -2,7 +2,7 @@ const chalk = require('chalk');
 const childProcess = require("child_process");
 const branch = childProcess.execSync("git rev-parse --abbrev-ref HEAD");
 
-if( branch.toString() === "master" ) {
+if( branch.toString().trim() === "master" ) {
   process.exit();
 } else {
   console.log(chalk.green(`
@@ -17,7 +17,7 @@ if( branch.toString() === "master" ) {
   *  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\
   *   \\/_____/   \\/_/ /_/   \\/_/ /_/   \\/_____/   \\/_/ /_/
   *
-  *`, chalk.red(`You may only run`, chalk.white('$ npm publish'), `from the master branch. You are not on master.
+  *`, chalk.red(`You may only run`, chalk.white('$ npm publish'), `from the master branch. You are on ${branch.toString()}.
   `)));
   process.exit(1);
 }

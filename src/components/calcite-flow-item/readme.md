@@ -13,7 +13,6 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property         | Attribute          | Description                               | Type                | Default      |
@@ -26,27 +25,26 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 | `textOpen`       | `text-open`        | 'Open' text string.                       | `string`            | `TEXT.open`  |
 | `theme`          | `theme`            | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined`  |
 
-
 ## Events
 
 | Event                      | Description                                    | Type               |
 | -------------------------- | ---------------------------------------------- | ------------------ |
 | `calciteFlowItemBackClick` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
 
-
 ## Dependencies
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-flow-item --> calcite-action
   style calcite-flow-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
