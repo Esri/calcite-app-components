@@ -6,11 +6,10 @@ The `calcite-shell-floating-panel` component is a positioned container that appe
 
 ## Properties
 
-| Property          | Attribute   | Description                                                                                                                                                                                                                                                                                    | Type                           | Default     |
-| ----------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------- |
-| `heading`         | `heading`   | Panel heading                                                                                                                                                                                                                                                                                  | `string`                       | `undefined` |
-| `placement`       | `placement` | Determines where the element will be displayed. side: dynamically left or right based on whether we're in a leading or trailing shell-panel. over: centered on top of trigger and covers trigger. anchor: dynamically above or below based on how close trigger is to top or bottom of window. | `"anchor" \| "over" \| "side"` | `undefined` |
-| `positionElement` | --          | HTMLElement used to position this element according to the placement.                                                                                                                                                                                                                          | `HTMLElement`                  | `undefined` |
+| Property    | Attribute    | Description                           | Type     | Default      |
+| ----------- | ------------ | ------------------------------------- | -------- | ------------ |
+| `heading`   | `heading`    | Panel heading                         | `string` | `undefined`  |
+| `textClose` | `text-close` | Alternate text for closing the panel. | `string` | `TEXT.close` |
 
 ## Events
 
