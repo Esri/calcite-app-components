@@ -21,6 +21,12 @@ See the [calcite-shell-panel demo](https://esri.github.io/calcite-app-components
 | `collapsed` | `collapsed` | Hide the content panel.       | `boolean`                 | `false`     |
 | `layout`    | `layout`    | Arrangement of the component. | `"leading" \| "trailing"` | `"leading"` |
 
+## Events
+
+| Event                     | Description                             | Type               |
+| ------------------------- | --------------------------------------- | ------------------ |
+| `calciteShellPanelToggle` | Emitted when collapse has been toggled. | `CustomEvent<any>` |
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

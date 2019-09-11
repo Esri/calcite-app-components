@@ -35,7 +35,7 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
 

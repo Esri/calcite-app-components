@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, Watch, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
 import CalciteIcon from "../utils/CalciteIcon";
@@ -32,10 +32,12 @@ export class CalciteActionBar {
   @Watch("expanded")
   expandedHandler(newValue: boolean) {
     this.setTextEnabled(newValue);
+
+    this.calciteActionBarToggle.emit();
   }
 
   /**
-   * Updates the label of the expand icon when the component is collapsed.
+   * Updates the label of the expand icon when the component is not expanded.
    */
   @Prop() textExpand = "Expand";
 
@@ -57,6 +59,15 @@ export class CalciteActionBar {
 
   // --------------------------------------------------------------------------
   //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when expanded has been toggled.
+   */
+  @Event() calciteActionBarToggle: EventEmitter;
+
   //  Private Properties
   //
   // --------------------------------------------------------------------------

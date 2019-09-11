@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
@@ -21,10 +21,26 @@ export class CalciteShellPanel {
    */
   @Prop({ reflect: true }) collapsed = false;
 
+  @Watch("collapsed")
+  watchHandler() {
+    this.calciteShellPanelToggle.emit();
+  }
+
   /**
    * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "leading";
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when collapse has been toggled.
+   */
+  @Event() calciteShellPanelToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
