@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
@@ -14,6 +14,39 @@
   </head>
 
   <body>
+    <calcite-popover placement="vertical" id="popover" hidden>
+      <calcite-shell-floating-panel
+        id="calcite-shell-floating-panel"
+        heading="Vertical Shell Floating Panel"
+        style="height:150px;"
+        ><span>
+          Shell Floating Panel Content
+        </span>
+      </calcite-shell-floating-panel>
+    </calcite-popover>
+
+    <calcite-popover placement="horizontal" id="popover-action-pad" hidden>
+      <calcite-action-pad id="action-pad">
+        <calcite-action-group>
+          <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </calcite-action-group>
+      </calcite-action-pad>
+    </calcite-popover>
+
+    <calcite-popover placement="horizontal" id="popover-2" hidden>
+      <calcite-shell-floating-panel
+        id="calcite-shell-floating-panel-2"
+        heading="Vertical Shell Floating Panel"
+        style="height:150px;"
+        ><span>
+          Shell Floating Panel Content
+        </span>
+      </calcite-shell-floating-panel>
+    </calcite-popover>
     <nav>
       <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
     </nav>
@@ -27,8 +60,11 @@
           >
         </p>
 
-        <h2>LTR</h2>
-        <p>View the <a href="calcite-shell.html">LTR demo</a>.</p>
+        <h2>Demo Navigation</h2>
+        <ul>
+          <li>View the <a href="calcite-shell.html">LTR demo</a>.</li>
+          <li>View the <a href="calcite-shell-rtl.html">RTL demo</a>.</li>
+        </ul>
 
         <style>
           .calcite-shell-container {
@@ -40,9 +76,6 @@
             margin: 0 auto;
             box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
             position: relative;
-          }
-          .button {
-            margin: 20px;
           }
         </style>
 
@@ -79,40 +112,9 @@
         </script>
 
         <h2>Light Theme</h2>
-        <div id="light_theme_container" class="calcite-shell-container" dir="rtl">
+        <div class="calcite-shell-container">
           <calcite-shell>
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-shell-floating-panel
-                id="shell-floating-panel"
-                slot="shell-floating-panel"
-                heading="Anchored Shell Floating Panel"
-                placement="anchor"
-                hidden
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-shell-floating-panel
-                id="shell-floating-panel-over"
-                slot="shell-floating-panel"
-                heading="Over Shell Floating Panel"
-                placement="over"
-                hidden
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-action-pad id="action-pad" placement="side" slot="action-pad" hidden>
-                <calcite-action-group>
-                  <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
-                  </calcite-action>
-                </calcite-action-group>
-              </calcite-action-pad>
               <calcite-action-bar slot="action-bar" theme="dark">
                 <calcite-action-group>
                   <calcite-action text="Add">
@@ -136,7 +138,7 @@
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
-                  <calcite-action text="Add">
+                  <calcite-action text="An unbelievably long title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                       <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
                     </svg>
@@ -160,19 +162,23 @@
               <div>
                 <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
                   <calcite-block-content>
-                    <calcite-action text="Side ActionPad" text-enabled id="action-pad-button" indicator>
+                    <calcite-action text="horizontal ActionPad" text-enabled id="action-pad-button" indicator>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                         <path
                           d="M13.071 1H1.93a.929.929 0 0 0-.93.929V13.07a.929.929 0 0 0 .929.929H13.07a.929.929 0 0 0 .929-.929V1.93a.929.929 0 0 0-.928-.93zM13 13H2V2h11zm-7-1V3l4.5 4.5zm1-2.414L9.086 7.5 7 5.414z"
                         />
                       </svg>
                     </calcite-action>
-                    <calcite-action text="Anchored Shell Floating Panel" text-enabled id="shell-floating-panel-button">
+                    <calcite-action text="Vertical Shell Floating Panel" text-enabled id="shell-floating-panel-button">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                         <path d="M2 14h4v1H1v-5h1zm12-8h1V1h-5v1h4zm0 4v4h-4v1h5v-5zM1 6h1V2h4V1H1z" />
                       </svg>
                     </calcite-action>
-                    <calcite-action text="Over Shell Floating Panel" text-enabled id="shell-floating-panel-over-button">
+                    <calcite-action
+                      text="horizontal Shell Floating Panel"
+                      text-enabled
+                      id="shell-floating-panel-button-2"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                         <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z" />
                       </svg>
@@ -227,7 +233,7 @@
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
-                  <calcite-action text="Add">
+                  <calcite-action text="An unbelievably long title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                       <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
                     </svg>
@@ -327,30 +333,10 @@
 
         <h2>Dark Theme</h2>
 
-        <div class="calcite-shell-container" dir="rtl">
+        <div class="calcite-shell-container">
           <calcite-shell theme="dark">
             <calcite-shell-panel slot="primary-panel" layout="leading">
-              <calcite-shell-floating-panel
-                slot="shell-floating-panel"
-                heading="Anchored Shell Floating Panel"
-                placement="anchor"
-                hidden
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-shell-floating-panel
-                slot="shell-floating-panel"
-                heading="Over Shell Floating Panel"
-                placement="over"
-                hidden
-                style="height:150px;"
-                ><span>
-                  Shell Floating Panel Content
-                </span>
-              </calcite-shell-floating-panel>
-              <calcite-action-pad placement="side" slot="action-pad" hidden>
+              <calcite-action-pad hidden>
                 <calcite-action-group>
                   <calcite-action text="Add">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -382,7 +368,7 @@
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
-                  <calcite-action text="Add">
+                  <calcite-action text="A long action title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                       <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
                     </svg>
@@ -413,7 +399,7 @@
                         />
                       </svg>
                     </calcite-action>
-                    <calcite-action text="Anchored Shell Floating Panel" text-enabled>
+                    <calcite-action text="Vertical Shell Floating Panel" text-enabled>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
                         <path d="M2 14h4v1H1v-5h1zm12-8h1V1h-5v1h4zm0 4v4h-4v1h5v-5zM1 6h1V2h4V1H1z" />
                       </svg>
@@ -573,32 +559,41 @@
       </div>
       <p style="text-align: center;">Box Shadow added to show app edges.</p>
       <script>
-        var actionPad = document.getElementById("action-pad");
+        var popoverActionPad = document.getElementById("popover-action-pad");
         var actionPadButton = document.getElementById("action-pad-button");
         actionPadButton.addEventListener("click", function() {
-          actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
-
-          actionPad.positionElement = actionPadButton;
+          popoverActionPad.hasAttribute("hidden")
+            ? popoverActionPad.removeAttribute("hidden")
+            : popoverActionPad.setAttribute("hidden", "");
+          popoverActionPad.referenceElement = actionPadButton;
         });
 
-        var shellFloatingPanel = document.getElementById("shell-floating-panel");
+        var popoverFloatingPanel = document.getElementById("popover");
         var shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
         shellFloatingPanelButton.addEventListener("click", function() {
-          shellFloatingPanel.hasAttribute("hidden")
-            ? shellFloatingPanel.removeAttribute("hidden")
-            : shellFloatingPanel.setAttribute("hidden", "");
+          popoverFloatingPanel.hasAttribute("hidden")
+            ? popoverFloatingPanel.removeAttribute("hidden")
+            : popoverFloatingPanel.setAttribute("hidden", "");
 
-          shellFloatingPanel.positionElement = shellFloatingPanelButton;
+          popoverFloatingPanel.referenceElement = shellFloatingPanelButton;
+        });
+        var floatingPanel = document.getElementById("calcite-shell-floating-panel");
+        floatingPanel.addEventListener("calciteShellFloatingPanelClose", function() {
+          popoverFloatingPanel.setAttribute("hidden", "");
         });
 
-        var shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
-        var shellFloatingPanelOverButton = document.getElementById("shell-floating-panel-over-button");
-        shellFloatingPanelOverButton.addEventListener("click", function() {
-          shellFloatingPanelOver.hasAttribute("hidden")
-            ? shellFloatingPanelOver.removeAttribute("hidden")
-            : shellFloatingPanelOver.setAttribute("hidden", "");
+        var popoverFloatingPanel2 = document.getElementById("popover-2");
+        var shellFloatingPanelButton2 = document.getElementById("shell-floating-panel-button-2");
+        shellFloatingPanelButton2.addEventListener("click", function() {
+          popoverFloatingPanel2.hasAttribute("hidden")
+            ? popoverFloatingPanel2.removeAttribute("hidden")
+            : popoverFloatingPanel2.setAttribute("hidden", "");
 
-          shellFloatingPanelOver.positionElement = shellFloatingPanelOverButton;
+          popoverFloatingPanel2.referenceElement = shellFloatingPanelButton2;
+        });
+        var floatingPanel2 = document.getElementById("calcite-shell-floating-panel-2");
+        floatingPanel2.addEventListener("calciteShellFloatingPanelClose", function() {
+          popoverFloatingPanel2.setAttribute("hidden", "");
         });
 
         var flowNode = document.getElementById("flow");
