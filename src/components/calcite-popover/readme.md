@@ -6,6 +6,7 @@
 
 | Property           | Attribute   | Description                                                                                                                                                                     | Type                         | Default        |
 | ------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
+| `open`             | `open`      | Display and position the component.                                                                                                                                             | `boolean`                    | `false`        |
 | `placement`        | `placement` | Determines where the element will be positioned. horizontal: Positioned to the left or right of the referenceElement. vertical: Positioned above or below the referenceElement. | `"horizontal" \| "vertical"` | `"horizontal"` |
 | `referenceElement` | --          | Reference HTMLElement used to position this component according to the placement property.                                                                                      | `HTMLElement`                | `undefined`    |
 | `xOffset`          | `x-offset`  | Offset the position of the popover in the horizontal direction.                                                                                                                 | `number`                     | `0`            |
@@ -14,6 +15,12 @@
 ## Methods
 
 ### `reposition() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
+### `toggle() => Promise<void>`
 
 #### Returns
 
