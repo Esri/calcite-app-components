@@ -21,7 +21,7 @@ export class CalcitePopover {
   // --------------------------------------------------------------------------
 
   /**
-   * Show the popover.
+   * Display and position the component.
    */
   @Prop({ reflect: true }) open = false;
 
