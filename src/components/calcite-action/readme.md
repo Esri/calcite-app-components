@@ -23,12 +23,12 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 
 ### Used by
 
-- [calcite-action-bar](..\calcite-action-bar)
-- [calcite-block-section](..\calcite-block-section)
-- [calcite-flow-item](..\calcite-flow-item)
-- [calcite-shell-floating-panel](..\calcite-shell-floating-panel)
-- [calcite-tip](..\calcite-tip)
-- [calcite-tip-manager](..\calcite-tip-manager)
+- [calcite-action-bar](../calcite-action-bar)
+- [calcite-block-section](../calcite-block-section)
+- [calcite-flow-item](../calcite-flow-item)
+- [calcite-shell-floating-panel](../calcite-shell-floating-panel)
+- [calcite-tip](../calcite-tip)
+- [calcite-tip-manager](../calcite-tip-manager)
 
 ### Graph
 
