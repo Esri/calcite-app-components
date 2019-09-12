@@ -151,7 +151,10 @@ export class CalcitePickList {
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [this.el, ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))];
+    const sortGroups = [
+      this.el,
+      ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))
+    ];
     sortGroups.forEach((sortGroup) => {
       this.sortables.push(
         Sortable.create(sortGroup, {

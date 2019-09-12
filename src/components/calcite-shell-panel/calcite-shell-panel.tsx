@@ -65,12 +65,6 @@ export class CalciteShellPanel {
       mainNodes.reverse();
     }
 
-    return (
-      <Host>
-        {mainNodes}
-        <slot name="shell-floating-panel" />
-        <slot name="action-pad" />
-      </Host>
-    );
+    return <Host>{mainNodes}</Host>;
   }
 }
