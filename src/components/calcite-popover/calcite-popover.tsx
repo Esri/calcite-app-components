@@ -2,6 +2,10 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CalcitePlacement } from "../interfaces";
 
+import { CSS } from "./resources";
+
+import classnames from "classnames";
+
 import Popper from "popper.js";
 
 @Component({
@@ -15,6 +19,20 @@ export class CalcitePopover {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Show the popover.
+   */
+  @Prop({ reflect: true }) open = false;
+
+  @Watch("open")
+  openHandler(open: boolean) {
+    if (open) {
+      this.reposition();
+    } else {
+      this.destroyPopper();
+    }
+  }
 
   /**
    * Determines where the element will be positioned.
@@ -90,7 +108,15 @@ export class CalcitePopover {
   // --------------------------------------------------------------------------
 
   @Method() async reposition(): Promise<void> {
-    const { el, placement: componentPlacement, popper, referenceElement, xOffset, yOffset } = this;
+    const {
+      el,
+      placement: componentPlacement,
+      open,
+      popper,
+      referenceElement,
+      xOffset,
+      yOffset
+    } = this;
 
     const placement = componentPlacement === "vertical" ? "bottom-start" : "auto-start";
     const offsetEnabled = !!(yOffset || xOffset);
@@ -115,7 +141,7 @@ export class CalcitePopover {
       return;
     }
 
-    if (referenceElement) {
+    if (referenceElement && open) {
       const newPopper = new Popper(referenceElement, el, {
         eventsEnabled: false,
         placement,
@@ -138,6 +164,10 @@ export class CalcitePopover {
 
       this.popper = newPopper;
     }
+  }
+
+  @Method() async toggle(): Promise<void> {
+    this.open = !this.open;
   }
 
   // --------------------------------------------------------------------------
@@ -166,7 +196,9 @@ export class CalcitePopover {
   render() {
     return (
       <Host>
-        <slot />
+        <div class={classnames(CSS.container, { [CSS.containerOpen]: this.open })}>
+          <slot />
+        </div>
       </Host>
     );
   }
