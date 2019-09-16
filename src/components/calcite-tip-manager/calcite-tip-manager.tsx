@@ -58,8 +58,6 @@ export class CalciteTipManager {
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
-  @Prop({ reflect: true }) tabindex = 0;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -86,6 +84,8 @@ export class CalciteTipManager {
 
   observer = new MutationObserver(() => this.setUpTips());
 
+  tabindex = "0";
+
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -94,6 +94,9 @@ export class CalciteTipManager {
 
   connectedCallback() {
     this.setUpTips();
+    if (this.el.hasAttribute("tabindex")) {
+      this.tabindex = this.el.getAttribute("tabindex");
+    }
   }
 
   componentDidLoad() {
@@ -242,7 +245,7 @@ export class CalciteTipManager {
       return <Host />;
     }
     return (
-      <Host onKeydown={this.tipManagerKeyDownHandler}>
+      <Host onKeydown={this.tipManagerKeyDownHandler} tabindex={this.tabindex}>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
           <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
