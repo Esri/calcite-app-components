@@ -46,12 +46,12 @@ export class CalciteFlowItem {
   @Prop() textBack = TEXT.back;
 
   /**
-   * 'Close' text string.
+   * 'Close' text string for the menu.
    */
   @Prop() textClose = TEXT.close;
 
   /**
-   * 'Open' text string.
+   * 'Open' text string for the menu.
    */
   @Prop() textOpen = TEXT.open;
 
