@@ -48,7 +48,7 @@ export class CalcitePickListItem {
     }
   }
   /**
-   * Indicates what icon the pick-list-item has (or not).
+   * The icon for the pick-list-item. If no icon to be used, null is passed.
    */
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
