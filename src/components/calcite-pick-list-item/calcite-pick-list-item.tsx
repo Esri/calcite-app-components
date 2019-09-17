@@ -17,7 +17,6 @@ import {
   handleVertical24,
   square16
 } from "@esri/calcite-ui-icons";
-import classnames from "classnames";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import { CSS_UTILITY } from "../utils/resources";
@@ -162,10 +161,10 @@ export class CalcitePickListItem {
 
     return (
       <Host
-        class={classnames({
+        class={{
           [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
           [CSS_UTILITY.rtl]: this.dir === "rtl"
-        })}
+        }}
         onClick={this.pickListClickHandler}
         selected={this.isSelected}
       >

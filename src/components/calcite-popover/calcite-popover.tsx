@@ -2,8 +2,6 @@ import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stenci
 
 import { CSS } from "./resources";
 
-import classnames from "classnames";
-
 import Popper from "popper.js";
 
 @Component({
@@ -194,7 +192,7 @@ export class CalcitePopover {
   render() {
     return (
       <Host>
-        <div class={classnames(CSS.container, { [CSS.containerOpen]: this.open })}>
+        <div class={{ [CSS.container]: true, [CSS.containerOpen]: this.open }}>
           <slot />
         </div>
       </Host>

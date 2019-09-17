@@ -4,8 +4,6 @@ import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icon
 
 import { getElementDir } from "../utils/dom";
 
-import classnames from "classnames";
-
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
@@ -139,7 +137,7 @@ export class CalciteFlowItem {
     const { menuOpen } = this;
 
     return (
-      <div class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}>
+      <div class={{ [CSS.menu]: true, [CSS.menuOpen]: menuOpen }}>
         <slot name="menu-actions" />
       </div>
     );
@@ -189,15 +187,17 @@ export class CalciteFlowItem {
 
     const rtl = getElementDir(el) === "rtl";
 
-    const headingClasses = {
-      [CSS.heading]: true,
-      [CSS.headingFirst]: !showBackButton
-    };
-
     const headerNode = (
       <header class={CSS.header}>
         {this.renderBackButton(rtl)}
-        <h2 class={classnames(headingClasses)}>{heading}</h2>
+        <h2
+          class={{
+            [CSS.heading]: true,
+            [CSS.headingFirst]: !showBackButton
+          }}
+        >
+          {heading}
+        </h2>
         {this.renderHeaderActions()}
       </header>
     );
@@ -211,9 +211,10 @@ export class CalciteFlowItem {
     return (
       <Host>
         <article
-          class={classnames(CSS.container, {
+          class={{
+            [CSS.container]: true,
             [CSS_UTILITY.rtl]: rtl
-          })}
+          }}
         >
           {headerNode}
           {contentContainerNode}

@@ -11,7 +11,6 @@ import {
   h
 } from "@stencil/core";
 import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
-import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { getElementDir } from "../utils/dom";
@@ -241,6 +240,9 @@ export class CalciteTipManager {
     if (this.total === 0) {
       return <Host />;
     }
+
+    const { direction } = this;
+
     return (
       <Host onKeydown={this.tipManagerKeyDownHandler}>
         <header class={CSS.header}>
@@ -249,7 +251,14 @@ export class CalciteTipManager {
             <CalciteIcon size="16" path={x16} />
           </calcite-action>
         </header>
-        <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
+        <div
+          class={{
+            [CSS.tipContainer]: true,
+            [CSS.advancing]: direction === "advancing",
+            [CSS.retreating]: direction === "retreating"
+          }}
+          key={this.selectedIndex}
+        >
           <slot />
         </div>
         {this.renderPagination()}
