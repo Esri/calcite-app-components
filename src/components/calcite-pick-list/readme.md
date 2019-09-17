@@ -1,6 +1,6 @@
 # calcite-pick-list
 
-The `calcite-pick-list` component contains a grouping of `calcite-pick-list-items` in a panel that can be selected or deselected via shift click to be shown on the view.
+The `calcite-pick-list` component contains `calcite-pick-list-items` stacked in a panel that can be selected or deselected via shift click to be shown on the view.
 
 <!-- Auto Generated Below -->
 
