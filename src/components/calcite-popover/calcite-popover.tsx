@@ -1,7 +1,5 @@
 import { Component, Element, Host, Method, Prop, State, Watch, h } from "@stencil/core";
 
-import { CalcitePlacement } from "../interfaces";
-
 import { CSS } from "./resources";
 
 import classnames from "classnames";
@@ -39,7 +37,7 @@ export class CalcitePopover {
    * horizontal: Positioned to the left or right of the referenceElement.
    * vertical: Positioned above or below the referenceElement.
    */
-  @Prop({ reflect: true }) placement: CalcitePlacement = "horizontal";
+  @Prop({ reflect: true }) placement: "horizontal" | "vertical" = "horizontal";
 
   @Watch("placement")
   placementHandler() {
