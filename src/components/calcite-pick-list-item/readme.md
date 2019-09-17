@@ -1,5 +1,7 @@
 # calcite-pick-list-item
 
+The `calcite-pick-list-item` is a child element of `calcite-pick-list`. Items are displayed and can be selected or deselected to be shown on the view.
+
 <!-- Auto Generated Below -->
 
 ## Properties

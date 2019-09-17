@@ -47,13 +47,24 @@ export class CalcitePickListItem {
       this.emitChangeEvent();
     }
   }
-
+  /**
+   * Indicates what icon the pick-list-item has (or not).
+   */
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
+  /**
+   * The heading for the pick-list-item.
+   */
   @Prop({ reflect: true }) textHeading: string;
 
+  /**
+   * The description for the pick-list-item.
+   */
   @Prop({ reflect: true }) textDescription: string;
 
+  /**
+   * The value of the pick-list-item.
+   */
   @Prop({ reflect: true }) value: string;
 
   // --------------------------------------------------------------------------

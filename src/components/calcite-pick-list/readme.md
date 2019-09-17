@@ -1,5 +1,7 @@
 # calcite-pick-list
 
+The pick-list component
+
 <!-- Auto Generated Below -->
 
 ## Properties
