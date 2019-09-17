@@ -13,7 +13,7 @@ export class CalcitePickListGroup {
   // --------------------------------------------------------------------------
 
   /**
-   * The title used for all nested calcite-pick-list rows.
+   * The title used for all nested calcite-pick-list rows. Not to be confused with the heading of the entire component.
    */
   @Prop({ reflect: true }) textGroupTitle: string;
 
