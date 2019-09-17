@@ -4,13 +4,6 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/calcite-tip.html).
 
-## Slots
-
-| Name   | Description                                                      | Type                |
-| ------ | ---------------------------------------------------------------- | ------------------- |
-| `info` | A slot for adding an HTML element to the body of the tip.        | `HTMLElement`       |
-| `link` | A slot for adding an HTML anchor element to the body of the tip. | `HTMLAnchorElement` |
-
 <!-- Auto Generated Below -->
 
 ## Properties

@@ -8,6 +8,9 @@ import { getElementDir } from "../utils/dom";
 
 import { CSS } from "./resources";
 
+/**
+ * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
+ */
 @Component({
   tag: "calcite-action-bar",
   styleUrl: "calcite-action-bar.scss",

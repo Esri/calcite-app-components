@@ -6,6 +6,9 @@ import { CalciteTheme } from "../interfaces";
 
 const CONTROL_SLOT_NAME = "control";
 
+/**
+ * @slot control - A slot for adding a single HTML input element in a header.
+ */
 @Component({
   tag: "calcite-block",
   styleUrl: "calcite-block.scss",
