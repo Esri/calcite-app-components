@@ -24,6 +24,13 @@ See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/c
 | ------------------- | ---------------------------------------------- | ------------------ |
 | `calciteTipDismiss` | Emitted when the component has been dismissed. | `CustomEvent<any>` |
 
+## Slots
+
+| Slot     | Description                                                      |
+| -------- | ---------------------------------------------------------------- |
+| `"info"` | A slot for adding an HTML element to the body of the tip.        |
+| `"link"` | A slot for adding an HTML anchor element to the body of the tip. |
+
 ## Dependencies
 
 ### Depends on

@@ -19,6 +19,14 @@ See the [calcite-shell-panel demo](https://esri.github.io/calcite-app-components
 | ------------------------- | --------------------------------------- | ------------------ |
 | `calciteShellPanelToggle` | Emitted when collapse has been toggled. | `CustomEvent<any>` |
 
+## Slots
+
+| Slot                     | Description                                                                                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `"action-bar"`           | A slot for adding a `calcite-action-bar` to the panel.                                                                                           |
+| `"action-pad"`           | A slot for adding a `calcite-action-pad` to the panel. The action pad will be positioned relative to the shell panel when displayed.             |
+| `"shell-floating-panel"` | A slot for adding `calcite-shell-floating-panel` to the panel. The floating panel will be positioned relative to the shell panel when displayed. |
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

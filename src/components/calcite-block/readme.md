@@ -24,6 +24,12 @@ See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos
 | -------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
+## Slots
+
+| Slot        | Description                                                |
+| ----------- | ---------------------------------------------------------- |
+| `"control"` | A slot for adding a single HTML input element in a header. |
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
