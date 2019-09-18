@@ -30,6 +30,7 @@ $tip-max-width: 540px;
   display: block;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
   background-color: var(--calcite-app-background);
+  min-height: 150px;
 }
 
 .header .heading {

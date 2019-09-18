@@ -1,7 +1,7 @@
 {
-  "name": "calcite-app-components",
-  "version": "2.0.2",
-  "description": "A collection of calcite components for building single page applications.",
+  "name": "@esri/calcite-app-components",
+  "version": "2.3.0",
+  "description": "A collection of web components for building single-page applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -17,13 +17,18 @@
     "build": "stencil build",
     "docs": "stencil build --config stencil.docs.config.ts",
     "lint": "tslint src/components/**/*.ts?(x)",
-    "release:prepare": "npm version prerelease --no-git-tag-version",
-    "release:publish": "./support/release.sh",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",
-    "test:watchAll": "stencil test --spec --e2e --watchAll"
+    "test:watchAll": "stencil test --spec --e2e --watchAll",
+    "preversion": "npm install && npm test",
+    "version": "npm run build && npm run docs && git add .",
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "node ./support/prepublish.js",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
@@ -32,9 +37,10 @@
   "dependencies": {
     "@esri/calcite-base": "github:Esri/calcite-base#3d18d24",
     "@esri/calcite-colors": "1.2.1",
-    "@esri/calcite-ui-icons": "2.0.1",
+    "@esri/calcite-ui-icons": "2.5.0",
     "calcite-fonts": "github:ArcGIS/calcite-fonts#v1.1.2",
     "lodash-es": "4.17.15",
+    "popper.js": "1.15.0",
     "sortablejs": "1.10.0-rc3"
   },
   "devDependencies": {
@@ -47,6 +53,7 @@
     "@types/puppeteer": "1.19.0",
     "@types/sortablejs": "1.7.2",
     "autoprefixer": "9.6.1",
+    "chalk": "2.4.2",
     "classnames": "2.2.6",
     "gh-release": "3.5.0",
     "husky": "3.0.3",

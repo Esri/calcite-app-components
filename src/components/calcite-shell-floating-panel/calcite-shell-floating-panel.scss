@@ -1,56 +1,9 @@
 .container {
-  position: absolute;
-  z-index: 1;
   background-color: var(--calcite-app-background);
   color: var(--calcite-app-foreground);
   box-shadow: var(--calcite-app-shadow-2);
   border-radius: var(--calcite-app-border-radius);
   animation: calcite-app-fade-in-scale var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-}
-
-:host([placement="side"]) .container--leading {
-  left: 100%;
-}
-
-:host([placement="side"]) .container--leading.calcite--rtl {
-  left: unset;
-  right: 100%;
-}
-
-:host([placement="side"]) .container--trailing {
-  right: 100%;
-}
-
-:host([placement="side"]) .container--trailing.calcite--rtl {
-  right: unset;
-  left: 100%;
-}
-
-:host([placement="over"]) .container,
-:host([placement="anchor"]) .container {
-  width: 89%;
-}
-
-:host([placement="over"]) .container--leading,
-:host([placement="anchor"]) .container--leading {
-  left: 12%;
-}
-
-:host([placement="over"]) .container--leading.calcite--rtl,
-:host([placement="anchor"]) .container--leading.calcite--rtl {
-  left: unset;
-  right: 12%;
-}
-
-:host([placement="over"]) .container--trailing,
-:host([placement="anchor"]) .container--trailing {
-  right: 12%;
-}
-
-:host([placement="over"]) .container--trailing.calcite--rtl,
-:host([placement="anchor"]) .container--trailing.calcite--rtl {
-  right: unset;
-  left: 12%;
 }
 
 .header {

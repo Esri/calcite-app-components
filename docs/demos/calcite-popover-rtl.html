@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>Calcite App Components: calcite-popover</title>
+
+    <!-- Loads the link and script tags-->
+    <script src="head.js"></script>
+  </head>
+
+  <body>
+    <style>
+      .action-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+      }
+    </style>
+    <calcite-popover placement="vertical" id="popover">
+      <calcite-shell-floating-panel
+        id="calcite-shell-floating-panel"
+        heading="Vertical Shell Floating Panel"
+        style="height:150px;"
+        ><span>
+          Shell Floating Panel Content
+        </span>
+      </calcite-shell-floating-panel>
+    </calcite-popover>
+
+    <calcite-popover placement="horizontal" id="popover-action-pad" x-offset="10" y-offset="10">
+      <calcite-action-pad id="action-pad">
+        <calcite-action-group>
+          <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </calcite-action-group>
+      </calcite-action-pad>
+    </calcite-popover>
+
+    <calcite-popover placement="horizontal" id="popover-2">
+      <calcite-shell-floating-panel
+        id="calcite-shell-floating-panel-2"
+        heading="Vertical Shell Floating Panel"
+        style="height:150px;"
+        ><span>
+          Shell Floating Panel Content
+        </span>
+      </calcite-shell-floating-panel>
+    </calcite-popover>
+    <nav>
+      <calcite-demo-nav page-id="calcite-popover"></calcite-demo-nav>
+    </nav>
+    <main>
+      <section class="example-container">
+        <h1>calcite-popover</h1>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-popover/readme.md"
+            >calcite-popover readme.</a
+          >
+        </p>
+
+        <h2>Demo Navigation</h2>
+        <ul>
+          <li>View the <a href="calcite-popover.html">LTR demo</a>.</li>
+          <li>View the <a href="calcite-popover-rtl.html">RTL demo</a>.</li>
+        </ul>
+
+        <ul class="action-list">
+          <li>
+            <calcite-action text="horizontal ActionPad" text-enabled id="action-pad-button" indicator>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                <path
+                  d="M13.071 1H1.93a.929.929 0 0 0-.93.929V13.07a.929.929 0 0 0 .929.929H13.07a.929.929 0 0 0 .929-.929V1.93a.929.929 0 0 0-.928-.93zM13 13H2V2h11zm-7-1V3l4.5 4.5zm1-2.414L9.086 7.5 7 5.414z"
+                />
+              </svg>
+            </calcite-action>
+          </li>
+          <li>
+            <calcite-action text="Vertical Shell Floating Panel" text-enabled id="shell-floating-panel-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                <path d="M2 14h4v1H1v-5h1zm12-8h1V1h-5v1h4zm0 4v4h-4v1h5v-5zM1 6h1V2h4V1H1z" />
+              </svg>
+            </calcite-action>
+          </li>
+          <li>
+            <calcite-action text="horizontal Shell Floating Panel" text-enabled id="shell-floating-panel-button-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
+                <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z" />
+              </svg>
+            </calcite-action>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <script>
+      var popoverActionPad = document.getElementById("popover-action-pad");
+      var actionPadButton = document.getElementById("action-pad-button");
+      popoverActionPad.referenceElement = actionPadButton;
+      actionPadButton.addEventListener("click", function() {
+        popoverActionPad.toggle();
+      });
+
+      var popoverFloatingPanel = document.getElementById("popover");
+      var shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
+      popoverFloatingPanel.referenceElement = shellFloatingPanelButton;
+      shellFloatingPanelButton.addEventListener("click", function() {
+        popoverFloatingPanel.toggle();
+      });
+      var floatingPanel = document.getElementById("calcite-shell-floating-panel");
+      floatingPanel.addEventListener("calciteShellFloatingPanelClose", function() {
+        popoverFloatingPanel.open = false;
+      });
+
+      var popoverFloatingPanel2 = document.getElementById("popover-2");
+      var shellFloatingPanelButton2 = document.getElementById("shell-floating-panel-button-2");
+      popoverFloatingPanel2.referenceElement = shellFloatingPanelButton2;
+      shellFloatingPanelButton2.addEventListener("click", function() {
+        popoverFloatingPanel2.toggle();
+      });
+      var floatingPanel2 = document.getElementById("calcite-shell-floating-panel-2");
+      floatingPanel2.addEventListener("calciteShellFloatingPanelClose", function() {
+        popoverFloatingPanel2.open = false;
+      });
+    </script>
+  </body>
+</html>

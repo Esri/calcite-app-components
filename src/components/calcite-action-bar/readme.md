@@ -6,24 +6,30 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 
 See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/demos/calcite-action-bar.html).
 
-## Slots
-
-| Name             | Description                                                                                                            | Type                |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `bottom-actions` | A slot for adding `calcite-actions` that will apear at the bottom of the action bar, above the collapse/expand button. | `HTMLCalciteAction` |
-
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property       | Attribute       | Description                                                            | Type                      | Default      |
-| -------------- | --------------- | ---------------------------------------------------------------------- | ------------------------- | ------------ |
-| `expand`       | `expand`        | Indicates whether widget can be expanded.                              | `boolean`                 | `true`       |
-| `expanded`     | `expanded`      | Indicates whether widget is expanded.                                  | `boolean`                 | `false`      |
-| `layout`       | `layout`        | Arrangement of the component.                                          | `"leading" \| "trailing"` | `undefined`  |
-| `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded. | `string`                  | `"Collapse"` |
-| `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is collapsed.  | `string`                  | `"Expand"`   |
-| `theme`        | `theme`         | Used to set the component's color scheme.                              | `"dark" \| "light"`       | `undefined`  |
+| Property       | Attribute       | Description                                                              | Type                      | Default      |
+| -------------- | --------------- | ------------------------------------------------------------------------ | ------------------------- | ------------ |
+| `expand`       | `expand`        | Indicates whether widget can be expanded.                                | `boolean`                 | `true`       |
+| `expanded`     | `expanded`      | Indicates whether widget is expanded.                                    | `boolean`                 | `false`      |
+| `layout`       | `layout`        | Arrangement of the component.                                            | `"leading" \| "trailing"` | `undefined`  |
+| `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded.   | `string`                  | `"Collapse"` |
+| `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is not expanded. | `string`                  | `"Expand"`   |
+| `theme`        | `theme`         | Used to set the component's color scheme.                                | `"dark" \| "light"`       | `undefined`  |
+
+## Events
+
+| Event                    | Description                             | Type               |
+| ------------------------ | --------------------------------------- | ------------------ |
+| `calciteActionBarToggle` | Emitted when expanded has been toggled. | `CustomEvent<any>` |
+
+## Slots
+
+| Slot               | Description                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `"bottom-actions"` | A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button. |
 
 ## Dependencies
 

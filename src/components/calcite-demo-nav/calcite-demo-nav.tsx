@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Host, Prop, State, h } from "@stencil/core";
 import CalciteIcon from "../utils/CalciteIcon";
 import { home16 } from "@esri/calcite-ui-icons";
 
@@ -9,7 +9,10 @@ interface NavItem {
 }
 
 const CSS = {
-  isActive: "is-active"
+  isActive: "is-active",
+  link: "link",
+  open: "open",
+  close: "close"
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -49,9 +52,14 @@ const NAV_ITEMS: NavItem[] = [
     content: "Flow Item"
   },
   {
-    id: "calcite-picker",
-    path: "demos/calcite-picker.html",
-    content: "Picker"
+    id: "calcite-pick-list",
+    path: "demos/calcite-pick-list.html",
+    content: "Pick List"
+  },
+  {
+    id: "calcite-popover",
+    path: "demos/calcite-popover.html",
+    content: "Popover"
   },
   {
     id: "calcite-shell",
@@ -103,6 +111,23 @@ export class CalciteDemoNav {
 
   root = window.location.origin + window.location.pathname.split("demos").shift();
 
+  @State() open = false;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  hamburgerClickHandler(e) {
+    e.preventDefault();
+    this.open = !this.open;
+  }
+
+  blurHandler() {
+    this.open = false;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Component Methods
@@ -112,10 +137,9 @@ export class CalciteDemoNav {
   renderNavItem(item: NavItem) {
     const { pageId, root } = this;
     const { content, id, path } = item;
-
     return (
       <li>
-        <a class={id === pageId ? CSS.isActive : null} href={`${root}${path}`}>
+        <a class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link} href={`${root}${path}`}>
           {content}
         </a>
       </li>
@@ -124,8 +148,11 @@ export class CalciteDemoNav {
 
   render() {
     return (
-      <Host>
-        <ul>{NAV_ITEMS.map((item) => this.renderNavItem(item))}</ul>
+      <Host onBlur={this.blurHandler.bind(this)}>
+        <button class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}></button>
+        <ul class={this.open ? CSS.open : CSS.close}>
+          {NAV_ITEMS.map((item) => this.renderNavItem(item))}
+        </ul>
       </Host>
     );
   }

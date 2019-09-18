@@ -1,9 +1,14 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
 import { CalciteLayout } from "../interfaces";
 
+/**
+ * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
+ * @slot shell-floating-panel - A slot for adding `calcite-shell-floating-panel` to the panel. The floating panel will be positioned relative to the shell panel when displayed.
+ * @slot action-pad - A slot for adding a `calcite-action-pad` to the panel. The action pad will be positioned relative to the shell panel when displayed.
+ */
 @Component({
   tag: "calcite-shell-panel",
   styleUrl: "calcite-shell-panel.scss",
@@ -21,10 +26,26 @@ export class CalciteShellPanel {
    */
   @Prop({ reflect: true }) collapsed = false;
 
+  @Watch("collapsed")
+  watchHandler() {
+    this.calciteShellPanelToggle.emit();
+  }
+
   /**
    * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "leading";
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when collapse has been toggled.
+   */
+  @Event() calciteShellPanelToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -49,12 +70,6 @@ export class CalciteShellPanel {
       mainNodes.reverse();
     }
 
-    return (
-      <Host>
-        {mainNodes}
-        <slot name="shell-floating-panel" />
-        <slot name="action-pad" />
-      </Host>
-    );
+    return <Host>{mainNodes}</Host>;
   }
 }

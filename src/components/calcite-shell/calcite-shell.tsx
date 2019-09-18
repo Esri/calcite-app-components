@@ -4,6 +4,13 @@ import { CSS } from "./resources";
 
 import { CalciteTheme } from "../interfaces";
 
+/**
+ * @slot shell-header - A slot for adding header content. This content will be positioned at the top of the shell.
+ * @slot shell-footer - A slot for adding footer content. This content will be positioned at the bottom of the shell.
+ * @slot primary-panel - A slot for adding the leading `calcite-shell-panel`.
+ * @slot contextual-panel - A slot for adding the trailing `calcite-shell-panel`.
+ * @slot tip-manager - A slot for adding a `calcite-tip-manager`. This component will be absolutely positioned.
+ */
 @Component({
   tag: "calcite-shell",
   styleUrl: "calcite-shell.scss",

@@ -14,6 +14,7 @@ import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
+import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
 @Component({
@@ -56,6 +57,8 @@ export class CalciteTipManager {
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
+
+  @Prop({ reflect: true }) tabindex = 0;
 
   // --------------------------------------------------------------------------
   //
@@ -140,10 +143,13 @@ export class CalciteTipManager {
 
   setUpTips(): void {
     const tips = Array.from(this.el.querySelectorAll("calcite-tip"));
+    this.total = tips.length;
+    if (this.total === 0) {
+      return;
+    }
     const selectedTip = this.el.querySelector<HTMLCalciteTipElement>("calcite-tip[selected]");
 
     this.tips = tips;
-    this.total = tips.length;
     this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
     tips.forEach((tip) => {
@@ -181,19 +187,62 @@ export class CalciteTipManager {
     this.nextTip();
   };
 
+  tipManagerKeyDownHandler = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case "ArrowUp":
+        event.preventDefault();
+      case "ArrowRight":
+        this.nextTip();
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+      case "ArrowLeft":
+        this.previousTip();
+        break;
+      case "Home":
+        event.preventDefault();
+        this.selectedIndex = 0;
+        break;
+      case "End":
+        event.preventDefault();
+        this.selectedIndex = this.total - 1;
+        break;
+    }
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
+  renderPagination() {
+    const dir = getElementDir(this.el);
+    return this.tips.length > 1 ? (
+      <footer class={CSS.pagination}>
+        <calcite-action
+          text={this.textPrevious}
+          onClick={this.previousClicked}
+          class={CSS.pagePrevious}
+        >
+          <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
+        </calcite-action>
+        <span class={CSS.pagePosition}>
+          {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
+        </span>
+        <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
+          <CalciteIcon size="16" path={dir === "ltr" ? chevronRight16 : chevronLeft16} />
+        </calcite-action>
+      </footer>
+    ) : null;
+  }
+
   render() {
     if (this.total === 0) {
-      // TODO: Empty state
       return <Host />;
     }
     return (
-      <Host>
+      <Host onKeydown={this.tipManagerKeyDownHandler}>
         <header class={CSS.header}>
           <h2 class={CSS.heading}>{this.groupTitle}</h2>
           <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
@@ -203,21 +252,7 @@ export class CalciteTipManager {
         <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
           <slot />
         </div>
-        <footer class={CSS.pagination}>
-          <calcite-action
-            text={this.textPrevious}
-            onClick={this.previousClicked}
-            class={CSS.pagePrevious}
-          >
-            <CalciteIcon size="16" path={chevronLeft16} />
-          </calcite-action>
-          <span class={CSS.pagePosition}>
-            {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
-          </span>
-          <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
-            <CalciteIcon size="16" path={chevronRight16} />
-          </calcite-action>
-        </footer>
+        {this.renderPagination()}
       </Host>
     );
   }

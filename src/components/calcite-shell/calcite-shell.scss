@@ -26,6 +26,7 @@ $shell-min-height: 671px !default; // ipad + browser with tabs
   border-top: 1px solid var(--calcite-app-border-subtle);
   border-bottom: 1px solid var(--calcite-app-border-subtle);
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .content {
