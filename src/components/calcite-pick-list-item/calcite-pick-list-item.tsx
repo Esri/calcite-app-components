@@ -160,6 +160,10 @@ export class CalcitePickListItem {
   render() {
     const { icon } = this;
 
+    const description = this.textDescription
+      ? [<span class={CSS.description}>{this.textDescription}</span>]
+      : null;
+
     return (
       <Host
         class={classnames({
@@ -170,11 +174,11 @@ export class CalcitePickListItem {
         selected={this.isSelected}
       >
         {this.renderIcon()}
-        <div class={CSS.label}>
-          <h4 class={CSS.heading}>{this.textHeading}</h4>
-          <p class={CSS.description}>{this.textDescription}</p>
-        </div>
-        <div onClick={this.secondaryActionContainerClickHandler}>
+        <label class={CSS.label}>
+          <span class={CSS.title}>{this.textHeading}</span>
+          {description}
+        </label>
+        <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
           <slot name="secondaryAction" />
         </div>
       </Host>

@@ -8,26 +8,40 @@
   </head>
   <body>
     <calcite-demo-nav page-id="calcite-pick-list"></calcite-demo-nav>
-    <section class="example-container">
+    <section class="example-container" style="width: 320px;">
       <calcite-pick-list id="one" text-heading="Selection Pick List - Multi" multiple>
-        <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+        <calcite-pick-list-item text-heading="2018 Population Density (Pop per Square Mile) (Esri)" value="POPDENS_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <circle cx="8" cy="8" r="8"/>
+            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="7" fill="#f689d8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
-        <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops">
+        <calcite-pick-list-item text-heading="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]" text-description="{POPDENS_CY}" value="POPDENS_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <circle cx="8" cy="8" r="8"/>
+            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="7" fill="#f689d8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
-        <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld">
+        <calcite-pick-list-item text-heading="2018 Total Households (Esri)" text-description="{TOTHH_CY}" value="TOTHH_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <circle cx="8" cy="8" r="8"/>
+            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="7" fill="#f689d8"/>
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="2018 Generation Alpha Population (Born 2017 or Later)" text-description="{GENALPHACY}" value="GENALPHACY">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="7" fill="#f689d8"/>
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="2010-2018 Households: Annual Growth Rate (Esri)" text-description="{HHGRW10CY}" value="HHGRW10CY">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="7" fill="#f689d8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
@@ -42,15 +56,15 @@
       <calcite-pick-list id="two" text-heading="Selection Pick List">
         <calcite-pick-list-item text-heading="Vanilla" text-description="plain" value="vanilla">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <circle cx="8" cy="8" r="8"/>
+            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="7" fill="#f689d8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
         <calcite-pick-list-item text-heading="Chocolate" text-description="savory" value="chocolate">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                <circle cx="8" cy="8" r="8"/>
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="7" cy="7" r="7" fill="#f689d8"/>
               </svg>
             </calcite-action>
           </calcite-pick-list-item>
@@ -65,15 +79,15 @@
         <calcite-pick-list-group text-group-title="numbers">
           <calcite-pick-list-item text-heading="one" text-description="fish" value="one" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                <circle cx="8" cy="8" r="8"/>
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="7" cy="7" r="7" fill="#f689d8"/>
               </svg>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item text-heading="two" text-description="fish" value="two" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                <circle cx="8" cy="8" r="8"/>
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="7" cy="7" r="7" fill="#f689d8"/>
               </svg>
             </calcite-action>
           </calcite-pick-list-item>
@@ -81,15 +95,15 @@
         <calcite-pick-list-group text-group-title="colors">
           <calcite-pick-list-item text-heading="red" text-description="fish" value="red" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                <circle cx="8" cy="8" r="8"/>
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="7" cy="7" r="7" fill="#f689d8"/>
               </svg>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item text-heading="blue" text-description="fish" value="blue" icon="grip">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                <circle cx="8" cy="8" r="8"/>
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <circle cx="7" cy="7" r="7" fill="#f689d8"/>
               </svg>
             </calcite-action>
           </calcite-pick-list-item>

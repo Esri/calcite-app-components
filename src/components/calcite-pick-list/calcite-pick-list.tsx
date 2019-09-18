@@ -229,11 +229,10 @@ export class CalcitePickList {
     const id = this.el.id || this.guid;
     return (
       <Host id={id}>
+        <header>
+          <h2 class={CSS.heading}>{this.textHeading}</h2>
+        </header>
         <section class={CSS.container}>
-          <header>
-            <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
-          </header>
           <slot />
         </section>
       </Host>
