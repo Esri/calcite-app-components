@@ -4,7 +4,7 @@
   color: var(--calcite-app-foreground);
   cursor: pointer;
   display: flex;
-  margin: 0 0 var(--calcite-app-cap-spacing-minimum) 0;
+  margin-bottom: var(--calcite-app-cap-spacing-minimum);
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
