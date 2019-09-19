@@ -7,4 +7,5 @@
 .container {
   border-radius: var(--calcite-app-border-radius);
   overflow: hidden;
+  @include borderShadow();
 }

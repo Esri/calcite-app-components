@@ -12,8 +12,8 @@ import {
 } from "@stencil/core";
 import {
   checkSquare16,
-  circle16F,
-  circleFilled16F,
+  circle16,
+  circleFilled16,
   handleVertical24,
   square16
 } from "@esri/calcite-ui-icons";
@@ -147,8 +147,8 @@ export class CalcitePickListItem {
             ? checkSquare16
             : square16
           : this.isSelected
-          ? circleFilled16F
-          : circle16F;
+          ? circleFilled16
+          : circle16;
       return (
         <span class="icon">
           <CalciteIcon size="16" path={path} />

@@ -28,7 +28,9 @@ export class CalcitePickListGroup {
     return (
       <Host>
         {this.textGroupTitle ? <h3 class={CSS.heading}>{this.textGroupTitle}</h3> : null}
-        <slot />
+        <section class={CSS.container}>
+          <slot />
+        </section>
       </Host>
     );
   }

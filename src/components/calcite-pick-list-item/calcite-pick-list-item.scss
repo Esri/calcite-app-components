@@ -1,10 +1,8 @@
 :host {
   align-items: center;
-  align-items: center;
   background-color: var(--calcite-app-background);
   color: var(--calcite-app-foreground);
   cursor: pointer;
-  display: flex;
   display: flex;
   margin: 0 0 var(--calcite-app-cap-spacing-minimum) 0;
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
@@ -37,14 +35,19 @@
 
 .icon {
   color: var(--calcite-app-foreground-link);
+  flex: 0 0;
+  line-height: 0;
+  width: var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 
 .label {
   display: flex;
-  pointer-events: none;
   flex-flow: column nowrap;
   flex: 1 0;
-  padding: 0 var(--calcite-app-side-spacing);
+  overflow: hidden;
+  padding: 0 var(--calcite-app-side-spacing-half);
+  pointer-events: none;
 }
 
 .title {
@@ -52,6 +55,7 @@
   // ellipse after two lines
   display: -webkit-box;
   overflow: hidden;
+  word-break: break-all;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
