@@ -62,7 +62,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListItemElement;
 
   @State() isSelected = this.selected;
 
