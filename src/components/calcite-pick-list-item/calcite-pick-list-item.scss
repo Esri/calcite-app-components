@@ -8,7 +8,7 @@
   display: flex;
   margin: 0 0 var(--calcite-app-cap-spacing-minimum) 0;
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
-  // transition:
+  transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
 :host(:hover) {
