@@ -8,6 +8,11 @@
   display: flex;
   margin: 0 0 var(--calcite-app-cap-spacing-minimum) 0;
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
+  // transition:
+}
+
+:host(:hover) {
+  background-color: var(--calcite-app-background-hover);
 }
 
 :host([hidden]) {
@@ -30,8 +35,13 @@
   }
 }
 
+.icon {
+  color: var(--calcite-app-foreground-link);
+}
+
 .label {
   display: flex;
+  pointer-events: none;
   flex-flow: column nowrap;
   flex: 1 0;
   padding: 0 var(--calcite-app-side-spacing);
@@ -51,6 +61,7 @@
   font-family: var(--calcite-app-font-family-monospace);
   font-size: var(--calcite-app-font-size--1);
   margin-top: var(--calcite-app-cap-spacing-quarter);
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

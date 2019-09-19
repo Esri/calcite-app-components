@@ -3,6 +3,7 @@ import { CSS } from "./resources";
 
 @Component({
   tag: "calcite-pick-list-group",
+  styleUrl: "./calcite-pick-list-group.scss",
   shadow: true
 })
 export class CalcitePickListGroup {
