@@ -101,39 +101,47 @@ export class CalciteFlowItem {
   menuButtonKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
 
-    console.log(key);
+    const supportedKeys = ["ArrowUp", "ArrowDown"];
+    const { el, menuOpen } = this;
 
-    if (key === "Escape") {
-      this.menuOpen = false;
+    if (supportedKeys.indexOf(key) === -1) {
       return;
     }
 
+    const actions: HTMLCalciteActionElement[] = Array.from(
+      el.querySelectorAll("[slot=menu-actions] calcite-action")
+    );
+
+    if (!actions.length) {
+      return;
+    }
+
+    if (!menuOpen) {
+      this.menuOpen = true;
+    }
+
     if (key === "ArrowUp") {
-      console.log("ArrowUp");
+      const lastAction = actions[actions.length - 1];
+      lastAction && lastAction.focus();
     }
 
     if (key === "ArrowDown") {
-      console.log("ArrowDown");
+      const firstAction = actions[0];
+      firstAction && firstAction.focus();
     }
   };
 
   menuKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
 
-    console.log(key);
-
     if (key === "Escape") {
       this.menuOpen = false;
       return;
     }
+  };
 
-    if (key === "ArrowUp") {
-      console.log("ArrowUp");
-    }
-
-    if (key === "ArrowDown") {
-      console.log("ArrowDown");
-    }
+  menuActionsAfterCreate = (el: any): void => {
+    console.log(el);
   };
 
   // --------------------------------------------------------------------------
