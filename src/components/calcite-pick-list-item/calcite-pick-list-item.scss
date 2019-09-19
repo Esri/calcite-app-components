@@ -12,6 +12,10 @@
   display: none;
 }
 
+:host([disabled]) {
+  opacity: 0.4;
+}
+
 :host(.highlight) {
   border-left: 3px solid transparent;
   &:host(.calcite--rtl) {

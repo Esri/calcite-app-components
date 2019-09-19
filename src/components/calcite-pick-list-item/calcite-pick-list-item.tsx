@@ -56,6 +56,8 @@ export class CalcitePickListItem {
 
   @Prop({ reflect: true }) value: string;
 
+  @Prop({ reflect: true }) disabled = false;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -93,6 +95,9 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   @Method() async toggleSelected(coerce?: boolean, emit = false) {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
     if (emit) {
       this.emitChangeEvent();
@@ -106,6 +111,9 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = !this.isSelected;
     this.emitChangeEvent(event.shiftKey);
   };
