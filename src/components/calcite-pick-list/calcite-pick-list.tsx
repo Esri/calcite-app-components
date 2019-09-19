@@ -153,7 +153,7 @@ export class CalcitePickList {
     if (this.dragEnabled && this.mode === "configuration") {
       this.setUpDragAndDrop();
     }
-    this.dataForFilter = this.getRowData();
+    this.dataForFilter = this.getItemData();
   }
 
   setUpDragAndDrop(): void {
@@ -214,7 +214,7 @@ export class CalcitePickList {
     });
   };
 
-  getRowData() {
+  getItemData() {
     const result = [];
     this.items.forEach((item) => {
       const obj = {};
