@@ -98,6 +98,44 @@ export class CalciteFlowItem {
     this.calciteFlowItemBackClick.emit();
   };
 
+  menuButtonKeyDown = (event: KeyboardEvent): void => {
+    const { key } = event;
+
+    console.log(key);
+
+    if (key === "Escape") {
+      this.menuOpen = false;
+      return;
+    }
+
+    if (key === "ArrowUp") {
+      console.log("ArrowUp");
+    }
+
+    if (key === "ArrowDown") {
+      console.log("ArrowDown");
+    }
+  };
+
+  menuKeyDown = (event: KeyboardEvent): void => {
+    const { key } = event;
+
+    console.log(key);
+
+    if (key === "Escape") {
+      this.menuOpen = false;
+      return;
+    }
+
+    if (key === "ArrowUp") {
+      console.log("ArrowUp");
+    }
+
+    if (key === "ArrowDown") {
+      console.log("ArrowDown");
+    }
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -133,6 +171,7 @@ export class CalciteFlowItem {
         aria-label={menuLabel}
         text={menuLabel}
         onClick={this.toggleMenuOpen}
+        onKeyDown={this.menuButtonKeyDown}
       >
         <CalciteIcon size="16" path={ellipsis16} />
       </calcite-action>
@@ -169,7 +208,7 @@ export class CalciteFlowItem {
 
   renderMenuActionsContainer() {
     return (
-      <div class={CSS.menuContainer}>
+      <div class={CSS.menuContainer} onKeyDown={this.menuKeyDown}>
         {this.renderMenuButton()}
         {this.renderMenuActions()}
       </div>
