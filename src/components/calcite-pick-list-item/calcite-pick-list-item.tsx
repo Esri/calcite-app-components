@@ -20,7 +20,6 @@ import {
 import classnames from "classnames";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
-import { CSS_UTILITY } from "../utils/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { getElementDir } from "../utils/dom";
 
@@ -162,9 +161,9 @@ export class CalcitePickListItem {
 
     return (
       <Host
+        rtl={this.dir === "rtl"}
         class={classnames({
-          [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
-          [CSS_UTILITY.rtl]: this.dir === "rtl"
+          [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle
         })}
         onClick={this.pickListClickHandler}
         selected={this.isSelected}
