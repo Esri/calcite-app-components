@@ -4,15 +4,16 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-background: #{$white};
   --calcite-app-foreground: #{$darker-gray};
 
-  --calcite-app-background-hover: #{$lighter-gray};
+  --calcite-app-background-hover: #{$m-bb-010};
   --calcite-app-foreground-hover: #{$darkest-gray};
 
   --calcite-app-background-active: #{$lightest-blue};
   --calcite-app-foreground-active: #{$dark-blue};
 
   --calcite-app-foreground-subtle: #{$gray};
+  --calcite-app-foreground-link: #{$blue};
 
-  --calcite-app-background-content: #{$lighter-gray};
+  --calcite-app-background-content: #{$lightest-gray};
 
   --calcite-app-border: #{$lighter-gray};
   --calcite-app-border-subtle: #{$lightest-gray};

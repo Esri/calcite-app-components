@@ -1,1 +1,0 @@
-import{r as s,h as t,H as l}from"./p-85ed7b55.js";const r=class{constructor(t){s(this,t)}render(){return t(l,null,this.textGroupTitle?t("h3",{class:"heading"},this.textGroupTitle):null,t("slot",null))}};export{r as calcite_pick_list_group};
