@@ -84,8 +84,6 @@ export class CalciteTipManager {
 
   observer = new MutationObserver(() => this.setUpTips());
 
-  tabindex = "0";
-
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -94,9 +92,6 @@ export class CalciteTipManager {
 
   connectedCallback() {
     this.setUpTips();
-    if (this.el.hasAttribute("tabindex")) {
-      this.tabindex = this.el.getAttribute("tabindex");
-    }
   }
 
   componentDidLoad() {
@@ -245,17 +240,19 @@ export class CalciteTipManager {
       return <Host />;
     }
     return (
-      <Host onKeydown={this.tipManagerKeyDownHandler} tabindex={this.tabindex}>
-        <header class={CSS.header}>
-          <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
-            <CalciteIcon size="16" path={x16} />
-          </calcite-action>
-        </header>
-        <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
-          <slot />
+      <Host onKeydown={this.tipManagerKeyDownHandler}>
+        <div tabindex="0">
+          <header class={CSS.header}>
+            <h2 class={CSS.heading}>{this.groupTitle}</h2>
+            <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
+              <CalciteIcon size="16" path={x16} />
+            </calcite-action>
+          </header>
+          <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
+            <slot />
+          </div>
+          {this.renderPagination()}
         </div>
-        {this.renderPagination()}
       </Host>
     );
   }
