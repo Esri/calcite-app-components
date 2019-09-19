@@ -49,12 +49,6 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) multiple = false;
 
-  /**
-   * The heading label for the entire Pick List.
-   * Not to be confused with the heading for an individual item or for a sub-group of items.
-   */
-  @Prop({ reflect: true }) textHeading: string;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -233,10 +227,6 @@ export class CalcitePickList {
     return (
       <Host id={id}>
         <section class={CSS.container}>
-          <header>
-            <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
-          </header>
           <slot />
         </section>
       </Host>

@@ -1,6 +1,7 @@
 export const CSS = {
   container: "container",
-  dragHandle: "handle"
+  dragHandle: "handle",
+  heading: "heading"
 };
 export enum ICON_TYPES {
   circle = "circle",

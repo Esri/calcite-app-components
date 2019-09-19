@@ -1,5 +1,4 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, TEXT } from "./resources";
 
 describe("calcite-pick-list-item", () => {
   it("should render", async () => {
