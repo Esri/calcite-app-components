@@ -160,9 +160,9 @@ export class CalcitePickListItem {
   render() {
     const { icon } = this;
 
-    const description = this.textDescription
-      ? [<span class={CSS.description}>{this.textDescription}</span>]
-      : null;
+    const description = this.textDescription ? (
+      <span class={CSS.description}>{this.textDescription}</span>
+    ) : null;
 
     return (
       <Host
