@@ -10,21 +10,21 @@
     <calcite-demo-nav page-id="calcite-pick-list"></calcite-demo-nav>
     <section class="example-container">
       <calcite-pick-list id="one" text-heading="Selection Pick List - Multi" multiple>
-        <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+        <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex"  metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
-        <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops">
+        <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" metadata='{"category":"dinosaur", "tags":["carnivore"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
-        <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld">
+        <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld" metadata='["one", "two"]'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
@@ -40,14 +40,14 @@
       </script>
 
       <calcite-pick-list id="two" text-heading="Selection Pick List">
-        <calcite-pick-list-item text-heading="Vanilla" text-description="plain" value="vanilla">
+        <calcite-pick-list-item text-heading="Vanilla" text-description="plain" value="vanilla" metadata='{"category":"icecream", "tags":["white"]}'>
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="8" cy="8" r="8"/>
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
-        <calcite-pick-list-item text-heading="Chocolate" text-description="savory" value="chocolate">
+        <calcite-pick-list-item text-heading="Chocolate" text-description="savory" value="chocolate" metadata='{"category":"icecream", "tags":["bitemn"]}'>
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <circle cx="8" cy="8" r="8"/>

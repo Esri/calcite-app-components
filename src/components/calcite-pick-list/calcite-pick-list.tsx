@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { CSS, ICON_TYPES } from "./resources";
+import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-pick-list",
@@ -62,6 +62,8 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
+
+  @State() dataForFilter: object[] = [];
 
   items: HTMLCalcitePickListItemElement[];
 
@@ -151,6 +153,7 @@ export class CalcitePickList {
     if (this.dragEnabled && this.mode === "configuration") {
       this.setUpDragAndDrop();
     }
+    this.dataForFilter = this.getRowData();
   }
 
   setUpDragAndDrop(): void {
@@ -199,6 +202,30 @@ export class CalcitePickList {
     });
   }
 
+  handleFilter = (event) => {
+    const filteredData = event.detail;
+    const values = filteredData.map((item) => item.value);
+    this.items.forEach((item) => {
+      if (values.indexOf(item.value) === -1) {
+        item.setAttribute("hidden", "");
+      } else {
+        item.removeAttribute("hidden");
+      }
+    });
+  };
+
+  getRowData() {
+    const result = [];
+    this.items.forEach((item) => {
+      const obj = {};
+      Array.from(item.attributes).forEach((attr: any) => {
+        obj[attr.name] = attr.value;
+      });
+      result.push(obj);
+    });
+    return result;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -235,7 +262,11 @@ export class CalcitePickList {
         <section class={CSS.container}>
           <header>
             <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
           </header>
           <slot />
         </section>

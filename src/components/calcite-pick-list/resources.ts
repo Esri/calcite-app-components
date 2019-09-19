@@ -7,3 +7,6 @@ export enum ICON_TYPES {
   square = "square",
   grip = "grip"
 }
+export const TEXT = {
+  filterPlaceholder: "filter results"
+};
