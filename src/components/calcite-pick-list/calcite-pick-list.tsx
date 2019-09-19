@@ -138,6 +138,9 @@ export class CalcitePickList {
       } else {
         item.removeAttribute("icon");
       }
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
     });
     if (this.dragEnabled && this.mode === "configuration") {
       this.setUpDragAndDrop();
