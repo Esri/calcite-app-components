@@ -43,6 +43,8 @@ export class CalciteValueListItem {
 
   @Element() el: HTMLElement;
 
+  pickListItem = null;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -52,6 +54,7 @@ export class CalciteValueListItem {
   @Event() calciteValueListItemSelectedChange: EventEmitter;
 
   @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
+    event.detail.item = this.el;
     this.calciteValueListItemSelectedChange.emit(event.detail);
   }
 
@@ -62,7 +65,7 @@ export class CalciteValueListItem {
   // --------------------------------------------------------------------------
 
   @Method() async toggleSelected(coerce?: boolean, emit = false) {
-    this.el.querySelector("calcite-pick-list-item").toggleSelected(coerce, emit);
+    this.pickListItem.toggleSelected(coerce, emit);
   }
 
   // --------------------------------------------------------------------------
@@ -75,6 +78,7 @@ export class CalciteValueListItem {
     return (
       <Host>
         <calcite-pick-list-item
+          ref={(el) => (this.pickListItem = el)}
           selected={this.selected}
           editable={this.editable}
           icon={this.icon}
