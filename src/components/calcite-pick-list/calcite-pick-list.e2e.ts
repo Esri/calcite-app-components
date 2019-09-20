@@ -53,9 +53,9 @@ describe("calcite-pick-list", () => {
   });
 
   describe("icon logic", () => {
-    it("should be 'circle' when in `selection` mode and multi-select is disabled", async () => {
+    it("should be 'circle' when multi-select is disabled", async () => {
       const page = await newE2EPage();
-      await page.setContent(`<calcite-pick-list mode="selection">
+      await page.setContent(`<calcite-pick-list>
         <calcite-pick-list-item value="one"></calcite-pick-list-item>
       </calcite-pick-list>`);
 
@@ -63,35 +63,15 @@ describe("calcite-pick-list", () => {
       const icon = await item.getProperty("icon");
       expect(icon).toBe(ICON_TYPES.circle);
     });
-    it("should be 'square' when in `selection` mode and multi-select is enabled", async () => {
+    it("should be 'square' when multi-select is enabled", async () => {
       const page = await newE2EPage();
-      await page.setContent(`<calcite-pick-list mode="selection" multiple>
+      await page.setContent(`<calcite-pick-list multiple>
         <calcite-pick-list-item value="one"></calcite-pick-list-item>
       </calcite-pick-list>`);
 
       const item = await page.find("calcite-pick-list-item");
       const icon = await item.getProperty("icon");
       expect(icon).toBe(ICON_TYPES.square);
-    });
-    it("should be 'grip' when in `configuration` mode drag and drop is enabled ", async () => {
-      const page = await newE2EPage();
-      await page.setContent(`<calcite-pick-list mode='configuration' drag-enabled>
-        <calcite-pick-list-item value="one"></calcite-pick-list-item>
-      </calcite-pick-list>`);
-
-      const item = await page.find("calcite-pick-list-item");
-      const icon = await item.getProperty("icon");
-      expect(icon).toBe(ICON_TYPES.grip);
-    });
-    it("should be null when in `configuration` mode drag and drop is enabled", async () => {
-      const page = await newE2EPage();
-      await page.setContent(`<calcite-pick-list mode='configuration'>
-        <calcite-pick-list-item value="one"></calcite-pick-list-item>
-      </calcite-pick-list>`);
-
-      const item = await page.find("calcite-pick-list-item");
-      const icon = await item.getProperty("icon");
-      expect(icon).toBeNull();
     });
   });
 });

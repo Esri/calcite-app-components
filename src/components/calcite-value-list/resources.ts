@@ -3,7 +3,5 @@ export const CSS = {
   dragHandle: "handle"
 };
 export enum ICON_TYPES {
-  circle = "circle",
-  square = "square",
   grip = "grip"
 }

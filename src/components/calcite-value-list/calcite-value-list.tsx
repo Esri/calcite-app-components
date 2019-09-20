@@ -15,11 +15,11 @@ import guid from "../utils/guid";
 import { CSS, ICON_TYPES } from "./resources";
 
 @Component({
-  tag: "calcite-pick-list",
-  styleUrl: "./calcite-pick-list.scss",
+  tag: "calcite-value-list",
+  styleUrl: "./calcite-value-list.scss",
   shadow: true
 })
-export class CalcitePickList {
+export class CalciteValueList {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -28,21 +28,16 @@ export class CalcitePickList {
 
   /**
    * When true, the items will be sortable via drag and drop.
-   * Only applies when mode is configuration
    */
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
-   * Mode controls the presentation of the items in their selected and deselected states.
-   * Selection mode shows either radio buttons or checkboxes depending on the value of multiple
-   * Configuration mode relies on a color highlight on the edge of the item for selected
-   * Mode must be set to configuration for drag and drop behavior to work.
+   * When true, the item labels will be editable.
    */
-  @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
+  @Prop({ reflect: true }) labelEditingEnabled = false;
 
   /**
    * Multpile Works similar to standard radio buttons and checkboxes.
-   * It also affects the presented icon when in Selection mode.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
    * When false, selecting a new item will deselect any other selected items.
@@ -50,7 +45,7 @@ export class CalcitePickList {
   @Prop({ reflect: true }) multiple = false;
 
   /**
-   * The heading label for the entire Pick List.
+   * The heading label for the entire Value List.
    * Not to be confused with the heading for an individual item or for a sub-group of items.
    */
   @Prop({ reflect: true }) textHeading: string;
@@ -61,13 +56,13 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
+  @State() selectedValues: Map<string, HTMLCalciteValueListItemElement> = new Map();
 
-  items: HTMLCalcitePickListItemElement[];
+  items: HTMLCalciteValueListItemElement[];
 
-  lastSelectedItem: HTMLCalcitePickListItemElement = null;
+  lastSelectedItem: HTMLCalciteValueListItemElement = null;
 
-  guid = `calcite-pick-list-${guid()}`;
+  guid = `calcite-value-list-${guid()}`;
 
   observer = new MutationObserver(() => this.setUpItems());
 
@@ -97,7 +92,7 @@ export class CalcitePickList {
 
   componentDidUnload() {
     this.observer.disconnect();
-    if (this.dragEnabled && this.mode === "configuration") {
+    if (this.dragEnabled) {
       this.cleanUpDragAndDrop();
     }
   }
@@ -108,9 +103,9 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListSelectionChange: EventEmitter;
+  @Event() calciteValueListSelectionChange: EventEmitter;
 
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
+  @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
@@ -126,7 +121,7 @@ export class CalcitePickList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calcitePickListSelectionChange.emit(selectedValues);
+    this.calciteValueListSelectionChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -136,7 +131,7 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
+    this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
       if (iconType) {
@@ -144,8 +139,11 @@ export class CalcitePickList {
       } else {
         item.removeAttribute("icon");
       }
+      if (this.labelEditingEnabled) {
+        item.setAttribute("editable", "");
+      }
     });
-    if (this.dragEnabled && this.mode === "configuration") {
+    if (this.dragEnabled) {
       this.setUpDragAndDrop();
     }
   }
@@ -153,14 +151,14 @@ export class CalcitePickList {
   setUpDragAndDrop(): void {
     const sortGroups = [
       this.el,
-      ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))
+      ...Array.from(this.el.querySelectorAll("calcite-value-list-group"))
     ];
     sortGroups.forEach((sortGroup) => {
       this.sortables.push(
         Sortable.create(sortGroup, {
           group: this.el.id,
           handle: `.${CSS.dragHandle}`,
-          draggable: "calcite-pick-list-item"
+          draggable: "calcite-value-list-item"
         })
       );
     });
@@ -172,7 +170,7 @@ export class CalcitePickList {
     });
   }
 
-  deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
+  deselectSiblingItems(item: HTMLCalciteValueListItemElement) {
     this.items.forEach((currentItem) => {
       if (currentItem !== item) {
         currentItem.toggleSelected(false);
@@ -183,7 +181,7 @@ export class CalcitePickList {
     });
   }
 
-  selectSiblings(item: HTMLCalcitePickListItemElement) {
+  selectSiblings(item: HTMLCalciteValueListItemElement) {
     if (!this.lastSelectedItem) {
       return;
     }
@@ -213,14 +211,9 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   getIconType(): ICON_TYPES | null {
-    const { multiple } = this;
     let type = null;
-    if (this.mode === "configuration" && this.dragEnabled) {
+    if (this.dragEnabled) {
       type = ICON_TYPES.grip;
-    } else if (this.mode === "selection" && multiple) {
-      type = ICON_TYPES.square;
-    } else if (this.mode === "selection" && !multiple) {
-      type = ICON_TYPES.circle;
     }
     return type;
   }
@@ -229,6 +222,7 @@ export class CalcitePickList {
     const id = this.el.id || this.guid;
     return (
       <Host id={id}>
+        <h1>VALUE LIST</h1>
         <section class={CSS.container}>
           <header>
             <h2>{this.textHeading}</h2>
