@@ -4,49 +4,28 @@ import {
   Event,
   EventEmitter,
   Host,
+  Listen,
   Method,
   Prop,
-  State,
-  Watch,
   h
 } from "@stencil/core";
-import {
-  checkSquare16,
-  circle16F,
-  circleFilled16F,
-  handleVertical24,
-  square16
-} from "@esri/calcite-ui-icons";
-import classnames from "classnames";
-import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
-import { CSS_UTILITY } from "../utils/resources";
-import CalciteIcon from "../utils/CalciteIcon";
-import { getElementDir } from "../utils/dom";
 
 @Component({
-  tag: "calcite-pick-list-item",
-  styleUrl: "./calcite-pick-list-item.scss",
+  tag: "calcite-value-list-item",
+  styleUrl: "./calcite-value-list-item.scss",
   shadow: true
 })
-export class CalcitePickListItem {
+export class CalciteValueListItem {
   // --------------------------------------------------------------------------
   //
   //  Properties
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) editing = false;
-
   @Prop() selected = false;
 
-  @Watch("selected")
-  selectedWatchHandler(newValue) {
-    if (this.isSelected !== newValue) {
-      this.isSelected = newValue;
-      this.emitChangeEvent();
-    }
-  }
+  @Prop({ reflect: true }) editable = false;
 
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
@@ -64,27 +43,17 @@ export class CalcitePickListItem {
 
   @Element() el: HTMLElement;
 
-  @State() isSelected = this.selected;
-
-  dir: "rtl" | "ltr";
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.dir = getElementDir(this.el);
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Events
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListItemSelectedChange: EventEmitter;
+  @Event() calciteValueListItemSelectedChange: EventEmitter;
+
+  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
+    this.calciteValueListItemSelectedChange.emit(event.detail);
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -93,34 +62,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   @Method() async toggleSelected(coerce?: boolean, emit = false) {
-    this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
-    if (emit) {
-      this.emitChangeEvent();
-    }
-  }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  pickListClickHandler = (event: MouseEvent): void => {
-    this.isSelected = !this.isSelected;
-    this.emitChangeEvent(event.shiftKey);
-  };
-
-  secondaryActionContainerClickHandler(event: MouseEvent) {
-    event.stopPropagation();
-  }
-
-  emitChangeEvent(shiftPressed = false) {
-    this.calcitePickListItemSelectedChange.emit({
-      item: this.el,
-      value: this.value,
-      selected: this.isSelected,
-      shiftPressed
-    });
+    this.el.querySelector("calcite-pick-list-item").toggleSelected(coerce, emit);
   }
 
   // --------------------------------------------------------------------------
@@ -129,54 +71,19 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  renderIcon() {
-    const { icon } = this;
-    if (!icon) {
-      return null;
-    }
-    if (icon === ICON_TYPES.grip) {
-      return (
-        <span class={CSS.handle}>
-          <CalciteIcon size="24" path={handleVertical24} />
-        </span>
-      );
-    } else {
-      const path =
-        icon === ICON_TYPES.square
-          ? this.isSelected
-            ? checkSquare16
-            : square16
-          : this.isSelected
-          ? circleFilled16F
-          : circle16F;
-      return (
-        <span class="icon">
-          <CalciteIcon size="16" path={path} />
-        </span>
-      );
-    }
-  }
-
   render() {
-    const { icon } = this;
-
     return (
-      <Host
-        class={classnames({
-          [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
-          [CSS_UTILITY.rtl]: this.dir === "rtl"
-        })}
-        onClick={this.pickListClickHandler}
-        selected={this.isSelected}
-      >
-        {this.renderIcon()}
-        <div class={CSS.label}>
-          <h4 class={CSS.heading}>{this.textHeading}</h4>
-          <p class={CSS.description}>{this.textDescription}</p>
-        </div>
-        <div onClick={this.secondaryActionContainerClickHandler}>
-          <slot name="secondaryAction" />
-        </div>
+      <Host>
+        <calcite-pick-list-item
+          selected={this.selected}
+          editable={this.editable}
+          icon={this.icon}
+          textHeading={this.textHeading}
+          textDescription={this.textDescription}
+          value={this.value}
+        >
+          <slot name="secondaryAction" slot="secondaryAction" />
+        </calcite-pick-list-item>
       </Host>
     );
   }

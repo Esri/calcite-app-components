@@ -36,8 +36,6 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) editing = false;
-
   @Prop() selected = false;
 
   @Watch("selected")
@@ -47,6 +45,8 @@ export class CalcitePickListItem {
       this.emitChangeEvent();
     }
   }
+
+  @Prop() editable = false;
 
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
@@ -163,15 +163,17 @@ export class CalcitePickListItem {
     return (
       <Host
         class={classnames({
-          [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
+        highlight={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle}
         onClick={this.pickListClickHandler}
         selected={this.isSelected}
       >
         {this.renderIcon()}
         <div class={CSS.label}>
-          <h4 class={CSS.heading}>{this.textHeading}</h4>
+          <h4 class={CSS.heading} contentEditable={this.editable}>
+            {this.textHeading}
+          </h4>
           <p class={CSS.description}>{this.textDescription}</p>
         </div>
         <div onClick={this.secondaryActionContainerClickHandler}>

@@ -12,7 +12,7 @@
   display: none;
 }
 
-:host(.highlight) {
+:host([highlight]) {
   border-left: 3px solid transparent;
   &:host(.calcite--rtl) {
     border-left: none;
@@ -20,7 +20,7 @@
   }
 }
 
-:host(.highlight[selected]) {
+:host([highlight][selected]) {
   border-left-color: blue;
   &:host(.calcite--rtl) {
     border-left-color: none;
