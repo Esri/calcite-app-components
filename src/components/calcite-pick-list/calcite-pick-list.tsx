@@ -110,10 +110,11 @@ export class CalcitePickList {
     this.items.forEach((item) => {
       const iconType = this.getIconType();
       item.setAttribute("icon", iconType);
+
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
     });
-    if (item.hasAttribute("selected")) {
-      this.selectedValues.set(item.getAttribute("value"), item);
-    }
   }
 
   deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
