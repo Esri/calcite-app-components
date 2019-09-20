@@ -85,6 +85,11 @@ const NAV_ITEMS: NavItem[] = [
     id: "calcite-typography",
     path: "demos/calcite-typography.html",
     content: "Typography"
+  },
+  {
+    id: "calcite-value-list",
+    path: "demos/calcite-value-list.html",
+    content: "Value List"
   }
 ];
 
