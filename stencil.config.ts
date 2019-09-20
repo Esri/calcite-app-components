@@ -23,7 +23,10 @@ export const config: Config = {
       components: ["calcite-flow", "calcite-flow-item"]
     },
     {
-      components: ["calcite-shell", "calcite-shell-panel", "calcite-shell-floating-panel"]
+      components: ["calcite-panel"]
+    },
+    {
+      components: ["calcite-shell", "calcite-shell-panel"]
     },
     {
       components: ["calcite-tip", "calcite-tip-group", "calcite-tip-manager"]

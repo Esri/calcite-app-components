@@ -26,7 +26,7 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 - [calcite-action-bar](../calcite-action-bar)
 - [calcite-block-section](../calcite-block-section)
 - [calcite-flow-item](../calcite-flow-item)
-- [calcite-shell-floating-panel](../calcite-shell-floating-panel)
+- [calcite-panel](../calcite-panel)
 - [calcite-tip](../calcite-tip)
 - [calcite-tip-manager](../calcite-tip-manager)
 
@@ -37,7 +37,7 @@ graph TD;
   calcite-action-bar --> calcite-action
   calcite-block-section --> calcite-action
   calcite-flow-item --> calcite-action
-  calcite-shell-floating-panel --> calcite-action
+  calcite-panel --> calcite-action
   calcite-tip --> calcite-action
   calcite-tip-manager --> calcite-action
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px
