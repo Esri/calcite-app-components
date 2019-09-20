@@ -3,7 +3,7 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [v2.4.0](https://github.com/Esri/calcite-app-components/tree/v2.4.0) (2019-09-19)
+## [v3.0.0](https://github.com/Esri/calcite-app-components/tree/v3.0.0) (2019-09-20)
 
 ### Features
 
