@@ -13,6 +13,10 @@ import { CalciteTheme } from "../interfaces";
 
 import { CSS_UTILITY } from "../utils/resources";
 
+/**
+ * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
+ * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ */
 @Component({
   tag: "calcite-flow-item",
   styleUrl: "calcite-flow-item.scss",
@@ -46,12 +50,12 @@ export class CalciteFlowItem {
   @Prop() textBack = TEXT.back;
 
   /**
-   * 'Close' text string.
+   * 'Close' text string for the menu.
    */
   @Prop() textClose = TEXT.close;
 
   /**
-   * 'Open' text string.
+   * 'Open' text string for the menu.
    */
   @Prop() textOpen = TEXT.open;
 
@@ -66,7 +70,7 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFlowItemElement;
 
   // --------------------------------------------------------------------------
   //

@@ -12,8 +12,8 @@ import {
 } from "@stencil/core";
 import {
   checkSquare16,
-  circle16F,
-  circleFilled16F,
+  circle16,
+  circleFilled16,
   handleVertical24,
   square16
 } from "@esri/calcite-ui-icons";
@@ -62,7 +62,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListItemElement;
 
   @State() isSelected = this.selected;
 
@@ -147,8 +147,8 @@ export class CalcitePickListItem {
             ? checkSquare16
             : square16
           : this.isSelected
-          ? circleFilled16F
-          : circle16F;
+          ? circleFilled16
+          : circle16;
       return (
         <span class="icon">
           <CalciteIcon size="16" path={path} />
@@ -160,6 +160,10 @@ export class CalcitePickListItem {
   render() {
     const { icon } = this;
 
+    const description = this.textDescription ? (
+      <span class={CSS.description}>{this.textDescription}</span>
+    ) : null;
+
     return (
       <Host
         class={classnames({
@@ -170,13 +174,13 @@ export class CalcitePickListItem {
         selected={this.isSelected}
       >
         {this.renderIcon()}
-        <div class={CSS.label}>
-          <h4 class={CSS.heading} contentEditable={this.editable}>
+        <label class={CSS.label}>
+          <span class={CSS.title} contentEditable={this.editable}>
             {this.textHeading}
-          </h4>
-          <p class={CSS.description}>{this.textDescription}</p>
-        </div>
-        <div onClick={this.secondaryActionContainerClickHandler}>
+          </span>
+          {description}
+        </label>
+        <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
           <slot name="secondaryAction" />
         </div>
       </Host>

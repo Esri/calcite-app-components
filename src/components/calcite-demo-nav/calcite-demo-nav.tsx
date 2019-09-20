@@ -57,11 +57,6 @@ const NAV_ITEMS: NavItem[] = [
     content: "Pick List"
   },
   {
-    id: "calcite-popover",
-    path: "demos/calcite-popover.html",
-    content: "Popover"
-  },
-  {
     id: "calcite-shell",
     path: "demos/calcite-shell.html",
     content: "Shell"

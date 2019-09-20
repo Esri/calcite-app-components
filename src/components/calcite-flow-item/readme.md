@@ -4,13 +4,6 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 
 See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/demos/calcite-flow-item.html).
 
-## Slots
-
-| Name             | Description                                                                                                                     | Type                |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `menu-actions`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. | `HTMLCalciteAction` |
-| `footer-actions` | A slot for adding `calcite-actions` to the footer.                                                                              | `HTMLCalciteAction` |
-
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -21,8 +14,8 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 | `menuOpen`       | `menu-open`        | Opens the action menu.                    | `boolean`           | `false`      |
 | `showBackButton` | `show-back-button` | Shows a back button in the header.        | `boolean`           | `false`      |
 | `textBack`       | `text-back`        | 'Back' text string.                       | `string`            | `TEXT.back`  |
-| `textClose`      | `text-close`       | 'Close' text string.                      | `string`            | `TEXT.close` |
-| `textOpen`       | `text-open`        | 'Open' text string.                       | `string`            | `TEXT.open`  |
+| `textClose`      | `text-close`       | 'Close' text string for the menu.         | `string`            | `TEXT.close` |
+| `textOpen`       | `text-open`        | 'Open' text string for the menu.          | `string`            | `TEXT.open`  |
 | `theme`          | `theme`            | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined`  |
 
 ## Events
@@ -30,6 +23,13 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 | Event                      | Description                                    | Type               |
 | -------------------------- | ---------------------------------------------- | ------------------ |
 | `calciteFlowItemBackClick` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
+
+## Slots
+
+| Slot               | Description                                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `"footer-actions"` | A slot for adding `calcite-actions` to the footer.                                                                              |
+| `"menu-actions"`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. |
 
 ## Dependencies
 

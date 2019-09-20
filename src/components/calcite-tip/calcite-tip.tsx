@@ -5,6 +5,10 @@ import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 import { CSS, TEXT } from "./resources";
 
+/**
+ * @slot info - A slot for adding an HTML element to the body of the tip.
+ * @slot link - A slot for adding an HTML anchor element to the body of the tip.
+ */
 @Component({
   tag: "calcite-tip",
   styleUrl: "./calcite-tip.scss",
@@ -57,7 +61,7 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteTipElement;
 
   @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 

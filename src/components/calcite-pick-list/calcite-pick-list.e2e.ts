@@ -50,6 +50,24 @@ describe("calcite-pick-list", () => {
         expect(toggleSpy).toHaveReceivedEventTimes(3);
       });
     });
+    describe("preselected items", () => {
+      it("should be included in the list of selected items", async () => {
+        const page = await newE2EPage();
+        await page.setContent(`<calcite-pick-list multiple>
+          <calcite-pick-list-item value="one" selected></calcite-pick-list-item>
+          <calcite-pick-list-item value="two"></calcite-pick-list-item>
+        </calcite-pick-list>`);
+
+        const numSelected = await page.evaluate(() => {
+          const pickList = document.querySelector("calcite-pick-list");
+          return pickList.getSelectedItems().then((result) => {
+            return result.size;
+          });
+        });
+
+        expect(numSelected).toBe(1);
+      });
+    });
   });
 
   describe("icon logic", () => {

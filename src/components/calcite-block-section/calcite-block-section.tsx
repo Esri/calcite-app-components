@@ -49,7 +49,7 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   @Element()
-  el: HTMLElement;
+  el: HTMLCalciteBlockSectionElement;
 
   // --------------------------------------------------------------------------
   //
