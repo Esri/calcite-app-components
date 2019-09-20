@@ -1,10 +1,11 @@
 export const CSS = {
   container: "container",
   header: "header",
-  heading: "heading",
-  content: "content"
-};
-
-export const TEXT = {
-  close: "Close"
+  headerHasLeading: "header--has-leading",
+  headerHasTrailing: "header--has-trailing",
+  headerLeading: "header-leading",
+  headerCenter: "header-center",
+  headerTrailing: "header-trailing",
+  contentContainer: "content-container",
+  footer: "footer"
 };

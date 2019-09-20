@@ -1,10 +1,13 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, h } from "@stencil/core";
 
-import { x16 } from "@esri/calcite-ui-icons";
+import { CSS } from "./resources";
 
-import CalciteIcon from "../utils/CalciteIcon";
+import { getElementDir } from "../utils/dom";
 
-import { CSS, TEXT } from "./resources";
+import classnames from "classnames";
+
+import { CSS_UTILITY } from "../utils/resources";
+import { VNode } from "@stencil/core/dist/declarations";
 
 @Component({
   tag: "calcite-panel",
@@ -12,22 +15,6 @@ import { CSS, TEXT } from "./resources";
   shadow: true
 })
 export class CalcitePanel {
-  // --------------------------------------------------------------------------
-  //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-
-  /**
-   * Panel heading
-   */
-  @Prop({ reflect: true }) heading: string;
-
-  /**
-   * Alternate text for closing the panel.
-   */
-  @Prop() textClose = TEXT.close;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -42,20 +29,11 @@ export class CalcitePanel {
   //
   // --------------------------------------------------------------------------
 
-  /**
-   * Emitted when the component has been closed.
-   */
-  @Event() calcitePanelClose: EventEmitter;
-
   // --------------------------------------------------------------------------
   //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
-
-  close = () => {
-    this.calcitePanelClose.emit();
-  };
 
   // --------------------------------------------------------------------------
   //
@@ -63,20 +41,91 @@ export class CalcitePanel {
   //
   // --------------------------------------------------------------------------
 
+  renderHeaderLeadingContent(): VNode {
+    return (
+      <div class={CSS.headerLeading}>
+        <slot name="header-leading" />
+      </div>
+    );
+  }
+
+  renderHeaderCenterContent(): VNode {
+    return (
+      <div class={CSS.headerCenter}>
+        <slot name="header" />
+      </div>
+    );
+  }
+
+  renderHeaderTrailingContent(): VNode {
+    return (
+      <div class={CSS.headerTrailing}>
+        <slot name="header-leading" />
+      </div>
+    );
+  }
+
+  renderHeader(): VNode {
+    const { el } = this;
+
+    const hasHeader = el.querySelector("[slot=header-leading]");
+    const hasHeaderLeading = el.querySelector("[slot=header-leading]");
+    const hasHeaderTrailing = el.querySelector("[slot=header-trailing]");
+
+    const headerLeadingNode = hasHeaderLeading ? this.renderHeaderLeadingContent() : null;
+    const headerCenterNode = hasHeader ? this.renderHeaderCenterContent() : null;
+    const headerTrailingNode = hasHeaderTrailing ? this.renderHeaderTrailingContent() : null;
+
+    return hasHeader ? (
+      <header
+        class={classnames(CSS.header, {
+          [CSS.headerHasLeading]: hasHeaderLeading,
+          [CSS.headerHasTrailing]: hasHeaderTrailing
+        })}
+      >
+        {headerLeadingNode}
+        {headerCenterNode}
+        {headerTrailingNode}
+      </header>
+    ) : null;
+  }
+
+  renderFooter(): VNode {
+    const { el } = this;
+
+    const hasFooter = el.querySelector("[slot=footer]");
+
+    return hasFooter ? (
+      <footer class={CSS.footer}>
+        <slot name="footer-actions" />
+      </footer>
+    ) : null;
+  }
+
+  renderContent(): VNode {
+    return (
+      <section class={CSS.contentContainer}>
+        <slot />
+      </section>
+    );
+  }
+
   render() {
+    const { el } = this;
+
+    const rtl = getElementDir(el) === "rtl";
+
     return (
       <Host>
-        <div class={CSS.container}>
-          <header class={CSS.header}>
-            <h3 class={CSS.heading}>{this.heading}</h3>
-            <calcite-action onClick={this.close} text={this.textClose}>
-              <CalciteIcon size="16" path={x16} />
-            </calcite-action>
-          </header>
-          <div class={CSS.content}>
-            <slot />
-          </div>
-        </div>
+        <article
+          class={classnames(CSS.container, {
+            [CSS_UTILITY.rtl]: rtl
+          })}
+        >
+          {this.renderHeader()}
+          {this.renderContent()}
+          {this.renderFooter()}
+        </article>
       </Host>
     );
   }
