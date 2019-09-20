@@ -102,7 +102,7 @@ export class CalciteTip {
 
   render() {
     return (
-      <Host dismissed={this.dismissed}>
+      <Host hidden={this.dismissed}>
         <header class={CSS.header}>
           <h3 class={CSS.heading}>{this.heading}</h3>
           {!this.nonDismissible ? (

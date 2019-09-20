@@ -15,11 +15,6 @@ $tip-image-max-width: 100% !default;
   border-radius: var(--calcite-app-border-radius);
 }
 
-:host([hidden]),
-:host([dismissed]) {
-  display: none;
-}
-
 :host([selected]) {
   box-shadow: none;
   margin: 0;
