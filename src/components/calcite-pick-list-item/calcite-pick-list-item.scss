@@ -14,6 +14,9 @@
 
 :host([disabled]) {
   opacity: 0.4;
+  cursor: default;
+  box-shadow: none;
+  border: 1px solid black;
 }
 
 :host(.highlight) {
