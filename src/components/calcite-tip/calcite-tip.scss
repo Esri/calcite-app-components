@@ -26,6 +26,10 @@ $tip-image-max-width: 100% !default;
   padding-right: 0;
 }
 
+.container[hidden] {
+  display: none;
+}
+
 .content {
   display: flex;
   padding-top: var(--calcite-app-cap-spacing-half);

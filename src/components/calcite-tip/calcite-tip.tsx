@@ -102,32 +102,34 @@ export class CalciteTip {
 
   render() {
     return (
-      <Host hidden={this.dismissed}>
-        <header class={CSS.header}>
-          <h3 class={CSS.heading}>{this.heading}</h3>
-          {!this.nonDismissible ? (
-            <calcite-action text={this.textClose} onClick={this.hideTip} class={CSS.close}>
-              <CalciteIcon size="16" path={x16} />
-            </calcite-action>
-          ) : null}
-        </header>
-        <div class={CSS.content}>
-          {this.thumbnail ? (
-            <div class={CSS.imageFrame}>
-              <img src={this.thumbnail} alt={this.textThumbnail} />
-            </div>
-          ) : null}
-
-          <div class={CSS.info}>
-            {this.el.querySelector("[slot=info]") ? <slot name="info" /> : null}
-
-            {this.el.querySelector("[slot=link]") ? (
-              <p class={CSS.link}>
-                <slot name="link" />
-              </p>
+      <Host>
+        <article class={CSS.container} hidden={this.dismissed}>
+          <header class={CSS.header}>
+            <h3 class={CSS.heading}>{this.heading}</h3>
+            {!this.nonDismissible ? (
+              <calcite-action text={this.textClose} onClick={this.hideTip} class={CSS.close}>
+                <CalciteIcon size="16" path={x16} />
+              </calcite-action>
             ) : null}
+          </header>
+          <div class={CSS.content}>
+            {this.thumbnail ? (
+              <div class={CSS.imageFrame}>
+                <img src={this.thumbnail} alt={this.textThumbnail} />
+              </div>
+            ) : null}
+
+            <div class={CSS.info}>
+              {this.el.querySelector("[slot=info]") ? <slot name="info" /> : null}
+
+              {this.el.querySelector("[slot=link]") ? (
+                <p class={CSS.link}>
+                  <slot name="link" />
+                </p>
+              ) : null}
+            </div>
           </div>
-        </div>
+        </article>
       </Host>
     );
   }
