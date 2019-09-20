@@ -17,8 +17,8 @@ describe("calcite-value-list", () => {
       it("should emit an event with the last selected item data", async () => {
         const page = await newE2EPage();
         await page.setContent(`<calcite-value-list>
-          <calcite-value-list-item value="one"></calcite-value-list-item>
-          <calcite-value-list-item value="two"></calcite-value-list-item>
+          <calcite-value-list-item value="one" text-heading="test"></calcite-value-list-item>
+          <calcite-value-list-item value="two" text-heading="test"></calcite-value-list-item>
         </calcite-value-list>`);
 
         const valueList = await page.find("calcite-value-list");
@@ -35,8 +35,8 @@ describe("calcite-value-list", () => {
       it("should emit an event with each selected item's data", async () => {
         const page = await newE2EPage();
         await page.setContent(`<calcite-value-list multiple>
-          <calcite-value-list-item value="one"></calcite-value-list-item>
-          <calcite-value-list-item value="two"></calcite-value-list-item>
+          <calcite-value-list-item value="one" text-heading="test"></calcite-value-list-item>
+          <calcite-value-list-item value="two" text-heading="test"></calcite-value-list-item>
         </calcite-value-list>`);
 
         const valueList = await page.find("calcite-value-list");
