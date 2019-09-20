@@ -27,63 +27,8 @@
   justify-content: flex-start;
 }
 
-.back-button {
-  flex: 0;
-}
-
-h2.heading {
-  margin: 0;
-  overflow: hidden;
-  padding: 0 var(--calcite-app-side-spacing);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: var(--calcite-app-font-size-0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
 .heading--first {
   justify-content: flex-start;
-}
-
-.menu-button {
-  flex: 0;
-  position: relative;
-}
-
-.menu-container {
-  align-self: stretch;
-  display: flex;
-  position: relative;
-}
-
-.menu {
-  position: absolute;
-  top: 100%;
-  z-index: 1;
-  background-color: var(--calcite-app-background);
-  box-shadow: var(--calcite-app-shadow-0);
-  padding: 0;
-  left: auto;
-  min-width: var(--calcite-app-menu-min-width);
-  right: var(--calcite-app-menu-offset);
-  visibility: visible;
-  display: flex;
-  flex-flow: column nowrap;
-  border: 1px solid var(--calcite-app-border);
-  animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-  display: none;
-}
-
-.calcite--rtl .menu {
-  left: var(--calcite-app-menu-offset);
-  right: auto;
-}
-
-.menu--open {
-  display: block;
 }
 
 .content-container {
