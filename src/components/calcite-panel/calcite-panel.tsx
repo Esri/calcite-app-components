@@ -44,7 +44,7 @@ export class CalcitePanel {
   renderHeaderTrailingContent(): VNode {
     return (
       <div class={CSS.headerTrailing}>
-        <slot name="header-leading" />
+        <slot name="header-trailing" />
       </div>
     );
   }
@@ -81,7 +81,7 @@ export class CalcitePanel {
 
     return hasFooter ? (
       <footer class={CSS.footer}>
-        <slot name="footer-actions" />
+        <slot name="footer" />
       </footer>
     ) : null;
   }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>Calcite App Components: calcite-panel</title>
+
+    <!-- Loads the link and script tags-->
+    <script src="head.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <calcite-demo-nav page-id="calcite-panel"></calcite-demo-nav>
+    </nav>
+    <main>
+      <section class="example-container">
+        <h1>calcite-panel</h1>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-panel/readme.md">
+            calcite-panel readme.</a
+          >
+        </p>
+
+        <div class="panel-container">
+          <calcite-panel>
+            <div slot="header-leading">test L</div>
+            <div slot="header">test center</div>
+            <div slot="header-trailing">test T</div>
+            <p>Content</p>
+            <div slot="footer">test Footer</div>
+          </calcite-panel>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
