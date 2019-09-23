@@ -10,13 +10,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import {
-  checkSquare16,
-  circle16,
-  circleFilled16,
-  handleVertical24,
-  square16
-} from "@esri/calcite-ui-icons";
+import { checkSquare16, circle16, circleFilled16, drag16, square16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
@@ -135,7 +129,7 @@ export class CalcitePickListItem {
     if (icon === ICON_TYPES.grip) {
       return (
         <span class={CSS.handle}>
-          <CalciteIcon size="24" path={handleVertical24} />
+          <CalciteIcon size="16" path={drag16} />
         </span>
       );
     } else {
@@ -156,8 +150,6 @@ export class CalcitePickListItem {
   }
 
   render() {
-    const { icon } = this;
-
     const description = this.textDescription ? (
       <span class={CSS.description}>{this.textDescription}</span>
     ) : null;
@@ -167,7 +159,6 @@ export class CalcitePickListItem {
         class={classnames({
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
-        highlight={icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle}
         onClick={this.pickListClickHandler}
         selected={this.isSelected}
       >

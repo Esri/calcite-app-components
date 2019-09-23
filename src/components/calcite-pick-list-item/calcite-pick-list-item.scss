@@ -17,22 +17,6 @@
   display: none;
 }
 
-:host([highlight]) {
-  border-left: 3px solid transparent;
-  &:host(.calcite--rtl) {
-    border-left: none;
-    border-right: 3px solid transparent;
-  }
-}
-
-:host([highlight][selected]) {
-  border-left-color: blue;
-  &:host(.calcite--rtl) {
-    border-left-color: none;
-    border-right-color: blue;
-  }
-}
-
 .icon {
   color: var(--calcite-app-foreground-link);
   flex: 0 0 0%;
@@ -70,5 +54,11 @@
 }
 
 .handle {
+  align-items: center;
+  align-self: stretch;
+  color: var(--calcite-app-foreground-subtle);
   cursor: move;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
 }

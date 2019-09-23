@@ -1,3 +1,22 @@
 :host {
   display: block;
 }
+
+calcite-pick-list-item {
+  border-radius: var(--calcite-app-border-radius);
+  padding-top: var(--calcite-app-side-spacing-three-quarters);
+  padding-bottom: var(--calcite-app-side-spacing-three-quarters);
+  position: relative;
+  margin: 0 0 var(--calcite-app-cap-spacing-eighth) 0;
+  transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+    box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+:host(:last-child) calcite-pick-list-item {
+  margin-bottom: 0;
+}
+
+calcite-pick-list-item[selected] {
+  z-index: 1;
+  @include borderShadowActive();
+}
