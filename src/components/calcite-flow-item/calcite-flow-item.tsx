@@ -109,6 +109,7 @@ export class CalciteFlowItem {
 
     return showBackButton ? (
       <calcite-action
+        slot="header-leading-content"
         key="back-button"
         aria-label={textBack}
         text={textBack}
@@ -197,7 +198,7 @@ export class CalciteFlowItem {
     return (
       <Host>
         <calcite-panel>
-          <div slot="header-leading-content">{this.renderBackButton(rtl)}</div>
+          {this.renderBackButton(rtl)}
           <h2 slot="header-content">{heading}</h2>
           {this.renderHeaderActions()}
           <slot />
