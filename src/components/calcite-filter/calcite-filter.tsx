@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 
-const filterDebounceAmount = 250; // milliseconds
+const filterDebounceInMs = 250;
 
 @Component({
   tag: "calcite-filter",
@@ -15,11 +15,21 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * The input data. The filter uses this as the starting point, and returns items
+   * that contain the string entered in the input, using a partial match and recursive search.
+   */
+  @Prop() data: object[];
+
+  /**
+   * A text label that will appear next to the input field.
+   */
   @Prop() textLabel: string;
 
+  /**
+   * Placeholder text for the input element's placeholder attribute
+   */
   @Prop() textPlaceholder: string;
-
-  @Prop() data: object[];
 
   // --------------------------------------------------------------------------
   //
@@ -67,7 +77,7 @@ export class CalciteFilter {
     });
 
     this.calciteFilterChange.emit(result);
-  }, filterDebounceAmount);
+  }, filterDebounceInMs);
 
   inputHandler = (event: Event): void => {
     const target = event.target as HTMLInputElement;
