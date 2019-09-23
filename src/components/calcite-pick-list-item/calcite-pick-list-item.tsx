@@ -110,6 +110,14 @@ export class CalcitePickListItem {
     this.emitChangeEvent(event.shiftKey);
   };
 
+  pickListKeyDownHandler = (event: KeyboardEvent): void => {
+    if (event.key === " ") {
+      event.preventDefault();
+      this.isSelected = !this.isSelected;
+      this.emitChangeEvent(event.shiftKey);
+    }
+  };
+
   secondaryActionContainerClickHandler(event: MouseEvent) {
     event.stopPropagation();
   }
@@ -171,7 +179,11 @@ export class CalcitePickListItem {
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
         onClick={this.pickListClickHandler}
+        onKeydown={this.pickListKeyDownHandler}
         selected={this.isSelected}
+        role="checkbox"
+        aria-checked={this.isSelected}
+        tabindex="0"
       >
         {this.renderIcon()}
         <label class={CSS.label}>
