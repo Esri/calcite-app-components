@@ -31,11 +31,17 @@
         </p>
 
         <div class="panel-container">
-          <calcite-dismissible-panel heading="test">
+          <calcite-dismissible-panel heading="test" id="panel">
             <p>Content</p>
           </calcite-panel>
         </div>
       </section>
     </main>
+    <script>
+    var panel = document.getElementById("panel");
+    panel.addEventListener("calciteDismissiblePanelClose", function(){
+      console.log("closed");
+    });
+    </script>
   </body>
 </html>

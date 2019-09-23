@@ -61,6 +61,12 @@ export class CalciteDismissiblePanel {
     this.calciteDismissiblePanelClose.emit();
   };
 
+  panelKeyUpHandler = (event: KeyboardEvent): void => {
+    if (event.key === "Escape") {
+      this.close();
+    }
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -72,7 +78,7 @@ export class CalciteDismissiblePanel {
 
     return (
       <Host>
-        <calcite-panel>
+        <calcite-panel tabIndex={0} onKeyUp={this.panelKeyUpHandler}>
           <h2 slot="header-center">{heading}</h2>
           <div slot="header-trailing">
             <calcite-action
