@@ -1,9 +1,10 @@
-import { Component, Element, Host, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
 import { CSS } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/dist/declarations";
+import { CalciteTheme } from "../interfaces";
 
 @Component({
   tag: "calcite-panel",
@@ -11,6 +12,17 @@ import { VNode } from "@stencil/core/dist/declarations";
   shadow: true
 })
 export class CalcitePanel {
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Used to set the component's color scheme.
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -52,15 +64,17 @@ export class CalcitePanel {
   renderHeader(): VNode {
     const { el } = this;
 
-    const hasHeader = el.querySelector("[slot=header-leading]");
+    const hasHeaderCenter = el.querySelector("[slot=header-center]");
     const hasHeaderLeading = el.querySelector("[slot=header-leading]");
     const hasHeaderTrailing = el.querySelector("[slot=header-trailing]");
 
     const headerLeadingNode = hasHeaderLeading ? this.renderHeaderLeadingContent() : null;
-    const headerCenterNode = hasHeader ? this.renderHeaderCenterContent() : null;
+    const headerCenterNode = hasHeaderCenter ? this.renderHeaderCenterContent() : null;
     const headerTrailingNode = hasHeaderTrailing ? this.renderHeaderTrailingContent() : null;
 
-    return hasHeader ? (
+    const hasHeaderContent = hasHeaderCenter || hasHeaderLeading || hasHeaderTrailing;
+
+    return hasHeaderContent ? (
       <header
         class={classnames(CSS.header, {
           [CSS.headerHasLeading]: hasHeaderLeading,

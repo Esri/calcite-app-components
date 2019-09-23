@@ -6,28 +6,23 @@ The `calcite-panel` component is a positioned container that appears relative to
 
 ## Properties
 
-| Property    | Attribute    | Description                           | Type     | Default      |
-| ----------- | ------------ | ------------------------------------- | -------- | ------------ |
-| `heading`   | `heading`    | Panel heading                         | `string` | `undefined`  |
-| `textClose` | `text-close` | Alternate text for closing the panel. | `string` | `TEXT.close` |
-
-## Events
-
-| Event               | Description                                 | Type               |
-| ------------------- | ------------------------------------------- | ------------------ |
-| `calcitePanelClose` | Emitted when the component has been closed. | `CustomEvent<any>` |
+| Property | Attribute | Description                               | Type                | Default     |
+| -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [calcite-action](../calcite-action)
+- [calcite-dismissible-panel](../calcite-dismissible-panel)
+- [calcite-flow-item](../calcite-flow-item)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  calcite-panel --> calcite-action
+  calcite-dismissible-panel --> calcite-panel
+  calcite-flow-item --> calcite-panel
   style calcite-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

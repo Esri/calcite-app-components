@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
-    <title>Calcite App Components: calcite-panel</title>
+    <title>Calcite App Components: calcite-dismissible-panel</title>
 
     <!-- Loads the link and script tags-->
     <script src="head.js"></script>
@@ -18,25 +18,21 @@
 
   <body>
     <nav>
-      <calcite-demo-nav page-id="calcite-panel"></calcite-demo-nav>
+      <calcite-demo-nav page-id="calcite-dismissible-panel"></calcite-demo-nav>
     </nav>
     <main>
       <section class="example-container">
-        <h1>calcite-panel</h1>
+        <h1>calcite-dismissible-panel</h1>
         <p>
           see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-panel/readme.md">
-            calcite-panel readme.</a
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-dismissible-panel/readme.md">
+            calcite-dismissible-panel readme.</a
           >
         </p>
 
         <div class="panel-container">
-          <calcite-panel>
-            <div slot="header-leading">test L</div>
-            <div slot="header">test center</div>
-            <div slot="header-trailing">test T</div>
+          <calcite-dismissible-panel heading="test">
             <p>Content</p>
-            <div slot="footer">test Footer</div>
           </calcite-panel>
         </div>
       </section>

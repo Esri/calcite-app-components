@@ -1,0 +1,92 @@
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { x16 } from "@esri/calcite-ui-icons";
+import { TEXT } from "./resources";
+import CalciteIcon from "../utils/CalciteIcon";
+import { CalciteTheme } from "../interfaces";
+
+@Component({
+  tag: "calcite-dismissible-panel",
+  styleUrl: "calcite-dismissible-panel.scss",
+  shadow: true
+})
+export class CalciteDismissiblePanel {
+  // --------------------------------------------------------------------------
+  //
+  //  Properties
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Heading text.
+   */
+  @Prop() heading: string;
+
+  /**
+   * 'Close' text string for the close button.
+   */
+  @Prop() textClose = TEXT.close;
+
+  /**
+   * Used to set the component's color scheme.
+   */
+  @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteDismissiblePanelElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when the back button has been clicked.
+   */
+
+  @Event() calciteDismissiblePanelClose: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  close = (): void => {
+    this.calciteDismissiblePanelClose.emit();
+  };
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
+
+  render() {
+    const { heading, textClose, close } = this;
+
+    return (
+      <Host>
+        <calcite-panel>
+          <h2 slot="header-center">{heading}</h2>
+          <div slot="header-trailing">
+            <calcite-action
+              key="back-button"
+              aria-label={textClose}
+              text={textClose}
+              onClick={close}
+            >
+              <CalciteIcon size="16" path={x16} />
+            </calcite-action>
+          </div>
+          <slot />
+        </calcite-panel>
+      </Host>
+    );
+  }
+}

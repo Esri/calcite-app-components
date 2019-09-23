@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  height: 100%;
+  font-size: var(--calcite-app-base-font-size);
+}
+
+h2 {
+  margin: 0;
+  overflow: hidden;
+  padding: 0 var(--calcite-app-side-spacing);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--calcite-app-font-size-0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
