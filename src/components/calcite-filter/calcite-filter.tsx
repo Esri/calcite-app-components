@@ -27,7 +27,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCacliteFilterElement;
+  @Element() el: HTMLCalciteFilterElement;
 
   // --------------------------------------------------------------------------
   //
