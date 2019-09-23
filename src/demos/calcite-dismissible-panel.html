@@ -25,7 +25,9 @@
         <h1>calcite-dismissible-panel</h1>
         <p>
           see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-dismissible-panel/readme.md">
+          <a
+            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-dismissible-panel/readme.md"
+          >
             calcite-dismissible-panel readme.</a
           >
         </p>
@@ -33,15 +35,15 @@
         <div class="panel-container">
           <calcite-dismissible-panel heading="test" id="panel">
             <p>Content</p>
-          </calcite-panel>
+          </calcite-dismissible-panel>
         </div>
       </section>
     </main>
     <script>
-    var panel = document.getElementById("panel");
-    panel.addEventListener("calciteDismissiblePanelClose", function(){
-      console.log("closed");
-    });
+      var panel = document.getElementById("panel");
+      panel.addEventListener("calciteDismissiblePanelClose", function() {
+        console.log("closed");
+      });
     </script>
   </body>
 </html>
