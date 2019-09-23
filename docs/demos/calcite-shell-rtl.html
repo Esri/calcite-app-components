@@ -14,39 +14,6 @@
   </head>
 
   <body>
-    <calcite-popover placement="vertical" id="popover">
-      <calcite-shell-floating-panel
-        id="calcite-shell-floating-panel"
-        heading="Vertical Shell Floating Panel"
-        style="height:150px;"
-        ><span>
-          Shell Floating Panel Content
-        </span>
-      </calcite-shell-floating-panel>
-    </calcite-popover>
-
-    <calcite-popover placement="horizontal" id="popover-action-pad">
-      <calcite-action-pad id="action-pad">
-        <calcite-action-group>
-          <calcite-action text="Add">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-            </svg>
-          </calcite-action>
-        </calcite-action-group>
-      </calcite-action-pad>
-    </calcite-popover>
-
-    <calcite-popover placement="horizontal" id="popover-2">
-      <calcite-shell-floating-panel
-        id="calcite-shell-floating-panel-2"
-        heading="Vertical Shell Floating Panel"
-        style="height:150px;"
-        ><span>
-          Shell Floating Panel Content
-        </span>
-      </calcite-shell-floating-panel>
-    </calcite-popover>
     <nav>
       <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
     </nav>
@@ -559,35 +526,6 @@
       </div>
       <p style="text-align: center;">Box Shadow added to show app edges.</p>
       <script>
-        var popoverActionPad = document.getElementById("popover-action-pad");
-        var actionPadButton = document.getElementById("action-pad-button");
-        popoverActionPad.referenceElement = actionPadButton;
-        actionPadButton.addEventListener("click", function() {
-          popoverActionPad.toggle();
-        });
-
-        var popoverFloatingPanel = document.getElementById("popover");
-        var shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
-        popoverFloatingPanel.referenceElement = shellFloatingPanelButton;
-        shellFloatingPanelButton.addEventListener("click", function() {
-          popoverFloatingPanel.toggle();
-        });
-        var floatingPanel = document.getElementById("calcite-shell-floating-panel");
-        floatingPanel.addEventListener("calciteShellFloatingPanelClose", function() {
-          popoverFloatingPanel.open = false;
-        });
-
-        var popoverFloatingPanel2 = document.getElementById("popover-2");
-        var shellFloatingPanelButton2 = document.getElementById("shell-floating-panel-button-2");
-        popoverFloatingPanel2.referenceElement = shellFloatingPanelButton2;
-        shellFloatingPanelButton2.addEventListener("click", function() {
-          popoverFloatingPanel2.toggle();
-        });
-        var floatingPanel2 = document.getElementById("calcite-shell-floating-panel-2");
-        floatingPanel2.addEventListener("calciteShellFloatingPanelClose", function() {
-          popoverFloatingPanel2.open = false;
-        });
-
         var flowNode = document.getElementById("flow");
 
         flowNode.addEventListener("calciteFlowItemBackClick", function() {

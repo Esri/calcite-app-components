@@ -3,6 +3,15 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [v3.0.0](https://github.com/Esri/calcite-app-components/tree/v3.0.0) (2019-09-20)
+
+### Features
+
+- Removed Component: Moved `calcite-popover` component to the 'calcite-components' project.
+- PickList styling updated.
+- Documentation referring to a each components slots are now auto generated.
+- Small documentation and demo updates.
+
 ## [v2.3.0](https://github.com/Esri/calcite-app-components/tree/v2.3.0) (2019-09-12)
 
 ### Features

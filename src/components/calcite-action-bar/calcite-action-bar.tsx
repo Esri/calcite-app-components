@@ -75,7 +75,7 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteActionBarElement;
 
   // --------------------------------------------------------------------------
   //

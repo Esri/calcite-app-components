@@ -70,7 +70,7 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFlowItemElement;
 
   // --------------------------------------------------------------------------
   //
