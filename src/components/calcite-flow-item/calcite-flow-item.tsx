@@ -103,7 +103,7 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton(rtl: boolean) {
-    const { showBackButton, textBack } = this;
+    const { showBackButton, textBack, backButtonClick } = this;
 
     const path = rtl ? chevronRight16 : chevronLeft16;
 
@@ -114,7 +114,7 @@ export class CalciteFlowItem {
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
-        onClick={this.backButtonClick}
+        onClick={backButtonClick}
       >
         <CalciteIcon size="16" path={path} />
       </calcite-action>

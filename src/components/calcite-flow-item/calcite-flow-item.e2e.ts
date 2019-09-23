@@ -106,7 +106,8 @@ describe("calcite-flow-item", () => {
 
     expect(showBackButton).toBe(false);
 
-    const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+    const panelNode = await page.find("calcite-flow-item >>> calcite-panel");
+    const backButton = await panelNode.find(`.${CSS.backButton}`);
 
     expect(backButton).toBeNull();
 
@@ -118,16 +119,11 @@ describe("calcite-flow-item", () => {
 
     expect(showBackButtonNew).toBe(true);
 
-    const backButtonNew = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+    const panelNodeNew = await page.find("calcite-flow-item >>> calcite-panel");
+    const backButtonNew = await panelNodeNew.find(`.${CSS.backButton}`);
 
     expect(backButtonNew).not.toBeNull();
 
     expect(await backButtonNew.isVisible()).toBe(true);
-
-    const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
-
-    await backButtonNew.click();
-
-    expect(eventSpy).toHaveReceivedEvent();
   });
 });
