@@ -20,10 +20,10 @@ export const config: Config = {
       components: ["calcite-block", "calcite-block-section"]
     },
     {
-      components: ["calcite-flow", "calcite-flow-item"]
+      components: ["calcite-flow"]
     },
     {
-      components: ["calcite-panel"]
+      components: ["calcite-panel", "calcite-dismissible-panel", "calcite-flow-item"]
     },
     {
       components: ["calcite-shell", "calcite-shell-panel"]
