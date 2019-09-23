@@ -49,7 +49,7 @@ export class CalciteDismissiblePanel {
    * Emitted when the back button has been clicked.
    */
 
-  @Event() calciteDismissiblePanelClose: EventEmitter;
+  @Event() calciteDismissiblePanelDismiss: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -58,7 +58,7 @@ export class CalciteDismissiblePanel {
   // --------------------------------------------------------------------------
 
   close = (): void => {
-    this.calciteDismissiblePanelClose.emit();
+    this.calciteDismissiblePanelDismiss.emit();
   };
 
   panelKeyUpHandler = (event: KeyboardEvent): void => {

@@ -25,8 +25,8 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 
 - [calcite-action-bar](../calcite-action-bar)
 - [calcite-block-section](../calcite-block-section)
+- [calcite-dismissible-panel](../calcite-dismissible-panel)
 - [calcite-flow-item](../calcite-flow-item)
-- [calcite-panel](../calcite-panel)
 - [calcite-tip](../calcite-tip)
 - [calcite-tip-manager](../calcite-tip-manager)
 
@@ -36,8 +36,8 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 graph TD;
   calcite-action-bar --> calcite-action
   calcite-block-section --> calcite-action
+  calcite-dismissible-panel --> calcite-action
   calcite-flow-item --> calcite-action
-  calcite-panel --> calcite-action
   calcite-tip --> calcite-action
   calcite-tip-manager --> calcite-action
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px

@@ -11,7 +11,7 @@ describe("calcite-dismissible-panel", () => {
 
     await page.setContent("<calcite-dismissible-panel></calcite-dismissible-panel>");
 
-    const eventSpy = await page.spyOnEvent("calciteDismissiblePanelClose", "window");
+    const eventSpy = await page.spyOnEvent("calciteDismissiblePanelDismiss", "window");
 
     const closeButton = await page.find("calcite-dismissible-panel >>> calcite-action");
 

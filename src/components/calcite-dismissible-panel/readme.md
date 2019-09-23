@@ -12,9 +12,9 @@
 
 ## Events
 
-| Event                          | Description                                    | Type               |
-| ------------------------------ | ---------------------------------------------- | ------------------ |
-| `calciteDismissiblePanelClose` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
+| Event                            | Description                                    | Type               |
+| -------------------------------- | ---------------------------------------------- | ------------------ |
+| `calciteDismissiblePanelDismiss` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
 
 ## Dependencies
 
