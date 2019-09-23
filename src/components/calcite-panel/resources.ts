@@ -1,11 +1,11 @@
 export const CSS = {
   container: "container",
   header: "header",
-  headerHasLeading: "header--has-leading",
-  headerHasTrailing: "header--has-trailing",
-  headerLeading: "header-leading",
-  headerCenter: "header-center",
-  headerTrailing: "header-trailing",
+  headerHasLeadingContent: "header--has-leading-content",
+  headerHasTrailingContent: "header--has-trailing-content",
+  headerLeadingContent: "header-leading-content",
+  headerContent: "header-content",
+  headerTrailingContent: "header-trailing-content",
   contentContainer: "content-container",
   footer: "footer"
 };

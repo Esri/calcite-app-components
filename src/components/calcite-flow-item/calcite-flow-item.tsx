@@ -186,7 +186,7 @@ export class CalciteFlowItem {
         ? this.renderMenuActionsContainer()
         : null;
 
-    return menuActionsNodes ? <div slot="header-trailing">{menuActionsNodes}</div> : null;
+    return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
   }
 
   render() {
@@ -197,8 +197,8 @@ export class CalciteFlowItem {
     return (
       <Host>
         <calcite-panel>
-          <div slot="header-leading">{this.renderBackButton(rtl)}</div>
-          <h2 slot="header-center">{heading}</h2>
+          <div slot="header-leading-content">{this.renderBackButton(rtl)}</div>
+          <h2 slot="header-content">{heading}</h2>
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}

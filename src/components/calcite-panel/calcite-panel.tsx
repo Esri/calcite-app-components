@@ -6,6 +6,13 @@ import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteTheme } from "../interfaces";
 
+const SLOTS = {
+  headerContent: "header-content",
+  headerLeadingContent: "header-leading-content",
+  headerTrailingContent: "header-trailing-content",
+  footer: "footer"
+};
+
 @Component({
   tag: "calcite-panel",
   styleUrl: "calcite-panel.scss",
@@ -39,24 +46,24 @@ export class CalcitePanel {
 
   renderHeaderLeadingContent(): VNode {
     return (
-      <div class={CSS.headerLeading}>
-        <slot name="header-leading" />
+      <div class={CSS.headerLeadingContent}>
+        <slot name={SLOTS.headerLeadingContent} />
       </div>
     );
   }
 
-  renderHeaderCenterContent(): VNode {
+  renderHeaderContent(): VNode {
     return (
-      <div class={CSS.headerCenter}>
-        <slot name="header-center" />
+      <div class={CSS.headerContent}>
+        <slot name={SLOTS.headerContent} />
       </div>
     );
   }
 
   renderHeaderTrailingContent(): VNode {
     return (
-      <div class={CSS.headerTrailing}>
-        <slot name="header-trailing" />
+      <div class={CSS.headerTrailingContent}>
+        <slot name={SLOTS.headerTrailingContent} />
       </div>
     );
   }
@@ -64,26 +71,31 @@ export class CalcitePanel {
   renderHeader(): VNode {
     const { el } = this;
 
-    const hasHeaderCenter = el.querySelector("[slot=header-center]");
-    const hasHeaderLeading = el.querySelector("[slot=header-leading]");
-    const hasHeaderTrailing = el.querySelector("[slot=header-trailing]");
+    const hasHeaderContent = el.querySelector(`[slot=${SLOTS.headerContent}]`);
+    const hasHeaderLeadingContent = el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
+    const hasHeaderTrailingContent = el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
 
-    const headerLeadingNode = hasHeaderLeading ? this.renderHeaderLeadingContent() : null;
-    const headerCenterNode = hasHeaderCenter ? this.renderHeaderCenterContent() : null;
-    const headerTrailingNode = hasHeaderTrailing ? this.renderHeaderTrailingContent() : null;
+    const headerLeadingContentNode = hasHeaderLeadingContent
+      ? this.renderHeaderLeadingContent()
+      : null;
+    const headerContentNode = hasHeaderContent ? this.renderHeaderContent() : null;
+    const headerTrailingContentNode = hasHeaderTrailingContent
+      ? this.renderHeaderTrailingContent()
+      : null;
 
-    const hasHeaderContent = hasHeaderCenter || hasHeaderLeading || hasHeaderTrailing;
+    const canDisplayHeader =
+      hasHeaderContent || hasHeaderLeadingContent || hasHeaderTrailingContent;
 
-    return hasHeaderContent ? (
+    return canDisplayHeader ? (
       <header
         class={classnames(CSS.header, {
-          [CSS.headerHasLeading]: hasHeaderLeading,
-          [CSS.headerHasTrailing]: hasHeaderTrailing
+          [CSS.headerHasLeadingContent]: hasHeaderLeadingContent,
+          [CSS.headerHasTrailingContent]: hasHeaderTrailingContent
         })}
       >
-        {headerLeadingNode}
-        {headerCenterNode}
-        {headerTrailingNode}
+        {headerLeadingContentNode}
+        {headerContentNode}
+        {headerTrailingContentNode}
       </header>
     ) : null;
   }
@@ -91,11 +103,11 @@ export class CalcitePanel {
   renderFooter(): VNode {
     const { el } = this;
 
-    const hasFooter = el.querySelector("[slot=footer]");
+    const hasFooter = el.querySelector(`[slot=${SLOTS.footer}]`);
 
     return hasFooter ? (
       <footer class={CSS.footer}>
-        <slot name="footer" />
+        <slot name={SLOTS.footer} />
       </footer>
     ) : null;
   }

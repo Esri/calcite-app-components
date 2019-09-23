@@ -79,8 +79,8 @@ export class CalciteDismissiblePanel {
     return (
       <Host>
         <calcite-panel tabIndex={0} onKeyUp={this.panelKeyUpHandler}>
-          <h2 slot="header-center">{heading}</h2>
-          <div slot="header-trailing">
+          <h2 slot="header-content">{heading}</h2>
+          <div slot="header-trailing-content">
             <calcite-action
               key="back-button"
               aria-label={textClose}
