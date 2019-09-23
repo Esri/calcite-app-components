@@ -3,16 +3,16 @@
 }
 
 calcite-pick-list-item {
+  border-radius: var(--calcite-app-border-radius);
+  padding-top: var(--calcite-app-cap-spacing-half);
+  padding-bottom: var(--calcite-app-cap-spacing-half);
   position: relative;
-  margin: 0 0 -1px 0;
-}
-
-:host(:first-child) calcite-pick-list-item {
-  border-radius: var(--calcite-app-border-radius) var(--calcite-app-border-radius) 0 0;
+  margin: 0 0 var(--calcite-app-cap-spacing-eighth) 0;
+  transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+    box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
 :host(:last-child) calcite-pick-list-item {
-  border-radius: 0 0 var(--calcite-app-border-radius) var(--calcite-app-border-radius);
   margin-bottom: 0;
 }
 

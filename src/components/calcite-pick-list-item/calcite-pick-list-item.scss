@@ -54,6 +54,11 @@
 }
 
 .handle {
+  align-items: center;
+  align-self: stretch;
   color: var(--calcite-app-foreground-subtle);
   cursor: move;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
 }
