@@ -17,7 +17,9 @@
   opacity: 0.4;
   cursor: default;
   box-shadow: none;
-  border: 1px solid black;
+  &:host(:hover) {
+    background-color: var(--calcite-app-background);
+  }
 }
 
 :host(.highlight) {
