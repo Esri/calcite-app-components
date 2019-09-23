@@ -36,7 +36,7 @@ export class CalcitePanel {
   renderHeaderCenterContent(): VNode {
     return (
       <div class={CSS.headerCenter}>
-        <slot name="header" />
+        <slot name="header-center" />
       </div>
     );
   }
