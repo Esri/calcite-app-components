@@ -1,3 +1,22 @@
 :host {
   display: block;
 }
+
+calcite-pick-list-item {
+  position: relative;
+  margin: 0 0 -1px 0;
+}
+
+:host(:first-child) calcite-pick-list-item {
+  border-radius: var(--calcite-app-border-radius) var(--calcite-app-border-radius) 0 0;
+}
+
+:host(:last-child) calcite-pick-list-item {
+  border-radius: 0 0 var(--calcite-app-border-radius) var(--calcite-app-border-radius);
+  margin-bottom: 0;
+}
+
+calcite-pick-list-item[selected] {
+  z-index: 1;
+  @include borderShadowActive();
+}

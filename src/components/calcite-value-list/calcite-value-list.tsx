@@ -44,12 +44,6 @@ export class CalciteValueList {
    */
   @Prop({ reflect: true }) multiple = false;
 
-  /**
-   * The heading label for the entire Value List.
-   * Not to be confused with the heading for an individual item or for a sub-group of items.
-   */
-  @Prop({ reflect: true }) textHeading: string;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -222,12 +216,7 @@ export class CalciteValueList {
     const id = this.el.id || this.guid;
     return (
       <Host id={id}>
-        <h1>VALUE LIST</h1>
         <section class={CSS.container}>
-          <header>
-            <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
-          </header>
           <slot />
         </section>
       </Host>
