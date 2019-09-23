@@ -125,5 +125,14 @@ describe("calcite-flow-item", () => {
     expect(backButtonNew).not.toBeNull();
 
     expect(await backButtonNew.isVisible()).toBe(true);
+
+    const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
+
+    await page.$eval("calcite-flow-item", (elm: HTMLElement) => {
+      const nativeBackButton = elm.shadowRoot.querySelector(`calcite-action`);
+      nativeBackButton.click();
+    });
+
+    expect(eventSpy).toHaveReceivedEvent();
   });
 });
