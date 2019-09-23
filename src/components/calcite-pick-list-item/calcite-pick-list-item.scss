@@ -14,7 +14,7 @@
 }
 
 :host([disabled]) {
-  opacity: 0.4;
+  opacity: var(--calcite-app-disabled-opacity);
   cursor: default;
   box-shadow: none;
   &:host(:hover) {
