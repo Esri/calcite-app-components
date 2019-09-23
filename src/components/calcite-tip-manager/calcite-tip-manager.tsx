@@ -66,7 +66,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteTipManagerElement;
 
   @State() selectedIndex: number;
 

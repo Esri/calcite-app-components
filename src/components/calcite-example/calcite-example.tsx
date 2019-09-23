@@ -39,7 +39,7 @@ export class CalciteExample {
   // --------------------------------------------------------------------------
 
   @Element()
-  el: HTMLElement;
+  el: HTMLCalciteExampleElement;
 
   internalProp: string;
 

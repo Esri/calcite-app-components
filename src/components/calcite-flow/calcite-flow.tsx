@@ -27,7 +27,7 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFlowElement;
 
   @State() flowCount = 0;
 

@@ -1,1 +1,0 @@
-const a={container:"container",dragHandle:"handle"};var n;!function(a){a.circle="circle",a.square="square",a.grip="grip"}(n||(n={}));export{a as C,n as I};

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.heading {
+  margin: var(--calcite-app-cap-spacing-half) 0;
+}
+
+.container {
+  border-radius: var(--calcite-app-border-radius);
+  overflow: hidden;
+  @include borderShadow();
+}

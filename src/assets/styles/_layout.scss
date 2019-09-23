@@ -21,6 +21,8 @@ $animation-time: 250ms !default;
   --calcite-app-side-spacing-eighth: #{ceil($side-spacing / 8)};
   --calcite-app-cap-spacing-eighth: #{ceil($cap-spacing / 8)};
 
+  --calcite-app-cap-spacing-minimum: 1px;
+
   --calcite-app-side-spacing-plus-half: #{floor($side-spacing * 1.5)};
   --calcite-app-cap-spacing-plus-half: #{floor($cap-spacing * 1.5)};
 
