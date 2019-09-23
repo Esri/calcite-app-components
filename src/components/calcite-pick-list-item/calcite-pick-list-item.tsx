@@ -46,8 +46,6 @@ export class CalcitePickListItem {
     }
   }
 
-  @Prop() editable = false;
-
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
 
   @Prop({ reflect: true }) textHeading: string;
@@ -175,9 +173,7 @@ export class CalcitePickListItem {
       >
         {this.renderIcon()}
         <label class={CSS.label}>
-          <span class={CSS.title} contentEditable={this.editable}>
-            {this.textHeading}
-          </span>
+          <span class={CSS.title}>{this.textHeading}</span>
           {description}
         </label>
         <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>

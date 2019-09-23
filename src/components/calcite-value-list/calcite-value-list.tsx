@@ -32,23 +32,12 @@ export class CalciteValueList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
-   * When true, the item labels will be editable.
-   */
-  @Prop({ reflect: true }) labelEditingEnabled = false;
-
-  /**
    * Multpile Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
    * When false, selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
-
-  /**
-   * The heading label for the entire Value List.
-   * Not to be confused with the heading for an individual item or for a sub-group of items.
-   */
-  @Prop({ reflect: true }) textHeading: string;
 
   // --------------------------------------------------------------------------
   //
@@ -139,9 +128,6 @@ export class CalciteValueList {
       } else {
         item.removeAttribute("icon");
       }
-      if (this.labelEditingEnabled) {
-        item.setAttribute("editable", "");
-      }
     });
     if (this.dragEnabled) {
       this.setUpDragAndDrop();
@@ -222,12 +208,7 @@ export class CalciteValueList {
     const id = this.el.id || this.guid;
     return (
       <Host id={id}>
-        <h1>VALUE LIST</h1>
         <section class={CSS.container}>
-          <header>
-            <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
-          </header>
           <slot />
         </section>
       </Host>
