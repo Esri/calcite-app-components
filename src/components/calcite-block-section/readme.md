@@ -23,7 +23,7 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
 

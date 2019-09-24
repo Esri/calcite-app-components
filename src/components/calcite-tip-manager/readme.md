@@ -10,7 +10,6 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 
 | Property              | Attribute               | Description                                        | Type                | Default                       |
 | --------------------- | ----------------------- | -------------------------------------------------- | ------------------- | ----------------------------- |
-| `tabindex`            | `tabindex`              |                                                    | `number`            | `0`                           |
 | `textClose`           | `text-close`            | Alternate text for closing the Tip Manager.        | `string`            | `TEXT.close`                  |
 | `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.       | `string`            | `TEXT.defaultGroupTitle`      |
 | `textNext`            | `text-next`             | Alternate text for navigating to the next tip.     | `string`            | `TEXT.next`                   |
@@ -42,7 +41,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
 

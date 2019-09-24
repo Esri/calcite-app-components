@@ -35,7 +35,7 @@ See the [calcite-tip demo](https://esri.github.io/calcite-app-components/demos/c
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
 
