@@ -15,6 +15,12 @@ const SLOTS = {
   footer: "footer"
 };
 
+/**
+ * @slot header-content - A slot for adding content in the center of the header.
+ * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
+ * @slot header-trailing-content - A slot for adding a `calcite-action` on the trailing side of the header.
+ * @slot footer - A slot for adding `calcite-actions` to the footer.
+ */
 @Component({
   tag: "calcite-panel",
   styleUrl: "calcite-panel.scss",
