@@ -1,5 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { hidden, renders } from "../../tests/commonTests";
+import { CSS } from "./resources";
 
 describe("calcite-tip", () => {
   it("renders", async () => renders("calcite-tip"));
@@ -13,7 +14,7 @@ describe("calcite-tip", () => {
       console.error(error);
     });
 
-    const closeButton = await page.find("calcite-tip >>> .close");
+    const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
     expect(closeButton).toBeNull();
   });
 
@@ -25,13 +26,13 @@ describe("calcite-tip", () => {
 
     const eventSpy = await page.spyOnEvent("calciteTipDismiss", "window");
 
-    const closeButton = await page.find("calcite-tip >>> .close");
+    const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
 
     closeButton.click();
 
     await page.waitForChanges();
 
-    const tip = await page.find("calcite-tip >>> article");
+    const tip = await page.find(`calcite-tip >>> .${CSS.container}`);
 
     const isVisible = await tip.isVisible();
 
@@ -46,7 +47,7 @@ describe("calcite-tip", () => {
       console.error(error);
     });
 
-    const closeButton = await page.find("calcite-tip >>> .close");
+    const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
 
     closeButton.click();
 
@@ -57,7 +58,7 @@ describe("calcite-tip", () => {
       console.error(error);
     });
 
-    const tip = await page2.find("calcite-tip >>> article");
+    const tip = await page2.find(`calcite-tip >>> .${CSS.container}`);
 
     const isVisible = await tip.isVisible();
 
