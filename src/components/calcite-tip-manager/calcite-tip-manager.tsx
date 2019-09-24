@@ -58,15 +58,13 @@ export class CalciteTipManager {
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
-  @Prop({ reflect: true }) tabindex = 0;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteTipManagerElement;
 
   @State() selectedIndex: number;
 
@@ -243,16 +241,18 @@ export class CalciteTipManager {
     }
     return (
       <Host onKeydown={this.tipManagerKeyDownHandler}>
-        <header class={CSS.header}>
-          <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
-            <CalciteIcon size="16" path={x16} />
-          </calcite-action>
-        </header>
-        <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
-          <slot />
+        <div tabindex="0">
+          <header class={CSS.header}>
+            <h2 class={CSS.heading}>{this.groupTitle}</h2>
+            <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
+              <CalciteIcon size="16" path={x16} />
+            </calcite-action>
+          </header>
+          <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
+            <slot />
+          </div>
+          {this.renderPagination()}
         </div>
-        {this.renderPagination()}
       </Host>
     );
   }
