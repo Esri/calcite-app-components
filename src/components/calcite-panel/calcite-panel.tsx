@@ -88,7 +88,7 @@ export class CalcitePanel {
     const hasHeaderLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
 
     return hasHeaderLeadingContent ? (
-      <div class={CSS.headerLeadingContent}>
+      <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
     ) : null;
@@ -98,7 +98,7 @@ export class CalcitePanel {
     const hasHeaderContent = this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
 
     return hasHeaderContent ? (
-      <div class={CSS.headerContent}>
+      <div key="header-content" class={CSS.headerContent}>
         <slot name={SLOTS.headerContent} />
       </div>
     ) : null;
@@ -114,12 +114,12 @@ export class CalcitePanel {
     ) : null;
 
     const slotNode = <slot name={SLOTS.headerTrailingContent} />;
-
+    const conditionalSlotNode = dismissible ? <div hidden>{slotNode}</div> : slotNode;
     const hasContent = dismissible || el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
 
     return hasContent ? (
-      <div key="trailing-content" class={CSS.headerTrailingContent}>
-        {slotNode}
+      <div key="header-trailing-content" class={CSS.headerTrailingContent}>
+        {conditionalSlotNode}
         {dismissibleNode}
       </div>
     ) : null;
