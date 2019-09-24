@@ -1,6 +1,6 @@
 export const CSS = {
   container: "container",
-  dragHandle: "handle"
+  handle: "handle"
 };
 export enum ICON_TYPES {
   grip = "grip"

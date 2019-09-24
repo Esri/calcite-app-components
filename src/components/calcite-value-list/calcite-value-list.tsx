@@ -143,7 +143,7 @@ export class CalciteValueList {
       this.sortables.push(
         Sortable.create(sortGroup, {
           group: this.el.id,
-          handle: `.${CSS.dragHandle}`,
+          handle: `.${CSS.handle}`,
           draggable: "calcite-value-list-item"
         })
       );
