@@ -17,6 +17,10 @@
   display: none;
 }
 
+:host(:last-child) {
+  margin-bottom: 0;
+}
+
 .icon {
   color: var(--calcite-app-foreground-link);
   flex: 0 0 0%;
