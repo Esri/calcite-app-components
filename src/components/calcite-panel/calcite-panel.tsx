@@ -1,10 +1,12 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
-import { CSS } from "./resources";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { CSS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteTheme } from "../interfaces";
+import CalciteIcon from "../utils/CalciteIcon";
+import { x16 } from "@esri/calcite-ui-icons";
 
 const SLOTS = {
   headerContent: "header-content",
@@ -26,6 +28,16 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   /**
+   * Displays a close button in the trailing side of the header.
+   */
+  @Prop({ reflect: true }) dismissible = false;
+
+  /**
+   * 'Close' text string for the close button.
+   */
+  @Prop() textClose = TEXT.close;
+
+  /**
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
@@ -40,59 +52,84 @@ export class CalcitePanel {
 
   // --------------------------------------------------------------------------
   //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Emitted when the close button has been clicked.
+   */
+
+  @Event() calcitePanelDismiss: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  dismiss = (): void => {
+    this.calcitePanelDismiss.emit();
+  };
+
+  panelKeyUpHandler = (event: KeyboardEvent): void => {
+    if (event.key === "Escape") {
+      this.dismiss();
+    }
+  };
+
+  // --------------------------------------------------------------------------
+  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    return (
+    const hasHeaderLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
+
+    return hasHeaderLeadingContent ? (
       <div class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
-    );
+    ) : null;
   }
 
   renderHeaderContent(): VNode {
-    return (
+    const hasHeaderContent = this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
+
+    return hasHeaderContent ? (
       <div class={CSS.headerContent}>
         <slot name={SLOTS.headerContent} />
       </div>
-    );
+    ) : null;
   }
 
   renderHeaderTrailingContent(): VNode {
-    return (
-      <div class={CSS.headerTrailingContent}>
-        <slot name={SLOTS.headerTrailingContent} />
-      </div>
-    );
+    const { dismiss, dismissible, el, textClose } = this;
+
+    const hasHeaderTrailingContent = el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
+
+    const contentNode = dismissible ? (
+      <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
+        <CalciteIcon size="16" path={x16} />
+      </calcite-action>
+    ) : hasHeaderTrailingContent ? (
+      <slot name={SLOTS.headerTrailingContent} />
+    ) : null;
+
+    return contentNode ? <div class={CSS.headerTrailingContent}>{contentNode}</div> : null;
   }
 
   renderHeader(): VNode {
-    const { el } = this;
-
-    const hasHeaderContent = el.querySelector(`[slot=${SLOTS.headerContent}]`);
-    const hasHeaderLeadingContent = el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
-    const hasHeaderTrailingContent = el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
-
-    const headerLeadingContentNode = hasHeaderLeadingContent
-      ? this.renderHeaderLeadingContent()
-      : null;
-    const headerContentNode = hasHeaderContent ? this.renderHeaderContent() : null;
-    const headerTrailingContentNode = hasHeaderTrailingContent
-      ? this.renderHeaderTrailingContent()
-      : null;
+    const headerLeadingContentNode = this.renderHeaderLeadingContent();
+    const headerContentNode = this.renderHeaderContent();
+    const headerTrailingContentNode = this.renderHeaderTrailingContent();
 
     const canDisplayHeader =
-      hasHeaderContent || hasHeaderLeadingContent || hasHeaderTrailingContent;
+      headerContentNode || headerLeadingContentNode || headerTrailingContentNode;
 
     return canDisplayHeader ? (
-      <header
-        class={classnames(CSS.header, {
-          [CSS.headerHasLeadingContent]: hasHeaderLeadingContent,
-          [CSS.headerHasTrailingContent]: hasHeaderTrailingContent
-        })}
-      >
+      <header class={CSS.header}>
         {headerLeadingContentNode}
         {headerContentNode}
         {headerTrailingContentNode}
@@ -121,13 +158,15 @@ export class CalcitePanel {
   }
 
   render() {
-    const { el } = this;
+    const { dismissible, el, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
     return (
       <Host>
         <article
+          onKeyUp={panelKeyUpHandler}
+          tabIndex={dismissible ? 0 : -1}
           class={classnames(CSS.container, {
             [CSS_UTILITY.rtl]: rtl
           })}

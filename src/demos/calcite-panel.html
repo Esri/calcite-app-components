@@ -12,6 +12,7 @@
       .panel-container {
         width: 350px;
         height: 800px;
+        margin: 20px 0;
       }
     </style>
   </head>
@@ -39,6 +40,22 @@
             <div slot="footer">test Footer</div>
           </calcite-panel>
         </div>
+
+        <div class="panel-container">
+          <calcite-panel dismissible id="dismissible-panel">
+            <div slot="header-leading-content">test L</div>
+            <div slot="header-content">test center</div>
+            <div slot="header-trailing-content">test T</div>
+            <p>Content</p>
+            <div slot="footer">test Footer</div>
+          </calcite-panel>
+        </div>
+        <script>
+          var dismissiblePanel = document.getElementById("dismissible-panel");
+          dismissiblePanel.addEventListener("calcitePanelDismiss", function() {
+            console.log("calcitePanelDismiss event");
+          });
+        </script>
       </section>
     </main>
   </body>

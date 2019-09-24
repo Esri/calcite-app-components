@@ -42,11 +42,6 @@ const NAV_ITEMS: NavItem[] = [
     content: "Block"
   },
   {
-    id: "calcite-dismissible-panel",
-    path: "demos/calcite-dismissible-panel.html",
-    content: "Dismissible Panel"
-  },
-  {
     id: "calcite-flow",
     path: "demos/calcite-flow.html",
     content: "Flow"
