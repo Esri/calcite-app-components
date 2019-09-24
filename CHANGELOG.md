@@ -3,6 +3,18 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [v3.1.0](https://github.com/Esri/calcite-app-components/tree/v3.1.0) (2019-09-24)
+
+### Features
+
+- Tip now uses the hidden attribute in place of dismissed
+- Pick-List-Item now supports the disabled attribute
+- Pick-List-Item now supports keyboard accessibility
+
+### Bug Fixes
+
+- tabindex on Tip Manager is no longer listed as a custom API prop.
+
 ## [v3.0.0](https://github.com/Esri/calcite-app-components/tree/v3.0.0) (2019-09-20)
 
 ### Features
@@ -11,6 +23,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - PickList styling updated.
 - Documentation referring to a each components slots are now auto generated.
 - Small documentation and demo updates.
+
+### Bug Fixes
+
+- Pick-List now properly shows pre-selected items in change event selection map.
 
 ## [v2.3.0](https://github.com/Esri/calcite-app-components/tree/v2.3.0) (2019-09-12)
 
