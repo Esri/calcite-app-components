@@ -40,6 +40,8 @@ export class CalcitePickListItem {
 
   @Prop() selected = false;
 
+  @Prop({ reflect: true }) compact = false;
+
   @Watch("selected")
   selectedWatchHandler(newValue) {
     if (this.isSelected !== newValue) {

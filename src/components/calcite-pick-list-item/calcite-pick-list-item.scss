@@ -13,6 +13,10 @@
   background-color: var(--calcite-app-background-hover);
 }
 
+:host([compact="true"]) {
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
 :host([hidden]) {
   display: none;
 }

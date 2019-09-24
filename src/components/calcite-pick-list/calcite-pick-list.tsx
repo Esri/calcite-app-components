@@ -49,6 +49,12 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) multiple = false;
 
+  /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -132,11 +138,12 @@ export class CalcitePickList {
   setUpItems(): void {
     this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
     this.items.forEach((item) => {
-      const iconType = this.getIconType();
+      const iconType = !this.compact ? this.getIconType() : null;
       if (iconType) {
         item.setAttribute("icon", iconType);
       } else {
         item.removeAttribute("icon");
+        item.setAttribute("compact", "true");
       }
       if (item.hasAttribute("selected")) {
         this.selectedValues.set(item.getAttribute("value"), item);
