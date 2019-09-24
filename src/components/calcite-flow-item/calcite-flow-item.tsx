@@ -199,7 +199,9 @@ export class CalciteFlowItem {
       <Host>
         <calcite-panel>
           {this.renderBackButton(rtl)}
-          <h2 slot="header-content">{heading}</h2>
+          <h2 class={CSS.heading} slot="header-content">
+            {heading}
+          </h2>
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}

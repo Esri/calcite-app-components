@@ -14,6 +14,10 @@
   position: relative;
 }
 
+.container[hidden] {
+  display: none;
+}
+
 .header {
   align-items: center;
   color: var(--calcite-app-foreground);

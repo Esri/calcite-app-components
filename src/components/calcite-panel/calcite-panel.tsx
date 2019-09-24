@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 import { CSS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
@@ -28,12 +28,22 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   /**
+   * Hides the panel.
+   */
+  @Prop({ reflect: true }) dismissed = false;
+
+  @Watch("dismissed")
+  dismissedHandler() {
+    this.calcitePanelDismissedChange.emit();
+  }
+
+  /**
    * Displays a close button in the trailing side of the header.
    */
   @Prop({ reflect: true }) dismissible = false;
 
   /**
-   * 'Close' text string for the close button.
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
    */
   @Prop() textClose = TEXT.close;
 
@@ -60,7 +70,7 @@ export class CalcitePanel {
    * Emitted when the close button has been clicked.
    */
 
-  @Event() calcitePanelDismiss: EventEmitter;
+  @Event() calcitePanelDismissedChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -68,14 +78,14 @@ export class CalcitePanel {
   //
   // --------------------------------------------------------------------------
 
-  dismiss = (): void => {
-    this.calcitePanelDismiss.emit();
-  };
-
   panelKeyUpHandler = (event: KeyboardEvent): void => {
     if (event.key === "Escape") {
       this.dismiss();
     }
+  };
+
+  dismiss = (): void => {
+    this.dismissed = true;
   };
 
   // --------------------------------------------------------------------------
@@ -114,12 +124,11 @@ export class CalcitePanel {
     ) : null;
 
     const slotNode = <slot name={SLOTS.headerTrailingContent} />;
-    const conditionalSlotNode = dismissible ? <div hidden>{slotNode}</div> : slotNode;
     const hasContent = dismissible || el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
 
     return hasContent ? (
       <div key="header-trailing-content" class={CSS.headerTrailingContent}>
-        {conditionalSlotNode}
+        {slotNode}
         {dismissibleNode}
       </div>
     ) : null;
@@ -163,7 +172,7 @@ export class CalcitePanel {
   }
 
   render() {
-    const { dismissible, el, panelKeyUpHandler } = this;
+    const { dismissed, dismissible, el, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -172,6 +181,7 @@ export class CalcitePanel {
         <article
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
+          hidden={dismissible && dismissed}
           class={classnames(CSS.container, {
             [CSS_UTILITY.rtl]: rtl
           })}

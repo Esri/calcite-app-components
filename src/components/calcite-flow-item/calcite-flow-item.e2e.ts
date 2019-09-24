@@ -38,7 +38,7 @@ describe("calcite-flow-item", () => {
 
     await page.setContent('<calcite-flow-item heading="test"></calcite-flow-item>');
 
-    const element = await page.find(`calcite-flow-item >>> h2`);
+    const element = await page.find(`calcite-flow-item >>> .${CSS.heading}`);
 
     expect(element).toEqualText("test");
   });
