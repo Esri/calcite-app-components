@@ -6,6 +6,7 @@
 
 | Property          | Attribute          | Description | Type                                                        | Default     |
 | ----------------- | ------------------ | ----------- | ----------------------------------------------------------- | ----------- |
+| `disabled`        | `disabled`         |             | `boolean`                                                   | `false`     |
 | `editing`         | `editing`          |             | `boolean`                                                   | `false`     |
 | `icon`            | `icon`             |             | `ICON_TYPES.circle \| ICON_TYPES.grip \| ICON_TYPES.square` | `null`      |
 | `selected`        | `selected`         |             | `boolean`                                                   | `false`     |

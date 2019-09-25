@@ -21,7 +21,7 @@ The `calcite-shell-floating-panel` component is a positioned container that appe
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
+- [calcite-action](..\calcite-action)
 
 ### Graph
 

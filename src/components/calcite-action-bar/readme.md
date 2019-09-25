@@ -35,8 +35,8 @@ See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
-- [calcite-action-group](../calcite-action-group)
+- [calcite-action](..\calcite-action)
+- [calcite-action-group](..\calcite-action-group)
 
 ### Graph
 
