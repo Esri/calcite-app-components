@@ -23,11 +23,9 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Prop() selected = false;
-
-  @Prop({ reflect: true }) editable = false;
-
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+
+  @Prop() selected = false;
 
   @Prop({ reflect: true }) textHeading: string;
 
@@ -41,7 +39,7 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteValueListItemElement;
 
   pickListItem = null;
 
@@ -80,7 +78,6 @@ export class CalciteValueListItem {
         <calcite-pick-list-item
           ref={(el) => (this.pickListItem = el)}
           selected={this.selected}
-          editable={this.editable}
           icon={this.icon}
           textHeading={this.textHeading}
           textDescription={this.textDescription}

@@ -63,7 +63,7 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteValueListItemElement;
 
   // --------------------------------------------------------------------------
   //
@@ -142,7 +142,7 @@ export class CalciteValueList {
     sortGroups.forEach((sortGroup) => {
       this.sortables.push(
         Sortable.create(sortGroup, {
-          group: this.el.id,
+          group: this.guid,
           handle: `.${CSS.handle}`,
           draggable: "calcite-value-list-item"
         })
@@ -154,6 +154,7 @@ export class CalciteValueList {
     this.sortables.forEach((sortable) => {
       sortable.destroy();
     });
+    this.sortables = [];
   }
 
   deselectSiblingItems(item: HTMLCalciteValueListItemElement) {
@@ -205,9 +206,8 @@ export class CalciteValueList {
   }
 
   render() {
-    const id = this.el.id || this.guid;
     return (
-      <Host id={id}>
+      <Host>
         <section class={CSS.container}>
           <slot />
         </section>
