@@ -208,10 +208,10 @@ export class CalcitePickList {
     });
   };
 
-  getItemData(): Record<string, string>[] {
-    const result: Record<string, string>[] = [];
+  getItemData(): Record<string, string | object>[] {
+    const result: Record<string, string | object>[] = [];
     this.items.forEach((item) => {
-      const obj: Record<string, string> = {};
+      const obj: Record<string, string | object> = {};
       Array.from(item.attributes).forEach((attr) => {
         obj[attr.name] = attr.value;
       });
