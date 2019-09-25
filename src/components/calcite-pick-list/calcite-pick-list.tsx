@@ -143,7 +143,7 @@ export class CalcitePickList {
   setUpItems(): void {
     this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
     this.items.forEach((item) => {
-      const iconType = !this.compact ? this.getIconType() : null;
+      const iconType = this.getIconType();
       if (iconType) {
         item.setAttribute("icon", iconType);
       } else {
@@ -224,6 +224,7 @@ export class CalcitePickList {
   getIconType(): ICON_TYPES | null {
     const { multiple } = this;
     let type = null;
+    if (this.compact) return type;
     if (this.mode === "configuration" && this.dragEnabled) {
       type = ICON_TYPES.grip;
     } else if (this.mode === "selection" && multiple) {

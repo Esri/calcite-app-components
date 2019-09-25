@@ -149,7 +149,7 @@ export class CalcitePickListItem {
 
   renderIcon() {
     const { icon } = this;
-    if (!icon) {
+    if (!icon || this.compact) {
       return null;
     }
     if (icon === ICON_TYPES.grip) {
