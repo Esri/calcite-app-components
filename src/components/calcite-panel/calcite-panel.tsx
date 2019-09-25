@@ -36,7 +36,7 @@ export class CalcitePanel {
   /**
    * Hides the panel.
    */
-  @Prop({ reflect: true }) dismissed = false;
+  @Prop({ mutable: true, reflect: true }) dismissed = false;
 
   @Watch("dismissed")
   dismissedHandler() {
