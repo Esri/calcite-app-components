@@ -91,6 +91,11 @@ export class CalcitePickList {
   }
 
   componentDidLoad() {
+    this.items.forEach((item) => {
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
+    });
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
