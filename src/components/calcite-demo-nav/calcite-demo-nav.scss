@@ -1,4 +1,4 @@
-$largeScreen: 600px;
+$largeScreen: 1025px;
 
 :host {
   position: relative;
@@ -7,23 +7,14 @@ $largeScreen: 600px;
   display: inline-block;
   position: relative;
   margin: 6px;
-  height: 1em;
-  width: 1em;
   border: none;
   cursor: pointer;
   z-index: 999;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.15em;
-    width: 1em;
-    height: 0.15em;
-    background: black;
-    box-shadow: 0 0.25em 0 0 black, 0 0.5em 0 0 black;
-  }
   @media (min-width: $largeScreen) {
     display: none;
+  }
+  :hover {
+    fill: blue;
   }
 }
 ul {
