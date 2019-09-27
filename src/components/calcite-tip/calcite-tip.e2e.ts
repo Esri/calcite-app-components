@@ -28,9 +28,7 @@ describe("calcite-tip", () => {
 
     const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
 
-    closeButton.click();
-
-    await page.waitForChanges();
+    await closeButton.click();
 
     const tip = await page.find(`calcite-tip >>> .${CSS.container}`);
 
@@ -49,9 +47,7 @@ describe("calcite-tip", () => {
 
     const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
 
-    closeButton.click();
-
-    await page.waitForChanges();
+    await closeButton.click();
 
     const page2 = await newE2EPage();
     await page2.setContent(`<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`).catch((error) => {

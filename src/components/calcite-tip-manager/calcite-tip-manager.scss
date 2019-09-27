@@ -60,11 +60,11 @@ $tip-max-width: 540px;
   padding: 0 var(--calcite-app-side-spacing-half);
 }
 
-.tip-container.advancing {
+.tip-container--advancing {
   animation-name: tip-advance;
 }
 
-.tip-container.retreating {
+.tip-container--retreating {
   animation-name: tip-retreat;
 }
 
