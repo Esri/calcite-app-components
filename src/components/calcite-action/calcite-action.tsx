@@ -54,7 +54,12 @@ export class CalciteAction {
   /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textEnabled = false;
+  @Prop() textEnabled;
+
+  /**
+   * Indicates whether the text is displayed.
+   */
+  @Prop({ reflect: true }) textMode: "show" | "hide" | "auto" = "hide";
 
   /**
    * Used to set the component's color scheme.
@@ -76,7 +81,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, disabled, el, textEnabled, label, text } = this;
+    const { compact, disabled, el, textMode, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -84,17 +89,20 @@ export class CalciteAction {
       </div>
     );
 
-    const textContainerNode = textEnabled ? (
-      <div key="text-container" class={CSS.textContainer}>
-        {text}
-      </div>
-    ) : null;
+    const textContainerNode =
+      textMode !== "hide" ? (
+        <div key="text-container" class={CSS.textContainer}>
+          {text}
+        </div>
+      ) : null;
 
     const labelFallback = label || text;
 
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
+      [CSS.buttonText]: textMode === "show",
+      [CSS.buttonAutoText]: textMode === "auto",
       [CSS.compact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };

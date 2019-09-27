@@ -50,8 +50,21 @@
   }
 }
 
-:host([text-enabled]) .button {
+.button--text {
   width: 100%;
+}
+
+.button--auto-text {
+  .text-container {
+    display: none;
+  }
+  &:hover,
+  &:focus {
+    width: 100%;
+    .text-container {
+      display: block;
+    }
+  }
 }
 
 :host([active]) .button,
@@ -74,6 +87,7 @@
   background-color: var(--calcite-app-background-active);
 }
 
+// todo
 :host([indicator][text-enabled]) .button {
   padding-right: var(--calcite-app-side-spacing);
 }
@@ -96,6 +110,7 @@
   left: var(--calcite-app-side-spacing-quarter);
 }
 
+// todo
 :host([indicator][text-enabled]) .calcite--rtl {
   padding-right: var(--calcite-app-side-spacing-three-quarters);
   padding-left: var(--calcite-app-side-spacing);
@@ -109,11 +124,13 @@
   border-color: var(--calcite-app-background-active);
 }
 
+// todo
 :host([indicator][text-enabled]) .button::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
 }
 
+// todo
 :host([indicator][text-enabled]) .calcite--rtl::after {
   right: unset;
   left: var(--calcite-app-side-spacing-half);
