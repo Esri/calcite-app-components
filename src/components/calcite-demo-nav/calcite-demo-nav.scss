@@ -3,6 +3,7 @@ $largeScreen: 600px;
 :host {
   position: relative;
   display: block;
+  line-height: 16px;
 }
 .hamburger {
   display: inline-block;
