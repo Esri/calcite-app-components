@@ -35,9 +35,7 @@ describe("calcite-panel", () => {
 
     const closeButton = await page.find("calcite-panel >>> calcite-action");
 
-    closeButton.click();
-
-    await page.waitForChanges();
+    await closeButton.click();
 
     expect(eventSpy).toHaveReceivedEvent();
   });
