@@ -1,6 +1,6 @@
 # calcite-panel
 
-The `calcite-panel` component is a positioned container that appears relative to a `calcite-shell-panel` and is used to house temporary content.
+The `calcite-panel` component is a container that for a header, content and optionally a footer. The header will have centered content as well as optional leading and trailing content. The panel can also be setup to be dismissible which will allow it to be closed by a user.
 
 <!-- Auto Generated Below -->
 
