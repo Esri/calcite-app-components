@@ -80,7 +80,7 @@ export class CalciteTipManager {
 
   @State() direction: "advancing" | "retreating";
 
-  groupTitle = this.textDefaultTitle;
+  @State() groupTitle = this.textDefaultTitle;
 
   observer = new MutationObserver(() => this.setUpTips());
 
@@ -174,7 +174,7 @@ export class CalciteTipManager {
   updateGroupTitle() {
     const selectedTip = this.tips[this.selectedIndex];
     const tipParent = selectedTip.closest("calcite-tip-group");
-    this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
+    this.groupTitle = (tipParent && tipParent.textGroupTitle) || this.textDefaultTitle;
   }
 
   previousClicked = (): void => {
@@ -236,19 +236,29 @@ export class CalciteTipManager {
   }
 
   render() {
-    if (this.total === 0) {
+    const { direction, groupTitle, selectedIndex, textClose, total } = this;
+
+    if (total === 0) {
       return <Host />;
     }
     return (
       <Host onKeydown={this.tipManagerKeyDownHandler}>
         <div tabindex="0">
           <header class={CSS.header}>
-            <h2 class={CSS.heading}>{this.groupTitle}</h2>
-            <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
+            <h2 key={selectedIndex} class={CSS.heading}>
+              {groupTitle}
+            </h2>
+            <calcite-action text={textClose} onClick={this.hideTipManager} class={CSS.close}>
               <CalciteIcon size="16" path={x16} />
             </calcite-action>
           </header>
-          <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
+          <div
+            class={classnames(CSS.tipContainer, {
+              [CSS.tipContainerAdvancing]: direction === "advancing",
+              [CSS.tipContainerRetreating]: direction === "retreating"
+            })}
+            key={selectedIndex}
+          >
             <slot />
           </div>
           {this.renderPagination()}
