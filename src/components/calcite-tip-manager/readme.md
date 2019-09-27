@@ -41,7 +41,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [calcite-action](..\calcite-action)
+- [calcite-action](../calcite-action)
 
 ### Graph
 

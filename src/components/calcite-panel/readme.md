@@ -6,9 +6,27 @@ The `calcite-panel` component is a positioned container that appears relative to
 
 ## Properties
 
-| Property | Attribute | Description                               | Type                | Default     |
-| -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
-| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
+| Property      | Attribute     | Description                                                                                               | Type                | Default      |
+| ------------- | ------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ------------ |
+| `dismissed`   | `dismissed`   | Hides the panel.                                                                                          | `boolean`           | `false`      |
+| `dismissible` | `dismissible` | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`      |
+| `textClose`   | `text-close`  | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `TEXT.close` |
+| `theme`       | `theme`       | Used to set the component's color scheme.                                                                 | `"dark" \| "light"` | `undefined`  |
+
+## Events
+
+| Event                         | Description                                     | Type               |
+| ----------------------------- | ----------------------------------------------- | ------------------ |
+| `calcitePanelDismissedChange` | Emitted when the close button has been clicked. | `CustomEvent<any>` |
+
+## Slots
+
+| Slot                        | Description                                                              |
+| --------------------------- | ------------------------------------------------------------------------ |
+| `"footer"`                  | A slot for adding `calcite-actions` to the footer.                       |
+| `"header-content"`          | A slot for adding content in the center of the header.                   |
+| `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.  |
+| `"header-trailing-content"` | A slot for adding a `calcite-action` on the trailing side of the header. |
 
 ## Dependencies
 
@@ -16,10 +34,15 @@ The `calcite-panel` component is a positioned container that appears relative to
 
 - [calcite-flow-item](../calcite-flow-item)
 
+### Depends on
+
+- [calcite-action](../calcite-action)
+
 ### Graph
 
 ```mermaid
 graph TD;
+  calcite-panel --> calcite-action
   calcite-flow-item --> calcite-panel
   style calcite-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
