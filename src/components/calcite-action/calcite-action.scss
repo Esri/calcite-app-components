@@ -34,6 +34,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    pointer-events: none;
   }
   .text-container {
     flex: 1;
