@@ -35,7 +35,7 @@
     "url": "git+https://github.com/Esri/calcite-app-components.git"
   },
   "dependencies": {
-    "@esri/calcite-base": "github:Esri/calcite-base#3d18d24",
+    "@esri/calcite-base": "1.1.0",
     "@esri/calcite-colors": "1.2.1",
     "@esri/calcite-ui-icons": "2.5.0",
     "sortablejs": "1.10.0-rc3"
