@@ -10,6 +10,8 @@ import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
 
+type TextMode = "hidden" | "visible" | "interactive";
+
 @Component({
   tag: "calcite-action",
   styleUrl: "calcite-action.scss",
@@ -59,7 +61,7 @@ export class CalciteAction {
   /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textMode: "show" | "hide" | "auto" = "hide";
+  @Prop({ reflect: true }) textMode: TextMode = "hidden";
 
   /**
    * Used to set the component's color scheme.
@@ -89,10 +91,10 @@ export class CalciteAction {
       </div>
     );
 
-    const calculatedTextMode: "show" | "hide" | "auto" = textEnabled ? "show" : textMode;
+    const calculatedTextMode: TextMode = textEnabled ? "visible" : textMode;
 
     const textContainerNode =
-      calculatedTextMode !== "hide" ? (
+      calculatedTextMode !== "hidden" ? (
         <div key="text-container" class={CSS.textContainer}>
           {text}
         </div>
@@ -103,8 +105,8 @@ export class CalciteAction {
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonText]: calculatedTextMode === "show",
-      [CSS.buttonAutoText]: calculatedTextMode === "auto",
+      [CSS.buttonText]: calculatedTextMode === "visible",
+      [CSS.buttonAutoText]: calculatedTextMode === "interactive",
       [CSS.compact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };

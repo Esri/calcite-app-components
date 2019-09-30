@@ -84,6 +84,6 @@ describe("calcite-action-bar", () => {
 
     const textMode = await button.getProperty("textMode");
 
-    expect(textMode).toBe("show");
+    expect(textMode).toBe("visible");
   });
 });
