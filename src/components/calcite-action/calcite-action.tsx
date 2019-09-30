@@ -10,7 +10,7 @@ import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
 
-type TextMode = "hidden" | "visible" | "interactive";
+type TextDisplay = "hidden" | "visible" | "interactive";
 
 @Component({
   tag: "calcite-action",
@@ -54,14 +54,14 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
-   * @deprecated Use 'textMode' instead.
+   * @deprecated Use 'textDisplay' instead.
    */
   @Prop() textEnabled = false;
 
   /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textMode: TextMode = "hidden";
+  @Prop({ reflect: true }) textDisplay: TextDisplay = "hidden";
 
   /**
    * Used to set the component's color scheme.
@@ -83,7 +83,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, disabled, el, textEnabled, textMode, label, text } = this;
+    const { compact, disabled, el, textEnabled, textDisplay, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -91,10 +91,10 @@ export class CalciteAction {
       </div>
     );
 
-    const calculatedTextMode: TextMode = textEnabled ? "visible" : textMode;
+    const calculatedTextDisplay: TextDisplay = textEnabled ? "visible" : textDisplay;
 
     const textContainerNode =
-      calculatedTextMode !== "hidden" ? (
+      calculatedTextDisplay !== "hidden" ? (
         <div key="text-container" class={CSS.textContainer}>
           {text}
         </div>
@@ -105,8 +105,8 @@ export class CalciteAction {
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonText]: calculatedTextMode === "visible",
-      [CSS.buttonAutoText]: calculatedTextMode === "interactive",
+      [CSS.buttonText]: calculatedTextDisplay === "visible",
+      [CSS.buttonAutoText]: calculatedTextDisplay === "interactive",
       [CSS.compact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };

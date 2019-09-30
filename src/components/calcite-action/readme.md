@@ -16,8 +16,8 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 | `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`                    | `false`     |
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`                     | `undefined` |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`                     | `undefined` |
-| `textEnabled` | `text-enabled` | <span style="color:red">**[DEPRECATED]**</span> Use 'textMode' instead.<br/><br/>                 | `boolean`                    | `false`     |
-| `textMode`    | `text-mode`    | Indicates whether the text is displayed.                                                          | `"auto" \| "hide" \| "show"` | `"hide"`    |
+| `textEnabled` | `text-enabled` | <span style="color:red">**[DEPRECATED]**</span> Use 'textDisplay' instead.<br/><br/>              | `boolean`                    | `false`     |
+| `textDisplay` | `text-display` | Indicates whether the text is displayed.                                                          | `"auto" \| "hide" \| "show"` | `"hide"`    |
 | `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"`          | `undefined` |
 
 ## Dependencies
