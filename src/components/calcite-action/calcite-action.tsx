@@ -103,9 +103,9 @@ export class CalciteAction {
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonText]: calculatedTextDisplay === "visible",
-      [CSS.buttonAutoText]: calculatedTextDisplay === "interactive",
-      [CSS.compact]: compact,
+      [CSS.buttonTextVisible]: calculatedTextDisplay === "visible",
+      [CSS.buttonTextInteractive]: calculatedTextDisplay === "interactive",
+      [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };
 

@@ -21,7 +21,7 @@
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
   text-align: unset;
   position: relative;
-  &.compact {
+  &.button--compact {
     padding-left: var(--calcite-app-side-spacing-quarter);
     padding-right: var(--calcite-app-side-spacing-quarter);
   }
@@ -50,11 +50,11 @@
   }
 }
 
-.button--text {
+.button--text-visible {
   width: 100%;
 }
 
-.button--auto-text {
+.button--text-interactive {
   .text-container {
     display: none;
   }
@@ -87,9 +87,9 @@
   background-color: var(--calcite-app-background-active);
 }
 
-:host([indicator]) .button--text,
-:host([indicator]) .button--auto-text:focus,
-:host([indicator]) .button--auto-text:hover {
+:host([indicator]) .button--text-visible-visible,
+:host([indicator]) .button--text-interactive:focus,
+:host([indicator]) .button--text-interactive:hover {
   padding-right: var(--calcite-app-side-spacing);
 }
 
@@ -111,9 +111,9 @@
   left: var(--calcite-app-side-spacing-quarter);
 }
 
-:host([indicator]) .button--text.calcite--rtl,
-:host([indicator]) .button--auto-text.calcite--rtl:focus,
-:host([indicator]) .button--auto-text.calcite--rtl:hover {
+:host([indicator]) .button--text-visible.calcite--rtl,
+:host([indicator]) .button--text-interactive.calcite--rtl:focus,
+:host([indicator]) .button--text-interactive.calcite--rtl:hover {
   padding-right: var(--calcite-app-side-spacing-three-quarters);
   padding-left: var(--calcite-app-side-spacing);
 }
@@ -126,16 +126,16 @@
   border-color: var(--calcite-app-background-active);
 }
 
-:host([indicator]) .button--text::after,
-:host([indicator]) .button--auto-text:hover::after,
-:host([indicator]) .button--auto-text:focus::after {
+:host([indicator]) .button--text-visible::after,
+:host([indicator]) .button--text-interactive:hover::after,
+:host([indicator]) .button--text-interactive:focus::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
 }
 
-:host([indicator]) .button--text.calcite--rtl::after,
-:host([indicator]) .button--auto-text.calcite--rtl:hover::after,
-:host([indicator]) .button--auto-text.calcite--rtl:focus::after {
+:host([indicator]) .button--text-visible.calcite--rtl::after,
+:host([indicator]) .button--text-interactive.calcite--rtl:hover::after,
+:host([indicator]) .button--text-interactive.calcite--rtl:focus::after {
   right: unset;
   left: var(--calcite-app-side-spacing-half);
 }
