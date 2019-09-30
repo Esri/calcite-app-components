@@ -22,7 +22,7 @@
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",
     "test:watchAll": "stencil test --spec --e2e --watchAll",
-    "preversion": "npm install && npm test",
+    "preversion": "npm ci && npm test",
     "version": "npm run build && npm run docs && git add .",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "node ./support/prepublish.js",
