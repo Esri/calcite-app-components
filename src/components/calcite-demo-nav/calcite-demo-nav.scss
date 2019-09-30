@@ -6,9 +6,10 @@ $largeScreen: 1025px;
   line-height: 16px;
 }
 .hamburger {
-  display: inline-block;
+  display: block;
   position: relative;
   margin: 6px;
+  padding: 0;
   border: none;
   cursor: pointer;
   z-index: 999;
@@ -28,7 +29,7 @@ ul {
     position: absolute;
     top: 0;
     left: 0;
-    margin-top: 24px;
+    margin-top: 38px;
     z-index: 9999;
   }
   @media (min-width: $largeScreen) {

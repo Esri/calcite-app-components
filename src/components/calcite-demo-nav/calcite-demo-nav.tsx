@@ -12,7 +12,8 @@ const CSS = {
   isActive: "is-active",
   link: "link",
   open: "open",
-  close: "close"
+  close: "close",
+  hamburger: "hamburger"
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -149,7 +150,7 @@ export class CalciteDemoNav {
   render() {
     return (
       <Host onBlur={this.blurHandler.bind(this)}>
-        <button class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}>
+        <button class={CSS.hamburger} onClick={this.hamburgerClickHandler.bind(this)}>
           <CalciteIcon size="32" path={hamburger32} title="Home" />
         </button>
         <ul class={this.open ? CSS.open : CSS.close}>
