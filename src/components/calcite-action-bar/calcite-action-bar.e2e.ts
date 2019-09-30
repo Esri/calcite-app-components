@@ -52,9 +52,7 @@ describe("calcite-action-bar", () => {
 
     expect(button).not.toBeNull();
 
-    button.click();
-
-    await page.waitForChanges();
+    await button.click();
 
     expect(bar).toHaveAttribute("expanded");
   });

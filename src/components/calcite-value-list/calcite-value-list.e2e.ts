@@ -1,16 +1,10 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, ICON_TYPES } from "./resources";
+import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-value-list", () => {
-  it("should render", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(`<calcite-value-list></calcite-value-list>`);
-    const valueList = await page.find("calcite-value-list");
-    expect(valueList).not.toBeNull();
-    const isVisible = await valueList.isVisible();
-    expect(isVisible).toBe(true);
-  });
+  it("renders", async () => renders("calcite-value-list"));
+  it("honors hidden attribute", async () => hidden("calcite-value-list"));
 
   describe("Selection and Deselection", () => {
     describe("when multiple is false and a item is clicked", () => {

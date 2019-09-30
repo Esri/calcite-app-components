@@ -13,8 +13,13 @@
   background-color: var(--calcite-app-background-hover);
 }
 
-:host([hidden]) {
-  display: none;
+:host([disabled]) {
+  opacity: var(--calcite-app-disabled-opacity);
+  cursor: default;
+  box-shadow: none;
+  &:host(:hover) {
+    background-color: var(--calcite-app-background);
+  }
 }
 
 :host(:last-child) {

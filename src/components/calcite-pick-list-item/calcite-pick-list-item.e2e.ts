@@ -11,10 +11,10 @@ describe("calcite-pick-list-item", () => {
     expect(isVisible).toBe(true);
   });
 
-  it.skip("should toggle selected attribute when clicked", async () => {
+  it("should toggle selected attribute when clicked", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`<calcite-pick-list-item></calcite-pick-list-item>`);
+    await page.setContent(`<calcite-pick-list-item text-heading="test"></calcite-pick-list-item>`);
     const item = await page.find("calcite-pick-list-item");
     expect(await item.getProperty("selected")).toBe(false);
     await item.click();
