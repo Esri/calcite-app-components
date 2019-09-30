@@ -87,8 +87,9 @@
   background-color: var(--calcite-app-background-active);
 }
 
-// todo
-:host([indicator][text-enabled]) .button {
+:host([indicator]) .button--text,
+:host([indicator]) .button--auto-text:focus,
+:host([indicator]) .button--auto-text:hover {
   padding-right: var(--calcite-app-side-spacing);
 }
 
@@ -110,8 +111,9 @@
   left: var(--calcite-app-side-spacing-quarter);
 }
 
-// todo
-:host([indicator][text-enabled]) .calcite--rtl {
+:host([indicator]) .button--text.calcite--rtl,
+:host([indicator]) .button--auto-text.calcite--rtl:focus,
+:host([indicator]) .button--auto-text.calcite--rtl:hover {
   padding-right: var(--calcite-app-side-spacing-three-quarters);
   padding-left: var(--calcite-app-side-spacing);
 }
@@ -124,14 +126,16 @@
   border-color: var(--calcite-app-background-active);
 }
 
-// todo
-:host([indicator][text-enabled]) .button::after {
+:host([indicator]) .button--text::after,
+:host([indicator]) .button--auto-text:hover::after,
+:host([indicator]) .button--auto-text:focus::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
 }
 
-// todo
-:host([indicator][text-enabled]) .calcite--rtl::after {
+:host([indicator]) .button--text.calcite--rtl::after,
+:host([indicator]) .button--auto-text.calcite--rtl:hover::after,
+:host([indicator]) .button--auto-text.calcite--rtl:focus::after {
   right: unset;
   left: var(--calcite-app-side-spacing-half);
 }
