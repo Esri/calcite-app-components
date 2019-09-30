@@ -82,8 +82,8 @@ describe("calcite-action-bar", () => {
 
     const button = await buttonGroup.find("calcite-action");
 
-    const textEnabled = await button.getProperty("textEnabled");
+    const textMode = await button.getProperty("textMode");
 
-    expect(textEnabled).toBe(true);
+    expect(textMode).toBe("show");
   });
 });

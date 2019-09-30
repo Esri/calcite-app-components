@@ -20,7 +20,7 @@ describe("calcite-action", () => {
   it("should have text container", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`<calcite-action text="hello world" text-enabled></calcite-action>`).catch((error) => {
+    await page.setContent(`<calcite-action text="hello world" text-mode="show"></calcite-action>`).catch((error) => {
       console.error(error);
     });
 

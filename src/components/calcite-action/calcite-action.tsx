@@ -52,9 +52,9 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
-   * Indicates whether the text is displayed.
+   * @deprecated Use 'textMode' instead.
    */
-  @Prop() textEnabled;
+  @Prop() textEnabled = false;
 
   /**
    * Indicates whether the text is displayed.
@@ -81,7 +81,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, disabled, el, textMode, label, text } = this;
+    const { compact, disabled, el, textEnabled, textMode, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -89,8 +89,10 @@ export class CalciteAction {
       </div>
     );
 
+    const calculatedTextMode: "show" | "hide" | "auto" = textEnabled ? "show" : textMode;
+
     const textContainerNode =
-      textMode !== "hide" ? (
+      calculatedTextMode !== "hide" ? (
         <div key="text-container" class={CSS.textContainer}>
           {text}
         </div>
@@ -101,8 +103,8 @@ export class CalciteAction {
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonText]: textMode === "show",
-      [CSS.buttonAutoText]: textMode === "auto",
+      [CSS.buttonText]: calculatedTextMode === "show",
+      [CSS.buttonAutoText]: calculatedTextMode === "auto",
       [CSS.compact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };

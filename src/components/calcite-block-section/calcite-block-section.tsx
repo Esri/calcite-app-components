@@ -90,7 +90,7 @@ export class CalciteBlockSection {
         aria-label={toggleLabel}
         onClick={this.onHeaderClick}
         text={this.text}
-        text-enabled
+        textMode="show"
         compact
       >
         <CalciteIcon size="16" path={arrowIcon} />
