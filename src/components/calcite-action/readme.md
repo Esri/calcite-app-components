@@ -8,16 +8,17 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 
 ## Properties
 
-| Property      | Attribute          | Description                                                                                       | Type                | Default     |
-| ------------- | ------------------ | ------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
-| `active`      | `active`           | Indicates whether the action is highlighted.                                                      | `boolean`           | `false`     |
-| `compact`     | `compact`          | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean`           | `false`     |
-| `disabled`    | `disabled`         | Disabled is used to prevent the action from occurring.                                            | `boolean`           | `false`     |
-| `indicator`   | `indicator`        | Indicates unread changes.                                                                         | `boolean`           | `false`     |
-| `label`       | `label`            | Label of the action, exposed on hover.                                                            | `string`            | `undefined` |
-| `text`        | `text`             | Text that accompanies the action icon.                                                            | `string`            | `undefined` |
-| `textEnabled` | `text-mode="show"` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
-| `theme`       | `theme`            | Used to set the component's color scheme.                                                         | `"dark" \| "light"` | `undefined` |
+| Property      | Attribute      | Description                                                                                       | Type                         | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------- | ---------------------------- | ----------- |
+| `active`      | `active`       | Indicates whether the action is highlighted.                                                      | `boolean`                    | `false`     |
+| `compact`     | `compact`      | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean`                    | `false`     |
+| `disabled`    | `disabled`     | Disabled is used to prevent the action from occurring.                                            | `boolean`                    | `false`     |
+| `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`                    | `false`     |
+| `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`                     | `undefined` |
+| `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`                     | `undefined` |
+| `textEnabled` | `text-enabled` | <span style="color:red">**[DEPRECATED]**</span> Use 'textMode' instead.<br/><br/>                 | `boolean`                    | `false`     |
+| `textMode`    | `text-mode`    | Indicates whether the text is displayed.                                                          | `"auto" \| "hide" \| "show"` | `"hide"`    |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"`          | `undefined` |
 
 ## Dependencies
 
