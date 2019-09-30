@@ -10,8 +10,6 @@ import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
 
-type TextDisplay = "hidden" | "visible" | "interactive";
-
 @Component({
   tag: "calcite-action",
   styleUrl: "calcite-action.scss",
@@ -61,7 +59,7 @@ export class CalciteAction {
   /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textDisplay: TextDisplay = "hidden";
+  @Prop({ reflect: true }) textDisplay: "hidden" | "visible" | "interactive" = "hidden";
 
   /**
    * Used to set the component's color scheme.
@@ -91,7 +89,7 @@ export class CalciteAction {
       </div>
     );
 
-    const calculatedTextDisplay: TextDisplay = textEnabled ? "visible" : textDisplay;
+    const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
 
     const textContainerNode =
       calculatedTextDisplay !== "hidden" ? (
