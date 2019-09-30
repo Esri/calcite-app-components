@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { CSS, ICON_TYPES } from "./resources";
+import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-value-list",
@@ -47,6 +47,8 @@ export class CalciteValueList {
 
   @State() selectedValues: Map<string, HTMLCalciteValueListItemElement> = new Map();
 
+  @State() dataForFilter: object[] = [];
+
   items: HTMLCalciteValueListItemElement[];
 
   lastSelectedItem: HTMLCalciteValueListItemElement = null;
@@ -76,6 +78,11 @@ export class CalciteValueList {
   }
 
   componentDidLoad() {
+    this.items.forEach((item) => {
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
+    });
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -128,10 +135,14 @@ export class CalciteValueList {
       } else {
         item.removeAttribute("icon");
       }
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
     });
     if (this.dragEnabled) {
       this.setUpDragAndDrop();
     }
+    this.dataForFilter = this.getItemData();
   }
 
   setUpDragAndDrop(): void {
@@ -139,7 +150,7 @@ export class CalciteValueList {
       this.el,
       ...Array.from(this.el.querySelectorAll("calcite-value-list-group"))
     ];
-    sortGroups.forEach((sortGroup) => {
+    sortGroups.forEach((sortGroup: HTMLElement) => {
       this.sortables.push(
         Sortable.create(sortGroup, {
           group: this.guid,
@@ -181,6 +192,31 @@ export class CalciteValueList {
     });
   }
 
+  handleFilter = (event) => {
+    const filteredData = event.detail;
+    const values = filteredData.map((item) => item.value);
+    this.items.forEach((item) => {
+      if (values.indexOf(item.value) === -1) {
+        item.setAttribute("hidden", "");
+      } else {
+        item.removeAttribute("hidden");
+      }
+    });
+  };
+
+  getItemData(): Record<string, string | object>[] {
+    const result: Record<string, string | object>[] = [];
+    this.items.forEach((item) => {
+      const obj: Record<string, string | object> = {};
+      Array.from(item.attributes).forEach((attr) => {
+        obj[attr.name] = attr.value;
+      });
+      obj.metadata = item.metadata;
+      result.push(obj);
+    });
+    return result;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -209,6 +245,13 @@ export class CalciteValueList {
     return (
       <Host>
         <section class={CSS.container}>
+          <header>
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
+          </header>
           <slot />
         </section>
       </Host>

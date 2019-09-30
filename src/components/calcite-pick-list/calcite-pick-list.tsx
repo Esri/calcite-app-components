@@ -10,7 +10,6 @@ import {
   State,
   h
 } from "@stencil/core";
-import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
@@ -128,6 +127,7 @@ export class CalcitePickList {
         this.selectedValues.set(item.getAttribute("value"), item);
       }
     });
+    this.dataForFilter = this.getItemData();
   }
 
   deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
