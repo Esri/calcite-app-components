@@ -38,6 +38,7 @@
     "@esri/calcite-base": "1.1.0",
     "@esri/calcite-colors": "1.4.1",
     "@esri/calcite-ui-icons": "2.5.1",
+    "lodash-es": "4.17.15",
     "sortablejs": "1.10.0"
   },
   "devDependencies": {
