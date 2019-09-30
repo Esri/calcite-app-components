@@ -80,6 +80,8 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) value: string;
 
+  @Prop({ reflect: true }) disabled = false;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -122,6 +124,9 @@ export class CalcitePickListItem {
    * The second argument, when true, allows an event to be emitted, just as if a user had clicked.
    */
   @Method() async toggleSelected(coerce?: boolean, emit = false) {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
     if (emit) {
       this.emitChangeEvent();
@@ -135,8 +140,19 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = !this.isSelected;
     this.emitChangeEvent(event.shiftKey);
+  };
+
+  pickListKeyDownHandler = (event: KeyboardEvent): void => {
+    if (event.key === " ") {
+      event.preventDefault();
+      this.isSelected = !this.isSelected;
+      this.emitChangeEvent(event.shiftKey);
+    }
   };
 
   secondaryActionContainerClickHandler(event: MouseEvent) {
@@ -200,7 +216,11 @@ export class CalcitePickListItem {
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
         onClick={this.pickListClickHandler}
+        onKeydown={this.pickListKeyDownHandler}
         selected={this.isSelected}
+        role="checkbox"
+        aria-checked={this.isSelected}
+        tabindex="0"
       >
         {this.renderIcon()}
         <label class={CSS.label}>

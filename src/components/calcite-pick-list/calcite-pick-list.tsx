@@ -41,13 +41,18 @@ export class CalcitePickList {
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
 
   /**
-   * Multpile Works similar to standard radio buttons and checkboxes.
+   * Multiple Works similar to standard radio buttons and checkboxes.
    * It also affects the presented icon when in Selection mode.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
    * When false, selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
+
+  /**
+   * DEPRECATED: No longer rendered. Prop will be removed in a future release.
+   */
+  @Prop({ reflect: true }) textHeading: string;
 
   // --------------------------------------------------------------------------
   //
@@ -88,6 +93,11 @@ export class CalcitePickList {
   }
 
   componentDidLoad() {
+    this.items.forEach((item) => {
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
+    });
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
