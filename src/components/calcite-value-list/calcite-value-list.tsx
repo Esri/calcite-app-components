@@ -244,16 +244,14 @@ export class CalciteValueList {
   render() {
     return (
       <Host>
-        <section class={CSS.container}>
-          <header>
-            <calcite-filter
-              data={this.dataForFilter}
-              textPlaceholder={TEXT.filterPlaceholder}
-              onCalciteFilterChange={this.handleFilter}
-            />
-          </header>
-          <slot />
-        </section>
+        <header>
+          <calcite-filter
+            data={this.dataForFilter}
+            textPlaceholder={TEXT.filterPlaceholder}
+            onCalciteFilterChange={this.handleFilter}
+          />
+        </header>
+        <slot />
       </Host>
     );
   }

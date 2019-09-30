@@ -10,7 +10,7 @@ import {
   State,
   h
 } from "@stencil/core";
-import { CSS, ICON_TYPES, TEXT } from "./resources";
+import { ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-pick-list",
@@ -206,16 +206,14 @@ export class CalcitePickList {
   render() {
     return (
       <Host>
-        <section class={CSS.container}>
-          <header>
-            <calcite-filter
-              data={this.dataForFilter}
-              textPlaceholder={TEXT.filterPlaceholder}
-              onCalciteFilterChange={this.handleFilter}
-            />
-          </header>
-          <slot />
-        </section>
+        <header>
+          <calcite-filter
+            data={this.dataForFilter}
+            textPlaceholder={TEXT.filterPlaceholder}
+            onCalciteFilterChange={this.handleFilter}
+          />
+        </header>
+        <slot />
       </Host>
     );
   }
