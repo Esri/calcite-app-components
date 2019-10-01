@@ -29,7 +29,7 @@
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
-    "deps:update": "updtr && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'"
+    "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'"
   },
   "repository": {
     "type": "git",
