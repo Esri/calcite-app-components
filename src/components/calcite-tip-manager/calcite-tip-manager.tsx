@@ -187,7 +187,7 @@ export class CalciteTipManager {
     this.nextTip();
   };
 
-  tipManagerKeyDownHandler = (event: KeyboardEvent): void => {
+  tipManagerKeyUpHandler = (event: KeyboardEvent): void => {
     if (event.target !== this.container) {
       return;
     }
@@ -210,6 +210,10 @@ export class CalciteTipManager {
         this.selectedIndex = this.total - 1;
         break;
     }
+  };
+
+  storeContainerRef = (el: HTMLDivElement) => {
+    this.container = el;
   };
 
   // --------------------------------------------------------------------------
@@ -249,11 +253,7 @@ export class CalciteTipManager {
     }
     return (
       <Host>
-        <div
-          tabindex="0"
-          onKeyUp={this.tipManagerKeyDownHandler}
-          ref={(el) => (this.container = el as HTMLDivElement)}
-        >
+        <div tabindex="0" onKeyUp={this.tipManagerKeyUpHandler} ref={this.storeContainerRef}>
           <header class={CSS.header}>
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}
