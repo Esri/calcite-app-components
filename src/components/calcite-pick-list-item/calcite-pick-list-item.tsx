@@ -59,6 +59,7 @@ export class CalcitePickListItem {
   }
 
   /**
+   * @deprecated This will be removed in a future build. Replaced by textLabel.
    * The main label for this item. Appears next to the icon.
    */
   @Prop({ reflect: true }) textHeading: string;
@@ -67,6 +68,11 @@ export class CalcitePickListItem {
    * An optional description for this item. Will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
+
+  /**
+   * The main label for this item. Appears next to the icon.
+   */
+  @Prop({ reflect: true }) textLabel: string;
 
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
@@ -212,7 +218,7 @@ export class CalcitePickListItem {
       >
         {this.renderIcon()}
         <label class={CSS.label}>
-          <span class={CSS.title}>{this.textHeading}</span>
+          <span class={CSS.title}>{this.textLabel}</span>
           {description}
         </label>
         <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
