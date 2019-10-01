@@ -10,13 +10,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import {
-  checkSquare16,
-  circle16,
-  circleFilled16,
-  handleVertical24,
-  square16
-} from "@esri/calcite-ui-icons";
+import { checkSquare16, circle16, circleFilled16, drag16, square16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
@@ -37,10 +31,9 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, the label text will be able to be modified by the end-user.
-   * This is usually set by the parent list element.
+   * When true, the item cannot be clicked and is visually muted
    */
-  @Prop({ reflect: true }) editing = false;
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
@@ -66,6 +59,7 @@ export class CalcitePickListItem {
   }
 
   /**
+   * @deprecated This will be removed in a future build. Replaced by textLabel.
    * The main label for this item. Appears next to the icon.
    */
   @Prop({ reflect: true }) textHeading: string;
@@ -76,11 +70,14 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) textDescription?: string;
 
   /**
+   * The main label for this item. Appears next to the icon.
+   */
+  @Prop({ reflect: true }) textLabel: string;
+
+  /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
    */
   @Prop({ reflect: true }) value: string;
-
-  @Prop({ reflect: true }) disabled = false;
 
   // --------------------------------------------------------------------------
   //
@@ -148,6 +145,9 @@ export class CalcitePickListItem {
   };
 
   pickListKeyDownHandler = (event: KeyboardEvent): void => {
+    if ((event.target as HTMLElement).matches('[slot="secondaryAction"]')) {
+      return;
+    }
     if (event.key === " ") {
       event.preventDefault();
       this.isSelected = !this.isSelected;
@@ -182,7 +182,7 @@ export class CalcitePickListItem {
     if (icon === ICON_TYPES.grip) {
       return (
         <span class={CSS.handle}>
-          <CalciteIcon size="24" path={handleVertical24} />
+          <CalciteIcon size="16" path={drag16} />
         </span>
       );
     } else {
@@ -203,8 +203,6 @@ export class CalcitePickListItem {
   }
 
   render() {
-    const { icon } = this;
-
     const description = this.textDescription ? (
       <span class={CSS.description}>{this.textDescription}</span>
     ) : null;
@@ -212,7 +210,6 @@ export class CalcitePickListItem {
     return (
       <Host
         class={classnames({
-          [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
         onClick={this.pickListClickHandler}
@@ -224,7 +221,7 @@ export class CalcitePickListItem {
       >
         {this.renderIcon()}
         <label class={CSS.label}>
-          <span class={CSS.title}>{this.textHeading}</span>
+          <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
           {description}
         </label>
         <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
