@@ -22,8 +22,14 @@
   }
 }
 
+:host(:first-child) {
+  border-radius: var(--calcite-app-border-radius) var(--calcite-app-border-radius) 0 0;
+}
+
 :host(:last-child) {
+  border-radius: 0 0 var(--calcite-app-border-radius) var(--calcite-app-border-radius);
   margin-bottom: 0;
+  @include borderShadow();
 }
 
 .icon {
