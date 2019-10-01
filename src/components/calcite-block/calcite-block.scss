@@ -4,7 +4,6 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
   display: flex;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
-  overflow: hidden;
   box-shadow: 0 1px 0 var(--calcite-app-border);
   margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   background-color: var(--calcite-app-background);
@@ -58,6 +57,6 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 
 .content {
   background-color: var(--calcite-app-background);
-  padding: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-half);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
