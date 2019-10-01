@@ -4,6 +4,7 @@ import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icon
 import { getElementDir } from "../utils/dom";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
+import classnames from "classnames";
 
 @Component({
   tag: "calcite-block-section",
@@ -42,6 +43,14 @@ export class CalciteBlockSection {
   @Prop()
   textCollapse = TEXT.collapse;
 
+  /**
+   * When true, uses switch.
+   *
+   * @todo revisit doc
+   */
+  @Prop()
+  toggle = false;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -68,7 +77,7 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
-  onHeaderClick = () => {
+  toggleSection = () => {
     this.open = !this.open;
     this.calciteBlockSectionToggle.emit();
   };
@@ -80,16 +89,25 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, open, textCollapse, textExpand } = this;
+    const { el, open, text, textCollapse, textExpand, toggle } = this;
     const dir = getElementDir(el);
     const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
     const toggleLabel = open ? textCollapse : textExpand;
 
-    const headerNode = (
+    const headerNode = toggle ? (
+      <label aria-label={toggleLabel} class={classnames(CSS.toggle, CSS.toggleSwitch)}>
+        {text}
+        <calcite-switch
+          switched={this.open}
+          onCalciteSwitchChange={this.toggleSection}
+        ></calcite-switch>
+      </label>
+    ) : (
       <calcite-action
         aria-label={toggleLabel}
-        onClick={this.onHeaderClick}
-        text={this.text}
+        class={CSS.toggle}
+        onClick={this.toggleSection}
+        text={text}
         textDisplay="visible"
         compact
       >
