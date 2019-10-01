@@ -148,7 +148,7 @@
             </svg>
           </calcite-action>
         </calcite-value-list-item>
-        <calcite-value-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID" icon="grip">
+        <calcite-value-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID2" icon="grip">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -183,6 +183,10 @@
       <script>
         const valueList3 = document.querySelector("#three");
         valueList3.addEventListener("calciteValueListSelectionChange", (event) => {
+          console.log(event.detail);
+        });
+        valueList3.addEventListener("calciteValueListOrderChange", (event) => {
+          console.log('sort order changed');
           console.log(event.detail);
         });
       </script>
