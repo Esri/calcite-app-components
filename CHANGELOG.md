@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - CalciteTipManager: User should not be able to use arrow keys on tip manager navigation buttons. #307
 - CalciteTipManager: Keyboard Users should be able to scroll content inside of a tip manager. #306
 - CalciteAction & CalciteActionPad: Make sure host elements have a display set if they are not inline components.
+- CalciteTip: Fixed dismissed tip still showing padding.
 
 ### BREAKING CHANGES
 
