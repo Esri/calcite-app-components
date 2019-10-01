@@ -120,14 +120,14 @@ export class CalciteDemoNav {
   //
   // --------------------------------------------------------------------------
 
-  hamburgerClickHandler(e) {
+  hamburgerClickHandler = (e) => {
     e.preventDefault();
     this.open = !this.open;
-  }
+  };
 
-  blurHandler() {
+  blurHandler = () => {
     this.open = false;
-  }
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -149,8 +149,8 @@ export class CalciteDemoNav {
 
   render() {
     return (
-      <Host onBlur={this.blurHandler.bind(this)}>
-        <button class={CSS.hamburger} onClick={this.hamburgerClickHandler.bind(this)}>
+      <Host onBlur={this.blurHandler}>
+        <button class={CSS.hamburger} onClick={this.hamburgerClickHandler}>
           <CalciteIcon size="32" path={hamburger32} title="Home" />
         </button>
         <ul class={this.open ? CSS.open : CSS.close}>
