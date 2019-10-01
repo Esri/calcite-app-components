@@ -218,7 +218,7 @@ export class CalcitePickListItem {
       >
         {this.renderIcon()}
         <label class={CSS.label}>
-          <span class={CSS.title}>{this.textLabel}</span>
+          <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
           {description}
         </label>
         <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
