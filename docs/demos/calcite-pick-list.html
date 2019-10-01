@@ -17,10 +17,13 @@
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
+        <script>
+          document.currentScript.previousElementSibling.metadata = {"category":"first", "tags":["density"]};
+        </script>
         <calcite-pick-list-item
           text-heading="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
           text-description="POPDENS_CY"
-          value="POPDENS_CY"
+          value="POPDENS_CY2"
         >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -28,6 +31,9 @@
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
+        <script>
+          document.currentScript.previousElementSibling.metadata = {"category":"population", "tags":["square", "mile"]};
+        </script>
         <calcite-pick-list-item
           text-heading="2018 Total Households (Esri)"
           text-description="TOTHH_CY"
@@ -39,6 +45,9 @@
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
+        <script>
+          document.currentScript.previousElementSibling.metadata = ["total", "households"];
+        </script>
         <calcite-pick-list-item
           text-heading="2018 Generation Alpha Population (Born 2017 or Later)"
           text-description="GENALPHACY"
@@ -79,6 +88,9 @@
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
+        <script>
+          document.currentScript.previousElementSibling.metadata = {"category":"id", "tags":["field"]};
+        </script>
         <calcite-pick-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
@@ -169,7 +181,7 @@
     <!-- RTL -->
     <h2>RTL</h2>
     <section class="example-container" style="width: 28vw; margin-top: 2em;" dir="rtl">
-      <calcite-pick-list id="one" multiple>
+      <calcite-pick-list id="one_rtl" multiple>
         <calcite-pick-list-item text-heading="2018 Population Density (NO SUMMARY) (Esri)" value="POPDENS_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -180,7 +192,7 @@
         <calcite-pick-list-item
           text-heading="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
           text-description="POPDENS_CY"
-          value="POPDENS_CY"
+          value="POPDENS_CY2"
         >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -223,13 +235,13 @@
         </calcite-pick-list-item>
       </calcite-pick-list>
       <script>
-        const pickList = document.querySelector("#one");
+        const pickList4 = document.querySelector("#one_rtl");
         pickList.addEventListener("calcitePickListSelectionChange", (event) => {
           console.log(event.detail);
         });
       </script>
 
-      <calcite-pick-list id="two">
+      <calcite-pick-list id="two_rtl">
         <calcite-pick-list-item text-heading="ID" text-description="This is an id for this field and people use it for things." value="ID">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
@@ -259,13 +271,13 @@
         </calcite-pick-list-item>
       </calcite-pick-list>
       <script>
-        const pickList2 = document.querySelector("#two");
+        const pickList5 = document.querySelector("#two_rtl");
         pickList2.addEventListener("calcitePickListSelectionChange", (event) => {
           console.log(event.detail);
         });
       </script>
       <!-- <calcite-pick-list id="three" text-heading="Configuration Pick List - Draggable" mode="configuration" drag-enabled> -->
-      <calcite-pick-list id="three">
+      <calcite-pick-list id="three_rtl">
         <calcite-pick-list-group text-group-title="numbers">
           <calcite-pick-list-item
             text-heading="2023 Diversity Index (Esri)"
@@ -320,7 +332,7 @@
         </calcite-pick-list-group>
       </calcite-pick-list>
       <script>
-        const pickList3 = document.querySelector("#three");
+        const pickList6 = document.querySelector("#three_rtl");
         pickList3.addEventListener("calcitePickListSelectionChange", (event) => {
           console.log(event.detail);
         });
