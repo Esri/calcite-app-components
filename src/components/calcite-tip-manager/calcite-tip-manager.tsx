@@ -220,7 +220,9 @@ export class CalciteTipManager {
 
   renderPagination() {
     const dir = getElementDir(this.el);
-    return this.tips.length > 1 ? (
+    const { selectedIndex, tips, total } = this;
+
+    return tips.length > 1 ? (
       <footer class={CSS.pagination}>
         <calcite-action
           text={this.textPrevious}
@@ -229,8 +231,8 @@ export class CalciteTipManager {
         >
           <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
         </calcite-action>
-        <span class={CSS.pagePosition}>
-          {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
+        <span key={selectedIndex} class={CSS.pagePosition}>
+          {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
           <CalciteIcon size="16" path={dir === "ltr" ? chevronRight16 : chevronLeft16} />
