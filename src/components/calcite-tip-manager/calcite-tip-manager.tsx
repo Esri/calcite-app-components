@@ -84,6 +84,8 @@ export class CalciteTipManager {
 
   observer = new MutationObserver(() => this.setUpTips());
 
+  container: HTMLDivElement;
+
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -186,15 +188,17 @@ export class CalciteTipManager {
   };
 
   tipManagerKeyDownHandler = (event: KeyboardEvent): void => {
+    if (event.target !== this.container) {
+      return;
+    }
+
     switch (event.key) {
-      case "ArrowUp":
-        event.preventDefault();
       case "ArrowRight":
+        event.preventDefault();
         this.nextTip();
         break;
-      case "ArrowDown":
-        event.preventDefault();
       case "ArrowLeft":
+        event.preventDefault();
         this.previousTip();
         break;
       case "Home":
@@ -242,8 +246,12 @@ export class CalciteTipManager {
       return <Host />;
     }
     return (
-      <Host onKeydown={this.tipManagerKeyDownHandler}>
-        <div tabindex="0">
+      <Host>
+        <div
+          tabindex="0"
+          onKeyUp={this.tipManagerKeyDownHandler}
+          ref={(el) => (this.container = el as HTMLDivElement)}
+        >
           <header class={CSS.header}>
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}
