@@ -2,7 +2,7 @@
 *         @esri/calcite-components
 
 # docs:
-/docs/**  @esri/calcite-design-system @esri/all-esri-members @esri/arcgis-javascript-team
+/docs/**  @esri/all-esri-members
 
 # Template and assets
-*.md      @esri/calcite-design-system @esri/all-esri-members @esri/arcgis-javascript-team
+*.md      @esri/all-esri-members
