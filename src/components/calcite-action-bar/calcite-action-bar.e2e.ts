@@ -2,6 +2,10 @@ import { newE2EPage } from "@stencil/core/testing";
 import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-action-bar", () => {
+  it("throws", () => {
+    throw new Error("fail!");
+  });
+
   it("renders", async () => renders("calcite-action-bar"));
 
   it("honors hidden attribute", async () => hidden("calcite-action-bar"));
