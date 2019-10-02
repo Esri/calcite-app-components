@@ -1,5 +1,11 @@
 :host {
+  align-items: stretch;
   background-color: transparent;
-  display: block;
+  display: flex;
+  flex-flow: column;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+header {
+  display: flex;
 }
