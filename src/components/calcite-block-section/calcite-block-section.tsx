@@ -82,6 +82,16 @@ export class CalciteBlockSection {
     this.calciteBlockSectionToggle.emit();
   };
 
+  handleSwitchClick = ({ currentTarget, target }: MouseEvent) => {
+    const isDupeClick = target === currentTarget;
+
+    if (isDupeClick) {
+      return;
+    }
+
+    this.toggleSection();
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -97,10 +107,7 @@ export class CalciteBlockSection {
     const headerNode = toggle ? (
       <label aria-label={toggleLabel} class={classnames(CSS.toggle, CSS.toggleSwitch)}>
         {text}
-        <calcite-switch
-          switched={this.open}
-          onCalciteSwitchChange={this.toggleSection}
-        ></calcite-switch>
+        <calcite-switch switched={open} onClick={this.handleSwitchClick} />
       </label>
     ) : (
       <calcite-action
