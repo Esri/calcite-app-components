@@ -1,4 +1,4 @@
-![Travis](https://travis-ci.com/Esri/calcite-app-components.svg?branch=master")
+[![Build Status](https://travis-ci.com/Esri/calcite-app-components.svg?branch=master)](https://travis-ci.com/Esri/calcite-app-components)
 
 # calcite-app-components
 
