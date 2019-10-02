@@ -84,6 +84,7 @@ export class CalciteExample {
   @Method()
   async publicMethod(): Promise<void> {
     // ...
+    // test code change
   }
 
   // --------------------------------------------------------------------------
