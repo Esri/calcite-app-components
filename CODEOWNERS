@@ -1,0 +1,8 @@
+# These owners will be the default owners for everything in the repo.
+*         @esri/calcite-components
+
+# docs:
+/docs/**  @esri/calcite-design-system @esri/all-esri-members @esri/arcgis-javascript-team
+
+# Template and assets
+*.md      @esri/calcite-design-system @esri/all-esri-members @esri/arcgis-javascript-team
