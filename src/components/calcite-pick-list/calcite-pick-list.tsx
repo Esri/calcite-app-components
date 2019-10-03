@@ -33,7 +33,7 @@ export class CalcitePickList {
   @Prop({ reflect: true }) multiple = false;
 
   /**
-   * DEPRECATED: No longer rendered. Prop will be removed in a future release.
+   * @deprecated No longer rendered. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) textHeading: string;
 

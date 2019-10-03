@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Esri/calcite-app-components.svg?branch=master)](https://travis-ci.com/Esri/calcite-app-components)
+
 # calcite-app-components
 
 A collection of calcite components for building single page applications.
