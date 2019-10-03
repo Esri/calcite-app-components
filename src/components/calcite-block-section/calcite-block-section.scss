@@ -1,12 +1,12 @@
 :host {
   display: block;
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
 
 .content {
   background-color: var(--calcite-app-background);
   border-top: 1px solid var(--calcite-app-border);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
 .toggle--switch {
