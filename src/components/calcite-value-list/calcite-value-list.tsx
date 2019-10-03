@@ -248,8 +248,10 @@ export class CalciteValueList {
           <calcite-filter
             data={this.dataForFilter}
             textPlaceholder={TEXT.filterPlaceholder}
+            aria-label={TEXT.filterPlaceholder}
             onCalciteFilterChange={this.handleFilter}
           />
+          <slot name="action" />
         </header>
         <slot />
       </Host>
