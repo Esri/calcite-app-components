@@ -3,6 +3,32 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [v4.0.0](https://github.com/Esri/calcite-app-components/tree/v4.0.0) (2019-10-01)
+
+### Features
+
+- New component: `calcite-panel` component for generic application panel layout with an option to be dismissable.
+- CalcitePickList: Introduces a generic filter component. Internally, it uses an text input for interaction.
+- CalciteAction: New property `textDisplay` for configuring how text is displayed within a `calcite-action` that replaces and deprecates `textEnabled`. #313
+- Added `calcite-shell` full window demo.
+- Update Stencil.js to 1.5.3.
+- Update dependencies `calcite-base`, `calcite-ui-icons` and `calcite-colors`.
+
+### Bug Fixes
+
+- PickList: Clicking the picklist secondary action icon should focus the surrounding button. #310
+- PickList: add pre-select logic on componentDidLoad. #305
+- Block: Collapsible Block needs full focus outline. #308
+- CalciteActionBar: `calcite-action-bar` should be responsive in some manner. #286
+- CalciteTipManager: User should not be able to use arrow keys on tip manager navigation buttons. #307
+- CalciteTipManager: Keyboard Users should be able to scroll content inside of a tip manager. #306
+- CalciteAction & CalciteActionPad: Make sure host elements have a display set if they are not inline components.
+- CalciteTip: Fixed dismissed tip still showing padding.
+
+### BREAKING CHANGES
+
+- Removed Component: `calcite-shell-floating-panel` has been removed. `calcite-panel` should be used instead.
+
 ## [v3.1.0](https://github.com/Esri/calcite-app-components/tree/v3.1.0) (2019-09-24)
 
 ### Features
@@ -19,10 +45,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Features
 
-- Removed Component: Moved `calcite-popover` component to the 'calcite-components' project.
 - PickList styling updated.
 - Documentation referring to a each components slots are now auto generated.
 - Small documentation and demo updates.
+
+### BREAKING CHANGES
+
+- Removed Component: Moved `calcite-popover` component to the 'calcite-components' project.
 
 ### Bug Fixes
 

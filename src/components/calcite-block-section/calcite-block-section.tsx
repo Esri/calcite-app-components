@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { caretDown16F, caretLeft16F, caretRight16F } from "@esri/calcite-ui-icons";
+import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
 import { getElementDir } from "../utils/dom";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
@@ -82,7 +82,7 @@ export class CalciteBlockSection {
   render() {
     const { el, open, textCollapse, textExpand } = this;
     const dir = getElementDir(el);
-    const arrowIcon = open ? caretDown16F : dir === "rtl" ? caretLeft16F : caretRight16F;
+    const arrowIcon = open ? caretDown16 : dir === "rtl" ? caretLeft16 : caretRight16;
     const toggleLabel = open ? textCollapse : textExpand;
 
     const headerNode = (
@@ -90,7 +90,7 @@ export class CalciteBlockSection {
         aria-label={toggleLabel}
         onClick={this.onHeaderClick}
         text={this.text}
-        text-enabled
+        textDisplay="visible"
         compact
       >
         <CalciteIcon size="16" path={arrowIcon} />

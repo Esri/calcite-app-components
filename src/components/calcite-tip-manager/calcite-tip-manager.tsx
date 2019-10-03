@@ -84,6 +84,8 @@ export class CalciteTipManager {
 
   observer = new MutationObserver(() => this.setUpTips());
 
+  container: HTMLDivElement;
+
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -185,16 +187,18 @@ export class CalciteTipManager {
     this.nextTip();
   };
 
-  tipManagerKeyDownHandler = (event: KeyboardEvent): void => {
+  tipManagerKeyUpHandler = (event: KeyboardEvent): void => {
+    if (event.target !== this.container) {
+      return;
+    }
+
     switch (event.key) {
-      case "ArrowUp":
-        event.preventDefault();
       case "ArrowRight":
+        event.preventDefault();
         this.nextTip();
         break;
-      case "ArrowDown":
-        event.preventDefault();
       case "ArrowLeft":
+        event.preventDefault();
         this.previousTip();
         break;
       case "Home":
@@ -208,6 +212,10 @@ export class CalciteTipManager {
     }
   };
 
+  storeContainerRef = (el: HTMLDivElement) => {
+    this.container = el;
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -216,7 +224,9 @@ export class CalciteTipManager {
 
   renderPagination() {
     const dir = getElementDir(this.el);
-    return this.tips.length > 1 ? (
+    const { selectedIndex, tips, total } = this;
+
+    return tips.length > 1 ? (
       <footer class={CSS.pagination}>
         <calcite-action
           text={this.textPrevious}
@@ -225,8 +235,8 @@ export class CalciteTipManager {
         >
           <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
         </calcite-action>
-        <span class={CSS.pagePosition}>
-          {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
+        <span key={selectedIndex} class={CSS.pagePosition}>
+          {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
           <CalciteIcon size="16" path={dir === "ltr" ? chevronRight16 : chevronLeft16} />
@@ -242,8 +252,8 @@ export class CalciteTipManager {
       return <Host />;
     }
     return (
-      <Host onKeydown={this.tipManagerKeyDownHandler}>
-        <div tabindex="0">
+      <Host>
+        <div tabindex="0" onKeyUp={this.tipManagerKeyUpHandler} ref={this.storeContainerRef}>
           <header class={CSS.header}>
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}
