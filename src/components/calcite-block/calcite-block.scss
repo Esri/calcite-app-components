@@ -58,5 +58,4 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 .content {
   background-color: var(--calcite-app-background);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
