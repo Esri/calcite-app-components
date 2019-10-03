@@ -1,6 +1,6 @@
 import { Component, Host, Prop, State, h } from "@stencil/core";
 import CalciteIcon from "../utils/CalciteIcon";
-import { home16 } from "@esri/calcite-ui-icons";
+import { hamburger32, home16 } from "@esri/calcite-ui-icons";
 
 interface NavItem {
   id: string;
@@ -12,7 +12,8 @@ const CSS = {
   isActive: "is-active",
   link: "link",
   open: "open",
-  close: "close"
+  close: "close",
+  hamburger: "hamburger"
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -119,14 +120,14 @@ export class CalciteDemoNav {
   //
   // --------------------------------------------------------------------------
 
-  hamburgerClickHandler(e) {
+  hamburgerClickHandler = (e) => {
     e.preventDefault();
     this.open = !this.open;
-  }
+  };
 
-  blurHandler() {
+  blurHandler = () => {
     this.open = false;
-  }
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -148,8 +149,10 @@ export class CalciteDemoNav {
 
   render() {
     return (
-      <Host onBlur={this.blurHandler.bind(this)}>
-        <button class="hamburger" onClick={this.hamburgerClickHandler.bind(this)}></button>
+      <Host onBlur={this.blurHandler}>
+        <button class={CSS.hamburger} onClick={this.hamburgerClickHandler}>
+          <CalciteIcon size="32" path={hamburger32} title="Home" />
+        </button>
         <ul class={this.open ? CSS.open : CSS.close}>
           {NAV_ITEMS.map((item) => this.renderNavItem(item))}
         </ul>
