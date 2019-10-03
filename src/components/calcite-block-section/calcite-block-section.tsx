@@ -44,7 +44,9 @@ export class CalciteBlockSection {
   textCollapse = TEXT.collapse;
 
   /**
-   * When true, uses switch.
+   * This property determines the look of the section toggle.
+   * When true, a toggle-switch will be displayed to indicate a capability.
+   * Otherwise, a clickable header is displayed.
    *
    * @todo revisit doc
    */
@@ -77,11 +79,6 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
-  toggleSection = () => {
-    this.open = !this.open;
-    this.calciteBlockSectionToggle.emit();
-  };
-
   handleSwitchClick = ({ currentTarget, target }: MouseEvent) => {
     const isDupeClick = target === currentTarget;
 
@@ -90,6 +87,11 @@ export class CalciteBlockSection {
     }
 
     this.toggleSection();
+  };
+
+  toggleSection = () => {
+    this.open = !this.open;
+    this.calciteBlockSectionToggle.emit();
   };
 
   // --------------------------------------------------------------------------
