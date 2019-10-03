@@ -50,7 +50,9 @@ export class CalciteBlockSection {
    *
    * @todo revisit doc
    */
-  @Prop()
+  @Prop({
+    reflect: true
+  })
   toggle = false;
 
   // --------------------------------------------------------------------------
