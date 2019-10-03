@@ -12,8 +12,8 @@ import {
 } from "@stencil/core";
 import {
   checkSquare16,
-  circle16F,
-  circleFilled16F,
+  circle16,
+  circleFilled16,
   handleVertical24,
   square16
 } from "@esri/calcite-ui-icons";
@@ -35,8 +35,25 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * When true, the label text will be able to be modified by the end-user.
+   * This is usually set by the parent list element.
+   */
   @Prop({ reflect: true }) editing = false;
 
+  /**
+   * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
+   */
+  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+
+  /**
+   * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
+   */
+  @Prop() metadata: object;
+
+  /**
+   * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
+   */
   @Prop() selected = false;
 
   @Watch("selected")
@@ -47,13 +64,22 @@ export class CalcitePickListItem {
     }
   }
 
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
-
+  /**
+   * The main label for this item. Appears next to the icon.
+   */
   @Prop({ reflect: true }) textHeading: string;
 
-  @Prop({ reflect: true }) textDescription: string;
+  /**
+   * An optional description for this item. Will appear below the label text.
+   */
+  @Prop({ reflect: true }) textDescription?: string;
 
+  /**
+   * A unique value used to identify this item - similar to the value attribute on an <input>.
+   */
   @Prop({ reflect: true }) value: string;
+
+  @Prop({ reflect: true }) disabled = false;
 
   // --------------------------------------------------------------------------
   //
@@ -61,7 +87,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListItemElement;
 
   @State() isSelected = this.selected;
 
@@ -91,7 +117,15 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * Used to toggle the selection state. By default this won't trigger an event.
+   * The first argument allows the value to be coerced, rather than swapping values.
+   * The second argument, when true, allows an event to be emitted, just as if a user had clicked.
+   */
   @Method() async toggleSelected(coerce?: boolean, emit = false) {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
     if (emit) {
       this.emitChangeEvent();
@@ -105,8 +139,19 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = !this.isSelected;
     this.emitChangeEvent(event.shiftKey);
+  };
+
+  pickListKeyDownHandler = (event: KeyboardEvent): void => {
+    if (event.key === " ") {
+      event.preventDefault();
+      this.isSelected = !this.isSelected;
+      this.emitChangeEvent(event.shiftKey);
+    }
   };
 
   secondaryActionContainerClickHandler(event: MouseEvent) {
@@ -146,8 +191,8 @@ export class CalcitePickListItem {
             ? checkSquare16
             : square16
           : this.isSelected
-          ? circleFilled16F
-          : circle16F;
+          ? circleFilled16
+          : circle16;
       return (
         <span class="icon">
           <CalciteIcon size="16" path={path} />
@@ -159,6 +204,10 @@ export class CalcitePickListItem {
   render() {
     const { icon } = this;
 
+    const description = this.textDescription ? (
+      <span class={CSS.description}>{this.textDescription}</span>
+    ) : null;
+
     return (
       <Host
         rtl={this.dir === "rtl"}
@@ -166,14 +215,18 @@ export class CalcitePickListItem {
           [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle
         })}
         onClick={this.pickListClickHandler}
+        onKeydown={this.pickListKeyDownHandler}
         selected={this.isSelected}
+        role="checkbox"
+        aria-checked={this.isSelected}
+        tabindex="0"
       >
         {this.renderIcon()}
-        <div class={CSS.label}>
-          <h4 class={CSS.heading}>{this.textHeading}</h4>
-          <p class={CSS.description}>{this.textDescription}</p>
-        </div>
-        <div onClick={this.secondaryActionContainerClickHandler}>
+        <label class={CSS.label}>
+          <span class={CSS.title}>{this.textHeading}</span>
+          {description}
+        </label>
+        <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
           <slot name="secondaryAction" />
         </div>
       </Host>

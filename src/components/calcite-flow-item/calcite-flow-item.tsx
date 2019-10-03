@@ -11,8 +11,6 @@ import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
 
-import { CSS_UTILITY } from "../utils/resources";
-
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
@@ -70,7 +68,7 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFlowItemElement;
 
   // --------------------------------------------------------------------------
   //
@@ -105,17 +103,18 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton(rtl: boolean) {
-    const { showBackButton, textBack } = this;
+    const { showBackButton, textBack, backButtonClick } = this;
 
     const path = rtl ? chevronRight16 : chevronLeft16;
 
     return showBackButton ? (
       <calcite-action
+        slot="header-leading-content"
         key="back-button"
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
-        onClick={this.backButtonClick}
+        onClick={backButtonClick}
       >
         <CalciteIcon size="16" path={path} />
       </calcite-action>
@@ -153,9 +152,9 @@ export class CalciteFlowItem {
     const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
 
     return hasFooterActions ? (
-      <footer class={CSS.footer}>
+      <div slot="footer">
         <slot name="footer-actions" />
-      </footer>
+      </div>
     ) : null;
   }
 
@@ -181,48 +180,32 @@ export class CalciteFlowItem {
     const hasMenuActions = !!menuActionsNode;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
-    return actionCount === 1
-      ? this.renderSingleActionContainer()
-      : hasMenuActions
-      ? this.renderMenuActionsContainer()
-      : null;
+    const menuActionsNodes =
+      actionCount === 1
+        ? this.renderSingleActionContainer()
+        : hasMenuActions
+        ? this.renderMenuActionsContainer()
+        : null;
+
+    return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
   }
 
   render() {
-    const { el, showBackButton, heading } = this;
+    const { el, heading } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
-    const headingClasses = {
-      [CSS.heading]: true,
-      [CSS.headingFirst]: !showBackButton
-    };
-
-    const headerNode = (
-      <header class={CSS.header}>
-        {this.renderBackButton(rtl)}
-        <h2 class={classnames(headingClasses)}>{heading}</h2>
-        {this.renderHeaderActions()}
-      </header>
-    );
-
-    const contentContainerNode = (
-      <section class={CSS.contentContainer}>
-        <slot />
-      </section>
-    );
-
     return (
       <Host>
-        <article
-          class={classnames(CSS.container, {
-            [CSS_UTILITY.rtl]: rtl
-          })}
-        >
-          {headerNode}
-          {contentContainerNode}
+        <calcite-panel>
+          {this.renderBackButton(rtl)}
+          <h2 class={CSS.heading} slot="header-content">
+            {heading}
+          </h2>
+          {this.renderHeaderActions()}
+          <slot />
           {this.renderFooterActions()}
-        </article>
+        </calcite-panel>
       </Host>
     );
   }

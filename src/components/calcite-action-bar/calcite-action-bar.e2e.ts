@@ -52,9 +52,7 @@ describe("calcite-action-bar", () => {
 
     expect(button).not.toBeNull();
 
-    button.click();
-
-    await page.waitForChanges();
+    await button.click();
 
     expect(bar).toHaveAttribute("expanded");
   });
@@ -84,8 +82,8 @@ describe("calcite-action-bar", () => {
 
     const button = await buttonGroup.find("calcite-action");
 
-    const textEnabled = await button.getProperty("textEnabled");
+    const textDisplay = await button.getProperty("textDisplay");
 
-    expect(textEnabled).toBe(true);
+    expect(textDisplay).toBe("visible");
   });
 });

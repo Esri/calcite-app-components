@@ -1,8 +1,6 @@
 $shell-min-width: 1024px !default; // ipad
-$shell-min-height: 671px !default; // ipad + browser with tabs
 
 :host {
-  min-height: $shell-min-height;
   min-width: $shell-min-width;
   width: 100%;
   height: 100%;

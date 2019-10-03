@@ -36,12 +36,15 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 ### Depends on
 
 - [calcite-action](../calcite-action)
+- [calcite-panel](../calcite-panel)
 
 ### Graph
 
 ```mermaid
 graph TD;
   calcite-flow-item --> calcite-action
+  calcite-flow-item --> calcite-panel
+  calcite-panel --> calcite-action
   style calcite-flow-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

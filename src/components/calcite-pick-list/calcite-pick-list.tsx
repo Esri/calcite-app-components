@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { CSS, ICON_TYPES } from "./resources";
+import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-pick-list",
@@ -41,7 +41,7 @@ export class CalcitePickList {
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
 
   /**
-   * Multpile Works similar to standard radio buttons and checkboxes.
+   * Multiple Works similar to standard radio buttons and checkboxes.
    * It also affects the presented icon when in Selection mode.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
@@ -50,8 +50,7 @@ export class CalcitePickList {
   @Prop({ reflect: true }) multiple = false;
 
   /**
-   * The heading label for the entire Pick List.
-   * Not to be confused with the heading for an individual item or for a sub-group of items.
+   * @deprecated No longer rendered. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) textHeading: string;
 
@@ -62,6 +61,8 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
+
+  @State() dataForFilter: object[] = [];
 
   items: HTMLCalcitePickListItemElement[];
 
@@ -79,7 +80,7 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListElement;
 
   // --------------------------------------------------------------------------
   //
@@ -92,6 +93,11 @@ export class CalcitePickList {
   }
 
   componentDidLoad() {
+    this.items.forEach((item) => {
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
+    });
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -151,6 +157,7 @@ export class CalcitePickList {
     if (this.dragEnabled && this.mode === "configuration") {
       this.setUpDragAndDrop();
     }
+    this.dataForFilter = this.getItemData();
   }
 
   setUpDragAndDrop(): void {
@@ -199,6 +206,31 @@ export class CalcitePickList {
     });
   }
 
+  handleFilter = (event) => {
+    const filteredData = event.detail;
+    const values = filteredData.map((item) => item.value);
+    this.items.forEach((item) => {
+      if (values.indexOf(item.value) === -1) {
+        item.setAttribute("hidden", "");
+      } else {
+        item.removeAttribute("hidden");
+      }
+    });
+  };
+
+  getItemData(): Record<string, string | object>[] {
+    const result: Record<string, string | object>[] = [];
+    this.items.forEach((item) => {
+      const obj: Record<string, string | object> = {};
+      Array.from(item.attributes).forEach((attr) => {
+        obj[attr.name] = attr.value;
+      });
+      obj.metadata = item.metadata;
+      result.push(obj);
+    });
+    return result;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -234,8 +266,11 @@ export class CalcitePickList {
       <Host id={id}>
         <section class={CSS.container}>
           <header>
-            <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
           </header>
           <slot />
         </section>
