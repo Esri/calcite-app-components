@@ -79,6 +79,11 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
+  toggleSection = () => {
+    this.open = !this.open;
+    this.calciteBlockSectionToggle.emit();
+  };
+
   handleSwitchClick = ({ currentTarget, target }: MouseEvent) => {
     const isDupeClick = target === currentTarget;
 
@@ -87,11 +92,6 @@ export class CalciteBlockSection {
     }
 
     this.toggleSection();
-  };
-
-  toggleSection = () => {
-    this.open = !this.open;
-    this.calciteBlockSectionToggle.emit();
   };
 
   // --------------------------------------------------------------------------
