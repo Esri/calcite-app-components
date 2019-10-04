@@ -34,7 +34,10 @@ export const config: Config = {
     { type: "docs-readme" },
     {
       type: "www",
-      copy: [{ src: "../demos", dest: "demos" }],
+      copy: [
+        { src: "../demos", dest: "demos" },
+        { src: "../../node_modules/@esri/calcite-components/dist/calcite", dest: "vendor/@esri/calcite-components" }
+      ],
       serviceWorker: null // disable service workers
     }
   ],
