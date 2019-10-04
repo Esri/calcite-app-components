@@ -16,31 +16,37 @@ describe("calcite-block-section", () => {
       }
     ]));
 
-  describe("toggle", () => {
+  describe("toggle-display = 'switch'", () => {
     it("can display/hide content", async () => {
-      const page = await setUpPage("<calcite-block-section toggle><div>some content</div></calcite-block-section>", {
-        withPeerDependencies: true
-      });
+      const page = await setUpPage(
+        `<calcite-block-section toggle-display="switch"><div>some content</div></calcite-block-section>`,
+        {
+          withPeerDependencies: true
+        }
+      );
       await assertContentIsDisplayedAndHidden(page);
     });
 
     it("can be toggled", async () => {
-      const page = await setUpPage("<calcite-block-section toggle></calcite-block-section>", {
+      const page = await setUpPage(`<calcite-block-section toggle-display="switch"></calcite-block-section>`, {
         withPeerDependencies: true
       });
       await assertToggleBehavior(page);
     });
 
     it("renders section text", async () => {
-      const page = await setUpPage(`<calcite-block-section text="test text" open toggle></calcite-block-section>`, {
-        withPeerDependencies: true
-      });
+      const page = await setUpPage(
+        `<calcite-block-section text="test text" open toggle-display="switch"></calcite-block-section>`,
+        {
+          withPeerDependencies: true
+        }
+      );
       const element = await page.find(`calcite-block-section >>> .${CSS.toggle}`);
       expect(element.textContent).toBe("test text");
     });
   });
 
-  describe("no toggle (default)", () => {
+  describe("toggle-display = 'button' (default)", () => {
     it("can display/hide content", async () => {
       const page = await setUpPage("<calcite-block-section><div>some content</div></calcite-block-section>");
       await assertContentIsDisplayedAndHidden(page);
