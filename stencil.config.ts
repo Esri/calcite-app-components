@@ -36,7 +36,7 @@ export const config: Config = {
       type: "www",
       copy: [
         { src: "../demos", dest: "demos" },
-        { src: "../../node_modules/@esri/calcite-components/dist", dest: "node_modules/@esri/calcite-components/dist" }
+        { src: "../../node_modules/@esri/calcite-components/dist/calcite", dest: "vendor/@esri/calcite-components" }
       ],
       serviceWorker: null // disable service workers
     }
