@@ -24,11 +24,11 @@
     "test:watchAll": "stencil test --spec --e2e --watchAll",
     "preversion": "npm ci && npm test",
     "version": "npm run build && npm run docs && git add .",
-    "postversion": "git push && git push --tags",
     "prepublishOnly": "node ./support/prepublish.js",
-    "release:patch": "npm version patch && npm publish",
-    "release:minor": "npm version minor && npm publish",
-    "release:major": "npm version major && npm publish",
+    "prepare:patch": "standard-version --release-as patch",
+    "prepare:minor": "standard-version --release-as minor",
+    "prepare:major": "standard-version --release-as major",
+    "release": "git push --follow-tags && npm publish",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'"
   },
   "repository": {
@@ -63,6 +63,7 @@
     "lint-staged": "9.4.0",
     "prettier": "1.18.2",
     "puppeteer": "1.20.0",
+    "standard-version": "7.0.0",
     "tslint": "5.20.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-ionic-rules": "0.0.21",
