@@ -1,12 +1,14 @@
 :host {
+  background-color: var(--calcite-app-background);
   display: flex;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
   width: 100%;
 }
 
 label {
   align-items: center;
   display: flex;
-  margin: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-quarter);
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-quarter);
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -15,7 +17,6 @@ label {
 input[type="text"] {
   background-color: transparent;
   border: 0;
-  box-shadow: 0 var(--calcite-app-cap-spacing-minimum) 0 var(--calcite-app-foreground-subtle);
   font-family: var(--calcite-app-font-family);
   font-size: var(--calcite-app-font-size-0);
   margin-bottom: calc(var(--calcite-app-cap-spacing-minimum) * 2);
