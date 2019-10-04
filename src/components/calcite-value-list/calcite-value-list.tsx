@@ -1,3 +1,4 @@
+import Sortable from "sortablejs";
 import {
   Component,
   Element,
@@ -10,14 +11,15 @@ import {
   State,
   h
 } from "@stencil/core";
-import { ICON_TYPES, TEXT } from "./resources";
+import guid from "../utils/guid";
+import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
-  tag: "calcite-pick-list",
-  styleUrl: "./calcite-pick-list.scss",
+  tag: "calcite-value-list",
+  styleUrl: "./calcite-value-list.scss",
   shadow: true
 })
-export class CalcitePickList {
+export class CalciteValueList {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -25,14 +27,10 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   /**
-   * @deprecated Prop is ignored. Prop will be removed in a future release.
+   * When true, the items will be sortable via drag and drop.
    */
   @Prop({ reflect: true }) dragEnabled = false;
 
-  /**
-   * @deprecated Prop is ignored. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
   /**
    * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
@@ -41,26 +39,25 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) multiple = false;
 
-  /**
-   * @deprecated No longer rendered. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) textHeading: string;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
+  @State() selectedValues: Map<string, HTMLCalciteValueListItemElement> = new Map();
 
   @State() dataForFilter: object[] = [];
 
-  items: HTMLCalcitePickListItemElement[];
+  items: HTMLCalciteValueListItemElement[];
 
-  lastSelectedItem: HTMLCalcitePickListItemElement = null;
+  lastSelectedItem: HTMLCalciteValueListItemElement = null;
+
+  guid = `calcite-value-list-${guid()}`;
 
   observer = new MutationObserver(() => this.setUpItems());
+
+  sortables: Sortable[] = [];
 
   // --------------------------------------------------------------------------
   //
@@ -68,7 +65,7 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCalcitePickListElement;
+  @Element() el: HTMLCalciteValueListItemElement;
 
   // --------------------------------------------------------------------------
   //
@@ -91,6 +88,9 @@ export class CalcitePickList {
 
   componentDidUnload() {
     this.observer.disconnect();
+    if (this.dragEnabled) {
+      this.cleanUpDragAndDrop();
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -99,9 +99,9 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListSelectionChange: EventEmitter;
+  @Event() calciteValueListSelectionChange: EventEmitter;
 
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
+  @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
@@ -117,7 +117,7 @@ export class CalcitePickList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calcitePickListSelectionChange.emit(selectedValues);
+    this.calciteValueListSelectionChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -127,19 +127,48 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
+    this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
-      item.setAttribute("icon", iconType);
-
+      if (iconType) {
+        item.setAttribute("icon", iconType);
+      } else {
+        item.removeAttribute("icon");
+      }
       if (item.hasAttribute("selected")) {
         this.selectedValues.set(item.getAttribute("value"), item);
       }
     });
+    if (this.dragEnabled) {
+      this.setUpDragAndDrop();
+    }
     this.dataForFilter = this.getItemData();
   }
 
-  deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
+  setUpDragAndDrop(): void {
+    const sortGroups = [
+      this.el,
+      ...Array.from(this.el.querySelectorAll("calcite-value-list-group"))
+    ];
+    sortGroups.forEach((sortGroup: HTMLElement) => {
+      this.sortables.push(
+        Sortable.create(sortGroup, {
+          group: this.guid,
+          handle: `.${CSS.handle}`,
+          draggable: "calcite-value-list-item"
+        })
+      );
+    });
+  }
+
+  cleanUpDragAndDrop(): void {
+    this.sortables.forEach((sortable) => {
+      sortable.destroy();
+    });
+    this.sortables = [];
+  }
+
+  deselectSiblingItems(item: HTMLCalciteValueListItemElement) {
     this.items.forEach((currentItem) => {
       if (currentItem !== item) {
         currentItem.toggleSelected(false);
@@ -150,7 +179,7 @@ export class CalcitePickList {
     });
   }
 
-  selectSiblings(item: HTMLCalcitePickListItemElement) {
+  selectSiblings(item: HTMLCalciteValueListItemElement) {
     if (!this.lastSelectedItem) {
       return;
     }
@@ -205,9 +234,9 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   getIconType(): ICON_TYPES | null {
-    let type = ICON_TYPES.circle;
-    if (this.multiple) {
-      type = ICON_TYPES.square;
+    let type = null;
+    if (this.dragEnabled) {
+      type = ICON_TYPES.grip;
     }
     return type;
   }
