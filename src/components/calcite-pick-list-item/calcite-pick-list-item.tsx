@@ -105,7 +105,6 @@ export class CalcitePickListItem {
    * @event calciteListItemChange
    * Emitted whenever the item is selected or unselected
    * @type {object}
-   * @property {HTMLElement} item - An HTML DOM reference to the changed element.
    * @property {string} value - The value of the item
    * @property {boolean} selected - True if the event was selected. False if deselected.
    */
@@ -160,7 +159,6 @@ export class CalcitePickListItem {
 
   emitChangeEvent(shiftPressed = false) {
     this.calciteListItemChange.emit({
-      item: this.el,
       value: this.value,
       selected: this.isSelected,
       shiftPressed
