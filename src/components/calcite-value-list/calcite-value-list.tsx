@@ -108,10 +108,11 @@ export class CalciteValueList {
    */
   @Event() calciteListSelectionChange: EventEmitter;
 
-  @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
-    event.stopPropagation(); // private event
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
-    const { item, value, selected, shiftPressed } = event.detail;
+    const { value, selected, shiftPressed } = event.detail;
+    const item = event.target;
+
     if (selected) {
       if (!this.multiple) {
         this.deselectSiblingItems(item);
