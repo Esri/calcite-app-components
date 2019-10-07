@@ -235,7 +235,7 @@ export class CalciteTipManager {
         >
           <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
         </calcite-action>
-        <span key={selectedIndex} class={CSS.pagePosition}>
+        <span class={CSS.pagePosition}>
           {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
