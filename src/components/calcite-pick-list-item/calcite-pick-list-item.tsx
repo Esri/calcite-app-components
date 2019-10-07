@@ -101,7 +101,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListItemSelectedChange: EventEmitter;
+  @Event() calciteListItemChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -151,7 +151,7 @@ export class CalcitePickListItem {
   }
 
   emitChangeEvent(shiftPressed = false) {
-    this.calcitePickListItemSelectedChange.emit({
+    this.calciteListItemChange.emit({
       item: this.el,
       value: this.value,
       selected: this.isSelected,

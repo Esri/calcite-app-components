@@ -101,8 +101,7 @@ export class CalcitePickList {
 
   @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
-    event.stopPropagation(); // private event
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {

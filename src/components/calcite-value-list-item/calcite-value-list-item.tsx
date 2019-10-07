@@ -76,7 +76,7 @@ export class CalciteValueListItem {
 
   @Event() calciteValueListItemSelectedChange: EventEmitter;
 
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     event.stopPropagation();
     event.detail.item = this.el;
     this.calciteValueListItemSelectedChange.emit(event.detail);
