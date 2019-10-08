@@ -51,7 +51,11 @@
       </calcite-value-list>
       <script>
         const valueList = document.querySelector("#one");
-        valueList.addEventListener("calciteValueListSelectionChange", (event) => {
+        valueList.addEventListener("calciteListSelectionChange", (event) => {
+          console.log(event.detail);
+        });
+        valueList.addEventListener("calciteListItemChange", (event) => {
+          console.log(event.target);
           console.log(event.detail);
         });
       </script>
@@ -85,7 +89,7 @@
         <calcite-value-list-item
         text-label="2010-2018 Households: Annual Growth Rate (Esri)"
         text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
-        value="HHGRW10CY">
+        value="HHGRW10CY2">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -133,7 +137,11 @@
         </calcite-value-list>
       <script>
         const valueList2 = document.querySelector("#two");
-        valueList2.addEventListener("calciteValueListSelectionChange", (event) => {
+        valueList2.addEventListener("calciteListSelectionChange", (event) => {
+          console.log(event.detail);
+        });
+        valueList2.addEventListener("calciteListItemChange", (event) => {
+          console.log(event.target);
           console.log(event.detail);
         });
       </script>
@@ -182,7 +190,7 @@
       </calcite-value-list>
       <script>
         const valueList3 = document.querySelector("#three");
-        valueList3.addEventListener("calciteValueListSelectionChange", (event) => {
+        valueList3.addEventListener("calciteListSelectionChange", (event) => {
           console.log(event.detail);
         });
         valueList3.addEventListener("calciteValueListOrderChange", (event) => {
