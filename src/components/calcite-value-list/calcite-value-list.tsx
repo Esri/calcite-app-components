@@ -148,21 +148,18 @@ export class CalciteValueList {
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [this.el];
-    sortGroups.forEach((sortGroup: HTMLElement) => {
-      this.sortables.push(
-        Sortable.create(sortGroup, {
-          group: this.guid,
-          handle: `.${CSS.handle}`,
-          draggable: "calcite-value-list-item",
-          onUpdate: () => {
-            this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
-            const values = this.items.map((item) => item.value);
-            this.calciteValueListOrderChange.emit(values);
-          }
-        })
-      );
-    });
+    this.sortables.push(
+      Sortable.create(this.el, {
+        group: this.guid,
+        handle: `.${CSS.handle}`,
+        draggable: "calcite-value-list-item",
+        onUpdate: () => {
+          this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
+          const values = this.items.map((item) => item.value);
+          this.calciteValueListOrderChange.emit(values);
+        }
+      })
+    );
   }
 
   cleanUpDragAndDrop(): void {
