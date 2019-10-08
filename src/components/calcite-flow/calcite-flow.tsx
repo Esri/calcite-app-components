@@ -72,6 +72,24 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
+  getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection => {
+    const flowCountChanged = oldFlowCount !== newFlowCount;
+
+    if (!flowCountChanged) {
+      return null;
+    }
+
+    const prevHasMulti = oldFlowCount > 1;
+    const currHasMulti = newFlowCount > 1;
+    const singleToMultiThreshhold = oldFlowCount && currHasMulti;
+
+    if (!singleToMultiThreshhold && !prevHasMulti) {
+      return null;
+    }
+
+    return newFlowCount < oldFlowCount ? "retreating" : "advancing";
+  };
+
   updateFlowProps = (): void => {
     const { flows } = this;
 
@@ -81,17 +99,9 @@ export class CalciteFlow {
 
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
-
-    const prevHasMulti = oldFlowCount > 1;
     const currHasMulti = newFlowCount > 1;
 
-    const flowDirection =
-      (currHasMulti && oldFlowCount) || prevHasMulti
-        ? newFlowCount < oldFlowCount
-          ? "retreating"
-          : "advancing"
-        : null;
-
+    const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
     const activeFlow = newFlows[newFlowCount - 1];
     const previousFlow = newFlows[newFlowCount - 2];
 
