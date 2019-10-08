@@ -1,9 +1,18 @@
 :host {
   display: block;
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
 
 .content {
   background-color: var(--calcite-app-background);
-  padding: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-half);
-  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+  border-top: 1px solid var(--calcite-app-border);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+.toggle--switch {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--calcite-app-cap-spacing-half);
+  padding-bottom: var(--calcite-app-cap-spacing-half);
+  user-select: none;
 }

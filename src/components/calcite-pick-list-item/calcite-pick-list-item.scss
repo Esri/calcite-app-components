@@ -4,7 +4,7 @@
   color: var(--calcite-app-foreground);
   cursor: pointer;
   display: flex;
-  margin-bottom: var(--calcite-app-cap-spacing-minimum);
+  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
@@ -22,8 +22,14 @@
   }
 }
 
+:host(:first-child) {
+  border-radius: var(--calcite-app-border-radius) var(--calcite-app-border-radius) 0 0;
+}
+
 :host(:last-child) {
+  border-radius: 0 0 var(--calcite-app-border-radius) var(--calcite-app-border-radius);
   margin-bottom: 0;
+  @include borderShadow();
 }
 
 .icon {
