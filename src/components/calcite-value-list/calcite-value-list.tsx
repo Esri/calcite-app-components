@@ -32,6 +32,11 @@ export class CalciteValueList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
+   * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
+   */
+  @Prop({ reflect: true }) filterEnabled = false;
+
+  /**
    * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
@@ -142,7 +147,9 @@ export class CalciteValueList {
     if (this.dragEnabled) {
       this.setUpDragAndDrop();
     }
-    this.dataForFilter = this.getItemData();
+    if (this.filterEnabled) {
+      this.dataForFilter = this.getItemData();
+    }
   }
 
   setUpDragAndDrop(): void {
@@ -245,12 +252,14 @@ export class CalciteValueList {
     return (
       <Host>
         <header>
-          <calcite-filter
-            data={this.dataForFilter}
-            textPlaceholder={TEXT.filterPlaceholder}
-            aria-label={TEXT.filterPlaceholder}
-            onCalciteFilterChange={this.handleFilter}
-          />
+          {this.filterEnabled ? (
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              aria-label={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
+          ) : null}
           <slot name="action" />
         </header>
         <slot />

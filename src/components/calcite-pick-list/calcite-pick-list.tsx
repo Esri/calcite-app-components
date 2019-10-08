@@ -30,6 +30,11 @@ export class CalcitePickList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
+   * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
+   */
+  @Prop({ reflect: true }) filterEnabled = false;
+
+  /**
    * @deprecated Prop is ignored. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
@@ -136,7 +141,9 @@ export class CalcitePickList {
         this.selectedValues.set(item.getAttribute("value"), item);
       }
     });
-    this.dataForFilter = this.getItemData();
+    if (this.filterEnabled) {
+      this.dataForFilter = this.getItemData();
+    }
   }
 
   deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
@@ -216,12 +223,14 @@ export class CalcitePickList {
     return (
       <Host>
         <header>
-          <calcite-filter
-            data={this.dataForFilter}
-            textPlaceholder={TEXT.filterPlaceholder}
-            aria-label={TEXT.filterPlaceholder}
-            onCalciteFilterChange={this.handleFilter}
-          />
+          {this.filterEnabled ? (
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              aria-label={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
+          ) : null}
           <slot name="action" />
         </header>
         <slot />
