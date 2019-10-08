@@ -137,7 +137,9 @@ export class CalcitePickList {
     this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
+      const compactString = this.compact ? "true" : "false";
       item.setAttribute("icon", iconType);
+      item.setAttribute("compact", compactString);
 
       if (item.hasAttribute("selected")) {
         this.selectedValues.set(item.getAttribute("value"), item);
