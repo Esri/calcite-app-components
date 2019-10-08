@@ -4,8 +4,6 @@ $tip-image-frame-width: 25% !default;
 $tip-image-max-width: 100% !default;
 
 :host {
-  background-color: var(--calcite-app-background);
-  color: var(--calcite-app-foreground);
   position: relative;
   display: flex;
   flex-flow: column;
@@ -53,7 +51,7 @@ $tip-image-max-width: 100% !default;
 }
 
 .info ::slotted(a) {
-  color: var(--calcite-app-foreground);
+  color: var(--calcite-app-foreground-link);
 }
 
 .image-frame {

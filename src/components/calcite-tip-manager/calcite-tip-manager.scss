@@ -25,12 +25,10 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
-  color: var(--calcite-app-foreground);
   overflow: hidden;
   position: relative;
   display: block;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
-  background-color: var(--calcite-app-background);
   min-height: 150px;
 }
 
