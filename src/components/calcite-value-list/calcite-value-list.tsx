@@ -32,7 +32,7 @@ export class CalciteValueList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
-   * Multpile Works similar to standard radio buttons and checkboxes.
+   * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
    * When false, selecting a new item will deselect any other selected items.
@@ -101,6 +101,8 @@ export class CalciteValueList {
 
   @Event() calciteValueListSelectionChange: EventEmitter;
 
+  @Event() calciteValueListOrderChange: EventEmitter;
+
   @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
     const { selectedValues } = this;
@@ -146,19 +148,18 @@ export class CalciteValueList {
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [
-      this.el,
-      ...Array.from(this.el.querySelectorAll("calcite-value-list-group"))
-    ];
-    sortGroups.forEach((sortGroup: HTMLElement) => {
-      this.sortables.push(
-        Sortable.create(sortGroup, {
-          group: this.guid,
-          handle: `.${CSS.handle}`,
-          draggable: "calcite-value-list-item"
-        })
-      );
-    });
+    this.sortables.push(
+      Sortable.create(this.el, {
+        group: this.guid,
+        handle: `.${CSS.handle}`,
+        draggable: "calcite-value-list-item",
+        onUpdate: () => {
+          this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
+          const values = this.items.map((item) => item.value);
+          this.calciteValueListOrderChange.emit(values);
+        }
+      })
+    );
   }
 
   cleanUpDragAndDrop(): void {
@@ -248,8 +249,10 @@ export class CalciteValueList {
           <calcite-filter
             data={this.dataForFilter}
             textPlaceholder={TEXT.filterPlaceholder}
+            aria-label={TEXT.filterPlaceholder}
             onCalciteFilterChange={this.handleFilter}
           />
+          <slot name="action" />
         </header>
         <slot />
       </Host>

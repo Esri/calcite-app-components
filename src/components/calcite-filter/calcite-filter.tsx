@@ -1,5 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { search16 } from "@esri/calcite-ui-icons";
 import { debounce, forIn } from "lodash-es";
+import CalciteIcon from "../utils/CalciteIcon";
+import { CSS } from "./resources";
 
 const filterDebounceInMs = 250;
 
@@ -96,6 +99,9 @@ export class CalciteFilter {
         <label>
           {this.textLabel}
           <input type="text" placeholder={this.textPlaceholder} onInput={this.inputHandler} />
+          <div class={CSS.searchIcon}>
+            <CalciteIcon size="16" path={search16} />
+          </div>
         </label>
       </Host>
     );

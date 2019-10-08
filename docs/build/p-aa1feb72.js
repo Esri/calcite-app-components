@@ -1,1 +1,0 @@
-const e={defaultGroupTitle:"Tips",defaultPaginationLabel:"Tip",close:"Close",previous:"Previous",next:"Next"},a={header:"header",heading:"heading",close:"close",tipContainer:"tip-container",pagination:"pagination",pagePosition:"page-position",pageNext:"page-next",pagePrevious:"page-previous"};export{a as C,e as T};
