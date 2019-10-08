@@ -1,11 +1,11 @@
 :host {
+  display: flex;
   align-items: center;
+  // justify-content: space-between;
+  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
+  padding-right: var(--calcite-app-side-spacing-half);
   background-color: var(--calcite-app-background);
   color: var(--calcite-app-foreground);
-  cursor: pointer;
-  display: flex;
-  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
@@ -39,13 +39,19 @@
   width: var(--calcite-app-icon-size);
   margin: 0 var(--calcite-app-side-spacing-half);
 }
-
 .label {
+  display: flex;
+  flex: 1 0 0;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing)
+    var(--calcite-app-cap-spacing);
+  align-items: center;
+  cursor: pointer;
+}
+.textContainer {
   display: flex;
   flex-flow: column nowrap;
   flex: 1 0 0%;
   overflow: hidden;
-  padding: 0 var(--calcite-app-side-spacing-half);
   pointer-events: none;
 }
 
