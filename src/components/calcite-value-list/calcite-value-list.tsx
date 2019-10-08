@@ -104,12 +104,20 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calciteValueListSelectionChange: EventEmitter;
+  /**
+   * @event calciteListSelectionChange
+   * Emitted when any of the item selections have changed.
+   * @type {Map<string, object>}
+   * @property {string} key - the value of the selected item
+   * @property {HTMLElement} value - An HTML DOM reference to the selected element.
+   */
+  @Event() calciteListSelectionChange: EventEmitter;
 
-  @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
-    event.stopPropagation(); // private event
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
-    const { item, value, selected, shiftPressed } = event.detail;
+    const { value, selected, shiftPressed } = event.detail;
+    const item = event.target;
+
     if (selected) {
       if (!this.multiple) {
         this.deselectSiblingItems(item);
@@ -122,7 +130,7 @@ export class CalciteValueList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calciteValueListSelectionChange.emit(selectedValues);
+    this.calciteListSelectionChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
