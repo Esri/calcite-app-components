@@ -9,13 +9,22 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - New Component: `calcite-value-list` and `calcite-value-list-item`. #279
 - Added `toggleDisplay` property to `calcite-block-section` to handle a "switch" mode. #205
-- Added `calcite-components` as a developer dependency. #205
+- Added `calcite-components` as a peer dependency. #205
 - Added Travis CI integration for testing. #152
+- Added `filterEnabled` prop to PickList. Filter is now disabled by default.
+- PickListItem `calciteListItemChange` event now properly bubbles up beyond the PickList.
 
 ### Bug Fixes
 
 - Fixed: VDOM rendering by updating Stencil.js to 1.6.1.
 - Fixed: Collapsible Block needs full focus outline. #308
+
+### Deprecations
+
+- PickListItem `textHeading` prop replaced with `textLabel`.
+- PickList `dragEnabled` and `mode` props have been deprecated with the release of `ValueList`
+- PickList `textHeading` has been deprecated as the heading has been removed from render.
+- PickLIst `calcitePickListSelectionChange` has been replaced with `calciteListChange`
 
 ## [v4.0.0](https://github.com/Esri/calcite-app-components/tree/v4.0.0) (2019-10-01)
 

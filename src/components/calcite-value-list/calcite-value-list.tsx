@@ -32,6 +32,11 @@ export class CalciteValueList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
+   * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
+   */
+  @Prop({ reflect: true }) filterEnabled = false;
+
+  /**
    * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
@@ -99,14 +104,22 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calciteValueListSelectionChange: EventEmitter;
+  /**
+   * @event calciteListChange
+   * Emitted when any of the item selections have changed.
+   * @type {Map<string, object>}
+   * @property {string} key - the value of the selected item
+   * @property {HTMLElement} value - An HTML DOM reference to the selected element.
+   */
+  @Event() calciteListChange: EventEmitter;
 
-  @Event() calciteValueListOrderChange: EventEmitter;
+  @Event() calciteListOrderChange: EventEmitter;
 
-  @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
-    event.stopPropagation(); // private event
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
-    const { item, value, selected, shiftPressed } = event.detail;
+    const { value, selected, shiftPressed } = event.detail;
+    const item = event.target;
+
     if (selected) {
       if (!this.multiple) {
         this.deselectSiblingItems(item);
@@ -119,7 +132,7 @@ export class CalciteValueList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calciteValueListSelectionChange.emit(selectedValues);
+    this.calciteListChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -144,7 +157,9 @@ export class CalciteValueList {
     if (this.dragEnabled) {
       this.setUpDragAndDrop();
     }
-    this.dataForFilter = this.getItemData();
+    if (this.filterEnabled) {
+      this.dataForFilter = this.getItemData();
+    }
   }
 
   setUpDragAndDrop(): void {
@@ -156,7 +171,7 @@ export class CalciteValueList {
         onUpdate: () => {
           this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
           const values = this.items.map((item) => item.value);
-          this.calciteValueListOrderChange.emit(values);
+          this.calciteListOrderChange.emit(values);
         }
       })
     );
@@ -246,12 +261,14 @@ export class CalciteValueList {
     return (
       <Host>
         <header>
-          <calcite-filter
-            data={this.dataForFilter}
-            textPlaceholder={TEXT.filterPlaceholder}
-            aria-label={TEXT.filterPlaceholder}
-            onCalciteFilterChange={this.handleFilter}
-          />
+          {this.filterEnabled ? (
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              aria-label={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
+          ) : null}
           <slot name="action" />
         </header>
         <slot />
