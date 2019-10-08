@@ -59,8 +59,7 @@ export class CalcitePickListItem {
   }
 
   /**
-   * @deprecated This will be removed in a future build. Replaced by textLabel.
-   * The main label for this item. Appears next to the icon.
+   * @deprecated Replaced by textLabel.
    */
   @Prop({ reflect: true }) textHeading: string;
 
@@ -107,7 +106,14 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListItemSelectedChange: EventEmitter;
+  /**
+   * @event calciteListItemChange
+   * Emitted whenever the item is selected or unselected
+   * @type {object}
+   * @property {string} value - The value of the item
+   * @property {boolean} selected - True if the event was selected. False if deselected.
+   */
+  @Event() calciteListItemChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -160,8 +166,7 @@ export class CalcitePickListItem {
   }
 
   emitChangeEvent(shiftPressed = false) {
-    this.calcitePickListItemSelectedChange.emit({
-      item: this.el,
+    this.calciteListItemChange.emit({
       value: this.value,
       selected: this.isSelected,
       shiftPressed
