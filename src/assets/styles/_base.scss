@@ -1,4 +1,5 @@
 :host {
+  background-color: var(--calcite-app-background);
   font-family: var(--calcite-app-font-family);
   font-size: var(--calcite-app-base-font-size);
   line-height: var(--calcite-app-line-height);
@@ -13,13 +14,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--calcite-app-background);
 }
 
 .heading {
   padding: 0;
   margin: 0;
-  color: var(--calcite-app-foreground);
 }
 
 .header .heading {

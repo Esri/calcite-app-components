@@ -4,14 +4,14 @@ $tip-image-frame-width: 25% !default;
 $tip-image-max-width: 100% !default;
 
 :host {
+  background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
   position: relative;
   display: flex;
   flex-flow: column;
 }
 
 .container {
-  color: var(--calcite-app-foreground);
-  background-color: var(--calcite-app-background);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
   margin: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   box-shadow: var(--calcite-app-shadow-2);

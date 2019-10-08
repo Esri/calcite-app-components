@@ -25,6 +25,7 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
+  color: var(--calcite-app-foreground);
   overflow: hidden;
   position: relative;
   display: block;
@@ -47,7 +48,6 @@ $tip-max-width: 540px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: var(--calcite-app-background);
 }
 
 ::slotted(calcite-tip-group) {
@@ -79,5 +79,4 @@ $tip-max-width: 540px;
 .page-position {
   font-size: var(--calcite-app-font-size--1);
   margin: 0 var(--calcite-app-side-spacing-half);
-  color: var(--calcite-app-foreground);
 }

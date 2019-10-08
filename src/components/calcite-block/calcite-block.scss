@@ -15,8 +15,6 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 }
 
 .header-container {
-  background-color: var(--calcite-app-background);
-
   & > .header {
     padding: $header-content-padding;
   }
@@ -33,7 +31,6 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 .summary {
   font-size: var(--font-size--1);
   padding: 0 var(--calcite-app-side-spacing-half);
-  color: var(--calcite-app-foreground);
 }
 
 .toggle {
@@ -52,7 +49,7 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 
 .toggle-icon {
   margin: 0 4px;
-  fill: var(--calcite-app-foreground);
+  fill: currentColor;
 }
 
 .content {
