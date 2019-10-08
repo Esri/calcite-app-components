@@ -9,3 +9,8 @@
 header {
   display: flex;
 }
+
+calcite-filter {
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
+  @include borderShadow();
+}
