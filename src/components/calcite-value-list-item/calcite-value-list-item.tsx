@@ -36,7 +36,7 @@ export class CalciteValueListItem {
   /**
    * The main label for this item. Appears next to the icon.
    */
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) textLabel: string;
 
   /**
    * An optional description for this item. Will appear below the label text.
@@ -91,7 +91,7 @@ export class CalciteValueListItem {
           selected={this.selected}
           metadata={this.metadata}
           icon={this.icon}
-          textHeading={this.textHeading}
+          textLabel={this.textLabel}
           textDescription={this.textDescription}
           value={this.value}
         >

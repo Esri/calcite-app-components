@@ -105,13 +105,15 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
-   * @event calciteListSelectionChange
+   * @event calciteListChange
    * Emitted when any of the item selections have changed.
    * @type {Map<string, object>}
    * @property {string} key - the value of the selected item
    * @property {HTMLElement} value - An HTML DOM reference to the selected element.
    */
-  @Event() calciteListSelectionChange: EventEmitter;
+  @Event() calciteListChange: EventEmitter;
+
+  @Event() calciteValueListOrderChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
@@ -130,7 +132,7 @@ export class CalciteValueList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calciteListSelectionChange.emit(selectedValues);
+    this.calciteListChange.emit(selectedValues);
   }
 
   // --------------------------------------------------------------------------
@@ -161,19 +163,18 @@ export class CalciteValueList {
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [
-      this.el,
-      ...Array.from(this.el.querySelectorAll("calcite-value-list-group"))
-    ];
-    sortGroups.forEach((sortGroup: HTMLElement) => {
-      this.sortables.push(
-        Sortable.create(sortGroup, {
-          group: this.guid,
-          handle: `.${CSS.handle}`,
-          draggable: "calcite-value-list-item"
-        })
-      );
-    });
+    this.sortables.push(
+      Sortable.create(this.el, {
+        group: this.guid,
+        handle: `.${CSS.handle}`,
+        draggable: "calcite-value-list-item",
+        onUpdate: () => {
+          this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
+          const values = this.items.map((item) => item.value);
+          this.calciteValueListOrderChange.emit(values);
+        }
+      })
+    );
   }
 
   cleanUpDragAndDrop(): void {
