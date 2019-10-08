@@ -1,11 +1,15 @@
 :host {
-  background-color: var(--calcite-app-background-content);
-  display: block;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+  padding-bottom: var(--calcite-app-cap-spacing-half);
 }
 
-.container {
-  border-radius: var(--calcite-app-border-radius);
-  overflow: hidden;
+header {
+  display: flex;
+}
+
+calcite-filter {
+  margin-bottom: var(--calcite-app-cap-spacing-half);
   @include borderShadow();
 }
