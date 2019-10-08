@@ -18,7 +18,7 @@ describe("calcite-value-list", () => {
         const valueList = await page.find("calcite-value-list");
         const item1 = await valueList.find("[value=one]");
         const item2 = await valueList.find("[value=two]");
-        const toggleSpy = await valueList.spyOnEvent("calciteListSelectionChange");
+        const toggleSpy = await valueList.spyOnEvent("calciteListChange");
 
         await item1.click();
         await item2.click();
@@ -36,7 +36,7 @@ describe("calcite-value-list", () => {
         const valueList = await page.find("calcite-value-list");
         const item1 = await valueList.find("[value=one]");
         const item2 = await valueList.find("[value=two]");
-        const toggleSpy = await valueList.spyOnEvent("calciteListSelectionChange");
+        const toggleSpy = await valueList.spyOnEvent("calciteListChange");
 
         await item1.click();
         await item2.click();

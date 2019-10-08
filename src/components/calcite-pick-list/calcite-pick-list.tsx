@@ -100,17 +100,17 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   /**
-   * @event calciteListSelectionChange
+   * @event calciteListChange
    * Emitted when any of the item selections have changed.
    * @type {Map<string, object>}
    * @property {string} key - the value of the selected item
    * @property {HTMLElement} value - An HTML DOM reference to the selected element.
    */
-  @Event() calciteListSelectionChange: EventEmitter;
+  @Event() calciteListChange: EventEmitter;
 
   /**
    * @event calcitePickListSelectionChange
-   * @deprecated use calciteListSelectionChange instead.
+   * @deprecated use calciteListChange instead.
    */
   @Event() calcitePickListSelectionChange: EventEmitter;
 
@@ -129,7 +129,7 @@ export class CalcitePickList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
-    this.calciteListSelectionChange.emit(selectedValues);
+    this.calciteListChange.emit(selectedValues);
     // TODO: remove in the next major version bump.
     this.calcitePickListSelectionChange.emit(selectedValues);
   }
