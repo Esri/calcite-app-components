@@ -113,7 +113,7 @@ export class CalciteValueList {
    */
   @Event() calciteListChange: EventEmitter;
 
-  @Event() calciteValueListOrderChange: EventEmitter;
+  @Event() calciteListOrderChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
@@ -171,7 +171,7 @@ export class CalciteValueList {
         onUpdate: () => {
           this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
           const values = this.items.map((item) => item.value);
-          this.calciteValueListOrderChange.emit(values);
+          this.calciteListOrderChange.emit(values);
         }
       })
     );
