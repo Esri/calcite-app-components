@@ -74,7 +74,7 @@ describe("calcite-tip-manager", () => {
       expect(selectedTip.id).toEqual("one"); // default selected tip is index 0
 
       let paginationText = await page.find(`calcite-tip-manager >>> .${CSS.pagePosition}`);
-      expect(paginationText.textContent).toEqual("Tip 1/2");
+      expect(paginationText.textContent).toEqual(`${TEXT.defaultPaginationLabel} 1/2`);
 
       const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
       await nextButton.click();
@@ -84,7 +84,7 @@ describe("calcite-tip-manager", () => {
       expect(selectedTip.id).toEqual("two");
 
       paginationText = await page.find(`calcite-tip-manager >>> .${CSS.pagePosition}`);
-      expect(paginationText.textContent).toEqual("Tip 2/2");
+      expect(paginationText.textContent).toEqual(`${TEXT.defaultPaginationLabel} 2/2`);
 
       const previousButton = await page.find(`calcite-tip-manager >>> .${CSS.pagePrevious}`);
       await previousButton.click();
@@ -94,7 +94,7 @@ describe("calcite-tip-manager", () => {
       expect(selectedTip.id).toEqual("one");
 
       paginationText = await page.find(`calcite-tip-manager >>> .${CSS.pagePosition}`);
-      expect(paginationText.textContent).toEqual("Tip 1/2");
+      expect(paginationText.textContent).toEqual(`${TEXT.defaultPaginationLabel} 1/2`);
     });
 
     // TODO: split the group-title test into one for first render, and another for pagination

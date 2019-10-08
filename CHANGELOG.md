@@ -3,6 +3,20 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [v4.1.0](https://github.com/Esri/calcite-app-components/tree/v4.1.0) (2019-10-08)
+
+### Features
+
+- New Component: `calcite-value-list` and `calcite-value-list-item`. #279
+- Added `toggleDisplay` property to `calcite-block-section` to handle a "switch" mode. #205
+- Added `calcite-components` as a developer dependency. #205
+- Added Travis CI integration for testing. #152
+
+### Bug Fixes
+
+- Fixed: VDOM rendering by updating Stencil to 1.6.0-2 pre-release.
+- Fixed: Collapsible Block needs full focus outline. #308
+
 ## [v4.0.0](https://github.com/Esri/calcite-app-components/tree/v4.0.0) (2019-10-01)
 
 ### Features

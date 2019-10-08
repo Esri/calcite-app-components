@@ -1,4 +1,4 @@
-# calcite-pick-list-item
+# calcite-value-list-item
 
 <!-- Auto Generated Below -->
 
@@ -16,17 +16,13 @@
 
 ## Events
 
-| Event                               | Description | Type               |
-| ----------------------------------- | ----------- | ------------------ |
-| `calcitePickListItemSelectedChange` |             | `CustomEvent<any>` |
+| Event                                | Description | Type               |
+| ------------------------------------ | ----------- | ------------------ |
+| `calciteValueListItemSelectedChange` |             | `CustomEvent<any>` |
 
 ## Methods
 
 ### `toggleSelected(coerce?: boolean, emit?: boolean) => Promise<void>`
-
-Used to toggle the selection state. By default this won't trigger an event.
-The first argument allows the value to be coerced, rather than swapping values.
-The second argument, when true, allows an event to be emitted, just as if a user had clicked.
 
 #### Returns
 
@@ -34,16 +30,16 @@ Type: `Promise<void>`
 
 ## Dependencies
 
-### Used by
+### Depends on
 
-- [calcite-value-list-item](../calcite-value-list-item)
+- [calcite-pick-list-item](../calcite-pick-list-item)
 
 ### Graph
 
 ```mermaid
 graph TD;
   calcite-value-list-item --> calcite-pick-list-item
-  style calcite-pick-list-item fill:#f9f,stroke:#333,stroke-width:4px
+  style calcite-value-list-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---
