@@ -130,9 +130,6 @@ export class CalcitePickList {
     }
     this.lastSelectedItem = item;
     this.calciteListChange.emit(selectedValues);
-    /**
-     * @deprecated TODO: remove in the next major version bump.
-     */
     this.calcitePickListSelectionChange.emit(selectedValues);
   }
 
