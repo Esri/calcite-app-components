@@ -1,10 +1,10 @@
 :host {
-  background-color: var(--calcite-app-background);
   height: 100%;
   padding: 0 var(--calcite-app-side-spacing-quarter);
   display: flex;
   flex-direction: column;
   max-width: 15vw;
+  overflow-y: auto;
 }
 
 :host([expanded]) {

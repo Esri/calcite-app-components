@@ -12,7 +12,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { CSS, ICON_TYPES } from "./resources";
+import { CSS, ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-value-list",
@@ -32,7 +32,7 @@ export class CalciteValueList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
-   * Multpile Works similar to standard radio buttons and checkboxes.
+   * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
    * When false, selecting a new item will deselect any other selected items.
@@ -46,6 +46,8 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   @State() selectedValues: Map<string, HTMLCalciteValueListItemElement> = new Map();
+
+  @State() dataForFilter: object[] = [];
 
   items: HTMLCalciteValueListItemElement[];
 
@@ -76,6 +78,11 @@ export class CalciteValueList {
   }
 
   componentDidLoad() {
+    this.items.forEach((item) => {
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
+    });
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -93,6 +100,8 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   @Event() calciteValueListSelectionChange: EventEmitter;
+
+  @Event() calciteValueListOrderChange: EventEmitter;
 
   @Listen("calciteValueListItemSelectedChange") calciteValueListItemSelectedChangeHandler(event) {
     event.stopPropagation(); // private event
@@ -128,26 +137,29 @@ export class CalciteValueList {
       } else {
         item.removeAttribute("icon");
       }
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
     });
     if (this.dragEnabled) {
       this.setUpDragAndDrop();
     }
+    this.dataForFilter = this.getItemData();
   }
 
   setUpDragAndDrop(): void {
-    const sortGroups = [
-      this.el,
-      ...Array.from(this.el.querySelectorAll("calcite-value-list-group"))
-    ];
-    sortGroups.forEach((sortGroup) => {
-      this.sortables.push(
-        Sortable.create(sortGroup, {
-          group: this.guid,
-          handle: `.${CSS.handle}`,
-          draggable: "calcite-value-list-item"
-        })
-      );
-    });
+    this.sortables.push(
+      Sortable.create(this.el, {
+        group: this.guid,
+        handle: `.${CSS.handle}`,
+        draggable: "calcite-value-list-item",
+        onUpdate: () => {
+          this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
+          const values = this.items.map((item) => item.value);
+          this.calciteValueListOrderChange.emit(values);
+        }
+      })
+    );
   }
 
   cleanUpDragAndDrop(): void {
@@ -181,6 +193,31 @@ export class CalciteValueList {
     });
   }
 
+  handleFilter = (event) => {
+    const filteredData = event.detail;
+    const values = filteredData.map((item) => item.value);
+    this.items.forEach((item) => {
+      if (values.indexOf(item.value) === -1) {
+        item.setAttribute("hidden", "");
+      } else {
+        item.removeAttribute("hidden");
+      }
+    });
+  };
+
+  getItemData(): Record<string, string | object>[] {
+    const result: Record<string, string | object>[] = [];
+    this.items.forEach((item) => {
+      const obj: Record<string, string | object> = {};
+      Array.from(item.attributes).forEach((attr) => {
+        obj[attr.name] = attr.value;
+      });
+      obj.metadata = item.metadata;
+      result.push(obj);
+    });
+    return result;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -208,9 +245,16 @@ export class CalciteValueList {
   render() {
     return (
       <Host>
-        <section class={CSS.container}>
-          <slot />
-        </section>
+        <header>
+          <calcite-filter
+            data={this.dataForFilter}
+            textPlaceholder={TEXT.filterPlaceholder}
+            aria-label={TEXT.filterPlaceholder}
+            onCalciteFilterChange={this.handleFilter}
+          />
+          <slot name="action" />
+        </header>
+        <slot />
       </Host>
     );
   }

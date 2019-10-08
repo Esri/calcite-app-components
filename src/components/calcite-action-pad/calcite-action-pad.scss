@@ -1,7 +1,9 @@
-.container {
-  background-color: var(--calcite-app-background);
+:host {
   display: flex;
-  color: var(--calcite-app-foreground);
+}
+
+.container {
+  display: flex;
   flex-direction: column;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   padding: var(--calcite-app-cap-spacing-eighth) var(--calcite-app-side-spacing-quarter);

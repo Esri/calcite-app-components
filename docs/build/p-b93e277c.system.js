@@ -1,0 +1,1 @@
+System.register([],(function(t){"use strict";return{execute:function(){t("g",e);function e(t){return r(t,"dir","ltr")}function r(t,e,r){var n=t.closest("["+e+"]");return n?n.getAttribute(e):r}}}}));

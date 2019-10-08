@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
+  width: 100%;
+}
+
+label {
+  align-items: center;
+  display: flex;
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-quarter);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  border: 0;
+  font-family: var(--calcite-app-font-family);
+  font-size: var(--calcite-app-font-size-0);
+  margin-bottom: calc(var(--calcite-app-cap-spacing-minimum) * 2);
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter)
+    var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-plus-half);
+  transition: padding var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+    box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  width: 100%;
+}
+
+.search-icon {
+  color: var(--calcite-app-foreground-subtle);
+  display: flex;
+  left: 0;
+  position: absolute;
+  transition: left var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+    opacity var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+input[type="text"]:focus {
+  border-color: var(--calcite-app-foreground-active);
+  box-shadow: 0 calc(var(--calcite-app-cap-spacing-minimum) * 2) 0 var(--calcite-app-foreground-active);
+  outline: none;
+  padding-left: var(--calcite-app-side-spacing-quarter);
+  padding-right: var(--calcite-app-side-spacing-quarter);
+}
+
+input[type="text"]:focus ~ .search-icon {
+  left: calc(var(--calcite-app-icon-size) * -1);
+  opacity: 0;
+}
+
+.calcite--rtl {
+  input[type="text"] {
+    padding-left: var(--calcite-app-side-spacing-quarter);
+    padding-right: var(--calcite-app-side-spacing-plus-half);
+  }
+  .search-icon {
+    left: unset;
+    right: 0;
+  }
+}
