@@ -72,18 +72,17 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection => {
+  getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection | null => {
     const flowCountChanged = oldFlowCount !== newFlowCount;
 
     if (!flowCountChanged) {
       return null;
     }
 
-    const prevHasMulti = oldFlowCount > 1;
-    const currHasMulti = newFlowCount > 1;
-    const singleToMultiThreshhold = oldFlowCount && currHasMulti;
+    const allowRetreatingDirection = oldFlowCount > 1;
+    const allowAdvancingDirection = oldFlowCount && newFlowCount > 1;
 
-    if (!singleToMultiThreshhold && !prevHasMulti) {
+    if (!allowAdvancingDirection && !allowRetreatingDirection) {
       return null;
     }
 
@@ -99,7 +98,6 @@ export class CalciteFlow {
 
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
-    const currHasMulti = newFlowCount > 1;
 
     const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
     const activeFlow = newFlows[newFlowCount - 1];
@@ -107,7 +105,7 @@ export class CalciteFlow {
 
     if (newFlowCount && activeFlow) {
       newFlows.forEach((flowNode) => {
-        flowNode.showBackButton = currHasMulti;
+        flowNode.showBackButton = newFlowCount > 1;
         flowNode.hidden = flowNode !== activeFlow;
       });
     }
