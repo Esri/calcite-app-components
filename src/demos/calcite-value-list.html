@@ -12,7 +12,7 @@
       <h3>multiple</h3>
       <calcite-value-list id="one" multiple>
         <calcite-value-list-item
-        text-heading="2018 Population Density (Esri)"
+        text-label="2018 Population Density (Esri)"
         text-description="{POPDENS_CY}"
         value="POPDENS_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -24,7 +24,7 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-          text-heading="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
+          text-label="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
           text-description="{POPDENS_CY}"
           value="POPDENS_CY2"
         >
@@ -37,7 +37,7 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-heading="2018 Total Households (Esri)"
+        text-label="2018 Total Households (Esri)"
         text-description="{TOTHH_CY}"
         value="TOTHH_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -59,7 +59,7 @@
       <h3>label-editing-enabled & single select</h3>
       <calcite-value-list id="two" label-editing-enabled>
         <calcite-value-list-item
-        text-heading="2018 Generation Alpha Population (Born 2017 or Later) [updated 2019-09-18]"
+        text-label="2018 Generation Alpha Population (Born 2017 or Later) [updated 2019-09-18]"
         text-description="GENALPHACY"
         value="GENALPHACY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -71,7 +71,7 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-heading="2010-2018 Households: Annual Growth Rate (Esri)"
+        text-label="2010-2018 Households: Annual Growth Rate (Esri)"
         text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
         value="HHGRW10CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -83,7 +83,7 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-heading="2010-2018 Households: Annual Growth Rate (Esri)"
+        text-label="2010-2018 Households: Annual Growth Rate (Esri)"
         text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
         value="HHGRW10CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -98,7 +98,7 @@
       <h4>No text-description</h4>
       <calcite-value-list id="two" label-editing-enabled>
           <calcite-value-list-item
-          text-heading="2018 Generation Alpha Population (Born 2017 or Later)"
+          text-label="2018 Generation Alpha Population (Born 2017 or Later)"
           value="GENALPHACY">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
@@ -109,7 +109,7 @@
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
-          text-heading="2010-2018 Households: Annual Growth Rate (Esri)"
+          text-label="2010-2018 Households: Annual Growth Rate (Esri)"
           value="HHGRW10CY">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
@@ -120,7 +120,7 @@
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
-          text-heading="2010-2018 Households"
+          text-label="2010-2018 Households"
           value="HHGRW10CY">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
@@ -139,7 +139,7 @@
       </script>
       <h3>drag-enabled</h3>
       <calcite-value-list id="three" drag-enabled>
-        <calcite-value-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID" icon="grip">
+        <calcite-value-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID" icon="grip">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -148,7 +148,7 @@
             </svg>
           </calcite-action>
         </calcite-value-list-item>
-        <calcite-value-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID2" icon="grip">
+        <calcite-value-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID2" icon="grip">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -158,7 +158,7 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-heading="2023 Diversity Index (Esri)"
+        text-label="2023 Diversity Index (Esri)"
         text-description="DIVINDX_FY"
         value="DIVINDX_FY"
         icon="grip">
@@ -170,7 +170,7 @@
             </svg>
           </calcite-action>
         </calcite-value-list-item>
-        <calcite-value-list-item text-heading="2023 Per Capita Income (Esri)" text-description="PCI_FY" value="PCI_FY" icon="grip">
+        <calcite-value-list-item text-label="2023 Per Capita Income (Esri)" text-description="PCI_FY" value="PCI_FY" icon="grip">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
