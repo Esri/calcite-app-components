@@ -59,8 +59,7 @@ export class CalcitePickListItem {
   }
 
   /**
-   * @deprecated This will be removed in a future build. Replaced by textLabel.
-   * The main label for this item. Appears next to the icon.
+   * @deprecated Replaced by textLabel.
    */
   @Prop({ reflect: true }) textHeading: string;
 
