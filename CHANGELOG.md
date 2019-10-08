@@ -14,7 +14,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Bug Fixes
 
-- Fixed: VDOM rendering by updating Stencil to 1.6.0-2 pre-release.
+- Fixed: VDOM rendering by updating Stencil.js to 1.6.0.
 - Fixed: Collapsible Block needs full focus outline. #308
 
 ## [v4.0.0](https://github.com/Esri/calcite-app-components/tree/v4.0.0) (2019-10-01)
