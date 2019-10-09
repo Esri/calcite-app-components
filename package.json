@@ -16,20 +16,20 @@
   "scripts": {
     "build": "stencil build",
     "docs": "stencil build --config stencil.docs.config.ts",
+    "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'",
     "lint": "tslint src/components/**/*.ts?(x)",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",
     "test:watchAll": "stencil test --spec --e2e --watchAll",
-    "preversion": "npm ci && npm test",
-    "version": "npm run build && npm run docs && git add .",
     "prepublishOnly": "node ./support/prepublish.js",
-    "prepare:patch": "standard-version --release-as patch",
-    "prepare:minor": "standard-version --release-as minor",
-    "prepare:major": "standard-version --release-as major",
+    "prepare:patch": "npm version patch",
+    "prepare:minor": "npm version minor",
+    "prepare:major": "npm version major",
+    "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish",
-    "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'"
+    "version": "npm run build && npm run docs && standard-version && git add ."
   },
   "repository": {
     "type": "git",
