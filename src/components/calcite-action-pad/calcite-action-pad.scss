@@ -1,79 +1,13 @@
-.container {
-  background-color: var(--calcite-app-background);
+:host {
   display: flex;
-  color: var(--calcite-app-foreground);
+}
+
+.container {
+  display: flex;
   flex-direction: column;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   padding: var(--calcite-app-cap-spacing-eighth) var(--calcite-app-side-spacing-quarter);
-  position: absolute;
-  z-index: 1;
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-}
-
-:host([placement="side"]) .container--leading {
-  left: 100%;
-}
-
-:host([placement="side"]) .container--leading.calcite--rtl {
-  left: unset;
-  right: 100%;
-}
-
-:host([placement="side"]) .container--trailing {
-  right: 100%;
-}
-
-:host([placement="side"]) .container--trailing.calcite--rtl {
-  right: unset;
-  left: 100%;
-}
-
-:host([placement="over"]) .container--leading {
-  left: 50%;
-  margin-left: -21px;
-}
-
-:host([placement="over"]) .container--leading.calcite--rtl {
-  left: unset;
-  margin-left: unset;
-  right: 50%;
-  margin-right: -21px;
-}
-
-:host([placement="over"]) .container--trailing {
-  right: 50%;
-  margin-right: -21px;
-}
-
-:host([placement="over"]) .container--trailing.calcite--rtl {
-  right: unset;
-  margin-right: unset;
-  left: 50%;
-  margin-left: -21px;
-}
-
-:host([placement="anchor"]) .container--leading {
-  left: 50%;
-  margin-left: -21px;
-}
-
-:host([placement="anchor"]) .container--leading.calcite--rtl {
-  left: unset;
-  margin-left: unset;
-  right: 50%;
-  margin-right: -21px;
-}
-
-:host([placement="anchor"]) .container--trailing {
-  right: 50%;
-  margin-right: -21px;
-}
-
-:host([placement="anchor"]) .container--trailing.calcite--rtl {
-  right: unset;
-  margin-right: unset;
-  left: 50%;
-  margin-left: -21px;
 }
 
 ::slotted(calcite-action-group) {

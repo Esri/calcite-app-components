@@ -57,9 +57,14 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
+   * @deprecated Use 'textDisplay' instead.
+   */
+  @Prop() textEnabled = false;
+
+  /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textEnabled = false;
+  @Prop({ reflect: true }) textDisplay: "hidden" | "visible" | "interactive" = "hidden";
 
   /**
    * Used to set the component's color scheme.
@@ -72,7 +77,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteActionElement;
 
   // --------------------------------------------------------------------------
   //
@@ -81,7 +86,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, disabled, el, textEnabled, label, text } = this;
+    const { compact, disabled, el, textEnabled, textDisplay, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
@@ -89,18 +94,23 @@ export class CalciteAction {
       </div>
     );
 
-    const textContainerNode = textEnabled ? (
-      <div key="text-container" class={CSS.textContainer}>
-        {text}
-      </div>
-    ) : null;
+    const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
+
+    const textContainerNode =
+      calculatedTextDisplay !== "hidden" ? (
+        <div key="text-container" class={CSS.textContainer}>
+          {text}
+        </div>
+      ) : null;
 
     const labelFallback = label || text;
 
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.compact]: compact,
+      [CSS.buttonTextVisible]: calculatedTextDisplay === "visible",
+      [CSS.buttonTextInteractive]: calculatedTextDisplay === "interactive",
+      [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };
 

@@ -10,13 +10,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import {
-  checkSquare16,
-  circle16F,
-  circleFilled16F,
-  handleVertical24,
-  square16
-} from "@esri/calcite-ui-icons";
+import { checkSquare16, circle16, circleFilled16, drag16, square16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
@@ -36,8 +30,24 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Prop({ reflect: true }) editing = false;
+  /**
+   * When true, the item cannot be clicked and is visually muted
+   */
+  @Prop({ reflect: true }) disabled = false;
 
+  /**
+   * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
+   */
+  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+
+  /**
+   * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
+   */
+  @Prop() metadata: object;
+
+  /**
+   * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
+   */
   @Prop() selected = false;
 
   @Watch("selected")
@@ -48,12 +58,24 @@ export class CalcitePickListItem {
     }
   }
 
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
-
+  /**
+   * @deprecated Replaced by textLabel.
+   */
   @Prop({ reflect: true }) textHeading: string;
 
-  @Prop({ reflect: true }) textDescription: string;
+  /**
+   * An optional description for this item. Will appear below the label text.
+   */
+  @Prop({ reflect: true }) textDescription?: string;
 
+  /**
+   * The main label for this item. Appears next to the icon.
+   */
+  @Prop({ reflect: true }) textLabel: string;
+
+  /**
+   * A unique value used to identify this item - similar to the value attribute on an <input>.
+   */
   @Prop({ reflect: true }) value: string;
 
   // --------------------------------------------------------------------------
@@ -62,7 +84,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListItemElement;
 
   @State() isSelected = this.selected;
 
@@ -84,7 +106,14 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListItemSelectedChange: EventEmitter;
+  /**
+   * @event calciteListItemChange
+   * Emitted whenever the item is selected or unselected
+   * @type {object}
+   * @property {string} value - The value of the item
+   * @property {boolean} selected - True if the event was selected. False if deselected.
+   */
+  @Event() calciteListItemChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -92,7 +121,15 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * Used to toggle the selection state. By default this won't trigger an event.
+   * The first argument allows the value to be coerced, rather than swapping values.
+   * The second argument, when true, allows an event to be emitted, just as if a user had clicked.
+   */
   @Method() async toggleSelected(coerce?: boolean, emit = false) {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
     if (emit) {
       this.emitChangeEvent();
@@ -106,8 +143,19 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
+    if (this.disabled) {
+      return;
+    }
     this.isSelected = !this.isSelected;
     this.emitChangeEvent(event.shiftKey);
+  };
+
+  pickListKeyDownHandler = (event: KeyboardEvent): void => {
+    if (event.key === " ") {
+      event.preventDefault();
+      this.isSelected = !this.isSelected;
+      this.emitChangeEvent(event.shiftKey);
+    }
   };
 
   secondaryActionContainerClickHandler(event: MouseEvent) {
@@ -115,8 +163,7 @@ export class CalcitePickListItem {
   }
 
   emitChangeEvent(shiftPressed = false) {
-    this.calcitePickListItemSelectedChange.emit({
-      item: this.el,
+    this.calciteListItemChange.emit({
       value: this.value,
       selected: this.isSelected,
       shiftPressed
@@ -137,7 +184,7 @@ export class CalcitePickListItem {
     if (icon === ICON_TYPES.grip) {
       return (
         <span class={CSS.handle}>
-          <CalciteIcon size="24" path={handleVertical24} />
+          <CalciteIcon size="16" path={drag16} />
         </span>
       );
     } else {
@@ -147,8 +194,8 @@ export class CalcitePickListItem {
             ? checkSquare16
             : square16
           : this.isSelected
-          ? circleFilled16F
-          : circle16F;
+          ? circleFilled16
+          : circle16;
       return (
         <span class="icon">
           <CalciteIcon size="16" path={path} />
@@ -158,23 +205,28 @@ export class CalcitePickListItem {
   }
 
   render() {
-    const { icon } = this;
+    const description = this.textDescription ? (
+      <span class={CSS.description}>{this.textDescription}</span>
+    ) : null;
 
     return (
       <Host
         class={classnames({
-          [CSS.highlight]: icon !== ICON_TYPES.square && icon !== ICON_TYPES.circle,
           [CSS_UTILITY.rtl]: this.dir === "rtl"
         })}
         onClick={this.pickListClickHandler}
+        onKeydown={this.pickListKeyDownHandler}
         selected={this.isSelected}
+        role="checkbox"
+        aria-checked={this.isSelected}
+        tabindex="0"
       >
         {this.renderIcon()}
-        <div class={CSS.label}>
-          <h4 class={CSS.heading}>{this.textHeading}</h4>
-          <p class={CSS.description}>{this.textDescription}</p>
-        </div>
-        <div onClick={this.secondaryActionContainerClickHandler}>
+        <label class={CSS.label}>
+          <span class={CSS.title}>{this.textLabel || this.textHeading}</span>
+          {description}
+        </label>
+        <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
           <slot name="secondaryAction" />
         </div>
       </Host>

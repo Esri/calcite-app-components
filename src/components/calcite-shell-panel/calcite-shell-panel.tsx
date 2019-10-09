@@ -4,6 +4,10 @@ import { CSS } from "./resources";
 
 import { CalciteLayout } from "../interfaces";
 
+/**
+ * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
+ * @slot action-pad - A slot for adding a `calcite-action-pad` to the panel. The action pad will be positioned relative to the shell panel when displayed.
+ */
 @Component({
   tag: "calcite-shell-panel",
   styleUrl: "calcite-shell-panel.scss",
@@ -70,12 +74,6 @@ export class CalciteShellPanel {
       mainNodes.reverse();
     }
 
-    return (
-      <Host>
-        {mainNodes}
-        <slot name="shell-floating-panel" />
-        <slot name="action-pad" />
-      </Host>
-    );
+    return <Host>{mainNodes}</Host>;
   }
 }

@@ -1,7 +1,8 @@
 export const CSS = {
   label: "label",
-  heading: "heading",
+  title: "title",
   description: "description",
+  action: "action",
   highlight: "highlight",
   handle: "handle"
 };

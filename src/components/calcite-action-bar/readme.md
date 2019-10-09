@@ -6,12 +6,6 @@ The `calcite-action-bar` component is made up of multiple `calcite-actions` in t
 
 See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/demos/calcite-action-bar.html).
 
-## Slots
-
-| Name             | Description                                                                                                            | Type                |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `bottom-actions` | A slot for adding `calcite-actions` that will apear at the bottom of the action bar, above the collapse/expand button. | `HTMLCalciteAction` |
-
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -31,12 +25,18 @@ See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/
 | ------------------------ | --------------------------------------- | ------------------ |
 | `calciteActionBarToggle` | Emitted when expanded has been toggled. | `CustomEvent<any>` |
 
+## Slots
+
+| Slot               | Description                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `"bottom-actions"` | A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button. |
+
 ## Dependencies
 
 ### Depends on
 
-- [calcite-action](..\calcite-action)
-- [calcite-action-group](..\calcite-action-group)
+- [calcite-action](../calcite-action)
+- [calcite-action-group](../calcite-action-group)
 
 ### Graph
 

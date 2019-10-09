@@ -1,10 +1,17 @@
 :host {
-  display: block;
-  margin: 10px 0;
-  padding: 20px;
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 0px 0px 9px 2px rgba(204, 204, 204, 1);
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+  padding-bottom: var(--calcite-app-cap-spacing-half);
+}
+
+header {
+  display: flex;
+}
+
+calcite-filter {
+  margin-bottom: var(--calcite-app-cap-spacing-half);
+  @include borderShadow();
 }
 
 :host([loading]) {

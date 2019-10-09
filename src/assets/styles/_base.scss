@@ -1,4 +1,6 @@
 :host {
+  background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
   font-family: var(--calcite-app-font-family);
   font-size: var(--calcite-app-base-font-size);
   line-height: var(--calcite-app-line-height);
@@ -13,13 +15,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--calcite-app-background);
 }
 
 .heading {
   padding: 0;
   margin: 0;
-  color: var(--calcite-app-foreground);
 }
 
 .header .heading {
@@ -34,7 +34,7 @@ h1.heading {
 
 h2.heading {
   font-size: var(--calcite-app-font-size-1);
-  font-weight: var(--calcite-app-font-weight);
+  font-weight: var(--calcite-app-font-weight-demi);
 }
 
 h3.heading,

@@ -1,4 +1,3 @@
-import Sortable from "sortablejs";
 import {
   Component,
   Element,
@@ -11,8 +10,7 @@ import {
   State,
   h
 } from "@stencil/core";
-import guid from "../utils/guid";
-import { CSS, ICON_TYPES } from "./resources";
+import { ICON_TYPES, TEXT } from "./resources";
 
 @Component({
   tag: "calcite-pick-list",
@@ -27,10 +25,14 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, the items will be sortable via drag and drop.
-   * Only applies when mode is configuration
+   * @deprecated Prop is ignored. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) dragEnabled = false;
+
+  /**
+   * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
+   */
+  @Prop({ reflect: true }) filterEnabled = false;
 
   /**
    * When true, content is waiting to be loaded. Show a busy indicator.
@@ -38,16 +40,11 @@ export class CalcitePickList {
   @Prop({ reflect: true }) loading = false;
 
   /**
-   * Mode controls the presentation of the items in their selected and deselected states.
-   * Selection mode shows either radio buttons or checkboxes depending on the value of multiple
-   * Configuration mode relies on a color highlight on the edge of the item for selected
-   * Mode must be set to configuration for drag and drop behavior to work.
+   * @deprecated Prop is ignored. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
-
   /**
-   * Multpile Works similar to standard radio buttons and checkboxes.
-   * It also affects the presented icon when in Selection mode.
+   * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time,
    * When false, selecting a new item will deselect any other selected items.
@@ -55,8 +52,7 @@ export class CalcitePickList {
   @Prop({ reflect: true }) multiple = false;
 
   /**
-   * The heading label for the entire Pick List.
-   * Not to be confused with the heading for an individual item or for a sub-group of items.
+   * @deprecated No longer rendered. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) textHeading: string;
 
@@ -68,15 +64,13 @@ export class CalcitePickList {
 
   @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
 
+  @State() dataForFilter: object[] = [];
+
   items: HTMLCalcitePickListItemElement[];
 
   lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  guid = `calcite-pick-list-${guid()}`;
-
   observer = new MutationObserver(() => this.setUpItems());
-
-  sortables: Sortable[] = [];
 
   // --------------------------------------------------------------------------
   //
@@ -84,7 +78,7 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListElement;
 
   // --------------------------------------------------------------------------
   //
@@ -97,14 +91,16 @@ export class CalcitePickList {
   }
 
   componentDidLoad() {
+    this.items.forEach((item) => {
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
+      }
+    });
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
   componentDidUnload() {
     this.observer.disconnect();
-    if (this.dragEnabled && this.mode === "configuration") {
-      this.cleanUpDragAndDrop();
-    }
   }
 
   // --------------------------------------------------------------------------
@@ -113,10 +109,22 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * @event calciteListChange
+   * Emitted when any of the item selections have changed.
+   * @type {Map<string, object>}
+   * @property {string} key - the value of the selected item
+   * @property {HTMLElement} value - An HTML DOM reference to the selected element.
+   */
+  @Event() calciteListChange: EventEmitter;
+
+  /**
+   * @event calcitePickListSelectionChange
+   * @deprecated use calciteListChange instead.
+   */
   @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
-    event.stopPropagation(); // private event
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
@@ -131,6 +139,7 @@ export class CalcitePickList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
+    this.calciteListChange.emit(selectedValues);
     this.calcitePickListSelectionChange.emit(selectedValues);
   }
 
@@ -144,37 +153,15 @@ export class CalcitePickList {
     this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
-      if (iconType) {
-        item.setAttribute("icon", iconType);
-      } else {
-        item.removeAttribute("icon");
+      item.setAttribute("icon", iconType);
+
+      if (item.hasAttribute("selected")) {
+        this.selectedValues.set(item.getAttribute("value"), item);
       }
     });
-    if (this.dragEnabled && this.mode === "configuration") {
-      this.setUpDragAndDrop();
+    if (this.filterEnabled) {
+      this.dataForFilter = this.getItemData();
     }
-  }
-
-  setUpDragAndDrop(): void {
-    const sortGroups = [
-      this.el,
-      ...Array.from(this.el.querySelectorAll("calcite-pick-list-group"))
-    ];
-    sortGroups.forEach((sortGroup) => {
-      this.sortables.push(
-        Sortable.create(sortGroup, {
-          group: this.el.id,
-          handle: `.${CSS.dragHandle}`,
-          draggable: "calcite-pick-list-item"
-        })
-      );
-    });
-  }
-
-  cleanUpDragAndDrop(): void {
-    this.sortables.forEach((sortable) => {
-      sortable.destroy();
-    });
   }
 
   deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
@@ -201,6 +188,31 @@ export class CalcitePickList {
     });
   }
 
+  handleFilter = (event) => {
+    const filteredData = event.detail;
+    const values = filteredData.map((item) => item.value);
+    this.items.forEach((item) => {
+      if (values.indexOf(item.value) === -1) {
+        item.setAttribute("hidden", "");
+      } else {
+        item.removeAttribute("hidden");
+      }
+    });
+  };
+
+  getItemData(): Record<string, string | object>[] {
+    const result: Record<string, string | object>[] = [];
+    this.items.forEach((item) => {
+      const obj: Record<string, string | object> = {};
+      Array.from(item.attributes).forEach((attr) => {
+        obj[attr.name] = attr.value;
+      });
+      obj.metadata = item.metadata;
+      result.push(obj);
+    });
+    return result;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -218,29 +230,28 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   getIconType(): ICON_TYPES | null {
-    const { multiple } = this;
-    let type = null;
-    if (this.mode === "configuration" && this.dragEnabled) {
-      type = ICON_TYPES.grip;
-    } else if (this.mode === "selection" && multiple) {
+    let type = ICON_TYPES.circle;
+    if (this.multiple) {
       type = ICON_TYPES.square;
-    } else if (this.mode === "selection" && !multiple) {
-      type = ICON_TYPES.circle;
     }
     return type;
   }
 
   render() {
-    const id = this.el.id || this.guid;
     return (
-      <Host id={id}>
-        <section class={CSS.container}>
-          <header>
-            <h2>{this.textHeading}</h2>
-            {/* <filter /> */}
-          </header>
-          <slot />
-        </section>
+      <Host>
+        <header>
+          {this.filterEnabled ? (
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              aria-label={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
+          ) : null}
+          <slot name="action" />
+        </header>
+        <slot />
       </Host>
     );
   }

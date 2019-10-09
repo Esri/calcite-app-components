@@ -1,44 +1,80 @@
 :host {
-  display: flex;
   align-items: center;
-  padding: 12px;
-  background-color: white;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
-  margin-bottom: 12px;
+  background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
   cursor: pointer;
+  display: flex;
+  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
+  transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
-:host([hidden]) {
-  display: none;
+:host(:hover) {
+  background-color: var(--calcite-app-background-hover);
 }
 
-:host(.highlight) {
-  border-left: 3px solid transparent;
-  &:host(.calcite--rtl) {
-    border-left: none;
-    border-right: 3px solid transparent;
+:host([disabled]) {
+  opacity: var(--calcite-app-disabled-opacity);
+  cursor: default;
+  box-shadow: none;
+  &:host(:hover) {
+    background-color: var(--calcite-app-background);
   }
 }
 
-:host(.highlight[selected]) {
-  border-left-color: blue;
-  &:host(.calcite--rtl) {
-    border-left-color: none;
-    border-right-color: blue;
-  }
+:host(:first-child) {
+  border-radius: var(--calcite-app-border-radius) var(--calcite-app-border-radius) 0 0;
+}
+
+:host(:last-child) {
+  border-radius: 0 0 var(--calcite-app-border-radius) var(--calcite-app-border-radius);
+  margin-bottom: 0;
+  @include borderShadow();
+}
+
+.icon {
+  color: var(--calcite-app-foreground-link);
+  flex: 0 0 0%;
+  line-height: 0;
+  width: var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 
 .label {
-  flex-grow: 1;
-  margin: 0 12px;
-  min-width: 60px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 0 0%;
+  overflow: hidden;
+  padding: 0 var(--calcite-app-side-spacing-half);
+  pointer-events: none;
 }
 
-.heading,
+.title {
+  @include lineClamp();
+}
+
 .description {
-  margin: 0;
+  color: var(--calcite-app-foreground-subtle);
+  font-family: var(--calcite-app-font-family-monospace);
+  font-size: var(--calcite-app-font-size--1);
+  margin-top: var(--calcite-app-cap-spacing-quarter);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action {
+  flex: 0 0 0%;
+  justify-self: flex-end;
 }
 
 .handle {
+  align-items: center;
+  align-self: stretch;
+  color: var(--calcite-app-foreground-subtle);
   cursor: move;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
 }

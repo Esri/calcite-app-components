@@ -1,0 +1,16 @@
+:host {
+  align-items: stretch;
+  background-color: transparent;
+  display: flex;
+  flex-flow: column;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+header {
+  display: flex;
+}
+
+calcite-filter {
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
+  @include borderShadow();
+}

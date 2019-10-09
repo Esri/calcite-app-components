@@ -20,10 +20,10 @@ export const config: Config = {
       components: ["calcite-block", "calcite-block-section"]
     },
     {
-      components: ["calcite-flow", "calcite-flow-item"]
+      components: ["calcite-panel", "calcite-flow", "calcite-flow-item"]
     },
     {
-      components: ["calcite-shell", "calcite-shell-panel", "calcite-shell-floating-panel"]
+      components: ["calcite-shell", "calcite-shell-panel"]
     },
     {
       components: ["calcite-tip", "calcite-tip-group", "calcite-tip-manager"]
@@ -34,7 +34,10 @@ export const config: Config = {
     { type: "docs-readme" },
     {
       type: "www",
-      copy: [{ src: "../demos", dest: "demos" }],
+      copy: [
+        { src: "../demos", dest: "demos" },
+        { src: "../../node_modules/@esri/calcite-components/dist/calcite", dest: "vendor/@esri/calcite-components" }
+      ],
       serviceWorker: null // disable service workers
     }
   ],
