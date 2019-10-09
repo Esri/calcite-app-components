@@ -14,6 +14,9 @@ import {
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 
+/**
+ * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
+ */
 @Component({
   tag: "calcite-value-list",
   styleUrl: "./calcite-value-list.scss",
@@ -269,7 +272,7 @@ export class CalciteValueList {
               onCalciteFilterChange={this.handleFilter}
             />
           ) : null}
-          <slot name="action" />
+          <slot name="menu-actions" />
         </header>
         <slot />
       </Host>
