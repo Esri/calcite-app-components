@@ -27,6 +27,12 @@
 
 Type: `Promise<object>`
 
+## Slots
+
+| Slot             | Description                                                                  |
+| ---------------- | ---------------------------------------------------------------------------- |
+| `"menu-actions"` | A slot for adding a button + menu combo for performing actions like sorting. |
+
 ## Dependencies
 
 ### Depends on
