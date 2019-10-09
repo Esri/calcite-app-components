@@ -105,7 +105,7 @@ This will provide autocomplete of component names/properties, as well as additio
 ### Deployment
 
 1. Checkout the master branch. Your git working directory must be clean (no pending un-staged changes).
-1. Run `npm run prepare:<patch | minor | major>`.
+1. Run `npm run prepareRelease:<patch | minor | major>`.
    Follow semantic versioning. Patch for bug fixes only. Major for breaking changes. Minor for the rest.
 1. This will prepare everything for publishing as well as automatically update `CHANGELOG.md`.
 1. Once `CHANGELOG.md` is reviewed and everything looks OK, you can publish to NPM by running `npm run release`.
