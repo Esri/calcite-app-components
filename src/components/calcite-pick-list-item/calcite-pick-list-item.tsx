@@ -59,7 +59,7 @@ export class CalcitePickListItem {
   }
 
   /**
-   * The main label for this item. Appears next to the icon.
+   * @deprecated Replaced by textLabel.
    */
   @Prop({ reflect: true }) textHeading: string;
 
@@ -67,6 +67,11 @@ export class CalcitePickListItem {
    * An optional description for this item. Will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
+
+  /**
+   * The main label for this item. Appears next to the icon.
+   */
+  @Prop({ reflect: true }) textLabel: string;
 
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
@@ -101,7 +106,14 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Event() calcitePickListItemSelectedChange: EventEmitter;
+  /**
+   * @event calciteListItemChange
+   * Emitted whenever the item is selected or unselected
+   * @type {object}
+   * @property {string} value - The value of the item
+   * @property {boolean} selected - True if the event was selected. False if deselected.
+   */
+  @Event() calciteListItemChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -151,8 +163,7 @@ export class CalcitePickListItem {
   }
 
   emitChangeEvent(shiftPressed = false) {
-    this.calcitePickListItemSelectedChange.emit({
-      item: this.el,
+    this.calciteListItemChange.emit({
       value: this.value,
       selected: this.isSelected,
       shiftPressed
@@ -212,7 +223,7 @@ export class CalcitePickListItem {
       >
         {this.renderIcon()}
         <label class={CSS.label}>
-          <span class={CSS.title}>{this.textHeading}</span>
+          <span class={CSS.title}>{this.textLabel || this.textHeading}</span>
           {description}
         </label>
         <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>

@@ -21,12 +21,14 @@
 ### Used by
 
 - [calcite-pick-list](../calcite-pick-list)
+- [calcite-value-list](../calcite-value-list)
 
 ### Graph
 
 ```mermaid
 graph TD;
   calcite-pick-list --> calcite-filter
+  calcite-value-list --> calcite-filter
   style calcite-filter fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
