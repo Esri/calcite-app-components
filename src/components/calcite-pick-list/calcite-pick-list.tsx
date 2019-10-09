@@ -12,6 +12,9 @@ import {
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
 
+/**
+ * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
+ */
 @Component({
   tag: "calcite-pick-list",
   styleUrl: "./calcite-pick-list.scss",
@@ -244,7 +247,7 @@ export class CalcitePickList {
               onCalciteFilterChange={this.handleFilter}
             />
           ) : null}
-          <slot name="action" />
+          <slot name="menu-actions" />
         </header>
         <slot />
       </Host>
