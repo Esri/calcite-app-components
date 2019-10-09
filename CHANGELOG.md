@@ -3,6 +3,13 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [v4.1.1](https://github.com/Esri/calcite-app-components/tree/v4.1.1) (2019-10-08)
+
+### Bug Fixes
+
+- Fixed: Corrected slot name in PickList. Now named `menu-actions`
+- Fixed: Clicking Edit on a Flow component no longer re-triggers animations #343
+
 ## [v4.1.0](https://github.com/Esri/calcite-app-components/tree/v4.1.0) (2019-10-08)
 
 ### Features
