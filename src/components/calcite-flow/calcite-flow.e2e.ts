@@ -94,6 +94,28 @@ describe("calcite-flow", () => {
     expect(frame2).not.toHaveClass(CSS.frameAdvancing);
   });
 
+  it("frame animation class should not exist if frame count remains the same", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      "<calcite-flow><calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item></calcite-flow>"
+    );
+
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
+
+    expect(frame).not.toHaveClass(CSS.frameRetreating);
+    expect(frame).not.toHaveClass(CSS.frameAdvancing);
+
+    const element = await page.find("calcite-flow");
+
+    element.innerHTML = "<calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item>";
+
+    await page.waitForChanges();
+
+    expect(frame).not.toHaveClass(CSS.frameRetreating);
+    expect(frame).not.toHaveClass(CSS.frameAdvancing);
+  });
+
   it("flow-item properties should be set", async () => {
     const page = await newE2EPage();
 
