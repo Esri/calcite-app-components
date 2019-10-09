@@ -33,6 +33,11 @@ export class CalciteFlowItem {
   @Prop() heading: string;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Opens the action menu.
    */
   @Prop({ reflect: true }) menuOpen = false;

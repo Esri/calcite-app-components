@@ -38,6 +38,11 @@ export class CalcitePickList {
   @Prop({ reflect: true }) filterEnabled = false;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * @deprecated Prop is ignored. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";

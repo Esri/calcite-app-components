@@ -13,3 +13,6 @@ calcite-filter {
   margin-bottom: var(--calcite-app-cap-spacing-half);
   @include borderShadow();
 }
+
+:host([loading]) {
+}
