@@ -3,14 +3,14 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [4.1.1](https://github.com/Esri/calcite-app-components/compare/v4.1.1...v4.1.0) (2019-10-08)
+## [4.1.1](https://github.com/Esri/calcite-app-components/compare/v4.1.0...v4.1.1) (2019-10-08)
 
 ### Bug Fixes
 
 - Fixed: Corrected slot name in PickList. Now named `menu-actions`
 - Fixed: Clicking Edit on a Flow component no longer re-triggers animations #343
 
-## [4.1.0](https://github.com/Esri/calcite-app-components/compare/v4.1.0...v4.0.0) (2019-10-08)
+## [4.1.0](https://github.com/Esri/calcite-app-components/compare/v4.0.0...v4.1.0) (2019-10-08)
 
 ### Features
 
@@ -33,7 +33,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - PickList `textHeading` has been deprecated as the heading has been removed from render.
 - PickLIst `calcitePickListSelectionChange` has been replaced with `calciteListChange`
 
-## [4.0.0](https://github.com/Esri/calcite-app-components/compare/v4.0.0...v3.1.0) (2019-10-01)
+## [4.0.0](https://github.com/Esri/calcite-app-components/compare/v3.1.0...v4.0.0) (2019-10-01)
 
 ### Features
 
@@ -59,7 +59,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Removed Component: `calcite-shell-floating-panel` has been removed. `calcite-panel` should be used instead.
 
-## [3.1.0](https://github.com/Esri/calcite-app-components/compare/v3.1.0...v3.0.0) (2019-09-24)
+## [3.1.0](https://github.com/Esri/calcite-app-components/compare/v3.0.0...v3.1.0) (2019-09-24)
 
 ### Features
 
@@ -71,7 +71,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - tabindex on Tip Manager is no longer listed as a custom API prop.
 
-## [3.0.0](https://github.com/Esri/calcite-app-components/compare/v3.0.0...v2.3.0) (2019-09-20)
+## [3.0.0](https://github.com/Esri/calcite-app-components/compare/v2.3.0...v3.0.0) (2019-09-20)
 
 ### Features
 
@@ -87,21 +87,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Pick-List now properly shows pre-selected items in change event selection map.
 
-## [2.3.0](https://github.com/Esri/calcite-app-components/compare/v2.3.0...v2.2.0) (2019-09-12)
+## [2.3.0](https://github.com/Esri/calcite-app-components/compare/v2.2.0...v2.3.0) (2019-09-12)
 
 ### Features
 
 - New Component: `calcite-popover` component to handle positioning a component in reference to another element.
 - Updated `calcite-ui-icons` dependency to version 2.5.0.
 
-## [2.2.0](https://github.com/Esri/calcite-app-components/compare/v2.2.0...v2.1.0) (2019-09-10)
+## [2.2.0](https://github.com/Esri/calcite-app-components/compare/v2.1.0...v2.2.0) (2019-09-10)
 
 ### Features
 
 - Tip manager pagination supports arrow keys
 - New Component: [PickList](./src/components/calcite-pick-list/readme.md)
 
-## [2.1.0](https://github.com/Esri/calcite-app-components/compare/v2.1.0...v2.0.2) (2019-09-10)
+## [2.1.0](https://github.com/Esri/calcite-app-components/compare/v2.0.2...v2.1.0) (2019-09-10)
 
 ### Features
 
@@ -117,7 +117,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `calcite-tip-manager` hides pagination when there are 0 or 1 tip(s).
 - `calcite-tip-manager` min-height set for when there are 0 tips.
 
-## [2.0.2](https://github.com/Esri/calcite-app-components/compare/v2.0.2...v2.0.1) (2019-08-23)
+## [2.0.2](https://github.com/Esri/calcite-app-components/compare/v2.0.1...v2.0.2) (2019-08-23)
 
 ### Bug Fixes
 
@@ -125,7 +125,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - All components will honor the `hidden` attribute now and not display.
 - Fix bug with `calcite-action-pad` and `calcite-shell-floating-panel` requiring `position-type` instead of `placement`.
 
-## [2.0.1](https://github.com/Esri/calcite-app-components/compare/v2.0.1...v2.0.0) (2019-08-23)
+## [2.0.1](https://github.com/Esri/calcite-app-components/compare/v2.0.0...v2.0.1) (2019-08-23)
 
 ### Bug Fixes
 
@@ -134,7 +134,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fixed `calcite-floating-shell-panel` positioning
 - RTL support for `calcite-flow-item`, `calcite-shell-floating-panel` and `calcite-action-pad`
 
-## [2.0.0](https://github.com/Esri/calcite-app-components/compare/v2.0.0...v1.0.0) (2019-08-21)
+## [2.0.0](https://github.com/Esri/calcite-app-components/compare/v1.0.0...v2.0.0) (2019-08-21)
 
 ### BREAKING CHANGES
 
