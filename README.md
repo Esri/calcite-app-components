@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/Esri/calcite-app-components.svg?branch=master)](https://travis-ci.com/Esri/calcite-app-components)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 # calcite-app-components
 
@@ -104,10 +105,10 @@ This will provide autocomplete of component names/properties, as well as additio
 ### Deployment
 
 1. Checkout the master branch. Your git working directory must be clean (no pending un-staged changes).
-1. Run `npm run release:<patch | minor | major>`.
+1. Run `npm run version:<patch | minor | major>`.
    Follow semantic versioning. Patch for bug fixes only. Major for breaking changes. Minor for the rest.
-
-This will create and push a new version commit and tag, then publish that commit to the npm public registry.
+1. This will prepare everything for publishing as well as automatically update `CHANGELOG.md`.
+1. Once `CHANGELOG.md` is reviewed and everything looks OK, you can publish to NPM by running `npm run release`.
 
 **\*Aside:** It will also update the docs for GitHub Pages and the READMEs for each component.
 

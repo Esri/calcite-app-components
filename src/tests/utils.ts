@@ -1,5 +1,4 @@
-import { newE2EPage } from "@stencil/core/testing";
-import { E2EPage } from "@stencil/core/dist/testing/puppeteer/puppeteer-declarations";
+import { E2EPage, newE2EPage } from "@stencil/core/testing";
 
 export async function setUpPage(
   content: string,
@@ -15,7 +14,9 @@ export async function setUpPage(
       url: "https://unpkg.com/@esri/calcite-components@1.0.0-beta.10/dist/calcite/calcite.esm.js",
       type: "module"
     });
+
     await page.waitForChanges();
+    await page.waitFor(1000);
   }
 
   return page;
