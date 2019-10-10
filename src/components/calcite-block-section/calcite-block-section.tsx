@@ -103,7 +103,7 @@ export class CalciteBlockSection {
       toggleDisplay === "switch" ? (
         <label aria-label={toggleLabel} class={classnames(CSS.toggle, CSS.toggleSwitch)}>
           {text}
-          <calcite-switch switched={open} onChange={this.toggleSection} />
+          <calcite-switch switched={open} onChange={this.toggleSection} scale="s" />
         </label>
       ) : (
         <calcite-action
