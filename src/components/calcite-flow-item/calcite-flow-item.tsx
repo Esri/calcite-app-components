@@ -33,6 +33,11 @@ export class CalciteFlowItem {
   @Prop() heading: string;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Opens the action menu.
    */
   @Prop({ reflect: true }) menuOpen = false;
@@ -151,11 +156,7 @@ export class CalciteFlowItem {
   renderFooterActions() {
     const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
 
-    return hasFooterActions ? (
-      <div slot="footer">
-        <slot name="footer-actions" />
-      </div>
-    ) : null;
+    return hasFooterActions ? <slot slot="footer" name="footer-actions" /> : null;
   }
 
   renderSingleActionContainer() {
