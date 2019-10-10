@@ -3,6 +3,9 @@
 @mixin borderShadow() {
   box-shadow: 0 1px 0 var(--calcite-app-border);
 }
+@mixin borderShadowActive() {
+  box-shadow: 0 0 0 1px var(--calcite-app-border-active) inset;
+}
 
 /* line-clamp
 * https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp

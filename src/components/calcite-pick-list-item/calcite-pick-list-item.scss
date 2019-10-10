@@ -7,6 +7,7 @@
   margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
 :host(:hover) {

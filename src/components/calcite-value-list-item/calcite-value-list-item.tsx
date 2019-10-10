@@ -1,14 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Listen,
-  Method,
-  Prop,
-  h
-} from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 @Component({
@@ -46,7 +36,7 @@ export class CalciteValueListItem {
   /**
    * The main label for this item. Appears next to the icon.
    */
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) textLabel: string;
 
   /**
    * An optional description for this item. Will appear below the label text.
@@ -67,20 +57,6 @@ export class CalciteValueListItem {
   @Element() el: HTMLCalciteValueListItemElement;
 
   pickListItem: HTMLCalcitePickListItemElement = null;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Event() calciteValueListItemSelectedChange: EventEmitter;
-
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
-    event.stopPropagation();
-    event.detail.item = this.el;
-    this.calciteValueListItemSelectedChange.emit(event.detail);
-  }
 
   // --------------------------------------------------------------------------
   //
@@ -115,7 +91,7 @@ export class CalciteValueListItem {
           selected={this.selected}
           metadata={this.metadata}
           icon={this.icon}
-          textHeading={this.textHeading}
+          textLabel={this.textLabel}
           textDescription={this.textDescription}
           value={this.value}
         >
