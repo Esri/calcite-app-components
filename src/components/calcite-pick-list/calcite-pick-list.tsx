@@ -12,6 +12,9 @@ import {
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
 
+/**
+ * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
+ */
 @Component({
   tag: "calcite-pick-list",
   styleUrl: "./calcite-pick-list.scss",
@@ -28,6 +31,16 @@ export class CalcitePickList {
    * @deprecated Prop is ignored. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) dragEnabled = false;
+
+  /**
+   * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
+   */
+  @Prop({ reflect: true }) filterEnabled = false;
+
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * @deprecated Prop is ignored. Prop will be removed in a future release.
@@ -99,10 +112,22 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
+  /**
+   * @event calciteListChange
+   * Emitted when any of the item selections have changed.
+   * @type {Map<string, object>}
+   * @property {string} key - the value of the selected item
+   * @property {HTMLElement} value - An HTML DOM reference to the selected element.
+   */
+  @Event() calciteListChange: EventEmitter;
+
+  /**
+   * @event calcitePickListSelectionChange
+   * @deprecated use calciteListChange instead.
+   */
   @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
-    event.stopPropagation(); // private event
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
@@ -117,6 +142,7 @@ export class CalcitePickList {
       selectedValues.delete(value);
     }
     this.lastSelectedItem = item;
+    this.calciteListChange.emit(selectedValues);
     this.calcitePickListSelectionChange.emit(selectedValues);
   }
 
@@ -136,7 +162,9 @@ export class CalcitePickList {
         this.selectedValues.set(item.getAttribute("value"), item);
       }
     });
-    this.dataForFilter = this.getItemData();
+    if (this.filterEnabled) {
+      this.dataForFilter = this.getItemData();
+    }
   }
 
   deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
@@ -216,13 +244,15 @@ export class CalcitePickList {
     return (
       <Host>
         <header>
-          <calcite-filter
-            data={this.dataForFilter}
-            textPlaceholder={TEXT.filterPlaceholder}
-            aria-label={TEXT.filterPlaceholder}
-            onCalciteFilterChange={this.handleFilter}
-          />
-          <slot name="action" />
+          {this.filterEnabled ? (
+            <calcite-filter
+              data={this.dataForFilter}
+              textPlaceholder={TEXT.filterPlaceholder}
+              aria-label={TEXT.filterPlaceholder}
+              onCalciteFilterChange={this.handleFilter}
+            />
+          ) : null}
+          <slot name="menu-actions" />
         </header>
         <slot />
       </Host>

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
+import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
 
 import { getElementDir } from "../utils/dom";
 
@@ -31,6 +31,11 @@ export class CalciteFlowItem {
    * Heading text.
    */
   @Prop() heading: string;
+
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * Opens the action menu.
@@ -105,7 +110,7 @@ export class CalciteFlowItem {
   renderBackButton(rtl: boolean) {
     const { showBackButton, textBack, backButtonClick } = this;
 
-    const path = rtl ? chevronRight16 : chevronLeft16;
+    const path = rtl ? chevronRight16F : chevronLeft16F;
 
     return showBackButton ? (
       <calcite-action
@@ -151,11 +156,7 @@ export class CalciteFlowItem {
   renderFooterActions() {
     const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
 
-    return hasFooterActions ? (
-      <div slot="footer">
-        <slot name="footer-actions" />
-      </div>
-    ) : null;
+    return hasFooterActions ? <slot slot="footer" name="footer-actions" /> : null;
   }
 
   renderSingleActionContainer() {
