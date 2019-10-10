@@ -35,6 +35,11 @@ export class CalciteShellPanel {
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "leading";
 
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
   // --------------------------------------------------------------------------
   //
   //  Events

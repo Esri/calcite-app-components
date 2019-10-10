@@ -1,14 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Listen,
-  Method,
-  Prop,
-  h
-} from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 @Component({
@@ -67,20 +57,6 @@ export class CalciteValueListItem {
   @Element() el: HTMLCalciteValueListItemElement;
 
   pickListItem: HTMLCalcitePickListItemElement = null;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Event() calciteValueListItemSelectedChange: EventEmitter;
-
-  @Listen("calcitePickListItemSelectedChange") calcitePickListItemSelectedChangeHandler(event) {
-    event.stopPropagation();
-    event.detail.item = this.el;
-    this.calciteValueListItemSelectedChange.emit(event.detail);
-  }
 
   // --------------------------------------------------------------------------
   //
