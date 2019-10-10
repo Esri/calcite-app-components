@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
+import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
 
 import { getElementDir } from "../utils/dom";
 
@@ -110,7 +110,7 @@ export class CalciteFlowItem {
   renderBackButton(rtl: boolean) {
     const { showBackButton, textBack, backButtonClick } = this;
 
-    const path = rtl ? chevronRight16 : chevronLeft16;
+    const path = rtl ? chevronRight16F : chevronLeft16F;
 
     return showBackButton ? (
       <calcite-action
