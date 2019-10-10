@@ -14,13 +14,8 @@
   background-color: var(--calcite-app-background-hover);
 }
 
-:host([disabled]) {
-  opacity: var(--calcite-app-disabled-opacity);
-  cursor: default;
-  box-shadow: none;
-  &:host(:hover) {
-    background-color: var(--calcite-app-background);
-  }
+:host([compact]) {
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
 :host(:first-child) {
