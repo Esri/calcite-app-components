@@ -127,7 +127,11 @@ export class CalciteBlock {
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
         </div>
-        <slot name={CONTROL_SLOT_NAME} />
+        {!this.loading ? (
+          <slot name={CONTROL_SLOT_NAME} />
+        ) : (
+          <calcite-loader inline is-active></calcite-loader>
+        )}
       </header>
     );
 
