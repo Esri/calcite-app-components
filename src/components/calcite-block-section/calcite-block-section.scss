@@ -1,10 +1,14 @@
 :host {
+  border-bottom: 1px solid var(--calcite-app-border);
   display: block;
   margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
 
+:host(:last-child) {
+  border-bottom: none;
+}
+
 .content {
-  border-top: 1px solid var(--calcite-app-border);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
