@@ -90,9 +90,11 @@ export class CalciteAction {
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        <slot />
+        {!this.loading ? <slot /> : <calcite-loader is-active inline></calcite-loader>}
       </div>
     );
+
+    // const loaderNode = this.loading ? (<calcite-loader is-active inline></calcite-loader>) : null;
 
     const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
 
