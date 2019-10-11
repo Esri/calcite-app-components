@@ -46,15 +46,11 @@
   width: 100%;
 }
 
-:host([open]) .toggle {
-  padding-bottom: 0;
-}
-
 .toggle-icon {
   margin: 0 4px;
   fill: currentColor;
 }
 
 .content {
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  padding-bottom: var(--calcite-app-cap-spacing-half);
 }
