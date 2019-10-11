@@ -1,5 +1,3 @@
-$header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-
 :host {
   display: flex;
   flex-direction: column;
@@ -17,7 +15,7 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 
 .header-container {
   & > .header {
-    padding: $header-content-padding;
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   }
 }
 
@@ -35,7 +33,7 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 }
 
 .toggle {
-  padding: $header-content-padding;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -46,6 +44,10 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
   margin: 0;
   text-align: unset;
   width: 100%;
+}
+
+:host([open]) .toggle {
+  padding-bottom: 0;
 }
 
 .toggle-icon {
