@@ -12,7 +12,8 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
   box-shadow: 0 0 0 1px var(--calcite-app-border);
 }
 
-:host([loading]) .content:after {
+:host([loading]) .content:after,
+:host([disabled]) .content:after {
   content: "";
   background-color: var(--calcite-app-scrim);
   position: absolute;
@@ -25,6 +26,13 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 
 calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
+}
+
+:host([disabled]) {
+  .header-container {
+    opacity: var(--calcite-app-disabled-opacity);
+    pointer-events: none;
+  }
 }
 
 .header-container {
