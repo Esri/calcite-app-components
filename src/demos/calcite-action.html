@@ -28,13 +28,18 @@
           .example-container {
             width: 18vw;
           }
+          .toggles {
+            margin: 1rem 0;
+          }
         </style>
 
+        <div class="toggles">
+          <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
+          <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
+        </div>
         <h2>LTR</h2>
 
         <div class="example-container">
-          <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
-          <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
           <h3>With text</h3>
           <calcite-action indicator active label="click-me" text="hello world" text-display="visible"
             ><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">

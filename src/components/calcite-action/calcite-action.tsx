@@ -86,15 +86,13 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, disabled, el, textEnabled, textDisplay, label, text } = this;
+    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        {!this.loading ? <slot /> : <calcite-loader is-active inline></calcite-loader>}
+        {!loading ? <slot /> : <calcite-loader is-active inline></calcite-loader>}
       </div>
     );
-
-    // const loaderNode = this.loading ? (<calcite-loader is-active inline></calcite-loader>) : null;
 
     const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
 
@@ -123,6 +121,8 @@ export class CalciteAction {
           title={labelFallback}
           aria-label={labelFallback}
           disabled={disabled}
+          aria-disabled={this.disabled}
+          aria-busy={loading}
         >
           {iconContainerNode}
           {textContainerNode}
