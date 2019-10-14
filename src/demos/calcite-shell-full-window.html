@@ -305,63 +305,120 @@
               </div>
             </calcite-flow-item>
             <calcite-flow-item heading="Deeper flow item">
+              <calcite-value-list id="one" multiple>
+                <calcite-value-list-item
+                  text-label="2018 Population Density (Esri)"
+                  text-description="{POPDENS_CY}"
+                  value="POPDENS_CY"
+                >
+                  <calcite-action
+                    slot="secondaryAction"
+                    id="action-test"
+                    label="click-me"
+                    onClick="console.log('clicked');"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                      <path
+                        d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                      />
+                    </svg>
+                  </calcite-action>
+                </calcite-value-list-item>
+                <calcite-value-list-item
+                  text-label="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
+                  text-description="{POPDENS_CY}"
+                  value="POPDENS_CY2"
+                >
+                  <calcite-action
+                    slot="secondaryAction"
+                    id="action-test"
+                    label="click-me"
+                    onClick="console.log('clicked');"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                      <path
+                        d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                      />
+                    </svg>
+                  </calcite-action>
+                </calcite-value-list-item>
+                <calcite-value-list-item
+                  text-label="2018 Total Households (Esri)"
+                  text-description="{TOTHH_CY}"
+                  value="TOTHH_CY"
+                >
+                  <calcite-action
+                    slot="secondaryAction"
+                    id="action-test"
+                    label="click-me"
+                    onClick="console.log('clicked');"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                      <path
+                        d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                      />
+                    </svg>
+                  </calcite-action>
+                </calcite-value-list-item>
+              </calcite-value-list>
               <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
                 <calcite-block-content>
-                    <calcite-value-list id="one" multiple>
-                        <calcite-value-list-item
-                          text-label="2018 Population Density (Esri)"
-                          text-description="{POPDENS_CY}"
-                          value="POPDENS_CY"
-                        >
-                          <calcite-action
-                            slot="secondaryAction"
-                            id="action-test"
-                            label="click-me"
-                            onClick="console.log('clicked');"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                              <path
-                                d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                              />
-                            </svg>
-                          </calcite-action>
-                        </calcite-value-list-item>
-                        <calcite-value-list-item
-                          text-label="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
-                          text-description="{POPDENS_CY}"
-                          value="POPDENS_CY2"
-                        >
-                          <calcite-action
-                            slot="secondaryAction"
-                            id="action-test"
-                            label="click-me"
-                            onClick="console.log('clicked');"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                              <path
-                                d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                              />
-                            </svg>
-                          </calcite-action>
-                        </calcite-value-list-item>
-                        <calcite-value-list-item
-                          text-label="2018 Total Households (Esri)"
-                          text-description="{TOTHH_CY}"
-                          value="TOTHH_CY"
-                        >
-                          <calcite-action
-                            slot="secondaryAction"
-                            id="action-test"
-                            label="click-me"
-                            onClick="console.log('clicked');"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                              <path
-                                d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                              />
-                            </svg>
-                          </calcite-action>
-                        </calcite-value-list-item>
+                  <calcite-value-list id="one" multiple>
+                    <calcite-value-list-item
+                      text-label="2018 Population Density (Esri)"
+                      text-description="{POPDENS_CY}"
+                      value="POPDENS_CY"
+                    >
+                      <calcite-action
+                        slot="secondaryAction"
+                        id="action-test"
+                        label="click-me"
+                        onClick="console.log('clicked');"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                          <path
+                            d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                          />
+                        </svg>
+                      </calcite-action>
+                    </calcite-value-list-item>
+                    <calcite-value-list-item
+                      text-label="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
+                      text-description="{POPDENS_CY}"
+                      value="POPDENS_CY2"
+                    >
+                      <calcite-action
+                        slot="secondaryAction"
+                        id="action-test"
+                        label="click-me"
+                        onClick="console.log('clicked');"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                          <path
+                            d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                          />
+                        </svg>
+                      </calcite-action>
+                    </calcite-value-list-item>
+                    <calcite-value-list-item
+                      text-label="2018 Total Households (Esri)"
+                      text-description="{TOTHH_CY}"
+                      value="TOTHH_CY"
+                    >
+                      <calcite-action
+                        slot="secondaryAction"
+                        id="action-test"
+                        label="click-me"
+                        onClick="console.log('clicked');"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                          <path
+                            d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                          />
+                        </svg>
+                      </calcite-action>
+                    </calcite-value-list-item>
+                  </calcite-value-list>
                   <calcite-block-section text="Cool things">
                     <calcite-action text-display="visible" text="cool thing"></calcite-action>
                     <calcite-action text-display="visible" text="cool thing"></calcite-action>
