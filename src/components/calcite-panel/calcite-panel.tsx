@@ -44,9 +44,19 @@ export class CalcitePanel {
   }
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Displays a close button in the trailing side of the header.
    */
   @Prop({ reflect: true }) dismissible = false;
+
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
@@ -177,6 +187,14 @@ export class CalcitePanel {
     );
   }
 
+  renderBlocker(): VNode {
+    return this.loading || this.disabled ? (
+      <div class={CSS.blockingContainer}>
+        {this.loading ? <calcite-loader is-active></calcite-loader> : null}
+      </div>
+    ) : null;
+  }
+
   render() {
     const { dismissed, dismissible, el, panelKeyUpHandler } = this;
 
@@ -195,6 +213,7 @@ export class CalcitePanel {
           {this.renderHeader()}
           {this.renderContent()}
           {this.renderFooter()}
+          {this.renderBlocker()}
         </article>
       </Host>
     );

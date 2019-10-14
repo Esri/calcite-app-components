@@ -49,3 +49,18 @@
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
   flex-flow: row nowrap;
 }
+
+.blocking-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--calcite-app-scrim);
+  z-index: 2;
+
+  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+}

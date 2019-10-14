@@ -5,7 +5,8 @@ export const CSS = {
   headerContent: "header-content",
   headerTrailingContent: "header-trailing-content",
   contentContainer: "content-container",
-  footer: "footer"
+  footer: "footer",
+  blockingContainer: "blocking-container"
 };
 
 export const TEXT = {
