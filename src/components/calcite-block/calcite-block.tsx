@@ -165,7 +165,11 @@ export class CalciteBlock {
     const hasContent = !!Array.from(el.children).some((child) => child.slot !== CONTROL_SLOT_NAME);
 
     return (
-      <Host aria-expanded={collapsible ? (open ? "true" : "false") : null}>
+      <Host
+        aria-expanded={collapsible ? (open ? "true" : "false") : null}
+        aria-busy={this.loading}
+        aria-disabled={this.disabled}
+      >
         <article>
           {headerNode}
           <div class={CSS.content} hidden={!hasContent || !open}>
