@@ -69,7 +69,8 @@
 }
 
 :host([active]) .button,
-:host([active]) .button:hover {
+:host([active]) .button:hover,
+:host([active][loading]) .button {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
