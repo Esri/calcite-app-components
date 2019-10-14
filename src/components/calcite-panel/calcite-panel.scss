@@ -37,7 +37,7 @@
 .content-container {
   flex: 1;
   background-color: var(--calcite-app-background-content);
-  padding: 0;
+  padding: var(--calcite-app-cap-spacing-half) 0;
   overflow: auto;
 }
 
