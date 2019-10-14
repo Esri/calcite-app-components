@@ -1,17 +1,4 @@
-import {
-  Component,
-  // Element,
-  // Event,
-  // EventEmitter,
-  Host,
-  // Listen,
-  // Method,
-  Prop,
-  // State,
-  // Watch,
-  h
-} from "@stencil/core";
-
+import { Component, Host, Prop, h } from "@stencil/core";
 import { CSS } from "./resources";
 
 @Component({
@@ -48,9 +35,15 @@ export class CalciteScrim {
   //
   // --------------------------------------------------------------------------
   render() {
+    const loadingProperty = this.showAria ? this.loading : null;
+    const disabledProperty = this.showAria ? this.disabled : null;
     return (
       <Host>
-        <div class={CSS.blockingContainer} aria-busy={this.loading} aria-disabled={this.disabled}>
+        <div
+          class={CSS.blockingContainer}
+          aria-busy={loadingProperty}
+          aria-disabled={disabledProperty}
+        >
           {this.loading ? <calcite-loader is-active></calcite-loader> : null}
         </div>
       </Host>

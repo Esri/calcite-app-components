@@ -10,7 +10,7 @@ import {
   State,
   h
 } from "@stencil/core";
-import { CSS, ICON_TYPES, TEXT } from "./resources";
+import { ICON_TYPES, TEXT } from "./resources";
 import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
 
 /**

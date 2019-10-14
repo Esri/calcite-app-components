@@ -1,6 +1,3 @@
-export const CSS = {
-  blockingContainer: "blocking-container"
-};
 export enum ICON_TYPES {
   circle = "circle",
   square = "square",
