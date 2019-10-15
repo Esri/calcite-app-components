@@ -1,31 +1,67 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { E2EPage } from "@stencil/core/dist/testing/puppeteer/puppeteer-declarations";
 import { JSX } from "../components";
+import { toHaveNoViolations } from "jest-axe";
+import axe from "axe-core";
+
+expect.extend(toHaveNoViolations);
 
 type CalciteComponentTag = keyof JSX.IntrinsicElements;
+type AxeOwningWindow = Window & { axe: typeof axe };
+type ComponentHTML = string;
+type TagOrHTML = CalciteComponentTag | ComponentHTML;
 
-async function simplePageSetup(componentTag: CalciteComponentTag): Promise<E2EPage> {
+function isHTML(tagOrHTML: string): boolean {
+  return tagOrHTML.indexOf("<") === 0;
+}
+
+function getTag(tagOrHTML: string): CalciteComponentTag {
+  if (isHTML(tagOrHTML)) {
+    return tagOrHTML
+      .substring(1)
+      .split(" ")
+      .shift() as CalciteComponentTag;
+  }
+
+  return tagOrHTML as CalciteComponentTag;
+}
+
+async function simplePageSetup(componentTagOrHTML: TagOrHTML): Promise<E2EPage> {
   const page = await newE2EPage();
-  await page.setContent(`<${componentTag}><${componentTag}/>`);
+  const componentTag = getTag(componentTagOrHTML);
+  await page.setContent(isHTML(componentTagOrHTML) ? componentTagOrHTML : `<${componentTag}><${componentTag}/>`);
   return page;
 }
 
-export async function renders(componentTag: CalciteComponentTag): Promise<void> {
-  const page = await simplePageSetup(componentTag);
-  const element = await page.find(componentTag);
+export async function accessible(componentTagOrHTML: TagOrHTML): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML);
+  await page.addScriptTag({ path: require.resolve("axe-core") });
+
+  expect(
+    await page.evaluate(
+      async (componentTag: CalciteComponentTag) => (window as AxeOwningWindow).axe.run(componentTag),
+      getTag(componentTagOrHTML)
+    )
+  ).toHaveNoViolations();
+}
+
+export async function renders(componentTagOrHTML: TagOrHTML): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML);
+  const element = await page.find(getTag(componentTagOrHTML));
 
   expect(element).toHaveClass("hydrated");
   expect(await element.isVisible()).toBe(true);
 }
 
 export async function reflects(
-  componentTag: CalciteComponentTag,
+  componentTagOrHTML: TagOrHTML,
   propsToTest: {
     propertyName: string;
     value: any;
   }[]
 ): Promise<void> {
-  const page = await simplePageSetup(componentTag);
+  const page = await simplePageSetup(componentTagOrHTML);
+  const componentTag = getTag(componentTagOrHTML);
   const element = await page.find(componentTag);
 
   for (const propAndValue of propsToTest) {
@@ -52,14 +88,14 @@ export async function reflects(
 }
 
 export async function defaults(
-  componentTag: CalciteComponentTag,
+  componentTagOrHTML: TagOrHTML,
   propsToTest: {
     propertyName: string;
     defaultValue: any;
   }[]
 ): Promise<void> {
-  const page = await simplePageSetup(componentTag);
-  const element = await page.find(componentTag);
+  const page = await simplePageSetup(componentTagOrHTML);
+  const element = await page.find(getTag(componentTagOrHTML));
 
   for (const propAndValue of propsToTest) {
     const { propertyName, defaultValue } = propAndValue;
@@ -68,9 +104,9 @@ export async function defaults(
   }
 }
 
-export async function hidden(componentTag: CalciteComponentTag): Promise<void> {
-  const page = await simplePageSetup(componentTag);
-  const element = await page.find(componentTag);
+export async function hidden(componentTagOrHTML: TagOrHTML): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML);
+  const element = await page.find(getTag(componentTagOrHTML));
 
   element.setAttribute("hidden", "");
   await page.waitForChanges();
