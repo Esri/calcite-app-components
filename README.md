@@ -15,7 +15,6 @@ A collection of calcite components for building single page applications.
 - [calcite-action-bar](/src/components/calcite-action-bar/readme.md)
 - [calcite-action-pad](/src/components/calcite-action-pad/readme.md)
 - [calcite-block](/src/components/calcite-block/readme.md)
-- [calcite-filter](/src/components/calcite-filter/readme.md)
 - [calcite-flow](/src/components/calcite-flow/readme.md)
 - [calcite-flow-item](/src/components/calcite-flow-item/readme.md)
 - [calcite-panel](/src/components/calcite-panel/readme.md)
