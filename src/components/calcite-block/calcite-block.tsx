@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
 import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
@@ -156,14 +156,12 @@ export class CalciteBlock {
     const hasContent = !!Array.from(el.children).some((child) => child.slot !== CONTROL_SLOT_NAME);
 
     return (
-      <Host aria-expanded={collapsible ? (open ? "true" : "false") : null}>
-        <article>
-          {headerNode}
-          <div class={CSS.content} hidden={!hasContent || !open}>
-            <slot />
-          </div>
-        </article>
-      </Host>
+      <article aria-expanded={collapsible ? (open ? "true" : "false") : null}>
+        {headerNode}
+        <div class={CSS.content} hidden={!hasContent || !open}>
+          <slot />
+        </div>
+      </article>
     );
   }
 }
