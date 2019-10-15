@@ -16,7 +16,6 @@ import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import { CSS_UTILITY } from "../utils/resources";
 import CalciteIcon from "../utils/CalciteIcon";
-import { getElementDir } from "../utils/dom";
 
 @Component({
   tag: "calcite-pick-list-item",
@@ -89,18 +88,6 @@ export class CalcitePickListItem {
   @Element() el: HTMLCalcitePickListItemElement;
 
   @State() isSelected = this.selected;
-
-  dir: "rtl" | "ltr";
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.dir = getElementDir(this.el);
-  }
 
   // --------------------------------------------------------------------------
   //
@@ -213,9 +200,6 @@ export class CalcitePickListItem {
 
     return (
       <Host
-        class={classnames({
-          [CSS_UTILITY.rtl]: this.dir === "rtl"
-        })}
         onClick={this.pickListClickHandler}
         onKeydown={this.pickListKeyDownHandler}
         selected={this.isSelected}
