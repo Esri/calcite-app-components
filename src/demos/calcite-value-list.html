@@ -51,7 +51,7 @@
       </calcite-value-list>
       <script>
         const valueList = document.querySelector("#one");
-        valueList.addEventListener("calciteListSelectionChange", (event) => {
+        valueList.addEventListener("calciteListChange", (event) => {
           console.log(event.detail);
         });
         valueList.addEventListener("calciteListItemChange", (event) => {
@@ -101,7 +101,7 @@
       </calcite-value-list>
       <script>
           const valueList2 = document.querySelector("#two");
-          valueList2.addEventListener("calciteListSelectionChange", (event) => {
+          valueList2.addEventListener("calciteListChange", (event) => {
             console.log(event.detail);
           });
           valueList2.addEventListener("calciteListItemChange", (event) => {
@@ -147,7 +147,7 @@
         </calcite-value-list>
       <script>
         const valueList3 = document.querySelector("#three");
-        valueList3.addEventListener("calciteListSelectionChange", (event) => {
+        valueList3.addEventListener("calciteListChange", (event) => {
           console.log(event.detail);
         });
         valueList3.addEventListener("calciteListItemChange", (event) => {
@@ -200,7 +200,8 @@
       </calcite-value-list>
       <script>
         const valueList4 = document.querySelector("#four");
-        valueList4.addEventListener("calciteListSelectionChange", (event) => {
+        console.log(valueList4);
+        valueList4.addEventListener("calciteListChange", (event) => {
           console.log(event.detail);
         });
         valueList4.addEventListener("calciteValueListOrderChange", (event) => {
