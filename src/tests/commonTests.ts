@@ -12,7 +12,7 @@ type ComponentHTML = string;
 type TagOrHTML = CalciteComponentTag | ComponentHTML;
 
 function isHTML(tagOrHTML: string): boolean {
-  return tagOrHTML.indexOf("<") === 0;
+  return tagOrHTML.trim().indexOf("<") === 0;
 }
 
 function getTag(tagOrHTML: string): CalciteComponentTag {
