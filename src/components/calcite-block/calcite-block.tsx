@@ -123,7 +123,17 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsible, el, heading, open, summary, textCollapse, textExpand } = this;
+    const {
+      collapsible,
+      disabled,
+      el,
+      heading,
+      loading,
+      open,
+      summary,
+      textCollapse,
+      textExpand
+    } = this;
     const toggleLabel = open ? textCollapse : textExpand;
 
     const headerContent = (
@@ -167,8 +177,8 @@ export class CalciteBlock {
     return (
       <Host
         aria-expanded={collapsible ? (open ? "true" : "false") : null}
-        aria-busy={this.loading}
-        aria-disabled={this.disabled}
+        aria-busy={loading}
+        aria-disabled={disabled}
       >
         <article>
           {headerNode}
