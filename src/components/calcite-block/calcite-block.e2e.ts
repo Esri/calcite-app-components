@@ -19,7 +19,12 @@ describe("calcite-block", () => {
       }
     ]));
 
-  it("is accessible", async () => accessible(`<calcite-block heading="required"></calcite-block>`));
+  it("is accessible", async () =>
+    accessible(`
+    <calcite-block heading="heading" summary="summary" open collapsible>
+      <div>content</div>
+    </calcite-block>
+`));
 
   it("can display/hide content", async () => {
     const page = await newE2EPage();
