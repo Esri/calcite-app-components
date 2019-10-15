@@ -18,6 +18,7 @@ function isHTML(tagOrHTML: string): boolean {
 function getTag(tagOrHTML: string): CalciteComponentTag {
   if (isHTML(tagOrHTML)) {
     return tagOrHTML
+      .trim()
       .substring(1)
       .split(" ")
       .shift() as CalciteComponentTag;
