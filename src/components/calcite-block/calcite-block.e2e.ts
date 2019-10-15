@@ -23,7 +23,7 @@ describe("calcite-block", () => {
     accessible(`
     <calcite-block heading="heading" summary="summary" open collapsible>
       <div>content</div>
-      <label slot="control"><input placeholder="control"/></label>
+      <label slot="control">test <input placeholder="control"/></label>
     </calcite-block>
 `));
 
