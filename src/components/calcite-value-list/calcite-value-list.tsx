@@ -13,6 +13,7 @@ import {
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
+import { VNode } from "@stencil/core/dist/declarations";
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -270,6 +271,14 @@ export class CalciteValueList {
     return type;
   }
 
+  renderScrim(): VNode {
+    return this.loading || this.disabled ? <calcite-loader is-active></calcite-loader> : null;
+    // REPLACE WITH CalciteScrim #381
+    /*
+      <CalciteScrim loading={this.loading}></CalciteScrim>
+    */
+  }
+
   render() {
     const { dataForFilter, handleFilter, disabled, filterEnabled, loading } = this;
     return (
@@ -286,6 +295,7 @@ export class CalciteValueList {
           <slot name="menu-actions" />
         </header>
         <slot />
+        {this.renderScrim()}
       </Host>
     );
   }
