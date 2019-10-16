@@ -30,6 +30,11 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * When true, the items will be sortable via drag and drop.
    */
   @Prop({ reflect: true }) dragEnabled = false;
@@ -38,6 +43,11 @@ export class CalciteValueList {
    * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
    */
   @Prop({ reflect: true }) filterEnabled = false;
+
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * Multiple Works similar to standard radio buttons and checkboxes.
@@ -261,15 +271,16 @@ export class CalciteValueList {
   }
 
   render() {
+    const { dataForFilter, handleFilter, disabled, filterEnabled, loading } = this;
     return (
-      <Host>
+      <Host aria-disabled={disabled} aria-busy={loading}>
         <header>
-          {this.filterEnabled ? (
+          {filterEnabled ? (
             <calcite-filter
-              data={this.dataForFilter}
+              data={dataForFilter}
               textPlaceholder={TEXT.filterPlaceholder}
               aria-label={TEXT.filterPlaceholder}
-              onCalciteFilterChange={this.handleFilter}
+              onCalciteFilterChange={handleFilter}
             />
           ) : null}
           <slot name="menu-actions" />
