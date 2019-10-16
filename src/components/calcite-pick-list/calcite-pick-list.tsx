@@ -262,8 +262,9 @@ export class CalcitePickList {
   }
 
   render() {
+    const { disabled, loading } = this;
     return (
-      <Host>
+      <Host aria-disabled={disabled} aria-busy={loading}>
         <header>
           {this.filterEnabled ? (
             <calcite-filter
