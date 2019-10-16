@@ -12,6 +12,7 @@ import {
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
 import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import CalciteScrim from "../utils/CalciteScrim";
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -256,7 +257,7 @@ export class CalcitePickList {
 
   renderScrim(): VNode {
     return this.loading || this.disabled ? (
-      <calcite-scrim loading={this.loading} disabled={this.disabled}></calcite-scrim>
+      <CalciteScrim loading={this.loading}></CalciteScrim>
     ) : null;
   }
 
