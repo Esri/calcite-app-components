@@ -121,7 +121,7 @@ export class CalciteAction {
           title={labelFallback}
           aria-label={labelFallback}
           disabled={disabled}
-          aria-disabled={this.disabled}
+          aria-disabled={disabled}
           aria-busy={loading}
         >
           {iconContainerNode}
