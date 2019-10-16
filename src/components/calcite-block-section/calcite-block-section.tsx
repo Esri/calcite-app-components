@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
 
 import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
 import { getElementDir } from "../utils/dom";
@@ -119,12 +119,12 @@ export class CalciteBlockSection {
       );
 
     return (
-      <Host aria-expanded={open ? "true" : "false"}>
+      <section aria-expanded={open ? "true" : "false"}>
         {headerNode}
         <div class={CSS.content} hidden={!open}>
           <slot />
         </div>
-      </Host>
+      </section>
     );
   }
 }
