@@ -4,6 +4,7 @@
   display: flex;
   flex-flow: column;
   padding-bottom: var(--calcite-app-cap-spacing-half);
+  position: relative;
 }
 
 header {
@@ -15,5 +16,6 @@ calcite-filter {
   @include borderShadow();
 }
 
-:host([loading]) {
+:host([loading][disabled]) {
+  min-height: 2rem;
 }
