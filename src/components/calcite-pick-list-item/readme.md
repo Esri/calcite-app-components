@@ -6,6 +6,7 @@
 
 | Property          | Attribute          | Description                                                                                       | Type                                                        | Default     |
 | ----------------- | ------------------ | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
+| `compact`         | `compact`          |                                                                                                   | `boolean`                                                   | `false`     |
 | `disabled`        | `disabled`         | When true, the item cannot be clicked and is visually muted                                       | `boolean`                                                   | `false`     |
 | `icon`            | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.      | `ICON_TYPES.circle \| ICON_TYPES.grip \| ICON_TYPES.square` | `null`      |
 | `metadata`        | --                 | Used to provide additional metadata to an item, primarily used when the parent list has a filter. | `object`                                                    | `undefined` |

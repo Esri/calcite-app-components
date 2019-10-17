@@ -15,6 +15,7 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 | `disabled`    | `disabled`     | Disabled is used to prevent the action from occurring.                                            | `boolean`                                | `false`     |
 | `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`                                | `false`     |
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`                                 | `undefined` |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. Show a busy indicator.                                | `boolean`                                | `false`     |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`                                 | `undefined` |
 | `textDisplay` | `text-display` | Indicates whether the text is displayed.                                                          | `"hidden" \| "interactive" \| "visible"` | `"hidden"`  |
 | `textEnabled` | `text-enabled` | <span style="color:red">**[DEPRECATED]**</span> Use 'textDisplay' instead.<br/><br/>              | `boolean`                                | `false`     |
