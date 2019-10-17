@@ -11,6 +11,8 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
+import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import CalciteScrim from "../utils/CalciteScrim";
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -26,6 +28,10 @@ export class CalcitePickList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+  /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * @deprecated Prop is ignored. Prop will be removed in a future release.
@@ -248,9 +254,16 @@ export class CalcitePickList {
     return type;
   }
 
+  renderScrim(): VNode {
+    return this.loading || this.disabled ? (
+      <CalciteScrim loading={this.loading}></CalciteScrim>
+    ) : null;
+  }
+
   render() {
+    const { disabled, loading } = this;
     return (
-      <Host>
+      <Host aria-disabled={disabled} aria-busy={loading}>
         <header>
           {this.filterEnabled ? (
             <calcite-filter
@@ -263,6 +276,7 @@ export class CalcitePickList {
           <slot name="menu-actions" />
         </header>
         <slot />
+        {this.renderScrim()}
       </Host>
     );
   }
