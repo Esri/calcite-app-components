@@ -1,8 +1,10 @@
-import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
+import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import CalciteScrim from "../utils/CalciteScrim";
 
 const CONTROL_SLOT_NAME = "control";
 
@@ -116,6 +118,12 @@ export class CalciteBlock {
     this.calciteBlockToggle.emit();
   };
 
+  renderScrim(): VNode {
+    return this.loading || this.disabled ? (
+      <CalciteScrim loading={this.loading}></CalciteScrim>
+    ) : null;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -142,11 +150,8 @@ export class CalciteBlock {
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
         </div>
-        {!this.loading ? (
-          <slot name={CONTROL_SLOT_NAME} />
-        ) : (
-          <calcite-loader inline is-active></calcite-loader>
-        )}
+        {loading || disabled ? null : <slot name={CONTROL_SLOT_NAME} />}
+        {loading ? <calcite-loader inline is-active></calcite-loader> : null}
       </header>
     );
 
@@ -184,6 +189,7 @@ export class CalciteBlock {
           {headerNode}
           <div class={CSS.content} hidden={!hasContent || !open}>
             <slot />
+            {loading || disabled ? <CalciteScrim loading={false}></CalciteScrim> : null}
           </div>
         </article>
       </Host>

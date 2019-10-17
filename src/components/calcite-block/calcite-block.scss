@@ -10,27 +10,8 @@
   box-shadow: 0 0 0 1px var(--calcite-app-border);
 }
 
-:host([loading]) .content:after,
-:host([disabled]) .content:after {
-  content: "";
-  background-color: var(--calcite-app-scrim);
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-}
-
 calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
-}
-
-:host([disabled]) {
-  .header-container {
-    opacity: var(--calcite-app-disabled-opacity);
-    pointer-events: none;
-  }
 }
 
 .header-container {
