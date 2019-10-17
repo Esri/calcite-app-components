@@ -47,10 +47,10 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
   /**
-   * Multiple works with checkboxes.
+   * Multiple works like conventional checkboxes and radio buttons.
    * When true, a user can select multiple items at a time.
-   * When false, only a single item can be selected at a time,
-   * When false, selecting a new item will deselect any other selected items.
+   * When false, only a single item can be selected at a time
+   * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
 
