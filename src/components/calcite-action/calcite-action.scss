@@ -1,5 +1,6 @@
 :host {
   display: block;
+  background-color: var(--calcite-app-background-clear);
 }
 
 .button {
@@ -68,10 +69,21 @@
 }
 
 :host([active]) .button,
-:host([active]) .button:hover {
+:host([active]) .button:hover,
+:host([active][loading]) .button {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
+}
+
+:host([loading]) .button,
+:host([loading]) .button:hover {
+  background-color: var(--calcite-app-background);
+}
+
+:host([loading]) calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
+  margin-right: 0;
 }
 
 :host([disabled]) .button,
