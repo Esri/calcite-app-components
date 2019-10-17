@@ -9,7 +9,7 @@
   <body>
     <calcite-demo-nav page-id="calcite-pick-list"></calcite-demo-nav>
     <section class="example-container" style="width: 28vw; margin-top: 2em;">
-      <calcite-pick-list id="one" multiple>
+      <calcite-pick-list id="one" multiple filter-enabled>
         <calcite-pick-list-item text-label="2018 Population Density (NO SUMMARY) (Esri)" value="POPDENS_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -116,7 +116,45 @@
           console.log(event.detail);
         });
       </script>
-      <!-- <calcite-pick-list id="three" text-label="Configuration Pick List - Draggable" mode="configuration" drag-enabled> -->
+
+      <h4>Compact</h4>
+      <calcite-pick-list id="compact" compact>
+        <calcite-pick-list-item text-heading="ID" text-description="This is an id for this field and people use it for things." value="ID">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path
+                d="M7.5 0A7.5 7.5 0 1 0 15 7.5 7.509 7.509 0 0 0 7.5 0zm.001 14.1A6.6 6.6 0 1 1 14.1 7.5a6.608 6.608 0 0 1-6.599 6.6zM7.5 5.5a1 1 0 1 1 1-1 1.002 1.002 0 0 1-1 1zM7 7h1v5H7zm2 5H6v-1h3z"
+              />
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path
+                d="M7.5 0A7.5 7.5 0 1 0 15 7.5 7.509 7.509 0 0 0 7.5 0zm.001 14.1A6.6 6.6 0 1 1 14.1 7.5a6.608 6.608 0 0 1-6.599 6.6zM7.5 5.5a1 1 0 1 1 1-1 1.002 1.002 0 0 1-1 1zM7 7h1v5H7zm2 5H6v-1h3z"
+              />
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+        <calcite-pick-list-item text-heading="ST_ABBREV" text-description="ST_ABBREV" value="ST_ABBREV">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path
+                d="M7.5 0A7.5 7.5 0 1 0 15 7.5 7.509 7.509 0 0 0 7.5 0zm.001 14.1A6.6 6.6 0 1 1 14.1 7.5a6.608 6.608 0 0 1-6.599 6.6zM7.5 5.5a1 1 0 1 1 1-1 1.002 1.002 0 0 1-1 1zM7 7h1v5H7zm2 5H6v-1h3z"
+              />
+            </svg>
+          </calcite-action>
+        </calcite-pick-list-item>
+      </calcite-pick-list>
+      <script>
+        const pickListCompact = document.querySelector("#compact");
+        pickListCompact.addEventListener("calcitePickListSelectionChange", (event) => {
+          console.log(event.detail);
+        });
+      </script>
+
+      <!-- <calcite-pick-list id="three" text-heading="Configuration Pick List - Draggable" mode="configuration" drag-enabled> -->
       <calcite-pick-list id="three">
         <calcite-pick-list-group text-group-title="numbers">
           <calcite-pick-list-item
@@ -236,7 +274,7 @@
       </calcite-pick-list>
       <script>
         const pickList4 = document.querySelector("#one_rtl");
-        pickList.addEventListener("calcitePickListSelectionChange", (event) => {
+        pickList4.addEventListener("calcitePickListSelectionChange", (event) => {
           console.log(event.detail);
         });
       </script>
@@ -272,7 +310,7 @@
       </calcite-pick-list>
       <script>
         const pickList5 = document.querySelector("#two_rtl");
-        pickList2.addEventListener("calcitePickListSelectionChange", (event) => {
+        pickList5.addEventListener("calcitePickListSelectionChange", (event) => {
           console.log(event.detail);
         });
       </script>
@@ -333,7 +371,7 @@
       </calcite-pick-list>
       <script>
         const pickList6 = document.querySelector("#three_rtl");
-        pickList3.addEventListener("calcitePickListSelectionChange", (event) => {
+        pickList6.addEventListener("calcitePickListSelectionChange", (event) => {
           console.log(event.detail);
         });
       </script>
