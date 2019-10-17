@@ -11,7 +11,7 @@ const divStyle = {
   position: "absolute",
   right: "0",
   top: "0",
-  zIndex: "1"
+  zIndex: "2"
 };
 
 interface ScrimProps {

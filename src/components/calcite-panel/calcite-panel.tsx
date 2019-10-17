@@ -7,6 +7,7 @@ import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteTheme } from "../interfaces";
 import CalciteIcon from "../utils/CalciteIcon";
 import { x16 } from "@esri/calcite-ui-icons";
+import CalciteScrim from "../utils/CalciteScrim";
 
 const SLOTS = {
   headerContent: "header-content",
@@ -187,21 +188,19 @@ export class CalcitePanel {
     );
   }
 
-  renderBlocker(): VNode {
+  renderScrim(): VNode {
     return this.loading || this.disabled ? (
-      <div class={CSS.blockingContainer}>
-        {this.loading ? <calcite-loader is-active></calcite-loader> : null}
-      </div>
+      <CalciteScrim loading={this.loading}></CalciteScrim>
     ) : null;
   }
 
   render() {
-    const { dismissed, dismissible, el, panelKeyUpHandler } = this;
+    const { disabled, dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
     return (
-      <Host>
+      <Host aria-busy={loading} aria-disabled={disabled}>
         <article
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
@@ -213,8 +212,8 @@ export class CalcitePanel {
           {this.renderHeader()}
           {this.renderContent()}
           {this.renderFooter()}
-          {this.renderBlocker()}
         </article>
+        {this.renderScrim()}
       </Host>
     );
   }
