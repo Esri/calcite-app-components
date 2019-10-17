@@ -118,7 +118,7 @@ export class CalciteValueList {
   @Event() calciteListChange: EventEmitter;
 
   /**
-   * Emmitted when the order of hte list has changed.
+   * Emmitted when the order of the list has changed.
    * @event calciteListOrderChange
    */
   @Event() calciteListOrderChange: EventEmitter;
