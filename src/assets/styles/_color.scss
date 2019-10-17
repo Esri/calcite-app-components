@@ -51,6 +51,8 @@ $vibrant-blue: $v-bb-120;
 
   --calcite-app-border: #{$darkest-gray};
   --calcite-app-border-subtle: #{$darkest-gray};
+
+  --calcite-app-scrim: #{rgba($darker-gray, 0.8)};
 }
 
 :root {
