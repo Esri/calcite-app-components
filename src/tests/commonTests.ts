@@ -39,7 +39,8 @@ export async function accessible(componentTagOrHTML: TagOrHTML): Promise<void> {
 
   expect(
     await page.evaluate(
-      async (componentTag: CalciteComponentTag) => (window as AxeOwningWindow).axe.run(componentTag),
+      async (componentTag: CalciteComponentTag) =>
+        (window as AxeOwningWindow & typeof globalThis).axe.run(componentTag),
       getTag(componentTagOrHTML)
     )
   ).toHaveNoViolations();
