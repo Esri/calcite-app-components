@@ -1,5 +1,7 @@
 # calcite-value-list
 
+`calcite-value-list` is housed in a panel and contains `calcite-value-list-items`. Value list has options for drag and drop, label editing, and single or multi select of items.
+
 <!-- Auto Generated Below -->
 
 ## Properties
