@@ -166,6 +166,7 @@ export class CalcitePickListItem {
 
   emitChangeEvent(shiftPressed = false) {
     this.calciteListItemChange.emit({
+      item: this.el,
       value: this.value,
       selected: this.isSelected,
       shiftPressed
