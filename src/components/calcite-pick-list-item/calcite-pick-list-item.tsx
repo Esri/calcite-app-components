@@ -31,7 +31,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, the item cannot be clicked and is visually muted
+   * When true, the item cannot be clicked and is visually muted.
    */
   @Prop({ reflect: true }) disabled = false;
 
@@ -50,6 +50,9 @@ export class CalcitePickListItem {
    */
   @Prop() selected = false;
 
+  /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   */
   @Prop({ reflect: true }) compact = false;
 
   @Watch("selected")
@@ -66,12 +69,12 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) textHeading: string;
 
   /**
-   * An optional description for this item. Will appear below the label text.
+   * An optional description for this item.  This will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
 
   /**
-   * The main label for this item. Appears next to the icon.
+   * The main label for this item. This will appear next to the icon.
    */
   @Prop({ reflect: true }) textLabel: string;
 
@@ -109,8 +112,8 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Emitted whenever the item is selected or unselected.
    * @event calciteListItemChange
-   * Emitted whenever the item is selected or unselected
    * @type {object}
    * @property {string} value - The value of the item
    * @property {boolean} selected - True if the event was selected. False if deselected.
@@ -166,6 +169,7 @@ export class CalcitePickListItem {
 
   emitChangeEvent(shiftPressed = false) {
     this.calciteListItemChange.emit({
+      item: this.el,
       value: this.value,
       selected: this.isSelected,
       shiftPressed
