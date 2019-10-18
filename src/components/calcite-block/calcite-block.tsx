@@ -3,7 +3,7 @@ import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
-import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import { VNode } from "@stencil/core/dist/declarations";
 import CalciteScrim from "../utils/CalciteScrim";
 
 const CONTROL_SLOT_NAME = "control";
