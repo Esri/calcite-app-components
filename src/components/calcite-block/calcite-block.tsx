@@ -29,7 +29,8 @@ export class CalciteBlock {
   @Prop() collapsible = false;
 
   /**
-   * Disabled is used to prevent the action from occurring.
+   * When true, the content of this block and any control in its header
+   * is not available for interacion.
    */
   @Prop({ reflect: true }) disabled = false;
 
