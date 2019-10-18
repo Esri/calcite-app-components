@@ -137,6 +137,11 @@ export class CalciteBlock {
       textExpand
     } = this;
     const toggleLabel = open ? textCollapse : textExpand;
+    const content = loading ? (
+      <calcite-loader inline is-active></calcite-loader>
+    ) : !disabled ? (
+      <slot name={CONTROL_SLOT_NAME} />
+    ) : null;
 
     const headerContent = (
       <header class={CSS.header}>
@@ -144,8 +149,7 @@ export class CalciteBlock {
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
         </div>
-        {loading || disabled ? null : <slot name={CONTROL_SLOT_NAME} />}
-        {loading ? <calcite-loader inline is-active></calcite-loader> : null}
+        {content}
       </header>
     );
 
