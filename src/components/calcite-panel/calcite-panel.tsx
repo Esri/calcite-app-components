@@ -195,13 +195,14 @@ export class CalcitePanel {
   }
 
   render() {
-    const { disabled, dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
+    const { dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
     return (
-      <Host aria-busy={loading} aria-disabled={disabled}>
+      <Host>
         <article
+          aria-busy={loading}
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}
