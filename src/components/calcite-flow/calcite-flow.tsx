@@ -17,11 +17,6 @@ export class CalciteFlow {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, content is waiting to be loaded. Show a busy indicator.
-   */
-  @Prop({ reflect: true }) loading = false;
-
-  /**
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
