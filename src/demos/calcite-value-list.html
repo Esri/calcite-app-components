@@ -20,7 +20,7 @@
     </div>
     <section class="example-container" style="width: 28vw; margin-top: 2em;">
       <h3>multiple</h3>
-      <calcite-value-list id="one" multiple filter-enabled>
+      <calcite-value-list id="one" multiple="true" filter-enabled>
         <calcite-value-list-item
           text-label="2018 Population Density (Esri)"
           text-description="{POPDENS_CY}"
@@ -73,7 +73,7 @@
       </script>
 
       <h3>label-editing-enabled & single select</h3>
-      <calcite-value-list id="two" label-editing-enabled>
+      <calcite-value-list id="two" multiple label-editing-enabled="true">
         <calcite-value-list-item
           text-label="2018 Generation Alpha Population (Born 2017 or Later) [updated 2019-09-18]"
           text-description="GENALPHACY"

@@ -28,6 +28,11 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Heading text.
    */
   @Prop() heading: string;
@@ -198,7 +203,7 @@ export class CalciteFlowItem {
 
     return (
       <Host>
-        <calcite-panel>
+        <calcite-panel loading={this.loading} disabled={this.disabled}>
           {this.renderBackButton(rtl)}
           <h2 class={CSS.heading} slot="header-content">
             {heading}

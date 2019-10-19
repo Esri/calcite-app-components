@@ -15,7 +15,9 @@
 .toggle--switch {
   display: flex;
   justify-content: space-between;
-  padding-top: var(--calcite-app-cap-spacing-half);
-  padding-bottom: var(--calcite-app-cap-spacing-half);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   user-select: none;
+  calcite-switch {
+    margin: 0;
+  }
 }
