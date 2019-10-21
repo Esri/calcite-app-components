@@ -51,8 +51,14 @@
             margin: 1rem 0.2rem;
             min-width: 5rem;
           }
+          .toggles {
+            margin: 1rem 0;
+          }
         </style>
-
+        <div class="toggles">
+          <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
+          <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
+        </div>
         <div class="flow-container">
           <calcite-flow id="flow">
             <calcite-flow-item heading="First Panel">
@@ -158,5 +164,14 @@
         </script>
       </section>
     </main>
+    <script>
+      function toggleProperty(property) {
+        const blocks = document.getElementsByTagName("calcite-flow-item");
+
+        for (i = 0; i < blocks.length; i++) {
+          blocks[i].toggleAttribute(property);
+        }
+      }
+    </script>
   </body>
 </html>

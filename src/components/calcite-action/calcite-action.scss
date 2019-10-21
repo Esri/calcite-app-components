@@ -57,13 +57,20 @@
 
 .button--text-interactive {
   .text-container {
-    display: none;
+    margin-left: 0;
+    margin-right: 0;
+    opacity: 0;
+    width: 0;
+    transition: opacity var(--calcite-app-animation-time) var(--calcite-app-easing-function),
+      margin var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+      width var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   }
   &:hover,
   &:focus {
-    width: 100%;
     .text-container {
-      display: block;
+      margin: 0 var(--calcite-app-side-spacing-half);
+      opacity: 1;
+      width: 100%;
     }
   }
 }
