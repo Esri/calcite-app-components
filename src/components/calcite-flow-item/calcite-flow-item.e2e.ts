@@ -1,7 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS, TEXT } from "./resources";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
   it("renders", async () => renders("calcite-flow-item"));
@@ -134,5 +134,26 @@ describe("calcite-flow-item", () => {
     });
 
     expect(eventSpy).toHaveReceivedEvent();
+  });
+
+  it("should be accessible", async () => {
+    accessible(`
+      <calcite-flow-item heading="hello world" menu-open show-back-button>
+        <div slot="menu-actions">
+          <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </div>
+        <div slot="footer-actions">
+         <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </div>
+      </calcite-flow-item>
+    `);
   });
 });
