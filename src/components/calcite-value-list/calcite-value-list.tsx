@@ -285,20 +285,22 @@ export class CalciteValueList {
   render() {
     const { dataForFilter, handleFilter, disabled, filterEnabled, loading } = this;
     return (
-      <Host aria-busy={loading}>
-        <header>
-          {filterEnabled ? (
-            <calcite-filter
-              data={dataForFilter}
-              textPlaceholder={TEXT.filterPlaceholder}
-              aria-label={TEXT.filterPlaceholder}
-              onCalciteFilterChange={handleFilter}
-            />
-          ) : null}
-          <slot name="menu-actions" />
-        </header>
-        <slot />
-        {this.renderScrim()}
+      <Host>
+        <div class={CSS.container} aria-busy={loading}>
+          <header>
+            {filterEnabled ? (
+              <calcite-filter
+                data={dataForFilter}
+                textPlaceholder={TEXT.filterPlaceholder}
+                aria-label={TEXT.filterPlaceholder}
+                onCalciteFilterChange={handleFilter}
+              />
+            ) : null}
+            <slot name="menu-actions" />
+          </header>
+          <slot />
+          {this.renderScrim()}
+        </div>
       </Host>
     );
   }
