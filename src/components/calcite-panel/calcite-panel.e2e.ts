@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 import { CSS } from "./resources";
 
 describe("calcite-panel", () => {
@@ -38,5 +38,17 @@ describe("calcite-panel", () => {
     await closeButton.click();
 
     expect(eventSpy).toHaveReceivedEvent();
+  });
+
+  it("should be accessible", async () => {
+    accessible(`
+    <calcite-panel>
+      <div slot="header-leading-content">test L</div>
+      <div slot="header-content">test center</div>
+      <div slot="header-trailing-content">test T</div>
+      <p>Content</p>
+      <div slot="footer">test Footer</div>
+    </calcite-panel>
+    `);
   });
 });
