@@ -7,9 +7,11 @@ $tip-image-max-width: 100% !default;
   position: relative;
   display: flex;
   flex-flow: column;
+  background-color: transparent;
 }
 
 .container {
+  background-color: var(--calcite-app-background);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
   margin: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   box-shadow: var(--calcite-app-shadow-2);
