@@ -21,6 +21,30 @@ describe("calcite-flow-item", () => {
     expect(singleActionContainer).toBeNull();
   });
 
+  it("should not render containers when there are no menu actions in parent element", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`
+    <calcite-flow-item>
+      <div slot="footer-actions">
+        <div slot="menu-actions">
+          <button>Save</button>
+          <button>Cancel</button>
+        </div>
+        <button>Save</button>
+        <button>Cancel</button>
+      </div>
+    </calcite-flow-item>
+  `);
+
+    const menuContainer = await page.find(`calcite-flow-item >>> .${CSS.menuContainer}`);
+
+    const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
+
+    expect(menuContainer).toBeNull();
+    expect(singleActionContainer).toBeNull();
+  });
+
   it("should show single action container when one action exists", async () => {
     const page = await newE2EPage();
 

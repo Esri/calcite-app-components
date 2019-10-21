@@ -183,7 +183,7 @@ export class CalciteFlowItem {
 
   renderHeaderActions() {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const hasMenuActions = !!menuActionsNode;
+    const hasMenuActions = !!menuActionsNode && menuActionsNode.parentElement === this.el;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
     const menuActionsNodes =
