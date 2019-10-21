@@ -10,7 +10,8 @@
   box-shadow: 0 0 0 1px var(--calcite-app-border);
 }
 
-:host([loading]) {
+calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
 }
 
 .header-container {
@@ -53,4 +54,5 @@
 
 .content {
   padding-bottom: var(--calcite-app-cap-spacing-half);
+  position: relative;
 }

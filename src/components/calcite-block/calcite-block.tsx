@@ -1,8 +1,9 @@
-import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
+import CalciteScrim from "../utils/CalciteScrim";
 
 const CONTROL_SLOT_NAME = "control";
 
@@ -25,6 +26,12 @@ export class CalciteBlock {
    * When true, this block will be collapsible.
    */
   @Prop() collapsible = false;
+
+  /**
+   * When true, the content of this block and any control in its header
+   * is not available for interacion.
+   */
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * Block heading.
@@ -118,8 +125,23 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsible, el, heading, open, summary, textCollapse, textExpand } = this;
+    const {
+      collapsible,
+      disabled,
+      el,
+      heading,
+      loading,
+      open,
+      summary,
+      textCollapse,
+      textExpand
+    } = this;
     const toggleLabel = open ? textCollapse : textExpand;
+    const content = loading ? (
+      <calcite-loader inline is-active></calcite-loader>
+    ) : !disabled ? (
+      <slot name={CONTROL_SLOT_NAME} />
+    ) : null;
 
     const headerContent = (
       <header class={CSS.header}>
@@ -127,7 +149,7 @@ export class CalciteBlock {
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
         </div>
-        <slot name={CONTROL_SLOT_NAME} />
+        {content}
       </header>
     );
 
@@ -156,12 +178,15 @@ export class CalciteBlock {
     const hasContent = !!Array.from(el.children).some((child) => child.slot !== CONTROL_SLOT_NAME);
 
     return (
-      <article aria-expanded={collapsible ? (open ? "true" : "false") : null}>
-        {headerNode}
-        <div class={CSS.content} hidden={!hasContent || !open}>
-          <slot />
-        </div>
-      </article>
+      <Host>
+        <article aria-expanded={collapsible ? (open ? "true" : "false") : null} aria-busy={loading}>
+          {headerNode}
+          <div class={CSS.content} hidden={!hasContent || !open}>
+            <slot />
+            {loading || disabled ? <CalciteScrim loading={false}></CalciteScrim> : null}
+          </div>
+        </article>
+      </Host>
     );
   }
 }

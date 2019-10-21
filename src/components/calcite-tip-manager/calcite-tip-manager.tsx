@@ -263,6 +263,7 @@ export class CalciteTipManager {
             </calcite-action>
           </header>
           <div
+            tabIndex={0}
             class={classnames(CSS.tipContainer, {
               [CSS.tipContainerAdvancing]: direction === "advancing",
               [CSS.tipContainerRetreating]: direction === "retreating"

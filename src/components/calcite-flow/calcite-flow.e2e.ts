@@ -1,7 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS } from "./resources";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow", () => {
   it("renders", async () => renders("calcite-flow"));
@@ -141,5 +141,18 @@ describe("calcite-flow", () => {
 
     expect(items[2].getAttribute("hidden")).toBe(null);
     expect(showBackButton2).not.toBe(null);
+  });
+
+  it("should be accessible", async () => {
+    accessible(`
+    <calcite-flow>
+      <calcite-flow-item>
+      </calcite-flow-item>
+      <calcite-flow-item>
+      </calcite-flow-item>
+      <calcite-flow-item>
+      </calcite-flow-item>
+    </calcite-flow>
+    `);
   });
 });
