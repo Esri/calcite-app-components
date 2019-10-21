@@ -112,27 +112,23 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    const hasHeaderLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
-
-    return hasHeaderLeadingContent ? (
+    return (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
-    ) : null;
+    );
   }
 
   renderHeaderContent(): VNode {
-    const hasHeaderContent = this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
-
-    return hasHeaderContent ? (
+    return (
       <div key="header-content" class={CSS.headerContent}>
         <slot name={SLOTS.headerContent} />
       </div>
-    ) : null;
+    );
   }
 
   renderHeaderTrailingContent(): VNode {
-    const { dismiss, dismissible, el, textClose } = this;
+    const { dismiss, dismissible, textClose } = this;
 
     const dismissibleNode = dismissible ? (
       <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
@@ -141,14 +137,13 @@ export class CalcitePanel {
     ) : null;
 
     const slotNode = <slot name={SLOTS.headerTrailingContent} />;
-    const hasContent = dismissible || el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
 
-    return hasContent ? (
+    return (
       <div key="header-trailing-content" class={CSS.headerTrailingContent}>
         {slotNode}
         {dismissibleNode}
       </div>
-    ) : null;
+    );
   }
 
   renderHeader(): VNode {
