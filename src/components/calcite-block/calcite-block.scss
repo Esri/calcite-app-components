@@ -21,6 +21,8 @@ calcite-loader[inline] {
 }
 
 .header {
+  color: var(--calcite-app-foreground);
+  fill: var(--calcite-app-foreground);
   flex-grow: 1;
 }
 
@@ -45,6 +47,8 @@ calcite-loader[inline] {
   margin: 0;
   text-align: unset;
   width: 100%;
+  color: var(--calcite-app-foreground);
+  fill: var(--calcite-app-foreground);
 }
 
 .toggle-icon {
