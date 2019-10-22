@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
-import { defaults, hidden, renders } from "../../tests/commonTests";
+import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-block", () => {
   it("renders", async () => renders("calcite-block"));
@@ -18,6 +18,14 @@ describe("calcite-block", () => {
         defaultValue: false
       }
     ]));
+
+  it("is accessible", async () =>
+    accessible(`
+    <calcite-block heading="heading" summary="summary" open collapsible>
+      <div>content</div>
+      <label slot="control">test <input placeholder="control"/></label>
+    </calcite-block>
+`));
 
   it("can display/hide content", async () => {
     const page = await newE2EPage();
