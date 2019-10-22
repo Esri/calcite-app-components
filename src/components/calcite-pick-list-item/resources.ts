@@ -1,8 +1,9 @@
 export const CSS = {
+  action: "action",
+  description: "description",
+  handle: "handle",
+  highlight: "highlight",
   label: "label",
   title: "title",
-  description: "description",
-  action: "action",
-  highlight: "highlight",
-  handle: "handle"
+  textContainer: "textContainer"
 };
