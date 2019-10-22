@@ -8,16 +8,17 @@ See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos
 
 ## Properties
 
-| Property       | Attribute       | Description                                                        | Type                | Default         |
-| -------------- | --------------- | ------------------------------------------------------------------ | ------------------- | --------------- |
-| `collapsible`  | `collapsible`   | When true, this block will be collapsible.                         | `boolean`           | `false`         |
-| `heading`      | `heading`       | Block heading.                                                     | `string`            | `undefined`     |
-| `loading`      | `loading`       | When true, content is waiting to be loaded. Show a busy indicator. | `boolean`           | `false`         |
-| `open`         | `open`          | When true, the block's content will be displayed.                  | `boolean`           | `false`         |
-| `summary`      | `summary`       | Block summary.                                                     | `string`            | `undefined`     |
-| `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.                         | `string`            | `TEXT.collapse` |
-| `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.                        | `string`            | `TEXT.expand`   |
-| `theme`        | `theme`         | Used to set the component's color scheme.                          | `"dark" \| "light"` | `undefined`     |
+| Property       | Attribute       | Description                                                                                         | Type                | Default         |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------- | ------------------- | --------------- |
+| `collapsible`  | `collapsible`   | When true, this block will be collapsible.                                                          | `boolean`           | `false`         |
+| `disabled`     | `disabled`      | When true, the content of this block and any control in its header is not available for interacion. | `boolean`           | `false`         |
+| `heading`      | `heading`       | Block heading.                                                                                      | `string`            | `undefined`     |
+| `loading`      | `loading`       | When true, content is waiting to be loaded. Show a busy indicator.                                  | `boolean`           | `false`         |
+| `open`         | `open`          | When true, the block's content will be displayed.                                                   | `boolean`           | `false`         |
+| `summary`      | `summary`       | Block summary.                                                                                      | `string`            | `undefined`     |
+| `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.                                                          | `string`            | `TEXT.collapse` |
+| `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.                                                         | `string`            | `TEXT.expand`   |
+| `theme`        | `theme`         | Used to set the component's color scheme.                                                           | `"dark" \| "light"` | `undefined`     |
 
 ## Events
 

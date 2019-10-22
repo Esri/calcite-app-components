@@ -32,7 +32,7 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
-   * Disabled is used to prevent interaction.
+   * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
 
@@ -47,7 +47,7 @@ export class CalciteValueList {
   @Prop({ reflect: true }) filterEnabled = false;
 
   /**
-   * When true, content is waiting to be loaded. Show a busy indicator.
+   * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
 

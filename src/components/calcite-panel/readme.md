@@ -8,8 +8,10 @@ The `calcite-panel` component is a container that for a header, content and opti
 
 | Property      | Attribute     | Description                                                                                               | Type                | Default      |
 | ------------- | ------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ------------ |
+| `disabled`    | `disabled`    | Disabled is used to prevent interaction.                                                                  | `boolean`           | `false`      |
 | `dismissed`   | `dismissed`   | Hides the panel.                                                                                          | `boolean`           | `false`      |
 | `dismissible` | `dismissible` | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`      |
+| `loading`     | `loading`     | When true, content is waiting to be loaded. Show a busy indicator.                                        | `boolean`           | `false`      |
 | `textClose`   | `text-close`  | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `TEXT.close` |
 | `theme`       | `theme`       | Used to set the component's color scheme.                                                                 | `"dark" \| "light"` | `undefined`  |
 

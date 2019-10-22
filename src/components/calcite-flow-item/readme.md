@@ -10,6 +10,7 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 | Property         | Attribute          | Description                                                        | Type                | Default      |
 | ---------------- | ------------------ | ------------------------------------------------------------------ | ------------------- | ------------ |
+| `disabled`       | `disabled`         | Disabled is used to prevent interaction.                           | `boolean`           | `false`      |
 | `heading`        | `heading`          | Heading text.                                                      | `string`            | `undefined`  |
 | `loading`        | `loading`          | When true, content is waiting to be loaded. Show a busy indicator. | `boolean`           | `false`      |
 | `menuOpen`       | `menu-open`        | Opens the action menu.                                             | `boolean`           | `false`      |
