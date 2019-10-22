@@ -46,6 +46,7 @@ slot[name="header-content"]::slotted(.heading) {
 }
 
 .content-container {
+  background-color: var(--calcite-app-background-content);
   flex: 1;
   background-color: var(--calcite-app-background-content);
   overflow: auto;

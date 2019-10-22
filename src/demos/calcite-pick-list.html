@@ -36,6 +36,9 @@
         </div>
       
           <calcite-pick-list id="one" multiple filter-enabled>
+              <calcite-action slot="menu-actions" indicator label="Cool" text="Cool"
+              ><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z"/></svg>
+            </calcite-action>
             <calcite-pick-list-item text-label="2018 Population Density (NO SUMMARY) (Esri)" value="POPDENS_CY">
               <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
                 <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -407,13 +410,13 @@
         </script>
       </main>
       <script>
-          function toggleProperty(property) {
-            const blocks = document.getElementsByTagName("calcite-pick-list");
-            for (i = 0; i < blocks.length; i++) {
-              blocks[i].toggleAttribute(property);
-            }
+        function toggleProperty(property) {
+          const blocks = document.getElementsByTagName("calcite-pick-list");
+          for (i = 0; i < blocks.length; i++) {
+            blocks[i].toggleAttribute(property);
           }
-        </script>
+        }
+      </script>
     </section>
   </body>
 </html>
