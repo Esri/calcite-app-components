@@ -1,11 +1,13 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe.skip("calcite-example", () => {
   it("renders", async () => renders("calcite-example"));
 
   it("honors hidden attribute", async () => hidden("calcite-example"));
+
+  it("is accessible", async () => accessible("calcite-example"));
 
   it("shows myString by default", async () => {
     const page = await newE2EPage();
