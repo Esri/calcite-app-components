@@ -21,17 +21,28 @@
 .header {
   align-items: center;
   display: flex;
-  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
-  justify-content: flex-start;
+  justify-content: space-between;
   position: relative;
   z-index: 2;
   border-bottom: 1px solid var(--calcite-app-border);
-  justify-content: flex-start;
+  width: 100%;
 }
 
 .header-content {
-  flex: 1;
-  text-align: center;
+  overflow: hidden;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing);
+}
+
+slot[name="header-content"]::slotted(.heading) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.header-leading-content,
+.header-trailing-content {
+  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 .content-container {
