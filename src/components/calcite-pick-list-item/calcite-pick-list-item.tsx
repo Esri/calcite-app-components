@@ -11,10 +11,8 @@ import {
   h
 } from "@stencil/core";
 import { checkSquare16, circle16, circleFilled16, drag16, square16 } from "@esri/calcite-ui-icons";
-import classnames from "classnames";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
-import { CSS_UTILITY } from "../utils/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
