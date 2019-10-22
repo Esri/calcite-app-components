@@ -99,9 +99,6 @@ export class CalcitePickListItem {
   /**
    * Emitted whenever the item is selected or unselected.
    * @event calciteListItemChange
-   * @type {object}
-   * @property {string} value - The value of the item
-   * @property {boolean} selected - True if the event was selected. False if deselected.
    */
   @Event() calciteListItemChange: EventEmitter;
 
