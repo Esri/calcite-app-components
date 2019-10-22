@@ -205,7 +205,7 @@ export class CalcitePickListItem {
           onKeyDown={this.pickListKeyDownHandler}
           role="checkbox"
           aria-checked={this.isSelected}
-          tabindex="0"
+          tabIndex={0}
         >
           {this.renderIcon()}
           <div class={CSS.textContainer}>
