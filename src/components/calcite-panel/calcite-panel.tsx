@@ -7,6 +7,7 @@ import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteTheme } from "../interfaces";
 import CalciteIcon from "../utils/CalciteIcon";
 import { x16 } from "@esri/calcite-ui-icons";
+import CalciteScrim from "../utils/CalciteScrim";
 
 const SLOTS = {
   headerContent: "header-content",
@@ -44,9 +45,19 @@ export class CalcitePanel {
   }
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Displays a close button in the trailing side of the header.
    */
   @Prop({ reflect: true }) dismissible = false;
+
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
@@ -101,27 +112,23 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    const hasHeaderLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
-
-    return hasHeaderLeadingContent ? (
+    return (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
-    ) : null;
+    );
   }
 
   renderHeaderContent(): VNode {
-    const hasHeaderContent = this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
-
-    return hasHeaderContent ? (
+    return (
       <div key="header-content" class={CSS.headerContent}>
         <slot name={SLOTS.headerContent} />
       </div>
-    ) : null;
+    );
   }
 
   renderHeaderTrailingContent(): VNode {
-    const { dismiss, dismissible, el, textClose } = this;
+    const { dismiss, dismissible, textClose } = this;
 
     const dismissibleNode = dismissible ? (
       <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
@@ -130,14 +137,13 @@ export class CalcitePanel {
     ) : null;
 
     const slotNode = <slot name={SLOTS.headerTrailingContent} />;
-    const hasContent = dismissible || el.querySelector(`[slot=${SLOTS.headerTrailingContent}]`);
 
-    return hasContent ? (
+    return (
       <div key="header-trailing-content" class={CSS.headerTrailingContent}>
         {slotNode}
         {dismissibleNode}
       </div>
-    ) : null;
+    );
   }
 
   renderHeader(): VNode {
@@ -177,14 +183,21 @@ export class CalcitePanel {
     );
   }
 
+  renderScrim(): VNode {
+    return this.loading || this.disabled ? (
+      <CalciteScrim loading={this.loading}></CalciteScrim>
+    ) : null;
+  }
+
   render() {
-    const { dismissed, dismissible, el, panelKeyUpHandler } = this;
+    const { dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
     return (
       <Host>
         <article
+          aria-busy={loading}
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}
@@ -196,6 +209,7 @@ export class CalcitePanel {
           {this.renderContent()}
           {this.renderFooter()}
         </article>
+        {this.renderScrim()}
       </Host>
     );
   }

@@ -28,6 +28,11 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Heading text.
    */
   @Prop() heading: string;
@@ -178,7 +183,7 @@ export class CalciteFlowItem {
 
   renderHeaderActions() {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const hasMenuActions = !!menuActionsNode;
+    const hasMenuActions = !!menuActionsNode && menuActionsNode.parentElement === this.el;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
     const menuActionsNodes =
@@ -198,7 +203,7 @@ export class CalciteFlowItem {
 
     return (
       <Host>
-        <calcite-panel>
+        <calcite-panel loading={this.loading} disabled={this.disabled}>
           {this.renderBackButton(rtl)}
           <h2 class={CSS.heading} slot="header-content">
             {heading}
