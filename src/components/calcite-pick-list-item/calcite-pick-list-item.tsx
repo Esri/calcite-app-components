@@ -138,9 +138,6 @@ export class CalcitePickListItem {
   };
 
   pickListKeyDownHandler = (event: KeyboardEvent): void => {
-    if ((event.target as HTMLElement).matches('[slot="secondaryAction"]')) {
-      return;
-    }
     if (event.key === " ") {
       event.preventDefault();
       this.isSelected = !this.isSelected;
@@ -201,14 +198,15 @@ export class CalcitePickListItem {
     ) : null;
 
     return (
-      <Host
-        selected={this.isSelected}
-        onKeydown={this.pickListKeyDownHandler}
-        role="checkbox"
-        aria-checked={this.isSelected}
-        tabindex="0"
-      >
-        <label class={CSS.label} onClick={this.pickListClickHandler}>
+      <Host selected={this.isSelected}>
+        <label
+          class={CSS.label}
+          onClick={this.pickListClickHandler}
+          onKeyDown={this.pickListKeyDownHandler}
+          role="checkbox"
+          aria-checked={this.isSelected}
+          tabindex="0"
+        >
           {this.renderIcon()}
           <div class={CSS.textContainer}>
             <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
