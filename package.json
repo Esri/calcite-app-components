@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@esri/calcite-components": "1.0.0-beta.11",
-    "@stencil/core": "1.7.3",
+    "@stencil/core": "1.6.1",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.0.1",
     "@stencil/state-tunnel": "1.0.1",
