@@ -99,9 +99,6 @@ export class CalcitePickListItem {
   /**
    * Emitted whenever the item is selected or unselected.
    * @event calciteListItemChange
-   * @type {object}
-   * @property {string} value - The value of the item
-   * @property {boolean} selected - True if the event was selected. False if deselected.
    */
   @Event() calciteListItemChange: EventEmitter;
 
@@ -144,7 +141,7 @@ export class CalcitePickListItem {
     if (event.key === " ") {
       event.preventDefault();
       this.isSelected = !this.isSelected;
-      this.emitChangeEvent(event.shiftKey);
+      this.emitChangeEvent(false);
     }
   };
 
@@ -201,18 +198,20 @@ export class CalcitePickListItem {
     ) : null;
 
     return (
-      <Host
-        onClick={this.pickListClickHandler}
-        onKeydown={this.pickListKeyDownHandler}
-        selected={this.isSelected}
-        role="checkbox"
-        aria-checked={this.isSelected}
-        tabindex="0"
-      >
-        {this.renderIcon()}
-        <label class={CSS.label}>
-          <span class={CSS.title}>{this.textLabel || this.textHeading}</span>
-          {description}
+      <Host selected={this.isSelected}>
+        <label
+          class={CSS.label}
+          onClick={this.pickListClickHandler}
+          onKeyDown={this.pickListKeyDownHandler}
+          role="checkbox"
+          aria-checked={this.isSelected}
+          tabIndex={0}
+        >
+          {this.renderIcon()}
+          <div class={CSS.textContainer}>
+            <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
+            {description}
+          </div>
         </label>
         <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
           <slot name="secondaryAction" />
