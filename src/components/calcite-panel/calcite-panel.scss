@@ -21,22 +21,33 @@
 .header {
   align-items: center;
   display: flex;
-  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
+  // padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
   justify-content: flex-start;
   position: relative;
   z-index: 2;
   border-bottom: 1px solid var(--calcite-app-border);
-  justify-content: flex-start;
+  width: 100%;
 }
 
 .header-content {
-  flex: 1;
-  text-align: center;
+  margin-right: auto;
+  overflow: hidden;
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
+
+  // flex: 1;
+  // text-align: center;
+}
+
+slot[name="header-content"] {
+}
+
+.header-trailing-content {
+  // justify-self: flex-end;
 }
 
 .content-container {
   flex: 1;
-  background-color: var(--calcite-app-background-content);
+  // background-color: var(--calcite-app-background-content);
   padding: var(--calcite-app-cap-spacing-half) 0;
   overflow: auto;
 }
