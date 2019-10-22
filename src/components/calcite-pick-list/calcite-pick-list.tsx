@@ -11,6 +11,8 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
+import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import CalciteScrim from "../utils/CalciteScrim";
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -26,6 +28,10 @@ export class CalcitePickList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+  /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * @deprecated Prop is ignored. Prop will be removed in a future release.
@@ -47,10 +53,10 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
   /**
-   * Multiple Works similar to standard radio buttons and checkboxes.
+   * Multiple works like conventional checkboxes and radio buttons.
    * When true, a user can select multiple items at a time.
-   * When false, only a single item can be selected at a time,
-   * When false, selecting a new item will deselect any other selected items.
+   * When false, only a single item can be selected at a time
+   * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
 
@@ -61,7 +67,6 @@ export class CalcitePickList {
   @Prop({ reflect: true }) compact = false;
 
   /**
-   * DEPRECATED: No longer rendered. Prop will be removed in a future release.
    * @deprecated No longer rendered. Prop will be removed in a future release.
    */
   @Prop({ reflect: true }) textHeading: string;
@@ -120,8 +125,8 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   /**
-   * @event calciteListChange
    * Emitted when any of the item selections have changed.
+   * @event calciteListChange
    * @type {Map<string, object>}
    * @property {string} key - the value of the selected item
    * @property {HTMLElement} value - An HTML DOM reference to the selected element.
@@ -249,9 +254,16 @@ export class CalcitePickList {
     return type;
   }
 
+  renderScrim(): VNode {
+    return this.loading || this.disabled ? (
+      <CalciteScrim loading={this.loading}></CalciteScrim>
+    ) : null;
+  }
+
   render() {
+    const { disabled, loading } = this;
     return (
-      <Host>
+      <Host aria-disabled={disabled} aria-busy={loading}>
         <header>
           {this.filterEnabled ? (
             <calcite-filter
@@ -264,6 +276,7 @@ export class CalcitePickList {
           <slot name="menu-actions" />
         </header>
         <slot />
+        {this.renderScrim()}
       </Host>
     );
   }

@@ -28,8 +28,14 @@
 
         <h1>Block</h1>
 
-        <p>see the <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-block/readme.md">calcite-block readme.</a></p>
-
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-block/readme.md"
+            >calcite-block readme.</a
+          >
+        </p>
+        <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
+        <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
         <h2>Simple header only (non-collapsible - default)</h2>
 
         <calcite-block heading="Heading" summary="summary"></calcite-block>
@@ -42,21 +48,91 @@
 
         <h2>Header + content (collapsible)</h2>
 
-        <calcite-block heading="Heading" summary="summary" open collapsible>
-          <img alt="demo" src="https://placeimg.com/640/480/tech" />
+        <calcite-block heading="All the king's buff horses couldn't fix the turbo." summary="summary" open collapsible>
+          <calcite-value-list id="one" multiple>
+            <calcite-value-list-item
+              text-label="2018 Population Density (Esri)"
+              text-description="{POPDENS_CY}"
+              value="POPDENS_CY"
+            >
+              <calcite-action
+                slot="secondaryAction"
+                id="action-test"
+                label="click-me"
+                onClick="console.log('clicked');"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                  <path
+                    d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                  />
+                </svg>
+              </calcite-action>
+            </calcite-value-list-item>
+            <calcite-value-list-item
+              text-label="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
+              text-description="{POPDENS_CY}"
+              value="POPDENS_CY2"
+            >
+              <calcite-action
+                slot="secondaryAction"
+                id="action-test"
+                label="click-me"
+                onClick="console.log('clicked');"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                  <path
+                    d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                  />
+                </svg>
+              </calcite-action>
+            </calcite-value-list-item>
+            <calcite-value-list-item
+              text-label="2018 Total Households (Esri)"
+              text-description="{TOTHH_CY}"
+              value="TOTHH_CY"
+            >
+              <calcite-action
+                slot="secondaryAction"
+                id="action-test"
+                label="click-me"
+                onClick="console.log('clicked');"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                  <path
+                    d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+                  />
+                </svg>
+              </calcite-action>
+            </calcite-value-list-item>
+          </calcite-value-list>
 
           <calcite-block-section text="Section 1" open>
-            <img alt="demo" src="https://placeimg.com/640/480/people" />
+            <calcite-action label="click-me" text="hello world" text-display="visible"
+              ><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path
+                  d="M14 0H1a1.001 1.001 0 0 0-1 1v11a1.001 1.001 0 0 0 1 1h4.672L7.5 15.828 9.328 13H14a1.001 1.001 0 0 0 1-1V1a1.001 1.001 0 0 0-1-1zm0 12H8.784L7.5 13.986 6.216 12H1V1h13zm-2-4.872V5.872l-1.369-.53q-.056-.152-.126-.296l.601-1.308-.867-.86-1.343.592q-.146-.067-.299-.12L8.098 2H6.876l-.53 1.373q-.152.056-.296.126l-1.308-.601-.86.867.592 1.343q-.067.146-.12.299l-1.35.499v1.188l1.35.5q.053.152.12.298l-.593 1.343.86.867 1.31-.601q.143.07.295.126L6.876 11h1.222l.5-1.35q.152-.053.298-.12l1.343.593.867-.86-.601-1.309q.07-.144.126-.296zm-1.698 1.99l-.206.203-.98-.493a2.818 2.818 0 0 1-1.1.459l-.386 1.046h-.29l-.344-1.044a2.818 2.818 0 0 1-1.1-.453l-1.013.466-.204-.205.493-.981a2.819 2.819 0 0 1-.459-1.097L3.67 6.63v-.26l1.044-.388a2.819 2.819 0 0 1 .459-1.098l-.493-.981.204-.205 1.013.466a2.817 2.817 0 0 1 1.1-.453l.345-1.044h.289l.386 1.046a2.818 2.818 0 0 1 1.1.459l.98-.493.206.203-.466 1.014a2.819 2.819 0 0 1 .453 1.1l1.042.346v.316l-1.042.346a2.82 2.82 0 0 1-.453 1.1zM8 5h-.999l-1 1v.999l1 1H8l1-1V6zm0 2H7V6h1z"
+                />
+              </svg>
+            </calcite-action>
+            <calcite-action label="click-me" text="hello world" text-display="visible"
+              ><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path
+                  d="M14 0H1a1.001 1.001 0 0 0-1 1v11a1.001 1.001 0 0 0 1 1h4.672L7.5 15.828 9.328 13H14a1.001 1.001 0 0 0 1-1V1a1.001 1.001 0 0 0-1-1zm0 12H8.784L7.5 13.986 6.216 12H1V1h13zm-2-4.872V5.872l-1.369-.53q-.056-.152-.126-.296l.601-1.308-.867-.86-1.343.592q-.146-.067-.299-.12L8.098 2H6.876l-.53 1.373q-.152.056-.296.126l-1.308-.601-.86.867.592 1.343q-.067.146-.12.299l-1.35.499v1.188l1.35.5q.053.152.12.298l-.593 1.343.86.867 1.31-.601q.143.07.295.126L6.876 11h1.222l.5-1.35q.152-.053.298-.12l1.343.593.867-.86-.601-1.309q.07-.144.126-.296zm-1.698 1.99l-.206.203-.98-.493a2.818 2.818 0 0 1-1.1.459l-.386 1.046h-.29l-.344-1.044a2.818 2.818 0 0 1-1.1-.453l-1.013.466-.204-.205.493-.981a2.819 2.819 0 0 1-.459-1.097L3.67 6.63v-.26l1.044-.388a2.819 2.819 0 0 1 .459-1.098l-.493-.981.204-.205 1.013.466a2.817 2.817 0 0 1 1.1-.453l.345-1.044h.289l.386 1.046a2.818 2.818 0 0 1 1.1.459l.98-.493.206.203-.466 1.014a2.819 2.819 0 0 1 .453 1.1l1.042.346v.316l-1.042.346a2.82 2.82 0 0 1-.453 1.1zM8 5h-.999l-1 1v.999l1 1H8l1-1V6zm0 2H7V6h1z"
+                />
+              </svg>
+            </calcite-action>
           </calcite-block-section>
 
           <calcite-block-section text="Section 2 (toggle switch)" open toggle-display="switch">
             <label>
               <input type="checkbox" name="check-please" />
-              Check-ch-check-check-check-ch-check it out</label
-            >
+              Check-ch-check-check-check-ch-check it out
+            </label>
+            <label>
+              Name
+              <input type="text" />
+            </label>
           </calcite-block-section>
-
-          <img alt="demo" src="https://placeimg.com/640/480/arch" />
         </calcite-block>
 
         <h2>RTL</h2>
@@ -72,5 +148,14 @@
         </calcite-block>
       </section>
     </main>
+    <script>
+      function toggleProperty(property) {
+        const blocks = document.getElementsByTagName("calcite-block");
+
+        for (i = 0; i < blocks.length; i++) {
+          blocks[i].toggleAttribute(property);
+        }
+      }
+    </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-action", () => {
   it("renders", async () => renders("calcite-action"));
@@ -86,5 +86,11 @@ describe("calcite-action", () => {
     const button = await page.find("calcite-action >>> .button");
 
     expect(button).toHaveAttribute("disabled");
+  });
+
+  it("should be accessible", async () => {
+    accessible(`<calcite-action text="hello world" label="hi"></calcite-action>`);
+
+    accessible(`<calcite-action text="hello world" label="hi" disabled text-display="visible"></calcite-action>`);
   });
 });
