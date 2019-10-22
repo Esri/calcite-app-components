@@ -28,8 +28,7 @@ export class CalciteBlock {
   @Prop() collapsible = false;
 
   /**
-   * When true, the content of this block and any control in its header
-   * is not available for interacion.
+   * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
 
@@ -48,7 +47,7 @@ export class CalciteBlock {
   open = false;
 
   /**
-   * When true, content is waiting to be loaded. Show a busy indicator.
+   * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
 

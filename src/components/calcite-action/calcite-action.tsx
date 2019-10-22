@@ -32,7 +32,7 @@ export class CalciteAction {
   @Prop({ reflect: true }) compact = false;
 
   /**
-   * Disabled is used to prevent the action from occurring.
+   * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
 
@@ -47,7 +47,7 @@ export class CalciteAction {
   @Prop() label: string;
 
   /**
-   * When true, content is waiting to be loaded. Show a busy indicator.
+   * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
 
