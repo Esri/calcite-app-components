@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Demos - PickList</title>
     <script src="head.js"></script>
+    <style>
+      .toggles {
+        margin: 1rem 0;
+      }
+      calcite-pick-list {
+        margin-bottom: 1rem;
+      }
+    </style>
   </head>
   <body>
     <calcite-demo-nav page-id="calcite-pick-list"></calcite-demo-nav>
+    <div class="toggles">
+      <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
+      <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
+    </div>
     <section class="example-container" style="width: 28vw; margin-top: 2em;">
       <calcite-pick-list id="one" multiple filter-enabled>
         <calcite-pick-list-item text-label="2018 Population Density (NO SUMMARY) (Esri)" value="POPDENS_CY">
@@ -18,7 +30,7 @@
           </calcite-action>
         </calcite-pick-list-item>
         <script>
-          document.currentScript.previousElementSibling.metadata = {"category":"first", "tags":["density"]};
+          document.currentScript.previousElementSibling.metadata = { category: "first", tags: ["density"] };
         </script>
         <calcite-pick-list-item
           text-label="2018 Population Density (Pop per Square Mile) (Esri) [updated 2019-09-18]"
@@ -32,13 +44,9 @@
           </calcite-action>
         </calcite-pick-list-item>
         <script>
-          document.currentScript.previousElementSibling.metadata = {"category":"population", "tags":["square", "mile"]};
+          document.currentScript.previousElementSibling.metadata = { category: "population", tags: ["square", "mile"] };
         </script>
-        <calcite-pick-list-item
-          text-label="2018 Total Households (Esri)"
-          text-description="TOTHH_CY"
-          value="TOTHH_CY"
-        >
+        <calcite-pick-list-item text-label="2018 Total Households (Esri)" text-description="TOTHH_CY" value="TOTHH_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="7" cy="7" r="7" fill="#f689d8" />
@@ -79,7 +87,11 @@
       </script>
 
       <calcite-pick-list id="two">
-        <calcite-pick-list-item text-label="ID" text-description="This is an id for this field and people use it for things." value="ID">
+        <calcite-pick-list-item
+          text-label="ID"
+          text-description="This is an id for this field and people use it for things."
+          value="ID"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -89,7 +101,7 @@
           </calcite-action>
         </calcite-pick-list-item>
         <script>
-          document.currentScript.previousElementSibling.metadata = {"category":"id", "tags":["field"]};
+          document.currentScript.previousElementSibling.metadata = { category: "id", tags: ["field"] };
         </script>
         <calcite-pick-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -119,7 +131,11 @@
 
       <h4>Compact</h4>
       <calcite-pick-list id="compact" compact>
-        <calcite-pick-list-item text-heading="ID" text-description="This is an id for this field and people use it for things." value="ID">
+        <calcite-pick-list-item
+          text-heading="ID"
+          text-description="This is an id for this field and people use it for things."
+          value="ID"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -238,11 +254,7 @@
             </svg>
           </calcite-action>
         </calcite-pick-list-item>
-        <calcite-pick-list-item
-          text-label="2018 Total Households (Esri)"
-          text-description="TOTHH_CY"
-          value="TOTHH_CY"
-        >
+        <calcite-pick-list-item text-label="2018 Total Households (Esri)" text-description="TOTHH_CY" value="TOTHH_CY">
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <circle cx="7" cy="7" r="7" fill="#f689d8" />
@@ -280,7 +292,11 @@
       </script>
 
       <calcite-pick-list id="two_rtl">
-        <calcite-pick-list-item text-label="ID" text-description="This is an id for this field and people use it for things." value="ID">
+        <calcite-pick-list-item
+          text-label="ID"
+          text-description="This is an id for this field and people use it for things."
+          value="ID"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -375,7 +391,14 @@
           console.log(event.detail);
         });
       </script>
+      <script>
+          function toggleProperty(property) {
+            const blocks = document.getElementsByTagName("calcite-pick-list");
+            for (i = 0; i < blocks.length; i++) {
+              blocks[i].toggleAttribute(property);
+            }
+          }
+        </script>
     </section>
-
   </body>
 </html>
