@@ -4,6 +4,7 @@
   display: flex;
   flex-flow: column;
   padding: 0 var(--calcite-app-side-spacing-half);
+  position: relative;
 }
 
 header {
