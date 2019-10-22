@@ -45,7 +45,7 @@ export class CalcitePanel {
   }
 
   /**
-   * Disabled is used to prevent interaction.
+   * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
 
@@ -55,7 +55,7 @@ export class CalcitePanel {
   @Prop({ reflect: true }) dismissible = false;
 
   /**
-   * When true, content is waiting to be loaded. Show a busy indicator.
+   * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
 
