@@ -1,8 +1,10 @@
 :host {
   align-items: stretch;
+  background-color: var(--calcite-app-background-clear);
   display: flex;
   flex-flow: column;
   padding-bottom: var(--calcite-app-cap-spacing-half);
+  position: relative;
 }
 
 header {
@@ -12,4 +14,8 @@ header {
 calcite-filter {
   margin-bottom: var(--calcite-app-cap-spacing-half);
   @include borderShadow();
+}
+
+:host([loading][disabled]) {
+  min-height: 2rem;
 }

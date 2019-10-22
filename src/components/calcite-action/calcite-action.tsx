@@ -47,6 +47,11 @@ export class CalciteAction {
   @Prop() label: string;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Text that accompanies the action icon.
    */
   @Prop() text: string;
@@ -81,11 +86,11 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   render() {
-    const { compact, disabled, el, textEnabled, textDisplay, label, text } = this;
+    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
 
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        <slot />
+        {!loading ? <slot /> : <calcite-loader is-active inline></calcite-loader>}
       </div>
     );
 
@@ -116,6 +121,8 @@ export class CalciteAction {
           title={labelFallback}
           aria-label={labelFallback}
           disabled={disabled}
+          aria-disabled={disabled}
+          aria-busy={loading}
         >
           {iconContainerNode}
           {textContainerNode}

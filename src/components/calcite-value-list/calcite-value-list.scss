@@ -1,9 +1,10 @@
 :host {
   align-items: stretch;
-  background-color: transparent;
+  background-color: var(--calcite-app-background-clear);
   display: flex;
   flex-flow: column;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  padding: 0 var(--calcite-app-side-spacing-half);
+  position: relative;
 }
 
 header {

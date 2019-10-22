@@ -25,12 +25,14 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-foreground-link: #{$blue};
 
   --calcite-app-background-content: #{$lightest-gray};
+  --calcite-app-background-clear: transparent;
 
   --calcite-app-border: #{$lighter-gray};
   --calcite-app-border-subtle: #{$lightest-gray};
   --calcite-app-border-active: #{$blue};
 
   --calcite-app-disabled-opacity: 0.25;
+  --calcite-app-scrim: #{rgba($white, 0.8)};
 }
 
 @mixin calciteDarkThemeVars {
@@ -49,6 +51,8 @@ $vibrant-blue: $v-bb-120;
 
   --calcite-app-border: #{$darkest-gray};
   --calcite-app-border-subtle: #{$darkest-gray};
+
+  --calcite-app-scrim: #{rgba($darker-gray, 0.8)};
 }
 
 :root {

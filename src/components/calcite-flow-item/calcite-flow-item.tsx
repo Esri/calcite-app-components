@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 
-import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
+import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
 
 import { getElementDir } from "../utils/dom";
 
@@ -28,9 +28,19 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Heading text.
    */
   @Prop() heading: string;
+
+  /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * Opens the action menu.
@@ -105,7 +115,7 @@ export class CalciteFlowItem {
   renderBackButton(rtl: boolean) {
     const { showBackButton, textBack, backButtonClick } = this;
 
-    const path = rtl ? chevronRight16 : chevronLeft16;
+    const path = rtl ? chevronRight16F : chevronLeft16F;
 
     return showBackButton ? (
       <calcite-action
@@ -151,11 +161,7 @@ export class CalciteFlowItem {
   renderFooterActions() {
     const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
 
-    return hasFooterActions ? (
-      <div slot="footer">
-        <slot name="footer-actions" />
-      </div>
-    ) : null;
+    return hasFooterActions ? <slot slot="footer" name="footer-actions" /> : null;
   }
 
   renderSingleActionContainer() {
@@ -177,7 +183,7 @@ export class CalciteFlowItem {
 
   renderHeaderActions() {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const hasMenuActions = !!menuActionsNode;
+    const hasMenuActions = !!menuActionsNode && menuActionsNode.parentElement === this.el;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
     const menuActionsNodes =
@@ -197,7 +203,7 @@ export class CalciteFlowItem {
 
     return (
       <Host>
-        <calcite-panel>
+        <calcite-panel loading={this.loading} disabled={this.disabled}>
           {this.renderBackButton(rtl)}
           <h2 class={CSS.heading} slot="header-content">
             {heading}

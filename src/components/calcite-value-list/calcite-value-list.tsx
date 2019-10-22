@@ -13,7 +13,12 @@ import {
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
+import { VNode } from "@stencil/core/dist/declarations";
+import CalciteScrim from "../utils/CalciteScrim";
 
+/**
+ * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
+ */
 @Component({
   tag: "calcite-value-list",
   styleUrl: "./calcite-value-list.scss",
@@ -27,6 +32,11 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
+   * Disabled is used to prevent interaction.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * When true, the items will be sortable via drag and drop.
    */
   @Prop({ reflect: true }) dragEnabled = false;
@@ -37,10 +47,15 @@ export class CalciteValueList {
   @Prop({ reflect: true }) filterEnabled = false;
 
   /**
+   * When true, content is waiting to be loaded. Show a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
-   * When false, only a single item can be selected at a time,
-   * When false, selecting a new item will deselect any other selected items.
+   * When false, only a single item can be selected at a time
+   * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
 
@@ -105,15 +120,19 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
-   * @event calciteListChange
    * Emitted when any of the item selections have changed.
+   * @event calciteListChange
    * @type {Map<string, object>}
    * @property {string} key - the value of the selected item
    * @property {HTMLElement} value - An HTML DOM reference to the selected element.
    */
   @Event() calciteListChange: EventEmitter;
 
-  @Event() calciteValueListOrderChange: EventEmitter;
+  /**
+   * Emmitted when the order of the list has changed.
+   * @event calciteListOrderChange
+   */
+  @Event() calciteListOrderChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
     const { selectedValues } = this;
@@ -171,7 +190,7 @@ export class CalciteValueList {
         onUpdate: () => {
           this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
           const values = this.items.map((item) => item.value);
-          this.calciteValueListOrderChange.emit(values);
+          this.calciteListOrderChange.emit(values);
         }
       })
     );
@@ -257,21 +276,31 @@ export class CalciteValueList {
     return type;
   }
 
+  renderScrim(): VNode {
+    return this.loading || this.disabled ? (
+      <CalciteScrim loading={this.loading}></CalciteScrim>
+    ) : null;
+  }
+
   render() {
+    const { dataForFilter, handleFilter, disabled, filterEnabled, loading } = this;
     return (
       <Host>
-        <header>
-          {this.filterEnabled ? (
-            <calcite-filter
-              data={this.dataForFilter}
-              textPlaceholder={TEXT.filterPlaceholder}
-              aria-label={TEXT.filterPlaceholder}
-              onCalciteFilterChange={this.handleFilter}
-            />
-          ) : null}
-          <slot name="action" />
-        </header>
-        <slot />
+        <div class={CSS.container} aria-busy={loading}>
+          <header>
+            {filterEnabled ? (
+              <calcite-filter
+                data={dataForFilter}
+                textPlaceholder={TEXT.filterPlaceholder}
+                aria-label={TEXT.filterPlaceholder}
+                onCalciteFilterChange={handleFilter}
+              />
+            ) : null}
+            <slot name="menu-actions" />
+          </header>
+          <slot />
+          {this.renderScrim()}
+        </div>
       </Host>
     );
   }

@@ -1,0 +1,1 @@
+var r;!function(r){r.circle="circle",r.square="square",r.grip="grip"}(r||(r={}));const e={filterPlaceholder:"Filter results"};export{r as I,e as T};

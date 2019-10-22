@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-shell", () => {
   it("renders", async () => renders("calcite-shell"));
@@ -36,5 +36,18 @@ describe("calcite-shell", () => {
     const header = await page.find(`calcite-shell >>> slot[name="shell-header"]`);
 
     expect(header).not.toBeNull();
+  });
+
+  it("should be accessible", async () => {
+    accessible(`
+    <calcite-shell>
+      <calcite-shell-panel slot="primary-panel" layout="leading">
+        <p>Primary Content</p>
+      </calcite-shell-panel>
+      <calcite-shell-panel slot="contextual-panel" layout="trailing">
+        <p>Primary Content</p>
+      </calcite-shell-panel>
+    </calcite-shell>
+    `);
   });
 });

@@ -1,5 +1,7 @@
 # calcite-value-list-item
 
+`calcite-value-list-items` are cards contained in a `calcite-value-list`. They each can have a label and description, an icon and have their label's be editable (inherited from `calcite-value-list`). The developer can disable or preselect each list item and give it a value.
+
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -11,14 +13,8 @@
 | `metadata`        | --                 | Used to provide additional metadata to an item, primarily used when the parent list has a filter. | `object`                                                    | `undefined` |
 | `selected`        | `selected`         | Set this to true to pre-select an item. Toggles when an item is checked/unchecked.                | `boolean`                                                   | `false`     |
 | `textDescription` | `text-description` | An optional description for this item. Will appear below the label text.                          | `string`                                                    | `undefined` |
-| `textHeading`     | `text-heading`     | The main label for this item. Appears next to the icon.                                           | `string`                                                    | `undefined` |
+| `textLabel`       | `text-label`       | The main label for this item. Appears next to the icon.                                           | `string`                                                    | `undefined` |
 | `value`           | `value`            | A unique value used to identify this item - similar to the value attribute on an <input>.         | `string`                                                    | `undefined` |
-
-## Events
-
-| Event                                | Description | Type               |
-| ------------------------------------ | ----------- | ------------------ |
-| `calciteValueListItemSelectedChange` |             | `CustomEvent<any>` |
 
 ## Methods
 

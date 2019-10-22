@@ -2,6 +2,7 @@
   display: flex;
   height: 100%;
   font-size: var(--calcite-app-base-font-size);
+  position: relative;
 }
 
 .container {
@@ -11,7 +12,6 @@
   margin: 0;
   display: flex;
   flex-flow: column;
-  position: relative;
 }
 
 .container[hidden] {
@@ -37,7 +37,7 @@
 .content-container {
   flex: 1;
   background-color: var(--calcite-app-background-content);
-  padding: 0;
+  padding: var(--calcite-app-cap-spacing-half) 0;
   overflow: auto;
 }
 

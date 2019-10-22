@@ -16,7 +16,6 @@ import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import { CSS_UTILITY } from "../utils/resources";
 import CalciteIcon from "../utils/CalciteIcon";
-import { getElementDir } from "../utils/dom";
 
 @Component({
   tag: "calcite-pick-list-item",
@@ -31,7 +30,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * When true, the item cannot be clicked and is visually muted
+   * When true, the item cannot be clicked and is visually muted.
    */
   @Prop({ reflect: true }) disabled = false;
 
@@ -50,6 +49,11 @@ export class CalcitePickListItem {
    */
   @Prop() selected = false;
 
+  /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
   @Watch("selected")
   selectedWatchHandler(newValue) {
     if (this.isSelected !== newValue) {
@@ -64,12 +68,12 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) textHeading: string;
 
   /**
-   * An optional description for this item. Will appear below the label text.
+   * An optional description for this item.  This will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
 
   /**
-   * The main label for this item. Appears next to the icon.
+   * The main label for this item. This will appear next to the icon.
    */
   @Prop({ reflect: true }) textLabel: string;
 
@@ -88,18 +92,6 @@ export class CalcitePickListItem {
 
   @State() isSelected = this.selected;
 
-  dir: "rtl" | "ltr";
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.dir = getElementDir(this.el);
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -107,8 +99,8 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Emitted whenever the item is selected or unselected.
    * @event calciteListItemChange
-   * Emitted whenever the item is selected or unselected
    * @type {object}
    * @property {string} value - The value of the item
    * @property {boolean} selected - True if the event was selected. False if deselected.
@@ -167,6 +159,7 @@ export class CalcitePickListItem {
 
   emitChangeEvent(shiftPressed = false) {
     this.calciteListItemChange.emit({
+      item: this.el,
       value: this.value,
       selected: this.isSelected,
       shiftPressed
@@ -181,7 +174,7 @@ export class CalcitePickListItem {
 
   renderIcon() {
     const { icon } = this;
-    if (!icon) {
+    if (!icon || this.compact) {
       return null;
     }
     if (icon === ICON_TYPES.grip) {
@@ -214,9 +207,6 @@ export class CalcitePickListItem {
 
     return (
       <Host
-        class={classnames({
-          [CSS_UTILITY.rtl]: this.dir === "rtl"
-        })}
         selected={this.isSelected}
         onKeydown={this.pickListKeyDownHandler}
         role="checkbox"

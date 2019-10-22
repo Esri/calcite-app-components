@@ -36,6 +36,8 @@ $animation-time: 250ms !default;
 
   --calcite-app-border-radius: 3px;
 
+  --calcite-app-header-min-height: 3rem;
+
   // shadows
   --calcite-app-shadow-0: 0 2px 4px rgba(0, 0, 0, 0.1);
   --calcite-app-shadow-1: #{$shadow-1};

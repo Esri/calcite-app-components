@@ -25,9 +25,11 @@ $vibrant-blue: $v-bb-120;
   --calcite-app-foreground-link: #{$blue};
 
   --calcite-app-background-content: #{$lightest-gray};
+  --calcite-app-background-clear: transparent;
 
   --calcite-app-border: #{$lighter-gray};
   --calcite-app-border-subtle: #{$lightest-gray};
+  --calcite-app-border-active: #{$blue};
 
   --calcite-app-disabled-opacity: 0.25;
 }

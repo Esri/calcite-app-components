@@ -4,6 +4,7 @@ $start-alpha: 0.5;
   display: flex;
   height: 100%;
   overflow: hidden;
+  position: relative;
 
   .frame {
     width: 100%;
@@ -43,4 +44,7 @@ $start-alpha: 0.5;
       transform: translate3d(0, 0, 0) scale(1);
     }
   }
+}
+
+:host([loading]) {
 }
