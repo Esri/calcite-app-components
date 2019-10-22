@@ -3,6 +3,7 @@
   background-color: var(--calcite-app-background-clear);
   display: flex;
   flex-flow: column;
+  margin-top: var(--calcite-app-cap-spacing-half);
   padding: 0 var(--calcite-app-side-spacing-half);
   position: relative;
 }

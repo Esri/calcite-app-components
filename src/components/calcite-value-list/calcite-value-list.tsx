@@ -122,9 +122,6 @@ export class CalciteValueList {
   /**
    * Emitted when any of the item selections have changed.
    * @event calciteListChange
-   * @type {Map<string, object>}
-   * @property {string} key - the value of the selected item
-   * @property {HTMLElement} value - An HTML DOM reference to the selected element.
    */
   @Event() calciteListChange: EventEmitter;
 
