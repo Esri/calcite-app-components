@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Demos - ValueList</title>
     <script src="head.js"></script>
+    <style>
+      .toggles {
+        margin: 1rem 0;
+      }
+    </style>
   </head>
   <body>
     <calcite-demo-nav page-id="calcite-value-list"></calcite-demo-nav>
+
+    <div class="toggles">
+      <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
+      <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
+    </div>
     <section class="example-container" style="width: 28vw; margin-top: 2em;">
       <h3>multiple</h3>
       <calcite-value-list id="one" multiple="true" filter-enabled>
         <calcite-value-list-item
-        text-label="2018 Population Density (Esri)"
-        text-description="{POPDENS_CY}"
-        value="POPDENS_CY">
+          text-label="2018 Population Density (Esri)"
+          text-description="{POPDENS_CY}"
+          value="POPDENS_CY"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -37,9 +48,10 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-label="2018 Total Households (Esri)"
-        text-description="{TOTHH_CY}"
-        value="TOTHH_CY">
+          text-label="2018 Total Households (Esri)"
+          text-description="{TOTHH_CY}"
+          value="TOTHH_CY"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -63,9 +75,10 @@
       <h3>label-editing-enabled & single select</h3>
       <calcite-value-list id="two" multiple label-editing-enabled="true">
         <calcite-value-list-item
-        text-label="2018 Generation Alpha Population (Born 2017 or Later) [updated 2019-09-18]"
-        text-description="GENALPHACY"
-        value="GENALPHACY">
+          text-label="2018 Generation Alpha Population (Born 2017 or Later) [updated 2019-09-18]"
+          text-description="GENALPHACY"
+          value="GENALPHACY"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -75,9 +88,10 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-label="2010-2018 Households: Annual Growth Rate (Esri)"
-        text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
-        value="HHGRW10CY">
+          text-label="2010-2018 Households: Annual Growth Rate (Esri)"
+          text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
+          value="HHGRW10CY"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -87,9 +101,10 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-label="2010-2018 Households: Annual Growth Rate (Esri)"
-        text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
-        value="HHGRW10CY2">
+          text-label="2010-2018 Households: Annual Growth Rate (Esri)"
+          text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
+          value="HHGRW10CY2"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -100,51 +115,45 @@
         </calcite-value-list-item>
       </calcite-value-list>
       <script>
-          const valueList2 = document.querySelector("#two");
-          valueList2.addEventListener("calciteListSelectionChange", (event) => {
-            console.log(event.detail);
-          });
-          valueList2.addEventListener("calciteListItemChange", (event) => {
-            console.log(event.target);
-            console.log(event.detail);
-          });
-        </script>
+        const valueList2 = document.querySelector("#two");
+        valueList2.addEventListener("calciteListSelectionChange", (event) => {
+          console.log(event.detail);
+        });
+        valueList2.addEventListener("calciteListItemChange", (event) => {
+          console.log(event.target);
+          console.log(event.detail);
+        });
+      </script>
       <h3>No text-description</h3>
       <calcite-value-list id="three" label-editing-enabled>
-          <calcite-value-list-item
-          text-label="2018 Generation Alpha Population (Born 2017 or Later)"
-          value="GENALPHACY">
-            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
-            </calcite-action>
-          </calcite-value-list-item>
-          <calcite-value-list-item
-          text-label="2010-2018 Households: Annual Growth Rate (Esri)"
-          value="HHGRW10CY">
-            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
-            </calcite-action>
-          </calcite-value-list-item>
-          <calcite-value-list-item
-          text-label="2010-2018 Households"
-          value="HHGRW10CY">
-            <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
-            </calcite-action>
-          </calcite-value-list-item>
-        </calcite-value-list>
+        <calcite-value-list-item text-label="2018 Generation Alpha Population (Born 2017 or Later)" value="GENALPHACY">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path
+                d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+              />
+            </svg>
+          </calcite-action>
+        </calcite-value-list-item>
+        <calcite-value-list-item text-label="2010-2018 Households: Annual Growth Rate (Esri)" value="HHGRW10CY">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path
+                d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+              />
+            </svg>
+          </calcite-action>
+        </calcite-value-list-item>
+        <calcite-value-list-item text-label="2010-2018 Households" value="HHGRW10CY">
+          <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path
+                d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
+              />
+            </svg>
+          </calcite-action>
+        </calcite-value-list-item>
+      </calcite-value-list>
       <script>
         const valueList3 = document.querySelector("#three");
         valueList3.addEventListener("calciteListSelectionChange", (event) => {
@@ -176,10 +185,11 @@
           </calcite-action>
         </calcite-value-list-item>
         <calcite-value-list-item
-        text-label="2023 Diversity Index (Esri)"
-        text-description="DIVINDX_FY"
-        value="DIVINDX_FY"
-        icon="grip">
+          text-label="2023 Diversity Index (Esri)"
+          text-description="DIVINDX_FY"
+          value="DIVINDX_FY"
+          icon="grip"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -188,7 +198,12 @@
             </svg>
           </calcite-action>
         </calcite-value-list-item>
-        <calcite-value-list-item text-label="2023 Per Capita Income (Esri)" text-description="PCI_FY" value="PCI_FY" icon="grip">
+        <calcite-value-list-item
+          text-label="2023 Per Capita Income (Esri)"
+          text-description="PCI_FY"
+          value="PCI_FY"
+          icon="grip"
+        >
           <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
@@ -204,10 +219,19 @@
           console.log(event.detail);
         });
         valueList4.addEventListener("calciteValueListOrderChange", (event) => {
-          console.log('sort order changed');
+          console.log("sort order changed");
           console.log(event.detail);
         });
       </script>
     </section>
+    <script>
+      function toggleProperty(property) {
+        const blocks = document.getElementsByTagName("calcite-value-list");
+
+        for (i = 0; i < blocks.length; i++) {
+          blocks[i].toggleAttribute(property);
+        }
+      }
+    </script>
   </body>
 </html>
