@@ -1,5 +1,7 @@
 export const CSS = {
+  header: "header",
   heading: "heading",
+  summary: "summary",
   backButton: "back-button",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",

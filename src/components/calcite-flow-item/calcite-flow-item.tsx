@@ -10,6 +10,7 @@ import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
+import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
 
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
@@ -51,6 +52,11 @@ export class CalciteFlowItem {
    * Shows a back button in the header.
    */
   @Prop() showBackButton = false;
+
+  /**
+   * Summary text.
+   */
+  @Prop() summary: string;
 
   /**
    * 'Back' text string.
@@ -196,8 +202,20 @@ export class CalciteFlowItem {
     return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
   }
 
+  renderHeading(): VNode {
+    const { heading } = this;
+
+    return heading ? <span class={CSS.heading}>{heading}</span> : null;
+  }
+
+  renderSummary(): VNode {
+    const { summary } = this;
+
+    return summary ? <span class={CSS.summary}>{summary}</span> : null;
+  }
+
   render() {
-    const { el, heading } = this;
+    const { el } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -205,8 +223,9 @@ export class CalciteFlowItem {
       <Host>
         <calcite-panel loading={this.loading} disabled={this.disabled}>
           {this.renderBackButton(rtl)}
-          <h2 class={CSS.heading} slot="header-content">
-            {heading}
+          <h2 class={CSS.header} slot="header-content">
+            {this.renderHeading()}
+            {this.renderSummary()}
           </h2>
           {this.renderHeaderActions()}
           <slot />
