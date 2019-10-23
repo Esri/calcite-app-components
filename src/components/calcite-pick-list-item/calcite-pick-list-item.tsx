@@ -192,8 +192,6 @@ export class CalcitePickListItem {
     }
   }
 
-  // renderSummary() {}
-
   render() {
     const description = this.textDescription ? (
       <span class={CSS.description}>{this.textDescription}</span>
