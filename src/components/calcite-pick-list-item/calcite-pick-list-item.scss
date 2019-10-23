@@ -1,6 +1,6 @@
 :host {
-  display: flex;
   align-items: center;
+  display: flex;
   margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
   background-color: var(--calcite-app-background);
   color: var(--calcite-app-foreground);
@@ -10,11 +10,6 @@
 
 :host(:hover) {
   background-color: var(--calcite-app-background-hover);
-}
-
-:host([compact]) .label {
-  padding-left: var(--calcite-app-side-spacing);
-  padding-right: var(--calcite-app-side-spacing);
 }
 
 :host(:first-child) {
@@ -46,13 +41,13 @@
 .text-container {
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 0 0%;
   overflow: hidden;
   pointer-events: none;
+  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 .title {
-  @include lineClamp();
+  @include lineClamp(2);
 }
 
 .description {
@@ -60,9 +55,7 @@
   font-family: var(--calcite-app-font-family-monospace);
   font-size: var(--calcite-app-font-size--1);
   margin-top: var(--calcite-app-cap-spacing-quarter);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @include lineClamp(2);
 }
 
 .action {
