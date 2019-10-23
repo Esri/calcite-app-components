@@ -7,4 +7,4 @@ branches:
 notifications:
   slack: esri-webgis:D26hnnKPMsexqKOGR6LOUc02
 script:
-  - lint
+  - npm run lint
