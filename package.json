@@ -16,8 +16,10 @@
   "scripts": {
     "build": "stencil build",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'",
+    "cleanComponentsDts": "rimraf 'src/**/components.d.ts'",
     "docs": "stencil build --config stencil.docs.config.ts",
     "lint": "tslint src/components/**/*.ts?(x)",
+    "predocs": "npm run cleanComponentsDts",
     "prepublishOnly": "node ./support/prepublish.js",
     "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish",
@@ -63,6 +65,7 @@
     "lint-staged": "9.4.0",
     "prettier": "1.18.2",
     "puppeteer": "1.20.0",
+    "rimraf": "3.0.0",
     "standard-version": "7.0.0",
     "tslint": "5.20.0",
     "tslint-config-prettier": "1.18.0",
