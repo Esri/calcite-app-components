@@ -37,7 +37,7 @@
   "dependencies": {
     "@esri/calcite-base": "1.1.0",
     "@esri/calcite-colors": "1.5.0",
-    "@esri/calcite-ui-icons": "2.5.4",
+    "@esri/calcite-ui-icons": "2.5.3",
     "lodash-es": "4.17.15",
     "sortablejs": "1.10.1"
   },
