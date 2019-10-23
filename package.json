@@ -18,7 +18,6 @@
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'",
     "docs": "stencil build --config stencil.docs.config.ts",
     "lint": "tslint 'src/components/**/*.ts?(x)'",
-    "predocs": "npm run cleanComponentsDts",
     "prepublishOnly": "node ./support/prepublish.js",
     "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish",
