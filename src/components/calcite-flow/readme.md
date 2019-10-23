@@ -8,10 +8,9 @@ See the [calcite-flow demo](https://esri.github.io/calcite-app-components/demos/
 
 ## Properties
 
-| Property  | Attribute | Description                                                        | Type                | Default     |
-| --------- | --------- | ------------------------------------------------------------------ | ------------------- | ----------- |
-| `loading` | `loading` | When true, content is waiting to be loaded. Show a busy indicator. | `boolean`           | `false`     |
-| `theme`   | `theme`   | Used to set the component's color scheme.                          | `"dark" \| "light"` | `undefined` |
+| Property | Attribute | Description                               | Type                | Default     |
+| -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
 ## Methods
 

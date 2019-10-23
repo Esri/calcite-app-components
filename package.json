@@ -1,6 +1,6 @@
 {
   "name": "@esri/calcite-app-components",
-  "version": "4.2.1",
+  "version": "4.3.0",
   "description": "A collection of web components for building single-page applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,7 +17,7 @@
     "build": "stencil build",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m 'chore(deps): Bump versions.'",
     "docs": "stencil build --config stencil.docs.config.ts",
-    "lint": "tslint src/components/**/*.ts?(x)",
+    "lint": "tslint 'src/components/**/*.ts?(x)'",
     "prepublishOnly": "node ./support/prepublish.js",
     "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@esri/calcite-components": "1.0.0-beta.11",
-    "@stencil/core": "1.7.3",
+    "@stencil/core": "1.6.1",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.0.1",
     "@stencil/state-tunnel": "1.0.1",

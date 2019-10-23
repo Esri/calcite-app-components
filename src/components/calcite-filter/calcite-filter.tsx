@@ -58,17 +58,18 @@ export class CalciteFilter {
 
   filter = debounce((value: string): void => {
     const regex = new RegExp(value, "ig");
-    const find = (input, regex) => {
+
+    const find = (input: object, RE: RegExp) => {
       let found = false;
-      forIn(input, (value) => {
-        if (typeof value === "function") {
+      forIn(input, (val) => {
+        if (typeof val === "function") {
           return;
         }
-        if (Array.isArray(value) || (typeof value === "object" && value !== null)) {
-          if (find(value, regex)) {
+        if (Array.isArray(val) || (typeof val === "object" && val !== null)) {
+          if (find(val, RE)) {
             found = true;
           }
-        } else if (regex.test(value)) {
+        } else if (RE.test(val)) {
           found = true;
         }
       });

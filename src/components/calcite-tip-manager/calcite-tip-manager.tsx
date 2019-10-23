@@ -253,7 +253,7 @@ export class CalciteTipManager {
     }
     return (
       <Host>
-        <div tabindex="0" onKeyUp={this.tipManagerKeyUpHandler} ref={this.storeContainerRef}>
+        <div tabIndex={0} onKeyUp={this.tipManagerKeyUpHandler} ref={this.storeContainerRef}>
           <header class={CSS.header}>
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}

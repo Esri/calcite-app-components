@@ -8,16 +8,17 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 ## Properties
 
-| Property         | Attribute          | Description                                                        | Type                | Default      |
-| ---------------- | ------------------ | ------------------------------------------------------------------ | ------------------- | ------------ |
-| `heading`        | `heading`          | Heading text.                                                      | `string`            | `undefined`  |
-| `loading`        | `loading`          | When true, content is waiting to be loaded. Show a busy indicator. | `boolean`           | `false`      |
-| `menuOpen`       | `menu-open`        | Opens the action menu.                                             | `boolean`           | `false`      |
-| `showBackButton` | `show-back-button` | Shows a back button in the header.                                 | `boolean`           | `false`      |
-| `textBack`       | `text-back`        | 'Back' text string.                                                | `string`            | `TEXT.back`  |
-| `textClose`      | `text-close`       | 'Close' text string for the menu.                                  | `string`            | `TEXT.close` |
-| `textOpen`       | `text-open`        | 'Open' text string for the menu.                                   | `string`            | `TEXT.open`  |
-| `theme`          | `theme`            | Used to set the component's color scheme.                          | `"dark" \| "light"` | `undefined`  |
+| Property         | Attribute          | Description                                                                                 | Type                | Default      |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------- | ------------------- | ------------ |
+| `disabled`       | `disabled`         | When true, disabled prevents interaction. This state shows items with lower opacity/grayed. | `boolean`           | `false`      |
+| `heading`        | `heading`          | Heading text.                                                                               | `string`            | `undefined`  |
+| `loading`        | `loading`          | When true, content is waiting to be loaded. This state shows a busy indicator.              | `boolean`           | `false`      |
+| `menuOpen`       | `menu-open`        | Opens the action menu.                                                                      | `boolean`           | `false`      |
+| `showBackButton` | `show-back-button` | Shows a back button in the header.                                                          | `boolean`           | `false`      |
+| `textBack`       | `text-back`        | 'Back' text string.                                                                         | `string`            | `TEXT.back`  |
+| `textClose`      | `text-close`       | 'Close' text string for the menu.                                                           | `string`            | `TEXT.close` |
+| `textOpen`       | `text-open`        | 'Open' text string for the menu.                                                            | `string`            | `TEXT.open`  |
+| `theme`          | `theme`            | Used to set the component's color scheme.                                                   | `"dark" \| "light"` | `undefined`  |
 
 ## Events
 

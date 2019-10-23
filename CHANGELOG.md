@@ -3,6 +3,37 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [4.3.0](https://github.com/Esri/calcite-app-components/compare/v4.2.1...v4.3.0) (2019-10-22)
+
+### Bug Fixes
+
+- **pick-list-item** spacebar on secondaryAction no longer toggles selection. #326
+- **panel:** moved position:relative to :host. ([e2d65fc](https://github.com/Esri/calcite-app-components/commit/e2d65fc))
+- **block** Set CalciteBlock color variables for dark theme. #427
+- **pick-list** action slot styling. #417
+- **calcite-flow-item** header text being cut off. #414
+- **shell** remove shell min-width. #393
+- **pick-list-item** Remove rtl utility class from CalcitePickListItem host. #298
+- **tip** Tip background color overlapping shadow. #398
+- **panel** CalcitePanel: always render slot containers. #354
+- **calcite-flow-item** shows header-trailing-content without having menu-actions. #409
+- Update README.md with latest first-class components.
+- Fix `calciteListChange` event name in demo file.
+
+### Features
+
+- **all:** blocking scrim + pick-list loading and disabled.([#361](https://github.com/Esri/calcite-app-components/issues/361) [#357](https://github.com/Esri/calcite-app-components/issues/357) [#358](https://github.com/Esri/calcite-app-components/issues/358) [#359](https://github.com/Esri/calcite-app-components/issues/359) [#361](https://github.com/Esri/calcite-app-components/issues/361) [#362](https://github.com/Esri/calcite-app-components/issues/362)) ([25d846e](https://github.com/Esri/calcite-app-components/commit/25d846e))
+- **block:** a11y aria labels for disabled and loading ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([9a23101](https://github.com/Esri/calcite-app-components/commit/9a23101))
+- **block:** added calcite-loader and associated styles. Updated demo. ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([a5b87c0](https://github.com/Esri/calcite-app-components/commit/a5b87c0))
+- **block:** added disabled style. updated demo with way to toggle disabled property. ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([20e5ccd](https://github.com/Esri/calcite-app-components/commit/20e5ccd))
+- **block:** added loading and disabled to destructuring. ([3f1e8dc](https://github.com/Esri/calcite-app-components/commit/3f1e8dc))
+- **flow-item, panel:** added loading and disabled props, nodes, and styles. ([#359](https://github.com/Esri/calcite-app-components/issues/359)) ([d4caeca](https://github.com/Esri/calcite-app-components/commit/d4caeca))
+- **panel:** use Scrim for loading & disabled. ([1f69c9f](https://github.com/Esri/calcite-app-components/commit/1f69c9f))
+- **value-list:** Added disabled and loading props. Destructuring and added aria. ([#362](https://github.com/Esri/calcite-app-components/issues/362)) ([4e59c5a](https://github.com/Esri/calcite-app-components/commit/4e59c5a))
+- **panel** Remove padding from panel content-container. #418
+- **action** style(action): added animations for interactive. #391
+- Update calcite components to 1.0.0-beta.11
+
 ### [4.2.1](https://github.com/Esri/calcite-app-components/compare/v4.2.0...v4.2.1) (2019-10-17)
 
 ### Bug Fixes

@@ -3,15 +3,23 @@
   background-color: var(--calcite-app-background-clear);
   display: flex;
   flex-flow: column;
+  margin-top: var(--calcite-app-cap-spacing-half);
   padding: 0 var(--calcite-app-side-spacing-half);
   position: relative;
 }
 
 header {
+  background-color: var(--calcite-app-background);
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: var(--calcite-app-cap-spacing-half);
+}
+
+slot[name="menu-actions"]::slotted(calcite-action) {
+  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 calcite-filter {
-  margin-bottom: var(--calcite-app-cap-spacing-quarter);
   @include borderShadow();
 }

@@ -55,13 +55,14 @@
             margin: 1rem 0;
           }
         </style>
+        
         <div class="toggles">
           <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
           <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
         </div>
         <div class="flow-container">
           <calcite-flow id="flow">
-            <calcite-flow-item heading="First Panel">
+            <calcite-flow-item heading="What are the most popular commute alternatives?">
               <div slot="menu-actions">
                 <button>Reset</button>
                 <button>Rename</button>
@@ -90,7 +91,7 @@
 
           addFlowButtonNode.addEventListener("click", function() {
             var newNode = document.createElement("calcite-flow-item");
-            newNode.heading = "New Panel " + (flowNode.childElementCount + 1);
+            newNode.heading = "What are the most popular commute alternatives? " + (flowNode.childElementCount + 1);
             newNode.innerHTML = `
               <div class="demo-block"></div>
               <div class="demo-block"><a target="_blank" href="http://www.esri.com/">An example link</a> goes here.</div>
@@ -114,7 +115,7 @@
 
         <div class="flow-container" dir="rtl">
           <calcite-flow id="flow2">
-            <calcite-flow-item heading="First Panel">
+            <calcite-flow-item heading="What are the most popular commute alternatives?">
               <div slot="menu-actions">
                 <button>Reset</button>
                 <button>Rename</button>

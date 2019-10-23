@@ -9,7 +9,16 @@
     <!-- Loads the link and script tags-->
     <script src="head.js"></script>
   </head>
-
+  <style>
+    .demo-block {
+      width: 100%;
+      height: 240px;
+      margin-bottom: 8px;
+      background-color: #fff;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 #e0e0e0;
+    }
+  </style>
   <body>
     <nav>
       <calcite-demo-nav page-id="calcite-flow-item"></calcite-demo-nav>
@@ -30,10 +39,27 @@
             width: 350px;
             height: 800px;
           }
+          .demo-btn {
+            background-color: transparent;
+            border: 1px solid #007ac2;
+            color: #007ac2;
+            font-size: 1rem;
+            font-family: inherit;
+            padding: 0.7rem;
+            border-radius: 3px;
+            margin: 1rem 0.2rem;
+            min-width: 5rem;
+          }
+          .toggles {
+            margin: 1rem 0;
+          }
         </style>
-
+        <div class="toggles">
+          <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
+          <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
+        </div>
         <div class="flow-container">
-          <calcite-flow-item heading="First Panel">
+          <calcite-flow-item heading="What are the most popular commute alternatives?">
             <div slot="menu-actions">
               <button>Save</button>
               <button>Cancel</button>
@@ -47,5 +73,14 @@
         </div>
       </section>
     </main>
+    <script>
+      function toggleProperty(property) {
+        const blocks = document.getElementsByTagName("calcite-flow-item");
+
+        for (i = 0; i < blocks.length; i++) {
+          blocks[i].toggleAttribute(property);
+        }
+      }
+    </script>
   </body>
 </html>
