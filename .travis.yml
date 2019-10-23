@@ -6,3 +6,5 @@ branches:
     - master
 notifications:
   slack: esri-webgis:D26hnnKPMsexqKOGR6LOUc02
+script:
+  - lint
