@@ -8,3 +8,4 @@ notifications:
   slack: esri-webgis:D26hnnKPMsexqKOGR6LOUc02
 script:
   - npm run lint
+  - npm test
