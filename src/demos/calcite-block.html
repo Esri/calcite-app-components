@@ -52,6 +52,19 @@
           <div slot="icon">✅</div>
         </calcite-block>
 
+        <h2>Header + collapsible = no control</h2>
+
+        <calcite-block heading="no control if block is collapsible" collapsible>
+          <label slot="control">test</label>
+          <div>Some content</div>
+        </calcite-block>
+
+        <h2>Header + content (always open)</h2>
+
+        <calcite-block heading="Header" open>
+          <div>Some content</div>
+        </calcite-block>
+
         <h2>Header + content (collapsible)</h2>
 
         <calcite-block heading="All the king's buff horses couldn't fix the turbo." summary="summary" open collapsible>

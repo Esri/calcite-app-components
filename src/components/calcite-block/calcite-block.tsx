@@ -100,18 +100,7 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  onHeaderClick = (event: MouseEvent) => {
-    const controlSlot = this.el.shadowRoot.querySelector<HTMLSlotElement>(
-      `slot[name=${SLOTS.control}]`
-    );
-    const control = controlSlot && controlSlot.assignedNodes()[0];
-
-    if (control && control.contains(event.target as Node)) {
-      event.stopPropagation();
-      event.preventDefault();
-      return;
-    }
-
+  onHeaderClick = (): void => {
     this.open = !this.open;
     this.calciteBlockToggle.emit();
   };
@@ -138,7 +127,9 @@ export class CalciteBlock {
     const content = loading ? (
       <calcite-loader inline is-active></calcite-loader>
     ) : !disabled ? (
-      <slot name={SLOTS.control} />
+      collapsible ? null : (
+        <slot name={SLOTS.control} />
+      )
     ) : null;
 
     const headerContent = (
