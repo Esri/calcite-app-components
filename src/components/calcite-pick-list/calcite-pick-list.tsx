@@ -101,16 +101,8 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
-    this.setUpItems();
-  }
-
   componentDidLoad() {
-    this.items.forEach((item) => {
-      if (item.hasAttribute("selected")) {
-        this.selectedValues.set(item.getAttribute("value"), item);
-      }
-    });
+    this.setUpItems();
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -221,7 +213,7 @@ export class CalcitePickList {
       Array.from(item.attributes).forEach((attr) => {
         obj[attr.name] = attr.value;
       });
-      obj.metadata = item.metadata;
+      obj.metadata = item.metadata; // read from prop not attribute
       result.push(obj);
     });
     return result;
