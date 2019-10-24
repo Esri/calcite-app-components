@@ -132,7 +132,9 @@ describe("calcite-block", () => {
 
       const icon = await page.find(`.header-icon`);
       expect(await icon.isVisible()).toBe(true);
-      expect(await icon.getProperty("slot")).toEqual(SLOTS.icon);
+
+      const iconSlot = await page.find(`calcite-block >>> slot[name=${SLOTS.icon}]`);
+      expect(await iconSlot.isVisible()).toBe(true);
     });
   });
 });
