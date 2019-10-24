@@ -1,6 +1,5 @@
 (function() {
-
-  const root = window.location.pathname.split('demos').shift();
+  const root = window.location.pathname.split("demos").shift();
 
   function loadCss(url) {
     let link = document.createElement("link");
@@ -10,9 +9,9 @@
   }
 
   function loadScript(url, options) {
-    let script = document.createElement('script');
-    if(options) {
-      Object.keys(options).forEach( key => {
+    let script = document.createElement("script");
+    if (options) {
+      Object.keys(options).forEach((key) => {
         script[key] = options[key];
       });
     }
@@ -23,6 +22,7 @@
 
   loadCss("demos/demos.css");
   loadCss("build/calcite-app.css");
+  loadScript("demos/demoPageReloader.js");
   loadScript("build/calcite-app.esm.js", { type: "module" });
   loadScript("build/calcite-app.js", { noModule: true });
   loadScript("vendor/@esri/calcite-components/calcite.esm.js", { type: "module" });
