@@ -49,8 +49,9 @@ calcite-loader[inline] {
 }
 
 .toggle-icon {
-  margin: 0 4px;
   fill: currentColor;
+  flex: 0 0 var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 
 .content {
