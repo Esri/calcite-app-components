@@ -104,24 +104,47 @@ describe("calcite-block", () => {
       expect(summary.innerText).toBe("test-summary");
     });
 
-    it("supports a nested control", async () => {
-      const page = await newE2EPage();
-      await page.setContent(
-        `<calcite-block heading="test-heading" collapsible><input class="nested-control" slot=${SLOTS.control} /></calcite-block>`
-      );
-      const element = await page.find("calcite-block");
-      const elementToggleSpy = await element.spyOnEvent("calciteBlockToggle");
+    describe("adding a header control", () => {
+      it("allows users to add a control in a collapsible block", async () => {
+        const page = await newE2EPage();
+        await page.setContent(
+          `<calcite-block heading="test-heading" collapsible><input class="nested-control" slot=${SLOTS.control} /></calcite-block>`
+        );
+        const control = await page.find(".nested-control");
+        expect(await control.isVisible()).toBe(true);
 
-      const control = await element.find(".nested-control");
-      expect(await control.isVisible()).toBe(true);
-      expect(await control.getProperty("slot")).toEqual(SLOTS.control);
+        const controlSlot = await page.find(`calcite-block >>> slot[name=${SLOTS.control}]`);
+        expect(await controlSlot.isVisible()).toBe(true);
 
-      await control.click();
-      expect(elementToggleSpy).toHaveReceivedEventTimes(0);
+        const collapsibleIcon = await page.find(`calcite-block >>> .${CSS.toggleIcon}`);
+        expect(collapsibleIcon).toBeNull();
 
-      await element.click();
-      await element.click();
-      expect(elementToggleSpy).toHaveReceivedEventTimes(2);
+        const block = await page.find("calcite-block");
+        const blockToggleSpy = await block.spyOnEvent("calciteBlockToggle");
+
+        expect(await control.isVisible()).toBe(true);
+        expect(await control.getProperty("slot")).toEqual(SLOTS.control);
+
+        await control.click();
+        expect(blockToggleSpy).toHaveReceivedEventTimes(0);
+
+        await block.click();
+        await block.click();
+        expect(blockToggleSpy).toHaveReceivedEventTimes(2);
+      });
+
+      it("allows users to add a control in a non-collapsible block", async () => {
+        const page = await newE2EPage();
+        await page.setContent(
+          `<calcite-block heading="test-heading"><input class="nested-control" slot=${SLOTS.control} /></calcite-block>`
+        );
+
+        const control = await page.find(".nested-control");
+        expect(await control.isVisible()).toBe(true);
+
+        const controlSlot = await page.find(`calcite-block >>> slot[name=${SLOTS.control}]`);
+        expect(await controlSlot.isVisible()).toBe(true);
+      });
     });
 
     it("supports a header icon", async () => {
