@@ -210,10 +210,10 @@ export class CalcitePickList {
     const result: Record<string, string | object>[] = [];
     this.items.forEach((item) => {
       const obj: Record<string, string | object> = {};
-      Array.from(item.attributes).forEach((attr) => {
-        obj[attr.name] = attr.value;
-      });
-      obj.metadata = item.metadata; // read from prop not attribute
+      obj.label = item.textLabel || item.textHeading;
+      obj.description = item.textDescription;
+      obj.metadata = item.metadata;
+      obj.value = item.value;
       result.push(obj);
     });
     return result;
@@ -225,7 +225,7 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedItems(): Promise<object> {
+  @Method() async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
   }
 
