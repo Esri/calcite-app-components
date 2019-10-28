@@ -42,6 +42,10 @@ export class CalcitePickListItem {
    */
   @Prop() metadata: object;
 
+  @Watch("metadata") metadataWatchHandler() {
+    this.calciteListItemPropsUpdated.emit();
+  }
+
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
@@ -65,15 +69,27 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textHeading: string;
 
+  @Watch("textHeading") textHeadingWatchHandler() {
+    this.calciteListItemPropsUpdated.emit();
+  }
+
   /**
    * An optional description for this item.  This will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
 
+  @Watch("textDescription") textDescriptionWatchHandler() {
+    this.calciteListItemPropsUpdated.emit();
+  }
+
   /**
    * The main label for this item. This will appear next to the icon.
    */
   @Prop({ reflect: true }) textLabel: string;
+
+  @Watch("textLabel") textLabelWatchHandler() {
+    this.calciteListItemPropsUpdated.emit();
+  }
 
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
@@ -101,6 +117,12 @@ export class CalcitePickListItem {
    * @event calciteListItemChange
    */
   @Event() calciteListItemChange: EventEmitter;
+
+  /**
+   * Emitted whenever the the item's metadata property is modified.
+   * @event calciteListItemPropsUpdated
+   */
+  @Event() calciteListItemPropsUpdated: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
