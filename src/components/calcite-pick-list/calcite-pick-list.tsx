@@ -85,7 +85,10 @@ export class CalcitePickList {
 
   lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  observer = new MutationObserver(() => this.setUpItems());
+  observer = new MutationObserver(() => {
+    this.setUpItems();
+    this.setUpFilter();
+  });
 
   // --------------------------------------------------------------------------
   //
@@ -103,6 +106,7 @@ export class CalcitePickList {
 
   componentDidLoad() {
     this.setUpItems();
+    this.setUpFilter();
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -147,6 +151,10 @@ export class CalcitePickList {
     this.calcitePickListSelectionChange.emit(selectedValues);
   }
 
+  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
+    this.setUpFilter();
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -165,6 +173,9 @@ export class CalcitePickList {
         this.selectedValues.set(item.getAttribute("value"), item);
       }
     });
+  }
+
+  setUpFilter(): void {
     if (this.filterEnabled) {
       this.dataForFilter = this.getItemData();
     }
