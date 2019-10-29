@@ -115,13 +115,14 @@ describe("calcite-pick-list", () => {
     beforeEach(async () => {
       page = await newE2EPage();
       await page.setContent(`<calcite-pick-list filter-enabled="true">
-        <calcite-pick-list-item value="1" text-label="One" text-description="uno" metadata="{ category: 'first' }"></calcite-pick-list-item>
-        <calcite-pick-list-item value="2" text-label="Two" text-description="dos" metadata="{ category: 'second' }"></calcite-pick-list-item>
+        <calcite-pick-list-item value="1" text-label="One" text-description="uno"></calcite-pick-list-item>
+        <calcite-pick-list-item value="2" text-label="Two" text-description="dos"></calcite-pick-list-item>
       </calcite-pick-list>`);
       item1 = await page.find('calcite-pick-list-item[value="1"]');
       item2 = await page.find('calcite-pick-list-item[value="2"]');
       item1.setProperty("metadata", { category: "first" });
       item2.setProperty("metadata", { category: "second" });
+      await page.waitForChanges();
       await page.evaluate(() => {
         (window as any).filter = document.querySelector("calcite-pick-list").shadowRoot.querySelector("calcite-filter");
         const filter = (window as any).filter;
@@ -156,7 +157,7 @@ describe("calcite-pick-list", () => {
       expect(item1Visible).toBe(false);
       expect(item2Visible).toBe(true);
     });
-    it.skip("should match text in the text-description prop", async () => {
+    it("should match text in the text-description prop", async () => {
       // Match first item
       await page.evaluate(() => {
         const filterInput = (window as any).filterInput;
@@ -184,7 +185,7 @@ describe("calcite-pick-list", () => {
       expect(item1Visible).toBe(false);
       expect(item2Visible).toBe(true);
     });
-    it.skip("should match text in the metadata prop", async () => {
+    it("should match text in the metadata prop", async () => {
       await page.evaluate(() => {
         const filterInput = (window as any).filterInput;
         filterInput.value = "first";
