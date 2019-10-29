@@ -106,7 +106,7 @@ describe("calcite-pick-list", () => {
   //   it("loading", async () => {
   //   });
   // });
-  describe.only("filter behavior (hide/show items)", () => {
+  describe("filter behavior (hide/show items)", () => {
     let page: E2EPage = null;
     let item1: E2EElement;
     let item2: E2EElement;
