@@ -91,6 +91,11 @@ const NAV_ITEMS: NavItem[] = [
     id: "calcite-value-list",
     path: "demos/calcite-value-list.html",
     content: "Value List"
+  },
+  {
+    id: "advanced",
+    path: "demos/advanced/popover-menu.html",
+    content: "Advanced"
   }
 ];
 
