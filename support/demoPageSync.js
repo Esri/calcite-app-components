@@ -7,7 +7,7 @@ const sourceDemoDir = `${sourceDir}demos/`;
 const destinationDir = `${projectRoot}www/`;
 const destinationDemoDir = `${destinationDir}demos/`;
 const sourceIndexFile = `${sourceDir}index.html`;
-const targetTouchFile = `${sourceDir}components/interfaces.ts`;
+const buildTriggeringFile = `${sourceDir}components/interfaces.ts`;
 const noop = () => {};
 
 watch(sourceDemoDir, (type, changedFile) => triggerBuild(sourceDemoDir, destinationDemoDir, changedFile));
@@ -19,20 +19,20 @@ function triggerBuild(sourceDir, destinationDir, changedFile) {
   }
 
   copyFileSync(`${sourceDir}${changedFile}`, `${destinationDir}${changedFile}`);
-  touch(targetTouchFile, noop);
+  markFileAsModified(buildTriggeringFile);
 }
 
-function touch(path, callback) {
+function markFileAsModified(path, done = noop) {
   const time = new Date();
 
   utimes(path, time, time, (err) => {
     if (err) {
       return open(path, "w", (err, fd) => (err ?
-                                           callback(err) :
-                                           close(fd, callback)));
+                                           done(err) :
+                                           close(fd, done)));
     }
 
-    callback();
+    done();
   });
 }
 
