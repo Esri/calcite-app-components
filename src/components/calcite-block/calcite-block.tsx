@@ -153,12 +153,13 @@ export class CalciteBlock {
     );
 
     let hasControl = false;
-    const hasContent = Array.from(el.children).some((child) => {
-      const isControl = child.slot === SLOTS.control;
-      hasControl = hasControl || isControl;
+    let hasContent = false;
 
-      return !isControl;
-    });
+    for (let i = 0; i < el.children.length; i++) {
+      const isControl = el.children[i].slot === SLOTS.control;
+      hasControl = hasControl || isControl;
+      hasContent = hasContent || !isControl;
+    }
 
     const headerNode = (
       <div class={CSS.headerContainer}>
