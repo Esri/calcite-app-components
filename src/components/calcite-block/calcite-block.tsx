@@ -152,6 +152,15 @@ export class CalciteBlock {
       </header>
     );
 
+    let hasControl = false;
+    let hasContent = false;
+
+    for (let i = 0; i < el.children.length; i++) {
+      const isControl = el.children[i].slot === SLOTS.control;
+      hasControl = hasControl || isControl;
+      hasContent = hasContent || !isControl;
+    }
+
     const headerNode = (
       <div class={CSS.headerContainer}>
         {collapsible ? (
@@ -162,19 +171,19 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            <CalciteIcon
-              size="16"
-              path={open ? chevronUp16 : chevronDown16}
-              svgAttributes={{ class: CSS.toggleIcon }}
-            />
+            {hasControl ? null : (
+              <CalciteIcon
+                size="16"
+                path={open ? chevronUp16 : chevronDown16}
+                svgAttributes={{ class: CSS.toggleIcon }}
+              />
+            )}
           </button>
         ) : (
           headerContent
         )}
       </div>
     );
-
-    const hasContent = !!Array.from(el.children).some((child) => child.slot !== SLOTS.control);
 
     return (
       <Host>
