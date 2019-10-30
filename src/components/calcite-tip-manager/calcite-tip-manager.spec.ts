@@ -1,4 +1,4 @@
-import { CalciteTipManager } from "./calcite-tip-manager";
+// import { CalciteTipManager } from "./calcite-tip-manager";
 
 describe.skip("CalciteTipManager", () => {
   it("should increment/decrement the selectedIndex when the public next/prev methods are called", () => {

@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, ICON_TYPES } from "./resources";
+import { ICON_TYPES } from "./resources";
 import { hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-value-list", () => {
