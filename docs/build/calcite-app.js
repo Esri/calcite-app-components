@@ -789,7 +789,7 @@ var CustomStyle = /** @class */ (function () {
         }
         var baseScope = this.registerHostTemplate(cssText, cssScopeId, isScoped);
         var styleEl = this.doc.createElement('style');
-        styleEl.setAttribute('data-styles', '');
+        styleEl.setAttribute('data-no-shim', '');
         if (!baseScope.usesCssVars) {
             // This component does not use (read) css variables
             styleEl.textContent = cssText;
@@ -864,7 +864,7 @@ if (!win.__stencil_cssshim && needsShim()) {
 
     var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
     var start = function() {
-      var url = new URL('./p-6ce807db.system.js', resourcesUrl);
+      var url = new URL('./p-9abf81df.system.js', resourcesUrl);
       System.import(url.href);
     };
 
