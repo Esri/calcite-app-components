@@ -33,7 +33,7 @@
 .label {
   display: flex;
   flex: 1 0 0;
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
+  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
   align-items: center;
   cursor: pointer;
 }
@@ -61,7 +61,7 @@
 .action {
   flex: 0 0 0%;
   justify-self: flex-end;
-  margin: 0 var(--calcite-app-side-spacing-half);
+  margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
 }
 
 .handle {
