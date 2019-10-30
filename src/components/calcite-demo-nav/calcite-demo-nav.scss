@@ -21,6 +21,14 @@ $largeScreen: 1025px;
   }
 }
 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  fill: #fff;
+  background-color: #333;
+}
+.menu {
   @media (max-width: $largeScreen - 1) {
     display: none;
     &.open {
@@ -36,14 +44,9 @@ ul {
     display: flex;
     position: static;
   }
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  color: #fff;
-  fill: #fff;
-  background-color: #333;
 }
 li {
+  position: relative;
   border-top: 1px solid white;
   @media (min-width: $largeScreen) {
     border-top: none;
@@ -82,4 +85,16 @@ li:last-child {
 }
 svg {
   fill: inherit;
+}
+.child-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  @media (min-width: $largeScreen) {
+    top: 100%;
+    left: 0;
+  }
+}
+.child-menu[open] {
+  display: block;
 }

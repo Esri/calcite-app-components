@@ -1,11 +1,12 @@
 import { Component, Host, Prop, State, h } from "@stencil/core";
 import CalciteIcon from "../utils/CalciteIcon";
-import { hamburger32, home16 } from "@esri/calcite-ui-icons";
+import { chevronDown16, hamburger32, home16 } from "@esri/calcite-ui-icons";
 
 interface NavItem {
   id: string;
   path: string;
   content: any;
+  children?: NavItem[];
 }
 
 const CSS = {
@@ -13,7 +14,9 @@ const CSS = {
   link: "link",
   open: "open",
   close: "close",
-  hamburger: "hamburger"
+  hamburger: "hamburger",
+  menu: "menu",
+  childMenu: "child-menu"
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -91,6 +94,18 @@ const NAV_ITEMS: NavItem[] = [
     id: "calcite-value-list",
     path: "demos/calcite-value-list.html",
     content: "Value List"
+  },
+  {
+    id: "advanced",
+    path: null,
+    content: ["Advanced ", <CalciteIcon size="16" path={chevronDown16} title="Home" />],
+    children: [
+      {
+        id: "fullWindowShell",
+        path: "demos/advanced/shell-full-window.html",
+        content: "Full Window Shell"
+      }
+    ]
   }
 ];
 
@@ -134,21 +149,41 @@ export class CalciteDemoNav {
     this.open = false;
   };
 
+  subMenuClickHandler = (e) => {
+    e.preventDefault();
+    e.target.nextElementSibling.hidden = !e.target.nextElementSibling.hidden;
+  };
+
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   renderNavItem(item: NavItem) {
     const { pageId, root } = this;
     const { content, id, path } = item;
+    const clickHandler = item.children ? this.subMenuClickHandler : null;
     return (
       <li>
-        <a class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link} href={`${root}${path}`}>
+        <a
+          class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link}
+          href={`${root}${path}`}
+          onClick={clickHandler}
+        >
           {content}
         </a>
+        {this.renderChildren(item.children)}
       </li>
+    );
+  }
+
+  renderChildren(items: NavItem[]) {
+    if (!items) return;
+    return (
+      <ul class={CSS.childMenu} hidden>
+        {items.map((item) => this.renderNavItem(item))}
+      </ul>
     );
   }
 
@@ -158,7 +193,7 @@ export class CalciteDemoNav {
         <button class={CSS.hamburger} onClick={this.hamburgerClickHandler}>
           <CalciteIcon size="32" path={hamburger32} title="Home" />
         </button>
-        <ul class={this.open ? CSS.open : CSS.close}>
+        <ul class={{ [CSS.menu]: true, [CSS.open]: this.open }}>
           {NAV_ITEMS.map((item) => this.renderNavItem(item))}
         </ul>
       </Host>
