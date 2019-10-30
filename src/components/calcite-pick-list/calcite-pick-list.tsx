@@ -11,7 +11,8 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
-import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import sharedListMethods from "./shared-list-logic";
+import { VNode } from "@stencil/core/dist/declarations";
 import CalciteScrim from "../utils/CalciteScrim";
 
 /**
@@ -53,7 +54,7 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
   /**
-   * Multiple works like conventional checkboxes and radio buttons.
+   * Multiple Works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time
    * and selecting a new item will deselect any other selected items.
@@ -104,14 +105,16 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
+  connectedCallback() {
+    sharedListMethods.initialize.call(this);
+  }
+
   componentDidLoad() {
-    this.setUpItems();
-    this.setUpFilter();
-    this.observer.observe(this.el, { childList: true, subtree: true });
+    sharedListMethods.initializeObserver.call(this);
   }
 
   componentDidUnload() {
-    this.observer.disconnect();
+    sharedListMethods.cleanUpObserver.call(this);
   }
 
   // --------------------------------------------------------------------------
@@ -133,22 +136,7 @@ export class CalcitePickList {
   @Event() calcitePickListSelectionChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
-    const { selectedValues } = this;
-    const { item, value, selected, shiftPressed } = event.detail;
-    if (selected) {
-      if (!this.multiple) {
-        this.deselectSiblingItems(item);
-      }
-      if (this.multiple && shiftPressed) {
-        this.selectSiblings(item);
-      }
-      selectedValues.set(value, item);
-    } else {
-      selectedValues.delete(value);
-    }
-    this.lastSelectedItem = item;
-    this.calciteListChange.emit(selectedValues);
-    this.calcitePickListSelectionChange.emit(selectedValues);
+    sharedListMethods.calciteListItemChangeHandler.call(this, event);
   }
 
   @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
@@ -162,17 +150,7 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
-    this.items.forEach((item) => {
-      const iconType = this.getIconType();
-      const compactString = this.compact ? "true" : "false";
-      item.setAttribute("icon", iconType);
-      item.setAttribute("compact", compactString);
-
-      if (item.hasAttribute("selected")) {
-        this.selectedValues.set(item.getAttribute("value"), item);
-      }
-    });
+    sharedListMethods.setUpItems.call(this, "calcite-pick-list-item");
   }
 
   setUpFilter(): void {
@@ -181,54 +159,13 @@ export class CalcitePickList {
     }
   }
 
-  deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
-    this.items.forEach((currentItem) => {
-      if (currentItem !== item) {
-        currentItem.toggleSelected(false);
-        if (this.selectedValues.has(currentItem.value)) {
-          this.selectedValues.delete(currentItem.value);
-        }
-      }
-    });
-  }
+  deselectSiblingItems = sharedListMethods.deselectSiblingItems.bind(this);
 
-  selectSiblings(item: HTMLCalcitePickListItemElement) {
-    if (!this.lastSelectedItem) {
-      return;
-    }
-    const { items } = this;
-    const start = items.indexOf(this.lastSelectedItem);
-    const end = items.indexOf(item);
-    items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-      currentItem.toggleSelected(true);
-      this.selectedValues.set(currentItem.value, currentItem);
-    });
-  }
+  selectSiblings = sharedListMethods.selectSiblings.bind(this);
 
-  handleFilter = (event) => {
-    const filteredData = event.detail;
-    const values = filteredData.map((item) => item.value);
-    this.items.forEach((item) => {
-      if (values.indexOf(item.value) === -1) {
-        item.setAttribute("hidden", "");
-      } else {
-        item.removeAttribute("hidden");
-      }
-    });
-  };
+  handleFilter = sharedListMethods.handleFilter.bind(this);
 
-  getItemData(): Record<string, string | object>[] {
-    const result: Record<string, string | object>[] = [];
-    this.items.forEach((item) => {
-      const obj: Record<string, string | object> = {};
-      obj.label = item.textLabel || item.textHeading;
-      obj.description = item.textDescription;
-      obj.metadata = item.metadata;
-      obj.value = item.value;
-      result.push(obj);
-    });
-    return result;
-  }
+  getItemData = sharedListMethods.getItemData.bind(this);
 
   // --------------------------------------------------------------------------
   //

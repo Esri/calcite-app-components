@@ -13,6 +13,7 @@ import {
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
+import sharedListMethods from "../calcite-pick-list/shared-list-logic";
 import { VNode } from "@stencil/core/dist/declarations";
 import CalciteScrim from "../utils/CalciteScrim";
 
@@ -75,7 +76,10 @@ export class CalciteValueList {
 
   guid = `calcite-value-list-${guid()}`;
 
-  observer = new MutationObserver(() => this.setUpItems());
+  observer = new MutationObserver(() => {
+    this.setUpItems();
+    this.setUpFilter();
+  });
 
   sortables: Sortable[] = [];
 
@@ -92,25 +96,18 @@ export class CalciteValueList {
   //  Lifecycle
   //
   // --------------------------------------------------------------------------
-
   connectedCallback() {
-    this.setUpItems();
+    sharedListMethods.initialize.call(this);
   }
 
   componentDidLoad() {
-    this.items.forEach((item) => {
-      if (item.hasAttribute("selected")) {
-        this.selectedValues.set(item.getAttribute("value"), item);
-      }
-    });
-    this.observer.observe(this.el, { childList: true, subtree: true });
+    this.setUpDragAndDrop();
+    sharedListMethods.initializeObserver.call(this);
   }
 
   componentDidUnload() {
-    this.observer.disconnect();
-    if (this.dragEnabled) {
-      this.cleanUpDragAndDrop();
-    }
+    sharedListMethods.cleanUpObserver.call(this);
+    this.cleanUpDragAndDrop();
   }
 
   // --------------------------------------------------------------------------
@@ -132,23 +129,11 @@ export class CalciteValueList {
   @Event() calciteListOrderChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
-    const { selectedValues } = this;
-    const { value, selected, shiftPressed } = event.detail;
-    const item = event.target;
+    sharedListMethods.calciteListItemChangeHandler.call(this, event);
+  }
 
-    if (selected) {
-      if (!this.multiple) {
-        this.deselectSiblingItems(item);
-      }
-      if (this.multiple && shiftPressed) {
-        this.selectSiblings(item);
-      }
-      selectedValues.set(value, item);
-    } else {
-      selectedValues.delete(value);
-    }
-    this.lastSelectedItem = item;
-    this.calciteListChange.emit(selectedValues);
+  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
+    this.setUpFilter();
   }
 
   // --------------------------------------------------------------------------
@@ -158,27 +143,19 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
-    this.items.forEach((item) => {
-      const iconType = this.getIconType();
-      if (iconType) {
-        item.setAttribute("icon", iconType);
-      } else {
-        item.removeAttribute("icon");
-      }
-      if (item.hasAttribute("selected")) {
-        this.selectedValues.set(item.getAttribute("value"), item);
-      }
-    });
-    if (this.dragEnabled) {
-      this.setUpDragAndDrop();
-    }
+    sharedListMethods.setUpItems.call(this, "calcite-value-list-item");
+  }
+
+  setUpFilter(): void {
     if (this.filterEnabled) {
       this.dataForFilter = this.getItemData();
     }
   }
 
   setUpDragAndDrop(): void {
+    if (!this.dragEnabled) {
+      return;
+    }
     this.sortables.push(
       Sortable.create(this.el, {
         group: this.guid,
@@ -194,60 +171,22 @@ export class CalciteValueList {
   }
 
   cleanUpDragAndDrop(): void {
+    if (!this.dragEnabled) {
+      return;
+    }
     this.sortables.forEach((sortable) => {
       sortable.destroy();
     });
     this.sortables = [];
   }
 
-  deselectSiblingItems(item: HTMLCalciteValueListItemElement) {
-    this.items.forEach((currentItem) => {
-      if (currentItem !== item) {
-        currentItem.toggleSelected(false);
-        if (this.selectedValues.has(currentItem.value)) {
-          this.selectedValues.delete(currentItem.value);
-        }
-      }
-    });
-  }
+  deselectSiblingItems = sharedListMethods.deselectSiblingItems.bind(this);
 
-  selectSiblings(item: HTMLCalciteValueListItemElement) {
-    if (!this.lastSelectedItem) {
-      return;
-    }
-    const { items } = this;
-    const start = items.indexOf(this.lastSelectedItem);
-    const end = items.indexOf(item);
-    items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-      currentItem.toggleSelected(true);
-      this.selectedValues.set(currentItem.value, currentItem);
-    });
-  }
+  selectSiblings = sharedListMethods.selectSiblings.bind(this);
 
-  handleFilter = (event) => {
-    const filteredData = event.detail;
-    const values = filteredData.map((item) => item.value);
-    this.items.forEach((item) => {
-      if (values.indexOf(item.value) === -1) {
-        item.setAttribute("hidden", "");
-      } else {
-        item.removeAttribute("hidden");
-      }
-    });
-  };
+  handleFilter = sharedListMethods.handleFilter.bind(this);
 
-  getItemData(): Record<string, string | object>[] {
-    const result: Record<string, string | object>[] = [];
-    this.items.forEach((item) => {
-      const obj: Record<string, string | object> = {};
-      Array.from(item.attributes).forEach((attr) => {
-        obj[attr.name] = attr.value;
-      });
-      obj.metadata = item.metadata;
-      result.push(obj);
-    });
-    return result;
-  }
+  getItemData = sharedListMethods.getItemData.bind(this);
 
   // --------------------------------------------------------------------------
   //
