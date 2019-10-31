@@ -198,16 +198,16 @@ export class CalcitePickList {
   }
 
   render() {
-    const { disabled, loading } = this;
+    const { dataForFilter, handleFilter, filterEnabled, loading, disabled } = this;
     return (
       <Host aria-disabled={disabled} aria-busy={loading}>
         <header>
-          {this.filterEnabled ? (
+          {filterEnabled ? (
             <calcite-filter
-              data={this.dataForFilter}
+              data={dataForFilter}
               textPlaceholder={TEXT.filterPlaceholder}
               aria-label={TEXT.filterPlaceholder}
-              onCalciteFilterChange={this.handleFilter}
+              onCalciteFilterChange={handleFilter}
             />
           ) : null}
           <slot name="menu-actions" />

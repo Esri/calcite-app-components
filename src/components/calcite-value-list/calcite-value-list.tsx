@@ -219,10 +219,10 @@ export class CalciteValueList {
   }
 
   render() {
-    const { dataForFilter, handleFilter, filterEnabled, loading } = this;
+    const { dataForFilter, handleFilter, filterEnabled, loading, disabled } = this;
     return (
-      <Host>
-        <div class={CSS.container} aria-busy={loading}>
+      <Host aria-disabled={disabled} aria-busy={loading}>
+        <div class={CSS.container}>
           <header>
             {filterEnabled ? (
               <calcite-filter
