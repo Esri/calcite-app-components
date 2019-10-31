@@ -76,6 +76,9 @@ export class CalciteFilter {
       return found;
     };
 
+    if (this.data.length === 0) {
+      console.warn("No data was passed to calcite-filter");
+    }
     const result = this.data.filter((item) => {
       return find(item, regex);
     });
