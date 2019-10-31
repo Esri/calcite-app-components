@@ -72,8 +72,12 @@ export const sharedListMethods = {
       return;
     }
     const { items } = this;
-    const start = items.indexOf(this.lastSelectedItem);
-    const end = items.indexOf(item);
+    const start = items.findIndex((currentItem) => {
+      return currentItem.value === this.lastSelectedItem.value;
+    });
+    const end = items.findIndex((currentItem) => {
+      return currentItem.value === item.value;
+    });
     items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
       currentItem.toggleSelected(true);
       this.selectedValues.set(currentItem.value, currentItem);
