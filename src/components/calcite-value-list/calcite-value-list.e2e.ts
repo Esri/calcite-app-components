@@ -7,7 +7,7 @@ describe("calcite-value-list", () => {
   it("renders", async () => renders("calcite-value-list"));
   it("honors hidden attribute", async () => hidden("calcite-value-list"));
 
-  describe.only("Selection and Deselection", () => {
+  describe("Selection and Deselection", () => {
     tests.selectionAndDeselection("value");
   });
 
@@ -32,5 +32,13 @@ describe("calcite-value-list", () => {
       const icon = await item.getProperty("icon");
       expect(icon).toBeNull();
     });
+  });
+
+  describe("filter behavior (hide/show items)", () => {
+    tests.filterBehavior("value");
+  });
+
+  describe("disabled states", () => {
+    tests.disabledStates("value");
   });
 });
