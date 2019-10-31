@@ -106,7 +106,12 @@ export class CalciteFilter {
       <Host>
         <label>
           {this.textLabel}
-          <input type="text" placeholder={this.textPlaceholder} onInput={this.inputHandler} />
+          <input
+            type="text"
+            placeholder={this.textPlaceholder}
+            onInput={this.inputHandler}
+            aria-label={this.textLabel || "Filter"}
+          />
           <div class={CSS.searchIcon}>
             <CalciteIcon size="16" path={search16} />
           </div>
