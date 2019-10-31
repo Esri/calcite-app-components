@@ -194,7 +194,7 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedItems(): Promise<object> {
+  @Method() async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
   }
 
