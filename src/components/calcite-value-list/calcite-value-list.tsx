@@ -4,7 +4,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Listen,
   Method,
   Prop,
@@ -14,8 +13,7 @@ import {
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import sharedListMethods from "../calcite-pick-list/shared-list-logic";
-import { VNode } from "@stencil/core/dist/declarations";
-import CalciteScrim from "../utils/CalciteScrim";
+import List from "../calcite-pick-list/shared-list-render";
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -212,32 +210,7 @@ export class CalciteValueList {
     return type;
   }
 
-  renderScrim(): VNode {
-    return this.loading || this.disabled ? (
-      <CalciteScrim loading={this.loading}></CalciteScrim>
-    ) : null;
-  }
-
   render() {
-    const { dataForFilter, handleFilter, filterEnabled, loading, disabled } = this;
-    return (
-      <Host aria-disabled={disabled} aria-busy={loading}>
-        <div class={CSS.container}>
-          <header>
-            {filterEnabled ? (
-              <calcite-filter
-                data={dataForFilter}
-                textPlaceholder={TEXT.filterPlaceholder}
-                aria-label={TEXT.filterPlaceholder}
-                onCalciteFilterChange={handleFilter}
-              />
-            ) : null}
-            <slot name="menu-actions" />
-          </header>
-          <slot />
-          {this.renderScrim()}
-        </div>
-      </Host>
-    );
+    return <List props={this} text={TEXT} />;
   }
 }
