@@ -4,10 +4,9 @@
 }
 
 calcite-pick-list-item {
-  border-radius: var(--calcite-app-border-radius);
   box-shadow: none;
   position: relative;
-  margin: 0 0 var(--calcite-app-cap-spacing-eighth) 0;
+  margin: 0 0 var(--calcite-app-cap-spacing-minimum) 0;
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
     box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }

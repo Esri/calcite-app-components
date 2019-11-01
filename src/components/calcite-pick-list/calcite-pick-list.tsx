@@ -251,19 +251,22 @@ export class CalcitePickList {
 
   render() {
     const { disabled, loading } = this;
+    const hasMenu = this.el.querySelector("[slot=menu-actions]");
     return (
       <Host aria-disabled={disabled} aria-busy={loading}>
-        <header>
-          {this.filterEnabled ? (
-            <calcite-filter
-              data={this.dataForFilter}
-              textPlaceholder={TEXT.filterPlaceholder}
-              aria-label={TEXT.filterPlaceholder}
-              onCalciteFilterChange={this.handleFilter}
-            />
-          ) : null}
-          <slot name="menu-actions" />
-        </header>
+        {hasMenu ? (
+          <header>
+            {this.filterEnabled ? (
+              <calcite-filter
+                data={this.dataForFilter}
+                textPlaceholder={TEXT.filterPlaceholder}
+                aria-label={TEXT.filterPlaceholder}
+                onCalciteFilterChange={this.handleFilter}
+              />
+            ) : null}
+            <slot name="menu-actions" />
+          </header>
+        ) : null}
         <slot />
         {this.renderScrim()}
       </Host>

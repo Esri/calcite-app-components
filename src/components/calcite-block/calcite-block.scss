@@ -29,13 +29,18 @@ calcite-loader[inline] {
   margin: 0;
 }
 
+.header .title .heading {
+  padding: 0;
+}
+
 .summary {
   font-size: var(--font-size--1);
-  padding: 0 var(--calcite-app-side-spacing-half);
+  padding: 0;
 }
 
 .toggle {
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters)
+    var(--calcite-app-cap-spacing);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -56,6 +61,6 @@ calcite-loader[inline] {
 }
 
 .content {
-  padding-bottom: var(--calcite-app-cap-spacing-half);
+  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
   position: relative;
 }
