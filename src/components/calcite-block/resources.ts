@@ -1,6 +1,7 @@
 export const CSS = {
   content: "content",
   headerContainer: "header-container",
+  icon: "icon",
   toggle: "toggle",
   toggleIcon: "toggle-icon",
   title: "title",

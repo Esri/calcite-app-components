@@ -12,7 +12,7 @@ calcite-loader[inline] {
 
 .header-container {
   & > .header {
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   }
 }
 
@@ -47,6 +47,10 @@ calcite-loader[inline] {
   text-align: unset;
   width: 100%;
   color: var(--calcite-app-foreground);
+}
+
+.icon {
+  margin-right: var(--calcite-app-side-spacing-third); //TODO RTL
 }
 
 .toggle-icon {

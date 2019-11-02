@@ -9,6 +9,7 @@
 }
 
 .toggle--switch {
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
