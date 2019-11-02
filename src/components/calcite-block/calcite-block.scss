@@ -2,12 +2,8 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
-  box-shadow: 0 1px 0 var(--calcite-app-border);
-  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-}
-
-:host([open]) {
-  box-shadow: 0 0 0 1px var(--calcite-app-border);
+  margin: var(--calcite-app-cap-spacing-third) var(--calcite-app-side-spacing-third);
+  @include borderShadow();
 }
 
 calcite-loader[inline] {
@@ -30,17 +26,16 @@ calcite-loader[inline] {
 }
 
 .header .title .heading {
-  padding: 0;
+  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 
 .summary {
   font-size: var(--font-size--1);
-  padding: 0;
+  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 
 .toggle {
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters)
-    var(--calcite-app-cap-spacing);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   background-color: transparent;
   border: none;
   cursor: pointer;
