@@ -281,20 +281,23 @@ export class CalciteValueList {
 
   render() {
     const { dataForFilter, handleFilter, filterEnabled, loading } = this;
+    const hasMenu = this.el.querySelector("[slot=menu-actions]");
     return (
       <Host>
         <div class={CSS.container} aria-busy={loading}>
-          <header>
-            {filterEnabled ? (
-              <calcite-filter
-                data={dataForFilter}
-                textPlaceholder={TEXT.filterPlaceholder}
-                aria-label={TEXT.filterPlaceholder}
-                onCalciteFilterChange={handleFilter}
-              />
-            ) : null}
-            <slot name="menu-actions" />
-          </header>
+          {filterEnabled || hasMenu ? (
+            <header>
+              {filterEnabled ? (
+                <calcite-filter
+                  data={dataForFilter}
+                  textPlaceholder={TEXT.filterPlaceholder}
+                  aria-label={TEXT.filterPlaceholder}
+                  onCalciteFilterChange={handleFilter}
+                />
+              ) : null}
+              <slot name="menu-actions" />
+            </header>
+          ) : null}
           <slot />
           {this.renderScrim()}
         </div>

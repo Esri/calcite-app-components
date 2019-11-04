@@ -9,8 +9,7 @@
   color: var(--calcite-app-foreground);
   fill: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
-  border-radius: var(--calcite-app-border-radius);
-  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-three-quarters);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   margin: 0;
   justify-content: flex-start;
   align-items: center;
@@ -124,8 +123,8 @@
   border: var(--calcite-app-side-spacing-eighth) solid var(--calcite-app-background);
   background-color: var(--calcite-app-foreground-active);
   position: absolute;
-  bottom: var(--calcite-app-cap-spacing-half);
-  right: var(--calcite-app-side-spacing-quarter);
+  bottom: var(--calcite-app-cap-spacing-three-quarters);
+  right: var(--calcite-app-side-spacing-third);
   z-index: 1;
 }
 
