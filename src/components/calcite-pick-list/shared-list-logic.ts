@@ -23,16 +23,13 @@ export const sharedListMethods = {
   },
   // LifeCycle functions
   initialize(this: CalcitePickList | CalciteValueList) {
-    // connectedCallback
     this.setUpItems();
     this.setUpFilter();
   },
   initializeObserver(this: CalcitePickList | CalciteValueList) {
-    // componentDidLoad
     this.observer.observe(this.el, { childList: true, subtree: true });
   },
   cleanUpObserver(this: CalcitePickList | CalciteValueList) {
-    // componentDidUnload
     this.observer.disconnect();
   },
   // Listeners
