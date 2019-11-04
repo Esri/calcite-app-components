@@ -90,10 +90,9 @@ export class CalciteAction {
 
     const slotContainerNode = (
       <div
-        class={{
-          [CSS.slotContainer]: true,
+        class={classnames(CSS.slotContainer, {
           [CSS.slotContainerHidden]: loading
-        }}
+        })}
       >
         <slot />
       </div>
