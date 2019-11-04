@@ -4,7 +4,7 @@ import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 function updateSelectedValuesMap(
   selectedValuesMap: Map<string, HTMLCalcitePickListItemElement> | Map<string, HTMLCalciteValueListItemElement>,
   item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement
-) {
+): void {
   const selectedValues = (selectedValuesMap as any) as Map<
     string,
     HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement
@@ -17,19 +17,19 @@ function updateSelectedValuesMap(
 }
 
 export const sharedListMethods = {
-  mutationObserverCallback(this: CalcitePickList | CalciteValueList) {
+  mutationObserverCallback(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
   },
   // LifeCycle functions
-  initialize(this: CalcitePickList | CalciteValueList) {
+  initialize(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
   },
-  initializeObserver(this: CalcitePickList | CalciteValueList) {
+  initializeObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   },
-  cleanUpObserver(this: CalcitePickList | CalciteValueList) {
+  cleanUpObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.disconnect();
   },
   // Listeners
@@ -108,7 +108,7 @@ export const sharedListMethods = {
         updateSelectedValuesMap(this.selectedValues, currentItem);
       });
   },
-  handleFilter(this: CalcitePickList | CalciteValueList, event) {
+  handleFilter(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
     const filteredData = event.detail;
     const values = filteredData.map((item) => item.value);
     this.items.forEach((item) => {
