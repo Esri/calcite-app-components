@@ -87,10 +87,7 @@ export class CalcitePickList {
 
   lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  observer = new MutationObserver(() => {
-    this.setUpItems();
-    this.setUpFilter();
-  });
+  observer = new MutationObserver(sharedListMethods.mutationObserverCallback.bind(this));
 
   // --------------------------------------------------------------------------
   //

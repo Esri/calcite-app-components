@@ -81,10 +81,7 @@ export class CalciteValueList {
 
   guid = `calcite-value-list-${guid()}`;
 
-  observer = new MutationObserver(() => {
-    this.setUpItems();
-    this.setUpFilter();
-  });
+  observer = new MutationObserver(sharedListMethods.mutationObserverCallback.bind(this));
 
   sortables: Sortable[] = [];
 
