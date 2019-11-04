@@ -133,8 +133,9 @@ export class CalcitePickList {
    */
   @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
     sharedListMethods.calciteListItemChangeHandler.call(this, event);
+    this.calcitePickListSelectionChange.emit(this.selectedValues);
   }
 
   @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
