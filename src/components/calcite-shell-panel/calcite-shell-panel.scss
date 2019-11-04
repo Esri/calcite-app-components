@@ -9,9 +9,6 @@ $shell-panel-max-width: 360px !default;
   background-color: var(--calcite-app-background-content);
 }
 
-:host([loading]) {
-}
-
 .content {
   width: $shell-panel-width;
   min-width: $shell-panel-min-width;
@@ -26,4 +23,11 @@ $shell-panel-max-width: 360px !default;
 
 .content[hidden] {
   display: none;
+}
+
+:host([layout="leading"]) slot[name="action-bar"]::slotted(calcite-action-bar) {
+  border-right: 1px solid var(--calcite-app-border);
+}
+:host([layout="trailing"]) slot[name="action-bar"]::slotted(calcite-action-bar) {
+  border-left: 1px solid var(--calcite-app-border);
 }

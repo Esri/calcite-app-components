@@ -46,11 +46,6 @@ slot[name="header-content"]::slotted(.heading) {
   width: 100%;
 }
 
-.header-leading-content,
-.header-trailing-content {
-  padding: 0 var(--calcite-app-side-spacing-half);
-}
-
 .content-container {
   background-color: var(--calcite-app-background-content);
   flex: 1;
