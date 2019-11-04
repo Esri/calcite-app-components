@@ -251,7 +251,7 @@
         const blocks = document.getElementsByTagName("calcite-value-list");
 
         for (i = 0; i < blocks.length; i++) {
-          blocks[i].toggleAttribute(property);
+          blocks[i].hasAttribute(property) ? blocks[i].removeAttribute(property) : blocks[i].setAttribute(property, "");
         }
       }
     </script>

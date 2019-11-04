@@ -140,10 +140,14 @@ export class CalciteBlock {
     ) : !disabled ? (
       <slot name={SLOTS.control} />
     ) : null;
-
+    const hasIcon = this.el.querySelector("[slot=icon]");
     const headerContent = (
       <header class={CSS.header}>
-        <slot name={SLOTS.icon} />
+        {hasIcon ? (
+          <div class={CSS.icon}>
+            <slot name={SLOTS.icon} />
+          </div>
+        ) : null}
         <div class={CSS.title}>
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
