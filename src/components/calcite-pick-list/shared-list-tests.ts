@@ -20,6 +20,7 @@ export const tests = {
         expect(toggleSpy).toHaveReceivedEventTimes(2);
       });
     });
+
     describe("when multiple is true and a item is clicked", () => {
       it("should emit an event with each selected item's data", async () => {
         const page = await newE2EPage();
@@ -39,6 +40,7 @@ export const tests = {
         expect(toggleSpy).toHaveReceivedEventTimes(3);
       });
     });
+
     describe("preselected items", () => {
       it("should be included in the list of selected items", async () => {
         const page = await newE2EPage();
@@ -59,6 +61,7 @@ export const tests = {
         expect(numSelected).toBe(1);
       });
     });
+
     describe("shift click behavior", () => {
       it("should multi-select", async () => {
         const page = await newE2EPage();
@@ -96,6 +99,7 @@ export const tests = {
     let item2: E2EElement;
     let item1Visible;
     let item2Visible;
+
     beforeEach(async () => {
       page = await newE2EPage();
       await page.setContent(`<calcite-${listType}-list filter-enabled="true">
@@ -115,6 +119,7 @@ export const tests = {
         (window as any).filterInput = filter.shadowRoot.querySelector("input");
       }, listType);
     });
+
     it("should match text in the text-label prop", async () => {
       // Match first item
       await page.evaluate(() => {
@@ -143,6 +148,7 @@ export const tests = {
       expect(item1Visible).toBe(false);
       expect(item2Visible).toBe(true);
     });
+
     it("should match text in the text-description prop", async () => {
       // Match first item
       await page.evaluate(() => {
@@ -171,6 +177,7 @@ export const tests = {
       expect(item1Visible).toBe(false);
       expect(item2Visible).toBe(true);
     });
+
     it("should match text in the metadata prop", async () => {
       await page.evaluate(() => {
         const filterInput = (window as any).filterInput;
@@ -211,6 +218,7 @@ export const tests = {
       await item1.click();
       expect(toggleSpy).toHaveReceivedEventTimes(0);
     });
+
     it("loading", async () => {
       const page = await newE2EPage();
       await page.setContent(`<calcite-${listType}-list loading>
