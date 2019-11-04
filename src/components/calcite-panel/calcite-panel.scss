@@ -18,6 +18,12 @@
   display: none;
 }
 
+:host([loading]) .container,
+:host([disabled]) .container {
+  position: relative;
+  z-index: 1;
+}
+
 .header {
   align-items: center;
   display: flex;
