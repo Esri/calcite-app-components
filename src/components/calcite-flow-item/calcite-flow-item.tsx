@@ -54,7 +54,7 @@ export class CalciteFlowItem {
   @Prop() showBackButton = false;
 
   /**
-   * Summary text.
+   * Summary text. A description displayed underneath the heading.
    */
   @Prop() summary: string;
 
