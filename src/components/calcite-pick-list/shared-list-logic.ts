@@ -107,9 +107,10 @@ export const sharedListMethods = {
   },
   getItemData(this: CalcitePickList | CalciteValueList): Record<string, string | object>[] {
     const result: Record<string, string | object>[] = [];
-    this.items.forEach((item) => {
+    this.items.forEach((item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement) => {
       const obj: Record<string, string | object> = {};
-      obj.label = item.textLabel || item.textHeading;
+      const textHeading = "textHeading" in item ? item.textHeading : "";
+      obj.label = item.textLabel || textHeading;
       obj.description = item.textDescription;
       obj.metadata = item.metadata;
       obj.value = item.value;
