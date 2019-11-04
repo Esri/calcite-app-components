@@ -23,6 +23,7 @@
   position: relative;
   &.button--compact {
     padding-left: var(--calcite-app-side-spacing-quarter);
+    padding-right: var(--calcite-app-side-spacing-quarter);
   }
 
   &:hover {
