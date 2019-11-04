@@ -42,14 +42,14 @@ export const sharedListMethods = {
   // Private Methods
   setUpItems(this: CalcitePickList | CalciteValueList, tagname): void {
     this.items = Array.from(this.el.querySelectorAll(tagname));
-    this.items.forEach((item) => {
+    this.items.forEach((item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement) => {
       const iconType = this.getIconType();
       if (iconType) {
         item.setAttribute("icon", iconType);
       } else {
         item.removeAttribute("icon");
       }
-      item.compact = this.compact; // only used by pickList but shouldn't hurt
+      item.compact = this.compact;
       if (item.hasAttribute("selected")) {
         this.selectedValues.set(item.getAttribute("value"), item);
       }
@@ -60,7 +60,10 @@ export const sharedListMethods = {
       this.dataForFilter = this.getItemData();
     }
   },
-  deselectSiblingItems(this: CalcitePickList | CalciteValueList, item: HTMLCalcitePickListItemElement) {
+  deselectSiblingItems(
+    this: CalcitePickList | CalciteValueList,
+    item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement
+  ) {
     this.items.forEach((currentItem) => {
       if (currentItem !== item) {
         currentItem.toggleSelected(false);
@@ -72,7 +75,7 @@ export const sharedListMethods = {
   },
   selectSiblings(
     this: CalcitePickList | CalciteValueList,
-    item: HTMLCalcitePickListItemElement | HTMLCalcitePickListItemElement
+    item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement
   ) {
     if (!this.lastSelectedItem) {
       return;
@@ -84,10 +87,12 @@ export const sharedListMethods = {
     const end = items.findIndex((currentItem) => {
       return currentItem.value === item.value;
     });
-    items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-      currentItem.toggleSelected(true);
-      this.selectedValues.set(currentItem.value, currentItem);
-    });
+    items
+      .slice(Math.min(start, end), Math.max(start, end))
+      .forEach((currentItem: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement) => {
+        currentItem.toggleSelected(true);
+        this.selectedValues.set(currentItem.value, currentItem);
+      });
   },
   handleFilter(this: CalcitePickList | CalciteValueList, event) {
     const filteredData = event.detail;
