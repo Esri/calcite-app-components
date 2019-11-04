@@ -3,6 +3,60 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [4.4.0](https://github.com/Esri/calcite-app-components/compare/v4.3.1...v4.4.0) (2019-10-29)
+
+### Bug Fixes
+
+- **block:** fixed caret resizing ([#453](https://github.com/Esri/calcite-app-components/issues/453)) ([8716e56](https://github.com/Esri/calcite-app-components/commit/8716e56))
+- **pick-list-item:** fix text wrapping and not wrapping. Reset unrelated change. ([#430](https://github.com/Esri/calcite-app-components/issues/430) [#439](https://github.com/Esri/calcite-app-components/issues/439)) ([8a80c44](https://github.com/Esri/calcite-app-components/commit/8a80c44))
+- **pick-list-item:** revert word-break. clean up. demo with long strings. ([#430](https://github.com/Esri/calcite-app-components/issues/430) [#439](https://github.com/Esri/calcite-app-components/issues/439)) ([b38d83e](https://github.com/Esri/calcite-app-components/commit/b38d83e))
+- **pick-list-item:** summary text overflow fix ([#439](https://github.com/Esri/calcite-app-components/issues/439)) ([abbc672](https://github.com/Esri/calcite-app-components/commit/abbc672))
+- **value-list-item:** removed redundant padding. ([#456](https://github.com/Esri/calcite-app-components/issues/456)). ([58fe3c0](https://github.com/Esri/calcite-app-components/commit/58fe3c0))
+
+### Features
+
+- **block:** add slot for header icon ([33dc43d](https://github.com/Esri/calcite-app-components/commit/33dc43d))
+- **block:** hide collapsible icon when a control is provided. ([57b22f0](https://github.com/Esri/calcite-app-components/commit/57b22f0))
+- **pick-list-item:** Exclude text-description in compact mode. ([#447](https://github.com/Esri/calcite-app-components/issues/447)) ([4d7c652](https://github.com/Esri/calcite-app-components/commit/4d7c652))
+
+### [4.3.1](https://github.com/Esri/calcite-app-components/compare/v4.2.1...v4.3.1) (2019-10-23)
+
+### Bug Fixes
+
+- **panel:** moved position:relative to :host ([e2d65fc](https://github.com/Esri/calcite-app-components/commit/e2d65fc))
+- filter items not working with maquette ([37a074c](https://github.com/Esri/calcite-app-components/commit/37a074c))
+- spacebar on secondaryAction ([0b83c2c](https://github.com/Esri/calcite-app-components/commit/0b83c2c))
+
+### Features
+
+- **all:** blocking scrim + pick-list loading and disabled. TODO clean-up ([#361](https://github.com/Esri/calcite-app-components/issues/361) [#357](https://github.com/Esri/calcite-app-components/issues/357) [#358](https://github.com/Esri/calcite-app-components/issues/358) [#359](https://github.com/Esri/calcite-app-components/issues/359) [#361](https://github.com/Esri/calcite-app-components/issues/361) [#362](https://github.com/Esri/calcite-app-components/issues/362)) ([25d846e](https://github.com/Esri/calcite-app-components/commit/25d846e))
+- **all:** blocking scrim. added option to turn off aria attibutes. ([a7d784a](https://github.com/Esri/calcite-app-components/commit/a7d784a))
+- **all:** converted Scrim to FunctionalComponent. ([56f9dd2](https://github.com/Esri/calcite-app-components/commit/56f9dd2))
+- **all:** Scrim as functional component. Added styles inline. ([2e77018](https://github.com/Esri/calcite-app-components/commit/2e77018))
+- **all:** Scrim destructure. ([fffaa6e](https://github.com/Esri/calcite-app-components/commit/fffaa6e))
+- **block:** a11y aria labels for disabled and loading ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([9a23101](https://github.com/Esri/calcite-app-components/commit/9a23101))
+- **block:** added calcite-loader and associated styles. Updated demo. ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([a5b87c0](https://github.com/Esri/calcite-app-components/commit/a5b87c0))
+- **block:** added disabled style. updated demo with way to toggle disabled property. ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([20e5ccd](https://github.com/Esri/calcite-app-components/commit/20e5ccd))
+- **block:** added loading and disabled to destructuring. ([3f1e8dc](https://github.com/Esri/calcite-app-components/commit/3f1e8dc))
+- **block:** added relative to .content ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([333ee89](https://github.com/Esri/calcite-app-components/commit/333ee89))
+- **block:** demo tweak ([6978d8c](https://github.com/Esri/calcite-app-components/commit/6978d8c))
+- **block:** moved attr out of Host. Removed aria-disabled. ([4394bf1](https://github.com/Esri/calcite-app-components/commit/4394bf1))
+- **block:** removed unused method and associated import. ([a104f5e](https://github.com/Esri/calcite-app-components/commit/a104f5e))
+- **block:** simplified loader insertion. Thanks [@jcfranco](https://github.com/jcfranco)! ([2e9f6c2](https://github.com/Esri/calcite-app-components/commit/2e9f6c2))
+- **block:** updated prop description. ([5ebb2d3](https://github.com/Esri/calcite-app-components/commit/5ebb2d3))
+- **block:** updated VNode import updated. ([eb04e7f](https://github.com/Esri/calcite-app-components/commit/eb04e7f))
+- **block:** use Scrim for loading & disabled. ([9ddab6a](https://github.com/Esri/calcite-app-components/commit/9ddab6a))
+- **flow-item, panel:** added loading and disabled props, nodes, and styles. ([#359](https://github.com/Esri/calcite-app-components/issues/359)) ([d4caeca](https://github.com/Esri/calcite-app-components/commit/d4caeca))
+- **panel:** cleanup. ([323f6dc](https://github.com/Esri/calcite-app-components/commit/323f6dc))
+- **panel:** cleanup. ([b12078c](https://github.com/Esri/calcite-app-components/commit/b12078c))
+- **panel:** moved attr out of Host ([f5dd2a6](https://github.com/Esri/calcite-app-components/commit/f5dd2a6))
+- **panel:** use Scrim for loading & disabled. ([1f69c9f](https://github.com/Esri/calcite-app-components/commit/1f69c9f))
+- **value-list:** added container. move attr out of host ([046393a](https://github.com/Esri/calcite-app-components/commit/046393a))
+- **value-list:** Added disabled and loading props. Destructuring and added aria. ([#362](https://github.com/Esri/calcite-app-components/issues/362)) ([4e59c5a](https://github.com/Esri/calcite-app-components/commit/4e59c5a))
+- **value-list:** removed aria-disabled. ([22c711d](https://github.com/Esri/calcite-app-components/commit/22c711d))
+- **value-list:** stub for Scrim. Waiting on [#381](https://github.com/Esri/calcite-app-components/issues/381). ([#362](https://github.com/Esri/calcite-app-components/issues/362)) ([abe254c](https://github.com/Esri/calcite-app-components/commit/abe254c))
+- **value-list:** using Scrim for loading and disabled. ([26027e2](https://github.com/Esri/calcite-app-components/commit/26027e2))
+
 ## [4.3.0](https://github.com/Esri/calcite-app-components/compare/v4.2.1...v4.3.0) (2019-10-22)
 
 ### Bug Fixes

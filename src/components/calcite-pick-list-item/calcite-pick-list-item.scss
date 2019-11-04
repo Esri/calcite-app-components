@@ -1,8 +1,7 @@
 :host {
-  display: flex;
   align-items: center;
+  display: flex;
   margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
-  padding-right: var(--calcite-app-side-spacing-half);
   background-color: var(--calcite-app-background);
   color: var(--calcite-app-foreground);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
@@ -11,10 +10,6 @@
 
 :host(:hover) {
   background-color: var(--calcite-app-background-hover);
-}
-
-:host([compact]) {
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
 :host(:first-child) {
@@ -34,24 +29,25 @@
   width: var(--calcite-app-icon-size);
   margin: 0 var(--calcite-app-side-spacing-half);
 }
+
 .label {
   display: flex;
   flex: 1 0 0;
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing)
-    var(--calcite-app-cap-spacing);
+  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
   align-items: center;
   cursor: pointer;
 }
-.textContainer {
+
+.text-container {
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 0 0%;
   overflow: hidden;
   pointer-events: none;
+  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 .title {
-  @include lineClamp();
+  @include lineClamp(2);
 }
 
 .description {
@@ -59,14 +55,13 @@
   font-family: var(--calcite-app-font-family-monospace);
   font-size: var(--calcite-app-font-size--1);
   margin-top: var(--calcite-app-cap-spacing-quarter);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @include lineClamp(2);
 }
 
 .action {
   flex: 0 0 0%;
   justify-self: flex-end;
+  margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
 }
 
 .handle {
