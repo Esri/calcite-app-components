@@ -22,7 +22,7 @@
   text-align: unset;
   position: relative;
   &.button--compact {
-    padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-quarter);
+    padding-left: var(--calcite-app-side-spacing-quarter);
   }
 
   &:hover {
