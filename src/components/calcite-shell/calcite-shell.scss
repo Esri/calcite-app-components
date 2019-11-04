@@ -40,6 +40,10 @@
   z-index: 1;
 }
 
+slot[name="action-bar"]::slotted(calcite-action-bar) {
+  border-right: 2px solid #ff0000;
+}
+
 .footer {
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
 }
