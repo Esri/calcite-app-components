@@ -29,6 +29,13 @@ export class CalcitePickList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
@@ -60,12 +67,6 @@ export class CalcitePickList {
    * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
-
-  /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
-   * This allows for a more compact version of the pick-list-item.
-   */
-  @Prop({ reflect: true }) compact = false;
 
   /**
    * @deprecated No longer rendered. Prop will be removed in a future release.
