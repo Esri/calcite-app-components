@@ -1,6 +1,21 @@
 import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 
+function updateSelectedValuesMap(
+  selectedValuesMap: Map<string, HTMLCalcitePickListItemElement> | Map<string, HTMLCalciteValueListItemElement>,
+  item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement
+) {
+  const selectedValues = (selectedValuesMap as any) as Map<
+    string,
+    HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement
+  >;
+  if (selectedValues as Map<string, HTMLCalcitePickListItemElement>) {
+    selectedValues.set(item.value, item as HTMLCalcitePickListItemElement);
+  } else if (selectedValues as Map<string, HTMLCalciteValueListItemElement>) {
+    selectedValues.set(item.value, item as HTMLCalciteValueListItemElement);
+  }
+}
+
 export const sharedListMethods = {
   mutationObserverCallback(this: CalcitePickList | CalciteValueList) {
     this.setUpItems();
@@ -40,9 +55,12 @@ export const sharedListMethods = {
     // this.calcitePickListSelectionChange.emit(selectedValues); picklist only
   },
   // Private Methods
-  setUpItems(this: CalcitePickList | CalciteValueList, tagname): void {
+  setUpItems(
+    this: CalcitePickList | CalciteValueList,
+    tagname: "calcite-pick-list-item" | "calcite-pick-list-item"
+  ): void {
     this.items = Array.from(this.el.querySelectorAll(tagname));
-    this.items.forEach((item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement) => {
+    this.items.forEach((item) => {
       const iconType = this.getIconType();
       if (iconType) {
         item.setAttribute("icon", iconType);
@@ -51,7 +69,7 @@ export const sharedListMethods = {
       }
       item.compact = this.compact;
       if (item.hasAttribute("selected")) {
-        this.selectedValues.set(item.getAttribute("value"), item);
+        updateSelectedValuesMap(this.selectedValues, item);
       }
     });
   },
@@ -91,7 +109,7 @@ export const sharedListMethods = {
       .slice(Math.min(start, end), Math.max(start, end))
       .forEach((currentItem: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement) => {
         currentItem.toggleSelected(true);
-        this.selectedValues.set(currentItem.value, currentItem);
+        updateSelectedValuesMap(this.selectedValues, currentItem);
       });
   },
   handleFilter(this: CalcitePickList | CalciteValueList, event) {
@@ -109,8 +127,7 @@ export const sharedListMethods = {
     const result: Record<string, string | object>[] = [];
     this.items.forEach((item: HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement) => {
       const obj: Record<string, string | object> = {};
-      const textHeading = "textHeading" in item ? item.textHeading : "";
-      obj.label = item.textLabel || textHeading;
+      obj.label = item.textLabel || (item as HTMLCalcitePickListItemElement).textHeading;
       obj.description = item.textDescription;
       obj.metadata = item.metadata;
       obj.value = item.value;
