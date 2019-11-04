@@ -1,24 +1,27 @@
+import { CalcitePickList } from "./calcite-pick-list";
+import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
+
 export const sharedListMethods = {
-  getObserver: new MutationObserver(() => {
+  mutationObserverCallback(this: CalcitePickList | CalciteValueList) {
     this.setUpItems();
     this.setUpFilter();
-  }),
+  },
   // LifeCycle functions
-  initialize() {
+  initialize(this: CalcitePickList | CalciteValueList) {
     // connectedCallback
     this.setUpItems();
     this.setUpFilter();
   },
-  initializeObserver() {
+  initializeObserver(this: CalcitePickList | CalciteValueList) {
     // componentDidLoad
     this.observer.observe(this.el, { childList: true, subtree: true });
   },
-  cleanUpObserver() {
+  cleanUpObserver(this: CalcitePickList | CalciteValueList) {
     // componentDidUnload
     this.observer.disconnect();
   },
   // Listeners
-  calciteListItemChangeHandler(event): void {
+  calciteListItemChangeHandler(this: CalcitePickList | CalciteValueList, event): void {
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
@@ -37,7 +40,7 @@ export const sharedListMethods = {
     // this.calcitePickListSelectionChange.emit(selectedValues); picklist only
   },
   // Private Methods
-  setUpItems(tagname): void {
+  setUpItems(this: CalcitePickList | CalciteValueList, tagname): void {
     this.items = Array.from(this.el.querySelectorAll(tagname));
     this.items.forEach((item) => {
       const iconType = this.getIconType();
@@ -52,12 +55,12 @@ export const sharedListMethods = {
       }
     });
   },
-  setUpFilter(): void {
+  setUpFilter(this: CalcitePickList | CalciteValueList): void {
     if (this.filterEnabled) {
       this.dataForFilter = this.getItemData();
     }
   },
-  deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
+  deselectSiblingItems(this: CalcitePickList | CalciteValueList, item: HTMLCalcitePickListItemElement) {
     this.items.forEach((currentItem) => {
       if (currentItem !== item) {
         currentItem.toggleSelected(false);
@@ -67,7 +70,10 @@ export const sharedListMethods = {
       }
     });
   },
-  selectSiblings(item: HTMLCalcitePickListItemElement) {
+  selectSiblings(
+    this: CalcitePickList | CalciteValueList,
+    item: HTMLCalcitePickListItemElement | HTMLCalcitePickListItemElement
+  ) {
     if (!this.lastSelectedItem) {
       return;
     }
@@ -83,7 +89,7 @@ export const sharedListMethods = {
       this.selectedValues.set(currentItem.value, currentItem);
     });
   },
-  handleFilter(event) {
+  handleFilter(this: CalcitePickList | CalciteValueList, event) {
     const filteredData = event.detail;
     const values = filteredData.map((item) => item.value);
     this.items.forEach((item) => {
@@ -94,7 +100,7 @@ export const sharedListMethods = {
       }
     });
   },
-  getItemData(): Record<string, string | object>[] {
+  getItemData(this: CalcitePickList | CalciteValueList): Record<string, string | object>[] {
     const result: Record<string, string | object>[] = [];
     this.items.forEach((item) => {
       const obj: Record<string, string | object> = {};
