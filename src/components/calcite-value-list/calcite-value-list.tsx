@@ -33,6 +33,11 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
+   * Compact reduces the size of all items in the list.
+   */
+  @Prop({ reflect: true }) compact = false;
+
+  /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;

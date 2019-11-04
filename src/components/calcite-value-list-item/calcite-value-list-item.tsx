@@ -14,6 +14,11 @@ export class CalciteValueListItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Compact reduces the size of the item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
+  /**
    * When true, the item cannot be clicked and is visually muted
    */
   @Prop({ reflect: true }) disabled = false;
@@ -86,6 +91,7 @@ export class CalciteValueListItem {
     return (
       <Host>
         <calcite-pick-list-item
+          compact={this.compact}
           ref={this.getPickListRef}
           disabled={this.disabled}
           selected={this.selected}
