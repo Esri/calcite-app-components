@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: var(--calcite-app-cap-spacing-quarter) 0;
+  padding: var(--calcite-app-cap-spacing-half) 0;
+}
+:host(:first-child) {
+  padding-top: 0;
 }
 
 ::slotted(calcite-action) {
   display: flex;
   width: 100%;
-  margin-top: var(--calcite-app-cap-spacing-quarter);
-  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
