@@ -13,6 +13,19 @@ import { ICON_TYPES, TEXT } from "./resources";
 import sharedListMethods from "./shared-list-logic";
 import List from "./shared-list-render";
 
+const {
+  mutationObserverCallback,
+  initialize,
+  initializeObserver,
+  cleanUpObserver,
+  calciteListItemChangeHandler,
+  setUpItems,
+  deselectSiblingItems,
+  selectSiblings,
+  handleFilter,
+  getItemData
+} = sharedListMethods;
+
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
  */
@@ -27,6 +40,13 @@ export class CalcitePickList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
@@ -52,18 +72,12 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
   /**
-   * Multiple Works similar to standard radio buttons and checkboxes.
+   * Multiple works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time
    * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
-
-  /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
-   * This allows for a more compact version of the pick-list-item.
-   */
-  @Prop({ reflect: true }) compact = false;
 
   /**
    * @deprecated No longer rendered. Prop will be removed in a future release.
@@ -84,16 +98,7 @@ export class CalcitePickList {
 
   lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  observer = new MutationObserver(() => {
-    this.setUpItems();
-    this.setUpFilter();
-  });
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
+  observer = new MutationObserver(mutationObserverCallback.bind(this));
 
   @Element() el: HTMLCalcitePickListElement;
 
@@ -104,15 +109,15 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    sharedListMethods.initialize.call(this);
+    initialize.call(this);
   }
 
   componentDidLoad() {
-    sharedListMethods.initializeObserver.call(this);
+    initializeObserver.call(this);
   }
 
   componentDidUnload() {
-    sharedListMethods.cleanUpObserver.call(this);
+    cleanUpObserver.call(this);
   }
 
   // --------------------------------------------------------------------------
@@ -133,8 +138,9 @@ export class CalcitePickList {
    */
   @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
-    sharedListMethods.calciteListItemChangeHandler.call(this, event);
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+    calciteListItemChangeHandler.call(this, event);
+    this.calcitePickListSelectionChange.emit(this.selectedValues);
   }
 
   @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
@@ -148,7 +154,7 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    sharedListMethods.setUpItems.call(this, "calcite-pick-list-item");
+    setUpItems.call(this, "calcite-pick-list-item");
   }
 
   setUpFilter(): void {
@@ -157,13 +163,13 @@ export class CalcitePickList {
     }
   }
 
-  deselectSiblingItems = sharedListMethods.deselectSiblingItems.bind(this);
+  deselectSiblingItems = deselectSiblingItems.bind(this);
 
-  selectSiblings = sharedListMethods.selectSiblings.bind(this);
+  selectSiblings = selectSiblings.bind(this);
 
-  handleFilter = sharedListMethods.handleFilter.bind(this);
+  handleFilter = handleFilter.bind(this);
 
-  getItemData = sharedListMethods.getItemData.bind(this);
+  getItemData = getItemData.bind(this);
 
   // --------------------------------------------------------------------------
   //

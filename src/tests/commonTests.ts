@@ -12,16 +12,13 @@ type ComponentHTML = string;
 type TagOrHTML = CalciteComponentTag | ComponentHTML;
 
 function isHTML(tagOrHTML: string): boolean {
-  return tagOrHTML.trim().indexOf("<") === 0;
+  return tagOrHTML.trim().startsWith("<");
 }
 
 function getTag(tagOrHTML: string): CalciteComponentTag {
   if (isHTML(tagOrHTML)) {
-    return tagOrHTML
-      .trim()
-      .substring(1)
-      .split(" ")
-      .shift() as CalciteComponentTag;
+    const regex = /[>\s]/;
+    return tagOrHTML.trim().substring(1, tagOrHTML.search(regex)) as CalciteComponentTag;
   }
 
   return tagOrHTML as CalciteComponentTag;

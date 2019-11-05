@@ -28,6 +28,11 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
+  /**
    * When true, the item cannot be clicked and is visually muted.
    */
   @Prop({ reflect: true }) disabled = false;
@@ -50,11 +55,6 @@ export class CalcitePickListItem {
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
   @Prop() selected = false;
-
-  /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
-   */
-  @Prop({ reflect: true }) compact = false;
 
   @Watch("selected")
   selectedWatchHandler(newValue) {

@@ -1,14 +1,16 @@
-import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
+import { newE2EPage } from "@stencil/core/testing";
 import { ICON_TYPES } from "./resources";
 import { hidden, renders } from "../../tests/commonTests";
-import tests from "./shared-list-tests";
+import { tests } from "./shared-list-tests";
+
+const { selectionAndDeselection, filterBehavior, disabledStates } = tests;
 
 describe("calcite-pick-list", () => {
   it("renders", async () => renders("calcite-pick-list"));
   it("honors hidden attribute", async () => hidden("calcite-pick-list"));
 
   describe("Selection and Deselection", () => {
-    tests.selectionAndDeselection("pick");
+    selectionAndDeselection("pick");
   });
 
   describe("icon logic", () => {
@@ -35,10 +37,10 @@ describe("calcite-pick-list", () => {
   });
 
   describe("filter behavior (hide/show items)", () => {
-    tests.filterBehavior("pick");
+    filterBehavior("pick");
   });
 
   describe("disabled states", () => {
-    tests.disabledStates("pick");
+    disabledStates("pick");
   });
 });

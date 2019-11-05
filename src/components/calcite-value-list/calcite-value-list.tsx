@@ -12,8 +12,21 @@ import {
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
-import sharedListMethods from "../calcite-pick-list/shared-list-logic";
+import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
+
+const {
+  mutationObserverCallback,
+  initialize,
+  initializeObserver,
+  cleanUpObserver,
+  calciteListItemChangeHandler,
+  setUpItems,
+  deselectSiblingItems,
+  selectSiblings,
+  handleFilter,
+  getItemData
+} = sharedListMethods;
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -29,6 +42,11 @@ export class CalciteValueList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Compact reduces the size of all items in the list.
+   */
+  @Prop({ reflect: true }) compact = false;
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -74,10 +92,7 @@ export class CalciteValueList {
 
   guid = `calcite-value-list-${guid()}`;
 
-  observer = new MutationObserver(() => {
-    this.setUpItems();
-    this.setUpFilter();
-  });
+  observer = new MutationObserver(mutationObserverCallback.bind(this));
 
   sortables: Sortable[] = [];
 
@@ -95,16 +110,16 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
   connectedCallback() {
-    sharedListMethods.initialize.call(this);
+    initialize.call(this);
   }
 
   componentDidLoad() {
     this.setUpDragAndDrop();
-    sharedListMethods.initializeObserver.call(this);
+    initializeObserver.call(this);
   }
 
   componentDidUnload() {
-    sharedListMethods.cleanUpObserver.call(this);
+    cleanUpObserver.call(this);
     this.cleanUpDragAndDrop();
   }
 
@@ -127,7 +142,7 @@ export class CalciteValueList {
   @Event() calciteListOrderChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
-    sharedListMethods.calciteListItemChangeHandler.call(this, event);
+    calciteListItemChangeHandler.call(this, event);
   }
 
   @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
@@ -141,7 +156,7 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    sharedListMethods.setUpItems.call(this, "calcite-value-list-item");
+    setUpItems.call(this, "calcite-value-list-item");
   }
 
   setUpFilter(): void {
@@ -178,13 +193,13 @@ export class CalciteValueList {
     this.sortables = [];
   }
 
-  deselectSiblingItems = sharedListMethods.deselectSiblingItems.bind(this);
+  deselectSiblingItems = deselectSiblingItems.bind(this);
 
-  selectSiblings = sharedListMethods.selectSiblings.bind(this);
+  selectSiblings = selectSiblings.bind(this);
 
-  handleFilter = sharedListMethods.handleFilter.bind(this);
+  handleFilter = handleFilter.bind(this);
 
-  getItemData = sharedListMethods.getItemData.bind(this);
+  getItemData = getItemData.bind(this);
 
   // --------------------------------------------------------------------------
   //
