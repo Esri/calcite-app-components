@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Demos - PickList</title>
     <script src="head.js"></script>
-
+    <script src="https://unpkg.com/maquette@3.3.0/dist/maquette.umd.js"></script>
   </head>
   <body>
     <nav>
@@ -417,6 +417,25 @@
           }
         }
       </script>
+      <h2>Maquette Version</h2>
+      <div id="app"></div>
     </section>
+    <script>
+       function renderMaquette() {
+        const h = maquette.h;
+        return h('calcite-pick-list', { "filter-enabled": "true" }, [
+          h('calcite-pick-list-item', { selected: false, "text-label": "one", value: "one" }),
+          h('calcite-pick-list-item', { selected: true, "text-label": "two", value: "two" }),
+        ]);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        const domNode = document.querySelector("#app");
+
+        const projector = maquette.createProjector();
+        projector.append(domNode, renderMaquette);
+
+        setTimeout(() => projector.scheduleRender(), 1000);
+      });
+    </script>
   </body>
 </html>
