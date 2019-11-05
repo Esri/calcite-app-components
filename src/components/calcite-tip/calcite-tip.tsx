@@ -36,6 +36,14 @@ export class CalciteTip {
   @Prop() heading: string;
 
   /**
+   * The selected state of the tip if it is being used inside a CalciteTipManager
+   */
+  @Prop({
+    reflect: true
+  })
+  selected: boolean;
+
+  /**
    * Alternate text for closing the tip.
    */
   @Prop() textClose = TEXT.close;
