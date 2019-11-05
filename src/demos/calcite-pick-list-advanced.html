@@ -257,8 +257,8 @@
           </script>
       </section>
       <!-- RTL -->
-      <h2>RTL</h2>
       <section class="example-container" style="width: 28vw; margin-top: 2em;" dir="rtl">
+        <h2>RTL</h2>
         <calcite-pick-list id="one_rtl" multiple>
           <calcite-pick-list-item text-label="2018 Population Density (NO SUMMARY) (Esri)" value="POPDENS_CY">
             <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -416,10 +416,6 @@
           });
         </script>
       </section>
-      <section class="example-container" style="width: 28vw; margin-top: 2em;">
-          <h2>Maquette Version</h2>
-          <div id="app"></div>
-      </section>
     </main>
     <script>
       function toggleProperty(property) {
@@ -428,24 +424,6 @@
           blocks[i].toggleAttribute(property);
         }
       }
-    </script>
-    <script>
-      function renderMaquette() {
-        const h = maquette.h;
-        return h('calcite-pick-list', { "filter-enabled": "true", multiple: true }, [
-          h('calcite-pick-list-item', { selected: false, "text-label": "one", value: "one" }),
-          h('calcite-pick-list-item', { selected: true, "text-label": "two", value: "two" }),
-          h('calcite-pick-list-item', { selected: true, "text-label": "three", value: "three" })
-        ]);
-      }
-      document.addEventListener('DOMContentLoaded', function () {
-        const domNode = document.querySelector("#app");
-
-        const projector = maquette.createProjector();
-        projector.append(domNode, renderMaquette);
-
-        setTimeout(() => projector.scheduleRender(), 1000);
-      });
     </script>
   </body>
 </html>
