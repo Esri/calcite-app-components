@@ -11,6 +11,8 @@ import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
 
+const BLACKLISTED_MENU_ACTIONS_COMPONENTS = ["calcite-pick-list", "calcite-value-list"];
+
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
@@ -187,8 +189,10 @@ export class CalciteFlowItem {
 
   renderHeaderActions() {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const blackListItems = menuActionsNode.closest("calcite-pick-list, calcite-value-list");
-    const hasMenuActions = !!menuActionsNode && !blackListItems;
+    const blackListComponents = menuActionsNode.closest(
+      BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(",")
+    );
+    const hasMenuActions = !!menuActionsNode && !blackListComponents;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
     const menuActionsNodes =
