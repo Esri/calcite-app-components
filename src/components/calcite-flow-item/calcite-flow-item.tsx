@@ -187,7 +187,8 @@ export class CalciteFlowItem {
 
   renderHeaderActions() {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const hasMenuActions = !!menuActionsNode && menuActionsNode.parentElement === this.el;
+    const blackListItems = menuActionsNode.closest("calcite-pick-list, calcite-value-list");
+    const hasMenuActions = !!menuActionsNode && !blackListItems;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
     const menuActionsNodes =
