@@ -57,3 +57,8 @@ slot[name="header-content"]::slotted(.heading) {
   width: 100%;
   border-top: 1px solid var(--calcite-app-border);
 }
+
+slot[name="footer"]::slotted(div) {
+  display: flex;
+  justify-content: space-evenly;
+}

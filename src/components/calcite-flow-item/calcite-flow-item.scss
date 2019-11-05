@@ -48,7 +48,7 @@ calcite-panel {
   display: block;
 }
 
-slot[name="footer-actions"]::slotted(div) {
+.footer-actions {
   display: flex;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  width: 100%;
 }
