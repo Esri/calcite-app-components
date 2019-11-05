@@ -21,28 +21,59 @@ describe("calcite-flow-item", () => {
     expect(singleActionContainer).toBeNull();
   });
 
-  it("should not render containers when there are no menu actions in parent element", async () => {
+  it("should not show menu button when actions are inside blacklisted component", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`
+    const pageContent = `
     <calcite-flow-item>
-      <div slot="footer-actions">
-        <div slot="menu-actions">
-          <button>Save</button>
-          <button>Cancel</button>
-        </div>
-        <button>Save</button>
-        <button>Cancel</button>
-      </div>
+      <calcite-pick-list>
+        <calcite-action slot="menu-actions" indicator text="Cool">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+          </svg>
+        </calcite-action>
+        <calcite-action slot="menu-actions" indicator text="Cool">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+          </svg>
+        </calcite-action>
+      </calcite-pick-list>
     </calcite-flow-item>
-  `);
+  `;
 
-    const menuContainer = await page.find(`calcite-flow-item >>> .${CSS.menuContainer}`);
+    await page.setContent(pageContent);
 
-    const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
+    await page.waitForChanges();
 
-    expect(menuContainer).toBeNull();
-    expect(singleActionContainer).toBeNull();
+    const menuButtonNode = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
+
+    expect(menuButtonNode).toBeNull();
+  });
+
+  it("should not show single action when actions are inside blacklisted component", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item>
+      <calcite-pick-list>
+        <div slot="menu-actions">
+          <calcite-action indicator text="Cool">
+            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+            </svg>
+          </calcite-action>
+        </div>
+      </calcite-pick-list>
+    </calcite-flow-item>
+  `;
+
+    await page.setContent(pageContent);
+
+    await page.waitForChanges();
+
+    const singleActionContainerNode = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
+
+    expect(singleActionContainerNode).toBeNull();
   });
 
   it("should show single action container when one action exists", async () => {
@@ -180,33 +211,4 @@ describe("calcite-flow-item", () => {
       </calcite-flow-item>
     `);
   });
-
-  // it("should not show menu button", async () => {
-  //   const page = await newE2EPage();
-
-  //   const pageContent = `
-  //   <calcite-flow-item>
-  //     <calcite-pick-list>
-  //       <calcite-action slot="menu-actions" indicator text="Cool">
-  //         <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-  //           <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-  //         </svg>
-  //       </calcite-action>
-  //       <calcite-action slot="menu-actions" indicator text="Cool">
-  //         <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-  //           <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-  //         </svg>
-  //       </calcite-action>
-  //     </calcite-pick-list>
-  //   </calcite-flow-item>
-  // `;
-
-  //   await page.setContent(pageContent);
-
-  //   await page.waitForChanges();
-
-  //   const menuButtonNode = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
-
-  //   expect(menuButtonNode).toBeNull();
-  // });
 });
