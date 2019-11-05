@@ -106,9 +106,7 @@ export class CalciteActionBar {
   setActionTextDisplay(expanded: boolean): void {
     this.el
       .querySelectorAll("calcite-action")
-      .forEach((action) =>
-        expanded ? (action.textDisplay = "visible") : (action.textDisplay = "hidden")
-      );
+      .forEach((action) => (action.textDisplay = expanded ? "visible" : "hidden"));
   }
 
   toggleExpand = (): void => {
