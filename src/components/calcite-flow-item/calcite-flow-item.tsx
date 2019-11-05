@@ -163,7 +163,9 @@ export class CalciteFlowItem {
 
     return hasFooterActions ? (
       <div slot="footer">
-        <slot name="footer-actions" />
+        <div class={CSS.footerActions}>
+          <slot name="footer-actions" slot="footer" />
+        </div>
       </div>
     ) : null;
   }

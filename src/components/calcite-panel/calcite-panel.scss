@@ -54,10 +54,6 @@ slot[name="header-content"]::slotted(.heading) {
 }
 
 .footer {
-  align-items: center;
+  width: 100%;
   border-top: 1px solid var(--calcite-app-border);
-  display: flex;
-  justify-content: space-around;
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
-  flex-flow: row nowrap;
 }
