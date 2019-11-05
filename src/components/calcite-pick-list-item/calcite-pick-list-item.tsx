@@ -119,7 +119,8 @@ export class CalcitePickListItem {
   @Event() calciteListItemChange: EventEmitter;
 
   /**
-   * Emitted whenever the the item's metadata property is modified.
+   * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
+   * It also fires on textHeading property changes for backwards compatibility until that's fully removed.
    * @event calciteListItemPropsUpdated
    */
   @Event() calciteListItemPropsUpdated: EventEmitter;
