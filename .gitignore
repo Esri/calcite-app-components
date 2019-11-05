@@ -24,3 +24,7 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 .env
 src/**/components.d.ts
+
+# backup files
+*.bak
+*.orig

@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { E2EPage } from "@stencil/core/dist/testing/puppeteer/puppeteer-declarations";
-import { JSX } from "../components";
+import { JSX } from "../components/components";
 import { toHaveNoViolations } from "jest-axe";
 import axe from "axe-core";
 
@@ -18,7 +18,8 @@ function isHTML(tagOrHTML: string): boolean {
 function getTag(tagOrHTML: string): CalciteComponentTag {
   if (isHTML(tagOrHTML)) {
     const regex = /[>\s]/;
-    return tagOrHTML.trim().substring(1, tagOrHTML.search(regex)) as CalciteComponentTag;
+    const trimmedTag = tagOrHTML.trim();
+    return trimmedTag.substring(1, trimmedTag.search(regex)) as CalciteComponentTag;
   }
 
   return tagOrHTML as CalciteComponentTag;

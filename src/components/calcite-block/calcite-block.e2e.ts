@@ -1,5 +1,5 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS, TEXT } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
 import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-block", () => {
@@ -21,11 +21,12 @@ describe("calcite-block", () => {
 
   it("is accessible", async () =>
     accessible(`
-    <calcite-block heading="heading" summary="summary" open collapsible>
-      <div>content</div>
-      <label slot="control">test <input placeholder="control"/></label>
-    </calcite-block>
-`));
+      <calcite-block heading="heading" summary="summary" open collapsible>
+        <div slot=${SLOTS.icon}>✅</div>
+        <div>content</div>
+        <label slot=${SLOTS.control}>test <input placeholder="control"/></label>
+      </calcite-block>
+  `));
 
   it("can display/hide content", async () => {
     const page = await newE2EPage();
@@ -103,23 +104,42 @@ describe("calcite-block", () => {
       expect(summary.innerText).toBe("test-summary");
     });
 
-    it("supports a nested control", async () => {
+    it("allows users to add a control in a collapsible block", async () => {
       const page = await newE2EPage();
       await page.setContent(
-        `<calcite-block heading="test-heading" collapsible><input class="nested-control" slot="control" /></calcite-block>`
+        `<calcite-block heading="test-heading" collapsible><input class="nested-control" slot=${SLOTS.control} /></calcite-block>`
       );
-      const element = await page.find("calcite-block");
-      const elementToggleSpy = await element.spyOnEvent("calciteBlockToggle");
-
-      const control = await element.find(".nested-control");
+      const control = await page.find(".nested-control");
       expect(await control.isVisible()).toBe(true);
 
-      await control.click();
-      expect(elementToggleSpy).toHaveReceivedEventTimes(0);
+      const controlSlot = await page.find(`calcite-block >>> slot[name=${SLOTS.control}]`);
+      expect(await controlSlot.isVisible()).toBe(true);
 
-      await element.click();
-      await element.click();
-      expect(elementToggleSpy).toHaveReceivedEventTimes(2);
+      const collapsibleIcon = await page.find(`calcite-block >>> .${CSS.toggleIcon}`);
+      expect(collapsibleIcon).toBeNull();
+
+      const block = await page.find("calcite-block");
+      const blockToggleSpy = await block.spyOnEvent("calciteBlockToggle");
+
+      await control.click();
+      expect(blockToggleSpy).toHaveReceivedEventTimes(0);
+
+      await block.click();
+      await block.click();
+      expect(blockToggleSpy).toHaveReceivedEventTimes(2);
+    });
+
+    it("supports a header icon", async () => {
+      const page = await newE2EPage();
+      await page.setContent(
+        `<calcite-block heading="test-heading"><div class="header-icon" slot=${SLOTS.icon} /></calcite-block>`
+      );
+
+      const icon = await page.find(`.header-icon`);
+      expect(await icon.isVisible()).toBe(true);
+
+      const iconSlot = await page.find(`calcite-block >>> slot[name=${SLOTS.icon}]`);
+      expect(await iconSlot.isVisible()).toBe(true);
     });
   });
 });

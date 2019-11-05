@@ -18,6 +18,12 @@
   display: none;
 }
 
+:host([loading]) .container,
+:host([disabled]) .container {
+  position: relative;
+  z-index: 1;
+}
+
 .header {
   align-items: center;
   display: flex;
@@ -38,11 +44,6 @@ slot[name="header-content"]::slotted(.heading) {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
-}
-
-.header-leading-content,
-.header-trailing-content {
-  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 .content-container {

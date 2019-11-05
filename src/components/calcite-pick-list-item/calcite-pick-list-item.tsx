@@ -28,6 +28,11 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
+  /**
    * When true, the item cannot be clicked and is visually muted.
    */
   @Prop({ reflect: true }) disabled = false;
@@ -50,11 +55,6 @@ export class CalcitePickListItem {
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
   @Prop() selected = false;
-
-  /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
-   */
-  @Prop({ reflect: true }) compact = false;
 
   @Watch("selected")
   selectedWatchHandler(newValue) {
@@ -119,7 +119,8 @@ export class CalcitePickListItem {
   @Event() calciteListItemChange: EventEmitter;
 
   /**
-   * Emitted whenever the the item's metadata property is modified.
+   * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
+   * It also fires on textHeading property changes for backwards compatibility until that's fully removed.
    * @event calciteListItemPropsUpdated
    */
   @Event() calciteListItemPropsUpdated: EventEmitter;
@@ -215,9 +216,10 @@ export class CalcitePickListItem {
   }
 
   render() {
-    const description = this.textDescription ? (
-      <span class={CSS.description}>{this.textDescription}</span>
-    ) : null;
+    const description =
+      this.textDescription && !this.compact ? (
+        <span class={CSS.description}>{this.textDescription}</span>
+      ) : null;
 
     return (
       <Host selected={this.isSelected}>
