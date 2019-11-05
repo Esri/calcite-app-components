@@ -180,4 +180,33 @@ describe("calcite-flow-item", () => {
       </calcite-flow-item>
     `);
   });
+
+  // it("should not show menu button", async () => {
+  //   const page = await newE2EPage();
+
+  //   const pageContent = `
+  //   <calcite-flow-item>
+  //     <calcite-pick-list>
+  //       <calcite-action slot="menu-actions" indicator text="Cool">
+  //         <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+  //           <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+  //         </svg>
+  //       </calcite-action>
+  //       <calcite-action slot="menu-actions" indicator text="Cool">
+  //         <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+  //           <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+  //         </svg>
+  //       </calcite-action>
+  //     </calcite-pick-list>
+  //   </calcite-flow-item>
+  // `;
+
+  //   await page.setContent(pageContent);
+
+  //   await page.waitForChanges();
+
+  //   const menuButtonNode = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
+
+  //   expect(menuButtonNode).toBeNull();
+  // });
 });
