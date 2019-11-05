@@ -88,9 +88,22 @@ export class CalciteAction {
   render() {
     const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
 
+    const slotContainerNode = (
+      <div
+        class={classnames(CSS.slotContainer, {
+          [CSS.slotContainerHidden]: loading
+        })}
+      >
+        <slot />
+      </div>
+    );
+
+    const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
+
     const iconContainerNode = (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        {!loading ? <slot /> : <calcite-loader is-active inline></calcite-loader>}
+        {slotContainerNode}
+        {calciteLoaderNode}
       </div>
     );
 
