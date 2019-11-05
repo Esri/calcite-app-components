@@ -10,7 +10,7 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
-import sharedListMethods from "./shared-list-logic";
+import { sharedListMethods } from "./shared-list-logic";
 import List from "./shared-list-render";
 
 const {

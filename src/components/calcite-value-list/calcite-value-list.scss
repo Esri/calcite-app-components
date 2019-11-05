@@ -3,8 +3,6 @@
   background-color: var(--calcite-app-background-clear);
   display: flex;
   flex-flow: column;
-  margin-top: var(--calcite-app-cap-spacing-half);
-  padding: 0 var(--calcite-app-side-spacing-half);
   position: relative;
 }
 
@@ -13,7 +11,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: var(--calcite-app-cap-spacing-half);
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
 
 slot[name="menu-actions"]::slotted(calcite-action) {
