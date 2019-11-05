@@ -21,7 +21,11 @@ export const sharedListMethods = {
     this.setUpItems();
     this.setUpFilter();
   },
-  // LifeCycle functions
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
   initialize(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
@@ -32,7 +36,11 @@ export const sharedListMethods = {
   cleanUpObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.disconnect();
   },
-  // Listeners
+  // --------------------------------------------------------------------------
+  //
+  //  Listeners
+  //
+  // --------------------------------------------------------------------------
   calciteListItemChangeHandler(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
     const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
@@ -50,7 +58,11 @@ export const sharedListMethods = {
     this.lastSelectedItem = item;
     this.calciteListChange.emit(selectedValues);
   },
-  // Private Methods
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
   setUpItems(
     this: CalcitePickList | CalciteValueList,
     tagname: "calcite-pick-list-item" | "calcite-pick-list-item"
@@ -132,4 +144,3 @@ export const sharedListMethods = {
     return result;
   }
 };
-export default sharedListMethods;

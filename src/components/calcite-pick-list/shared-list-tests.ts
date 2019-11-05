@@ -1,7 +1,7 @@
 import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
 
 export const tests = {
-  selectionAndDeselection(listType: "pick" | "list") {
+  selectionAndDeselection(listType: "pick" | "value") {
     describe("when multiple is false and a item is clicked", () => {
       it("should emit an event with the last selected item data", async () => {
         const page = await newE2EPage();
@@ -93,7 +93,7 @@ export const tests = {
       });
     });
   },
-  filterBehavior(listType: "pick" | "list") {
+  filterBehavior(listType: "pick" | "value") {
     let page: E2EPage = null;
     let item1: E2EElement;
     let item2: E2EElement;
@@ -204,7 +204,7 @@ export const tests = {
       expect(item2Visible).toBe(true);
     });
   },
-  disabledStateslistType(listType: "pick" | "list") {
+  disabledStates(listType: "pick" | "value") {
     it("disabled", async () => {
       const page = await newE2EPage();
       await page.setContent(`<calcite-${listType}-list disabled>
@@ -234,4 +234,3 @@ export const tests = {
     });
   }
 };
-export default tests;

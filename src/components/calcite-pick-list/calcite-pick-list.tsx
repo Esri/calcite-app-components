@@ -11,9 +11,22 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
-import sharedListMethods from "./shared-list-logic";
+import { sharedListMethods } from "./shared-list-logic";
 import { VNode } from "@stencil/core/dist/declarations";
 import CalciteScrim from "../utils/CalciteScrim";
+
+const {
+  mutationObserverCallback,
+  initialize,
+  initializeObserver,
+  cleanUpObserver,
+  calciteListItemChangeHandler,
+  setUpItems,
+  deselectSiblingItems,
+  selectSiblings,
+  handleFilter,
+  getItemData
+} = sharedListMethods;
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -87,13 +100,7 @@ export class CalcitePickList {
 
   lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  observer = new MutationObserver(sharedListMethods.mutationObserverCallback.bind(this));
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
+  observer = new MutationObserver(mutationObserverCallback.bind(this));
 
   @Element() el: HTMLCalcitePickListElement;
 
@@ -104,15 +111,15 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   connectedCallback() {
-    sharedListMethods.initialize.call(this);
+    initialize.call(this);
   }
 
   componentDidLoad() {
-    sharedListMethods.initializeObserver.call(this);
+    initializeObserver.call(this);
   }
 
   componentDidUnload() {
-    sharedListMethods.cleanUpObserver.call(this);
+    cleanUpObserver.call(this);
   }
 
   // --------------------------------------------------------------------------
@@ -134,7 +141,7 @@ export class CalcitePickList {
   @Event() calcitePickListSelectionChange: EventEmitter;
 
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
-    sharedListMethods.calciteListItemChangeHandler.call(this, event);
+    calciteListItemChangeHandler.call(this, event);
     this.calcitePickListSelectionChange.emit(this.selectedValues);
   }
 
@@ -149,7 +156,7 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    sharedListMethods.setUpItems.call(this, "calcite-pick-list-item");
+    setUpItems.call(this, "calcite-pick-list-item");
   }
 
   setUpFilter(): void {
@@ -158,13 +165,13 @@ export class CalcitePickList {
     }
   }
 
-  deselectSiblingItems = sharedListMethods.deselectSiblingItems.bind(this);
+  deselectSiblingItems = deselectSiblingItems.bind(this);
 
-  selectSiblings = sharedListMethods.selectSiblings.bind(this);
+  selectSiblings = selectSiblings.bind(this);
 
-  handleFilter = sharedListMethods.handleFilter.bind(this);
+  handleFilter = handleFilter.bind(this);
 
-  getItemData = sharedListMethods.getItemData.bind(this);
+  getItemData = getItemData.bind(this);
 
   // --------------------------------------------------------------------------
   //
