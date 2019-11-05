@@ -70,14 +70,9 @@ export const sharedListMethods = {
   ): void {
     this.items = Array.from(this.el.querySelectorAll(tagname));
     this.items.forEach((item) => {
-      const iconType = this.getIconType();
-      if (iconType) {
-        item.setAttribute("icon", iconType);
-      } else {
-        item.removeAttribute("icon");
-      }
+      item.icon = this.getIconType();
       item.compact = this.compact;
-      if (item.hasAttribute("selected")) {
+      if (item.selected) {
         updateSelectedValuesMap(this.selectedValues, item);
       }
     });
@@ -117,11 +112,7 @@ export const sharedListMethods = {
     const filteredData = event.detail;
     const values = filteredData.map((item) => item.value);
     this.items.forEach((item) => {
-      if (values.indexOf(item.value) === -1) {
-        item.setAttribute("hidden", "");
-      } else {
-        item.removeAttribute("hidden");
-      }
+      item.hidden = values.indexOf(item.value) === -1;
     });
   },
   getItemData(this: CalcitePickList | CalciteValueList): Record<string, string | object>[] {
