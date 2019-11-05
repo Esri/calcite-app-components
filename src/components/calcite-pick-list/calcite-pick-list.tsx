@@ -3,7 +3,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Listen,
   Method,
   Prop,
@@ -11,9 +10,8 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
-import { sharedListMethods } from "./shared-list-logic";
-import { VNode } from "@stencil/core/dist/declarations";
-import CalciteScrim from "../utils/CalciteScrim";
+import sharedListMethods from "./shared-list-logic";
+import List from "./shared-list-render";
 
 const {
   mutationObserverCallback,
@@ -197,30 +195,7 @@ export class CalcitePickList {
     return type;
   }
 
-  renderScrim(): VNode {
-    return this.loading || this.disabled ? (
-      <CalciteScrim loading={this.loading}></CalciteScrim>
-    ) : null;
-  }
-
   render() {
-    const { dataForFilter, handleFilter, filterEnabled, loading, disabled } = this;
-    return (
-      <Host aria-disabled={disabled} aria-busy={loading}>
-        <header>
-          {filterEnabled ? (
-            <calcite-filter
-              data={dataForFilter}
-              textPlaceholder={TEXT.filterPlaceholder}
-              aria-label={TEXT.filterPlaceholder}
-              onCalciteFilterChange={handleFilter}
-            />
-          ) : null}
-          <slot name="menu-actions" />
-        </header>
-        <slot />
-        {this.renderScrim()}
-      </Host>
-    );
+    return <List props={this} text={TEXT} />;
   }
 }
