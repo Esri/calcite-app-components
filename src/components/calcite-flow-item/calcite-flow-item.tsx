@@ -6,7 +6,7 @@ import { getElementDir } from "../utils/dom";
 
 import classnames from "classnames";
 
-import { CSS, TEXT } from "./resources";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
@@ -187,7 +187,11 @@ export class CalciteFlowItem {
 
   renderHeaderActions() {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const hasMenuActions = !!menuActionsNode && menuActionsNode.parentElement === this.el;
+
+    const hasMenuActionsInBlacklisted =
+      menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
+
+    const hasMenuActions = !!menuActionsNode && !hasMenuActionsInBlacklisted;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
     const menuActionsNodes =
