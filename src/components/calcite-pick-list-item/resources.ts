@@ -5,5 +5,5 @@ export const CSS = {
   highlight: "highlight",
   label: "label",
   title: "title",
-  textContainer: "textContainer"
+  textContainer: "text-container"
 };

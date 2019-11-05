@@ -215,9 +215,10 @@ export class CalcitePickListItem {
   }
 
   render() {
-    const description = this.textDescription ? (
-      <span class={CSS.description}>{this.textDescription}</span>
-    ) : null;
+    const description =
+      this.textDescription && !this.compact ? (
+        <span class={CSS.description}>{this.textDescription}</span>
+      ) : null;
 
     return (
       <Host selected={this.isSelected}>

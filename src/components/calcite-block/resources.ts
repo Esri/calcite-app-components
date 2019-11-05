@@ -15,3 +15,8 @@ export const TEXT = {
   collapse: "Collapse",
   expand: "Expand"
 };
+
+export const enum SLOTS {
+  icon = "icon",
+  control = "control"
+}
