@@ -1,17 +1,18 @@
 import { Host, h } from "@stencil/core";
 import CalciteScrim from "../utils/CalciteScrim";
 import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import { CSS } from "./resources";
 
 const renderScrim = (loading, disabled): VNode => {
   return loading || disabled ? <CalciteScrim loading={loading}></CalciteScrim> : null;
 };
 
 export const List = ({ props, text, ...rest }): VNode => {
-  const { disabled, loading, filterEnabled, dataForFilter, handleFilter } = props;
+  const { disabled, loading, filterEnabled, filterSticky, dataForFilter, handleFilter } = props;
   const { filterPlaceholder } = text;
   return (
     <Host aria-disabled={disabled} aria-busy={loading} {...rest}>
-      <header>
+      <header class={{ [CSS.sticky]: filterSticky }}>
         {filterEnabled ? (
           <calcite-filter
             data={dataForFilter}

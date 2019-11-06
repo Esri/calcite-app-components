@@ -63,6 +63,11 @@ export class CalcitePickList {
   @Prop({ reflect: true }) filterEnabled = false;
 
   /**
+   * When true, the filter will stick to the top of the pick list when scrolling would otherwise hide filter.
+   */
+  @Prop({ reflect: true }) filterSticky = false;
+
+  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;

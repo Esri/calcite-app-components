@@ -59,6 +59,11 @@ export class CalciteValueList {
   @Prop({ reflect: true }) dragEnabled = false;
 
   /**
+   * When true, the filter will stick to the top of the pick list when scrolling would otherwise hide filter.
+   */
+  @Prop({ reflect: true }) filterSticky = false;
+
+  /**
    * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
    */
   @Prop({ reflect: true }) filterEnabled = false;
