@@ -143,7 +143,8 @@ export class CalcitePickList {
     this.calcitePickListSelectionChange.emit(this.selectedValues);
   }
 
-  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler() {
+  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {
+    event.stopPropagation();
     this.setUpFilter();
   }
 
