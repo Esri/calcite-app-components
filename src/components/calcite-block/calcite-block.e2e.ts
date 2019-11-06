@@ -1,8 +1,7 @@
-import { E2EElement, newE2EPage } from "@stencil/core/testing";
+import { newE2EPage } from "@stencil/core/testing";
 import { CSS, SLOTS, TEXT } from "./resources";
 import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
 import { setUpPage } from "../../tests/utils";
-import { CalciteBlock } from "./calcite-block";
 
 describe("calcite-block", () => {
   it("renders", async () => renders("calcite-block"));
