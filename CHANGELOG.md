@@ -22,30 +22,30 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Bug Fixes
 
-- **Pick-list:** filter not working with Maquette ([37a074c](https://github.com/Esri/calcite-app-components/commit/37a074c))
-- **Pick-list, ValueList:** spacebar on secondaryAction no longer triggers selection/deselection ([0b83c2c](https://github.com/Esri/calcite-app-components/commit/0b83c2c))
+- **pick-list:** filter not working with Maquette ([#400](https://github.com/Esri/calcite-app-components/issues/391)) ([#461](https://github.com/Esri/calcite-app-components/issues/391)) ([37a074c](https://github.com/Esri/calcite-app-components/commit/37a074c))
+- **pick-list, value-list:** spacebar on secondaryAction no longer triggers selection/deselection ([#309](https://github.com/Esri/calcite-app-components/issues/309)) ([0b83c2c](https://github.com/Esri/calcite-app-components/commit/0b83c2c))
 
 ## [4.3.0](https://github.com/Esri/calcite-app-components/compare/v4.2.1...v4.3.0) (2019-10-22)
 
 ### Bug Fixes
 
-- **pick-list-item** spacebar on secondaryAction no longer toggles selection. #326
-- **block** Set CalciteBlock color variables for dark theme. #427
-- **pick-list** menu-actions slot styling. #417
-- **calcite-flow-item** fix header text being cut off. #414
-- **shell** Prevent vertical scrollbar from appearing when using action bar. #393
-- **tip** Tip background color overlapping shadow. #398
-- **panel** CalcitePanel: always render slot containers. #354
-- **calcite-flow-item** No longer shows header-trailing-content without having menu-actions. #409
+- **pick-list-item** spacebar on secondaryAction no longer toggles selection. ([#326](https://github.com/Esri/calcite-app-components/issues/326))
+- **block** Set CalciteBlock color variables for dark theme. ([#427](https://github.com/Esri/calcite-app-components/issues/427))
+- **pick-list** menu-actions slot styling. ([#417](https://github.com/Esri/calcite-app-components/issues/417))
+- **calcite-flow-item** fix header text being cut off. ([#414](https://github.com/Esri/calcite-app-components/issues/414))
+- **shell** Prevent vertical scrollbar from appearing when using action bar.
+- **tip** Tip background color overlapping shadow. ([#398](https://github.com/Esri/calcite-app-components/issues/398))
+- **panel** CalcitePanel: always render slot containers. ([#354](https://github.com/Esri/calcite-app-components/issues/354))
+- **calcite-flow-item** No longer shows header-trailing-content without having menu-actions. ([#409](https://github.com/Esri/calcite-app-components/issues/409))
 
 ### Features
 
-- **Block:** Added loading and disabled props. Scrim overlay applies when either is true. ([9ddab6a](https://github.com/Esri/calcite-app-components/commit/9ddab6a))
-- **Flow-item:** Added loading and disabled props. Scrim overlay applies when either is true. ([#359](https://github.com/Esri/calcite-app-components/issues/359)) ([d4caeca](https://github.com/Esri/calcite-app-components/commit/d4caeca))
-- **Panel:** Added loading and disabled props. Scrim overlay applies when either is true. ([1f69c9f](https://github.com/Esri/calcite-app-components/commit/1f69c9f))
-- **Value-list:** Added loading and disabled props. Scrim overlay applies when either is true. ([26027e2](https://github.com/Esri/calcite-app-components/commit/26027e2))
-- **Panel** Remove padding from panel content-container. #418
-- **Action** Added animations for interactive. #391
+- **block:** Added loading and disabled props. Scrim overlay applies when either is true. ([#358](https://github.com/Esri/calcite-app-components/issues/358)) ([9ddab6a](https://github.com/Esri/calcite-app-components/commit/9ddab6a))
+- **flow-item:** Added loading and disabled props. Scrim overlay applies when either is true. ([#359](https://github.com/Esri/calcite-app-components/issues/359)) ([d4caeca](https://github.com/Esri/calcite-app-components/commit/d4caeca))
+- **panel:** Added loading and disabled props. Scrim overlay applies when either is true. ([#407](https://github.com/Esri/calcite-app-components/issues/407)) ([1f69c9f](https://github.com/Esri/calcite-app-components/commit/1f69c9f))
+- **value-list:** Added loading and disabled props. Scrim overlay applies when either is true. ([#339](https://github.com/Esri/calcite-app-components/issues/339)) ([26027e2](https://github.com/Esri/calcite-app-components/commit/26027e2))
+- **panel** Remove padding from panel content-container. ([#418](https://github.com/Esri/calcite-app-components/issues/418))
+- **action** Added animations for interactive. ([#391](https://github.com/Esri/calcite-app-components/issues/391))
 
 ### [4.2.1](https://github.com/Esri/calcite-app-components/compare/v4.2.0...v4.2.1) (2019-10-17)
 
