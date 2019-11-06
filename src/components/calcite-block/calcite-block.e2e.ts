@@ -1,6 +1,8 @@
-import { newE2EPage } from "@stencil/core/testing";
+import { E2EElement, newE2EPage } from "@stencil/core/testing";
 import { CSS, SLOTS, TEXT } from "./resources";
 import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
+import { setUpPage } from "../../tests/utils";
+import { CalciteBlock } from "./calcite-block";
 
 describe("calcite-block", () => {
   it("renders", async () => renders("calcite-block"));
@@ -27,6 +29,56 @@ describe("calcite-block", () => {
         <label slot=${SLOTS.control}>test <input placeholder="control"/></label>
       </calcite-block>
   `));
+
+  it("it can be disabled", async () => {
+    const page = await setUpPage(
+      `
+        <calcite-block heading="heading" summary="summary" open collapsible>
+          <div class="content">content</div>
+        </calcite-block>
+    `,
+      { withPeerDependencies: true }
+    );
+
+    const content = await page.find(".content");
+    const clickSpy = await content.spyOnEvent("click");
+    await content.click();
+    expect(clickSpy).toHaveReceivedEventTimes(1);
+
+    const block = await page.find("calcite-block");
+    block.setProperty("disabled", true);
+    await page.waitForChanges();
+
+    await content.click();
+    expect(clickSpy).toHaveReceivedEventTimes(1);
+  });
+
+  it("has a loading state", async () => {
+    const page = await setUpPage(
+      `
+        <calcite-block heading="heading" summary="summary" open collapsible>
+          <div class="content">content</div>
+        </calcite-block>
+    `,
+      { withPeerDependencies: true }
+    );
+
+    expect(await page.find("calcite-block >>> calcite-loader")).toBeNull();
+
+    const content = await page.find(".content");
+    const clickSpy = await content.spyOnEvent("click");
+    await content.click();
+    expect(clickSpy).toHaveReceivedEventTimes(1);
+
+    const block = await page.find("calcite-block");
+    block.setProperty("loading", true);
+    await page.waitForChanges();
+
+    await content.click();
+    expect(clickSpy).toHaveReceivedEventTimes(1);
+
+    expect(await page.find("calcite-block >>> calcite-loader")).toBeTruthy();
+  });
 
   it("can display/hide content", async () => {
     const page = await newE2EPage();
