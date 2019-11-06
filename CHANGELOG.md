@@ -3,6 +3,17 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.5.1](https://github.com/Esri/calcite-app-components/compare/v4.5.0...v4.5.1) (2019-11-06)
+
+### Bug Fixes
+
+- Set the property of the component instead of the attribute ([#502](https://github.com/Esri/calcite-app-components/issues/502)) ([b0f554d](https://github.com/Esri/calcite-app-components/commit/b0f554d))
+
+### Style Fixes
+
+- block-section: missed style for switch mode ([#507](https://github.com/Esri/calcite-app-components/issues/507))
+- action-pad: added missing styles ([#502](https://github.com/Esri/calcite-app-components/issues/502))
+
 ## [4.5.0](https://github.com/Esri/calcite-app-components/compare/v4.4.0...v4.5.0) (2019-11-06)
 
 ### Bug Fixes
