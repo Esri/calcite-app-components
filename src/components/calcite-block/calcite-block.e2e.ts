@@ -22,7 +22,7 @@ describe("calcite-block", () => {
   it("is accessible", async () =>
     accessible(`
       <calcite-block heading="heading" summary="summary" open collapsible>
-        <div  slot=${SLOTS.icon}>✅</div>
+        <div slot=${SLOTS.icon}>✅</div>
         <div>content</div>
         <label slot=${SLOTS.control}>test <input placeholder="control"/></label>
       </calcite-block>
