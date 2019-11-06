@@ -1,10 +1,16 @@
 :host {
   background-color: var(--calcite-app-background-clear);
   display: block;
+  margin-bottom: var(--calcite-app-cap-spacing);
+}
+:host(:last-child) {
+  margin-bottom: 0;
 }
 
-.heading {
-  margin: var(--calcite-app-cap-spacing-half) 0;
+h3.heading {
+  font-size: var(--calcite-app-font-size-0);
+  font-weight: var(--calcite-app-font-weight);
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
 .container {

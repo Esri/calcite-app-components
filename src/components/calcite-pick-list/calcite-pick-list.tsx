@@ -3,7 +3,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Listen,
   Method,
   Prop,
@@ -11,8 +10,21 @@ import {
   h
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
-import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
-import CalciteScrim from "../utils/CalciteScrim";
+import { sharedListMethods } from "./shared-list-logic";
+import List from "./shared-list-render";
+
+const {
+  mutationObserverCallback,
+  initialize,
+  initializeObserver,
+  cleanUpObserver,
+  calciteListItemChangeHandler,
+  setUpItems,
+  deselectSiblingItems,
+  selectSiblings,
+  handleFilter,
+  getItemData
+} = sharedListMethods;
 
 /**
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
@@ -28,6 +40,13 @@ export class CalcitePickList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the pick-list-item.
+   */
+  @Prop({ reflect: true }) compact = false;
+
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
@@ -53,18 +72,12 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
   /**
-   * Multiple works like conventional checkboxes and radio buttons.
+   * Multiple works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time
    * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
-
-  /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
-   * This allows for a more compact version of the pick-list-item.
-   */
-  @Prop({ reflect: true }) compact = false;
 
   /**
    * @deprecated No longer rendered. Prop will be removed in a future release.
@@ -85,13 +98,7 @@ export class CalcitePickList {
 
   lastSelectedItem: HTMLCalcitePickListItemElement = null;
 
-  observer = new MutationObserver(() => this.setUpItems());
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
+  observer = new MutationObserver(mutationObserverCallback.bind(this));
 
   @Element() el: HTMLCalcitePickListElement;
 
@@ -101,13 +108,16 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
+  connectedCallback() {
+    initialize.call(this);
+  }
+
   componentDidLoad() {
-    this.setUpItems();
-    this.observer.observe(this.el, { childList: true, subtree: true });
+    initializeObserver.call(this);
   }
 
   componentDidUnload() {
-    this.observer.disconnect();
+    cleanUpObserver.call(this);
   }
 
   // --------------------------------------------------------------------------
@@ -128,23 +138,14 @@ export class CalcitePickList {
    */
   @Event() calcitePickListSelectionChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event) {
-    const { selectedValues } = this;
-    const { item, value, selected, shiftPressed } = event.detail;
-    if (selected) {
-      if (!this.multiple) {
-        this.deselectSiblingItems(item);
-      }
-      if (this.multiple && shiftPressed) {
-        this.selectSiblings(item);
-      }
-      selectedValues.set(value, item);
-    } else {
-      selectedValues.delete(value);
-    }
-    this.lastSelectedItem = item;
-    this.calciteListChange.emit(selectedValues);
-    this.calcitePickListSelectionChange.emit(selectedValues);
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+    calciteListItemChangeHandler.call(this, event);
+    this.calcitePickListSelectionChange.emit(this.selectedValues);
+  }
+
+  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {
+    event.stopPropagation();
+    this.setUpFilter();
   }
 
   // --------------------------------------------------------------------------
@@ -154,70 +155,22 @@ export class CalcitePickList {
   // --------------------------------------------------------------------------
 
   setUpItems(): void {
-    this.items = Array.from(this.el.querySelectorAll("calcite-pick-list-item"));
-    this.items.forEach((item) => {
-      const iconType = this.getIconType();
-      const compactString = this.compact ? "true" : "false";
-      item.setAttribute("icon", iconType);
-      item.setAttribute("compact", compactString);
+    setUpItems.call(this, "calcite-pick-list-item");
+  }
 
-      if (item.hasAttribute("selected")) {
-        this.selectedValues.set(item.getAttribute("value"), item);
-      }
-    });
+  setUpFilter(): void {
     if (this.filterEnabled) {
       this.dataForFilter = this.getItemData();
     }
   }
 
-  deselectSiblingItems(item: HTMLCalcitePickListItemElement) {
-    this.items.forEach((currentItem) => {
-      if (currentItem !== item) {
-        currentItem.toggleSelected(false);
-        if (this.selectedValues.has(currentItem.value)) {
-          this.selectedValues.delete(currentItem.value);
-        }
-      }
-    });
-  }
+  deselectSiblingItems = deselectSiblingItems.bind(this);
 
-  selectSiblings(item: HTMLCalcitePickListItemElement) {
-    if (!this.lastSelectedItem) {
-      return;
-    }
-    const { items } = this;
-    const start = items.indexOf(this.lastSelectedItem);
-    const end = items.indexOf(item);
-    items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem) => {
-      currentItem.toggleSelected(true);
-      this.selectedValues.set(currentItem.value, currentItem);
-    });
-  }
+  selectSiblings = selectSiblings.bind(this);
 
-  handleFilter = (event) => {
-    const filteredData = event.detail;
-    const values = filteredData.map((item) => item.value);
-    this.items.forEach((item) => {
-      if (values.indexOf(item.value) === -1) {
-        item.setAttribute("hidden", "");
-      } else {
-        item.removeAttribute("hidden");
-      }
-    });
-  };
+  handleFilter = handleFilter.bind(this);
 
-  getItemData(): Record<string, string | object>[] {
-    const result: Record<string, string | object>[] = [];
-    this.items.forEach((item) => {
-      const obj: Record<string, string | object> = {};
-      Array.from(item.attributes).forEach((attr) => {
-        obj[attr.name] = attr.value;
-      });
-      obj.metadata = item.metadata; // read from prop not attribute
-      result.push(obj);
-    });
-    return result;
-  }
+  getItemData = getItemData.bind(this);
 
   // --------------------------------------------------------------------------
   //
@@ -225,7 +178,7 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedItems(): Promise<object> {
+  @Method() async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
   }
 
@@ -243,33 +196,7 @@ export class CalcitePickList {
     return type;
   }
 
-  renderScrim(): VNode {
-    return this.loading || this.disabled ? (
-      <CalciteScrim loading={this.loading}></CalciteScrim>
-    ) : null;
-  }
-
   render() {
-    const { disabled, filterEnabled, loading } = this;
-    const hasMenu = this.el.querySelector("[slot=menu-actions]");
-    return (
-      <Host aria-disabled={disabled} aria-busy={loading}>
-        {hasMenu || filterEnabled ? (
-          <header>
-            {filterEnabled ? (
-              <calcite-filter
-                data={this.dataForFilter}
-                textPlaceholder={TEXT.filterPlaceholder}
-                aria-label={TEXT.filterPlaceholder}
-                onCalciteFilterChange={this.handleFilter}
-              />
-            ) : null}
-            <slot name="menu-actions" />
-          </header>
-        ) : null}
-        <slot />
-        {this.renderScrim()}
-      </Host>
-    );
+    return <List props={this} text={TEXT} />;
   }
 }

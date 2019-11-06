@@ -168,7 +168,7 @@ export class CalciteFlowItem {
     const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
 
     return hasFooterActions ? (
-      <div slot="footer">
+      <div slot="footer" class={CSS.footerActions}>
         <slot name="footer-actions" />
       </div>
     ) : null;
