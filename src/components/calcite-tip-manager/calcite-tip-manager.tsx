@@ -160,7 +160,7 @@ export class CalciteTipManager {
   }
 
   hideTipManager = (): void => {
-    this.el.setAttribute("hidden", "");
+    this.el.hidden = true;
     this.el.setAttribute("aria-hidden", "");
     this.calciteTipManagerClose.emit();
   };
@@ -169,7 +169,7 @@ export class CalciteTipManager {
     this.tips.forEach((tip, index) => {
       const isSelected = this.selectedIndex === index;
       tip.selected = isSelected;
-      isSelected ? tip.removeAttribute("hidden") : tip.setAttribute("hidden", "");
+      tip.hidden = !isSelected;
     });
   }
 
