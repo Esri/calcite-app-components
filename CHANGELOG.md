@@ -7,13 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Bug Fixes
 
-- FlowItem - Filter out menu actions defined in the calcite-pick-list and calcite-value-list. [#497](https://github.com/Esri/calcite-app-components/issues/497) ([6764d6c](https://github.com/Esri/calcite-app-components/commit/6764d6c))
-- **flow-item and panel:** footer button layout and style ([f4a69f9](https://github.com/Esri/calcite-app-components/commit/f4a69f9))
-- Pick-list filter now works if props have been modified after first-render ([#400](https://github.com/Esri/calcite-app-components/issues/400)) ([79f8146](https://github.com/Esri/calcite-app-components/commit/79f8146)), closes [#484](https://github.com/Esri/calcite-app-components/issues/484) [#488](https://github.com/Esri/calcite-app-components/issues/488)
+- **flow-item:** - Fix conflict between `menu-actions` own slot and slot defined in the `calcite-pick-list` and `calcite-value-list`. [#497](https://github.com/Esri/calcite-app-components/issues/497) ([6764d6c](https://github.com/Esri/calcite-app-components/commit/6764d6c))
+- **flow-item and panel:** footer buttons width corrected [#367](https://github.com/Esri/calcite-app-components/issues/367) ([f4a69f9](https://github.com/Esri/calcite-app-components/commit/f4a69f9))
+- **pick-list and value-list:** filter now works if props have been modified after first-render ([#400](https://github.com/Esri/calcite-app-components/issues/400)) ([79f8146](https://github.com/Esri/calcite-app-components/commit/79f8146)), closes [#484](https://github.com/Esri/calcite-app-components/issues/484) [#488](https://github.com/Esri/calcite-app-components/issues/488)
 
 ### Features
 
-- Pick-list filter now only filters on text, value and metadata props ([#461](https://github.com/Esri/calcite-app-components/issues/461)) ([51fd559](https://github.com/Esri/calcite-app-components/commit/51fd559)), closes [#484](https://github.com/Esri/calcite-app-components/issues/484) [#488](https://github.com/Esri/calcite-app-components/issues/488)
+- **pick-list and value-list:** filter now only filters on text, value and metadata props ([#461](https://github.com/Esri/calcite-app-components/issues/461)) ([51fd559](https://github.com/Esri/calcite-app-components/commit/51fd559)), closes [#484](https://github.com/Esri/calcite-app-components/issues/484) [#488](https://github.com/Esri/calcite-app-components/issues/488)
 
 ## [4.4.0](https://github.com/Esri/calcite-app-components/compare/v4.3.1...v4.4.0) (2019-10-29)
 
