@@ -55,7 +55,7 @@
             margin: 1rem 0;
           }
         </style>
-        
+
         <div class="toggles">
           <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
           <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
@@ -170,7 +170,7 @@
         const blocks = document.getElementsByTagName("calcite-flow-item");
 
         for (i = 0; i < blocks.length; i++) {
-          blocks[i].toggleAttribute(property);
+          blocks[i].hasAttribute(property) ? blocks[i].removeAttribute(property) : blocks[i].setAttribute(property, "");
         }
       }
     </script>
