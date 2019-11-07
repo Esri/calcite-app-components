@@ -1,5 +1,6 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
+import guid from "../utils/guid";
 
 @Component({
   tag: "calcite-value-list-item",
@@ -63,6 +64,8 @@ export class CalciteValueListItem {
 
   pickListItem: HTMLCalcitePickListItemElement = null;
 
+  guid = `calcite-value-list-item-${guid()}`;
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -89,7 +92,7 @@ export class CalciteValueListItem {
 
   render() {
     return (
-      <Host>
+      <Host data-id={this.guid}>
         <calcite-pick-list-item
           compact={this.compact}
           ref={this.getPickListRef}
