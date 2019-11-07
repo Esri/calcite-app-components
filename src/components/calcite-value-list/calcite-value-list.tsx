@@ -221,11 +221,15 @@ export class CalciteValueList {
       default:
         return;
     }
-    console.log(event.key);
     const order = this.sortables[0].toArray();
     arraymove(order, startingIndex, newIndex);
     this.sortables[0].sort(order);
-    // event.target.focus();
+    event
+      .composedPath()
+      .find((item) => {
+        return item.tabIndex >= 0;
+      })
+      .focus();
   };
 
   // --------------------------------------------------------------------------
