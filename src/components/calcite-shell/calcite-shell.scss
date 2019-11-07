@@ -40,6 +40,15 @@
   z-index: 1;
 }
 
+::slotted(calcite-tip-manager) {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  bottom: 15px;
+  left: 25%;
+  width: 50%;
+}
+
 .footer {
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
 }
