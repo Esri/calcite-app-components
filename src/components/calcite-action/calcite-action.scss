@@ -31,6 +31,10 @@
     color: var(--calcite-app-foreground-hover);
     fill: var(--calcite-app-foreground-hover);
   }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 3px $blue;
+  }
   .icon-container {
     max-width: var(--calcite-app-icon-size);
     max-height: var(--calcite-app-icon-size);
