@@ -8,11 +8,11 @@ const renderScrim = (loading, disabled): VNode => {
 };
 
 export const List = ({ props, text, ...rest }): VNode => {
-  const { disabled, loading, filterEnabled, filterSticky, dataForFilter, handleFilter } = props;
+  const { disabled, loading, filterEnabled, dataForFilter, handleFilter } = props;
   const { filterPlaceholder } = text;
   return (
     <Host aria-disabled={disabled} aria-busy={loading} {...rest}>
-      <header class={{ [CSS.sticky]: filterSticky }}>
+      <header class={{ [CSS.sticky]: true }}>
         {filterEnabled ? (
           <calcite-filter
             data={dataForFilter}
