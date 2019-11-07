@@ -11,6 +11,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
+import { arraymove } from "../utils/dom";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
@@ -202,6 +203,31 @@ export class CalciteValueList {
 
   getItemData = getItemData.bind(this);
 
+  keyDownHandler = (event) => {
+    const value = event.target.value;
+    const startingIndex = this.items.findIndex((item) => {
+      return item.value === value;
+    });
+    let newIndex;
+    switch (event.key) {
+      case "ArrowUp":
+        newIndex = startingIndex - 1;
+        newIndex = newIndex < 0 ? this.items.length - 1 : newIndex;
+        break;
+      case "ArrowDown":
+        newIndex = startingIndex + 1;
+        newIndex = newIndex > this.items.length - 1 ? 0 : newIndex;
+        break;
+      default:
+        return;
+    }
+    console.log(event.key);
+    const order = this.sortables[0].toArray();
+    arraymove(order, startingIndex, newIndex);
+    this.sortables[0].sort(order);
+    // event.target.focus();
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -227,6 +253,6 @@ export class CalciteValueList {
   }
 
   render() {
-    return <List props={this} text={TEXT} />;
+    return <List props={this} text={TEXT} onKeyDown={this.keyDownHandler} />;
   }
 }

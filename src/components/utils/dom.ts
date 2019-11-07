@@ -11,6 +11,13 @@ export function nodeListToArray(domNodeList): Element[] {
   }
 }
 
+export function arraymove(arr, fromIndex, toIndex) {
+  const value = arr[fromIndex];
+  arr.splice(fromIndex, 1);
+  arr.splice(toIndex, 0, value);
+  return arr;
+}
+
 export function getElementDir(el: HTMLElement) {
   return getElementProp(el, "dir", "ltr");
 }
