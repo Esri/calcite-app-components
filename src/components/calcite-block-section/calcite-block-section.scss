@@ -14,6 +14,11 @@
   padding: var(--calcite-app-cap-spacing-half) 0;
   user-select: none;
   calcite-switch {
-    margin: 0;
+    margin: var(--calcite-app-cap-spacing-third) 0 0 var(--calcite-app-side-spacing-half);
   }
+}
+
+.calcite--rtl .toggle--switch calcite-switch {
+  margin-left: 0;
+  margin-right: var(--calcite-app-side-spacing-half);
 }
