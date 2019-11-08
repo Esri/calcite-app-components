@@ -164,10 +164,10 @@ describe("calcite-tip-manager", () => {
       );
       const tipManager = await page.find("calcite-tip-manager");
       const newTipId = "newTip";
-      await page.evaluate((id) => {
+      await page.evaluate((newId) => {
         const mgr = document.querySelector("calcite-tip-manager");
         const newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
-        (newTip as HTMLElement).id = id;
+        (newTip as HTMLElement).id = newId;
         mgr.appendChild(newTip);
       }, newTipId);
       await page.waitForChanges();
