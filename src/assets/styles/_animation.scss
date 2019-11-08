@@ -1,4 +1,5 @@
 // Animation
+$animation-time: 250ms !default;
 
 :root {
   @keyframes calcite-app-fade-in {
@@ -45,8 +46,8 @@
 
   // timing
   --calcite-app-animation-time: #{$animation-time};
-  --calcite-app-animation-time-fast: #{round($animation-time / 3)};
-  --calcite-app-animation-time-slow: #{round($animation-time * 2)};
+  --calcite-app-animation-time-fast: calc(var(--calcite-app-animation-time) / 3);
+  --calcite-app-animation-time-slow: calc(var(--calcite-app-animation-time) * 2);
 
   --calcite-app-easing-function: ease-in-out;
 }

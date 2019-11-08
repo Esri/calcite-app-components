@@ -13,6 +13,11 @@ header {
   justify-content: flex-end;
   align-items: center;
   margin-bottom: var(--calcite-app-cap-spacing-half);
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
 
 calcite-filter {
