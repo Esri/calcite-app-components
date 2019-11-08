@@ -1,6 +1,6 @@
 {
   "name": "@esri/calcite-app-components",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "description": "A collection of web components for building single-page applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -18,7 +18,7 @@
     "demoPageSync": "node ./support/demoPageSync.js",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"chore(deps): Bump versions.\"",
     "docs": "stencil build --config stencil.docs.config.ts",
-    "lint": "tslint \"src/components/**/*.ts?(x)\"",
+    "lint": "tslint --project . \"src/components/**/*.ts?(x)\"",
     "prepublishOnly": "node ./support/prepublish.js",
     "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish && node ./support/githubReleaseFromChangelog.js",
@@ -41,7 +41,7 @@
     "sortablejs": "1.10.1"
   },
   "devDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.11",
+    "@esri/calcite-components": "1.0.0-beta.12",
     "@stencil/core": "1.7.5",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.1.1",
@@ -51,7 +51,7 @@
     "@types/jest-axe": "3.2.1",
     "@types/puppeteer": "1.20.0",
     "@types/sortablejs": "1.10.0",
-    "autoprefixer": "9.7.0",
+    "autoprefixer": "9.7.1",
     "axe-core": "3.4.0",
     "chalk": "2.4.2",
     "classnames": "2.2.6",
@@ -68,7 +68,7 @@
     "prettier": "1.18.2",
     "puppeteer": "1.20.0",
     "standard-version": "7.0.0",
-    "tslint": "5.20.0",
+    "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-ionic-rules": "0.0.21",
     "tslint-lines-between-class-members": "1.3.6",
