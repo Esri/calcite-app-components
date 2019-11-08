@@ -1,13 +1,12 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { chevronDown16, chevronUp16 } from "@esri/calcite-ui-icons";
-import { CSS, TEXT } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
 
-const CONTROL_SLOT_NAME = "control";
-
 /**
+ * @slot icon - A slot for adding a trailing header icon.
  * @slot control - A slot for adding a single HTML input element in a header.
  */
 @Component({
@@ -103,7 +102,7 @@ export class CalciteBlock {
 
   onHeaderClick = (event: MouseEvent) => {
     const controlSlot = this.el.shadowRoot.querySelector<HTMLSlotElement>(
-      `slot[name=${CONTROL_SLOT_NAME}]`
+      `slot[name=${SLOTS.control}]`
     );
     const control = controlSlot && controlSlot.assignedNodes()[0];
 
@@ -139,11 +138,16 @@ export class CalciteBlock {
     const content = loading ? (
       <calcite-loader inline is-active></calcite-loader>
     ) : !disabled ? (
-      <slot name={CONTROL_SLOT_NAME} />
+      <slot name={SLOTS.control} />
     ) : null;
-
+    const hasIcon = this.el.querySelector("[slot=icon]");
     const headerContent = (
       <header class={CSS.header}>
+        {hasIcon ? (
+          <div class={CSS.icon}>
+            <slot name={SLOTS.icon} />
+          </div>
+        ) : null}
         <div class={CSS.title}>
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
@@ -151,6 +155,15 @@ export class CalciteBlock {
         {content}
       </header>
     );
+
+    let hasControl = false;
+    let hasContent = false;
+
+    for (let i = 0; i < el.children.length; i++) {
+      const isControl = el.children[i].slot === SLOTS.control;
+      hasControl = hasControl || isControl;
+      hasContent = hasContent || !isControl;
+    }
 
     const headerNode = (
       <div class={CSS.headerContainer}>
@@ -162,19 +175,19 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            <CalciteIcon
-              size="16"
-              path={open ? chevronUp16 : chevronDown16}
-              svgAttributes={{ class: CSS.toggleIcon }}
-            />
+            {hasControl ? null : (
+              <CalciteIcon
+                size="16"
+                path={open ? chevronUp16 : chevronDown16}
+                svgAttributes={{ class: CSS.toggleIcon }}
+              />
+            )}
           </button>
         ) : (
           headerContent
         )}
       </div>
     );
-
-    const hasContent = !!Array.from(el.children).some((child) => child.slot !== CONTROL_SLOT_NAME);
 
     return (
       <Host>

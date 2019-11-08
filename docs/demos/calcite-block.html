@@ -46,6 +46,18 @@
           <label slot="control">test <input placeholder="I'm a header control"/></label>
         </calcite-block>
 
+        <h2>Icon + Header</h2>
+
+        <calcite-block heading="Icon on header">
+          <div slot="icon">✅</div>
+        </calcite-block>
+
+        <h2>Header + content (always open)</h2>
+
+        <calcite-block heading="Header" open>
+          <div>Some content</div>
+        </calcite-block>
+
         <h2>Header + content (collapsible)</h2>
 
         <calcite-block heading="All the king's buff horses couldn't fix the turbo." summary="summary" open collapsible>
@@ -135,6 +147,13 @@
           </calcite-block-section>
         </calcite-block>
 
+        <h2>Header + collapsible + control = no collapsible icon</h2>
+
+        <calcite-block heading="no toggle icon when there is a control" collapsible>
+          <label slot="control">test</label>
+          <div>Some content</div>
+        </calcite-block>
+
         <h2>RTL</h2>
 
         <calcite-block dir="rtl" heading="Heading" summary="summary" open collapsible>
@@ -153,7 +172,7 @@
         const blocks = document.getElementsByTagName("calcite-block");
 
         for (i = 0; i < blocks.length; i++) {
-          blocks[i].toggleAttribute(property);
+          blocks[i].hasAttribute(property) ? blocks[i].removeAttribute(property) : blocks[i].setAttribute(property, "");
         }
       }
     </script>

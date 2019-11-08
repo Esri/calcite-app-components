@@ -59,6 +59,13 @@ export class CalciteFilter {
   filter = debounce((value: string): void => {
     const regex = new RegExp(value, "ig");
 
+    if (this.data.length === 0) {
+      console.warn(`No data was passed to calcite-filter.
+      The data property expects an array of objects`);
+      this.calciteFilterChange.emit([]);
+      return;
+    }
+
     const find = (input: object, RE: RegExp) => {
       let found = false;
       forIn(input, (val) => {
@@ -102,7 +109,12 @@ export class CalciteFilter {
       <Host>
         <label>
           {this.textLabel}
-          <input type="text" placeholder={this.textPlaceholder} onInput={this.inputHandler} />
+          <input
+            type="text"
+            placeholder={this.textPlaceholder}
+            onInput={this.inputHandler}
+            aria-label={this.textLabel || "Filter"}
+          />
           <div class={CSS.searchIcon}>
             <CalciteIcon size="16" path={search16} />
           </div>

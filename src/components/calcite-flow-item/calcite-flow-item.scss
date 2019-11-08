@@ -5,9 +5,6 @@
   font-size: var(--calcite-app-base-font-size);
 }
 
-:host([loading]) {
-}
-
 calcite-panel {
   width: 100%;
   height: 100%;
@@ -49,4 +46,9 @@ calcite-panel {
 
 .menu--open {
   display: block;
+}
+
+.footer-actions {
+  display: flex;
+  width: 100%;
 }

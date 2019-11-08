@@ -2,12 +2,8 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
-  box-shadow: 0 1px 0 var(--calcite-app-border);
-  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-}
-
-:host([open]) {
-  box-shadow: 0 0 0 1px var(--calcite-app-border);
+  margin: var(--calcite-app-cap-spacing-third) var(--calcite-app-side-spacing-third);
+  @include borderShadow();
 }
 
 calcite-loader[inline] {
@@ -16,7 +12,7 @@ calcite-loader[inline] {
 
 .header-container {
   & > .header {
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   }
 }
 
@@ -25,16 +21,21 @@ calcite-loader[inline] {
 }
 
 .title {
+  flex-grow: 1;
   margin: 0;
+}
+
+.header .title .heading {
+  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 
 .summary {
   font-size: var(--font-size--1);
-  padding: 0 var(--calcite-app-side-spacing-half);
+  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 
 .toggle {
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -48,12 +49,17 @@ calcite-loader[inline] {
   color: var(--calcite-app-foreground);
 }
 
+.icon {
+  margin-right: var(--calcite-app-side-spacing-third); //TODO RTL
+}
+
 .toggle-icon {
-  margin: 0 4px;
   fill: currentColor;
+  flex: 0 0 var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 
 .content {
-  padding-bottom: var(--calcite-app-cap-spacing-half);
+  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
   position: relative;
 }

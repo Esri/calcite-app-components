@@ -8,6 +8,7 @@
 
 | Property        | Attribute        | Description                                                                                                                                                                                                                                       | Type      | Default |
 | --------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `compact`       | `compact`        | Compact reduces the size of all items in the list.                                                                                                                                                                                                | `boolean` | `false` |
 | `disabled`      | `disabled`       | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                                                                       | `boolean` | `false` |
 | `dragEnabled`   | `drag-enabled`   | When true, the items will be sortable via drag and drop.                                                                                                                                                                                          | `boolean` | `false` |
 | `filterEnabled` | `filter-enabled` | When true, an input appears at the top of the list that can be used by end users to filter items in the list.                                                                                                                                     | `boolean` | `false` |
@@ -23,11 +24,11 @@
 
 ## Methods
 
-### `getSelectedItems() => Promise<object>`
+### `getSelectedItems() => Promise<Map<string, object>>`
 
 #### Returns
 
-Type: `Promise<object>`
+Type: `Promise<Map<string, object>>`
 
 ## Slots
 
