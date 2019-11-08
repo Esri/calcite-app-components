@@ -116,7 +116,7 @@ This will provide autocomplete of component names/properties, as well as additio
 
 This project has an installed GitHub App to perform status checks on open pull requests.
 
-The [Semantic Pull Request](<(https://github.com/probot/semantic-pull-requests)>) status check will ensure your pull requests are semantic before you merge them.
+The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
 👮 Note! The default behavior of this bot is not to police all commit messages, but rather to ensure that every PR has just **enough semantic information** to be able to trigger a release when appropriate.
 
