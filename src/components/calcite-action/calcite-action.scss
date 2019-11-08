@@ -50,6 +50,10 @@
   }
 }
 
+.slot-container {
+  display: flex;
+}
+
 .slot-container--hidden {
   display: none;
 }
