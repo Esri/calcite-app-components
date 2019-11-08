@@ -37,6 +37,10 @@ $tip-max-width: 540px;
   padding-right: var(--calcite-app-side-spacing-half);
 }
 
+.container[hidden] {
+  display: none;
+}
+
 .tip-container {
   animation-name: none;
   animation-duration: var(--calcite-app-animation-time);

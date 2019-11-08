@@ -41,18 +41,25 @@ describe("calcite-tip-manager", () => {
       await page.setContent(
         `<calcite-tip-manager><calcite-tip><p>Close behavior</p></calcite-tip></calcite-tip-manager>`
       );
-      const tipManager = await page.find("calcite-tip-manager");
 
-      const eventSpy = await page.spyOnEvent("calciteTipManagerClose", "window");
+      const eventSpy = await page.spyOnEvent("calciteTipManagerClosedChange", "window");
 
       const closeButton = await page.find(`calcite-tip-manager >>> .${CSS.close}`);
       await closeButton.click();
       await page.waitForChanges();
 
-      const isVisible = await tipManager.isVisible();
+      const container = await page.find(`calcite-tip-manager >>> .${CSS.container}`);
+
+      const isVisible = await container.isVisible();
       expect(isVisible).toBe(false);
 
       expect(eventSpy).toHaveReceivedEvent();
+
+      const tipManager = await page.find("calcite-tip-manager");
+
+      const isClosed = await tipManager.getProperty("closed");
+
+      expect(isClosed).toBe(true);
     });
   });
   describe("pagination", () => {
@@ -157,10 +164,10 @@ describe("calcite-tip-manager", () => {
       );
       const tipManager = await page.find("calcite-tip-manager");
       const newTipId = "newTip";
-      await page.evaluate((newTipId) => {
+      await page.evaluate((id) => {
         const mgr = document.querySelector("calcite-tip-manager");
         const newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
-        (newTip as HTMLElement).id = newTipId;
+        (newTip as HTMLElement).id = id;
         mgr.appendChild(newTip);
       }, newTipId);
       await page.waitForChanges();
