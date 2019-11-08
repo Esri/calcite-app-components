@@ -13,6 +13,9 @@
     "no-consecutive-blank-lines": {
       "options": [1]
     },
+    "no-unused-variable": {
+      "severity": "default"
+    },
     "prefer-conditional-expression": {
       "severity": "warn"
     }
