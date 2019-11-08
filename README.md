@@ -114,7 +114,7 @@ This will provide autocomplete of component names/properties, as well as additio
 
 ## Pull Requests
 
-This project has an installed GitHub App to perform status checks on open pull requests.
+This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.
 
 The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
@@ -131,6 +131,8 @@ The PR title OR at least one commit messsage needs to have semantic prefix.
 | nothing is semantic                                                                                    | 💛     | `add a semantic commit or PR title` |
 
 ### How to be semantic
+
+One of the following should be present for the PR to be semantic:
 
 - Add a semantic [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/).
 - Edit the PR title by adding a semantic prefix like `fix:` or `feat:` or any other [conventional commit type](https://github.com/commitizen/conventional-commit-types/blob/master/index.json).
