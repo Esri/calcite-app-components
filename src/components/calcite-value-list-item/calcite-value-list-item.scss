@@ -11,6 +11,7 @@ calcite-pick-list-item {
 }
 
 :host(:last-child) calcite-pick-list-item {
+  box-shadow: none;
   margin-bottom: 0;
 }
 
