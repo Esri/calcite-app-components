@@ -1,9 +1,10 @@
 ---
 name: Tooling
 about: Request improvements to our component workflow.
-title: "Tooling: "
-labels: tooling
-assignees: ""
+title: 'Tooling: '
+labels: tooling, 0 - new
+assignees: ''
+
 ---
 
 ## Summary

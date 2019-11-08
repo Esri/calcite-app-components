@@ -1,9 +1,10 @@
 ---
 name: Research
 about: Request an investigation into a specific topic
-title: "Research: "
-labels: research
-assignees: ""
+title: 'Research: '
+labels: 0 - new, research
+assignees: ''
+
 ---
 
 ### Background

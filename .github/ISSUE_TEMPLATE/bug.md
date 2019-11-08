@@ -1,9 +1,10 @@
 ---
 name: Bug
 about: Report a bug in a component
-title: "Bug: "
-labels: bug
-assignees: ""
+title: 'Bug: '
+labels: bug, 0 - new
+assignees: ''
+
 ---
 
 ### Summary
