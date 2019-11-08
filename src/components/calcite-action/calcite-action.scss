@@ -41,7 +41,7 @@
     pointer-events: none;
   }
   .text-container {
-    flex: 1;
+    flex: 1 1 auto;
     line-height: 1rem;
     margin: 0 var(--calcite-app-side-spacing-half);
     white-space: nowrap;
