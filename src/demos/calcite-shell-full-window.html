@@ -551,7 +551,7 @@
       var tipManagerButton = document.getElementById("tip-manager-button");
       var tipManager = document.getElementById("tip-manager");
       tipManagerButton.addEventListener("click", function(){
-        tipManager.hasAttribute("hidden") ? tipManager.removeAttribute("hidden") : tipManager.setAttribute("hidden", "");
+        tipManager.closed = !tipManager.closed;
       });
 
       var actionPad = document.getElementById("action-pad");

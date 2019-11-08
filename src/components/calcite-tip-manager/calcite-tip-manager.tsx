@@ -35,6 +35,7 @@ export class CalciteTipManager {
 
   @Watch("closed")
   closedChangeHandler() {
+    this.direction = null;
     this.calciteTipManagerClosedChange.emit();
   }
 
@@ -176,7 +177,6 @@ export class CalciteTipManager {
   }
 
   hideTipManager = (): void => {
-    this.direction = null;
     this.closed = true;
     this.calciteTipManagerClose.emit();
   };
