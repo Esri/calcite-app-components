@@ -1,10 +1,9 @@
 ---
 name: Bug
 about: Report a bug in a component
-title: 'Bug: '
+title: "Bug: "
 labels: bug, 0 - new
-assignees: ''
-
+assignees: ""
 ---
 
 ### Summary
@@ -17,4 +16,4 @@ assignees: ''
 
 1.
 
-### Relevant Info <!--(e.g. Browser, OS, Mobile,)-->
+### Relevant Info <!--(e.g. Browser, OS, Mobile)-->
