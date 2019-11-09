@@ -1,11 +1,13 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 import { CSS } from "./resources";
 
 describe("calcite-tip", () => {
   it("renders", async () => renders("calcite-tip"));
 
   it("honors hidden attribute", async () => hidden("calcite-tip"));
+
+  it("is accessible", async () => accessible(`<calcite-tip heading="sample"><p>not dismissible</p></calcite-tip>`));
 
   it("should remove the closeButton if nonDismissible prop is true", async () => {
     const page = await newE2EPage();
