@@ -18,4 +18,4 @@ assignees: ""
 
 ### Relevant Info <!--(e.g. Browser, OS, Mobile)-->
 
-### Web Accessibility Tutorial/Example <!--(Link to valid w3c example for reference)-->
+### Working W3C Example/Tutorial <!--(Link to valid w3c example for reference)-->
