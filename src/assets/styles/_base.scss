@@ -1,9 +1,13 @@
 :host {
   background-color: var(--calcite-app-background);
+  box-sizing: border-box;
   color: var(--calcite-app-foreground);
   font-family: var(--calcite-app-font-family);
   font-size: var(--calcite-app-base-font-size);
   line-height: var(--calcite-app-line-height);
+  * {
+    box-sizing: border-box;
+  }
 }
 
 :host([hidden]) {
@@ -26,7 +30,7 @@
 }
 
 .header .heading {
-  flex: 1;
+  flex: 1 0 auto;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
