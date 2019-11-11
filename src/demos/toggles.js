@@ -6,10 +6,11 @@
   };
 
   const loadToggles = async function() {
-    const response = await window.fetch("toggles.template");
+    const root = window.location.pathname.split("demos").shift();
+    const response = await window.fetch(`${root}demos/toggles.template`);
     const text = await response.text();
     const template = parseTemplate(text);
-    const nav = document.querySelector('nav');
+    const nav = document.querySelector('nav') || document.querySelector('calcite-demo-nav');
     nav && nav.after(template.content);
     attachHandlers();
   };
