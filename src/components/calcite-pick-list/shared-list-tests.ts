@@ -17,7 +17,7 @@ export const tests = {
 
         await item1.click();
         await item2.click();
-        expect(toggleSpy).toHaveReceivedEventTimes(listType === "pick" ? 3 : 4);
+        expect(toggleSpy).toHaveReceivedEventTimes(3);
       });
     });
     describe("when multiple is true and a item is clicked", () => {

@@ -84,7 +84,7 @@ export const sharedListMethods = {
   },
   deselectSiblingItems(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem) {
     this.items.forEach((currentItem) => {
-      if (currentItem !== item) {
+      if (currentItem.value !== item.value) {
         currentItem.toggleSelected(false);
         if (this.selectedValues.has(currentItem.value)) {
           this.selectedValues.delete(currentItem.value);
