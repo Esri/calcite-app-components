@@ -14,6 +14,18 @@
   flex-flow: column;
 }
 
+:host[height-scale="s"] .container {
+  max-height: 33vh;
+}
+
+:host[height-scale="m"] .container {
+  max-height: 33vh;
+}
+
+:host[height-scale="l"] .container {
+  max-height: 33vh;
+}
+
 .container[hidden] {
   display: none;
 }
