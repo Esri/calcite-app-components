@@ -42,7 +42,7 @@ describe("calcite-tip-manager", () => {
         `<calcite-tip-manager><calcite-tip><p>Close behavior</p></calcite-tip></calcite-tip-manager>`
       );
 
-      const eventSpy = await page.spyOnEvent("calciteTipManagerClosedChange", "window");
+      const eventSpy = await page.spyOnEvent("calciteTipManagerToggle", "window");
 
       const closeButton = await page.find(`calcite-tip-manager >>> .${CSS.close}`);
       await closeButton.click();

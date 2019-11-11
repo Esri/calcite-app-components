@@ -36,7 +36,7 @@ export class CalciteTipManager {
   @Watch("closed")
   closedChangeHandler() {
     this.direction = null;
-    this.calciteTipManagerClosedChange.emit();
+    this.calciteTipManagerToggle.emit();
   }
 
   /**
@@ -148,9 +148,9 @@ export class CalciteTipManager {
   @Event() calciteTipManagerClose: EventEmitter;
 
   /**
-   * Emitted when closed has changed.
+   * Emitted when the TipManager has been toggled closed or opened.
    */
-  @Event() calciteTipManagerClosedChange: EventEmitter;
+  @Event() calciteTipManagerToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -178,7 +178,7 @@ export class CalciteTipManager {
 
   hideTipManager = (): void => {
     this.closed = true;
-    this.calciteTipManagerClose.emit();
+    this.calciteTipManagerToggle.emit();
   };
 
   showSelectedTip() {
