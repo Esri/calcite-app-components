@@ -8,7 +8,7 @@ assignees: ""
 
 ### Description
 
-### Acceptance Criteria <!--(a.k.a. Requirements)-->
+### Acceptance Criteria <!--(a.k.a. Requirements, Desired new behavior)-->
 
 ### Relevant Info <!--(e.g. Dependencies, Blockers, Helpful Details)-->
 
