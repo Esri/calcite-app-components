@@ -1,5 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
+import { accessible } from "../../tests/commonTests";
 
 describe("calcite-tip-manager", () => {
   describe("first render", () => {
@@ -17,6 +18,12 @@ describe("calcite-tip-manager", () => {
       const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
       expect(title.innerText).toBe(TEXT.defaultGroupTitle);
     });
+
+    it("is accessible", async () =>
+      accessible(
+        `<calcite-tip-manager><calcite-tip heading="sample"><p>basic render</p></calcite-tip></calcite-tip-manager>`
+      ));
+
     it("should pre-select the correct tip if the selected attribute is set", async () => {
       const page = await newE2EPage();
       await page.setContent(

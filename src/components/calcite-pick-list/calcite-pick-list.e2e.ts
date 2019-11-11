@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { ICON_TYPES } from "./resources";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 import { tests } from "./shared-list-tests";
 
 const { selectionAndDeselection, filterBehavior, disabledStates } = tests;
@@ -8,6 +8,11 @@ const { selectionAndDeselection, filterBehavior, disabledStates } = tests;
 describe("calcite-pick-list", () => {
   it("renders", async () => renders("calcite-pick-list"));
   it("honors hidden attribute", async () => hidden("calcite-pick-list"));
+
+  it("is accessible", async () =>
+    accessible(
+      `<calcite-pick-list><calcite-pick-list-item text-label="Sample" value="one"></calcite-pick-list-item></calcite-pick-list>`
+    ));
 
   describe("Selection and Deselection", () => {
     selectionAndDeselection("pick");
