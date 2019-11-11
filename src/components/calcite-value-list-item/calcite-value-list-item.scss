@@ -15,7 +15,8 @@ calcite-pick-list-item {
   margin-bottom: 0;
 }
 
-calcite-pick-list-item[selected] {
+calcite-pick-list-item[selected],
+:host(:last-child) calcite-pick-list-item[selected] {
   z-index: 1;
   @include borderShadowActive();
 }
