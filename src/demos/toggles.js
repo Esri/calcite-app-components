@@ -16,7 +16,6 @@
 
   const attachHandlers = function() {
     const buttons = document.querySelectorAll(".toggles calcite-button");
-    debugger;
     buttons.forEach(button => {
       button.addEventListener("click", event => toggleProperty(event.target.dataset.jsId));
     });
