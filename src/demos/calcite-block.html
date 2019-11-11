@@ -34,8 +34,6 @@
             >calcite-block readme.</a
           >
         </p>
-        <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
-        <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
         <h2>Simple header only (non-collapsible - default)</h2>
 
         <calcite-block heading="Heading" summary="summary"></calcite-block>
@@ -167,14 +165,5 @@
         </calcite-block>
       </section>
     </main>
-    <script>
-      function toggleProperty(property) {
-        const blocks = document.getElementsByTagName("calcite-block");
-
-        for (i = 0; i < blocks.length; i++) {
-          blocks[i].hasAttribute(property) ? blocks[i].removeAttribute(property) : blocks[i].setAttribute(property, "");
-        }
-      }
-    </script>
   </body>
 </html>

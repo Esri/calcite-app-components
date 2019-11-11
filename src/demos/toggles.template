@@ -1,0 +1,12 @@
+<template>
+  <style>
+    .toggles {
+      background-color: rgba(51,51,51,0.2);
+      padding: 1rem;
+    }
+  </style>
+  <div class="toggles">
+    <calcite-button data-js-id="loading">Toggle loading</calcite-button>
+    <calcite-button data-js-id="disabled">Toggle disabled</calcite-button>
+  </div>
+</template>
