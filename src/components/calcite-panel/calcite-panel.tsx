@@ -55,6 +55,11 @@ export class CalcitePanel {
   @Prop({ reflect: true }) dismissible = false;
 
   /**
+   * Specifies the maxiumum height of the panel.
+   */
+  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+
+  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
