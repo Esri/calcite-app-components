@@ -2,14 +2,10 @@
 name: Question
 about: Request for information - not code changes.
 title: "Question: "
-labels: question
+labels: question, 0 - new
 assignees: ""
 ---
 
 ### Question
 
-### Helpful Details
-
-**Topic:**
-
-**Context:**
+### Helpful Details <!--(e.g. Context, Topic)-->

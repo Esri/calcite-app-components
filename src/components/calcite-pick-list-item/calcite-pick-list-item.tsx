@@ -210,14 +210,13 @@ export class CalcitePickListItem {
       ) : null;
 
     return (
-      <Host>
+      <Host selected={this.selected} role="checkbox" aria-checked={this.selected}>
         <label
           class={CSS.label}
           onClick={this.pickListClickHandler}
           onKeyDown={this.pickListKeyDownHandler}
-          role="checkbox"
-          aria-checked={this.selected}
           tabIndex={0}
+          aria-label={this.textLabel}
         >
           {this.renderIcon()}
           <div class={CSS.textContainer}>

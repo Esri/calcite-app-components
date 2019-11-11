@@ -2,7 +2,7 @@
 name: New Component
 about: Request for a new component to be added.
 title: "New Component: "
-labels: new component
+labels: new component, 0 - new, architecture
 assignees: ""
 ---
 
@@ -11,10 +11,6 @@ assignees: ""
 #### User Stories
 
 ### Acceptance Criteria <!--(a.k.a. Requirements)-->
-
-#### Desired Behavior
-
-#### Desired Look & Feel
 
 #### Out of Scope <!--(anything not v1)-->
 
