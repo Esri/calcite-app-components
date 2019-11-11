@@ -12,4 +12,6 @@ assignees: ""
 
 ### Acceptance Criteria <!--(a.k.a. Requirements)-->
 
+#### Out of Scope <!--(anything not v1)-->
+
 ### Helpful Details
