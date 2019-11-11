@@ -2,7 +2,7 @@
 name: Bug
 about: Report a bug in a component
 title: "Bug: "
-labels: bug
+labels: bug, 0 - new
 assignees: ""
 ---
 
@@ -16,4 +16,4 @@ assignees: ""
 
 1.
 
-### Relevant Info <!--(e.g. Browser, OS, Mobile,)-->
+### Relevant Info <!--(e.g. Browser, OS, Mobile)-->

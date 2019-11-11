@@ -2,14 +2,10 @@
 name: Research
 about: Request an investigation into a specific topic
 title: "Research: "
-labels: research
+labels: 0 - new, research
 assignees: ""
 ---
 
-### Background
+### Background <!-- What's the topic? What info do we already have? -->
 
-<!-- What's the topic? What info do we already have? -->
-
-### Desired Outcome
-
-<!-- What additional information do we need about this topic? -->
+### Desired Outcome <!-- What additional information do we need about this topic? -->
