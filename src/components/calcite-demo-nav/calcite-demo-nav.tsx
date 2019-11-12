@@ -101,17 +101,17 @@ const NAV_ITEMS: NavItem[] = [
     content: ["Advanced ", <CalciteIcon size="16" path={chevronDown16} title="Home" />],
     children: [
       {
-        id: "blockValueList",
+        id: "block-value-list",
         path: "demos/advanced/block-with-value-list.html",
         content: "Block with Nested ValueList"
       },
       {
-        id: "flowAddingItems",
+        id: "flow-adding-items",
         path: "demos/advanced/flow-adding-items.html",
         content: "Flow add flow-items dynamically"
       },
       {
-        id: "fullWindowShell",
+        id: "full-window-shell",
         path: "demos/advanced/shell-full-window.html",
         content: "Full Window Shell"
       }
