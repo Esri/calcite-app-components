@@ -17,7 +17,7 @@ export const tests = {
 
         await item1.click();
         await item2.click();
-        expect(toggleSpy).toHaveReceivedEventTimes(3);
+        expect(toggleSpy).toHaveReceivedEventTimes(2);
       });
     });
     describe("when multiple is true and a item is clicked", () => {
@@ -36,7 +36,7 @@ export const tests = {
         await item1.click();
         await item2.click();
         await item2.click(); // deselect
-        expect(toggleSpy).toHaveReceivedEventTimes(3);
+        expect(toggleSpy).toHaveReceivedEventTimes(2);
       });
     });
     describe("preselected items", () => {

@@ -53,11 +53,11 @@ export const sharedListMethods = {
         this.selectSiblings(item);
       }
       selectedValues.set(value, item);
+      this.lastSelectedItem = item;
+      this.calciteListChange.emit(selectedValues);
     } else {
       selectedValues.delete(value);
     }
-    this.lastSelectedItem = item;
-    this.calciteListChange.emit(selectedValues);
   },
   // --------------------------------------------------------------------------
   //
