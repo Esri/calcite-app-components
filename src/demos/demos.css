@@ -4,13 +4,17 @@ body {
 
 }
 .example-container {
-  max-width: 900px;
-  margin: 12px auto;
   padding: 0 24px 24px;
-  background-color: rgba(255,255,255,0.3);
-  border: 1px solid black;
-  box-shadow: 4px 4px 2px grey;
-  border-radius: 9px;
+}
+@media (min-width: 1025px) {
+  .example-container {
+    max-width: 900px;
+    margin: 12px auto;
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid black;
+    box-shadow: 4px 4px 2px grey;
+    border-radius: 9px;
+  }
 }
 
 h1, h2, h3, h4, h5 {
