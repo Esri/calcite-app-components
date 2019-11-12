@@ -43,7 +43,7 @@ export const sharedListMethods = {
   //
   // --------------------------------------------------------------------------
   calciteListItemChangeHandler(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
-    const { selectedValues } = this;
+    const { multiple, selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
       if (!this.multiple) {
@@ -53,10 +53,14 @@ export const sharedListMethods = {
         this.selectSiblings(item);
       }
       selectedValues.set(value, item);
-      this.lastSelectedItem = item;
-      this.calciteListChange.emit(selectedValues);
     } else {
       selectedValues.delete(value);
+    }
+
+    this.lastSelectedItem = item;
+
+    if (selected || multiple) {
+      this.calciteListChange.emit(selectedValues);
     }
   },
   // --------------------------------------------------------------------------
