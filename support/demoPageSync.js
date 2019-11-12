@@ -1,24 +1,38 @@
 const { close, copyFileSync, open, utimes, watch } = require("fs");
 const { normalize } = require("path");
+const chokidar = require('chokidar');
 
 const projectRoot = normalize(`${__dirname}/../`);
-const sourceDir = `${projectRoot}src/`;
-const sourceDemoDir = `${sourceDir}demos/`;
-const destinationDir = `${projectRoot}www/`;
-const destinationDemoDir = `${destinationDir}demos/`;
-const sourceIndexFile = `${sourceDir}index.html`;
-const buildTriggeringFile = `${sourceDir}components/interfaces.ts`;
+const sourceDir = normalize(`${projectRoot}src/`);
+const sourceDemoDir = normalize(`${sourceDir}demos/`);
+const destinationDir = normalize(`${projectRoot}www/`);
+const destinationDemoDir = normalize(`${destinationDir}demos/`);
+const sourceIndexFile = normalize(`${sourceDir}index.html`);
+const buildTriggeringFile = normalize(`${sourceDir}components/interfaces.ts`);
 const noop = () => {};
 
-watch(sourceDemoDir, (type, changedFile) => triggerBuild(sourceDemoDir, destinationDemoDir, changedFile));
-watch(sourceIndexFile, (type, changedFile) => triggerBuild(sourceDir, destinationDir, changedFile));
+const demoWatcher = chokidar.watch(normalize(`${sourceDemoDir}**/*[(.js)(.css)(.html)]`), {
+  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  persistent: true,
+  ignoreInitial: true
+});
+demoWatcher.on('all', (eventName, path) => triggerBuild( sourceDemoDir, destinationDemoDir, path ) );
 
-function triggerBuild(sourceDir, destinationDir, changedFile) {
-  if (!changedFile.endsWith(".html")) {
-    return;
-  }
+const indexWatcher = chokidar.watch(sourceIndexFile, {
+  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  persistent: true,
+  ignoreInitial: true
+});
+indexWatcher.on('change', (path) => triggerBuild( sourceDir, destinationDir, path ) );
 
-  copyFileSync(`${sourceDir}${changedFile}`, `${destinationDir}${changedFile}`);
+// watch(sourceDemoDir, (type, changedFile) => triggerBuild(sourceDemoDir, destinationDemoDir, changedFile));
+// watch(sourceIndexFile, (type, changedFile) => triggerBuild(sourceDir, destinationDir, changedFile));
+
+function triggerBuild(srcDir, destinationDir, path) {
+  const dest = path.replace(srcDir, destinationDir);
+  copyFileSync(path, dest);
+
+  //This triggers a rebuild in Stencil, which triggers a livereload of the demo page.
   markFileAsModified(buildTriggeringFile);
 }
 
