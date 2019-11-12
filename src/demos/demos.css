@@ -9,11 +9,13 @@ body {
 @media (min-width: 1025px) {
   .example-container {
     max-width: 900px;
+    max-height: 80vh;
     margin: 12px auto;
     background-color: rgba(255,255,255,0.3);
     border: 1px solid black;
     box-shadow: 4px 4px 2px grey;
-    border-radius: 9px;
+    resize: horizontal;
+    overflow-x: scroll;
   }
 }
 
