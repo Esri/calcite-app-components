@@ -102,7 +102,7 @@ export class CalcitePickList {
 
   @Element() el: HTMLCalcitePickListElement;
 
-  calciteListChangeEmitDebounced: (data?: any) => CustomEvent<any>;
+  emitCalciteListChangeEventDebounced: () => void;
 
   // --------------------------------------------------------------------------
   //
@@ -155,6 +155,10 @@ export class CalcitePickList {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+
+  emitCalciteListChangeEvent(): void {
+    this.calciteListChange.emit(this.selectedValues);
+  }
 
   setUpItems(): void {
     setUpItems.call(this, "calcite-pick-list-item");
