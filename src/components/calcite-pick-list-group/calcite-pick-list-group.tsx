@@ -1,6 +1,9 @@
 import { Component, Host, Prop, h } from "@stencil/core";
 import { CSS } from "./resources";
 
+/**
+ * @slot default - A slot for adding pick-list-item elements.
+ */
 @Component({
   tag: "calcite-pick-list-group",
   styleUrl: "./calcite-pick-list-group.scss",
