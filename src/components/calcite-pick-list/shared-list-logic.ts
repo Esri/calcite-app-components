@@ -39,11 +39,17 @@ export const sharedListMethods = {
   },
   // --------------------------------------------------------------------------
   //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+  calciteChangeEmitDebounceMS: 10,
+  // --------------------------------------------------------------------------
+  //
   //  Listeners
   //
   // --------------------------------------------------------------------------
   calciteListItemChangeHandler(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
-    const { multiple, selectedValues } = this;
+    const { selectedValues } = this;
     const { item, value, selected, shiftPressed } = event.detail;
     if (selected) {
       if (!this.multiple) {
@@ -58,10 +64,7 @@ export const sharedListMethods = {
     }
 
     this.lastSelectedItem = item;
-
-    if (selected || multiple) {
-      this.calciteListChange.emit(selectedValues);
-    }
+    this.debouncedEmitCalciteListChangeEvent();
   },
   // --------------------------------------------------------------------------
   //
