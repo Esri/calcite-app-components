@@ -6,14 +6,15 @@ The `calcite-panel` component is a container that for a header, content and opti
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                                               | Type                | Default      |
-| ------------- | ------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ------------ |
-| `disabled`    | `disabled`    | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.               | `boolean`           | `false`      |
-| `dismissed`   | `dismissed`   | Hides the panel.                                                                                          | `boolean`           | `false`      |
-| `dismissible` | `dismissible` | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`      |
-| `loading`     | `loading`     | When true, content is waiting to be loaded. This state shows a busy indicator.                            | `boolean`           | `false`      |
-| `textClose`   | `text-close`  | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `TEXT.close` |
-| `theme`       | `theme`       | Used to set the component's color scheme.                                                                 | `"dark" \| "light"` | `undefined`  |
+| Property      | Attribute      | Description                                                                                               | Type                | Default      |
+| ------------- | -------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ------------ |
+| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.               | `boolean`           | `false`      |
+| `dismissed`   | `dismissed`    | Hides the panel.                                                                                          | `boolean`           | `false`      |
+| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`      |
+| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                               | `"l" \| "m" \| "s"` | `undefined`  |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                            | `boolean`           | `false`      |
+| `textClose`   | `text-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `TEXT.close` |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                                 | `"dark" \| "light"` | `undefined`  |
 
 ## Events
 
