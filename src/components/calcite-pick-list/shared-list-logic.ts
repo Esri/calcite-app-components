@@ -1,5 +1,6 @@
 import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
+import { debounce } from "lodash-es";
 
 type pickListItemMap = Map<string, HTMLCalcitePickListItemElement>;
 type valueListItemMap = Map<string, HTMLCalciteValueListItemElement>;
@@ -30,6 +31,7 @@ export const sharedListMethods = {
   initialize(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
+    this.calciteListChangeEmitDebounced = debounce(this.calciteListChange.emit, 10);
   },
   initializeObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
@@ -37,12 +39,6 @@ export const sharedListMethods = {
   cleanUpObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.disconnect();
   },
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-  calciteChangeEmitDebounceMS: 10,
   // --------------------------------------------------------------------------
   //
   //  Listeners
@@ -64,7 +60,7 @@ export const sharedListMethods = {
     }
 
     this.lastSelectedItem = item;
-    this.debouncedEmitCalciteListChangeEvent();
+    this.calciteListChangeEmitDebounced(this.selectedValues);
   },
   // --------------------------------------------------------------------------
   //

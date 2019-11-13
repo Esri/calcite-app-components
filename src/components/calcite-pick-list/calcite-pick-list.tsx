@@ -12,7 +12,6 @@ import {
 import { ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "./shared-list-logic";
 import List from "./shared-list-render";
-import { debounce } from "lodash-es";
 
 const {
   mutationObserverCallback,
@@ -20,7 +19,6 @@ const {
   initializeObserver,
   cleanUpObserver,
   calciteListItemChangeHandler,
-  calciteChangeEmitDebounceMS,
   setUpItems,
   deselectSiblingItems,
   selectSiblings,
@@ -104,10 +102,7 @@ export class CalcitePickList {
 
   @Element() el: HTMLCalcitePickListElement;
 
-  debouncedEmitCalciteListChangeEvent = debounce(
-    this.emitCalciteListChangeEvent,
-    calciteChangeEmitDebounceMS
-  );
+  calciteListChangeEmitDebounced: (data?: any) => CustomEvent<any>;
 
   // --------------------------------------------------------------------------
   //
@@ -160,10 +155,6 @@ export class CalcitePickList {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
-
-  emitCalciteListChangeEvent(): void {
-    this.calciteListChange.emit(this.selectedValues);
-  }
 
   setUpItems(): void {
     setUpItems.call(this, "calcite-pick-list-item");

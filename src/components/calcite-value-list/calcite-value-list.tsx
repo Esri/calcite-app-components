@@ -14,7 +14,6 @@ import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
-import { debounce } from "lodash-es";
 
 const {
   mutationObserverCallback,
@@ -22,7 +21,6 @@ const {
   initializeObserver,
   cleanUpObserver,
   calciteListItemChangeHandler,
-  calciteChangeEmitDebounceMS,
   setUpItems,
   deselectSiblingItems,
   selectSiblings,
@@ -98,18 +96,9 @@ export class CalciteValueList {
 
   sortables: Sortable[] = [];
 
-  debouncedEmitCalciteListChangeEvent = debounce(
-    this.emitCalciteListChangeEvent,
-    calciteChangeEmitDebounceMS
-  );
-
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
   @Element() el: HTMLCalciteValueListItemElement;
+
+  calciteListChangeEmitDebounced: (data?: any) => CustomEvent<any>;
 
   // --------------------------------------------------------------------------
   //
@@ -162,10 +151,6 @@ export class CalciteValueList {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
-
-  emitCalciteListChangeEvent(): void {
-    this.calciteListChange.emit(this.selectedValues);
-  }
 
   setUpItems(): void {
     setUpItems.call(this, "calcite-value-list-item");
