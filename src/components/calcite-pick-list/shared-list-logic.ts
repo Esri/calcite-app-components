@@ -31,7 +31,7 @@ export const sharedListMethods = {
   initialize(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
-    this.emitCalciteListChangeEventDebounced = debounce(this.emitCalciteListChangeEvent, 10);
+    this.emitCalciteListChangeEventDebounced = debounce(this.emitCalciteListChangeEvent, 0);
   },
   initializeObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
