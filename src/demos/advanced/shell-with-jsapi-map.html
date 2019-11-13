@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>Calcite App Components: calcite-shell</title>
+
+    <!-- Loads the link and script tags-->
+    <script src="../head.js"></script>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.12/"></script>
+    <!-- <style>
+        .calcite-shell-container {
+          /* ipad size with browser */
+          min-width: 1024px;
+          min-height: 671px;
+          width: 90vw;
+          height: 75vh;
+          margin: 0 auto;
+          box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+          position: relative;
+        }
+      </style>-->
+
+      <style>
+        .relative {
+          position: relative;
+        }
+          #viewDiv,
+          #viewDiv2 {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+          }
+        </style>
+
+        <script>
+          require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
+            var map = new Map({
+              basemap: "streets"
+            });
+
+            var view = new MapView({
+              container: "viewDiv",
+              map: map,
+              zoom: 4,
+              center: [15, 65]
+            });
+
+            var view2 = new MapView({
+              container: "viewDiv2",
+              map: map,
+              zoom: 4,
+              center: [15, 65]
+            });
+          });
+        </script>
+  </head>
+
+  <body>
+    <nav>
+      <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
+    </nav>
+    <main>
+      <div class="example-container">
+        <h1>calcite-shell</h1>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell/readme.md"
+            >calcite-shell readme.</a
+          >
+        </p>
+        <p>
+          <i>note: calcite-shell supports tablet as the smallest screen size</i>
+        </p>
+
+        <h2>Demo Navigation</h2>
+        <ul>
+          <li>View the <a href="calcite-shell.html">LTR demo</a>.</li>
+          <li>View the <a href="calcite-shell-rtl.html">RTL demo</a>.</li>
+          <li>View the <a href="calcite-shell-full-window.html" target="_blank">Full window demo</a>.</li>
+        </ul>
+
+        <h2>Light Theme</h2>
+          <calcite-shell class="relative">
+            <!-- <calcite-shell-panel slot="primary-panel" layout="leading">
+            </calcite-shell-panel> -->
+
+            <!-- <calcite-shell-panel slot="contextual-panel" layout="trailing">
+            </calcite-shell-panel> -->
+            <div slot="shell-header">
+              <header class="header">
+                <h2 class="heading">My App</h2>
+              </header>
+            </div>
+            <div id="viewDiv"></div>
+
+            <!-- <footer slot="shell-footer">Footer</footer> -->
+          </calcite-shell>
+        </div>
+
+        <h2>Dark Theme</h2>
+        <!-- <calcite-shell theme="dark"></calcite-shell> -->
+
+        </div>
+      </div>
+      <p style="text-align: center;">Box Shadow added to show app edges.</p>
+    </main>
+  </body>
+</html>
