@@ -113,7 +113,12 @@ const NAV_ITEMS: NavItem[] = [
       {
         id: "full-window-shell",
         path: "demos/advanced/shell-full-window.html",
-        content: "Full Window Shell"
+        content: "Shell - Full Window"
+      },
+      {
+        id: "calcite-shell-demo-app",
+        path: "demos/advanced/calcite-shell-demo-app.html",
+        content: "Shell Demo App"
       }
     ]
   }
