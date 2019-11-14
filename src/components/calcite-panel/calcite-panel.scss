@@ -87,7 +87,7 @@ slot[name="header-content"]::slotted(.heading) {
 
 .calcite--rtl {
   .header-leading-content + .header-content {
-    padding-right: var(--calcite-app-side-spacing-quarter);
+    padding-right: var(--calcite-app-side-spacing-half);
   }
   .header-trailing-content {
     margin-left: 0;
