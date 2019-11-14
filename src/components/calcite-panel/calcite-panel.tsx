@@ -117,11 +117,12 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    return (
+    const hasLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
+    return hasLeadingContent ? (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
-    );
+    ) : null;
   }
 
   renderHeaderContent(): VNode {
