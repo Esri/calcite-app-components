@@ -56,11 +56,19 @@
   padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing);
 }
 
+.header-leading-content + .header-content {
+  padding-left: var(--calcite-app-side-spacing-half);
+}
+
 slot[name="header-content"]::slotted(.heading) {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+}
+
+.header-trailing-content {
+  margin-left: auto;
 }
 
 .content-container {
@@ -75,4 +83,14 @@ slot[name="header-content"]::slotted(.heading) {
   display: flex;
   justify-content: space-evenly;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+.calcite--rtl {
+  .header-leading-content + .header-content {
+    padding-right: var(--calcite-app-side-spacing-half);
+  }
+  .header-trailing-content {
+    margin-left: 0;
+    margin-right: auto;
+  }
 }
