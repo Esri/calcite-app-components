@@ -85,8 +85,9 @@ describe("calcite-value-list", () => {
 
     it("works using a keyboard", async () => {
       page.keyboard.press("Tab");
+      page.keyboard.press("Space");
+      await page.waitForChanges();
       page.keyboard.press("ArrowDown");
-      page.debugger();
       const itemsAfter = await page.findAll("calcite-value-list-item");
       expect(await itemsAfter[0].getProperty("value")).toBe("two");
       expect(await itemsAfter[1].getProperty("value")).toBe("one");
