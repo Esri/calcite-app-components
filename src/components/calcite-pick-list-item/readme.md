@@ -26,15 +26,20 @@
 
 ## Methods
 
-### `toggleSelected(coerce?: boolean, emit?: boolean) => Promise<void>`
+### `toggleSelected(coerce?: boolean) => Promise<void>`
 
 Used to toggle the selection state. By default this won't trigger an event.
 The first argument allows the value to be coerced, rather than swapping values.
-The second argument, when true, allows an event to be emitted, just as if a user had clicked.
 
 #### Returns
 
 Type: `Promise<void>`
+
+## Slots
+
+| Slot                | Description                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| `"secondaryAction"` | A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item. |
 
 ## Dependencies
 

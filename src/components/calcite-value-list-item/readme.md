@@ -19,11 +19,17 @@
 
 ## Methods
 
-### `toggleSelected(coerce?: boolean, emit?: boolean) => Promise<void>`
+### `toggleSelected(coerce?: boolean) => Promise<void>`
 
 #### Returns
 
 Type: `Promise<void>`
+
+## Slots
+
+| Slot                | Description                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| `"secondaryAction"` | A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item. |
 
 ## Dependencies
 
