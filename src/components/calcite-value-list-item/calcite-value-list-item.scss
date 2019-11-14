@@ -32,7 +32,7 @@ calcite-pick-list-item[selected] {
   line-height: 0;
   cursor: move;
   @include borderShadow();
-  &:focus {
+  &--activated {
     background-color: black;
     color: white;
   }

@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
 import { CSS } from "../calcite-pick-list-item/resources";
@@ -69,6 +69,8 @@ export class CalciteValueListItem {
 
   guid = `calcite-value-list-item-${guid()}`;
 
+  @State() handleActivated = false;
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -79,6 +81,13 @@ export class CalciteValueListItem {
     this.pickListItem.toggleSelected(coerce, emit);
   }
 
+  /*
+   ** @internal
+   */
+  @Method() async activateHandle() {
+    this.handleActivated = true;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -86,6 +95,16 @@ export class CalciteValueListItem {
   // --------------------------------------------------------------------------
 
   getPickListRef = (el) => (this.pickListItem = el as HTMLCalcitePickListItemElement);
+
+  handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === " ") {
+      this.handleActivated = !this.handleActivated;
+    }
+  };
+
+  handleBlur = () => {
+    this.handleActivated = false;
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -97,7 +116,14 @@ export class CalciteValueListItem {
     const { icon } = this;
     if (icon === ICON_TYPES.grip) {
       return (
-        <a class={CSS.handle} tabindex="0" data-js-handle="true">
+        <a
+          class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
+          tabindex="0"
+          data-js-handle="true"
+          data-activated={this.handleActivated}
+          onKeyDown={this.handleKeyDown}
+          onBlur={this.handleBlur}
+        >
           <CalciteIcon size="16" path={drag16} />
         </a>
       );

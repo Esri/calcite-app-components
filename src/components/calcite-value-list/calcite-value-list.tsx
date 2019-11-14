@@ -204,6 +204,13 @@ export class CalciteValueList {
   getItemData = getItemData.bind(this);
 
   keyDownHandler = (event) => {
+    const handleElement = event.composedPath().find((item) => {
+      return item.dataset && item.dataset.jsHandle;
+    });
+    // Only trigger keyboard sorting when the internal drag handle is focused and activated
+    if (!handleElement || !("activated" in handleElement.dataset)) {
+      return;
+    }
     const value = event.target.value;
     const startingIndex = this.items.findIndex((item) => {
       return item.value === value;
@@ -224,12 +231,8 @@ export class CalciteValueList {
     const order = this.sortables[0].toArray();
     arraymove(order, startingIndex, newIndex);
     this.sortables[0].sort(order);
-    event
-      .composedPath()
-      .find((item) => {
-        return item.tabIndex >= 0;
-      })
-      .focus();
+    handleElement.focus();
+    event.target.activateHandle();
   };
 
   // --------------------------------------------------------------------------
