@@ -8,7 +8,7 @@ body {
 }
 @media (min-width: 1025px) {
   .example-container {
-    max-width: 900px;
+    width: 900px;
     max-height: 80vh;
     margin: 12px auto;
     background-color: rgba(255,255,255,0.3);
@@ -21,4 +21,14 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: 300;
+}
+
+/* Custom container for shell since it's rather large */
+.shell-container {
+  /* ipad size with browser */
+  min-width: 1024px;
+  min-height: 671px;
+  margin: 0 auto;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
 }

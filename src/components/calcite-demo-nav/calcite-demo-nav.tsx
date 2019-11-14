@@ -111,14 +111,24 @@ const NAV_ITEMS: NavItem[] = [
         content: "Flow add flow-items dynamically"
       },
       {
-        id: "full-window-shell",
-        path: "demos/advanced/shell-full-window.html",
-        content: "Shell - Full Window"
+        id: "shell-panel-action-bar",
+        path: "demos/advanced/shell-panel-with-action-bar.html",
+        content: "Shell Panel with Action Bar"
       },
       {
-        id: "calcite-shell-demo-app",
-        path: "demos/advanced/calcite-shell-demo-app.html",
+        id: "shell-demo-app",
+        path: "demos/advanced/shell-demo-app.html",
         content: "Shell Demo App"
+      },
+      {
+        id: "shell-demo-app-rtl",
+        path: "demos/advanced/shell-demo-app-rtl.html",
+        content: "Shell Demo App RTL"
+      },
+      {
+        id: "shell-full-window",
+        path: "demos/advanced/shell-demo-app-full-window.html",
+        content: "Shell Full Window App"
       }
     ]
   }
@@ -180,6 +190,7 @@ export class CalciteDemoNav {
     const { content, id, path } = item;
     const clickHandler = item.children ? this.subMenuClickHandler : null;
     return (
+      // @ts-ignore OnFocusout is a legitimate event.
       <li>
         <a
           class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link}

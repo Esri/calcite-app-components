@@ -12,32 +12,12 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.12/"></script>
     <style>
-      .calcite-shell-container {
-        /* ipad size with browser */
-        width: 1024px;
-        height: 671px;
-        margin: 0 auto;
-        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
-        position: relative;
-      }
       @media (min-width: 1025px) {
         .example-container {
-          max-width: 1100px;
+          width: 1100px;
         }
       }
-
-
     </style>
-
-      <style>
-          #viewDiv,
-          #viewDiv2 {
-            padding: 0;
-            margin: 0;
-            height: 100%;
-            width: 100%;
-          }
-        </style>
   </head>
 
   <body>
@@ -54,8 +34,8 @@
           >
         </p>
         <p><em>The shell is absolutely positioned and sized to fill its container. In normal application it might fill up the entire viewport.
-            For demo purposes, it's inside a relatively positioned container sized to fit in this area.</em></p>
-        <p><em>Please note: calcite-shell supports tablet as the smallest screen size.</em></p>
+            For demo purposes, it's inside a relatively positioned container sized to fit in this area. <a href="/demos/advanced/shell-demo-app-full-window.html">See the full-window demo.</a></em></p>
+        <p><em>Please note: calcite-shell supports tablet as the smallest screen size.</em> </p>
 
         <h2>Demo Navigation</h2>
         <ul>
@@ -65,7 +45,7 @@
         </ul>
 
         <h2>Basic Shell</h2>
-        <div class="calcite-shell-container">
+        <div class="shell-container">
           <calcite-shell>
             <div slot="shell-header">
               <header class="header">
@@ -77,7 +57,7 @@
           </calcite-shell>
         </div>
         <h2>Shell with Footer</h2>
-        <div class="calcite-shell-container">
+        <div class="shell-container">
           <calcite-shell>
             <div slot="shell-header">
               <header class="header">
@@ -91,7 +71,7 @@
           </calcite-shell>
         </div>
         <h2>Shell with Panels</h2>
-        <div class="calcite-shell-container">
+        <div class="shell-container">
           <calcite-shell>
             <calcite-shell-panel slot="primary-panel" layout="leading">
               leading panel

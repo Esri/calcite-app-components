@@ -7,16 +7,6 @@
 
     <!-- Loads the link and script tags-->
     <script src="../head.js"></script>
-    <style>
-      calcite-block {
-        width: 280px;
-      }
-
-      calcite-block img {
-        width: 100%;
-        max-width: 100%;
-      }
-    </style>
   </head>
 
   <body>
@@ -32,20 +22,8 @@
             >calcite-block readme.</a
           >
         </p>
-        <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
-        <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
-        <h2>Simple header only (non-collapsible - default)</h2>
 
-        <calcite-block heading="Heading" summary="summary"></calcite-block>
-
-        <h2>Header + control</h2>
-
-        <calcite-block heading="With control" summary="has inline input">
-          <label slot="control">test <input placeholder="I'm a header control"/></label>
-        </calcite-block>
-
-        <h2>Header + content (collapsible)</h2>
-
+        <h2>Block with slotted Value List</h2>
         <calcite-block heading="All the king's buff horses couldn't fix the turbo." summary="summary" open collapsible>
           <calcite-value-list id="one" multiple>
             <calcite-value-list-item
@@ -132,28 +110,7 @@
             </label>
           </calcite-block-section>
         </calcite-block>
-
-        <h2>RTL</h2>
-
-        <calcite-block dir="rtl" heading="Heading" summary="summary" open collapsible>
-          <calcite-block-section text="Animals" open>
-            <img alt="demo" src="https://placeimg.com/640/480/animals" />
-          </calcite-block-section>
-
-          <calcite-block-section text="Nature" open>
-            <img alt="demo" src="https://placeimg.com/640/480/nature" />
-          </calcite-block-section>
-        </calcite-block>
       </section>
     </main>
-    <script>
-      function toggleProperty(property) {
-        const blocks = document.getElementsByTagName("calcite-block");
-
-        for (i = 0; i < blocks.length; i++) {
-          blocks[i].toggleAttribute(property);
-        }
-      }
-    </script>
   </body>
 </html>
