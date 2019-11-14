@@ -1,6 +1,9 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
+/**
+ * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ */
 @Component({
   tag: "calcite-value-list-item",
   styleUrl: "./calcite-value-list-item.scss",

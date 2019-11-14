@@ -29,6 +29,7 @@ const {
 } = sharedListMethods;
 
 /**
+ * @slot - A slot for adding pick-list-item elements or pick-list-groups elements. Items are displayed as a vertical list.
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
  */
 @Component({
