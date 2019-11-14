@@ -102,6 +102,8 @@ export class CalcitePickList {
 
   @Element() el: HTMLCalcitePickListElement;
 
+  emitCalciteListChange: () => void;
+
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
