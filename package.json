@@ -1,6 +1,6 @@
 {
   "name": "@esri/calcite-app-components",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "description": "A collection of web components for building single-page applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -36,13 +36,13 @@
   "dependencies": {
     "@esri/calcite-base": "1.1.0",
     "@esri/calcite-colors": "1.5.0",
-    "@esri/calcite-ui-icons": "2.5.6",
+    "@esri/calcite-ui-icons": "2.6.0",
     "lodash-es": "4.17.15",
     "sortablejs": "1.10.1"
   },
   "devDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.12",
-    "@stencil/core": "1.7.5",
+    "@esri/calcite-components": "1.0.0-beta.13",
+    "@stencil/core": "1.8.0",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.1.1",
     "@stencil/state-tunnel": "1.0.1",
@@ -53,7 +53,7 @@
     "@types/sortablejs": "1.10.0",
     "autoprefixer": "9.7.1",
     "axe-core": "3.4.0",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "classnames": "2.2.6",
     "concurrently": "5.0.0",
     "gh-release": "3.5.0",
@@ -65,7 +65,7 @@
     "jest-runner": "24.9.0",
     "lint-staged": "9.4.2",
     "package": "1.0.1",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "puppeteer": "1.20.0",
     "standard-version": "7.0.0",
     "tslint": "5.20.1",

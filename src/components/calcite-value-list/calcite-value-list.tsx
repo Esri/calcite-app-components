@@ -97,13 +97,9 @@ export class CalciteValueList {
 
   sortables: Sortable[] = [];
 
-  // --------------------------------------------------------------------------
-  //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
   @Element() el: HTMLCalciteValueListItemElement;
+
+  emitCalciteListChange: () => void;
 
   // --------------------------------------------------------------------------
   //

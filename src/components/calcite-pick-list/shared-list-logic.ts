@@ -1,5 +1,6 @@
 import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
+import { debounce } from "lodash-es";
 
 type pickListItemMap = Map<string, HTMLCalcitePickListItemElement>;
 type valueListItemMap = Map<string, HTMLCalciteValueListItemElement>;
@@ -30,6 +31,7 @@ export const sharedListMethods = {
   initialize(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
+    this.emitCalciteListChange = debounce(sharedListMethods.internalCalciteListChangeEvent.bind(this), 0);
   },
   initializeObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
@@ -56,17 +58,21 @@ export const sharedListMethods = {
     } else {
       selectedValues.delete(value);
     }
+
     this.lastSelectedItem = item;
-    this.calciteListChange.emit(selectedValues);
+    this.emitCalciteListChange();
   },
   // --------------------------------------------------------------------------
   //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+  internalCalciteListChangeEvent(this: CalcitePickList | CalciteValueList): void {
+    this.calciteListChange.emit(this.selectedValues);
+  },
   setUpItems(
     this: CalcitePickList | CalciteValueList,
-    tagname: "calcite-pick-list-item" | "calcite-pick-list-item"
+    tagname: "calcite-pick-list-item" | "calcite-value-list-item"
   ): void {
     this.items = Array.from(this.el.querySelectorAll(tagname));
     this.items.forEach((item) => {
@@ -84,7 +90,7 @@ export const sharedListMethods = {
   },
   deselectSiblingItems(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem) {
     this.items.forEach((currentItem) => {
-      if (currentItem !== item) {
+      if (currentItem.value !== item.value) {
         currentItem.toggleSelected(false);
         if (this.selectedValues.has(currentItem.value)) {
           this.selectedValues.delete(currentItem.value);

@@ -6,7 +6,6 @@ import {
   Host,
   Method,
   Prop,
-  State,
   Watch,
   h
 } from "@stencil/core";
@@ -57,14 +56,18 @@ export class CalcitePickListItem {
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
-  @Prop() selected = false;
+  @Prop({ reflect: true, mutable: true }) selected = false;
 
   @Watch("selected")
-  selectedWatchHandler(newValue) {
-    if (this.isSelected !== newValue) {
-      this.isSelected = newValue;
-      this.emitChangeEvent();
-    }
+  selectedWatchHandler() {
+    this.calciteListItemChange.emit({
+      item: this.el,
+      value: this.value,
+      selected: this.selected,
+      shiftPressed: this.shiftPressed
+    });
+
+    this.shiftPressed = false;
   }
 
   /**
@@ -107,7 +110,7 @@ export class CalcitePickListItem {
 
   @Element() el: HTMLCalcitePickListItemElement;
 
-  @State() isSelected = this.selected;
+  shiftPressed: boolean;
 
   // --------------------------------------------------------------------------
   //
@@ -138,16 +141,13 @@ export class CalcitePickListItem {
   /**
    * Used to toggle the selection state. By default this won't trigger an event.
    * The first argument allows the value to be coerced, rather than swapping values.
-   * The second argument, when true, allows an event to be emitted, just as if a user had clicked.
    */
-  @Method() async toggleSelected(coerce?: boolean, emit = false) {
+  @Method() async toggleSelected(coerce?: boolean) {
     if (this.disabled) {
       return;
     }
-    this.isSelected = typeof coerce === "boolean" ? coerce : !this.isSelected;
-    if (emit) {
-      this.emitChangeEvent();
-    }
+
+    this.selected = typeof coerce === "boolean" ? coerce : !this.selected;
   }
 
   // --------------------------------------------------------------------------
@@ -160,30 +160,17 @@ export class CalcitePickListItem {
     if (this.disabled) {
       return;
     }
-    this.isSelected = !this.isSelected;
-    this.emitChangeEvent(event.shiftKey);
+
+    this.shiftPressed = event.shiftKey;
+    this.selected = !this.selected;
   };
 
   pickListKeyDownHandler = (event: KeyboardEvent): void => {
     if (event.key === " ") {
       event.preventDefault();
-      this.isSelected = !this.isSelected;
-      this.emitChangeEvent(false);
+      this.selected = !this.selected;
     }
   };
-
-  secondaryActionContainerClickHandler(event: MouseEvent) {
-    event.stopPropagation();
-  }
-
-  emitChangeEvent(shiftPressed = false) {
-    this.calciteListItemChange.emit({
-      item: this.el,
-      value: this.value,
-      selected: this.isSelected,
-      shiftPressed
-    });
-  }
 
   // --------------------------------------------------------------------------
   //
@@ -192,8 +179,8 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   renderIcon() {
-    const { icon } = this;
-    if (!icon || this.compact) {
+    const { compact, icon, selected } = this;
+    if (!icon || compact) {
       return null;
     }
     if (icon === ICON_TYPES.grip) {
@@ -205,10 +192,10 @@ export class CalcitePickListItem {
     } else {
       const path =
         icon === ICON_TYPES.square
-          ? this.isSelected
+          ? selected
             ? checkSquare16
             : square16
-          : this.isSelected
+          : selected
           ? circleFilled16
           : circle16;
       return (
@@ -226,7 +213,7 @@ export class CalcitePickListItem {
       ) : null;
 
     return (
-      <Host selected={this.isSelected} role="checkbox" aria-checked={this.isSelected}>
+      <Host role="checkbox" aria-checked={this.selected}>
         <label
           class={CSS.label}
           onClick={this.pickListClickHandler}
@@ -240,7 +227,7 @@ export class CalcitePickListItem {
             {description}
           </div>
         </label>
-        <div class={CSS.action} onClick={this.secondaryActionContainerClickHandler}>
+        <div class={CSS.action}>
           <slot name="secondaryAction" />
         </div>
       </Host>
