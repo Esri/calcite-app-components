@@ -14,6 +14,9 @@ import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
+/**
+ * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ */
 @Component({
   tag: "calcite-pick-list-item",
   styleUrl: "./calcite-pick-list-item.scss",
