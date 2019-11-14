@@ -31,7 +31,7 @@ export const sharedListMethods = {
   initialize(this: CalcitePickList | CalciteValueList): void {
     this.setUpItems();
     this.setUpFilter();
-    this.emitCalciteListChangeEventDebounced = debounce(this.emitCalciteListChangeEvent, 0);
+    this.emitCalciteListChange = debounce(sharedListMethods.internalCalciteListChangeEvent.bind(this), 0);
   },
   initializeObserver(this: CalcitePickList | CalciteValueList): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
@@ -60,13 +60,16 @@ export const sharedListMethods = {
     }
 
     this.lastSelectedItem = item;
-    this.emitCalciteListChangeEventDebounced();
+    this.emitCalciteListChange();
   },
   // --------------------------------------------------------------------------
   //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+  internalCalciteListChangeEvent(this: CalcitePickList | CalciteValueList): void {
+    this.calciteListChange.emit(this.selectedValues);
+  },
   setUpItems(
     this: CalcitePickList | CalciteValueList,
     tagname: "calcite-pick-list-item" | "calcite-pick-list-item"

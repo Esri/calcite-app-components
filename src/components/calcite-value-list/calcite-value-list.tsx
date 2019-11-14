@@ -98,7 +98,7 @@ export class CalciteValueList {
 
   @Element() el: HTMLCalciteValueListItemElement;
 
-  emitCalciteListChangeEventDebounced: () => void;
+  emitCalciteListChange: () => void;
 
   // --------------------------------------------------------------------------
   //
@@ -151,10 +151,6 @@ export class CalciteValueList {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
-
-  emitCalciteListChangeEvent(): void {
-    this.calciteListChange.emit(this.selectedValues);
-  }
 
   setUpItems(): void {
     setUpItems.call(this, "calcite-value-list-item");
