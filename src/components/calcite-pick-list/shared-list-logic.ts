@@ -72,7 +72,7 @@ export const sharedListMethods = {
   },
   setUpItems(
     this: CalcitePickList | CalciteValueList,
-    tagname: "calcite-pick-list-item" | "calcite-pick-list-item"
+    tagname: "calcite-pick-list-item" | "calcite-value-list-item"
   ): void {
     this.items = Array.from(this.el.querySelectorAll(tagname));
     this.items.forEach((item) => {
