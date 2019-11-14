@@ -1,6 +1,9 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
+import { CSS } from "../calcite-pick-list-item/resources";
+import { drag16 } from "@esri/calcite-ui-icons";
+import CalciteIcon from "../utils/CalciteIcon";
 
 @Component({
   tag: "calcite-value-list-item",
@@ -90,16 +93,28 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
+  renderHandle() {
+    const { icon } = this;
+    if (icon === ICON_TYPES.grip) {
+      return (
+        <a class={CSS.handle} tabindex="0" data-js-handle="true">
+          <CalciteIcon size="16" path={drag16} />
+        </a>
+      );
+    }
+  }
+
   render() {
     return (
       <Host data-id={this.guid}>
+        {this.renderHandle()}
         <calcite-pick-list-item
           compact={this.compact}
           ref={this.getPickListRef}
           disabled={this.disabled}
           selected={this.selected}
           metadata={this.metadata}
-          icon={this.icon}
+          icon={null}
           textLabel={this.textLabel}
           textDescription={this.textDescription}
           value={this.value}
