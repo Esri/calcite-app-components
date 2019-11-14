@@ -90,6 +90,29 @@
   background-color: var(--calcite-app-background-active);
 }
 
+:host([appearance="clear"]) .button {
+  background-color: var(--calcite-app-background-clear);
+  transition: box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+:host([appearance="clear"]) .button:hover {
+  background-color: var(--calcite-app-background-clear);
+  @include borderShadowHover();
+}
+
+:host([active][appearance="clear"]) .button,
+:host([active][appearance="clear"]) .button:hover {
+  color: var(--calcite-app-foreground-active);
+  fill: var(--calcite-app-foreground-active);
+  background-color: var(--calcite-app-background-active);
+  box-shadow: none;
+}
+
+:host([appearance="clear"][loading]) .button,
+:host([appearance="clear"][disabled]) .button {
+  background-color: var(--calcite-app-background-clear);
+}
+
 :host([loading]) .button,
 :host([loading]) .button:hover {
   background-color: var(--calcite-app-background);
