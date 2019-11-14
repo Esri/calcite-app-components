@@ -57,7 +57,7 @@
 }
 
 .header-leading-content + .header-content {
-  padding-left: var(--calcite-app-side-spacing-quarter);
+  padding-left: var(--calcite-app-side-spacing-half);
 }
 
 slot[name="header-content"]::slotted(.heading) {
