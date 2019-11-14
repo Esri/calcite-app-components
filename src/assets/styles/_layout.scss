@@ -35,7 +35,7 @@ $cap-spacing: 16px !default;
 
   --calcite-app-border-radius: 3px;
 
-  --calcite-app-header-min-height: 3rem;
+  --calcite-app-header-min-height: calc(var(--calcite-app-cap-spacing) * 3);
 
   // shadows
   --calcite-app-shadow-0: 0 2px 4px rgba(0, 0, 0, 0.1);

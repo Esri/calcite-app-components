@@ -53,7 +53,7 @@
 
 .header-content {
   overflow: hidden;
-  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing);
+  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
 }
 
 slot[name="header-content"]::slotted(.heading) {
@@ -61,6 +61,10 @@ slot[name="header-content"]::slotted(.heading) {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+}
+
+.header-trailing-content {
+  margin-left: auto;
 }
 
 .content-container {
@@ -75,4 +79,9 @@ slot[name="header-content"]::slotted(.heading) {
   display: flex;
   justify-content: space-evenly;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+.calcite--rtl .header-trailing-content {
+  margin-left: unset;
+  margin-right: auto;
 }
