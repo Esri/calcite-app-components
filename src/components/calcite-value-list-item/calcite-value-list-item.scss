@@ -28,6 +28,7 @@ calcite-pick-list-item[selected] {
   margin-bottom: 1px;
   padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
   background-color: var(--calcite-app-background);
+  border: none;
   color: var(--calcite-app-foreground-subtle);
   line-height: 0;
   cursor: move;

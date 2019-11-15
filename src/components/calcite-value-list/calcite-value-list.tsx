@@ -208,9 +208,10 @@ export class CalciteValueList {
       return item.dataset && item.dataset.jsHandle;
     });
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
-    if (!handleElement || !("activated" in handleElement.dataset)) {
+    if (!handleElement || !event.target.handleActivated) {
       return;
     }
+    const itemLength = this.items.length;
     const value = event.target.value;
     const startingIndex = this.items.findIndex((item) => {
       return item.value === value;
@@ -219,11 +220,11 @@ export class CalciteValueList {
     switch (event.key) {
       case "ArrowUp":
         newIndex = startingIndex - 1;
-        newIndex = newIndex < 0 ? this.items.length - 1 : newIndex;
+        newIndex = newIndex < 0 ? itemLength - 1 : newIndex;
         break;
       case "ArrowDown":
         newIndex = startingIndex + 1;
-        newIndex = newIndex > this.items.length - 1 ? 0 : newIndex;
+        newIndex = newIndex > itemLength - 1 ? 0 : newIndex;
         break;
       default:
         return;
