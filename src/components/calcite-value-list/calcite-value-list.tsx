@@ -202,7 +202,7 @@ export class CalciteValueList {
 
   keyDownHandler = (event) => {
     const handleElement = event.composedPath().find((item) => {
-      return item.dataset && item.dataset.jsHandle;
+      return item?.dataset.jsHandle;
     });
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
     if (!handleElement || !event.target.handleActivated) {
