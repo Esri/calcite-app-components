@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from "@stencil/core";
-const divStyle = {
+const scrimDivStyle = {
   alignItems: "center",
   animation:
     "calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function)",
@@ -16,6 +16,7 @@ const divStyle = {
 
 interface ScrimProps {
   loading: boolean;
+  disabled: boolean;
 }
 
 const containerDivStyle = {
@@ -23,9 +24,14 @@ const containerDivStyle = {
   zIndex: "1"
 };
 
-export const CalciteScrim: FunctionalComponent<ScrimProps> = ({ loading }, children) => [
-  <div style={divStyle}>{loading ? <calcite-loader is-active></calcite-loader> : null}</div>,
-  <div style={containerDivStyle}>{children}</div>
-];
+export const CalciteScrim: FunctionalComponent<ScrimProps> = ({ loading, disabled }, children) =>
+  disabled || loading
+    ? [
+        <div style={scrimDivStyle}>
+          {loading ? <calcite-loader is-active></calcite-loader> : null}
+        </div>,
+        children?.length ? <div style={containerDivStyle}>{children}</div> : null
+      ]
+    : children;
 
 export default CalciteScrim;
