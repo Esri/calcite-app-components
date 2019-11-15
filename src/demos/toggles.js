@@ -1,7 +1,7 @@
 (function() {
   const parseTemplate = function(str) {
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(str, 'text/html');
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(str, 'text/html');
     return doc.head.querySelector("template");
   };
 
