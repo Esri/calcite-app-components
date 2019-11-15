@@ -1,1 +1,0 @@
-System.register([],(function(e){"use strict";return{execute:function(){e("I",void 0);var r;(function(e){e["circle"]="circle";e["square"]="square";e["grip"]="grip"})(r||(r=e("I",{})));var i=e("T",{filterPlaceholder:"Filter results"})}}}));

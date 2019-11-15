@@ -24,6 +24,9 @@ input[type="text"] {
   transition: padding var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
     box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   width: 100%;
+  &::-ms-clear {
+    display: none;
+  }
 }
 
 .search-icon {

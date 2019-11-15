@@ -11,6 +11,7 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 | Property      | Attribute      | Description                                                                                       | Type                                     | Default     |
 | ------------- | -------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------- | ----------- |
 | `active`      | `active`       | Indicates whether the action is highlighted.                                                      | `boolean`                                | `false`     |
+| `appearance`  | `appearance`   | Specify the appearance style of the action, defaults to solid.                                    | `"clear" \| "solid"`                     | `"solid"`   |
 | `compact`     | `compact`      | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean`                                | `false`     |
 | `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.       | `boolean`                                | `false`     |
 | `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`                                | `false`     |

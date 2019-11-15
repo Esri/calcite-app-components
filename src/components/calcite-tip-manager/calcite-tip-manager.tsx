@@ -31,6 +31,17 @@ export class CalciteTipManager {
   /**
    * Alternate text for closing the Tip Manager.
    */
+  @Prop({ reflect: true }) closed = false;
+
+  @Watch("closed")
+  closedChangeHandler() {
+    this.direction = null;
+    this.calciteTipManagerToggle.emit();
+  }
+
+  /**
+   * Alternate text for closing the Tip Manager.
+   */
   @Prop() textClose = TEXT.close;
 
   /**
@@ -132,8 +143,14 @@ export class CalciteTipManager {
 
   /**
    * Emitted when the component has been closed.
+   * @deprecated
    */
   @Event() calciteTipManagerClose: EventEmitter;
+
+  /**
+   * Emitted when the TipManager has been toggled closed or opened.
+   */
+  @Event() calciteTipManagerToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -160,9 +177,8 @@ export class CalciteTipManager {
   }
 
   hideTipManager = (): void => {
-    this.el.hidden = true;
-    this.el.setAttribute("aria-hidden", "");
-    this.calciteTipManagerClose.emit();
+    this.closed = true;
+    this.calciteTipManagerToggle.emit();
   };
 
   showSelectedTip() {
@@ -246,14 +262,21 @@ export class CalciteTipManager {
   }
 
   render() {
-    const { direction, groupTitle, selectedIndex, textClose, total } = this;
+    const { closed, direction, groupTitle, selectedIndex, textClose, total } = this;
 
     if (total === 0) {
       return <Host />;
     }
     return (
       <Host>
-        <div tabIndex={0} onKeyUp={this.tipManagerKeyUpHandler} ref={this.storeContainerRef}>
+        <div
+          class={CSS.container}
+          hidden={closed}
+          aria-hidden={closed}
+          tabIndex={0}
+          onKeyUp={this.tipManagerKeyUpHandler}
+          ref={this.storeContainerRef}
+        >
           <header class={CSS.header}>
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}
@@ -265,8 +288,8 @@ export class CalciteTipManager {
           <div
             tabIndex={0}
             class={classnames(CSS.tipContainer, {
-              [CSS.tipContainerAdvancing]: direction === "advancing",
-              [CSS.tipContainerRetreating]: direction === "retreating"
+              [CSS.tipContainerAdvancing]: !closed && direction === "advancing",
+              [CSS.tipContainerRetreating]: !closed && direction === "retreating"
             })}
             key={selectedIndex}
           >

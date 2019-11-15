@@ -88,6 +88,17 @@ describe("calcite-action", () => {
     expect(button).toHaveAttribute("disabled");
   });
 
+  it("should have appearance=solid", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-action text="hello world"></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
+
+    const action = await page.find("calcite-action");
+    expect(action.getAttribute("appearance")).toBe("solid");
+  });
+
   it("should be accessible", async () => {
     accessible(`<calcite-action text="hello world" label="hi"></calcite-action>`);
 

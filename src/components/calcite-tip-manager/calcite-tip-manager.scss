@@ -1,5 +1,5 @@
 /* Variables, mixins, @keyframes*/
-$tip-manager-height: 22vh;
+$tip-manager-height: 18vh;
 $tip-max-width: 540px;
 
 @keyframes tip-advance {
@@ -25,16 +25,23 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
-  overflow: hidden;
-  position: relative;
   display: block;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
-  min-height: 150px;
+}
+
+:host([closed]) {
+  display: none;
 }
 
 .header .heading {
   padding-left: var(--calcite-app-side-spacing-half);
   padding-right: var(--calcite-app-side-spacing-half);
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
+  min-height: 150px;
 }
 
 .tip-container {

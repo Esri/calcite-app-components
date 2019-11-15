@@ -55,6 +55,11 @@ export class CalcitePanel {
   @Prop({ reflect: true }) dismissible = false;
 
   /**
+   * Specifies the maxiumum height of the panel.
+   */
+  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+
+  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
@@ -112,11 +117,12 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    return (
+    const hasLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
+    return hasLeadingContent ? (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
-    );
+    ) : null;
   }
 
   renderHeaderContent(): VNode {
