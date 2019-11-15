@@ -22,13 +22,13 @@
     });
   }
 
-  let calciteblocks = null;
+  let calciteBlocks = null;
   const excludeBlocks = ["html", "calcite-demo-nav", "calcite-button"];
   const toggleProperty = function(property) {
-    calciteblocks = calciteblocks || Array.from(document.querySelectorAll(".hydrated"));
+    calciteBlocks = calciteBlocks || Array.from(document.querySelectorAll(".hydrated"));
 
-    for (i = 0; i < calciteblocks.length; i++) {
-      const block = calciteblocks[i];
+    for (i = 0; i < calciteBlocks.length; i++) {
+      const block = calciteBlocks[i];
       if( !excludeBlocks.includes(block.tagName.toLowerCase()) ) {
         block.toggleAttribute(property);
       }

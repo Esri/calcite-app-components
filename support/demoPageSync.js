@@ -11,15 +11,17 @@ const sourceIndexFile = normalize(`${sourceDir}index.html`);
 const buildTriggeringFile = normalize(`${sourceDir}components/interfaces.ts`);
 const noop = () => {};
 
+const dotFiles = /(^|[\/\\])\../;
+
 const demoWatcher = chokidar.watch(normalize(`${sourceDemoDir}**/*[(.js)(.css)(.html)(.template)]`), {
-  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  ignored: dotFiles,
   persistent: true,
   ignoreInitial: true
 });
 demoWatcher.on('all', (eventName, path) => triggerBuild( sourceDemoDir, destinationDemoDir, path ) );
 
 const indexWatcher = chokidar.watch(sourceIndexFile, {
-  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  ignored: dotFiles,
   persistent: true,
   ignoreInitial: true
 });
