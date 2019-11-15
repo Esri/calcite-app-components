@@ -24,14 +24,17 @@ const containerDivStyle = {
   zIndex: "1"
 };
 
-export const CalciteScrim: FunctionalComponent<ScrimProps> = ({ loading, disabled }, children) =>
-  disabled || loading
-    ? [
-        <div style={scrimDivStyle}>
-          {loading ? <calcite-loader is-active></calcite-loader> : null}
-        </div>,
-        children?.length ? <div style={containerDivStyle}>{children}</div> : null
-      ]
-    : children;
+export const CalciteScrim: FunctionalComponent<ScrimProps> = ({ loading, disabled }, children) => {
+  const renderScrim = disabled || loading;
+  const hasChildren = children?.length;
+
+  const loaderNode = loading ? <calcite-loader is-active></calcite-loader> : null;
+
+  const scrimContainerNode = <div style={scrimDivStyle}>{loaderNode}</div>;
+
+  const childContainerNode = hasChildren ? <div style={containerDivStyle}>{children}</div> : null;
+
+  return renderScrim ? [scrimContainerNode, childContainerNode] : children;
+};
 
 export default CalciteScrim;
