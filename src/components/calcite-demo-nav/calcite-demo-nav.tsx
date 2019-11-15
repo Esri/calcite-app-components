@@ -190,7 +190,6 @@ export class CalciteDemoNav {
     const { content, id, path } = item;
     const clickHandler = item.children ? this.subMenuClickHandler : null;
     return (
-      // @ts-ignore OnFocusout is a legitimate event.
       <li>
         <a
           class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link}
@@ -205,7 +204,9 @@ export class CalciteDemoNav {
   }
 
   renderChildren(items: NavItem[]) {
-    if (!items) return;
+    if (!items) {
+      return;
+    }
     return (
       <ul class={CSS.childMenu} hidden>
         {items.map((item) => this.renderNavItem(item))}
