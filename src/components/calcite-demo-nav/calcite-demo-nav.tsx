@@ -7,6 +7,7 @@ interface NavItem {
   path: string;
   content: any;
   children?: NavItem[];
+  target?: string;
 }
 
 const CSS = {
@@ -128,7 +129,8 @@ const NAV_ITEMS: NavItem[] = [
       {
         id: "shell-full-window",
         path: "demos/advanced/shell-demo-app-full-window.html",
-        content: "Shell Full Window App"
+        content: "Shell Full Window App",
+        target: "_blank"
       }
     ]
   }
@@ -187,7 +189,7 @@ export class CalciteDemoNav {
 
   renderNavItem(item: NavItem) {
     const { pageId, root } = this;
-    const { content, id, path } = item;
+    const { content, id, path, target } = item;
     const clickHandler = item.children ? this.subMenuClickHandler : null;
     return (
       <li>
@@ -195,6 +197,7 @@ export class CalciteDemoNav {
           class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link}
           href={`${root}${path}`}
           onClick={clickHandler}
+          target={target}
         >
           {content}
         </a>
