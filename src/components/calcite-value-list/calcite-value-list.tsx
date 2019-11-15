@@ -11,7 +11,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { arraymove } from "../utils/dom";
+import { arrayMove } from "../utils/dom";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
@@ -230,7 +230,7 @@ export class CalciteValueList {
         return;
     }
     const order = this.sortables[0].toArray();
-    arraymove(order, startingIndex, newIndex);
+    arrayMove(order, startingIndex, newIndex);
     this.sortables[0].sort(order);
     handleElement.focus();
     event.target.activateHandle();
