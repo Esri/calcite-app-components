@@ -1,4 +1,4 @@
-import { Component, Element, Host, Listen, Method, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core";
 
 import { CSS, FlowDirection } from "./resources";
 
@@ -20,11 +20,6 @@ export class CalciteFlow {
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
-
-  /**
-   * When true, Flow responds to the back event of flow item
-   */
-  @Prop({ reflect: true }) handleBack = false;
 
   // --------------------------------------------------------------------------
   //
@@ -56,18 +51,6 @@ export class CalciteFlow {
 
   componentDidUnload() {
     this.flowItemObserver.disconnect();
-  }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  @Listen("calciteFlowItemBackClick") handleCalciteFlowItemBackClick() {
-    if (this.handleBack) {
-      this.back();
-    }
   }
 
   // --------------------------------------------------------------------------
