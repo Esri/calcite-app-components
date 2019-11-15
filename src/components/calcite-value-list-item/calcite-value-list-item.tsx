@@ -84,13 +84,6 @@ export class CalciteValueListItem {
     this.pickListItem.toggleSelected(coerce, emit);
   }
 
-  /*
-   ** @internal
-   */
-  @Method() async activateHandle() {
-    this.handleActivated = true;
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Private Methods

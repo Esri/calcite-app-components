@@ -233,7 +233,7 @@ export class CalciteValueList {
     arrayMove(order, startingIndex, newIndex);
     this.sortables[0].sort(order);
     handleElement.focus();
-    event.target.activateHandle();
+    event.target.handleActivated = true;
   };
 
   // --------------------------------------------------------------------------
