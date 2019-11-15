@@ -25,9 +25,6 @@ const indexWatcher = chokidar.watch(sourceIndexFile, {
 });
 indexWatcher.on('change', (path) => triggerBuild( sourceDir, destinationDir, path ) );
 
-// watch(sourceDemoDir, (type, changedFile) => triggerBuild(sourceDemoDir, destinationDemoDir, changedFile));
-// watch(sourceIndexFile, (type, changedFile) => triggerBuild(sourceDir, destinationDir, changedFile));
-
 function triggerBuild(srcDir, destinationDir, path) {
   const dest = path.replace(srcDir, destinationDir);
   copyFileSync(path, dest);
