@@ -209,7 +209,7 @@ export class CalcitePanel {
           {this.renderContent()}
           {this.renderFooter()}
         </article>
-        <CalciteScrim loading={loading} disabled={disabled}></CalciteScrim>
+        <CalciteScrim loading={loading} disabled={disabled} />
       </Host>
     );
   }
