@@ -3,6 +3,17 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [4.7.0](https://github.com/Esri/calcite-app-components/compare/v4.6.0...v4.7.0) (2019-11-14)
+
+### Bug Fixes
+
+- **panel:** header-content layout when leading slot is empty ([#547](https://github.com/Esri/calcite-app-components/issues/547)) ([2bff76a](https://github.com/Esri/calcite-app-components/commit/2bff76a)), closes [#556](https://github.com/Esri/calcite-app-components/issues/556)
+- Stencil build warnings ([#537](https://github.com/Esri/calcite-app-components/issues/537)) ([d2e1721](https://github.com/Esri/calcite-app-components/commit/d2e1721))
+
+### Features
+
+- **action:** add ability to set appearance to clear ([a4994a9](https://github.com/Esri/calcite-app-components/commit/a4994a9)), closes [#557](https://github.com/Esri/calcite-app-components/issues/557)
+
 ## [4.6.0](https://github.com/Esri/calcite-app-components/compare/v4.5.1...v4.6.0) (2019-11-13)
 
 ### Bug Fixes
