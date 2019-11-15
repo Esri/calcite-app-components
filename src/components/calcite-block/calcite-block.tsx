@@ -189,13 +189,18 @@ export class CalciteBlock {
       </div>
     );
 
+    const slotNode = <slot />;
+
     return (
       <Host>
         <article aria-expanded={collapsible ? (open ? "true" : "false") : null} aria-busy={loading}>
           {headerNode}
           <div class={CSS.content} hidden={!hasContent || !open}>
-            <slot />
-            {loading || disabled ? <CalciteScrim loading={false}></CalciteScrim> : null}
+            {loading || disabled ? (
+              <CalciteScrim loading={false}>{slotNode}</CalciteScrim>
+            ) : (
+              slotNode
+            )}
           </div>
         </article>
       </Host>

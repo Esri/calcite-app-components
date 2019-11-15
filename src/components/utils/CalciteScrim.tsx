@@ -18,8 +18,14 @@ interface ScrimProps {
   loading: boolean;
 }
 
-export const CalciteScrim: FunctionalComponent<ScrimProps> = ({ loading }) => (
-  <div style={divStyle}>{loading ? <calcite-loader is-active></calcite-loader> : null}</div>
-);
+const containerDivStyle = {
+  position: "relative",
+  zIndex: "1"
+};
+
+export const CalciteScrim: FunctionalComponent<ScrimProps> = ({ loading }, children) => [
+  <div style={divStyle}>{loading ? <calcite-loader is-active></calcite-loader> : null}</div>,
+  <div style={containerDivStyle}>{children}</div>
+];
 
 export default CalciteScrim;
