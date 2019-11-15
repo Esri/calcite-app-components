@@ -11,7 +11,7 @@ const sourceIndexFile = normalize(`${sourceDir}index.html`);
 const buildTriggeringFile = normalize(`${sourceDir}components/interfaces.ts`);
 const noop = () => {};
 
-const demoWatcher = chokidar.watch(normalize(`${sourceDemoDir}**/*[(.js)(.css)(.html)]`), {
+const demoWatcher = chokidar.watch(normalize(`${sourceDemoDir}**/*[(.js)(.css)(.html)(.template)]`), {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   persistent: true,
   ignoreInitial: true
