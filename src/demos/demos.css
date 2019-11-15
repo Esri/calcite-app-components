@@ -11,9 +11,9 @@ body {
     width: 900px;
     max-height: 80vh;
     margin: 12px auto;
-    background-color: rgba(255,255,255,0.3);
-    border: 1px solid black;
-    box-shadow: 4px 4px 2px grey;
+    background-color: var(--calcite-app-background-content);
+    border: 1px solid var(--calcite-app-foreground-hover);
+    box-shadow: 4px 4px 2px var(--calcite-app-foreground-hover);
     resize: horizontal;
     overflow-x: scroll;
   }
