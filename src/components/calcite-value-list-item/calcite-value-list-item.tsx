@@ -33,7 +33,7 @@ export class CalciteValueListItem {
   /**
    * @internal - stores the activated state of the drag handle.
    */
-  @Prop({ mutable: true }) handleActivated = false;
+  @Prop({ mutable: true }) handleActivated? = false;
 
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
@@ -115,7 +115,8 @@ export class CalciteValueListItem {
     const { icon } = this;
     if (icon === ICON_TYPES.grip) {
       return (
-        <button
+        <span
+          role="button"
           class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
           tabindex="0"
           data-js-handle="true"
@@ -124,7 +125,7 @@ export class CalciteValueListItem {
           onBlur={this.handleBlur}
         >
           <CalciteIcon size="16" path={drag16} />
-        </button>
+        </span>
       );
     }
   }
