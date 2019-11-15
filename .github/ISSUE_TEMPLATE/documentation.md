@@ -10,6 +10,4 @@ assignees: ""
 
 ### Which Component
 
-### Measure of Success <!-- desired outcome -->
-
 ### Resources <!--(e.g. code snippets)-->
