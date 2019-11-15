@@ -1,6 +1,6 @@
 ---
 name: Research
-about: Request an investigation into a specific topic
+about: Request an investigation into a specific topic.
 title: "Research: "
 labels: 0 - new, research
 assignees: ""
