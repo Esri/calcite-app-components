@@ -23,12 +23,12 @@ export class CalciteValueListItem {
   /**
    * Compact reduces the size of the item.
    */
-  @Prop({ reflect: true }) compact = false;
+  @Prop({ reflect: true }) compact? = false;
 
   /**
    * When true, the item cannot be clicked and is visually muted
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ reflect: true }) disabled? = false;
 
   /**
    * @internal - stores the activated state of the drag handle.
@@ -38,22 +38,22 @@ export class CalciteValueListItem {
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+  @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
 
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata: object;
+  @Prop() metadata?: object;
 
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
-  @Prop({ reflect: true, mutable: true }) selected = false;
+  @Prop({ reflect: true, mutable: true }) selected? = false;
 
   /**
    * The main label for this item. Appears next to the icon.
    */
-  @Prop({ reflect: true }) textLabel: string;
+  @Prop({ reflect: true }) textLabel!: string;
 
   /**
    * An optional description for this item. Will appear below the label text.
@@ -63,7 +63,7 @@ export class CalciteValueListItem {
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ reflect: true }) value!: string;
 
   // --------------------------------------------------------------------------
   //
