@@ -1,6 +1,9 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
+/**
+ * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ */
 @Component({
   tag: "calcite-value-list-item",
   styleUrl: "./calcite-value-list-item.scss",
@@ -36,7 +39,7 @@ export class CalciteValueListItem {
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
-  @Prop() selected = false;
+  @Prop({ reflect: true, mutable: true }) selected = false;
 
   /**
    * The main label for this item. Appears next to the icon.
@@ -69,8 +72,8 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggleSelected(coerce?: boolean, emit = false) {
-    this.pickListItem.toggleSelected(coerce, emit);
+  @Method() async toggleSelected(coerce?: boolean) {
+    this.pickListItem.toggleSelected(coerce);
   }
 
   // --------------------------------------------------------------------------

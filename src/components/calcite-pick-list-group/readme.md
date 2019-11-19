@@ -10,6 +10,12 @@
 | ---------------- | ------------------ | -------------------------------------------- | -------- | ----------- |
 | `textGroupTitle` | `text-group-title` | The title used for all nested pick-list rows | `string` | `undefined` |
 
+## Slots
+
+| Slot | Description                                        |
+| ---- | -------------------------------------------------- |
+|      | A slot for adding calcite-pick-list-item elements. |
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
