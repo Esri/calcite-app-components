@@ -11,7 +11,7 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { arrayMove } from "../utils/dom";
+import { arrayMove } from "../utils/array";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
@@ -202,14 +202,17 @@ export class CalciteValueList {
 
   keyDownHandler = (event) => {
     const handleElement = event.composedPath().find((item) => {
-      return item?.dataset.jsHandle;
+      return item.dataset?.jsHandle;
+    });
+    const valueListElement = event.composedPath().find((item) => {
+      return item.tagName?.toLowerCase() === "calcite-value-list-item";
     });
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
-    if (!handleElement || !event.target.handleActivated) {
+    if (!handleElement || !valueListElement.handleActivated) {
       return;
     }
     const itemLength = this.items.length;
-    const value = event.target.value;
+    const value = valueListElement.value;
     const startingIndex = this.items.findIndex((item) => {
       return item.value === value;
     });
@@ -226,11 +229,10 @@ export class CalciteValueList {
       default:
         return;
     }
-    const order = this.sortables[0].toArray();
-    arrayMove(order, startingIndex, newIndex);
+    const order = arrayMove(this.sortables[0].toArray(), startingIndex, newIndex);
     this.sortables[0].sort(order);
     handleElement.focus();
-    event.target.handleActivated = true;
+    valueListElement.handleActivated = true;
   };
 
   // --------------------------------------------------------------------------
@@ -258,6 +260,7 @@ export class CalciteValueList {
   }
 
   render() {
+    console.log("render");
     return <List props={this} text={TEXT} onKeyDown={this.keyDownHandler} />;
   }
 }
