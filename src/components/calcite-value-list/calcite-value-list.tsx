@@ -11,7 +11,6 @@ import {
   h
 } from "@stencil/core";
 import guid from "../utils/guid";
-import { arrayMove } from "../utils/array";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
@@ -211,26 +210,41 @@ export class CalciteValueList {
     if (!handleElement || !valueListElement.handleActivated) {
       return;
     }
-    const itemLength = this.items.length;
+    const lastIndex = this.items.length - 1;
     const value = valueListElement.value;
     const startingIndex = this.items.findIndex((item) => {
       return item.value === value;
     });
-    let newIndex;
+    let appendInstead = false;
+    let buddyIndex;
     switch (event.key) {
       case "ArrowUp":
-        newIndex = startingIndex - 1;
-        newIndex = newIndex < 0 ? itemLength - 1 : newIndex;
+        event.preventDefault();
+        if (startingIndex === 0) {
+          appendInstead = true;
+        } else {
+          buddyIndex = startingIndex - 1;
+        }
         break;
       case "ArrowDown":
-        newIndex = startingIndex + 1;
-        newIndex = newIndex > itemLength - 1 ? 0 : newIndex;
+        event.preventDefault();
+        if (startingIndex === lastIndex) {
+          buddyIndex = 0;
+        } else if (startingIndex === lastIndex - 1) {
+          appendInstead = true;
+        } else {
+          buddyIndex = startingIndex + 2;
+        }
         break;
       default:
         return;
     }
-    const order = arrayMove(this.sortables[0].toArray(), startingIndex, newIndex);
-    this.sortables[0].sort(order);
+    if (appendInstead) {
+      valueListElement.parentElement.appendChild(valueListElement);
+    } else {
+      valueListElement.parentElement.insertBefore(valueListElement, this.items[buddyIndex]);
+    }
+
     handleElement.focus();
     valueListElement.handleActivated = true;
   };
