@@ -42,7 +42,7 @@
 }
 
 .header {
-  align-items: center;
+  align-items: stretch;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -51,16 +51,20 @@
   width: 100%;
 }
 
-.header-content {
+.header-middle-content {
+  display: flex;
+  flex-flow: column;
   overflow: hidden;
-  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
 }
 
-.header-leading-content + .header-content {
+.header-leading-content + .header-middle-content {
   padding-left: var(--calcite-app-side-spacing-half);
 }
 
-slot[name="header-content"]::slotted(.heading) {
+slot[name="header-content"]::slotted(.heading),
+slot[name="header-summary"]::slotted(.summary) {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

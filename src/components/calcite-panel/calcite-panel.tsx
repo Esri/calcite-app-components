@@ -11,6 +11,7 @@ import CalciteScrim from "../utils/CalciteScrim";
 
 const SLOTS = {
   headerContent: "header-content",
+  headerSummary: "header-summary",
   headerLeadingContent: "header-leading-content",
   headerTrailingContent: "header-trailing-content",
   footer: "footer"
@@ -133,6 +134,14 @@ export class CalcitePanel {
     );
   }
 
+  renderHeaderSummary(): VNode {
+    return (
+      <div key="header-summary" class={CSS.headerSummary}>
+        <slot name={SLOTS.headerSummary} />
+      </div>
+    );
+  }
+
   renderHeaderTrailingContent(): VNode {
     const { dismiss, dismissible, textClose } = this;
 
@@ -155,6 +164,7 @@ export class CalcitePanel {
   renderHeader(): VNode {
     const headerLeadingContentNode = this.renderHeaderLeadingContent();
     const headerContentNode = this.renderHeaderContent();
+    const headerSummaryNode = this.renderHeaderSummary();
     const headerTrailingContentNode = this.renderHeaderTrailingContent();
 
     const canDisplayHeader =
@@ -163,7 +173,10 @@ export class CalcitePanel {
     return canDisplayHeader ? (
       <header class={CSS.header}>
         {headerLeadingContentNode}
-        {headerContentNode}
+        <div class={CSS.headerMiddleContent}>
+          {headerContentNode}
+          {headerSummaryNode}
+        </div>
         {headerTrailingContentNode}
       </header>
     ) : null;
