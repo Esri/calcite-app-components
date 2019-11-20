@@ -1,3 +1,4 @@
 export const CSS = {
-  searchIcon: "search-icon"
+  searchIcon: "search-icon",
+  clearButton: "clear-button"
 };
