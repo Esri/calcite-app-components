@@ -32,9 +32,10 @@ Type: `Promise<Map<string, object>>`
 
 ## Slots
 
-| Slot             | Description                                                                  |
-| ---------------- | ---------------------------------------------------------------------------- |
-| `"menu-actions"` | A slot for adding a button + menu combo for performing actions like sorting. |
+| Slot             | Description                                                                                                     |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- |
+|                  | A slot for adding pick-list-item elements or pick-list-groups elements. Items are displayed as a vertical list. |
+| `"menu-actions"` | A slot for adding a button + menu combo for performing actions like sorting.                                    |
 
 ## Dependencies
 

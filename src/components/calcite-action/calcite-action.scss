@@ -9,6 +9,7 @@
   color: var(--calcite-app-foreground);
   fill: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
+  outline-offset: var(--calcite-app-outline-inset);
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   margin: 0;
   justify-content: flex-start;
@@ -41,13 +42,17 @@
     pointer-events: none;
   }
   .text-container {
-    flex: 1;
+    flex: 1 1 auto;
     line-height: 1rem;
     margin: 0 var(--calcite-app-side-spacing-half);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+.slot-container {
+  display: flex;
 }
 
 .slot-container--hidden {
@@ -84,6 +89,29 @@
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
+}
+
+:host([appearance="clear"]) .button {
+  background-color: var(--calcite-app-background-clear);
+  transition: box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+:host([appearance="clear"]) .button:hover {
+  background-color: var(--calcite-app-background-clear);
+  @include borderShadowHover();
+}
+
+:host([active][appearance="clear"]) .button,
+:host([active][appearance="clear"]) .button:hover {
+  color: var(--calcite-app-foreground-active);
+  fill: var(--calcite-app-foreground-active);
+  background-color: var(--calcite-app-background-active);
+  box-shadow: none;
+}
+
+:host([appearance="clear"][loading]) .button,
+:host([appearance="clear"][disabled]) .button {
+  background-color: var(--calcite-app-background-clear);
 }
 
 :host([loading]) .button,
