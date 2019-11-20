@@ -1,26 +1,33 @@
 body {
   margin: 0;
-  background-color: #dfdfdf;
-
+  /* background-color: #dfdfdf; */
+  background-color: var(--calcite-app-background-content);
 }
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
 .example-container {
-  padding: 0 24px 24px;
-}
-@media (min-width: 1025px) {
-  .example-container {
-    width: 900px;
-    max-height: 80vh;
-    margin: 12px auto;
-    background-color: var(--calcite-app-background-content);
-    border: 1px solid var(--calcite-app-foreground-hover);
-    box-shadow: 4px 4px 2px var(--calcite-app-foreground-hover);
-    resize: horizontal;
-    overflow-x: scroll;
-  }
+  color: var(--calcite-app-foreground-subtle);
+  max-width: 1024px;
+  min-width: 480px;
+  width: 70vw;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-double) var(--calcite-app-cap-spacing-double);
+  margin: 0 auto;
+  background-color: var(--calcite-app-background-content);
+  box-shadow: var(--calcite-app-shadow-1);
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Courier New', Courier, monospace;
   font-weight: 300;
+  font-size: 14px;
 }
 
 /* Custom container for shell since it's rather large */
