@@ -156,14 +156,8 @@ export class CalciteBlock {
       </header>
     );
 
-    let hasControl = false;
-    let hasContent = false;
-
-    for (let i = 0; i < el.children.length; i++) {
-      const isControl = el.children[i].slot === SLOTS.control;
-      hasControl = hasControl || isControl;
-      hasContent = hasContent || !isControl;
-    }
+    const controlSlot = el.querySelector(`[slot=${SLOTS.control}]`);
+    const hasContent = el.children.length > (controlSlot ? 1 : 0);
 
     const headerNode = (
       <div class={CSS.headerContainer}>
@@ -175,7 +169,7 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            {hasControl ? null : (
+            {controlSlot ? null : (
               <CalciteIcon
                 size="16"
                 path={open ? chevronUp16 : chevronDown16}
