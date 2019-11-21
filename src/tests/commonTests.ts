@@ -25,16 +25,13 @@ function getTag(tagOrHTML: string): CalciteComponentTag {
   return tagOrHTML as CalciteComponentTag;
 }
 
-async function simplePageSetup(componentTagOrHTML: TagOrHTML, pageSetupOptions?: SetUpPageOptions): Promise<E2EPage> {
+async function simplePageSetup(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<E2EPage> {
   const componentTag = getTag(componentTagOrHTML);
-  return setUpPage(
-    isHTML(componentTagOrHTML) ? componentTagOrHTML : `<${componentTag}><${componentTag}/>`,
-    pageSetupOptions
-  );
+  return setUpPage(isHTML(componentTagOrHTML) ? componentTagOrHTML : `<${componentTag}><${componentTag}/>`, options);
 }
 
-export async function accessible(componentTagOrHTML: TagOrHTML, pageSetupOptions?: SetUpPageOptions): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML, pageSetupOptions);
+export async function accessible(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML, options);
   await page.addScriptTag({ path: require.resolve("axe-core") });
 
   expect(
@@ -46,8 +43,8 @@ export async function accessible(componentTagOrHTML: TagOrHTML, pageSetupOptions
   ).toHaveNoViolations();
 }
 
-export async function renders(componentTagOrHTML: TagOrHTML, pageSetupOptions?: SetUpPageOptions): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML, pageSetupOptions);
+export async function renders(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const element = await page.find(getTag(componentTagOrHTML));
 
   expect(element).toHaveClass("hydrated");
@@ -60,9 +57,9 @@ export async function reflects(
     propertyName: string;
     value: any;
   }[],
-  pageSetupOptions?: SetUpPageOptions
+  options?: SetUpPageOptions
 ): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML, pageSetupOptions);
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const componentTag = getTag(componentTagOrHTML);
   const element = await page.find(componentTag);
 
@@ -95,9 +92,9 @@ export async function defaults(
     propertyName: string;
     defaultValue: any;
   }[],
-  pageSetupOptions?: SetUpPageOptions
+  options?: SetUpPageOptions
 ): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML, pageSetupOptions);
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const element = await page.find(getTag(componentTagOrHTML));
 
   for (const propAndValue of propsToTest) {
@@ -107,8 +104,8 @@ export async function defaults(
   }
 }
 
-export async function hidden(componentTagOrHTML: TagOrHTML, pageSetupOptions?: SetUpPageOptions): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML, pageSetupOptions);
+export async function hidden(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const element = await page.find(getTag(componentTagOrHTML));
 
   element.setAttribute("hidden", "");
