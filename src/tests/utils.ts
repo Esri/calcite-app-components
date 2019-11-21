@@ -1,11 +1,10 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
 
-export async function setUpPage(
-  content: string,
-  options?: {
-    withPeerDependencies: boolean;
-  }
-): Promise<E2EPage> {
+export interface SetUpPageOptions {
+  withPeerDependencies: boolean;
+}
+
+export async function setUpPage(content: string, options?: SetUpPageOptions): Promise<E2EPage> {
   const page = await newE2EPage();
   await page.setContent(content);
 
