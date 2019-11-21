@@ -4,7 +4,7 @@ import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
 import { CSS } from "./resources";
 
 const renderScrim = (loading, disabled): VNode => {
-  return loading || disabled ? <CalciteScrim loading={loading}></CalciteScrim> : null;
+  return <CalciteScrim loading={loading} disabled={disabled} />;
 };
 
 export const List = ({ props, text, ...rest }): VNode => {

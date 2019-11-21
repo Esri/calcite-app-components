@@ -189,14 +189,8 @@ export class CalcitePanel {
     );
   }
 
-  renderScrim(): VNode {
-    return this.loading || this.disabled ? (
-      <CalciteScrim loading={this.loading}></CalciteScrim>
-    ) : null;
-  }
-
   render() {
-    const { dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
+    const { dismissed, disabled, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -215,7 +209,7 @@ export class CalcitePanel {
           {this.renderContent()}
           {this.renderFooter()}
         </article>
-        {this.renderScrim()}
+        <CalciteScrim loading={loading} disabled={disabled} />
       </Host>
     );
   }
