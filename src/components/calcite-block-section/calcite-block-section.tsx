@@ -4,6 +4,7 @@ import { caretDown16, caretLeft16, caretRight16 } from "@esri/calcite-ui-icons";
 import { getElementDir } from "../utils/dom";
 import { CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
+import { guid } from "../utils/guid";
 import classnames from "classnames";
 import { CalciteBlockSectionToggleDisplay } from "../interfaces";
 
@@ -65,6 +66,8 @@ export class CalciteBlockSection {
   @Element()
   el: HTMLCalciteBlockSectionElement;
 
+  guid = `calcite-block-section-${guid()}`;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -94,16 +97,26 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, open, text, textCollapse, textExpand, toggleDisplay } = this;
+    const { el, guid: id, open, text, textCollapse, textExpand, toggleDisplay } = this;
     const dir = getElementDir(el);
     const arrowIcon = open ? caretDown16 : dir === "rtl" ? caretLeft16 : caretRight16;
     const toggleLabel = open ? textCollapse : textExpand;
+    const labelId = `${id}__label`;
 
     const headerNode =
       toggleDisplay === "switch" ? (
-        <label aria-label={toggleLabel} class={classnames(CSS.toggle, CSS.toggleSwitch)}>
+        <label
+          aria-label={toggleLabel}
+          class={classnames(CSS.toggle, CSS.toggleSwitch)}
+          id={labelId}
+        >
           {text}
-          <calcite-switch switched={open} onChange={this.toggleSection} scale="s" />
+          <calcite-switch
+            aria-labelledby={labelId}
+            switched={open}
+            onChange={this.toggleSection}
+            scale="s"
+          />
         </label>
       ) : (
         <calcite-action
