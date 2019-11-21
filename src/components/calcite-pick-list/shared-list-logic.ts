@@ -2,21 +2,21 @@ import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 import { debounce } from "lodash-es";
 
-type pickListItemMap = Map<string, HTMLCalcitePickListItemElement>;
-type valueListItemMap = Map<string, HTMLCalciteValueListItemElement>;
+// type pickListItemMap = Map<string, HTMLCalcitePickListItemElement>;
+// type valueListItemMap = Map<string, HTMLCalciteValueListItemElement>;
 type pickOrValueListItem = HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement;
 
-function updateSelectedValuesMap(
-  selectedValuesMap: pickListItemMap | valueListItemMap,
-  item: pickOrValueListItem
-): void {
-  const selectedValues = (selectedValuesMap as any) as Map<string, pickOrValueListItem>;
-  if (selectedValues as pickListItemMap) {
-    selectedValues.set(item.value, item as HTMLCalcitePickListItemElement);
-  } else if (selectedValues as valueListItemMap) {
-    selectedValues.set(item.value, item as HTMLCalciteValueListItemElement);
-  }
-}
+// function updateSelectedValuesMap(
+//   selectedValuesMap: pickListItemMap | valueListItemMap,
+//   item: pickOrValueListItem
+// ): void {
+//   const selectedValues = (selectedValuesMap as any) as Map<string, pickOrValueListItem>;
+//   if (selectedValues as pickListItemMap) {
+//     selectedValues.set(item.value, item as HTMLCalcitePickListItemElement);
+//   } else if (selectedValues as valueListItemMap) {
+//     selectedValues.set(item.value, item as HTMLCalciteValueListItemElement);
+//   }
+// }
 
 export const sharedListMethods = {
   mutationObserverCallback(this: CalcitePickList | CalciteValueList): void {
@@ -57,6 +57,9 @@ export const sharedListMethods = {
       selectedValues.set(value, item);
     } else {
       selectedValues.delete(value);
+      if (this.multiple && shiftPressed) {
+        this.selectSiblings(item, true);
+      }
     }
 
     this.lastSelectedItem = item;
@@ -79,7 +82,8 @@ export const sharedListMethods = {
       item.icon = this.getIconType();
       item.compact = this.compact;
       if (item.selected) {
-        updateSelectedValuesMap(this.selectedValues, item);
+        this.selectedValues.set(item.value, item as any);
+        // updateSelectedValuesMap(this.selectedValues, item);
       }
     });
   },
@@ -98,7 +102,7 @@ export const sharedListMethods = {
       }
     });
   },
-  selectSiblings(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem) {
+  selectSiblings(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem, deselect = false) {
     if (!this.lastSelectedItem) {
       return;
     }
@@ -110,8 +114,13 @@ export const sharedListMethods = {
       return currentItem.value === item.value;
     });
     items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem: pickOrValueListItem) => {
-      currentItem.toggleSelected(true);
-      updateSelectedValuesMap(this.selectedValues, currentItem);
+      currentItem.toggleSelected(!deselect);
+      if (!deselect) {
+        this.selectedValues.set(currentItem.value, currentItem as any);
+      } else {
+        this.selectedValues.delete(currentItem as any);
+      }
+      // updateSelectedValuesMap(this.selectedValues, currentItem);
     });
   },
   handleFilter(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
