@@ -31,6 +31,11 @@ export class CalciteValueListItem {
   @Prop({ reflect: true }) disabled? = false;
 
   /**
+   * @internal When false, the item cannot be deselected by user interaction.
+   */
+  @Prop() disableDeselect = false;
+
+  /**
    * @internal - stores the activated state of the drag handle.
    */
   @Prop({ mutable: true }) handleActivated? = false;
@@ -138,6 +143,7 @@ export class CalciteValueListItem {
           compact={this.compact}
           ref={this.getPickListRef}
           disabled={this.disabled}
+          disableDeselect={this.disableDeselect}
           selected={this.selected}
           metadata={this.metadata}
           textLabel={this.textLabel}
