@@ -9,5 +9,5 @@ export enum ICON_TYPES {
 }
 export const TEXT = {
   filterPlaceholder: "Filter results",
-  clear: "clear filter"
+  clear: "Clear filter"
 };
