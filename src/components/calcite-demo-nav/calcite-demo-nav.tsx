@@ -11,6 +11,7 @@ interface NavItem {
 }
 
 const CSS = {
+  mainHeading: "main-heading",
   isActive: "is-active",
   link: "link",
   open: "open",
@@ -223,6 +224,7 @@ export class CalciteDemoNav {
         <button class={CSS.hamburger} onClick={this.hamburgerClickHandler}>
           <CalciteIcon size="32" path={hamburger32} title="Home" />
         </button>
+        <h1 class={CSS.mainHeading}>Calcite App Components</h1>
         <ul class={{ [CSS.menu]: true, [CSS.open]: this.open }}>
           {NAV_ITEMS.map((item) => this.renderNavItem(item))}
         </ul>

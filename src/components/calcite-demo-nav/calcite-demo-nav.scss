@@ -3,10 +3,16 @@
   left: 0;
   right: 0;
   position: fixed;
-  display: block;
-  background-color: #f3f3f380;
-  box-shadow: var(--calcite-app-shadow-1);
+  display: flex;
+  height: auto;
+  align-items: center;
+  background-color: #f3f3f3e0;
   z-index: 999;
+}
+.main-heading {
+  font-weight: var(--calcite-app-font-weight);
+  font-size: var(--calcite-app-font-size-1);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 .hamburger {
   background-color: transparent;
