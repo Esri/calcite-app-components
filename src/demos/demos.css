@@ -1,26 +1,47 @@
 body {
   margin: 0;
-  background-color: #dfdfdf;
-
+  background-color: var(--calcite-app-background-content);
 }
+
+main {
+  margin: 0;
+  padding: 0;
+  font-size: var(--calcite-base-font-size);
+}
+
 .example-container {
-  padding: 0 24px 24px;
+  color: var(--calcite-app-foreground-subtle);
+  max-width: 1024px;
+  min-width: 480px;
+  width: 70vw;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-double);
+  margin: 0 auto var(--calcite-app-cap-spacing-double);
+  background-color: var(--calcite-app-background-clear);
 }
-@media (min-width: 1025px) {
-  .example-container {
-    width: 900px;
-    max-height: 80vh;
-    margin: 12px auto;
-    background-color: var(--calcite-app-background-content);
-    border: 1px solid var(--calcite-app-foreground-hover);
-    box-shadow: 4px 4px 2px var(--calcite-app-foreground-hover);
-    resize: horizontal;
-    overflow-x: scroll;
-  }
+/* 
+h2 {
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+} */
+.example-container h1,
+.example-container h2,
+.example-container h3,
+.example-container h4,
+.example-container h5 {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: var(--calcite-app-font-weight-heading);
+  /* font-size: 14px; */
 }
-
-h1, h2, h3, h4, h5 {
-  font-weight: 300;
+.example-container h1 {
+  font-size: var(--calcite-app-font-size-2);
+}
+.example-container h2 {
+  font-size: var(--calcite-app-font-size-1);
+}
+.example-container h3 {
+  font-weight: var(--calcite-app-font-weight);
+  font-size: var(--calcite-app-font-size-1);
 }
 
 /* Custom container for shell since it's rather large */
