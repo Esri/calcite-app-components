@@ -3,5 +3,6 @@ export const CSS = {
   clearButton: "clear-button"
 };
 export const TEXT = {
-  filterLabel: "filter"
+  filterLabel: "filter",
+  clear: "Clear filter"
 };
