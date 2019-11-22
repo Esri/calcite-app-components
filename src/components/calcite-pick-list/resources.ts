@@ -8,5 +8,6 @@ export enum ICON_TYPES {
   grip = "grip"
 }
 export const TEXT = {
-  filterPlaceholder: "Filter results"
+  filterPlaceholder: "Filter results",
+  clear: "clear filter"
 };
