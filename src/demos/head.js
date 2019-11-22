@@ -11,9 +11,11 @@
   function loadScript(url, options) {
     let script = document.createElement("script");
     if (options) {
-      Object.keys(options).forEach((key) => {
-        script[key] = options[key];
-      });
+      var keys = Object.keys(options);
+      for(var i = 0; i < keys.length; i++){
+        var k = keys[i];
+        script[k] = options[k];
+      }
     }
     script.src = root + url;
 
