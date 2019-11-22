@@ -3,6 +3,13 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.7.1](https://github.com/Esri/calcite-app-components/compare/v4.7.0...v4.7.1) (2019-11-20)
+
+### Bug Fixes
+
+- **Action:** focus outline ([a6431a5](https://github.com/Esri/calcite-app-components/commit/a6431a5)), closes [#569](https://github.com/Esri/calcite-app-components/issues/569)
+- calcite-block disabled state doesn't 'hide' slider handle [#560](https://github.com/Esri/calcite-app-components/issues/560) ([#567](https://github.com/Esri/calcite-app-components/issues/567)) ([8d823db](https://github.com/Esri/calcite-app-components/commit/8d823db))
+
 ## [4.7.0](https://github.com/Esri/calcite-app-components/compare/v4.6.0...v4.7.0) (2019-11-14)
 
 ### Bug Fixes
