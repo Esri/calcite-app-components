@@ -16,17 +16,20 @@ main {
   width: 70vw;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-double) var(--calcite-app-cap-spacing-double);
   margin: 0 auto var(--calcite-app-cap-spacing-double);
-  background-color: var(--calcite-app-background-content);
-  box-shadow: var(--calcite-app-shadow-1);
+  background-color: var(--calcite-app-background-clear);
 }
 
-h1,
+h1 {
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
 h2,
 h3,
 h4,
 h5 {
   font-family: 'Courier New', Courier, monospace;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
 }
 
