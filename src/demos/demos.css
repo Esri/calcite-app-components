@@ -1,11 +1,10 @@
 body {
   margin: 0;
-  /* background-color: #dfdfdf; */
   background-color: var(--calcite-app-background-content);
 }
 
 main {
-  margin: 24px 0;
+  margin: 0;
   padding: 0;
 }
 
