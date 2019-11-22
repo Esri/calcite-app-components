@@ -7,7 +7,7 @@
       width: 70vw;
       max-width: 1024px;
       min-width: 480px;
-      margin: 0 auto;
+      margin: 52px auto 0;
       border-radius: var(--calcite-app-border-radius) var(--calcite-app-border-radius) 0 0;
       
     }

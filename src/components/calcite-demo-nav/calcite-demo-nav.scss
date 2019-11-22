@@ -1,8 +1,12 @@
 :host {
-  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
   display: block;
-  background-color: transparent;
-  width: auto;
+  background-color: #f3f3f380;
+  box-shadow: var(--calcite-app-shadow-1);
+  z-index: 999;
 }
 .hamburger {
   background-color: transparent;
@@ -29,16 +33,17 @@ ul {
     display: flex;
   }
   display: none;
-  flex-flow: column;
+  flex-flow: row wrap;
   box-shadow: var(--calcite-app-shadow-1);
   top: 100%;
   left: 0;
   z-index: 9999;
   position: absolute;
-  li {
+  > li {
     position: relative;
-    width: 12.5vw;
-    &:first-child {
+    width: 24vw;
+    &:first-child,
+    &:last-child {
       width: 100%;
     }
   }
@@ -55,20 +60,32 @@ ul {
   background-color: black;
 }
 .link.is-active {
-  border-left-color: #fff;
+  border-left-color: var(--calcite-app-border);
   background-color: black;
 }
 svg {
   fill: inherit;
 }
 .child-menu {
-  background-color: #333;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  background-color: #121212;
   position: absolute;
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   z-index: 999;
-  bottom: 0%;
-  left: 100%;
-  border-left: 1px solid var(--calcite-app-border);
+  bottom: 100%;
+  left: 0;
+  box-shadow: var(--calcite-app-shadow-2);
+  border-bottom: 1px solid #ffffff33;
+  li {
+    position: relative;
+    width: 24vw;
+  }
+  &[hidden] {
+    display: none;
+  }
 }
 .child-menu[open] {
-  display: block;
+  display: flex;
 }
