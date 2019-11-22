@@ -9,7 +9,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { checkSquare16, circle16, circleFilled16, drag16, square16 } from "@esri/calcite-ui-icons";
+import { checkSquare16, circle16, circleFilled16, square16 } from "@esri/calcite-ui-icons";
 import { CSS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import CalciteIcon from "../utils/CalciteIcon";
@@ -183,27 +183,19 @@ export class CalcitePickListItem {
     if (!icon || compact) {
       return null;
     }
-    if (icon === ICON_TYPES.grip) {
-      return (
-        <span class={CSS.handle}>
-          <CalciteIcon size="16" path={drag16} />
-        </span>
-      );
-    } else {
-      const path =
-        icon === ICON_TYPES.square
-          ? selected
-            ? checkSquare16
-            : square16
-          : selected
-          ? circleFilled16
-          : circle16;
-      return (
-        <span class="icon">
-          <CalciteIcon size="16" path={path} />
-        </span>
-      );
-    }
+    const path =
+      icon === ICON_TYPES.square
+        ? selected
+          ? checkSquare16
+          : square16
+        : selected
+        ? circleFilled16
+        : circle16;
+    return (
+      <span class={CSS.icon}>
+        <CalciteIcon size="16" path={path} />
+      </span>
+    );
   }
 
   render() {
