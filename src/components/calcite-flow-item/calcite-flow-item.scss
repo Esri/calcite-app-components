@@ -16,8 +16,10 @@ calcite-panel {
   align-self: stretch;
 }
 
-.menu-container {
-  align-self: stretch;
+.menu-container,
+.single-action-container,
+slot[name="menu-actions"]::slotted(.single-action-container) {
+  height: 100%;
   display: flex;
   position: relative;
 }

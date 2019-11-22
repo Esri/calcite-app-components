@@ -7,6 +7,7 @@
   --calcite-app-panel-max-height-small: 40vh;
   --calcite-app-panel-max-height-medium: 60vh;
   --calcite-app-panel-max-height-large: 80vh;
+  --calcite-app-panel-min-header-height: calc(var(--calcite-app-icon-size) * 3);
 }
 
 .container {
@@ -45,6 +46,7 @@
   align-items: stretch;
   display: flex;
   justify-content: space-between;
+  flex: 0 1 var(--calcite-app-panel-min-header-height);
   position: relative;
   z-index: 2;
   border-bottom: 1px solid var(--calcite-app-border);
@@ -56,6 +58,11 @@
   flex-flow: column;
   overflow: hidden;
   padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+}
+
+.header-leading-content,
+.header-trailing-content {
+  display: flex;
 }
 
 .header-leading-content + .header-middle-content {
@@ -71,7 +78,17 @@ slot[name="header-summary"]::slotted(.summary) {
   width: 100%;
 }
 
+slot[name="header-content"]::slotted(.heading) {
+  font-size: var(--calcite-app-font-size-1);
+}
+
+slot[name="header-summary"]::slotted(.summary) {
+  color: var(--calcite-app-foreground-subtle);
+  font-size: var(--calcite-app-font-size--1);
+}
+
 .header-trailing-content {
+  display: flex;
   margin-left: auto;
 }
 
