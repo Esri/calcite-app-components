@@ -10,6 +10,7 @@ export const CSS = {
   header: "header",
   heading: "heading",
   close: "close",
+  container: "container",
   tipContainer: "tip-container",
   tipContainerAdvancing: "tip-container--advancing",
   tipContainerRetreating: "tip-container--retreating",

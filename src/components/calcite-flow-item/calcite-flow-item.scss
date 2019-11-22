@@ -11,7 +11,7 @@ calcite-panel {
 }
 
 .menu-button {
-  flex: 0;
+  flex: 0 1 auto;
   position: relative;
 }
 
@@ -32,7 +32,6 @@ calcite-panel {
   min-width: var(--calcite-app-menu-min-width);
   right: var(--calcite-app-menu-offset);
   visibility: visible;
-  display: flex;
   flex-flow: column nowrap;
   border: 1px solid var(--calcite-app-border);
   animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);

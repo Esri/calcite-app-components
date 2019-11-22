@@ -1,33 +1,32 @@
-$side-spacing: 15px !default;
-$cap-spacing: 15px !default;
-$animation-time: 250ms !default;
+$side-spacing: 16px !default;
+$cap-spacing: 16px !default;
 
 :root {
   --calcite-app-side-spacing: #{$side-spacing};
   --calcite-app-cap-spacing: #{$cap-spacing};
 
-  --calcite-app-side-spacing-three-quarters: #{floor($side-spacing * 3/4)};
-  --calcite-app-cap-spacing-three-quarters: #{floor($cap-spacing * 3/4)};
+  --calcite-app-side-spacing-three-quarters: calc(var(--calcite-app-side-spacing) * 3 / 4);
+  --calcite-app-cap-spacing-three-quarters: calc(var(--calcite-app-cap-spacing) * 3 / 4);
 
-  --calcite-app-side-spacing-half: #{floor($side-spacing / 2)};
-  --calcite-app-cap-spacing-half: #{floor($cap-spacing / 2)};
+  --calcite-app-side-spacing-half: calc(var(--calcite-app-side-spacing) / 2);
+  --calcite-app-cap-spacing-half: calc(var(--calcite-app-cap-spacing) / 2);
 
-  --calcite-app-side-spacing-third: #{floor($side-spacing / 3)};
-  --calcite-app-cap-spacing-third: #{floor($cap-spacing / 3)};
+  --calcite-app-side-spacing-third: calc(var(--calcite-app-side-spacing) / 3);
+  --calcite-app-cap-spacing-third: calc(var(--calcite-app-cap-spacing) / 3);
 
-  --calcite-app-side-spacing-quarter: #{floor($side-spacing / 4)};
-  --calcite-app-cap-spacing-quarter: #{floor($cap-spacing / 4)};
+  --calcite-app-side-spacing-quarter: calc(var(--calcite-app-side-spacing) / 4);
+  --calcite-app-cap-spacing-quarter: calc(var(--calcite-app-cap-spacing) / 4);
 
-  --calcite-app-side-spacing-eighth: #{ceil($side-spacing / 8)};
-  --calcite-app-cap-spacing-eighth: #{ceil($cap-spacing / 8)};
+  --calcite-app-side-spacing-eighth: calc(var(--calcite-app-side-spacing) / 8);
+  --calcite-app-cap-spacing-eighth: calc(var(--calcite-app-cap-spacing) / 8);
 
   --calcite-app-cap-spacing-minimum: 1px;
 
-  --calcite-app-side-spacing-plus-half: #{floor($side-spacing * 1.5)};
-  --calcite-app-cap-spacing-plus-half: #{floor($cap-spacing * 1.5)};
+  --calcite-app-side-spacing-plus-half: calc(var(--calcite-app-side-spacing) * 1.5);
+  --calcite-app-cap-spacing-plus-half: calc(var(--calcite-app-cap-spacing) * 1.5);
 
-  --calcite-app-side-spacing-double: #{floor($side-spacing * 2)};
-  --calcite-app-cap-spacing-double: #{floor($cap-spacing * 2)};
+  --calcite-app-side-spacing-double: calc(var(--calcite-app-side-spacing) * 2);
+  --calcite-app-cap-spacing-double: calc(var(--calcite-app-cap-spacing) * 2);
 
   --calcite-app-menu-min-width: 10rem;
   --calcite-app-menu-offset: 0px;
@@ -36,7 +35,9 @@ $animation-time: 250ms !default;
 
   --calcite-app-border-radius: 3px;
 
-  --calcite-app-header-min-height: 3rem;
+  --calcite-app-header-min-height: calc(var(--calcite-app-cap-spacing) * 3);
+
+  --calcite-app-outline-inset: -3px;
 
   // shadows
   --calcite-app-shadow-0: 0 2px 4px rgba(0, 0, 0, 0.1);

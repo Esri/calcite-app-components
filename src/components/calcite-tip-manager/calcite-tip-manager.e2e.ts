@@ -1,5 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { CSS, TEXT } from "./resources";
+import { accessible } from "../../tests/commonTests";
 
 describe("calcite-tip-manager", () => {
   describe("first render", () => {
@@ -17,6 +18,12 @@ describe("calcite-tip-manager", () => {
       const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
       expect(title.innerText).toBe(TEXT.defaultGroupTitle);
     });
+
+    it("is accessible", async () =>
+      accessible(
+        `<calcite-tip-manager><calcite-tip heading="sample"><p>basic render</p></calcite-tip></calcite-tip-manager>`
+      ));
+
     it("should pre-select the correct tip if the selected attribute is set", async () => {
       const page = await newE2EPage();
       await page.setContent(
@@ -41,18 +48,29 @@ describe("calcite-tip-manager", () => {
       await page.setContent(
         `<calcite-tip-manager><calcite-tip><p>Close behavior</p></calcite-tip></calcite-tip-manager>`
       );
+
       const tipManager = await page.find("calcite-tip-manager");
 
-      const eventSpy = await page.spyOnEvent("calciteTipManagerClose", "window");
+      let container = await page.find(`calcite-tip-manager >>> .${CSS.container}`);
+      let isVisible = await container.isVisible();
+      expect(isVisible).toBe(true);
+
+      const eventSpy = await page.spyOnEvent("calciteTipManagerToggle", "window");
 
       const closeButton = await page.find(`calcite-tip-manager >>> .${CSS.close}`);
       await closeButton.click();
       await page.waitForChanges();
 
-      const isVisible = await tipManager.isVisible();
+      container = await page.find(`calcite-tip-manager >>> .${CSS.container}`);
+
+      isVisible = await container.isVisible();
       expect(isVisible).toBe(false);
 
       expect(eventSpy).toHaveReceivedEvent();
+
+      const isClosed = await tipManager.getProperty("closed");
+
+      expect(isClosed).toBe(true);
     });
   });
   describe("pagination", () => {
@@ -157,10 +175,10 @@ describe("calcite-tip-manager", () => {
       );
       const tipManager = await page.find("calcite-tip-manager");
       const newTipId = "newTip";
-      await page.evaluate((newTipId) => {
+      await page.evaluate((newId) => {
         const mgr = document.querySelector("calcite-tip-manager");
         const newTip = mgr.querySelector("calcite-tip:last-child").cloneNode(true);
-        (newTip as HTMLElement).id = newTipId;
+        (newTip as HTMLElement).id = newId;
         mgr.appendChild(newTip);
       }, newTipId);
       await page.waitForChanges();

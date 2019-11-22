@@ -1,3 +1,7 @@
+export const CSS = {
+  sticky: "sticky"
+};
+
 export enum ICON_TYPES {
   circle = "circle",
   square = "square",

@@ -2,16 +2,12 @@
 name: Tooling
 about: Request improvements to our component workflow.
 title: "Tooling: "
-labels: tooling
+labels: tooling, 0 - new
 assignees: ""
 ---
 
-## Summary
+## Summary <!-- pain point -->
 
-## Measure of Success
-
-**Pain point:**
-
-**Desired outcome:**
+## Measure of Success <!-- desired outcome -->
 
 ### Resources <!--(e.g. links to libraries or code snippets)-->

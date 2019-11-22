@@ -10,6 +10,7 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 
 | Property              | Attribute               | Description                                        | Type                | Default                       |
 | --------------------- | ----------------------- | -------------------------------------------------- | ------------------- | ----------------------------- |
+| `closed`              | `closed`                | Alternate text for closing the Tip Manager.        | `boolean`           | `false`                       |
 | `textClose`           | `text-close`            | Alternate text for closing the Tip Manager.        | `string`            | `TEXT.close`                  |
 | `textDefaultTitle`    | `text-default-title`    | The default group title for the Tip Manager.       | `string`            | `TEXT.defaultGroupTitle`      |
 | `textNext`            | `text-next`             | Alternate text for navigating to the next tip.     | `string`            | `TEXT.next`                   |
@@ -19,9 +20,10 @@ See the [calcite-tip-manager demo](https://esri.github.io/calcite-app-components
 
 ## Events
 
-| Event                    | Description                                 | Type               |
-| ------------------------ | ------------------------------------------- | ------------------ |
-| `calciteTipManagerClose` | Emitted when the component has been closed. | `CustomEvent<any>` |
+| Event                     | Description                                                                                           | Type               |
+| ------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------ |
+| `calciteTipManagerClose`  | <span style="color:red">**[DEPRECATED]**</span> <br/><br/>Emitted when the component has been closed. | `CustomEvent<any>` |
+| `calciteTipManagerToggle` | Emitted when the TipManager has been toggled closed or opened.                                        | `CustomEvent<any>` |
 
 ## Methods
 

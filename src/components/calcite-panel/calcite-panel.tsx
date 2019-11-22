@@ -55,6 +55,11 @@ export class CalcitePanel {
   @Prop({ reflect: true }) dismissible = false;
 
   /**
+   * Specifies the maxiumum height of the panel.
+   */
+  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+
+  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
@@ -112,11 +117,12 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    return (
+    const hasLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
+    return hasLeadingContent ? (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
       </div>
-    );
+    ) : null;
   }
 
   renderHeaderContent(): VNode {
@@ -183,14 +189,8 @@ export class CalcitePanel {
     );
   }
 
-  renderScrim(): VNode {
-    return this.loading || this.disabled ? (
-      <CalciteScrim loading={this.loading}></CalciteScrim>
-    ) : null;
-  }
-
   render() {
-    const { dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
+    const { dismissed, disabled, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -209,7 +209,7 @@ export class CalcitePanel {
           {this.renderContent()}
           {this.renderFooter()}
         </article>
-        {this.renderScrim()}
+        <CalciteScrim loading={loading} disabled={disabled} />
       </Host>
     );
   }

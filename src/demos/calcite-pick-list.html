@@ -141,9 +141,9 @@
         </calcite-pick-list>
         <script>
           const pickList3 = document.querySelector("#three");
-          pickList3.addEventListener("calcitePickListSelectionChange", event => {
-            console.log(event.detail);
-          });
+        pickList3.addEventListener("calciteListChange", (event) => {
+          console.log(event.detail);
+        });
         </script>
       </section>
     </main>

@@ -3,6 +3,38 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.7.1](https://github.com/Esri/calcite-app-components/compare/v4.7.0...v4.7.1) (2019-11-20)
+
+### Bug Fixes
+
+- **Action:** focus outline ([a6431a5](https://github.com/Esri/calcite-app-components/commit/a6431a5)), closes [#569](https://github.com/Esri/calcite-app-components/issues/569)
+- calcite-block disabled state doesn't 'hide' slider handle [#560](https://github.com/Esri/calcite-app-components/issues/560) ([#567](https://github.com/Esri/calcite-app-components/issues/567)) ([8d823db](https://github.com/Esri/calcite-app-components/commit/8d823db))
+
+## [4.7.0](https://github.com/Esri/calcite-app-components/compare/v4.6.0...v4.7.0) (2019-11-14)
+
+### Bug Fixes
+
+- **panel:** header-content layout when leading slot is empty ([#547](https://github.com/Esri/calcite-app-components/issues/547)) ([2bff76a](https://github.com/Esri/calcite-app-components/commit/2bff76a)), closes [#556](https://github.com/Esri/calcite-app-components/issues/556)
+- Stencil build warnings ([#537](https://github.com/Esri/calcite-app-components/issues/537)) ([d2e1721](https://github.com/Esri/calcite-app-components/commit/d2e1721))
+
+### Features
+
+- **action:** add ability to set appearance to clear ([a4994a9](https://github.com/Esri/calcite-app-components/commit/a4994a9)), closes [#557](https://github.com/Esri/calcite-app-components/issues/557)
+
+## [4.6.0](https://github.com/Esri/calcite-app-components/compare/v4.5.1...v4.6.0) (2019-11-13)
+
+### Bug Fixes
+
+- **value-list-item:** last child selection ([158b3e6](https://github.com/Esri/calcite-app-components/commit/158b3e6)), closes [#542](https://github.com/Esri/calcite-app-components/issues/542)
+- remove Edge's non-standard broken clear btn from filter ([#522](https://github.com/Esri/calcite-app-components/issues/522)) ([233acd6](https://github.com/Esri/calcite-app-components/commit/233acd6))
+- Shell styling for TipManager ([#514](https://github.com/Esri/calcite-app-components/issues/514)) ([e080f74](https://github.com/Esri/calcite-app-components/commit/e080f74)), closes [#477](https://github.com/Esri/calcite-app-components/issues/477)
+
+### Features
+
+- Add property & event for toggling the opening or closing of the TipManager ([#533](https://github.com/Esri/calcite-app-components/issues/533)) ([7d5533e](https://github.com/Esri/calcite-app-components/commit/7d5533e))
+- CalcitePanel - Add scale property to set dynamic height [#513](https://github.com/Esri/calcite-app-components/issues/513) ([#541](https://github.com/Esri/calcite-app-components/issues/541)) ([d33e22c](https://github.com/Esri/calcite-app-components/commit/d33e22c))
+- picklist sticky filter 503 ([#509](https://github.com/Esri/calcite-app-components/issues/509)) ([f6efd78](https://github.com/Esri/calcite-app-components/commit/f6efd78))
+
 ### [4.5.1](https://github.com/Esri/calcite-app-components/compare/v4.5.0...v4.5.1) (2019-11-06)
 
 ### Bug Fixes
