@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-import { search16 } from "@esri/calcite-ui-icons";
+import { search16, x16 } from "@esri/calcite-ui-icons";
 import { debounce, forIn } from "lodash-es";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CSS, TEXT } from "./resources";
@@ -95,6 +95,11 @@ export class CalciteFilter {
     this.filter(target.value);
   };
 
+  clear = (): void => {
+    this.el.shadowRoot.querySelector("input").value = "";
+    this.calciteFilterChange.emit(this.data);
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -115,6 +120,9 @@ export class CalciteFilter {
             <CalciteIcon size="16" path={search16} />
           </div>
         </label>
+        <button onClick={this.clear} class={CSS.clearButton} aria-label={TEXT.clear}>
+          <CalciteIcon size="16" path={x16} />
+        </button>
       </Host>
     );
   }
