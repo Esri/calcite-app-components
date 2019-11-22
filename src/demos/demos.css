@@ -24,22 +24,22 @@ h2 {
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
 } */
-h1,
-h2,
-h3,
-h4,
-h5 {
+.example-container h1,
+.example-container h2,
+.example-container h3,
+.example-container h4,
+.example-container h5 {
   font-family: 'Courier New', Courier, monospace;
   font-weight: var(--calcite-app-font-weight-heading);
   /* font-size: 14px; */
 }
-h1 {
+.example-container h1 {
   font-size: var(--calcite-app-font-size-2);
 }
-h2 {
+.example-container h2 {
   font-size: var(--calcite-app-font-size-1);
 }
-h3 {
+.example-container h3 {
   font-weight: var(--calcite-app-font-weight);
   font-size: var(--calcite-app-font-size-1);
 }
