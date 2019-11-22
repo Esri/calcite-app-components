@@ -2,21 +2,7 @@ import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 import { debounce } from "lodash-es";
 
-// type pickListItemMap = Map<string, HTMLCalcitePickListItemElement>;
-// type valueListItemMap = Map<string, HTMLCalciteValueListItemElement>;
 type pickOrValueListItem = HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement;
-
-// function updateSelectedValuesMap(
-//   selectedValuesMap: pickListItemMap | valueListItemMap,
-//   item: pickOrValueListItem
-// ): void {
-//   const selectedValues = (selectedValuesMap as any) as Map<string, pickOrValueListItem>;
-//   if (selectedValues as pickListItemMap) {
-//     selectedValues.set(item.value, item as HTMLCalcitePickListItemElement);
-//   } else if (selectedValues as valueListItemMap) {
-//     selectedValues.set(item.value, item as HTMLCalciteValueListItemElement);
-//   }
-// }
 
 export const sharedListMethods = {
   mutationObserverCallback(this: CalcitePickList | CalciteValueList): void {
@@ -83,7 +69,6 @@ export const sharedListMethods = {
       item.compact = this.compact;
       if (item.selected) {
         this.selectedValues.set(item.value, item as any);
-        // updateSelectedValuesMap(this.selectedValues, item);
       }
     });
   },
@@ -120,7 +105,6 @@ export const sharedListMethods = {
       } else {
         this.selectedValues.delete(currentItem as any);
       }
-      // updateSelectedValuesMap(this.selectedValues, currentItem);
     });
   },
   handleFilter(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
