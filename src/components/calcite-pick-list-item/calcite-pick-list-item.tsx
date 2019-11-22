@@ -192,7 +192,7 @@ export class CalcitePickListItem {
         ? circleFilled16
         : circle16;
     return (
-      <span class="icon">
+      <span class={CSS.icon}>
         <CalciteIcon size="16" path={path} />
       </span>
     );

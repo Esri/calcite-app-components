@@ -4,6 +4,7 @@ export const CSS = {
   handle: "handle",
   handleActivated: "handle--activated",
   highlight: "highlight",
+  icon: "icon",
   label: "label",
   title: "title",
   textContainer: "text-container"
