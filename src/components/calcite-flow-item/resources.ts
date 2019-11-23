@@ -1,7 +1,7 @@
 export const BLACKLISTED_MENU_ACTIONS_COMPONENTS = ["calcite-pick-list", "calcite-value-list"];
 
 export const CSS = {
-  header: "header",
+  header: "header-content",
   heading: "heading",
   summary: "summary",
   backButton: "back-button",
