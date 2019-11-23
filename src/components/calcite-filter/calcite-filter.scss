@@ -29,15 +29,6 @@ input[type="text"] {
   }
 }
 
-.search-icon {
-  color: var(--calcite-app-foreground-subtle);
-  display: flex;
-  left: 0;
-  position: absolute;
-  transition: left var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
-    opacity var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-}
-
 input[type="text"]:focus {
   border-color: var(--calcite-app-foreground-active);
   box-shadow: 0 calc(var(--calcite-app-cap-spacing-minimum) * 2) 0 var(--calcite-app-foreground-active);
@@ -49,6 +40,25 @@ input[type="text"]:focus {
 input[type="text"]:focus ~ .search-icon {
   left: calc(var(--calcite-app-icon-size) * -1);
   opacity: 0;
+}
+
+.search-icon {
+  color: var(--calcite-app-foreground-subtle);
+  display: flex;
+  left: 0;
+  position: absolute;
+  transition: left var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+    opacity var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+.clear-button {
+  color: var(--calcite-app-foreground);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+    color: var(--calcite-app-foreground-hover);
+  }
 }
 
 .calcite--rtl {

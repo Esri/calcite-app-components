@@ -199,6 +199,56 @@ export class CalciteValueList {
 
   getItemData = getItemData.bind(this);
 
+  keyDownHandler = (event) => {
+    const handleElement = event.composedPath().find((item) => {
+      return item.dataset?.jsHandle;
+    });
+    const valueListElement = event.composedPath().find((item) => {
+      return item.tagName?.toLowerCase() === "calcite-value-list-item";
+    });
+    // Only trigger keyboard sorting when the internal drag handle is focused and activated
+    if (!handleElement || !valueListElement.handleActivated) {
+      return;
+    }
+    const lastIndex = this.items.length - 1;
+    const value = valueListElement.value;
+    const startingIndex = this.items.findIndex((item) => {
+      return item.value === value;
+    });
+    let appendInstead = false;
+    let buddyIndex;
+    switch (event.key) {
+      case "ArrowUp":
+        event.preventDefault();
+        if (startingIndex === 0) {
+          appendInstead = true;
+        } else {
+          buddyIndex = startingIndex - 1;
+        }
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        if (startingIndex === lastIndex) {
+          buddyIndex = 0;
+        } else if (startingIndex === lastIndex - 1) {
+          appendInstead = true;
+        } else {
+          buddyIndex = startingIndex + 2;
+        }
+        break;
+      default:
+        return;
+    }
+    if (appendInstead) {
+      valueListElement.parentElement.appendChild(valueListElement);
+    } else {
+      valueListElement.parentElement.insertBefore(valueListElement, this.items[buddyIndex]);
+    }
+
+    handleElement.focus();
+    valueListElement.handleActivated = true;
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -224,6 +274,6 @@ export class CalciteValueList {
   }
 
   render() {
-    return <List props={this} text={TEXT} />;
+    return <List props={this} text={TEXT} onKeyDown={this.keyDownHandler} />;
   }
 }

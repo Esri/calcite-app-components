@@ -93,7 +93,6 @@ slot[name="header-summary"]::slotted(.summary) {
 }
 
 .content-container {
-  background-color: var(--calcite-app-background-content);
   flex: 1 1 auto;
   background-color: var(--calcite-app-background-content);
   overflow: auto;
