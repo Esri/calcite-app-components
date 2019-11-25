@@ -4,8 +4,8 @@
     return location.protocol === "https:" ? "wss:" : "ws:" + "//" + location.hostname +  ":" + location.port +  "/";
   };
 
-  const clientWebSocket = new window.WebSocket(getSocketUrl(window.location), ["xmpp"]);
-  clientWebSocket.addEventListener("message", function (message) {
+  const clientWebSocket = 'WebSocket' in window && new window.WebSocket(getSocketUrl(window.location), ["xmpp"]);
+  clientWebSocket && clientWebSocket.addEventListener("message", function (message) {
     if (message.data.indexOf("rebuild finished") > -1) {
       window.location.reload();
     }
