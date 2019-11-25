@@ -1,19 +1,24 @@
 import { Component, Host, Prop, State, h } from "@stencil/core";
 import CalciteIcon from "../utils/CalciteIcon";
-import { hamburger32, home16 } from "@esri/calcite-ui-icons";
+import { chevronDown16, hamburger32, home16 } from "@esri/calcite-ui-icons";
 
 interface NavItem {
   id: string;
   path: string;
   content: any;
+  children?: NavItem[];
+  target?: string;
 }
 
 const CSS = {
+  mainHeading: "main-heading",
   isActive: "is-active",
   link: "link",
   open: "open",
   close: "close",
-  hamburger: "hamburger"
+  hamburger: "hamburger",
+  menu: "menu",
+  childMenu: "child-menu"
 };
 
 const NAV_ITEMS: NavItem[] = [
@@ -91,6 +96,44 @@ const NAV_ITEMS: NavItem[] = [
     id: "calcite-value-list",
     path: "demos/calcite-value-list.html",
     content: "Value List"
+  },
+  {
+    id: "advanced",
+    path: null,
+    content: ["Advanced ", <CalciteIcon size="16" path={chevronDown16} title="Home" />],
+    children: [
+      {
+        id: "block-value-list",
+        path: "demos/advanced/block-with-value-list.html",
+        content: "Block with Nested ValueList"
+      },
+      {
+        id: "flow-adding-items",
+        path: "demos/advanced/flow-adding-items.html",
+        content: "Flow add flow-items dynamically"
+      },
+      {
+        id: "shell-panel-action-bar",
+        path: "demos/advanced/shell-panel-with-action-bar.html",
+        content: "Shell Panel with Action Bar"
+      },
+      {
+        id: "shell-demo-app",
+        path: "demos/advanced/shell-demo-app.html",
+        content: "Shell Demo App"
+      },
+      {
+        id: "shell-demo-app-rtl",
+        path: "demos/advanced/shell-demo-app-rtl.html",
+        content: "Shell Demo App RTL"
+      },
+      {
+        id: "shell-full-window",
+        path: "demos/advanced/shell-demo-app-full-window.html",
+        content: "Shell Full Window App",
+        target: "_blank"
+      }
+    ]
   }
 ];
 
@@ -134,21 +177,44 @@ export class CalciteDemoNav {
     this.open = false;
   };
 
+  subMenuClickHandler = (e) => {
+    e.preventDefault();
+    e.target.nextElementSibling.hidden = !e.target.nextElementSibling.hidden;
+  };
+
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   renderNavItem(item: NavItem) {
     const { pageId, root } = this;
-    const { content, id, path } = item;
+    const { content, id, path, target } = item;
+    const clickHandler = item.children ? this.subMenuClickHandler : null;
     return (
       <li>
-        <a class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link} href={`${root}${path}`}>
+        <a
+          class={id === pageId ? `${CSS.isActive} ${CSS.link}` : CSS.link}
+          href={`${root}${path}`}
+          onClick={clickHandler}
+          target={target}
+        >
           {content}
         </a>
+        {this.renderChildren(item.children)}
       </li>
+    );
+  }
+
+  renderChildren(items: NavItem[]) {
+    if (!items) {
+      return;
+    }
+    return (
+      <ul class={CSS.childMenu} hidden>
+        {items.map((item) => this.renderNavItem(item))}
+      </ul>
     );
   }
 
@@ -158,7 +224,8 @@ export class CalciteDemoNav {
         <button class={CSS.hamburger} onClick={this.hamburgerClickHandler}>
           <CalciteIcon size="32" path={hamburger32} title="Home" />
         </button>
-        <ul class={this.open ? CSS.open : CSS.close}>
+        <h1 class={CSS.mainHeading}>Calcite App Components</h1>
+        <ul class={{ [CSS.menu]: true, [CSS.open]: this.open }}>
           {NAV_ITEMS.map((item) => this.renderNavItem(item))}
         </ul>
       </Host>

@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "rules": {
+    "no-descending-specificity": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["/^calcite-/"]
+      }
+    ]
+  }
+}
