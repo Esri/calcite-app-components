@@ -40,7 +40,7 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) disabled = false;
 
   /**
-   * @internal When false, the item cannot be deselected by user interaction.
+   * When false, the item cannot be deselected by user interaction.
    */
   @Prop() disableDeselect = false;
 
