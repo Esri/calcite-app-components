@@ -24,6 +24,7 @@
   loadCss("build/calcite-app.css");
   loadCss("vendor/@esri/calcite-components/calcite.css");
   loadScript("demos/demoPageReloader.js");
+  loadScript("demos/toggles.js");
   loadScript("build/calcite-app.esm.js", { type: "module" });
   loadScript("build/calcite-app.js", { noModule: true });
   loadScript("vendor/@esri/calcite-components/calcite.esm.js", { type: "module" });

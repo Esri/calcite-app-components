@@ -15,14 +15,6 @@
       <calcite-demo-nav page-id="calcite-action"></calcite-demo-nav>
     </nav>
     <main>
-      <style>
-        .action-container {
-          width: 18vw;
-        }
-        .toggles {
-          margin: 1rem 0;
-        }
-      </style>
       <section class="example-container">
         <h1>calcite-action</h1>
         <p>
@@ -32,12 +24,7 @@
           >
         </p>
 
-        <div class="toggles">
-          <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
-          <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
-        </div>
         <h2>LTR</h2>
-
         <div class="action-container">
           <h3>With text</h3>
           <calcite-action indicator active label="click-me" text="hello world" text-display="visible"
@@ -144,14 +131,5 @@
         </div>
       </section>
     </main>
-    <script>
-      function toggleProperty(property) {
-        const blocks = document.getElementsByTagName("calcite-action");
-
-        for (i = 0; i < blocks.length; i++) {
-          blocks[i].hasAttribute(property) ? blocks[i].removeAttribute(property) : blocks[i].setAttribute(property, "");
-        }
-      }
-    </script>
   </body>
 </html>

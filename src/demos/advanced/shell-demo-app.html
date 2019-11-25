@@ -7,15 +7,22 @@
     <title>Calcite App Components: calcite-shell</title>
 
     <!-- Loads the link and script tags-->
-    <script src="head.js"></script>
+    <script src="../head.js"></script>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.12/"></script>
+    <style>
+      @media (min-width: 1025px) {
+        .example-container {
+          width: 1100px;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <nav>
-      <calcite-demo-nav page-id="calcite-shell"></calcite-demo-nav>
+      <calcite-demo-nav page-id="shell-demo-app"></calcite-demo-nav>
     </nav>
     <main>
       <div class="example-container">
@@ -26,29 +33,9 @@
             >calcite-shell readme.</a
           >
         </p>
-        <p>
-          <i>note: calcite-shell supports tablet as the smallest screen size</i>
-        </p>
-
-        <h2>Demo Navigation</h2>
-        <ul>
-          <li>View the <a href="calcite-shell.html">LTR demo</a>.</li>
-          <li>View the <a href="calcite-shell-rtl.html">RTL demo</a>.</li>
-          <li>View the <a href="calcite-shell-full-window.html" target="_blank">Full window demo</a>.</li>
-        </ul>
-
-        <style>
-          .calcite-shell-container {
-            /* ipad size with browser */
-            min-width: 1024px;
-            min-height: 671px;
-            width: 90vw;
-            height: 75vh;
-            margin: 0 auto;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
-            position: relative;
-          }
-        </style>
+        <p><em>The shell is absolutely positioned and sized to fill its container. In normal application it might fill up the entire viewport.
+            For demo purposes, it's inside a relatively positioned container sized to fit in this area. <a href="/demos/advanced/shell-demo-app-full-window.html">See the full-window demo.</a></em></p>
+        <p><em>Please note: calcite-shell supports tablet as the smallest screen size.</em> </p>
 
         <style>
           #viewDiv,
