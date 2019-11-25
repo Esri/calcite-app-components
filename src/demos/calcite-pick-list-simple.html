@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Demos - PickList</title>
+    <script src="head.js"></script>
+    <style>
+      calcite-pick-list {
+        margin-bottom: 1rem;
+      }
+    </style>
+    <template id="template">
+      <calcite-pick-list-item text-label="Chocolate" value="chocolate">
+        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+          <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <circle cx="7" cy="7" r="7" fill="#f689d8" />
+          </svg>
+        </calcite-action>
+      </calcite-pick-list-item>
+      <script>
+        document.currentScript.previousElementSibling.metadata = { category: "flavors", tags: ["icecream", "ice cream"] };
+      </script>
+      <calcite-pick-list-item text-label="Vanilla" text-description="Oldie but goodie" value="vanilla" >
+        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+          <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <circle cx="7" cy="7" r="7" fill="#f689d8" />
+          </svg>
+        </calcite-action>
+      </calcite-pick-list-item>
+      <script>
+        document.currentScript.previousElementSibling.metadata = { category: "flavors", tags: ["icecream", "ice cream"] };
+      </script>
+      <calcite-pick-list-item text-label="Strawberry" text-description="strawberry" value="strawberry">
+        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+          <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <circle cx="7" cy="7" r="7" fill="#f689d8" />
+          </svg>
+        </calcite-action>
+      </calcite-pick-list-item>
+      <script>
+        document.currentScript.previousElementSibling.metadata = { category: "flavors", tags: ["icecream", "ice cream"] };
+      </script>
+    </template>
+  </head>
+  <body>
+    <calcite-demo-nav page-id="calcite-pick-list"></calcite-demo-nav>
+    <section class="example-container" style="width: 28vw; margin-top: 2em;">
+      <calcite-pick-list id="one" multiple filter-enabled>
+      </calcite-pick-list>
+      <script>
+        const pickList = document.querySelector("#one");
+        const pickListContent = document.querySelector("#template").cloneNode(true).content;
+        pickList.appendChild(pickListContent);
+        pickList.addEventListener("calcitePickListSelectionChange", (event) => {
+          console.log(event.detail);
+        });
+      </script>
+    </section>
+  </body>
+</html>
