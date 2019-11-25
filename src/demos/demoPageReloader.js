@@ -5,6 +5,7 @@
   };
 
   const clientWebSocket = new window.WebSocket(getSocketUrl(window.location), ["xmpp"]);
+
   clientWebSocket.addEventListener("message", function(message) {
     if (message.data.indexOf("rebuild finished") > -1) {
       window.location.reload();
