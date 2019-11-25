@@ -24,6 +24,16 @@ export class CalciteShellPanel {
    */
   @Prop({ reflect: true }) collapsed = false;
 
+  /**
+   * floatContent lets the content area appear like a floating panel and only sets a max-height.
+   */
+  @Prop({ reflect: true }) floatContent = false;
+
+  /**
+   * floatContentScale sets the max-height of the content area when floatContent is true.
+   */
+  @Prop({ reflect: true }) floatContentScale: "s" | "m" | "l" = "m";
+
   @Watch("collapsed")
   watchHandler() {
     this.calciteShellPanelToggle.emit();

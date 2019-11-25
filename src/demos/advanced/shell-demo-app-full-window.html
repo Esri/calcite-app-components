@@ -46,14 +46,13 @@
     <main>
       <div class="shell-container">
         <calcite-shell>
-          <calcite-shell-panel slot="primary-panel" layout="leading">
+          <calcite-shell-panel slot="primary-panel" layout="leading" float-content float-content-scale="l">
             <calcite-panel
               id="shell-floating-panel"
               slot="shell-floating-panel"
               heading="Anchored Shell Floating Panel"
               placement="anchor"
               hidden
-              style="height:150px;"
               ><span>
                 Shell Floating Panel Content
               </span>
@@ -64,7 +63,6 @@
               heading="Over Shell Floating Panel"
               placement="over"
               hidden
-              style="height:150px;"
               ><span>
                 Shell Floating Panel Content
               </span>
@@ -180,7 +178,7 @@
             </div>
           </calcite-shell-panel>
 
-          <calcite-shell-panel slot="contextual-panel" layout="trailing">
+          <calcite-shell-panel slot="contextual-panel" layout="trailing" float-content-scale="l">
             <calcite-action-bar slot="action-bar">
               <calcite-action-group>
                 <calcite-action text="Add" active>

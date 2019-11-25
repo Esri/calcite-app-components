@@ -3,22 +3,40 @@ $shell-panel-min-width: 240px !default;
 $shell-panel-max-width: 360px !default;
 
 :host {
-  height: 100%;
   position: relative;
   display: flex;
-  background-color: var(--calcite-app-background-content);
+  align-items: flex-start;
+  background-color: var(--calcite-app-background-transparent);
+  pointer-events: none;
 }
 
 .content {
+  background-color: var(--calcite-app-background-content);
   width: $shell-panel-width;
   min-width: $shell-panel-min-width;
   max-width: $shell-panel-max-width;
   border-left: 1px solid var(--calcite-app-border);
   border-right: 1px solid var(--calcite-app-border);
   padding: 0;
-  margin: 0;
-  height: 100%;
   overflow: auto;
+  pointer-events: auto;
+}
+
+:host([float-content]) .content {
+  border: 1px solid var(--calcite-app-border);
+  border-radius: var(--calcite-app-border-radius);
+  box-shadow: var(--calcite-app-shadow-2);
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  max-height: 60vh;
+  height: auto;
+}
+
+:host([float-content][float-content-scale="s"]) .content {
+  max-height: 40vh;
+}
+
+:host([float-content][float-content-scale="l"]) .content {
+  max-height: 80vh;
 }
 
 .content[hidden] {
