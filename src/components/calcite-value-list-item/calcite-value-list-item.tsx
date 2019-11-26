@@ -34,7 +34,7 @@ export class CalciteValueListItem {
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata: object;
+  @Prop() metadata?: object;
 
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
@@ -54,7 +54,7 @@ export class CalciteValueListItem {
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ reflect: true }) value!: string;
 
   // --------------------------------------------------------------------------
   //

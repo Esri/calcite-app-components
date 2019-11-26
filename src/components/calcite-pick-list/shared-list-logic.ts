@@ -68,7 +68,7 @@ export const sharedListMethods = {
       item.icon = this.getIconType();
       item.compact = this.compact;
       if (item.selected) {
-        this.selectedValues.set(item.value, item as any);
+        this.selectedValues.set(item.value, item as pickOrValueListItem);
       }
     });
   },
@@ -101,9 +101,9 @@ export const sharedListMethods = {
     items.slice(Math.min(start, end), Math.max(start, end)).forEach((currentItem: pickOrValueListItem) => {
       currentItem.toggleSelected(!deselect);
       if (!deselect) {
-        this.selectedValues.set(currentItem.value, currentItem as any);
+        this.selectedValues.set(currentItem.value, currentItem as pickOrValueListItem);
       } else {
-        this.selectedValues.delete(currentItem as any);
+        this.selectedValues.delete(currentItem.value);
       }
     });
   },

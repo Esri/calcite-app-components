@@ -47,7 +47,7 @@ export class CalcitePickListItem {
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata: object;
+  @Prop() metadata?: object;
 
   @Watch("metadata") metadataWatchHandler() {
     this.calciteListItemPropsUpdated.emit();
@@ -73,7 +73,7 @@ export class CalcitePickListItem {
   /**
    * @deprecated Replaced by textLabel.
    */
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) textHeading?: string;
 
   @Watch("textHeading") textHeadingWatchHandler() {
     this.calciteListItemPropsUpdated.emit();
@@ -100,7 +100,7 @@ export class CalcitePickListItem {
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ reflect: true }) value!: string;
 
   // --------------------------------------------------------------------------
   //
