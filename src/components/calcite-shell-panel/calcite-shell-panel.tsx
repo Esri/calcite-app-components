@@ -27,14 +27,14 @@ export class CalciteShellPanel {
   @Prop({ reflect: true }) collapsed = false;
 
   /**
-   * floatContent lets the content area appear like a floating panel and only sets a max-height.
+   * This property makes the content area appear like a "floating" panel.
    */
-  @Prop({ reflect: true }) floatContent = false;
+  @Prop({ reflect: true }) contentDetached = false;
 
   /**
-   * floatContentScale sets the max-height of the content area when floatContent is true.
+   * This sets limits the height of the content area. It only applies when contentDetached is true.
    */
-  @Prop({ reflect: false }) floatContentScale: "s" | "m" | "l" = "m";
+  @Prop({ reflect: false }) contentDetachedScale: "s" | "m" | "l" = "m";
 
   @Watch("collapsed")
   watchHandler() {
@@ -64,11 +64,11 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsed, floatContent, layout } = this;
+    const { collapsed, contentDetached, layout } = this;
 
     const contentNode = (
       <div
-        class={classnames(CSS.content, floatContent ? CSS.contentFloating : null)}
+        class={classnames(CSS.content, contentDetached ? CSS.contentDetached : null)}
         hidden={collapsed}
       >
         <slot />
