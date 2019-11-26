@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   align-items: flex-start;
+  height: 100%;
   background-color: var(--calcite-app-background-transparent);
   pointer-events: none;
 
@@ -20,6 +21,7 @@
   max-width: var(--calcite-app-shell-panel-max-width);
   border-left: 1px solid var(--calcite-app-border);
   border-right: 1px solid var(--calcite-app-border);
+  height: 100%;
   padding: 0;
   overflow: auto;
   pointer-events: auto;
