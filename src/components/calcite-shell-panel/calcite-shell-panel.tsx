@@ -1,3 +1,5 @@
+import classnames from "classnames";
+
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { CSS } from "./resources";
@@ -32,7 +34,7 @@ export class CalciteShellPanel {
   /**
    * floatContentScale sets the max-height of the content area when floatContent is true.
    */
-  @Prop({ reflect: true }) floatContentScale: "s" | "m" | "l" = "m";
+  @Prop({ reflect: false }) floatContentScale: "s" | "m" | "l" = "m";
 
   @Watch("collapsed")
   watchHandler() {
@@ -62,10 +64,13 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsed, layout } = this;
+    const { collapsed, floatContent, layout } = this;
 
     const contentNode = (
-      <div class={CSS.content} hidden={collapsed}>
+      <div
+        class={classnames(CSS.content, floatContent ? CSS.contentFloating : null)}
+        hidden={collapsed}
+      >
         <slot />
       </div>
     );

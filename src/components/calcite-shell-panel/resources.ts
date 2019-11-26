@@ -1,3 +1,4 @@
 export const CSS = {
-  content: "content"
+  content: "content",
+  contentFloating: "content--floating"
 };

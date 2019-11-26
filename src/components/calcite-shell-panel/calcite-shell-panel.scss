@@ -1,7 +1,7 @@
 :host {
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   height: 100%;
   background-color: var(--calcite-app-background-transparent);
   pointer-events: none;
@@ -9,8 +9,8 @@
   --calcite-app-shell-panel-width: 20vw;
   --calcite-app-shell-panel-min-width: 240px;
   --calcite-app-shell-panel-max-width: 360px;
-  --calcite-app-shell-panel-max-height-small: 40vh;
-  --calcite-app-shell-panel-max-height-medium: 60vh;
+  --calcite-app-shell-panel-max-height-small: 35vh;
+  --calcite-app-shell-panel-max-height-medium: 45vh;
   --calcite-app-shell-panel-max-height-large: 85vh;
 }
 
@@ -27,20 +27,20 @@
   pointer-events: auto;
 }
 
-:host([float-content]) .content {
+.content--floating {
   border: 1px solid var(--calcite-app-border);
   border-radius: var(--calcite-app-border-radius);
-  box-shadow: var(--calcite-app-shadow-2);
+  box-shadow: var(--calcite-app-shadow-0);
   margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   max-height: var(--calcite-app-shell-panel-max-height-medium);
   height: auto;
 }
 
-:host([float-content][float-content-scale="s"]) .content {
+:host([float-content-scale="s"]) .content--floating {
   max-height: var(--calcite-app-shell-panel-max-height-small);
 }
 
-:host([float-content][float-content-scale="l"]) .content {
+:host([float-content-scale="l"]) .content--floating {
   max-height: var(--calcite-app-shell-panel-max-height-large);
 }
 
