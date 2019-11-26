@@ -40,6 +40,11 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * When false, the item cannot be deselected by user interaction.
+   */
+  @Prop() disableDeselect = false;
+
+  /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
   @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
@@ -157,7 +162,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
-    if (this.disabled) {
+    if (this.disabled || (this.disableDeselect && this.selected)) {
       return;
     }
 
@@ -168,6 +173,9 @@ export class CalcitePickListItem {
   pickListKeyDownHandler = (event: KeyboardEvent): void => {
     if (event.key === " ") {
       event.preventDefault();
+      if (this.disableDeselect && this.selected) {
+        return;
+      }
       this.selected = !this.selected;
     }
   };
