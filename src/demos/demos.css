@@ -6,7 +6,7 @@ body {
 main {
   margin: 0;
   padding: 0;
-  font-size: var(--calcite-base-font-size);
+  font-size: var(--calcite-font-size-0);
 }
 
 .example-container {
