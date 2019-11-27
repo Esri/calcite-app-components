@@ -100,8 +100,8 @@ describe("calcite-action", () => {
   });
 
   it("should be accessible", async () => {
-    accessible(`<calcite-action text="hello world" label="hi"></calcite-action>`);
+    await accessible(`<calcite-action text="hello world" label="hi"></calcite-action>`);
 
-    accessible(`<calcite-action text="hello world" label="hi" disabled text-display="visible"></calcite-action>`);
+    await accessible(`<calcite-action text="hello world" label="hi" disabled text-display="visible"></calcite-action>`);
   });
 });
