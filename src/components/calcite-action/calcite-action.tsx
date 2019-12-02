@@ -137,8 +137,8 @@ export class CalciteAction {
           title={labelFallback}
           aria-label={labelFallback}
           disabled={disabled}
-          aria-disabled={disabled}
-          aria-busy={loading}
+          aria-disabled={disabled.toString()}
+          aria-busy={loading.toString()}
         >
           {iconContainerNode}
           {textContainerNode}
