@@ -8,3 +8,5 @@ export const CSS = {
   slotContainerHidden: "slot-container--hidden",
   textContainer: "text-container"
 };
+
+export type TextDisplay = "hidden" | "visible" | "interactive";

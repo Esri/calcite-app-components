@@ -4,14 +4,12 @@ import { CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
-import { CSS } from "./resources";
+import { CSS, TextDisplay } from "./resources";
 
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
 import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
-
-type TextDisplay = "hidden" | "visible" | "interactive";
 
 @Component({
   tag: "calcite-action",
