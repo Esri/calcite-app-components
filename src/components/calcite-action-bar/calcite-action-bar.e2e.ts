@@ -87,7 +87,7 @@ describe("calcite-action-bar", () => {
     expect(textDisplay).toBe("visible");
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-action-bar>
       <calcite-action-group>
@@ -98,10 +98,9 @@ describe("calcite-action-bar", () => {
         </calcite-action>
       </calcite-action-group>
     </calcite-action-bar>
-    `);
-  });
+    `));
 
-  it("should be accessible when expanded", async () => {
+  it("should be accessible when expanded", async () =>
     accessible(`
     <calcite-action-bar expanded>
       <calcite-action-group>
@@ -112,6 +111,5 @@ describe("calcite-action-bar", () => {
         </calcite-action>
       </calcite-action-group>
     </calcite-action-bar>
-    `);
-  });
+    `));
 });
