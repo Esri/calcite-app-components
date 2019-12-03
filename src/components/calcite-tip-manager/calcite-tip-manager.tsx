@@ -272,7 +272,7 @@ export class CalciteTipManager {
         <div
           class={CSS.container}
           hidden={closed}
-          aria-hidden={closed}
+          aria-hidden={closed.toString()}
           tabIndex={0}
           onKeyUp={this.tipManagerKeyUpHandler}
           ref={this.storeContainerRef}
