@@ -42,6 +42,7 @@
 }
 
 .title {
+  font-size: var(--calcite-app-font-size-0);
   @include lineClamp(2);
 }
 
