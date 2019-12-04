@@ -40,7 +40,7 @@ describe("calcite-panel", () => {
     expect(eventSpy).toHaveReceivedEvent();
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-panel>
       <div slot="header-leading-content">test L</div>
@@ -49,6 +49,5 @@ describe("calcite-panel", () => {
       <p>Content</p>
       <div slot="footer">test Footer</div>
     </calcite-panel>
-    `);
-  });
+    `));
 });

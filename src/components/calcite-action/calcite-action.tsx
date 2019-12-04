@@ -9,6 +9,9 @@ import { CSS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
+import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+
+type TextDisplay = "hidden" | "visible" | "interactive";
 
 @Component({
   tag: "calcite-action",
@@ -67,7 +70,7 @@ export class CalciteAction {
   /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textDisplay: "hidden" | "visible" | "interactive" = "hidden";
+  @Prop({ reflect: true }) textDisplay: TextDisplay = "hidden";
 
   /**
    * Used to set the component's color scheme.
@@ -84,12 +87,22 @@ export class CalciteAction {
 
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Render Methods
   //
   // --------------------------------------------------------------------------
 
-  render() {
-    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
+  renderTextContainer(textDisplay: TextDisplay): VNode {
+    const { text } = this;
+
+    return textDisplay !== "hidden" ? (
+      <div key="text-container" class={CSS.textContainer}>
+        {text}
+      </div>
+    ) : null;
+  }
+
+  renderIconContainer(): VNode {
+    const { loading } = this;
 
     const slotContainerNode = (
       <div
@@ -103,24 +116,19 @@ export class CalciteAction {
 
     const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
 
-    const iconContainerNode = (
+    return (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
         {slotContainerNode}
         {calciteLoaderNode}
       </div>
     );
+  }
+
+  render() {
+    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
 
     const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
-
-    const textContainerNode =
-      calculatedTextDisplay !== "hidden" ? (
-        <div key="text-container" class={CSS.textContainer}>
-          {text}
-        </div>
-      ) : null;
-
     const labelFallback = label || text;
-
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
@@ -137,11 +145,11 @@ export class CalciteAction {
           title={labelFallback}
           aria-label={labelFallback}
           disabled={disabled}
-          aria-disabled={disabled}
-          aria-busy={loading}
+          aria-disabled={disabled.toString()}
+          aria-busy={loading.toString()}
         >
-          {iconContainerNode}
-          {textContainerNode}
+          {this.renderIconContainer()}
+          {this.renderTextContainer(calculatedTextDisplay)}
         </button>
       </Host>
     );

@@ -116,6 +116,37 @@ export const tests = {
         expect(numSelected).toBe(0);
       });
     });
+    describe("calciteListChange event", () => {
+      it("should fire event when a selection changed", async () => {
+        const page = await newE2EPage();
+
+        await page.setContent(`<calcite-${listType}-list>
+          <calcite-${listType}-list-item text-label="test" value="example"></calcite-${listType}-list-item>
+        </calcite-${listType}-list>`);
+        const item = await page.find(`calcite-${listType}-list-item`);
+        await page.evaluate(() => {
+          document.addEventListener("calciteListChange", (event: CustomEvent) => {
+            (window as any).eventDetail = event.detail;
+          });
+        });
+
+        await item.click();
+
+        await page.waitForChanges();
+
+        const eventDetail: any = await page.evaluateHandle(() => {
+          const detail = (window as any).eventDetail;
+          return {
+            size: detail.size,
+            hasItem: detail.has("example")
+          };
+        });
+        const properties = await eventDetail.getProperties();
+        expect(eventDetail).toBeDefined();
+        expect(properties.get("size")._remoteObject.value).toBe(1);
+        expect(properties.get("hasItem")._remoteObject.value).toBe(true);
+      });
+    });
   },
   filterBehavior(listType: "pick" | "value") {
     let page: E2EPage = null;

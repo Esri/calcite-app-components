@@ -143,7 +143,7 @@ describe("calcite-flow", () => {
     expect(showBackButton2).not.toBe(null);
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-flow>
       <calcite-flow-item>
@@ -153,6 +153,5 @@ describe("calcite-flow", () => {
       <calcite-flow-item>
       </calcite-flow-item>
     </calcite-flow>
-    `);
-  });
+    `));
 });

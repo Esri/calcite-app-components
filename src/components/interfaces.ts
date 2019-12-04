@@ -5,3 +5,5 @@ export type CalciteLayout = "leading" | "trailing";
 export type CalciteTheme = "light" | "dark";
 
 export type CalciteBlockSectionToggleDisplay = "button" | "switch";
+
+export type FlowDirection = "advancing" | "retreating";

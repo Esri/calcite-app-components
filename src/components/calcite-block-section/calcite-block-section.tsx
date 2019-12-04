@@ -119,7 +119,7 @@ export class CalciteBlockSection {
       );
 
     return (
-      <section aria-expanded={open ? "true" : "false"}>
+      <section aria-expanded={open.toString()}>
         {headerNode}
         <div class={CSS.content} hidden={!open}>
           <slot />

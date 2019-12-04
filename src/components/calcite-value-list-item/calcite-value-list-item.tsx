@@ -1,5 +1,9 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
+import guid from "../utils/guid";
+import { CSS } from "../calcite-pick-list-item/resources";
+import { drag16 } from "@esri/calcite-ui-icons";
+import CalciteIcon from "../utils/CalciteIcon";
 
 /**
  * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
@@ -19,17 +23,27 @@ export class CalciteValueListItem {
   /**
    * Compact reduces the size of the item.
    */
-  @Prop({ reflect: true }) compact = false;
+  @Prop({ reflect: true }) compact? = false;
 
   /**
    * When true, the item cannot be clicked and is visually muted
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ reflect: true }) disabled? = false;
+
+  /**
+   * @internal When false, the item cannot be deselected by user interaction.
+   */
+  @Prop() disableDeselect = false;
+
+  /**
+   * @internal - stores the activated state of the drag handle.
+   */
+  @Prop({ mutable: true }) handleActivated? = false;
 
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+  @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
 
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
@@ -39,12 +53,12 @@ export class CalciteValueListItem {
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
-  @Prop({ reflect: true, mutable: true }) selected = false;
+  @Prop({ reflect: true, mutable: true }) selected? = false;
 
   /**
    * The main label for this item. Appears next to the icon.
    */
-  @Prop({ reflect: true }) textLabel: string;
+  @Prop({ reflect: true }) textLabel!: string;
 
   /**
    * An optional description for this item. Will appear below the label text.
@@ -66,6 +80,8 @@ export class CalciteValueListItem {
 
   pickListItem: HTMLCalcitePickListItemElement = null;
 
+  guid = `calcite-value-list-item-${guid()}`;
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -84,22 +100,52 @@ export class CalciteValueListItem {
 
   getPickListRef = (el) => (this.pickListItem = el as HTMLCalcitePickListItemElement);
 
+  handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === " ") {
+      this.handleActivated = !this.handleActivated;
+    }
+  };
+
+  handleBlur = () => {
+    this.handleActivated = false;
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
+  renderHandle() {
+    const { icon } = this;
+    if (icon === ICON_TYPES.grip) {
+      return (
+        <span
+          role="button"
+          class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
+          tabindex="0"
+          data-js-handle="true"
+          aria-pressed={this.handleActivated.toString()}
+          onKeyDown={this.handleKeyDown}
+          onBlur={this.handleBlur}
+        >
+          <CalciteIcon size="16" path={drag16} />
+        </span>
+      );
+    }
+  }
+
   render() {
     return (
-      <Host>
+      <Host data-id={this.guid}>
+        {this.renderHandle()}
         <calcite-pick-list-item
           compact={this.compact}
           ref={this.getPickListRef}
           disabled={this.disabled}
+          disableDeselect={this.disableDeselect}
           selected={this.selected}
           metadata={this.metadata}
-          icon={this.icon}
           textLabel={this.textLabel}
           textDescription={this.textDescription}
           value={this.value}

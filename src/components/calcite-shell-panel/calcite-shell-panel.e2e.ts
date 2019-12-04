@@ -106,7 +106,7 @@ describe("calcite-shell-panel", () => {
     expect(element.shadowRoot.firstElementChild.tagName).toBe("DIV");
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-shell-panel slot="primary-panel" layout="leading">
       <calcite-action-bar slot="action-bar">
@@ -134,6 +134,5 @@ describe("calcite-shell-panel", () => {
       </calcite-action-bar>
       <p>Primary Content</p>
     </calcite-shell-panel>
-    `);
-  });
+    `));
 });
