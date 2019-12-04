@@ -1,10 +1,10 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
 
-import { CalciteTheme } from "../interfaces";
+import { CalciteTheme, TextDisplay } from "../interfaces";
 
 import classnames from "classnames";
 
-import { CSS, TextDisplay } from "./resources";
+import { CSS } from "./resources";
 
 import { CSS_UTILITY } from "../utils/resources";
 
