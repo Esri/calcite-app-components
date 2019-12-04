@@ -13,5 +13,5 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
-  "include": ["src", "node_modules/@esri/calcite-components/dist/types/components.d.ts", "*.config.ts"]
+  "include": ["src", "*.config.ts", "node_modules/@esri/calcite-components/dist/types/components.d.ts"]
 }
