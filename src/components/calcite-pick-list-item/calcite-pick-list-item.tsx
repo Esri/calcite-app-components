@@ -32,12 +32,12 @@ export class CalcitePickListItem {
   /**
    * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
    */
-  @Prop({ reflect: true }) compact = false;
+  @Prop({ reflect: true }) compact? = false;
 
   /**
    * When true, the item cannot be clicked and is visually muted.
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ reflect: true }) disabled? = false;
 
   /**
    * When false, the item cannot be deselected by user interaction.
@@ -47,7 +47,7 @@ export class CalcitePickListItem {
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+  @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
 
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
