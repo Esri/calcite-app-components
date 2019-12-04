@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
 
-import { CalciteTheme } from "../interfaces";
+import { CalciteTheme, TextDisplay } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -10,8 +10,6 @@ import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
 import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
-
-type TextDisplay = "hidden" | "visible" | "interactive";
 
 @Component({
   tag: "calcite-action",
