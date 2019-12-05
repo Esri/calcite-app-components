@@ -83,7 +83,7 @@ export class CalcitePickList {
   /**
    * @deprecated No longer rendered. Prop will be removed in a future release.
    */
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) textHeading?: string;
 
   // --------------------------------------------------------------------------
   //

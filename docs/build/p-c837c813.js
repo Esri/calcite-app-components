@@ -1,1 +1,0 @@
-function r(r){return function(r){const n=r.closest("[dir]");return n?n.getAttribute("dir"):"ltr"}(r)}export{r as g};
