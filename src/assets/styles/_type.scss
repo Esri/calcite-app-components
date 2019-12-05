@@ -20,3 +20,20 @@
   font-size: var(--calcite-app-base-font-size);
   line-height: var(--calcite-app-line-height);
 }
+
+h1.heading {
+  font-size: var(--calcite-app-font-size-3);
+  font-weight: var(--calcite-app-font-weight);
+}
+
+h2.heading {
+  font-size: var(--calcite-app-font-size-2);
+}
+
+h3.heading {
+  font-size: var(--calcite-app-font-size-1);
+}
+h4.heading,
+h5.heading {
+  font-size: var(--calcite-app-font-size-0);
+}
