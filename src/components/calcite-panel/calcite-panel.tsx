@@ -197,7 +197,7 @@ export class CalcitePanel {
     return (
       <Host>
         <article
-          aria-busy={loading}
+          aria-busy={loading.toString()}
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}

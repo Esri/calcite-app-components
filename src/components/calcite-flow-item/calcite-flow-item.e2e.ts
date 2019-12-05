@@ -191,7 +191,7 @@ describe("calcite-flow-item", () => {
     expect(eventSpy).toHaveReceivedEvent();
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
       <calcite-flow-item heading="hello world" menu-open show-back-button>
         <div slot="menu-actions">
@@ -209,6 +209,5 @@ describe("calcite-flow-item", () => {
           </calcite-action>
         </div>
       </calcite-flow-item>
-    `);
-  });
+    `));
 });

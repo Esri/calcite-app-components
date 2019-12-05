@@ -3,6 +3,20 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [4.8.0](https://github.com/Esri/calcite-app-components/compare/v4.7.1...v4.8.0) (2019-11-27)
+
+### Features
+
+- add clear button to filter ([#575](https://github.com/Esri/calcite-app-components/issues/575)) ([302a13d](https://github.com/Esri/calcite-app-components/commit/302a13dc3e91fd04c8048af3baca97c8d077443d))
+- removed text node from filter label. ([#574](https://github.com/Esri/calcite-app-components/issues/574)) ([d53be8d](https://github.com/Esri/calcite-app-components/commit/d53be8d2b53e3856947ce8527687d4096ff9cd07))
+- value list drag drop keyboard support 356 ([#559](https://github.com/Esri/calcite-app-components/issues/559)) ([630b813](https://github.com/Esri/calcite-app-components/commit/630b81393c7be7b86c969d27efc1e1b29edd2e15))
+
+### Bug Fixes
+
+- Convert js files from es6 to es5 ([#589](https://github.com/Esri/calcite-app-components/issues/589)) ([789554f](https://github.com/Esri/calcite-app-components/commit/789554f2ff7788bcbe0350249f5989d63344bb1e))
+- prevent deselection for single-select lists ([#585](https://github.com/Esri/calcite-app-components/issues/585)) ([c04bdb7](https://github.com/Esri/calcite-app-components/commit/c04bdb75a5ef6ddace10776805b9b1bcf5494a1f))
+- **block:** hide collapse icon when a control is provided in Edge ([#582](https://github.com/Esri/calcite-app-components/issues/582)) ([6d9f0e3](https://github.com/Esri/calcite-app-components/commit/6d9f0e3c51267a0738ff92491e78cd321d07f764)), closes [#540](https://github.com/Esri/calcite-app-components/issues/540) [#540](https://github.com/Esri/calcite-app-components/issues/540)
+
 ### [4.7.1](https://github.com/Esri/calcite-app-components/compare/v4.7.0...v4.7.1) (2019-11-20)
 
 ### Bug Fixes

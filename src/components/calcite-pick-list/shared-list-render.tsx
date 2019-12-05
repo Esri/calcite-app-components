@@ -11,7 +11,7 @@ export const List = ({ props, text, ...rest }): VNode => {
   const { disabled, loading, filterEnabled, dataForFilter, handleFilter } = props;
   const { filterPlaceholder } = text;
   return (
-    <Host aria-disabled={disabled} aria-busy={loading} {...rest}>
+    <Host aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
       <header class={{ [CSS.sticky]: true }}>
         {filterEnabled ? (
           <calcite-filter
