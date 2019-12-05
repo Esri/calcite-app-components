@@ -53,7 +53,7 @@ export class CalciteValueListItem {
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
-  @Prop({ reflect: true, mutable: true }) selected? = false;
+  @Prop({ reflect: true, mutable: true }) selected = false;
 
   /**
    * The main label for this item. Appears next to the icon.
