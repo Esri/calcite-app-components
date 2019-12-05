@@ -38,7 +38,7 @@ describe("calcite-shell", () => {
     expect(header).not.toBeNull();
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-shell>
       <calcite-shell-panel slot="primary-panel" layout="leading">
@@ -48,6 +48,5 @@ describe("calcite-shell", () => {
         <p>Primary Content</p>
       </calcite-shell-panel>
     </calcite-shell>
-    `);
-  });
+    `));
 });

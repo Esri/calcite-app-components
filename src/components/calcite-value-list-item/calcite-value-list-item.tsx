@@ -125,7 +125,7 @@ export class CalciteValueListItem {
           class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
           tabindex="0"
           data-js-handle="true"
-          aria-pressed={this.handleActivated}
+          aria-pressed={this.handleActivated.toString()}
           onKeyDown={this.handleKeyDown}
           onBlur={this.handleBlur}
         >
