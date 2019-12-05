@@ -30,7 +30,7 @@ h2 {
 .example-container h4,
 .example-container h5 {
   font-family: 'Courier New', Courier, monospace;
-  font-weight: var(--calcite-app-font-weight-heading);
+  font-weight: var(--calcite-app-font-weight-demi);
   /* font-size: 14px; */
 }
 .example-container h1 {
