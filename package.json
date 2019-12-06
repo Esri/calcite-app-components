@@ -25,7 +25,6 @@
     "prettier": "npm-run-all --parallel prettier:*",
     "prettier:ts": "prettier --write \"src/**/*.ts?(x)\"",
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
-    "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish && node ./support/githubReleaseFromChangelog.js",
     "start": "concurrently \"npm run demoPageSync\" \"stencil build --dev --watch --serve\"",
     "test": "stencil test --spec --e2e",
