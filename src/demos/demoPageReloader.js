@@ -4,15 +4,11 @@
     return location.protocol === "https:" ? "wss:" : "ws:" + "//" + location.hostname + ":" + location.port + "/";
   };
 
-  const HOST_WHITELIST = ["localhost", "127.0.0.1"];
+  const clientWebSocket = new window.WebSocket(getSocketUrl(window.location), ["xmpp"]);
 
-  if(HOST_WHITELIST.indexOf(location.hostname) !== -1 && "WebSocket" in window){
-    const clientWebSocket = new window.WebSocket(getSocketUrl(window.location), ["xmpp"]);
-
-    clientWebSocket.addEventListener("message", function(message) {
-      if (message.data.indexOf("rebuild finished") > -1) {
-        window.location.reload();
-      }
-    });
-  }
+  clientWebSocket.addEventListener("message", function(message) {
+    if (message.data.indexOf("rebuild finished") > -1) {
+      window.location.reload();
+    }
+  });
 })();

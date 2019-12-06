@@ -29,10 +29,12 @@
     }
   ];
 
-  // Internet Explorer 6-11
-  var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+  const DEV_HOST_WHITELIST = ["localhost", "127.0.0.1"];
 
-  const SCRIPTS = isIE ? CALCITE_SCRIPTS : DEV_SCRIPTS.concat(CALCITE_SCRIPTS);
+  const isIE = /*@cc_on!@*/ false || !!document.documentMode; // Internet Explorer 6-11
+  const loadDevScripts = !isIE && DEV_HOST_WHITELIST.indexOf(location.host) !== -1;
+
+  const SCRIPTS = loadDevScripts ? DEV_SCRIPTS.concat(CALCITE_SCRIPTS) : CALCITE_SCRIPTS;
   const ROOT = window.location.pathname.split("demos").shift();
 
   function loadCss(url) {
