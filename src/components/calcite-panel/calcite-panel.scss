@@ -1,6 +1,5 @@
 :host {
   display: flex;
-  height: 100%;
   font-size: var(--calcite-app-base-font-size);
   position: relative;
 
@@ -10,6 +9,7 @@
 }
 
 .container {
+  align-items: stretch;
   transition: max-height var(--calcite-app-animation-time) var(--calcite-app-easing-function);
   width: 100%;
   height: 100%;
