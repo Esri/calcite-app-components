@@ -25,13 +25,15 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
-    const element = await page.find("calcite-flow");
+    const flowItem = await page.find("calcite-flow-item");
 
-    await element.callMethod("back");
+    await flowItem.callMethod("back");
 
     await page.waitForChanges();
 
-    expect(element.innerHTML).toEqual("");
+    const flow = await page.find("calcite-flow");
+
+    expect(flow.innerHTML).toEqual("");
   });
 
   it("frame advancing should add animation class", async () => {
@@ -80,7 +82,7 @@ describe("calcite-flow", () => {
     expect(frame).not.toHaveClass(CSS.frameRetreating);
     expect(frame).not.toHaveClass(CSS.frameAdvancing);
 
-    await page.$eval("calcite-flow", (elm: HTMLCalciteFlowElement) => elm.back());
+    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowElement) => elm.back());
 
     await page.waitForChanges();
 

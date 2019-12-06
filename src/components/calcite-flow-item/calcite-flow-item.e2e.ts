@@ -150,7 +150,7 @@ describe("calcite-flow-item", () => {
     expect(menuButtonVisible).toBe(true);
   });
 
-  it("back button / showBackButton", async () => {
+  it("showBackButton", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow-item></calcite-flow-item>");
@@ -180,15 +180,20 @@ describe("calcite-flow-item", () => {
     expect(backButtonNew).not.toBeNull();
 
     expect(await backButtonNew.isVisible()).toBe(true);
+  });
 
-    const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
+  it("Back method should remove element", async () => {
+    const page = await newE2EPage();
 
-    await page.$eval("calcite-flow-item", (elm: HTMLElement) => {
-      const nativeBackButton = elm.shadowRoot.querySelector(`calcite-action`);
-      nativeBackButton.click();
-    });
+    await page.setContent("<calcite-flow-item></calcite-flow-item>");
 
-    expect(eventSpy).toHaveReceivedEvent();
+    let element = await page.find("calcite-flow-item");
+
+    await element.callMethod("back");
+
+    element = await page.find("calcite-flow-item");
+
+    expect(element).toBeNull();
   });
 
   it("should be accessible", async () =>
