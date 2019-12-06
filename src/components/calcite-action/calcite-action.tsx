@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
 
-import { CalciteTheme, TextDisplay } from "../interfaces";
+import { CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -61,14 +61,9 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
-   * @deprecated Use 'textDisplay' instead.
-   */
-  @Prop() textEnabled = false;
-
-  /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textDisplay: TextDisplay = "hidden";
+  @Prop() textEnabled = false;
 
   /**
    * Used to set the component's color scheme.
@@ -89,10 +84,10 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  renderTextContainer(textDisplay: TextDisplay): VNode {
+  renderTextContainer(textEnabled: boolean): VNode {
     const { text } = this;
 
-    return textDisplay !== "hidden" ? (
+    return textEnabled ? (
       <div key="text-container" class={CSS.textContainer}>
         {text}
       </div>
@@ -123,15 +118,13 @@ export class CalciteAction {
   }
 
   render() {
-    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
+    const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
     const labelFallback = label || text;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonTextVisible]: calculatedTextDisplay === "visible",
-      [CSS.buttonTextInteractive]: calculatedTextDisplay === "interactive",
+      [CSS.buttonTextVisible]: textEnabled,
       [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };
@@ -147,7 +140,7 @@ export class CalciteAction {
           aria-busy={loading.toString()}
         >
           {this.renderIconContainer()}
-          {this.renderTextContainer(calculatedTextDisplay)}
+          {this.renderTextContainer(textEnabled)}
         </button>
       </Host>
     );

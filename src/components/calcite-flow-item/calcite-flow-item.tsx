@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
 
 import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
@@ -27,6 +27,11 @@ export class CalciteFlowItem {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Optionally perform a function to run before going back.
+   */
+  @Prop() beforeBack: () => Promise<void> = () => Promise.resolve();
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -75,23 +80,27 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Removes the component.
+   */
+  @Method()
+  async back(): Promise<void> {
+    await this.beforeBack();
+
+    this.el.remove();
+  }
+
+  // --------------------------------------------------------------------------
+  //
   //  Private Properties
   //
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteFlowItemElement;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  /**
-   * Emitted when the back button has been clicked.
-   */
-
-  @Event() calciteFlowItemBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -104,7 +113,7 @@ export class CalciteFlowItem {
   };
 
   backButtonClick = (): void => {
-    this.calciteFlowItemBackClick.emit();
+    this.back();
   };
 
   // --------------------------------------------------------------------------

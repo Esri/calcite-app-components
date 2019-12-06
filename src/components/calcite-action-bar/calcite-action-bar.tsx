@@ -34,7 +34,7 @@ export class CalciteActionBar {
 
   @Watch("expanded")
   expandedHandler(newValue: boolean) {
-    this.setActionTextDisplay(newValue);
+    this.setActionTextEnabled(newValue);
 
     this.calciteActionBarToggle.emit();
   }
@@ -84,7 +84,7 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   componentWillLoad() {
-    this.setActionTextDisplay(this.expanded);
+    this.setActionTextEnabled(this.expanded);
   }
 
   // --------------------------------------------------------------------------
@@ -103,10 +103,8 @@ export class CalciteActionBar {
     return shellNode.layout;
   }
 
-  setActionTextDisplay(expanded: boolean): void {
-    this.el
-      .querySelectorAll("calcite-action")
-      .forEach((action) => (action.textDisplay = expanded ? "visible" : "hidden"));
+  setActionTextEnabled(expanded: boolean): void {
+    this.el.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
   }
 
   toggleExpand = (): void => {
@@ -138,11 +136,7 @@ export class CalciteActionBar {
     const collapseIcon = trailing ? icons[0] : icons[1];
 
     return expand ? (
-      <calcite-action
-        onClick={this.toggleExpand}
-        textDisplay={expanded ? "visible" : "hidden"}
-        text={expandText}
-      >
+      <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
         <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;

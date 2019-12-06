@@ -20,11 +20,9 @@ describe("calcite-action", () => {
   it("should have text container", async () => {
     const page = await newE2EPage();
 
-    await page
-      .setContent(`<calcite-action text="hello world" text-display="visible"></calcite-action>`)
-      .catch((error) => {
-        console.error(error);
-      });
+    await page.setContent(`<calcite-action text="hello world" text-enabled></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
 
     const textcontainer = await page.find("calcite-action >>> .text-container");
     expect(textcontainer).not.toBeNull();
@@ -102,6 +100,6 @@ describe("calcite-action", () => {
   it("should be accessible", async () => {
     await accessible(`<calcite-action text="hello world" label="hi"></calcite-action>`);
 
-    await accessible(`<calcite-action text="hello world" label="hi" disabled text-display="visible"></calcite-action>`);
+    await accessible(`<calcite-action text="hello world" label="hi" disabled text-enabled></calcite-action>`);
   });
 });

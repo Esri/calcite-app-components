@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Prop, State, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
@@ -51,19 +51,6 @@ export class CalciteFlow {
 
   componentDidUnload() {
     this.flowItemObserver.disconnect();
-  }
-
-  // --------------------------------------------------------------------------
-  //
-  //  Public Methods
-  //
-  // --------------------------------------------------------------------------
-
-  @Method()
-  async back(): Promise<void> {
-    const lastItem = this.el.querySelector("calcite-flow-item:last-child");
-
-    lastItem && lastItem.remove();
   }
 
   // --------------------------------------------------------------------------
