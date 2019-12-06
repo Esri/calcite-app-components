@@ -3,6 +3,18 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.8.3](https://github.com/Esri/calcite-app-components/compare/v4.8.0...v4.8.3) (2019-12-06)
+
+### Bug Fixes
+
+- demo pages in IE11 ([#610](https://github.com/Esri/calcite-app-components/issues/610)) ([56c7100](https://github.com/Esri/calcite-app-components/commit/56c7100ddd65e992e225ee101dbad489ee0e027e))
+- PickList and ValueList shift deselect list items now working 551 ([#581](https://github.com/Esri/calcite-app-components/issues/581)) ([be6f594](https://github.com/Esri/calcite-app-components/commit/be6f59492586cc6bccfa9b32d66ace676e73eb63))
+
+### Style changes
+
+- **stuff:** psyche! ([fb5339f](https://github.com/Esri/calcite-app-components/commit/fb5339f1e849a90cef48b75127eaafc44274efc9))
+- **stuff:** psyche! ([8e55646](https://github.com/Esri/calcite-app-components/commit/8e55646e4f3e2f99938f581cde324ea8af7a7b81))
+
 ## [4.8.0](https://github.com/Esri/calcite-app-components/compare/v4.7.1...v4.8.0) (2019-11-27)
 
 ### Features
