@@ -20,6 +20,7 @@
     }
   ];
 
+  // Assume server is running in a development environment if there is a port present in the URL and reload demo pages.
   if (location.port) {
     SCRIPTS.push({
       src: "demos/demoPageReloader.js"
