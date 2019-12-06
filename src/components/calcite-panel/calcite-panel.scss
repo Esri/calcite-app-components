@@ -56,6 +56,10 @@
   padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing);
 }
 
+.header-leading-content {
+  margin-bottom: var(--calcite-app-cap-spacing-minimum);
+}
+
 .header-leading-content + .header-content {
   padding-left: var(--calcite-app-side-spacing-half);
 }
@@ -69,6 +73,7 @@ slot[name="header-content"]::slotted(.heading) {
 
 .header-trailing-content {
   margin-left: auto;
+  margin-bottom: var(--calcite-app-cap-spacing-minimum);
 }
 
 .content-container {
@@ -81,6 +86,7 @@ slot[name="header-content"]::slotted(.heading) {
   border-top: 1px solid var(--calcite-app-border);
   display: flex;
   justify-content: space-evenly;
+  min-height: var(--calcite-app-header-min-height);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
