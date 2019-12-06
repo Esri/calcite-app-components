@@ -1,16 +1,7 @@
 (function() {
   const CSS = ["demos/demos.css", "build/calcite-app.css", "vendor/@esri/calcite-components/calcite.css"];
 
-  const DEV_SCRIPTS = [
-    {
-      src: "demos/toggles.js"
-    },
-    {
-      src: "demos/demoPageReloader.js"
-    }
-  ];
-
-  const CALCITE_SCRIPTS = [
+  const SCRIPTS = [
     {
       src: "build/calcite-app.esm.js",
       type: "module"
@@ -31,10 +22,19 @@
 
   const DEV_HOST_WHITELIST = ["localhost", "127.0.0.1"];
 
-  const isIE = /*@cc_on!@*/ false || !!document.documentMode; // Internet Explorer 6-11
-  const loadDevScripts = !isIE && DEV_HOST_WHITELIST.indexOf(location.host) !== -1;
+  if (DEV_HOST_WHITELIST.indexOf(location.host) !== -1) {
+    SCRIPTS.push({
+      src: "demos/demoPageReloader.js"
+    });
+  }
 
-  const SCRIPTS = loadDevScripts ? DEV_SCRIPTS.concat(CALCITE_SCRIPTS) : CALCITE_SCRIPTS;
+  // Internet Explorer 6-11
+  if (/*@cc_on!@*/ false || !!document.documentMode) {
+    SCRIPTS.push({
+      src: "demos/toggles.js"
+    });
+  }
+
   const ROOT = window.location.pathname.split("demos").shift();
 
   function loadCss(url) {
@@ -44,11 +44,11 @@
     document.head.appendChild(link);
   }
 
-  function loadScript(scriptOptions) {
+  function loadScript(options) {
     let scriptElement = document.createElement("script");
 
-    Object.keys(scriptOptions).forEach(function(key) {
-      scriptElement[key] = key === "src" ? ROOT + scriptOptions[key] : scriptOptions[key];
+    Object.keys(options).forEach(function(key) {
+      scriptElement[key] = key === "src" ? ROOT + options[key] : options[key];
     });
 
     document.head.appendChild(scriptElement);
