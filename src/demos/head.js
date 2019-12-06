@@ -20,7 +20,7 @@
     }
   ];
 
-  if (location.port >= 3333 && location.port < 4000) {
+  if (location.port >= 3333 && location.port < 3340) {
     SCRIPTS.push({
       src: "demos/demoPageReloader.js"
     });
