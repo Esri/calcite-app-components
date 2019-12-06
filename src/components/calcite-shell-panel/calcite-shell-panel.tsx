@@ -68,7 +68,7 @@ export class CalciteShellPanel {
 
     const contentNode = (
       <div
-        class={classnames(CSS.content, contentDetached ? CSS.contentDetached : null)}
+        class={classnames(CSS.content, { [CSS.contentDetached]: contentDetached })}
         hidden={collapsed}
       >
         <slot />
