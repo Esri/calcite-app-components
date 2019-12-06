@@ -26,9 +26,9 @@
     });
   }
 
-  const IS_IE = /*@cc_on!@*/ false || !!document.documentMode; // Internet Explorer 6-11
+  const IS_IE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
 
-  if (!IS_IE) {
+  if (!IS_IE11) {
     SCRIPTS.push({
       src: "demos/toggles.js"
     });
