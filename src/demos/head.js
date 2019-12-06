@@ -20,16 +20,15 @@
     }
   ];
 
-  const DEV_HOST_WHITELIST = ["localhost", "127.0.0.1"];
-
-  if (DEV_HOST_WHITELIST.indexOf(location.host) !== -1) {
+  if (location.port >= 3333 && location.port < 4000) {
     SCRIPTS.push({
       src: "demos/demoPageReloader.js"
     });
   }
 
-  // Internet Explorer 6-11
-  if (/*@cc_on!@*/ false || !!document.documentMode) {
+  const IS_IE = /*@cc_on!@*/ false || !!document.documentMode; // Internet Explorer 6-11
+
+  if (!IS_IE) {
     SCRIPTS.push({
       src: "demos/toggles.js"
     });
