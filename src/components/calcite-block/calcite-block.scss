@@ -47,6 +47,7 @@ calcite-loader[inline] {
   text-align: unset;
   width: 100%;
   color: var(--calcite-app-foreground);
+  @include focusRingInset();
 }
 
 .icon {
