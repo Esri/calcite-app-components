@@ -34,6 +34,11 @@ export class CalciteFlowItem {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * Specifies the maxiumum height of the panel that this wraps.
+   */
+  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+
+  /**
    * Heading text.
    */
   @Prop() heading: string;
@@ -222,7 +227,11 @@ export class CalciteFlowItem {
 
     return (
       <Host>
-        <calcite-panel loading={this.loading} disabled={this.disabled}>
+        <calcite-panel
+          loading={this.loading}
+          disabled={this.disabled}
+          height-scale={this.heightScale}
+        >
           {this.renderBackButton(rtl)}
           {this.renderHeading()}
           {this.renderHeaderActions()}
