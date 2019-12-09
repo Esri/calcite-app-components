@@ -26,6 +26,11 @@ export class CalciteShellPanel {
    */
   @Prop({ reflect: true }) collapsed = false;
 
+  @Watch("collapsed")
+  watchHandler() {
+    this.calciteShellPanelToggle.emit();
+  }
+
   /**
    * This property makes the content area appear like a "floating" panel.
    */
@@ -35,11 +40,6 @@ export class CalciteShellPanel {
    * This sets limits the height of the content area. It only applies when detached is true.
    */
   @Prop({ reflect: false }) detachedScale: "s" | "m" | "l" = "m";
-
-  @Watch("collapsed")
-  watchHandler() {
-    this.calciteShellPanelToggle.emit();
-  }
 
   /**
    * Arrangement of the component.
