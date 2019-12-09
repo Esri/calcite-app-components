@@ -4,7 +4,7 @@ import { getItem, setItem } from "../utils/localStorage";
 import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
 import { CSS, TEXT } from "./resources";
-import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import { VNode } from "@stencil/core/dist/declarations";
 
 /**
  * @slot info - A slot for adding an HTML element to the body of the tip.
