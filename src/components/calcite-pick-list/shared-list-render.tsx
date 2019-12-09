@@ -1,6 +1,6 @@
 import { Host, h } from "@stencil/core";
 import CalciteScrim from "../utils/CalciteScrim";
-import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import { VNode } from "@stencil/core/dist/declarations";
 import { CSS } from "./resources";
 
 const renderScrim = (loading, disabled): VNode => {
