@@ -4,6 +4,9 @@ import { CSS } from "./resources";
 
 import { CalciteTheme, FlowDirection } from "../interfaces";
 
+/**
+ * @slot - A slot for adding `calcite-flow-items` to the flow.
+ */
 @Component({
   tag: "calcite-flow",
   styleUrl: "calcite-flow.scss",
