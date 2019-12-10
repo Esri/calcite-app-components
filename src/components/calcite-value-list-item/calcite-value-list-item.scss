@@ -35,6 +35,7 @@ calcite-pick-list-item[selected],
   line-height: 0;
   cursor: move;
   @include borderShadow();
+  @include focusRingInset();
   &:focus {
     outline-offset: var(--calcite-app-outline-inset);
   }
