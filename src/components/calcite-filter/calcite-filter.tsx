@@ -112,6 +112,7 @@ export class CalciteFilter {
         <label>
           <input
             type="text"
+            value=""
             placeholder={this.textPlaceholder}
             onInput={this.inputHandler}
             aria-label={this.textLabel || TEXT.filterLabel}

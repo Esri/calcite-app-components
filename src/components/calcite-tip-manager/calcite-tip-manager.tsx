@@ -17,6 +17,9 @@ import CalciteIcon from "../utils/CalciteIcon";
 import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
+/**
+ * @slot - A slot for adding `calcite-tips`.
+ */
 @Component({
   tag: "calcite-tip-manager",
   styleUrl: "./calcite-tip-manager.scss",

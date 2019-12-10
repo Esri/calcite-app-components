@@ -15,6 +15,7 @@ import { CalciteTheme } from "../interfaces";
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ * @slot - A slot for adding content to the flow item.
  */
 @Component({
   tag: "calcite-flow-item",

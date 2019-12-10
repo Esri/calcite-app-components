@@ -20,6 +20,12 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 | --------------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
+## Slots
+
+| Slot | Description                                     |
+| ---- | ----------------------------------------------- |
+|      | A slot for adding content to the block section. |
+
 ## Dependencies
 
 ### Depends on

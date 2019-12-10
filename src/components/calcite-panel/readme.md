@@ -26,6 +26,7 @@ The `calcite-panel` component is a container that for a header, content and opti
 
 | Slot                        | Description                                                              |
 | --------------------------- | ------------------------------------------------------------------------ |
+|                             | A slot for adding content to the panel.                                  |
 | `"footer"`                  | A slot for adding `calcite-actions` to the footer.                       |
 | `"header-content"`          | A slot for adding content in the center of the header.                   |
 | `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.  |

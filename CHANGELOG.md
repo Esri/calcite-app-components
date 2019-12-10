@@ -3,6 +3,22 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [4.9.0](https://github.com/Esri/calcite-app-components/compare/v4.8.0...v4.9.0) (2019-12-10)
+
+### Features
+
+- add mixin for interim focus style ([a13cebf](https://github.com/Esri/calcite-app-components/commit/a13cebf85e81c1af8f8e8b036033fbb14627eefb)), closes [#573](https://github.com/Esri/calcite-app-components/issues/573)
+
+### Bug Fixes
+
+- added default slots documentation [#561](https://github.com/Esri/calcite-app-components/issues/561)" ([#622](https://github.com/Esri/calcite-app-components/issues/622)) ([9ed8d74](https://github.com/Esri/calcite-app-components/commit/9ed8d74f25a583c2f1c3d22470528d403d1c8f71))
+- demo pages in IE11 ([#610](https://github.com/Esri/calcite-app-components/issues/610)) ([56c7100](https://github.com/Esri/calcite-app-components/commit/56c7100ddd65e992e225ee101dbad489ee0e027e))
+- JS error in flow demo by removing unnecessary script. [#617](https://github.com/Esri/calcite-app-components/issues/617) ([f2f81d5](https://github.com/Esri/calcite-app-components/commit/f2f81d5e33051fd938c085c6917b719850e2df2f))
+- keep value-list-item selected in sync with pick-list-item ([#623](https://github.com/Esri/calcite-app-components/issues/623)) ([100eaf0](https://github.com/Esri/calcite-app-components/commit/100eaf0e9a2f47e39dd6f55f7464b443b2a30573))
+- **value-list-item:** focus inset ([e461ea9](https://github.com/Esri/calcite-app-components/commit/e461ea9835d086455a5374208a89790e8ceeddd0)), closes [#573](https://github.com/Esri/calcite-app-components/issues/573)
+- Only render header when a heading exists or the dismiss button. [#566](https://github.com/Esri/calcite-app-components/issues/566) ([#613](https://github.com/Esri/calcite-app-components/issues/613)) ([3aaadec](https://github.com/Esri/calcite-app-components/commit/3aaadec2968348198fc34c4f1ce21c2b810f60fc))
+- PickList and ValueList shift deselect list items now working 551 ([#581](https://github.com/Esri/calcite-app-components/issues/581)) ([be6f594](https://github.com/Esri/calcite-app-components/commit/be6f59492586cc6bccfa9b32d66ace676e73eb63))
+
 ## [4.8.0](https://github.com/Esri/calcite-app-components/compare/v4.7.1...v4.8.0) (2019-11-27)
 
 ### Features
