@@ -10,6 +10,7 @@ import { CalciteTheme } from "../interfaces";
  * @slot primary-panel - A slot for adding the leading `calcite-shell-panel`.
  * @slot contextual-panel - A slot for adding the trailing `calcite-shell-panel`.
  * @slot tip-manager - A slot for adding a `calcite-tip-manager`. This component will be absolutely positioned.
+ * @slot - A slot for adding content to the shell. This content will appear between any leading and trailing panels added to the shell.
  */
 @Component({
   tag: "calcite-shell",

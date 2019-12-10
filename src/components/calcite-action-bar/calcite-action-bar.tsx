@@ -10,6 +10,7 @@ import { CSS } from "./resources";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
+ * @slot - A slot for adding `calcite-actions` that will appear at the top of the action bar.
  */
 @Component({
   tag: "calcite-action-bar",
