@@ -30,6 +30,7 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 | Slot               | Description                                                                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+|                    | A slot for adding content to the flow item.                                                                                     |
 | `"footer-actions"` | A slot for adding `calcite-actions` to the footer.                                                                              |
 | `"menu-actions"`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. |
 
