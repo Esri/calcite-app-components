@@ -110,6 +110,10 @@ export class CalciteValueListItem {
     this.handleActivated = false;
   };
 
+  handleSelectChange = (event: CustomEvent) => {
+    this.selected = event.detail.selected;
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -148,6 +152,7 @@ export class CalciteValueListItem {
           metadata={this.metadata}
           textLabel={this.textLabel}
           textDescription={this.textDescription}
+          onCalciteListItemChange={this.handleSelectChange}
           value={this.value}
         >
           <slot name="secondaryAction" slot="secondaryAction" />
