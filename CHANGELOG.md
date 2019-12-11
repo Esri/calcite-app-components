@@ -3,6 +3,12 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [4.10.0](https://github.com/Esri/calcite-app-components/compare/v4.9.0...v4.10.0) (2019-12-11)
+
+### Bug Fixes
+
+- **panel:** adding min-heights for panel header and footer ([facc4c7](https://github.com/Esri/calcite-app-components/commit/facc4c7988e876244792b86fe832c64c64900693)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565)
+
 ## [4.9.0](https://github.com/Esri/calcite-app-components/compare/v4.8.0...v4.9.0) (2019-12-10)
 
 ### Features
