@@ -2,6 +2,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import blockReadme from "./readme.md";
 import sectionReadme from "../calcite-block-section/readme.md";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 
 export default {
   title: "calcite-block",
@@ -17,8 +18,7 @@ export default {
 
 const createBlockAttributes: () => Attributes = () => {
   const group = "block";
-  const dirOptions = ["ltr", "rtl"];
-  const themeOptions = ["light", "dark"];
+  const { dir, theme } = ATTRIBUTES;
 
   return [
     {
@@ -27,7 +27,7 @@ const createBlockAttributes: () => Attributes = () => {
     },
     {
       name: "dir",
-      value: select("dir", dirOptions, dirOptions[0], group)
+      value: select("dir", dir.values, dir.defaultValue, group)
     },
     {
       name: "summary",
@@ -51,7 +51,7 @@ const createBlockAttributes: () => Attributes = () => {
     },
     {
       name: "theme",
-      value: select("theme", themeOptions, themeOptions[0], group)
+      value: select("theme", theme.values, theme.defaultValue, group)
     },
     {
       name: "text-collapse",
