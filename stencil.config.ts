@@ -5,12 +5,12 @@ import autoprefixer from "autoprefixer";
 
 // Exclude demo components for production build
 const isDevBuild = process.argv.includes("--dev");
-const DEFAULT_EXCLUDE_SRC = ["**/tests/**", "**/*example*/**"];
+const DEFAULT_EXCLUDE_SRC = ["**/*.stories.ts", "**/tests/**", "**/*example*/**"];
 if (!isDevBuild) {
   DEFAULT_EXCLUDE_SRC.push("**/*demo*/**");
 }
 
-export const config: Config = {
+export const create: () => Config = () => ({
   namespace: "calcite-app",
   bundles: [
     {
@@ -36,7 +36,10 @@ export const config: Config = {
       type: "www",
       copy: [
         { src: "../demos", dest: "demos" },
-        { src: "../../node_modules/@esri/calcite-components/dist/calcite", dest: "vendor/@esri/calcite-components" }
+        {
+          src: "../../node_modules/@esri/calcite-components/dist/calcite",
+          dest: "vendor/@esri/calcite-components"
+        }
       ],
       serviceWorker: null // disable service workers
     }
@@ -56,4 +59,6 @@ export const config: Config = {
   srcDir: "src/components",
   excludeSrc: DEFAULT_EXCLUDE_SRC,
   srcIndexHtml: "src/index.html"
-};
+});
+
+export const config = create();
