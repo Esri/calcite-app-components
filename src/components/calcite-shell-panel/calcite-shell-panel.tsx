@@ -8,6 +8,7 @@ import { CalciteLayout } from "../interfaces";
 
 /**
  * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
+ * @slot - A slot for adding content to the shell panel.
  */
 @Component({
   tag: "calcite-shell-panel",
