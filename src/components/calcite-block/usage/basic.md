@@ -23,3 +23,13 @@ Renders a header and icon with the icon.
   <div slot="icon">🤯</div>
 </calcite-block>
 ```
+
+#### Header and content (always open)
+
+Renders a header and content that remains open - no the option to collapse the block.
+
+```html
+<calcite-block heading="When your son becomes a priest, do you call him..." open>
+  <div>Father or Son?</div>
+</calcite-block>
+```
