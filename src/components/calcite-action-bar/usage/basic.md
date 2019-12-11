@@ -16,7 +16,7 @@ Renders `calcite-action`'s that stick to the top of the bar.
 
 #### With grouping
 
-Renders a group of `calcite-action`'s contained in a `calcite-action-group`.
+Renders a group of `calcite-action`'s contained in a `calcite-action-group`. Actions in a group are visually separated from other groups or actions irn the bar.
 
 ```html
 <calcite-action-bar>
@@ -27,7 +27,13 @@ Renders a group of `calcite-action`'s contained in a `calcite-action-group`.
     <calcite-action text="Save">
       <!-- icon -->
     </calcite-action>
+  </calcite-action-group>
+
+  <calcite-action-group>
     <calcite-action text="Layers">
+      <!-- icon -->
+    </calcite-action>
+    <calcite-action text="Basemaps">
       <!-- icon -->
     </calcite-action>
   </calcite-action-group>
@@ -36,15 +42,15 @@ Renders a group of `calcite-action`'s contained in a `calcite-action-group`.
 
 #### Bottom Actions
 
-Renders `calcite-action`'s that stick to the bottom of the bar.
+The bottom-actions slot renders `calcite-action`'s that stick to the bottom of the bar above the expand/collapse icon.
 
 ```html
 <calcite-action-bar>
-  <div slot="bottom actions">
-    <calcite-action text="Information">
-      <!-- icon -->
-    </calcite-action>
+  <calcite-action text="Information">
+    <!-- icon -->
+  </calcite-action>
 
+  <div slot="bottom-actions">
     <calcite-action text="Feedback">
       <!-- icon -->
     </calcite-action>
