@@ -1,3 +1,4 @@
 // file imports
-declare module "*.svg";
+declare module "*.json";
 declare module "*.md";
+declare module "*.svg";

@@ -13,10 +13,12 @@ import {
   text
 } from "@storybook/addon-knobs";
 
+import colors from "../node_modules/@esri/calcite-colors/colors.json";
+
 export const darkBackground = [
   {
     name: "Dark",
-    value: "#202020",
+    value: colors["blk-210"],
     default: true
   }
 ];
