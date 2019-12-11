@@ -17,6 +17,7 @@ Renders `calcite-action`s that stick to the top of the bar.
 
 Renders a group of `calcite-action`s contained in a `calcite-action-group`. Actions in a group are visually separated from other groups or actions in the bar.
 
+
 ```html
 <calcite-action-bar>
   <calcite-action-group>
