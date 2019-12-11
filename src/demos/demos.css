@@ -18,7 +18,7 @@ main {
   margin: 0 auto var(--calcite-app-cap-spacing-double);
   background-color: var(--calcite-app-background-clear);
 }
-/* 
+/*
 h2 {
   font-size: 24px;
   font-family: 'Courier New', Courier, monospace;
@@ -29,7 +29,7 @@ h2 {
 .example-container h3,
 .example-container h4,
 .example-container h5 {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: var(--calcite-app-font-weight-demi);
   /* font-size: 14px; */
 }
