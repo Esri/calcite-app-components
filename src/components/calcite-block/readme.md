@@ -30,6 +30,7 @@ See the [calcite-block demo](https://esri.github.io/calcite-app-components/demos
 
 | Slot        | Description                                                |
 | ----------- | ---------------------------------------------------------- |
+|             | A slot for adding content to the block.                    |
 | `"control"` | A slot for adding a single HTML input element in a header. |
 | `"icon"`    | A slot for adding a trailing header icon.                  |
 

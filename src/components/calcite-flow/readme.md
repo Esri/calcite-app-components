@@ -20,6 +20,12 @@ See the [calcite-flow demo](https://esri.github.io/calcite-app-components/demos/
 
 Type: `Promise<void>`
 
+## Slots
+
+| Slot | Description                                         |
+| ---- | --------------------------------------------------- |
+|      | A slot for adding `calcite-flow-items` to the flow. |
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_

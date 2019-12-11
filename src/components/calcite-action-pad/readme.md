@@ -12,6 +12,12 @@ See the [calcite-action-pad demo](https://esri.github.io/calcite-app-components/
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
 | `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
+## Slots
+
+| Slot | Description                                            |
+| ---- | ------------------------------------------------------ |
+|      | A slot for adding `calcite-actions` to the action pad. |
+
 ---
 
 _Built with [StencilJS](https://stenciljs.com/)_
