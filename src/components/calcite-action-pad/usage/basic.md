@@ -1,6 +1,6 @@
 #### Basic Action Pad
 
-Renders
+Renders a basic action pad with `calcite-action`s.
 
 ```html
 <calcite-action-pad>
