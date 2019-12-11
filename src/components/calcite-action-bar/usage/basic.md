@@ -7,7 +7,6 @@ Renders `calcite-action`'s that stick to the top of the bar.
   <calcite-action text="Add">
     <!-- icon -->
   </calcite-action>
-
   <calcite-action text="Save">
     <!-- icon -->
   </calcite-action>
