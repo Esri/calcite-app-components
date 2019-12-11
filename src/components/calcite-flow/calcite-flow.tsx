@@ -78,12 +78,6 @@ export class CalciteFlow {
   // --------------------------------------------------------------------------
 
   getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection | null => {
-    const flowCountChanged = oldFlowCount !== newFlowCount;
-
-    if (!flowCountChanged) {
-      return null;
-    }
-
     const allowRetreatingDirection = oldFlowCount > 1;
     const allowAdvancingDirection = oldFlowCount && newFlowCount > 1;
 
@@ -104,7 +98,6 @@ export class CalciteFlow {
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
 
-    const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
     const activeFlow = newFlows[newFlowCount - 1];
     const previousFlow = newFlows[newFlowCount - 2];
 
@@ -120,8 +113,12 @@ export class CalciteFlow {
     }
 
     this.flows = newFlows;
-    this.flowCount = newFlowCount;
-    this.flowDirection = flowDirection;
+
+    if (oldFlowCount !== newFlowCount) {
+      const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
+      this.flowCount = newFlowCount;
+      this.flowDirection = flowDirection;
+    }
   };
 
   flowItemObserver = new MutationObserver(this.updateFlowProps);
