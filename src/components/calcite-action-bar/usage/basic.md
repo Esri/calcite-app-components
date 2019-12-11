@@ -1,6 +1,6 @@
 #### Basic Action Bar (Top Actions)
 
-Renders `calcite-actions` just on the top half of the bar.
+Renders `calcite-actions` that stick to the top of the bar.
 
 ```html
 <calcite-action-bar>
@@ -36,7 +36,7 @@ Renders a group of `calcite-actions` contained in a `calcite-action-group`.
 
 #### Bottom Actions
 
-Renders `calcite-actions` that stick to the bottom of the action bar.
+Renders `calcite-actions` that stick to the bottom of the bar.
 
 ```html
 <calcite-action-bar>
