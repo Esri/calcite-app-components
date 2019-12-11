@@ -6,7 +6,7 @@ body {
 main {
   margin: 0;
   padding: 0;
-  font-size: var(--calcite-base-font-size);
+  font-size: var(--calcite-font-size-0);
 }
 
 .example-container {
@@ -30,7 +30,7 @@ h2 {
 .example-container h4,
 .example-container h5 {
   font-family: 'Courier New', Courier, monospace;
-  font-weight: var(--calcite-app-font-weight-heading);
+  font-weight: var(--calcite-app-font-weight-demi);
   /* font-size: 14px; */
 }
 .example-container h1 {
