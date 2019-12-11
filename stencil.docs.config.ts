@@ -7,4 +7,4 @@ export const config: Config = baseConfig;
 const wwwOutputTarget = config.outputTargets.find((element) => element.type === "www") as OutputTargetWww;
 wwwOutputTarget.dir = "docs";
 config.outputTargets = [wwwOutputTarget];
-config.excludeSrc = ["**/tests/**", "**/*example*/**"];
+config.excludeSrc = ["**/tests/**"];

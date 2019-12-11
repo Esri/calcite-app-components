@@ -61,12 +61,12 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
-   * @deprecated Use 'textDisplay' instead.
+   * Indicates whether the text is displayed.
    */
   @Prop() textEnabled = false;
 
   /**
-   * Indicates whether the text is displayed.
+   * @deprecated Use 'textEnabled' instead.
    */
   @Prop({ reflect: true }) textDisplay: TextDisplay = "hidden";
 
