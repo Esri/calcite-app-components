@@ -1,9 +1,6 @@
-$side-spacing: 16px !default;
-$cap-spacing: 16px !default;
-
 :root {
-  --calcite-app-side-spacing: #{$side-spacing};
-  --calcite-app-cap-spacing: #{$cap-spacing};
+  --calcite-app-side-spacing: 1rem;
+  --calcite-app-cap-spacing: 1rem;
 
   --calcite-app-side-spacing-three-quarters: calc(var(--calcite-app-side-spacing) * 3 / 4);
   --calcite-app-cap-spacing-three-quarters: calc(var(--calcite-app-cap-spacing) * 3 / 4);
@@ -31,7 +28,7 @@ $cap-spacing: 16px !default;
   --calcite-app-menu-min-width: 10rem;
   --calcite-app-menu-offset: 0px;
 
-  --calcite-app-icon-size: 16px;
+  --calcite-app-icon-size: 1rem;
 
   --calcite-app-border-radius: 3px;
 

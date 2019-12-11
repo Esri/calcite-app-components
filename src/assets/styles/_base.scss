@@ -2,9 +2,7 @@
   background-color: var(--calcite-app-background);
   box-sizing: border-box;
   color: var(--calcite-app-foreground);
-  font-family: var(--calcite-app-font-family);
-  font-size: var(--calcite-app-base-font-size);
-  line-height: var(--calcite-app-line-height);
+  font-size: var(--calcite-app-font-size-0);
   * {
     box-sizing: border-box;
   }
@@ -32,21 +30,4 @@
 .header .heading {
   flex: 1 0 auto;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-}
-
-h1.heading {
-  font-size: var(--calcite-app-font-size-2);
-  font-weight: var(--calcite-app-font-weight);
-}
-
-h2.heading {
-  font-size: var(--calcite-app-font-size-1);
-  font-weight: var(--calcite-app-font-weight-demi);
-}
-
-h3.heading,
-h4.heading,
-h5.heading {
-  font-size: var(--calcite-app-font-size-0);
-  font-weight: var(--calcite-app-font-weight-demi);
 }
