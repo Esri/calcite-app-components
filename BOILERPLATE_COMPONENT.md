@@ -120,11 +120,7 @@ The Associated Sass styling to go along with the component.
 
 ```css
 :host {
-  // ...
-}
-
-.foo {
-  // ...
+  display: flex;
 }
 ```
 
