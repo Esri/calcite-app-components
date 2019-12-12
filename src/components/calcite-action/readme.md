@@ -52,8 +52,8 @@ Renders a `calcite-action` that has a clear background.
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`                                 | `undefined` |
 | `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                    | `boolean`                                | `false`     |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`                                 | `undefined` |
-| `textDisplay` | `text-display` | Indicates whether the text is displayed.                                                          | `"hidden" \| "interactive" \| "visible"` | `"hidden"`  |
-| `textEnabled` | `text-enabled` | <span style="color:red">**[DEPRECATED]**</span> Use 'textDisplay' instead.<br/><br/>              | `boolean`                                | `false`     |
+| `textDisplay` | `text-display` | <span style="color:red">**[DEPRECATED]**</span> Use 'textEnabled' instead.<br/><br/>              | `"hidden" \| "interactive" \| "visible"` | `"hidden"`  |
+| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`                                | `false`     |
 | `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"`                      | `undefined` |
 
 ## Dependencies
