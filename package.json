@@ -19,7 +19,7 @@
     "demoPageSync": "node ./support/demoPageSync.js",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"chore(deps): Bump versions.\"",
     "docs": "stencil build --config stencil.docs.config.ts",
-    "docs:storybook": "concurrently --raw \"npm run build:docs && build-storybook --static-dir ./__docs-temp__ --output-dir ./docs\" \"node ./support/tempDocDirCleaner.js\"",
+    "docs:storybook": "concurrently --kill-others --raw \"npm run build:docs && build-storybook --static-dir ./__docs-temp__ --output-dir ./docs\" \"node ./support/tempDocDirCleaner.js\"",
     "docs:preview": "concurrently --raw \"npm run build:docs && start-storybook --static-dir ./__docs-temp__\" \"node ./support/tempDocDirCleaner.js\"",
     "lint": "npm-run-all --parallel lint:*",
     "lint:ts": "tslint --project tsconfig-tslint.json",
