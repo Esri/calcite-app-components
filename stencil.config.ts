@@ -5,7 +5,8 @@ import autoprefixer from "autoprefixer";
 
 // Exclude demo components for production build
 const isDevBuild = process.argv.includes("--dev");
-const DEFAULT_EXCLUDE_SRC = ["**/*.stories.ts", "**/tests/**", "**/*example*/**"];
+
+const DEFAULT_EXCLUDE_SRC = ["**/*.stories.ts", "**/tests/**"];
 if (!isDevBuild) {
   DEFAULT_EXCLUDE_SRC.push("**/*demo*/**");
 }
