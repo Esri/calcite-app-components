@@ -61,12 +61,14 @@ $vibrant-blue: $v-bb-120;
   @include calciteLightThemeVars();
 }
 
-/* keep below :root */
-:host([theme="dark"]) {
-  @include calciteDarkThemeVars();
-}
+@supports (--css: variables) {
+  /* keep below :root */
+  :host([theme="dark"]) {
+    @include calciteDarkThemeVars();
+  }
 
-/* keep below :host([theme="dark"]) */
-:host([theme="light"]) {
-  @include calciteLightThemeVars();
+  /* keep below :host([theme="dark"]) */
+  :host([theme="light"]) {
+    @include calciteLightThemeVars();
+  }
 }
