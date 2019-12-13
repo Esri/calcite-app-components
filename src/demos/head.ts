@@ -1,7 +1,13 @@
-(function() {
+(() => {
   const CSS = ["demos/demos.css", "build/calcite-app.css", "vendor/@esri/calcite-components/calcite.css"];
 
-  const SCRIPTS = [
+  interface Script {
+    src: string;
+    type?: "module";
+    noModule?: boolean;
+  }
+
+  const SCRIPTS: Script[] = [
     {
       src: "build/calcite-app.esm.js",
       type: "module"
@@ -37,18 +43,18 @@
 
   const ROOT = window.location.pathname.split("demos").shift();
 
-  function loadCss(url) {
-    let link = document.createElement("link");
+  function loadCss(url: string): void {
+    const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = ROOT + url;
     document.head.appendChild(link);
   }
 
-  function loadScript(options) {
-    let scriptElement = document.createElement("script");
+  function loadScript(script: Script): void {
+    const scriptElement = document.createElement("script");
 
-    Object.keys(options).forEach(function(key) {
-      scriptElement[key] = key === "src" ? ROOT + options[key] : options[key];
+    Object.keys(script).forEach((key) => {
+      scriptElement[key] = key === "src" ? ROOT + script[key] : script[key];
     });
 
     document.head.appendChild(scriptElement);
