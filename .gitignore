@@ -1,30 +1,31 @@
+# Directories
 dist/
 www/
+node_modules/
 
+# Compiled files
+src/**/components.d.ts
+src/demos/**/*.js
+
+# User Settings, Caches & Temp Files
 *~
 *.sw[mnpcod]
 *.log
 *.lock
 *.tmp
 *.tmp.*
-log.txt
 *.sublime-project
 *.sublime-workspace
-
+*.bak
+*.orig
 .stencil/
 .idea/
 .vscode/
 .sass-cache/
 .versions/
-node_modules/
-$RECYCLE.BIN/
-
 .DS_Store
+.env
+$RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
-.env
-src/**/components.d.ts
-
-# backup files
-*.bak
-*.orig
+log.txt
