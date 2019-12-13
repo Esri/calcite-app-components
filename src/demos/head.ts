@@ -1,32 +1,65 @@
 (() => {
-  const root = window.location.pathname.split("demos").shift();
+  const CSS = ["demos/demos.css", "build/calcite-app.css", "vendor/@esri/calcite-components/calcite.css"];
+
+  interface Script {
+    src: string;
+    type?: "module";
+    noModule?: boolean;
+  }
+
+  const SCRIPTS: Script[] = [
+    {
+      src: "build/calcite-app.esm.js",
+      type: "module"
+    },
+    {
+      src: "build/calcite-app.js",
+      noModule: true
+    },
+    {
+      src: "vendor/@esri/calcite-components/calcite.esm.js",
+      type: "module"
+    },
+    {
+      src: "vendor/@esri/calcite-components/calcite.js",
+      noModule: true
+    }
+  ];
+
+  // Assume server is running in a development environment if there is a port present in the URL and reload demo pages.
+  if (location.port) {
+    SCRIPTS.push({
+      src: "demos/demoPageReloader.js"
+    });
+  }
+
+  const IS_IE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
+
+  if (!IS_IE11) {
+    SCRIPTS.push({
+      src: "demos/toggles.js"
+    });
+  }
+
+  const ROOT = window.location.pathname.split("demos").shift();
 
   function loadCss(url: string): void {
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = root + url;
+    link.href = ROOT + url;
     document.head.appendChild(link);
   }
 
-  function loadScript(url: string, options?: Partial<{ noModule: boolean; type: "module" }>): void {
-    const script = document.createElement("script");
-    if (options) {
-      Object.keys(options).forEach((key) => {
-        script[key] = options[key];
-      });
-    }
-    script.src = root + url;
+  function loadScript(script: Script): void {
+    const scriptElement = document.createElement("script");
 
-    document.head.appendChild(script);
+    Object.keys(script).forEach((key) => {
+      scriptElement[key] = key === "src" ? ROOT + script[key] : script[key];
+    });
+
+    document.head.appendChild(scriptElement);
   }
 
-  loadCss("demos/demos.css");
-  loadCss("build/calcite-app.css");
-  loadCss("vendor/@esri/calcite-components/calcite.css");
-  loadScript("demos/demoPageReloader.js");
-  loadScript("demos/toggles.js");
-  loadScript("build/calcite-app.esm.js", { type: "module" });
-  loadScript("build/calcite-app.js", { noModule: true });
-  loadScript("vendor/@esri/calcite-components/calcite.esm.js", { type: "module" });
-  loadScript("vendor/@esri/calcite-components/calcite.js", { noModule: true });
+  CSS.forEach(loadCss);
+  SCRIPTS.forEach(loadScript);
 })();
