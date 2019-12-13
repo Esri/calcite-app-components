@@ -49,7 +49,10 @@ export const create: () => Config = () => ({
     })
   ],
   testing: {
-    setupFilesAfterEnv: ["<rootDir>/src/tests/setup.js"]
+    transform: {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    setupFilesAfterEnv: ["<rootDir>/src/tests/setup.ts"]
   },
   srcDir: "src/components",
   excludeSrc: DEFAULT_EXCLUDE_SRC,
