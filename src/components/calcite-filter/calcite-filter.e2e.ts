@@ -7,6 +7,69 @@ describe("calcite-filter", () => {
   it("honors hidden attribute", async () => hidden("calcite-filter"));
   it("is accessible", async () => accessible(`<calcite-filter></calcite-filter>`));
 
+  describe("strings", () => {
+    it.only("should update the filter placeholder when a string is provided", async () => {
+      const page = await newE2EPage();
+      const placeholderText = "hide em";
+      await page.setContent(`<calcite-filter text-placeholder="${placeholderText}"></calcite-filter>`);
+
+      const input = await page.find(`calcite-filter >>> input`);
+      expect(await input.getProperty("placeholder")).toBe(placeholderText);
+    });
+  });
+
+  describe.only("clear button", () => {
+    let page;
+    beforeEach(async () => {
+      page = await newE2EPage();
+      await page.setContent("<calcite-filter></calcite-filter>");
+      await page.evaluate(() => {
+        const filter = document.querySelector("calcite-filter");
+        filter.data = [{ foo: "bar" }];
+      });
+    });
+    it("should only display when the input has a value", async () => {
+      let button = await page.find(`calcite-filter >>> button`);
+
+      expect(button).toBeNull();
+
+      await page.evaluate(() => {
+        const filter = document.querySelector("calcite-filter");
+        const filterInput = filter.shadowRoot.querySelector("input");
+        filterInput.value = "developer";
+        filterInput.dispatchEvent(new Event("input"));
+      });
+
+      await page.waitForChanges();
+
+      button = await page.find(`calcite-filter >>> button`);
+
+      expect(button).not.toBeNull();
+    });
+    it("should clear the value in the input when pressed", async () => {
+      await page.evaluate(() => {
+        const filter = document.querySelector("calcite-filter");
+        const filterInput = filter.shadowRoot.querySelector("input");
+        filterInput.value = "developer";
+        filterInput.dispatchEvent(new Event("input"));
+      });
+
+      await page.waitForChanges();
+
+      const button = await page.find(`calcite-filter >>> button`);
+
+      await button.click();
+
+      const value = await page.evaluate(() => {
+        const filter = document.querySelector("calcite-filter");
+        const filterInput = filter.shadowRoot.querySelector("input");
+        return filterInput.value;
+      });
+
+      expect(value).toBe("");
+    });
+  });
+
   describe("filter behavior", () => {
     let page: E2EPage;
     beforeEach(async () => {

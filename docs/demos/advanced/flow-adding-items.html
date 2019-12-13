@@ -63,8 +63,8 @@
         <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
 
         <details>
-            <summary>Sample JavaScript</summary>
-<pre><code class="language-js">&lt;script&gt;
+          <summary>Sample JavaScript</summary>
+          <pre><code class="language-js">&lt;script&gt;
   var flowNode = document.getElementById("flow");
 
   flowNode.addEventListener("calciteFlowItemBackClick", function() {
@@ -131,6 +131,11 @@
           </div>
         `;
         flowNode.appendChild(newNode);
+        setTimeout(function() {
+          var newDiv = document.createElement("div");
+          newDiv.innerHTML = "new div who dis?";
+          newNode.appendChild(newDiv);
+        }, 100);
       });
     </script>
   </body>
