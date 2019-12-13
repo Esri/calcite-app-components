@@ -1,11 +1,13 @@
-const chalk = require('chalk');
+const chalk = require("chalk");
 const childProcess = require("child_process");
 const branch = childProcess.execSync("git rev-parse --abbrev-ref HEAD");
 
-if( branch.toString().trim() === "master" ) {
+if (branch.toString().trim() === "master") {
   process.exit();
 } else {
-  console.log(chalk.green(`
+  console.log(
+    chalk.green(
+      `
   *  ______     ______     __         ______     __     ______   ______
   * /\\  ___\\   /\\  __ \\   /\\ \\       /\\  ___\\   /\\ \\   /\\__  _\\ /\\  ___\\
   * \\ \\ \\____  \\ \\  __ \\  \\ \\ \\____  \\ \\ \\____  \\ \\ \\  \\/_/\\ \\/ \\ \\  __\\
@@ -17,7 +19,14 @@ if( branch.toString().trim() === "master" ) {
   *  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\
   *   \\/_____/   \\/_/ /_/   \\/_/ /_/   \\/_____/   \\/_/ /_/
   *
-  *`, chalk.red(`You may only run`, chalk.white('$ npm publish'), `from the master branch. You are on ${branch.toString()}.
-  `)));
+  *`,
+      chalk.red(
+        `You may only run`,
+        chalk.white("$ npm publish"),
+        `from the master branch. You are on ${branch.toString()}.
+  `
+      )
+    )
+  );
   process.exit(1);
 }

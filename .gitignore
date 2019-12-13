@@ -5,6 +5,7 @@ node_modules/
 
 # Compiled files
 src/**/components.d.ts
+src/demos/**/*.js
 
 # User Settings, Caches & Temp Files
 *~
