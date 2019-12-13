@@ -89,10 +89,12 @@ export class CalciteFlowItem {
    * Removes the component.
    */
   @Method()
-  async back(): Promise<void> {
+  async back(): Promise<HTMLCalciteFlowItemElement> {
     await this.beforeBack();
 
     this.el.remove();
+
+    return this.el;
   }
 
   // --------------------------------------------------------------------------
