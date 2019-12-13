@@ -1,15 +1,11 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
-
 import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
-
-import { getElementDir } from "../utils/dom";
-
+import { getElementDir, setElementFocus } from "../utils/dom";
 import classnames from "classnames";
-
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
-
+import { getRoundRobinIndex } from "../utils/array";
 import { CalciteTheme } from "../interfaces";
 
 /**
@@ -100,15 +96,6 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  // could be dom utility
-  focusElement(el: HTMLCalciteActionElement | HTMLElement): void {
-    if (!el) {
-      return;
-    }
-
-    "setFocus" in el ? el.setFocus() : el.focus();
-  }
-
   queryActions(): HTMLCalciteActionElement[] {
     return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] > *`));
   }
@@ -146,12 +133,12 @@ export class CalciteFlowItem {
 
     if (key === "ArrowUp") {
       const lastAction = actions[length - 1];
-      this.focusElement(lastAction);
+      setElementFocus(lastAction);
     }
 
     if (key === "ArrowDown") {
       const firstAction = actions[0];
-      this.focusElement(firstAction);
+      setElementFocus(firstAction);
     }
   };
 
@@ -171,17 +158,15 @@ export class CalciteFlowItem {
     }
 
     if (key === "ArrowUp") {
-      const previousIndex = currentIndex - 1;
-      const value = (previousIndex + length) % length;
+      const value = getRoundRobinIndex(currentIndex - 1, length);
       const previousAction = actions[value];
-      this.focusElement(previousAction);
+      setElementFocus(previousAction);
     }
 
     if (key === "ArrowDown") {
-      const nextIndex = currentIndex + 1;
-      const value = (nextIndex + length) % length;
+      const value = getRoundRobinIndex(currentIndex + 1, length);
       const nextAction = actions[value];
-      this.focusElement(nextAction);
+      setElementFocus(nextAction);
     }
   };
 
