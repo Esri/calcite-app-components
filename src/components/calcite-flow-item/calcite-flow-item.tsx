@@ -7,7 +7,7 @@ import { getElementDir } from "../utils/dom";
 
 import classnames from "classnames";
 
-import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, TEXT } from "./resources";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
@@ -100,6 +100,14 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  queryActions(): HTMLCalciteActionElement[] {
+    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] > *`));
+  }
+
+  isValidKey(key: string, supportedKeys: string[]): boolean {
+    return supportedKeys.indexOf(key) !== -1;
+  }
+
   toggleMenuOpen = (): void => {
     this.menuOpen = !this.menuOpen;
   };
@@ -110,19 +118,16 @@ export class CalciteFlowItem {
 
   menuButtonKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
+    const { menuOpen } = this;
 
-    const supportedKeys = ["ArrowUp", "ArrowDown"];
-    const { el, menuOpen } = this;
-
-    if (supportedKeys.indexOf(key) === -1) {
+    if (!this.isValidKey(key, ["ArrowUp", "ArrowDown"])) {
       return;
     }
 
-    const actions: HTMLCalciteActionElement[] = Array.from(
-      el.querySelectorAll("[slot=menu-actions] calcite-action")
-    );
+    const actions = this.queryActions();
+    const { length } = actions;
 
-    if (!actions.length) {
+    if (!length) {
       return;
     }
 
@@ -131,27 +136,55 @@ export class CalciteFlowItem {
     }
 
     if (key === "ArrowUp") {
-      const lastAction = actions[actions.length - 1];
-      lastAction && lastAction.focus();
+      const lastAction = actions[length - 1];
+      lastAction && lastAction.setFocus ? lastAction.setFocus() : lastAction.focus();
     }
 
     if (key === "ArrowDown") {
       const firstAction = actions[0];
-      firstAction && firstAction.focus();
+      firstAction && firstAction.setFocus ? firstAction.setFocus() : firstAction.focus();
     }
   };
 
-  menuKeyDown = (event: KeyboardEvent): void => {
+  menuActionsKeydown = (event: KeyboardEvent): void => {
+    const { key, target } = event;
+
+    if (!this.isValidKey(key, ["ArrowUp", "ArrowDown"])) {
+      return;
+    }
+
+    const actions = this.queryActions();
+    const { length } = actions;
+    const currentIndex = actions.indexOf(target as HTMLCalciteActionElement);
+
+    if (!length || currentIndex === -1) {
+      return;
+    }
+
+    if (key === "ArrowUp") {
+      const previousIndex = currentIndex - 1;
+      const value = (previousIndex + length) % length;
+      const previousAction = actions[value];
+      previousAction && previousAction.setFocus
+        ? previousAction.setFocus()
+        : previousAction.focus();
+    }
+
+    if (key === "ArrowDown") {
+      const nextIndex = currentIndex + 1;
+      const value = (nextIndex + length) % length;
+      const nextAction = actions[value];
+      nextAction && nextAction.setFocus ? nextAction.setFocus() : nextAction.focus();
+    }
+  };
+
+  menuActionsContainerKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
 
     if (key === "Escape") {
       this.menuOpen = false;
       return;
     }
-  };
-
-  menuActionsAfterCreate = (el: any): void => {
-    console.log(el);
   };
 
   // --------------------------------------------------------------------------
@@ -201,18 +234,21 @@ export class CalciteFlowItem {
     const { menuOpen } = this;
 
     return (
-      <div class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}>
-        <slot name="menu-actions" />
+      <div
+        class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}
+        onKeyDown={this.menuActionsKeydown}
+      >
+        <slot name={SLOTS.menuActions} />
       </div>
     );
   }
 
   renderFooterActions(): VNode {
-    const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
+    const hasFooterActions = !!this.el.querySelector(`[slot=${SLOTS.footerActions}]`);
 
     return hasFooterActions ? (
       <div slot="footer" class={CSS.footerActions}>
-        <slot name="footer-actions" />
+        <slot name={SLOTS.footerActions} />
       </div>
     ) : null;
   }
@@ -220,14 +256,14 @@ export class CalciteFlowItem {
   renderSingleActionContainer(): VNode {
     return (
       <div class={CSS.singleActionContainer}>
-        <slot name="menu-actions" />
+        <slot name={SLOTS.menuActions} />
       </div>
     );
   }
 
   renderMenuActionsContainer(): VNode {
     return (
-      <div class={CSS.menuContainer} onKeyDown={this.menuKeyDown}>
+      <div class={CSS.menuContainer} onKeyDown={this.menuActionsContainerKeyDown}>
         {this.renderMenuButton()}
         {this.renderMenuActions()}
       </div>
@@ -235,7 +271,7 @@ export class CalciteFlowItem {
   }
 
   renderHeaderActions(): VNode {
-    const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
+    const menuActionsNode = this.el.querySelector(`[slot=${SLOTS.menuActions}]`);
 
     const hasMenuActionsInBlacklisted =
       menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
