@@ -100,6 +100,7 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  // could be dom utility
   focusElement(el: HTMLCalciteActionElement | HTMLElement): void {
     if (!el) {
       return;
