@@ -104,7 +104,7 @@ describe("calcite-flow", () => {
     expect(frame).not.toHaveClass(CSS.frameRetreating);
     expect(frame).not.toHaveClass(CSS.frameAdvancing);
 
-    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowElement) => elm.back());
+    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowItemElement) => elm.back());
 
     await page.waitForChanges();
 
