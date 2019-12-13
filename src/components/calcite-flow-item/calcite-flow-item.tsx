@@ -100,6 +100,14 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  focusElement(el: HTMLCalciteActionElement | HTMLElement): void {
+    if (!el) {
+      return;
+    }
+
+    "setFocus" in el ? el.setFocus() : el.focus();
+  }
+
   queryActions(): HTMLCalciteActionElement[] {
     return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] > *`));
   }
@@ -137,12 +145,12 @@ export class CalciteFlowItem {
 
     if (key === "ArrowUp") {
       const lastAction = actions[length - 1];
-      lastAction && lastAction.setFocus ? lastAction.setFocus() : lastAction.focus();
+      this.focusElement(lastAction);
     }
 
     if (key === "ArrowDown") {
       const firstAction = actions[0];
-      firstAction && firstAction.setFocus ? firstAction.setFocus() : firstAction.focus();
+      this.focusElement(firstAction);
     }
   };
 
@@ -165,16 +173,14 @@ export class CalciteFlowItem {
       const previousIndex = currentIndex - 1;
       const value = (previousIndex + length) % length;
       const previousAction = actions[value];
-      previousAction && previousAction.setFocus
-        ? previousAction.setFocus()
-        : previousAction.focus();
+      this.focusElement(previousAction);
     }
 
     if (key === "ArrowDown") {
       const nextIndex = currentIndex + 1;
       const value = (nextIndex + length) % length;
       const nextAction = actions[value];
-      nextAction && nextAction.setFocus ? nextAction.setFocus() : nextAction.focus();
+      this.focusElement(nextAction);
     }
   };
 
