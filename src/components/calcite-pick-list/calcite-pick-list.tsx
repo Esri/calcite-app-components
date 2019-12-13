@@ -85,6 +85,11 @@ export class CalcitePickList {
    */
   @Prop({ reflect: true }) textHeading?: string;
 
+  /**
+   * Placeholder text for the filter input field.
+   */
+  @Prop({ reflect: true }) textFilterPlaceholder?: string = TEXT.filterPlaceholder;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -200,6 +205,6 @@ export class CalcitePickList {
   }
 
   render() {
-    return <List props={this} text={TEXT} />;
+    return <List props={this} />;
   }
 }
