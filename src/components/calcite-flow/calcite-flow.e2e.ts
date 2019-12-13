@@ -60,6 +60,28 @@ describe("calcite-flow", () => {
     expect(frame).toHaveClass(CSS.frameAdvancing);
   });
 
+  it("frame advancing should add animation class when subtree is modified", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-flow><calcite-flow-item>flow1</calcite-flow-item></calcite-flow>");
+
+    const element = await page.find("calcite-flow");
+
+    element.innerHTML = `<calcite-flow-item>flow1</calcite-flow-item><calcite-flow-item id="flow2">flow2</calcite-flow-item>`;
+
+    await page.waitForChanges();
+
+    const item2 = await page.find(`calcite-flow-item[id=flow2]`);
+
+    item2.innerHTML = "new flow2 subtree content";
+
+    await page.waitForChanges();
+
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
+
+    expect(frame).toHaveClass(CSS.frameAdvancing);
+  });
+
   it("frame retreating should add animation class", async () => {
     const page = await newE2EPage();
 

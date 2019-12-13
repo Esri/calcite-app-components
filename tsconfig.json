@@ -1,17 +1,4 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "declaration": false,
-    "experimentalDecorators": true,
-    "lib": ["dom", "es2017"],
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es2017",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "jsx": "react",
-    "jsxFactory": "h"
-  },
-  "include": ["src", "*.config.ts", "node_modules/@esri/calcite-components/dist/types/components.d.ts"]
+  "extends": "./tsconfig-base",
+  "include": [".storybook/*", "src", "node_modules/@esri/calcite-components/dist/types/components.d.ts"]
 }
