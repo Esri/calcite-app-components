@@ -1,25 +1,15 @@
-import { Config } from "@stencil/core";
-import { postcss } from "@stencil/postcss";
-import { sass } from "@stencil/sass";
-import autoprefixer from "autoprefixer";
+import { create as baseConfigCreator } from "./stencil.config";
+import { OutputTargetWww } from "@stencil/core/dist/declarations";
 
-export const config: Config = {
-  namespace: "calcite-app",
-  outputTargets: [
-    {
-      type: "www",
-      dir: "docs",
-      copy: [{ src: "demos" }],
-      serviceWorker: null // disable service workers
-    }
-  ],
-  globalStyle: "src/assets/styles/includes.scss",
-  plugins: [
-    sass({
-      injectGlobalPaths: ["src/assets/styles/includes.scss"]
-    }),
-    postcss({
-      plugins: [autoprefixer()]
-    })
-  ]
+export const create: typeof baseConfigCreator = () => {
+  const docsConfig = baseConfigCreator();
+
+  const wwwOutputTarget = docsConfig.outputTargets.find((element) => element.type === "www") as OutputTargetWww;
+  wwwOutputTarget.dir = "docs";
+
+  docsConfig.excludeSrc = ["**/*.stories.ts", "**/tests/**"];
+
+  return docsConfig;
 };
+
+export const config = create();

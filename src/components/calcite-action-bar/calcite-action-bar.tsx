@@ -10,6 +10,7 @@ import { CSS } from "./resources";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
+ * @slot - A slot for adding `calcite-actions` that will appear at the top of the action bar.
  */
 @Component({
   tag: "calcite-action-bar",
@@ -34,7 +35,7 @@ export class CalciteActionBar {
 
   @Watch("expanded")
   expandedHandler(newValue: boolean) {
-    this.setTextEnabled(newValue);
+    this.setActionTextDisplay(newValue);
 
     this.calciteActionBarToggle.emit();
   }
@@ -75,7 +76,7 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteActionBarElement;
 
   // --------------------------------------------------------------------------
   //
@@ -84,7 +85,7 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   componentWillLoad() {
-    this.setTextEnabled(this.expanded);
+    this.setActionTextDisplay(this.expanded);
   }
 
   // --------------------------------------------------------------------------
@@ -103,12 +104,10 @@ export class CalciteActionBar {
     return shellNode.layout;
   }
 
-  setTextEnabled(expanded: boolean): void {
+  setActionTextDisplay(expanded: boolean): void {
     this.el
       .querySelectorAll("calcite-action")
-      .forEach((action) =>
-        expanded ? action.setAttribute("text-enabled", "") : action.removeAttribute("text-enabled")
-      );
+      .forEach((action) => (action.textDisplay = expanded ? "visible" : "hidden"));
   }
 
   toggleExpand = (): void => {
@@ -140,7 +139,11 @@ export class CalciteActionBar {
     const collapseIcon = trailing ? icons[0] : icons[1];
 
     return expand ? (
-      <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
+      <calcite-action
+        onClick={this.toggleExpand}
+        textDisplay={expanded ? "visible" : "hidden"}
+        text={expandText}
+      >
         <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;

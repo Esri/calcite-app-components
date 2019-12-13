@@ -1,7 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS, TEXT } from "./resources";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
   it("renders", async () => renders("calcite-flow-item"));
@@ -19,6 +19,61 @@ describe("calcite-flow-item", () => {
 
     expect(menuContainer).toBeNull();
     expect(singleActionContainer).toBeNull();
+  });
+
+  it("should not show menu button when actions are inside blacklisted component", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item>
+      <calcite-pick-list>
+        <calcite-action slot="menu-actions" indicator text="Cool">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+          </svg>
+        </calcite-action>
+        <calcite-action slot="menu-actions" indicator text="Cool">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+          </svg>
+        </calcite-action>
+      </calcite-pick-list>
+    </calcite-flow-item>
+  `;
+
+    await page.setContent(pageContent);
+
+    await page.waitForChanges();
+
+    const menuButtonNode = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
+
+    expect(menuButtonNode).toBeNull();
+  });
+
+  it("should not show single action when actions are inside blacklisted component", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item>
+      <calcite-pick-list>
+        <div slot="menu-actions">
+          <calcite-action indicator text="Cool">
+            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
+            </svg>
+          </calcite-action>
+        </div>
+      </calcite-pick-list>
+    </calcite-flow-item>
+  `;
+
+    await page.setContent(pageContent);
+
+    await page.waitForChanges();
+
+    const singleActionContainerNode = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
+
+    expect(singleActionContainerNode).toBeNull();
   });
 
   it("should show single action container when one action exists", async () => {
@@ -106,7 +161,8 @@ describe("calcite-flow-item", () => {
 
     expect(showBackButton).toBe(false);
 
-    const backButton = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+    const panelNode = await page.find("calcite-flow-item >>> calcite-panel");
+    const backButton = await panelNode.find(`.${CSS.backButton}`);
 
     expect(backButton).toBeNull();
 
@@ -118,7 +174,8 @@ describe("calcite-flow-item", () => {
 
     expect(showBackButtonNew).toBe(true);
 
-    const backButtonNew = await page.find(`calcite-flow-item >>> .${CSS.backButton}`);
+    const panelNodeNew = await page.find("calcite-flow-item >>> calcite-panel");
+    const backButtonNew = await panelNodeNew.find(`.${CSS.backButton}`);
 
     expect(backButtonNew).not.toBeNull();
 
@@ -126,8 +183,31 @@ describe("calcite-flow-item", () => {
 
     const eventSpy = await page.spyOnEvent("calciteFlowItemBackClick", "window");
 
-    await backButtonNew.click();
+    await page.$eval("calcite-flow-item", (elm: HTMLElement) => {
+      const nativeBackButton = elm.shadowRoot.querySelector(`calcite-action`);
+      nativeBackButton.click();
+    });
 
     expect(eventSpy).toHaveReceivedEvent();
   });
+
+  it("should be accessible", async () =>
+    accessible(`
+      <calcite-flow-item heading="hello world" menu-open show-back-button>
+        <div slot="menu-actions">
+          <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </div>
+        <div slot="footer-actions">
+         <calcite-action text="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
+            </svg>
+          </calcite-action>
+        </div>
+      </calcite-flow-item>
+    `));
 });

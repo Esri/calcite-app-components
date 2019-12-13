@@ -1,44 +1,63 @@
 :host {
-  display: flex;
   align-items: center;
-  padding: 12px;
-  background-color: white;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.75);
-  margin-bottom: 12px;
-  cursor: pointer;
+  display: flex;
+  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
+  background-color: var(--calcite-app-background);
+  color: var(--calcite-app-foreground);
+  transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
-:host([hidden]) {
-  display: none;
+:host(:hover) {
+  background-color: var(--calcite-app-background-hover);
 }
 
-:host(.highlight) {
-  border-left: 3px solid transparent;
-  &:host(.calcite--rtl) {
-    border-left: none;
-    border-right: 3px solid transparent;
-  }
+:host(:last-child) {
+  margin-bottom: 0;
+  @include borderShadow();
 }
 
-:host(.highlight[selected]) {
-  border-left-color: blue;
-  &:host(.calcite--rtl) {
-    border-left-color: none;
-    border-right-color: blue;
-  }
+.icon {
+  color: var(--calcite-app-foreground-link);
+  flex: 0 0 0%;
+  line-height: 0;
+  width: var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 
 .label {
-  flex-grow: 1;
-  margin: 0 12px;
-  min-width: 60px;
+  display: flex;
+  flex: 1 1 auto;
+  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
+  align-items: center;
+  cursor: pointer;
+
+  @include focusRingInset();
 }
 
-.heading,
+.text-container {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0 var(--calcite-app-side-spacing-half);
+}
+
+.title {
+  font-size: var(--calcite-app-font-size-0);
+  @include lineClamp(2);
+}
+
 .description {
-  margin: 0;
+  color: var(--calcite-app-foreground-subtle);
+  font-family: var(--calcite-app-font-family-monospace);
+  font-size: var(--calcite-app-font-size--1);
+  margin-top: var(--calcite-app-cap-spacing-quarter);
+  @include lineClamp(2);
 }
 
-.handle {
-  cursor: move;
+.action {
+  flex: 0 0 0%;
+  justify-self: flex-end;
+  margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
 }

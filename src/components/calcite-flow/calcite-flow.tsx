@@ -1,9 +1,14 @@
 import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core";
 
-import { CSS, FlowDirection } from "./resources";
+import { CSS } from "./resources";
 
-import { CalciteTheme } from "../interfaces";
+import { CalciteTheme, FlowDirection } from "../interfaces";
 
+import classnames from "classnames";
+
+/**
+ * @slot - A slot for adding `calcite-flow-items` to the flow.
+ */
 @Component({
   tag: "calcite-flow",
   styleUrl: "calcite-flow.scss",
@@ -27,7 +32,7 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFlowElement;
 
   @State() flowCount = 0;
 
@@ -72,6 +77,17 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
+  getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection | null => {
+    const allowRetreatingDirection = oldFlowCount > 1;
+    const allowAdvancingDirection = oldFlowCount && newFlowCount > 1;
+
+    if (!allowAdvancingDirection && !allowRetreatingDirection) {
+      return null;
+    }
+
+    return newFlowCount < oldFlowCount ? "retreating" : "advancing";
+  };
+
   updateFlowProps = (): void => {
     const { flows } = this;
 
@@ -82,22 +98,12 @@ export class CalciteFlow {
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
 
-    const prevHasMulti = oldFlowCount > 1;
-    const currHasMulti = newFlowCount > 1;
-
-    const flowDirection =
-      (currHasMulti && oldFlowCount) || prevHasMulti
-        ? newFlowCount < oldFlowCount
-          ? "retreating"
-          : "advancing"
-        : null;
-
     const activeFlow = newFlows[newFlowCount - 1];
     const previousFlow = newFlows[newFlowCount - 2];
 
     if (newFlowCount && activeFlow) {
       newFlows.forEach((flowNode) => {
-        flowNode.showBackButton = currHasMulti;
+        flowNode.showBackButton = newFlowCount > 1;
         flowNode.hidden = flowNode !== activeFlow;
       });
     }
@@ -107,8 +113,12 @@ export class CalciteFlow {
     }
 
     this.flows = newFlows;
-    this.flowCount = newFlowCount;
-    this.flowDirection = flowDirection;
+
+    if (oldFlowCount !== newFlowCount) {
+      const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
+      this.flowCount = newFlowCount;
+      this.flowDirection = flowDirection;
+    }
   };
 
   flowItemObserver = new MutationObserver(this.updateFlowProps);
@@ -122,16 +132,14 @@ export class CalciteFlow {
   render() {
     const { flowDirection, flowCount } = this;
 
-    const flowDirectionClass =
-      flowDirection === "advancing"
-        ? CSS.frameAdvancing
-        : flowDirection === "retreating"
-        ? CSS.frameRetreating
-        : "";
+    const frameDirectionClasses = {
+      [CSS.frameAdvancing]: flowDirection === "advancing",
+      [CSS.frameRetreating]: flowDirection === "retreating"
+    };
 
     return (
       <Host>
-        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
+        <div key={flowCount} class={classnames(CSS.frame, frameDirectionClasses)}>
           <slot />
         </div>
       </Host>

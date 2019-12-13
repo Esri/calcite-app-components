@@ -1,11 +1,16 @@
+:host {
+  display: block;
+  background-color: var(--calcite-app-background-clear);
+}
+
 .button {
   font-family: var(--calcite-app-font-family);
   display: flex;
   color: var(--calcite-app-foreground);
   fill: var(--calcite-app-foreground);
   background-color: var(--calcite-app-background);
-  border-radius: var(--calcite-app-border-radius);
-  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-three-quarters);
+  outline-offset: var(--calcite-app-outline-inset);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
   margin: 0;
   justify-content: flex-start;
   align-items: center;
@@ -17,7 +22,7 @@
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
   text-align: unset;
   position: relative;
-  &.compact {
+  &.button--compact {
     padding-left: var(--calcite-app-side-spacing-quarter);
     padding-right: var(--calcite-app-side-spacing-quarter);
   }
@@ -27,6 +32,9 @@
     color: var(--calcite-app-foreground-hover);
     fill: var(--calcite-app-foreground-hover);
   }
+
+  @include focusRingInset();
+
   .icon-container {
     max-width: var(--calcite-app-icon-size);
     max-height: var(--calcite-app-icon-size);
@@ -34,9 +42,10 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    pointer-events: none;
   }
   .text-container {
-    flex: 1;
+    flex: 1 1 auto;
     line-height: 1rem;
     margin: 0 var(--calcite-app-side-spacing-half);
     white-space: nowrap;
@@ -45,15 +54,77 @@
   }
 }
 
-:host([text-enabled]) .button {
+.slot-container {
+  display: flex;
+}
+
+.slot-container--hidden {
+  display: none;
+}
+
+.button--text-visible {
   width: 100%;
 }
 
+.button--text-interactive {
+  .text-container {
+    margin-left: 0;
+    margin-right: 0;
+    opacity: 0;
+    width: 0;
+    transition: opacity var(--calcite-app-animation-time) var(--calcite-app-easing-function),
+      margin var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+      width var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  }
+  &:hover,
+  &:focus {
+    .text-container {
+      margin: 0 var(--calcite-app-side-spacing-half);
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
+
 :host([active]) .button,
-:host([active]) .button:hover {
+:host([active]) .button:hover,
+:host([active][loading]) .button {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
+}
+
+:host([appearance="clear"]) .button {
+  background-color: var(--calcite-app-background-clear);
+  transition: box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+:host([appearance="clear"]) .button:hover {
+  background-color: var(--calcite-app-background-clear);
+  @include borderShadowHover();
+}
+
+:host([active][appearance="clear"]) .button,
+:host([active][appearance="clear"]) .button:hover {
+  color: var(--calcite-app-foreground-active);
+  fill: var(--calcite-app-foreground-active);
+  background-color: var(--calcite-app-background-active);
+  box-shadow: none;
+}
+
+:host([appearance="clear"][loading]) .button,
+:host([appearance="clear"][disabled]) .button {
+  background-color: var(--calcite-app-background-clear);
+}
+
+:host([loading]) .button,
+:host([loading]) .button:hover {
+  background-color: var(--calcite-app-background);
+}
+
+:host([loading]) calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
+  margin-right: 0;
 }
 
 :host([disabled]) .button,
@@ -69,7 +140,9 @@
   background-color: var(--calcite-app-background-active);
 }
 
-:host([indicator][text-enabled]) .button {
+:host([indicator]) .button--text-visible-visible,
+:host([indicator]) .button--text-interactive:focus,
+:host([indicator]) .button--text-interactive:hover {
   padding-right: var(--calcite-app-side-spacing);
 }
 
@@ -81,8 +154,8 @@
   border: var(--calcite-app-side-spacing-eighth) solid var(--calcite-app-background);
   background-color: var(--calcite-app-foreground-active);
   position: absolute;
-  bottom: var(--calcite-app-cap-spacing-half);
-  right: var(--calcite-app-side-spacing-quarter);
+  bottom: var(--calcite-app-cap-spacing-three-quarters);
+  right: var(--calcite-app-side-spacing-third);
   z-index: 1;
 }
 
@@ -91,7 +164,9 @@
   left: var(--calcite-app-side-spacing-quarter);
 }
 
-:host([indicator][text-enabled]) .calcite--rtl {
+:host([indicator]) .button--text-visible.calcite--rtl,
+:host([indicator]) .button--text-interactive.calcite--rtl:focus,
+:host([indicator]) .button--text-interactive.calcite--rtl:hover {
   padding-right: var(--calcite-app-side-spacing-three-quarters);
   padding-left: var(--calcite-app-side-spacing);
 }
@@ -104,12 +179,16 @@
   border-color: var(--calcite-app-background-active);
 }
 
-:host([indicator][text-enabled]) .button::after {
+:host([indicator]) .button--text-visible::after,
+:host([indicator]) .button--text-interactive:hover::after,
+:host([indicator]) .button--text-interactive:focus::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
 }
 
-:host([indicator][text-enabled]) .calcite--rtl::after {
+:host([indicator]) .button--text-visible.calcite--rtl::after,
+:host([indicator]) .button--text-interactive.calcite--rtl:hover::after,
+:host([indicator]) .button--text-interactive.calcite--rtl:focus::after {
   right: unset;
   left: var(--calcite-app-side-spacing-half);
 }

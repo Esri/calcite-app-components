@@ -1,5 +1,5 @@
 /* Variables, mixins, @keyframes*/
-$tip-manager-height: 22vh;
+$tip-manager-height: 18vh;
 $tip-max-width: 540px;
 
 @keyframes tip-advance {
@@ -25,17 +25,23 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
-  overflow: hidden;
-  position: relative;
   display: block;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
-  background-color: var(--calcite-app-background);
-  min-height: 150px;
+}
+
+:host([closed]) {
+  display: none;
 }
 
 .header .heading {
   padding-left: var(--calcite-app-side-spacing-half);
   padding-right: var(--calcite-app-side-spacing-half);
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half) 0;
+  min-height: 150px;
 }
 
 .tip-container {
@@ -47,7 +53,6 @@ $tip-max-width: 540px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: var(--calcite-app-background);
 }
 
 ::slotted(calcite-tip-group) {
@@ -60,11 +65,11 @@ $tip-max-width: 540px;
   padding: 0 var(--calcite-app-side-spacing-half);
 }
 
-.tip-container.advancing {
+.tip-container--advancing {
   animation-name: tip-advance;
 }
 
-.tip-container.retreating {
+.tip-container--retreating {
   animation-name: tip-retreat;
 }
 
@@ -79,5 +84,4 @@ $tip-max-width: 540px;
 .page-position {
   font-size: var(--calcite-app-font-size--1);
   margin: 0 var(--calcite-app-side-spacing-half);
-  color: var(--calcite-app-foreground);
 }

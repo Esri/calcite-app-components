@@ -1,21 +1,21 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { VNode } from "@stencil/core/dist/declarations";
 
-import { chevronLeft16, chevronRight16, ellipsis16 } from "@esri/calcite-ui-icons";
+import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
 
 import { getElementDir } from "../utils/dom";
 
 import classnames from "classnames";
 
-import { CSS, TEXT } from "./resources";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 
 import { CalciteTheme } from "../interfaces";
 
-import { CSS_UTILITY } from "../utils/resources";
-
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ * @slot - A slot for adding content to the flow item.
  */
 @Component({
   tag: "calcite-flow-item",
@@ -30,9 +30,19 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
+   * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Heading text.
    */
   @Prop() heading: string;
+
+  /**
+   * When true, content is waiting to be loaded. This state shows a busy indicator.
+   */
+  @Prop({ reflect: true }) loading = false;
 
   /**
    * Opens the action menu.
@@ -70,7 +80,7 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteFlowItemElement;
 
   // --------------------------------------------------------------------------
   //
@@ -150,25 +160,26 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
-  renderBackButton(rtl: boolean) {
-    const { showBackButton, textBack } = this;
+  renderBackButton(rtl: boolean): VNode {
+    const { showBackButton, textBack, backButtonClick } = this;
 
-    const path = rtl ? chevronRight16 : chevronLeft16;
+    const path = rtl ? chevronRight16F : chevronLeft16F;
 
     return showBackButton ? (
       <calcite-action
+        slot="header-leading-content"
         key="back-button"
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
-        onClick={this.backButtonClick}
+        onClick={backButtonClick}
       >
         <CalciteIcon size="16" path={path} />
       </calcite-action>
     ) : null;
   }
 
-  renderMenuButton() {
+  renderMenuButton(): VNode {
     const { menuOpen, textOpen, textClose } = this;
 
     const menuLabel = menuOpen ? textClose : textOpen;
@@ -186,7 +197,7 @@ export class CalciteFlowItem {
     );
   }
 
-  renderMenuActions() {
+  renderMenuActions(): VNode {
     const { menuOpen } = this;
 
     return (
@@ -196,17 +207,17 @@ export class CalciteFlowItem {
     );
   }
 
-  renderFooterActions() {
+  renderFooterActions(): VNode {
     const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
 
     return hasFooterActions ? (
-      <footer class={CSS.footer}>
+      <div slot="footer" class={CSS.footerActions}>
         <slot name="footer-actions" />
-      </footer>
+      </div>
     ) : null;
   }
 
-  renderSingleActionContainer() {
+  renderSingleActionContainer(): VNode {
     return (
       <div class={CSS.singleActionContainer}>
         <slot name="menu-actions" />
@@ -214,7 +225,7 @@ export class CalciteFlowItem {
     );
   }
 
-  renderMenuActionsContainer() {
+  renderMenuActionsContainer(): VNode {
     return (
       <div class={CSS.menuContainer} onKeyDown={this.menuKeyDown}>
         {this.renderMenuButton()}
@@ -223,53 +234,49 @@ export class CalciteFlowItem {
     );
   }
 
-  renderHeaderActions() {
+  renderHeaderActions(): VNode {
     const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
-    const hasMenuActions = !!menuActionsNode;
+
+    const hasMenuActionsInBlacklisted =
+      menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
+
+    const hasMenuActions = !!menuActionsNode && !hasMenuActionsInBlacklisted;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
 
-    return actionCount === 1
-      ? this.renderSingleActionContainer()
-      : hasMenuActions
-      ? this.renderMenuActionsContainer()
-      : null;
+    const menuActionsNodes =
+      actionCount === 1
+        ? this.renderSingleActionContainer()
+        : hasMenuActions
+        ? this.renderMenuActionsContainer()
+        : null;
+
+    return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
+  }
+
+  renderHeading(): VNode {
+    const { heading } = this;
+
+    return heading ? (
+      <h2 class={CSS.heading} slot="header-content">
+        {heading}
+      </h2>
+    ) : null;
   }
 
   render() {
-    const { el, showBackButton, heading } = this;
+    const { el } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
-    const headingClasses = {
-      [CSS.heading]: true,
-      [CSS.headingFirst]: !showBackButton
-    };
-
-    const headerNode = (
-      <header class={CSS.header}>
-        {this.renderBackButton(rtl)}
-        <h2 class={classnames(headingClasses)}>{heading}</h2>
-        {this.renderHeaderActions()}
-      </header>
-    );
-
-    const contentContainerNode = (
-      <section class={CSS.contentContainer}>
-        <slot />
-      </section>
-    );
-
     return (
       <Host>
-        <article
-          class={classnames(CSS.container, {
-            [CSS_UTILITY.rtl]: rtl
-          })}
-        >
-          {headerNode}
-          {contentContainerNode}
+        <calcite-panel loading={this.loading} disabled={this.disabled}>
+          {this.renderBackButton(rtl)}
+          {this.renderHeading()}
+          {this.renderHeaderActions()}
+          <slot />
           {this.renderFooterActions()}
-        </article>
+        </calcite-panel>
       </Host>
     );
   }

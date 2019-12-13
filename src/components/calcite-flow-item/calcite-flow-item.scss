@@ -1,55 +1,16 @@
 :host {
+  background-color: var(--calcite-app-background-content);
   display: flex;
   height: 100%;
-  font-size: var(--calcite-app-base-font-size);
 }
 
-.container {
+calcite-panel {
   width: 100%;
   height: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-flow: column;
-  position: relative;
-}
-
-.header {
-  align-items: center;
-  color: var(--calcite-app-foreground);
-  display: flex;
-  padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
-  justify-content: flex-start;
-  position: relative;
-  z-index: 2;
-  background-color: var(--calcite-app-background);
-  border-bottom: 1px solid var(--calcite-app-border);
-  justify-content: flex-start;
-}
-
-.back-button {
-  flex: 0;
-}
-
-h2.heading {
-  margin: 0;
-  overflow: hidden;
-  padding: 0 var(--calcite-app-side-spacing);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: var(--calcite-app-font-size-0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.heading--first {
-  justify-content: flex-start;
 }
 
 .menu-button {
-  flex: 0;
+  flex: 0 1 auto;
   position: relative;
 }
 
@@ -70,7 +31,6 @@ h2.heading {
   min-width: var(--calcite-app-menu-min-width);
   right: var(--calcite-app-menu-offset);
   visibility: visible;
-  display: flex;
   flex-flow: column nowrap;
   border: 1px solid var(--calcite-app-border);
   animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
@@ -86,19 +46,7 @@ h2.heading {
   display: block;
 }
 
-.content-container {
-  flex: 1;
-  background-color: var(--calcite-app-background-content);
-  padding: 0;
-  overflow: auto;
-}
-
-.footer {
-  align-items: center;
-  background-color: var(--calcite-app-background);
-  border-top: 1px solid var(--calcite-app-border);
+.footer-actions {
   display: flex;
-  justify-content: space-around;
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing-half);
-  flex-flow: row nowrap;
+  width: 100%;
 }

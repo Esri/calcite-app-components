@@ -1,25 +1,18 @@
-$header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-
 :host {
   display: flex;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
-  overflow: hidden;
-  box-shadow: 0 1px 0 var(--calcite-app-border);
-  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
-  background-color: var(--calcite-app-background);
-  color: var(--calcite-app-foreground);
+  margin: var(--calcite-app-cap-spacing-third) var(--calcite-app-side-spacing-third);
+  @include borderShadow();
 }
 
-:host([open]) {
-  box-shadow: 0 0 0 1px var(--calcite-app-border);
+calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
 }
 
 .header-container {
-  background-color: var(--calcite-app-background);
-
   & > .header {
-    padding: $header-content-padding;
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   }
 }
 
@@ -28,36 +21,47 @@ $header-content-padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-s
 }
 
 .title {
+  flex-grow: 1;
   margin: 0;
 }
 
+.header .title .heading {
+  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
+}
+
 .summary {
-  font-size: var(--font-size--1);
-  padding: 0 var(--calcite-app-side-spacing-half);
-  color: var(--calcite-app-foreground);
+  font-size: var(--calcite-app-font-size--1);
+  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 
 .toggle {
-  padding: $header-content-padding;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   background-color: transparent;
   border: none;
   cursor: pointer;
   display: flex;
+  font-family: var(--calcite-app-font-family);
   align-items: center;
   justify-content: flex-end;
   flex-wrap: nowrap;
   margin: 0;
   text-align: unset;
   width: 100%;
+  color: var(--calcite-app-foreground);
+  @include focusRingInset();
+}
+
+.icon {
+  margin-right: var(--calcite-app-side-spacing-third); //TODO RTL
 }
 
 .toggle-icon {
-  margin: 0 4px;
-  fill: var(--calcite-app-foreground);
+  fill: currentColor;
+  flex: 0 0 var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing-half);
 }
 
 .content {
-  background-color: var(--calcite-app-background);
-  padding: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-half);
-  animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
+  position: relative;
 }

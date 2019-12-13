@@ -1,0 +1,28 @@
+:host {
+  align-items: stretch;
+  background-color: var(--calcite-app-background-clear);
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+
+header {
+  background-color: var(--calcite-app-background);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+slot[name="menu-actions"]::slotted(calcite-action) {
+  padding: 0 var(--calcite-app-side-spacing-half);
+}
+
+calcite-filter {
+  @include borderShadow();
+}

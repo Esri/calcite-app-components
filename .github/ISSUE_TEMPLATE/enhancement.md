@@ -2,23 +2,16 @@
 name: Enhancement
 about: Request for a feature to be added to an existing component.
 title: "Enhancement: "
-labels: enhancement
+labels: enhancement, 0 - new
 assignees: ""
 ---
 
 ### Description
 
-### Acceptance Criteria <!--(a.k.a. Requirements)-->
+### Acceptance Criteria <!--(a.k.a. Requirements, Desired new behavior)-->
 
-#### Desired New Behavior
+### Relevant Info <!--(e.g. Dependencies, Blockers, Helpful Details)-->
 
-#### Desired Change to Look and Feel
+#### Which Component
 
-#### Out of Scope
-
-### Relevant Info <!--(e.g. Dependencies, Blockers)-->
-
-### Helpful Details
-
-**Which Component:**
-**Example Use Case:**
+#### Example Use Case

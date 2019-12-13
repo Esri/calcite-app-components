@@ -6,18 +6,55 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 
 <!-- Auto Generated Below -->
 
+## Usage
+
+### Basic
+
+#### Without text
+
+Renders a `calcite-action` that displays only an icon and a tooltip label.
+
+```html
+<calcite-action label="Performs my custom action">
+  <!-- icon -->
+</calcite-action>
+```
+
+#### With text
+
+Renders a `calcite-action` that displays text along side an icon and a tooltip label.
+
+```html
+<calcite-action label="Performs my custom action" text="Perform Action!" text-enabled>
+  <!-- icon -->
+</calcite-action>
+```
+
+#### Clear appearance
+
+Renders a `calcite-action` that has a clear background.
+
+```html
+<calcite-action appearance="clear">
+  <!-- icon -->
+</calcite-action>
+```
+
 ## Properties
 
-| Property      | Attribute      | Description                                                                                       | Type                | Default     |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
-| `active`      | `active`       | Indicates whether the action is highlighted.                                                      | `boolean`           | `false`     |
-| `compact`     | `compact`      | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean`           | `false`     |
-| `disabled`    | `disabled`     | Disabled is used to prevent the action from occurring.                                            | `boolean`           | `false`     |
-| `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`           | `false`     |
-| `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`            | `undefined` |
-| `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`            | `undefined` |
-| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`           | `false`     |
-| `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"` | `undefined` |
+| Property      | Attribute      | Description                                                                                       | Type                                     | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------- | ----------- |
+| `active`      | `active`       | Indicates whether the action is highlighted.                                                      | `boolean`                                | `false`     |
+| `appearance`  | `appearance`   | Specify the appearance style of the action, defaults to solid.                                    | `"clear" \| "solid"`                     | `"solid"`   |
+| `compact`     | `compact`      | Compact mode is used internally by components to reduce side padding, e.g. calcite-block-section. | `boolean`                                | `false`     |
+| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.       | `boolean`                                | `false`     |
+| `indicator`   | `indicator`    | Indicates unread changes.                                                                         | `boolean`                                | `false`     |
+| `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`                                 | `undefined` |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                    | `boolean`                                | `false`     |
+| `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`                                 | `undefined` |
+| `textDisplay` | `text-display` | <span style="color:red">**[DEPRECATED]**</span> Use 'textEnabled' instead.<br/><br/>              | `"hidden" \| "interactive" \| "visible"` | `"hidden"`  |
+| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`                                | `false`     |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"`                      | `undefined` |
 
 ## Dependencies
 
@@ -26,7 +63,7 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 - [calcite-action-bar](../calcite-action-bar)
 - [calcite-block-section](../calcite-block-section)
 - [calcite-flow-item](../calcite-flow-item)
-- [calcite-shell-floating-panel](../calcite-shell-floating-panel)
+- [calcite-panel](../calcite-panel)
 - [calcite-tip](../calcite-tip)
 - [calcite-tip-manager](../calcite-tip-manager)
 
@@ -37,7 +74,7 @@ graph TD;
   calcite-action-bar --> calcite-action
   calcite-block-section --> calcite-action
   calcite-flow-item --> calcite-action
-  calcite-shell-floating-panel --> calcite-action
+  calcite-panel --> calcite-action
   calcite-tip --> calcite-action
   calcite-tip-manager --> calcite-action
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px

@@ -1,7 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS } from "./resources";
-import { hidden, renders } from "../../tests/commonTests";
+import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow", () => {
   it("renders", async () => renders("calcite-flow"));
@@ -58,6 +58,28 @@ describe("calcite-flow", () => {
     expect(frame).toHaveClass(CSS.frameAdvancing);
   });
 
+  it("frame advancing should add animation class when subtree is modified", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-flow><calcite-flow-item>flow1</calcite-flow-item></calcite-flow>");
+
+    const element = await page.find("calcite-flow");
+
+    element.innerHTML = `<calcite-flow-item>flow1</calcite-flow-item><calcite-flow-item id="flow2">flow2</calcite-flow-item>`;
+
+    await page.waitForChanges();
+
+    const item2 = await page.find(`calcite-flow-item[id=flow2]`);
+
+    item2.innerHTML = "new flow2 subtree content";
+
+    await page.waitForChanges();
+
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
+
+    expect(frame).toHaveClass(CSS.frameAdvancing);
+  });
+
   it("frame retreating should add animation class", async () => {
     const page = await newE2EPage();
 
@@ -94,6 +116,28 @@ describe("calcite-flow", () => {
     expect(frame2).not.toHaveClass(CSS.frameAdvancing);
   });
 
+  it("frame animation class should not exist if frame count remains the same", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      "<calcite-flow><calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item></calcite-flow>"
+    );
+
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
+
+    expect(frame).not.toHaveClass(CSS.frameRetreating);
+    expect(frame).not.toHaveClass(CSS.frameAdvancing);
+
+    const element = await page.find("calcite-flow");
+
+    element.innerHTML = "<calcite-flow-item>test</calcite-flow-item><calcite-flow-item>test</calcite-flow-item>";
+
+    await page.waitForChanges();
+
+    expect(frame).not.toHaveClass(CSS.frameRetreating);
+    expect(frame).not.toHaveClass(CSS.frameAdvancing);
+  });
+
   it("flow-item properties should be set", async () => {
     const page = await newE2EPage();
 
@@ -120,4 +164,16 @@ describe("calcite-flow", () => {
     expect(items[2].getAttribute("hidden")).toBe(null);
     expect(showBackButton2).not.toBe(null);
   });
+
+  it("should be accessible", async () =>
+    accessible(`
+    <calcite-flow>
+      <calcite-flow-item>
+      </calcite-flow-item>
+      <calcite-flow-item>
+      </calcite-flow-item>
+      <calcite-flow-item>
+      </calcite-flow-item>
+    </calcite-flow>
+    `));
 });

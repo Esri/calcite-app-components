@@ -17,6 +17,9 @@ import CalciteIcon from "../utils/CalciteIcon";
 import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
+/**
+ * @slot - A slot for adding `calcite-tips`.
+ */
 @Component({
   tag: "calcite-tip-manager",
   styleUrl: "./calcite-tip-manager.scss",
@@ -28,6 +31,17 @@ export class CalciteTipManager {
   //  Properties
   //
   // --------------------------------------------------------------------------
+  /**
+   * Alternate text for closing the Tip Manager.
+   */
+  @Prop({ reflect: true }) closed = false;
+
+  @Watch("closed")
+  closedChangeHandler() {
+    this.direction = null;
+    this.calciteTipManagerToggle.emit();
+  }
+
   /**
    * Alternate text for closing the Tip Manager.
    */
@@ -58,15 +72,13 @@ export class CalciteTipManager {
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
-  @Prop({ reflect: true }) tabindex = 0;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalciteTipManagerElement;
 
   @State() selectedIndex: number;
 
@@ -82,9 +94,11 @@ export class CalciteTipManager {
 
   @State() direction: "advancing" | "retreating";
 
-  groupTitle = this.textDefaultTitle;
+  @State() groupTitle = this.textDefaultTitle;
 
   observer = new MutationObserver(() => this.setUpTips());
+
+  container: HTMLDivElement;
 
   // --------------------------------------------------------------------------
   //
@@ -132,8 +146,14 @@ export class CalciteTipManager {
 
   /**
    * Emitted when the component has been closed.
+   * @deprecated
    */
   @Event() calciteTipManagerClose: EventEmitter;
+
+  /**
+   * Emitted when the TipManager has been toggled closed or opened.
+   */
+  @Event() calciteTipManagerToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -153,30 +173,29 @@ export class CalciteTipManager {
     this.selectedIndex = selectedTip ? tips.indexOf(selectedTip) : 0;
 
     tips.forEach((tip) => {
-      tip.setAttribute("non-dismissible", "");
+      tip.nonDismissible = true;
     });
     this.showSelectedTip();
     this.updateGroupTitle();
   }
 
   hideTipManager = (): void => {
-    this.el.setAttribute("hidden", "");
-    this.el.setAttribute("aria-hidden", "");
-    this.calciteTipManagerClose.emit();
+    this.closed = true;
+    this.calciteTipManagerToggle.emit();
   };
 
   showSelectedTip() {
     this.tips.forEach((tip, index) => {
       const isSelected = this.selectedIndex === index;
-      isSelected ? tip.setAttribute("selected", "") : tip.removeAttribute("selected");
-      isSelected ? tip.removeAttribute("hidden") : tip.setAttribute("hidden", "");
+      tip.selected = isSelected;
+      tip.hidden = !isSelected;
     });
   }
 
   updateGroupTitle() {
     const selectedTip = this.tips[this.selectedIndex];
     const tipParent = selectedTip.closest("calcite-tip-group");
-    this.groupTitle = tipParent ? tipParent.textGroupTitle : this.textDefaultTitle;
+    this.groupTitle = (tipParent && tipParent.textGroupTitle) || this.textDefaultTitle;
   }
 
   previousClicked = (): void => {
@@ -187,16 +206,18 @@ export class CalciteTipManager {
     this.nextTip();
   };
 
-  tipManagerKeyDownHandler = (event: KeyboardEvent): void => {
+  tipManagerKeyUpHandler = (event: KeyboardEvent): void => {
+    if (event.target !== this.container) {
+      return;
+    }
+
     switch (event.key) {
-      case "ArrowUp":
-        event.preventDefault();
       case "ArrowRight":
+        event.preventDefault();
         this.nextTip();
         break;
-      case "ArrowDown":
-        event.preventDefault();
       case "ArrowLeft":
+        event.preventDefault();
         this.previousTip();
         break;
       case "Home":
@@ -210,6 +231,10 @@ export class CalciteTipManager {
     }
   };
 
+  storeContainerRef = (el: HTMLDivElement) => {
+    this.container = el;
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -218,7 +243,9 @@ export class CalciteTipManager {
 
   renderPagination() {
     const dir = getElementDir(this.el);
-    return this.tips.length > 1 ? (
+    const { selectedIndex, tips, total } = this;
+
+    return tips.length > 1 ? (
       <footer class={CSS.pagination}>
         <calcite-action
           text={this.textPrevious}
@@ -228,7 +255,7 @@ export class CalciteTipManager {
           <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
         </calcite-action>
         <span class={CSS.pagePosition}>
-          {`${this.textPaginationLabel} ${this.selectedIndex + 1}/${this.total}`}
+          {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
           <CalciteIcon size="16" path={dir === "ltr" ? chevronRight16 : chevronLeft16} />
@@ -238,21 +265,41 @@ export class CalciteTipManager {
   }
 
   render() {
-    if (this.total === 0) {
+    const { closed, direction, groupTitle, selectedIndex, textClose, total } = this;
+
+    if (total === 0) {
       return <Host />;
     }
     return (
-      <Host onKeydown={this.tipManagerKeyDownHandler}>
-        <header class={CSS.header}>
-          <h2 class={CSS.heading}>{this.groupTitle}</h2>
-          <calcite-action text={this.textClose} onClick={this.hideTipManager} class={CSS.close}>
-            <CalciteIcon size="16" path={x16} />
-          </calcite-action>
-        </header>
-        <div class={classnames(CSS.tipContainer, this.direction)} key={this.selectedIndex}>
-          <slot />
+      <Host>
+        <div
+          class={CSS.container}
+          hidden={closed}
+          aria-hidden={closed.toString()}
+          tabIndex={0}
+          onKeyUp={this.tipManagerKeyUpHandler}
+          ref={this.storeContainerRef}
+        >
+          <header class={CSS.header}>
+            <h2 key={selectedIndex} class={CSS.heading}>
+              {groupTitle}
+            </h2>
+            <calcite-action text={textClose} onClick={this.hideTipManager} class={CSS.close}>
+              <CalciteIcon size="16" path={x16} />
+            </calcite-action>
+          </header>
+          <div
+            tabIndex={0}
+            class={classnames(CSS.tipContainer, {
+              [CSS.tipContainerAdvancing]: !closed && direction === "advancing",
+              [CSS.tipContainerRetreating]: !closed && direction === "retreating"
+            })}
+            key={selectedIndex}
+          >
+            <slot />
+          </div>
+          {this.renderPagination()}
         </div>
-        {this.renderPagination()}
       </Host>
     );
   }

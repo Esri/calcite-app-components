@@ -16,7 +16,12 @@
     <main>
       <section class="example-container">
         <h1>Tip</h1>
-        <p>see the <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-tip/readme.md">calcite-tip readme.</a></p>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-tip/readme.md"
+            >calcite-tip readme.</a
+          >
+        </p>
         <h2>With thumbnail</h2>
         <div>
           <calcite-tip
@@ -46,6 +51,34 @@
               overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
             </p>
             <a slot="link" href="http://www.esri.com">View Esri</a>
+          </calcite-tip>
+        </div>
+        <h2>Without heading</h2>
+        <div>
+          <calcite-tip thumbnail="https://placeimg.com/1000/600" text-thumbnail="This is an image of nature.">
+            <p slot="info">
+              This tip is how a tip should appar without a dismissible button as well as without a heading.
+            </p>
+            <p slot="info">
+              This is another paragraph in a subsequent "info" slot.
+            </p>
+            <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
+          </calcite-tip>
+        </div>
+        <h2>Without header</h2>
+        <div>
+          <calcite-tip
+            thumbnail="https://placeimg.com/1000/600"
+            text-thumbnail="This is an image of nature."
+            non-dismissible
+          >
+            <p slot="info">
+              This tip is how a tip should appar without a dismissible button as well as without a heading.
+            </p>
+            <p slot="info">
+              This is another paragraph in a subsequent "info" slot.
+            </p>
+            <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
           </calcite-tip>
         </div>
         <hr />

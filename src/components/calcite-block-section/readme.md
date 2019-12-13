@@ -6,18 +6,25 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 
 ## Properties
 
-| Property       | Attribute       | Description                                               | Type      | Default         |
-| -------------- | --------------- | --------------------------------------------------------- | --------- | --------------- |
-| `open`         | `open`          | When true, the block's section content will be displayed. | `boolean` | `false`         |
-| `text`         | `text`          | Text displayed in the button.                             | `string`  | `undefined`     |
-| `textCollapse` | `text-collapse` | Tooltip used for the toggle when expanded.                | `string`  | `TEXT.collapse` |
-| `textExpand`   | `text-expand`   | Tooltip used for the toggle when collapsed.               | `string`  | `TEXT.expand`   |
+| Property        | Attribute        | Description                                                                                                                                                                      | Type                   | Default         |
+| --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------- |
+| `open`          | `open`           | When true, the block's section content will be displayed.                                                                                                                        | `boolean`              | `false`         |
+| `text`          | `text`           | Text displayed in the button.                                                                                                                                                    | `string`               | `undefined`     |
+| `textCollapse`  | `text-collapse`  | Tooltip used for the toggle when expanded.                                                                                                                                       | `string`               | `TEXT.collapse` |
+| `textExpand`    | `text-expand`    | Tooltip used for the toggle when collapsed.                                                                                                                                      | `string`               | `TEXT.expand`   |
+| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" \| "switch"` | `"button"`      |
 
 ## Events
 
 | Event                       | Description                               | Type               |
 | --------------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
+
+## Slots
+
+| Slot | Description                                     |
+| ---- | ----------------------------------------------- |
+|      | A slot for adding content to the block section. |
 
 ## Dependencies
 

@@ -1,7 +1,11 @@
 export const CSS = {
-  label: "label",
-  heading: "heading",
+  action: "action",
   description: "description",
+  handle: "handle",
+  handleActivated: "handle--activated",
   highlight: "highlight",
-  handle: "handle"
+  icon: "icon",
+  label: "label",
+  title: "title",
+  textContainer: "text-container"
 };

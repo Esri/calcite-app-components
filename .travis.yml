@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "lts/*"
+branches:
+  only:
+    - master
+notifications:
+  slack: esri-webgis:D26hnnKPMsexqKOGR6LOUc02
+script:
+  - npm run lint
+  - npm test
