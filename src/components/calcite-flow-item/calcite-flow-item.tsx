@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
 
 import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
@@ -81,21 +81,15 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Public Methods
+  //  Events
   //
   // --------------------------------------------------------------------------
 
   /**
-   * Removes the component.
+   * Emitted when the back button has been clicked.
    */
-  @Method()
-  async back(): Promise<HTMLCalciteFlowItemElement> {
-    await this.beforeBack();
 
-    this.el.remove();
-
-    return this.el;
-  }
+  @Event() calciteFlowItemBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -116,7 +110,7 @@ export class CalciteFlowItem {
   };
 
   backButtonClick = (): void => {
-    this.back();
+    this.calciteFlowItemBackClick.emit();
   };
 
   // --------------------------------------------------------------------------

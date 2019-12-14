@@ -25,15 +25,35 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
+    const flow = await page.find("calcite-flow");
+
+    await flow.callMethod("back");
+
+    await page.waitForChanges();
+
+    expect(flow.innerHTML).toEqual("");
+  });
+
+  it("setting beforeBack property as function that returns rejected promise should prevent removal", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
+
     const flowItem = await page.find("calcite-flow-item");
 
-    await flowItem.callMethod("back");
+    const beforeBackFunc = () => Promise.reject();
+
+    flowItem.setProperty("beforeBack", beforeBackFunc);
 
     await page.waitForChanges();
 
     const flow = await page.find("calcite-flow");
 
-    expect(flow.innerHTML).toEqual("");
+    await flow.callMethod("back");
+
+    await page.waitForChanges();
+
+    expect(flow.innerHTML).not.toEqual("");
   });
 
   it("frame advancing should add animation class", async () => {
@@ -95,6 +115,8 @@ describe("calcite-flow", () => {
       `;
     });
 
+    await page.waitForChanges();
+
     const items = await page.findAll("calcite-flow-item");
 
     expect(items).toHaveLength(3);
@@ -104,7 +126,7 @@ describe("calcite-flow", () => {
     expect(frame).not.toHaveClass(CSS.frameRetreating);
     expect(frame).not.toHaveClass(CSS.frameAdvancing);
 
-    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowItemElement) => elm.back());
+    await page.$eval("calcite-flow", (elm: HTMLCalciteFlowElement) => elm.back());
 
     await page.waitForChanges();
 

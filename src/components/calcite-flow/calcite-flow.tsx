@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Listen, Method, Prop, State, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
@@ -25,6 +25,32 @@ export class CalciteFlow {
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Removes the currently active `calcite-flow-item`.
+   */
+  @Method()
+  async back(): Promise<HTMLCalciteFlowItemElement> {
+    const lastItem = this.el.querySelector(
+      "calcite-flow-item:last-child"
+    ) as HTMLCalciteFlowItemElement;
+
+    if (!lastItem) {
+      return;
+    }
+
+    await lastItem.beforeBack();
+
+    lastItem.remove();
+
+    return lastItem;
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -63,6 +89,11 @@ export class CalciteFlow {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+
+  @Listen("calciteFlowItemBackClick")
+  handleCalciteFlowItemBackClick(): void {
+    this.back();
+  }
 
   getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection | null => {
     const allowRetreatingDirection = oldFlowCount > 1;
