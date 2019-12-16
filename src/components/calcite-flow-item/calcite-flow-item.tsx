@@ -32,7 +32,7 @@ export class CalciteFlowItem {
   /**
    * Optionally perform a function to run before going back.
    */
-  @Prop() beforeBack: () => Promise<void> = () => Promise.resolve();
+  @Prop() beforeBack?: () => Promise<void>;
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
