@@ -4,7 +4,7 @@ import { CSS } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 
 function createTestPromise(success = true) {
-  return new Promise((resolve, reject) => setTimeout(() => (success ? resolve("resolved") : reject("rejected")), 0));
+  return new Promise((resolve, reject) => setTimeout(() => (success ? resolve() : reject("error")), 0));
 }
 
 describe("calcite-flow", () => {
@@ -59,6 +59,31 @@ describe("calcite-flow", () => {
 
     expect(flowItem).toBeNull();
   });
+
+  // it("setting beforeBack with rejected promise should not remove flow-item", async () => {
+  //   expect.assertions(2);
+  //   const page = await newE2EPage();
+
+  //   await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
+
+  //   let flowItem = await page.find("calcite-flow-item");
+
+  //   expect(flowItem).not.toBeNull();
+
+  //   flowItem.setProperty("beforeBack", () => createTestPromise(false));
+
+  //   const flow = await page.find("calcite-flow");
+
+  //   await flow.callMethod("back").catch((e) => {
+  //     expect(e).toEqual("error");
+  //   });
+
+  //   await page.waitForChanges();
+
+  //   flowItem = await page.find("calcite-flow-item");
+
+  //   expect(flowItem).not.toBeNull();
+  // });
 
   it("frame advancing should add animation class", async () => {
     const page = await newE2EPage();
