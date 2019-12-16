@@ -41,9 +41,9 @@ describe("calcite-flow", () => {
 
     const flowItem = await page.find("calcite-flow-item");
 
-    const beforeBackFunc = () => Promise.reject();
-
-    flowItem.setProperty("beforeBack", beforeBackFunc);
+    flowItem.setProperty("beforeBack", () => {
+      return Promise.reject();
+    });
 
     await page.waitForChanges();
 

@@ -45,7 +45,9 @@ export class CalciteFlow {
       return;
     }
 
-    await lastItem.beforeBack();
+    if (lastItem.beforeBack) {
+      await lastItem.beforeBack();
+    }
 
     lastItem.remove();
 
