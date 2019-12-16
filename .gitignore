@@ -28,3 +28,6 @@ src/**/components.d.ts
 # backup files
 *.bak
 *.orig
+
+# Docs Preview
+__docs-temp__/*
