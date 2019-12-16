@@ -45,11 +45,11 @@ describe("calcite-flow", () => {
 
     let flowItem = await page.find("calcite-flow-item");
 
+    expect(flowItem).not.toBeNull();
+
     flowItem.setProperty("beforeBack", () => createTestPromise(true));
 
     const flow = await page.find("calcite-flow");
-
-    expect(flow.innerHTML).not.toEqual("");
 
     await flow.callMethod("back");
 
