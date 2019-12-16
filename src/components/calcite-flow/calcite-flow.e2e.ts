@@ -3,6 +3,10 @@ import { newE2EPage } from "@stencil/core/testing";
 import { CSS } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 
+function createTestPromise(success = true) {
+  return new Promise((resolve, reject) => setTimeout(() => (success ? resolve("resolved") : reject("rejected")), 0));
+}
+
 describe("calcite-flow", () => {
   it("renders", async () => renders("calcite-flow"));
 
@@ -41,21 +45,37 @@ describe("calcite-flow", () => {
 
     const flowItem = await page.find("calcite-flow-item");
 
-    const beforeBackPromise = new Promise((resolve) => setTimeout(resolve, 1000));
-
-    flowItem.setProperty("beforeBack", () => beforeBackPromise);
+    flowItem.setProperty("beforeBack", () => createTestPromise(true));
 
     const flow = await page.find("calcite-flow");
 
-    await flow.callMethod("back");
-
     expect(flow.innerHTML).not.toEqual("");
 
-    await beforeBackPromise;
+    await flow.callMethod("back");
 
     await page.waitForChanges();
 
     expect(flow.innerHTML).toEqual("");
+  });
+
+  it("setting beforeBack with rejected promise should prevent back()", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
+
+    const flowItem = await page.find("calcite-flow-item");
+
+    const flow = await page.find("calcite-flow");
+
+    flowItem.setProperty("beforeBack", () => createTestPromise(false));
+
+    expect.assertions(1);
+
+    await flow.callMethod("back");
+
+    await page.waitForChanges();
+
+    expect(flow.innerHTML).not.toEqual("");
   });
 
   it("frame advancing should add animation class", async () => {
