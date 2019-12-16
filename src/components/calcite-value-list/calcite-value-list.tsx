@@ -77,6 +77,11 @@ export class CalciteValueList {
    */
   @Prop({ reflect: true }) multiple = false;
 
+  /**
+   * Placeholder text for the filter input field.
+   */
+  @Prop({ reflect: true }) textFilterPlaceholder?: string = TEXT.filterPlaceholder;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -274,6 +279,6 @@ export class CalciteValueList {
   }
 
   render() {
-    return <List props={this} text={TEXT} onKeyDown={this.keyDownHandler} />;
+    return <List props={this} onKeyDown={this.keyDownHandler} />;
   }
 }

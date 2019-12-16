@@ -2,13 +2,21 @@ const rimraf = require("rimraf");
 
 // 👇 based on https://stackoverflow.com/a/14032965
 
-process.stdin.resume(); //so the program will not close instantly
+process.stdin.resume(); // so the program will not close instantly
 
-const exitHandler = (options) => {
-  if (options.cleanup) {
+interface CleanupOptions {
+  cleanup: boolean;
+}
+
+interface ExitOptions {
+  exit: boolean;
+}
+
+const exitHandler = (options: CleanupOptions | ExitOptions): void => {
+  if ("cleanup" in options) {
     rimraf.sync(`${__dirname}/../__docs-temp__`);
   }
-  if (options.exit) {
+  if ("exit" in options) {
     process.exit();
   }
 };
@@ -18,6 +26,10 @@ process.on("exit", exitHandler.bind(null, { cleanup: true }));
 
 // catches ctrl+c event
 process.on("SIGINT", exitHandler.bind(null, { exit: true }));
+
+// catches other kill process signals (e.g., concurrently --kill-others ...)
+process.on("SIGHUP", exitHandler.bind(null, { exit: true }));
+process.on("SIGTERM", exitHandler.bind(null, { exit: true }));
 
 // catches "kill pid" (for example: nodemon restart)
 process.on("SIGUSR1", exitHandler.bind(null, { exit: true }));
