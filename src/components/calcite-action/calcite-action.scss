@@ -47,10 +47,16 @@
   .text-container {
     flex: 1 1 auto;
     line-height: 1rem;
-    margin: 0 var(--calcite-app-side-spacing-half);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 0;
+    margin-right: 0;
+    opacity: 0;
+    width: 0;
+    transition: opacity var(--calcite-app-animation-time) var(--calcite-app-easing-function),
+      margin var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+      width var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   }
 }
 
@@ -64,6 +70,11 @@
 
 .button--text-visible {
   width: 100%;
+  .text-container {
+    margin: 0 var(--calcite-app-side-spacing-half);
+    opacity: 1;
+    width: 100%;
+  }
 }
 
 :host([active]) .button,

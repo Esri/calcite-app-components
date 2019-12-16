@@ -84,10 +84,10 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  renderTextContainer(textEnabled: boolean): VNode {
+  renderTextContainer(): VNode {
     const { text } = this;
 
-    return textEnabled ? (
+    return text ? (
       <div key="text-container" class={CSS.textContainer}>
         {text}
       </div>
@@ -140,7 +140,7 @@ export class CalciteAction {
           aria-busy={loading.toString()}
         >
           {this.renderIconContainer()}
-          {this.renderTextContainer(textEnabled)}
+          {this.renderTextContainer()}
         </button>
       </Host>
     );
