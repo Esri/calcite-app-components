@@ -34,26 +34,28 @@ describe("calcite-flow", () => {
     expect(flow.innerHTML).toEqual("");
   });
 
-  it("setting beforeBack property as function that returns rejected promise should prevent removal", async () => {
+  it("setting beforeBack should wait until resolved before going back", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
     const flowItem = await page.find("calcite-flow-item");
 
-    flowItem.setProperty("beforeBack", () => {
-      return Promise.reject();
-    });
+    const beforeBackPromise = new Promise((resolve) => setTimeout(resolve, 1000));
 
-    await page.waitForChanges();
+    flowItem.setProperty("beforeBack", () => beforeBackPromise);
 
     const flow = await page.find("calcite-flow");
 
     await flow.callMethod("back");
 
+    expect(flow.innerHTML).not.toEqual("");
+
+    await beforeBackPromise;
+
     await page.waitForChanges();
 
-    expect(flow.innerHTML).not.toEqual("");
+    expect(flow.innerHTML).toEqual("");
   });
 
   it("frame advancing should add animation class", async () => {
