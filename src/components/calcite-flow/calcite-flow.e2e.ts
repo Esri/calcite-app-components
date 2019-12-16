@@ -43,7 +43,7 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
-    const flowItem = await page.find("calcite-flow-item");
+    let flowItem = await page.find("calcite-flow-item");
 
     flowItem.setProperty("beforeBack", () => createTestPromise(true));
 
@@ -55,27 +55,9 @@ describe("calcite-flow", () => {
 
     await page.waitForChanges();
 
-    expect(flow.innerHTML).toEqual("");
-  });
+    flowItem = await page.find("calcite-flow-item");
 
-  it("setting beforeBack with rejected promise should prevent back()", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
-
-    const flowItem = await page.find("calcite-flow-item");
-
-    const flow = await page.find("calcite-flow");
-
-    flowItem.setProperty("beforeBack", () => createTestPromise(false));
-
-    expect.assertions(1);
-
-    await flow.callMethod("back");
-
-    await page.waitForChanges();
-
-    expect(flow.innerHTML).not.toEqual("");
+    expect(flowItem).toBeNull();
   });
 
   it("frame advancing should add animation class", async () => {
