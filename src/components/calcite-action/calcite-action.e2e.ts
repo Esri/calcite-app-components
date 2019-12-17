@@ -9,7 +9,7 @@ describe("calcite-action", () => {
   it("should not have text container", async () => {
     const page = await newE2EPage();
 
-    await page.setContent(`<calcite-action text="hello world"></calcite-action>`).catch((error) => {
+    await page.setContent(`<calcite-action text=""></calcite-action>`).catch((error) => {
       console.error(error);
     });
 
@@ -20,12 +20,27 @@ describe("calcite-action", () => {
   it("should have text container", async () => {
     const page = await newE2EPage();
 
+    await page.setContent(`<calcite-action text="hello world"></calcite-action>`).catch((error) => {
+      console.error(error);
+    });
+
+    const textcontainer = await page.find("calcite-action >>> .text-container");
+
+    expect(textcontainer).not.toBeNull();
+  });
+
+  it("should have visible text", async () => {
+    const page = await newE2EPage();
+
     await page.setContent(`<calcite-action text="hello world" text-enabled></calcite-action>`).catch((error) => {
       console.error(error);
     });
 
     const textcontainer = await page.find("calcite-action >>> .text-container");
-    expect(textcontainer).not.toBeNull();
+
+    const isVisible = await textcontainer.isVisible();
+
+    expect(isVisible).toBe(true);
   });
 
   it("should have icon container", async () => {
