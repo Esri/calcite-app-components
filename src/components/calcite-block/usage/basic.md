@@ -33,3 +33,13 @@ Renders a header and content that remains open - no the option to collapse the b
   <div>Father or Son?</div>
 </calcite-block>
 ```
+
+#### Header and content (collapsible)
+
+Renders a header with a clickable icon to toggle the block open and closed.
+
+```html
+<calcite-block heading="Domestic pets" open collapsible>
+  <calcite-block-section text="puppers rool, kittehs drule"> </calcite-block-section>
+</calcite-block>
+```
