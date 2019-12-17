@@ -45,9 +45,9 @@ export class CalciteFlow {
       return;
     }
 
-    if (lastItem.beforeBack) {
-      await lastItem.beforeBack();
-    }
+    const beforeBack = lastItem.beforeBack ? lastItem.beforeBack : () => Promise.resolve();
+
+    await beforeBack();
 
     lastItem.remove();
 
