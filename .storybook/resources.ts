@@ -41,11 +41,10 @@ export function createSVG(path: string, size: number): string {
 }
 
 export function createAction(
-  { text, label, textEnabled }: { text: string; label: string; textEnabled?: boolean },
+  { text, label, textEnabled, slot }: { text: string; label?: string; textEnabled?: boolean; slot?: string },
   path: string
 ): string {
-  return `<calcite-action ${textEnabled ? "text-enabled" : null} text="${text}" label="${label}">${createSVG(
-    path,
-    16
-  )}</calcite-action>`;
+  return `<calcite-action ${slot ? `slot="${slot}"` : null} ${
+    textEnabled ? "text-enabled" : null
+  } text="${text}" label="${label}">${createSVG(path, 16)}</calcite-action>`;
 }
