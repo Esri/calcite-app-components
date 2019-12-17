@@ -1,10 +1,11 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
-
-import { ATTRIBUTES } from "../../../.storybook/resources";
+import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
 import { APPEARANCE_VALUES } from "./resources";
 import { beaker16 } from "@esri/calcite-ui-icons";
+
+const { theme } = ATTRIBUTES;
 
 export default {
   title: "calcite-action",
@@ -14,8 +15,6 @@ export default {
     backgrounds: darkBackground
   }
 };
-
-const { theme } = ATTRIBUTES;
 
 const createAttributes: () => Attributes = () => [
   {
@@ -52,7 +51,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "text-enabled",
-    value: boolean("text-enabled", false)
+    value: boolean("textEnabled", false)
   },
   {
     name: "theme",
@@ -60,18 +59,6 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const iconSize = 16;
+const html = createSVG(beaker16, 16);
 
-const svgIcon = `
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  height="${iconSize}"
-  width="${iconSize}"
-  fill="currentColor"
-  viewBox="0 0 ${iconSize} ${iconSize}"
->
-  <path d="${beaker16}" />
-</svg>
-`;
-
-export const basic = () => create("calcite-action", createAttributes(), svgIcon);
+export const basic = () => create("calcite-action", createAttributes(), html);
