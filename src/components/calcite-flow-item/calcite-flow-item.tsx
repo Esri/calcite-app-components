@@ -97,7 +97,7 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   queryActions(): HTMLCalciteActionElement[] {
-    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] > *`));
+    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
   }
 
   isValidKey(key: string, supportedKeys: string[]): boolean {
