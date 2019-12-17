@@ -2,13 +2,21 @@ const rimraf = require("rimraf");
 
 // 👇 based on https://stackoverflow.com/a/14032965
 
-process.stdin.resume(); //so the program will not close instantly
+process.stdin.resume(); // so the program will not close instantly
 
-const exitHandler = (options) => {
-  if (options.cleanup) {
+interface CleanupOptions {
+  cleanup: boolean;
+}
+
+interface ExitOptions {
+  exit: boolean;
+}
+
+const exitHandler = (options: CleanupOptions | ExitOptions): void => {
+  if ("cleanup" in options) {
     rimraf.sync(`${__dirname}/../__docs-temp__`);
   }
-  if (options.exit) {
+  if ("exit" in options) {
     process.exit();
   }
 };
