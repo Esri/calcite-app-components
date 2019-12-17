@@ -18,7 +18,7 @@
     "build:docs": "stencil build --config stencil.storybook.config.ts",
     "demoPageSync": "ts-node ./support/demoPageSync.ts",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"chore(deps): Bump versions.\"",
-    "docs": "stencil build --config stencil.docs.config.ts",
+    "docs": "tsc --project ./tsconfig-demos.json && stencil build --config stencil.docs.config.ts",
     "docs:storybook": "concurrently --kill-others --raw \"npm run build:docs && build-storybook --static-dir ./__docs-temp__ --output-dir ./docs\" \"ts-node ./support/tempDocDirCleaner.ts\"",
     "docs:preview": "concurrently --raw \"npm run build:docs && start-storybook --static-dir ./__docs-temp__\" \"ts-node ./support/tempDocDirCleaner.ts\"",
     "lint": "concurrently npm:lint:*",
