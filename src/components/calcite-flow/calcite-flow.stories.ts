@@ -1,9 +1,10 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES } from "../../../.storybook/resources";
+import { ATTRIBUTES, createAction } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
+import { layers16, plus16, save16 } from "@esri/calcite-ui-icons";
 
 export default {
   title: "calcite-flow",
@@ -28,9 +29,7 @@ const createAttributes: () => Attributes = () => {
   ];
 };
 
-const createFlowItemAttributes: () => Attributes = () => {
-  const group = "Flow Item";
-
+const createFlowItemAttributes: (group: string) => Attributes = (group) => {
   return [
     {
       name: "disabled",
@@ -65,9 +64,9 @@ const createFlowItemAttributes: () => Attributes = () => {
 
 const itemHTML = `
 <div slot="menu-actions">
-  <calcite-action text="Do a cool thing" text-display="visible"></calcite-action>
-  <calcite-action text="Do a cool thing" text-display="visible"></calcite-action>
-  <calcite-action text="Do a cool thing" text-display="visible"></calcite-action>
+  ${createAction({ text: "Add", label: "Add Item", textEnabled: true }, plus16)}
+  ${createAction({ text: "Save", label: "Save Item", textEnabled: true }, save16)}
+  ${createAction({ text: "Layers", label: "View Layers", textEnabled: true }, layers16)}
 </div>
 <p>
 Enim nascetur erat faucibus ornare varius arcu fames bibendum habitant felis elit ante. Nibh morbi massa curae; leo semper diam aenean congue taciti eu porta. Varius faucibus ridiculus donec. Montes sit ligula purus porta ante lacus habitasse libero cubilia purus! In quis congue arcu maecenas felis cursus pellentesque nascetur porta donec non. Quisque, rutrum ligula pharetra justo habitasse facilisis rutrum neque. Magnis nostra nec nulla dictumst taciti consectetur. Non porttitor tempor orci dictumst magna porta vitae.
@@ -85,10 +84,15 @@ Magna ligula neque phasellus. Velit duis auctor etiam nullam sociis nam neque qu
 Congue eu duis integer nisl molestie nostra dis auctor lobortis tellus parturient. Porttitor dis curae; maecenas quis praesent ridiculus posuere mus. Dictumst, vivamus fames semper congue fusce! Nunc placerat enim fermentum posuere magna justo habitasse. Tristique placerat mauris, per nulla gravida dui urna ut nec venenatis! Non lacus iaculis quisque, neque erat integer. Duis tortor ad habitant turpis dis eu mollis at facilisis. Tellus nisl amet morbi fringilla mus dui neque himenaeos maecenas platea venenatis. Tristique nisl quisque ad aliquam senectus pulvinar litora.
 </p>
 <div slot="footer-actions">
-  <button>Save</button>
-  <button>Cancel</button>
+  <calcite-button>Save</calcite-button>
+  <calcite-button>Cancel</calcite-button>
 </div>
 `;
 
 export const basic = () =>
-  create("calcite-flow", createAttributes(), `${create("calcite-flow-item", createFlowItemAttributes(), itemHTML)}`);
+  create(
+    "calcite-flow",
+    createAttributes(),
+    `${create("calcite-flow-item", createFlowItemAttributes("Flow Item 1"), itemHTML)}
+    ${create("calcite-flow-item", createFlowItemAttributes("Flow Item 2"), itemHTML)}`
+  );
