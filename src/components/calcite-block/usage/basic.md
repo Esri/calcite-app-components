@@ -4,7 +4,7 @@
 <calcite-block heading="Fruit" summary="It's nature's candy"> </calcite-block>
 ```
 
-#### Header + control
+#### Header with control
 
 Renders a header and control with a slot for adding a single HTML element (in the header).
 
@@ -14,7 +14,7 @@ Renders a header and control with a slot for adding a single HTML element (in th
 </calcite-block>
 ```
 
-#### Header + Icon
+#### Header with Icon
 
 Renders a header and icon with the icon.
 
@@ -24,7 +24,7 @@ Renders a header and icon with the icon.
 </calcite-block>
 ```
 
-#### Header and content (always open)
+#### Header with content (always open)
 
 Renders a header and content that remains open - no collapsible option.
 
@@ -34,7 +34,7 @@ Renders a header and content that remains open - no collapsible option.
 </calcite-block>
 ```
 
-#### Header and content (collapsible)
+#### Header with content (collapsible)
 
 Renders a header with a clickable icon to toggle the block open and closed.
 
