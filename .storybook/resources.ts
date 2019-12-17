@@ -25,3 +25,21 @@ export const ATTRIBUTES: CommonAttributes = {
     defaultValue: themeOptions[0]
   }
 };
+
+export function createSVG(path: string, size: number): string {
+  return `
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="${size}"
+    width="${size}"
+    fill="currentColor"
+    viewBox="0 0 ${size} ${size}"
+  >
+    <path d="${path}" />
+  </svg>
+`;
+}
+
+export function createAction({ text, label }: { text: string; label: string }, path: string): string {
+  return `<calcite-action text="${text}" label="${label}">${createSVG(path, 16)}</calcite-action>`;
+}
