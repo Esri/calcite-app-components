@@ -62,13 +62,20 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
   ];
 };
 
-const itemHTML = `
-<div slot="menu-actions">
-  ${createAction({ text: "Add", label: "Add Item", textEnabled: true }, plus16)}
-  ${createAction({ text: "Save", label: "Save Item", textEnabled: true }, save16)}
-  ${createAction({ text: "Layers", label: "View Layers", textEnabled: true }, layers16)}
-</div>
-<p>
+const menuActionsHTML = `<div slot="menu-actions">
+${createAction({ text: "Add", label: "Add Item", textEnabled: true }, plus16)}
+${createAction({ text: "Save", label: "Save Item", textEnabled: true }, save16)}
+${createAction({ text: "Layers", label: "View Layers", textEnabled: true }, layers16)}
+</div>`;
+
+const footerActionsHTML = `<calcite-button slot="footer-actions" width="half">Save</calcite-button>
+<calcite-button slot="footer-actions" width="half" appearance="clear">Cancel</button>`;
+
+function createItemHTML(content: string): string {
+  return `${menuActionsHTML}${content}${footerActionsHTML}`;
+}
+
+const item1HTML = `<p>
 Enim nascetur erat faucibus ornare varius arcu fames bibendum habitant felis elit ante. Nibh morbi massa curae; leo semper diam aenean congue taciti eu porta. Varius faucibus ridiculus donec. Montes sit ligula purus porta ante lacus habitasse libero cubilia purus! In quis congue arcu maecenas felis cursus pellentesque nascetur porta donec non. Quisque, rutrum ligula pharetra justo habitasse facilisis rutrum neque. Magnis nostra nec nulla dictumst taciti consectetur. Non porttitor tempor orci dictumst magna porta vitae.
 </p>
 <p>
@@ -82,17 +89,19 @@ Magna ligula neque phasellus. Velit duis auctor etiam nullam sociis nam neque qu
 </p>
 <p>
 Congue eu duis integer nisl molestie nostra dis auctor lobortis tellus parturient. Porttitor dis curae; maecenas quis praesent ridiculus posuere mus. Dictumst, vivamus fames semper congue fusce! Nunc placerat enim fermentum posuere magna justo habitasse. Tristique placerat mauris, per nulla gravida dui urna ut nec venenatis! Non lacus iaculis quisque, neque erat integer. Duis tortor ad habitant turpis dis eu mollis at facilisis. Tellus nisl amet morbi fringilla mus dui neque himenaeos maecenas platea venenatis. Tristique nisl quisque ad aliquam senectus pulvinar litora.
-</p>
-<div slot="footer-actions">
-  <calcite-button>Save</calcite-button>
-  <calcite-button>Cancel</calcite-button>
-</div>
-`;
+</p>`;
+
+const item2HTML = `<ul>
+<li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+<li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+<li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+<li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+</ul>`;
 
 export const basic = () =>
   create(
     "calcite-flow",
     createAttributes(),
-    `${create("calcite-flow-item", createFlowItemAttributes("Flow Item 1"), itemHTML)}
-    ${create("calcite-flow-item", createFlowItemAttributes("Flow Item 2"), itemHTML)}`
+    `${create("calcite-flow-item", createFlowItemAttributes("Flow Item 1"), createItemHTML(item1HTML))}
+    ${create("calcite-flow-item", createFlowItemAttributes("Flow Item 2"), createItemHTML(item2HTML))}`
   );
