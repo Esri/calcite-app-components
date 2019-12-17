@@ -39,7 +39,7 @@ describe("calcite-flow", () => {
   it("setting 'beforeBack' should be called in 'back()'", async () => {
     const page = await newE2EPage();
 
-    const mockCallBack = jest.fn();
+    const mockCallBack = jest.fn().mockReturnValue(Promise.resolve());
     await page.exposeFunction("beforeBack", mockCallBack);
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
@@ -50,8 +50,9 @@ describe("calcite-flow", () => {
 
     const flow = await page.find("calcite-flow");
 
-    await flow.callMethod("back");
+    const backValue = await flow.callMethod("back");
 
+    expect(backValue).toBeDefined();
     expect(mockCallBack).toBeCalledTimes(1);
   });
 

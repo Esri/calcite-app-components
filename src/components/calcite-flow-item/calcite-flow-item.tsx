@@ -30,7 +30,7 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Optionally perform a function to run before going back.
+   * When provided, this method will be called before it is removed from the parent flow.
    */
   @Prop() beforeBack?: () => Promise<void>;
 

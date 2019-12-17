@@ -103,7 +103,7 @@
 
       addFlowButtonNode.addEventListener("click", function() {
         var newNode = document.createElement("calcite-flow-item");
-        /*
+
         newNode.beforeBack = function() {
           newNode.loading = true;
           newNode.disabled = true;
@@ -115,13 +115,6 @@
             }, 1000)
           );
         };
-        */
-
-        /*
-        newNode.beforeBack = function() {
-          return Promise.reject();
-        };
-        */
 
         newNode.heading = "Item " + (flowNode.childElementCount + 1);
         newNode.innerHTML = `
