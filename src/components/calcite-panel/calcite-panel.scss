@@ -73,6 +73,7 @@ slot[name="header-content"]::slotted(.heading) {
 }
 
 .header-trailing-content {
+  display: flex;
   margin-left: auto;
 }
 
