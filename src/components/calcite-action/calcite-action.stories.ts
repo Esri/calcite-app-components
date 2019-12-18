@@ -59,6 +59,4 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const html = createSVG(beaker16, 16);
-
-export const basic = () => create("calcite-action", createAttributes(), html);
+export const basic = () => create("calcite-action", createAttributes(), createSVG(beaker16, 16));

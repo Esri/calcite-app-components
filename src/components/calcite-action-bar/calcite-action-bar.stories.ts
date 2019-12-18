@@ -42,14 +42,15 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const html = `
-<calcite-action-group>
-  ${createAction({ text: "Add", label: "Add Item" }, plus16)}
-  ${createAction({ text: "Save", label: "Save Item" }, save16)}
-</calcite-action-group>
-<calcite-action-group>
-  ${createAction({ text: "Layers", label: "View Layers" }, layers16)}
-</calcite-action-group>
-`;
-
-export const basic = () => create("calcite-action-bar", createAttributes(), html);
+export const basic = () =>
+  create(
+    "calcite-action-bar",
+    createAttributes(),
+    `<calcite-action-group>
+    ${createAction({ text: "Add", label: "Add Item" }, plus16)}
+    ${createAction({ text: "Save", label: "Save Item" }, save16)}
+  </calcite-action-group>
+  <calcite-action-group>
+    ${createAction({ text: "Layers", label: "View Layers" }, layers16)}
+  </calcite-action-group>`
+  );
