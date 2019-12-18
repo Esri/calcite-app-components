@@ -7,6 +7,7 @@ export const create: typeof baseConfigCreator = () => {
   const wwwOutputTarget = docsConfig.outputTargets.find((element) => element.type === "www") as OutputTargetWww;
   wwwOutputTarget.copy = wwwOutputTarget.copy.filter((item) => !item.src.includes("demos"));
   wwwOutputTarget.dir = "__docs-temp__";
+  docsConfig.outputTargets = [wwwOutputTarget];
 
   return docsConfig;
 };

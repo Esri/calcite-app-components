@@ -1,3 +1,5 @@
+import { CalciteScale } from "../interfaces";
+
 export const CSS = {
   container: "container",
   header: "header",
@@ -11,3 +13,5 @@ export const CSS = {
 export const TEXT = {
   close: "Close"
 };
+
+export const SCALES: CalciteScale[] = ["s", "m", "l"];
