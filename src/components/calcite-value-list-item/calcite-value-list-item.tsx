@@ -31,6 +31,11 @@ export class CalciteValueListItem {
   @Prop({ reflect: true }) disabled? = false;
 
   /**
+   * @internal When false, the item cannot be deselected by user interaction.
+   */
+  @Prop() disableDeselect = false;
+
+  /**
    * @internal - stores the activated state of the drag handle.
    */
   @Prop({ mutable: true }) handleActivated? = false;
@@ -48,7 +53,7 @@ export class CalciteValueListItem {
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
-  @Prop({ reflect: true, mutable: true }) selected? = false;
+  @Prop({ reflect: true, mutable: true }) selected = false;
 
   /**
    * The main label for this item. Appears next to the icon.
@@ -105,6 +110,10 @@ export class CalciteValueListItem {
     this.handleActivated = false;
   };
 
+  handleSelectChange = (event: CustomEvent) => {
+    this.selected = event.detail.selected;
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -120,7 +129,7 @@ export class CalciteValueListItem {
           class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
           tabindex="0"
           data-js-handle="true"
-          aria-pressed={this.handleActivated}
+          aria-pressed={this.handleActivated.toString()}
           onKeyDown={this.handleKeyDown}
           onBlur={this.handleBlur}
         >
@@ -138,10 +147,12 @@ export class CalciteValueListItem {
           compact={this.compact}
           ref={this.getPickListRef}
           disabled={this.disabled}
+          disableDeselect={this.disableDeselect}
           selected={this.selected}
           metadata={this.metadata}
           textLabel={this.textLabel}
           textDescription={this.textDescription}
+          onCalciteListItemChange={this.handleSelectChange}
           value={this.value}
         >
           <slot name="secondaryAction" slot="secondaryAction" />

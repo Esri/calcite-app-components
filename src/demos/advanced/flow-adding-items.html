@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>Calcite App Components: calcite-flow</title>
+
+    <!-- Loads the link and script tags-->
+    <script src="../head.js"></script>
+    <style>
+      .demo-block {
+        width: 100%;
+        height: 240px;
+        margin-bottom: 8px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 #e0e0e0;
+      }
+      .demo-btn {
+        background-color: transparent;
+        border: 1px solid #007ac2;
+        color: #007ac2;
+        font-size: 1rem;
+        font-family: inherit;
+        padding: 0.7rem;
+        border-radius: 3px;
+        margin: 1rem 0.2rem;
+        min-width: 5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <calcite-demo-nav page-id="flow-adding-items"></calcite-demo-nav>
+    </nav>
+    <main>
+      <section class="example-container">
+        <h1>calcite-flow</h1>
+        <p>
+          see the
+          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-flow/readme.md"
+            >calcite-flow readme.</a
+          >
+        </p>
+
+        <h2>Adding new Flow-items to Flow</h2>
+        <calcite-flow id="flow">
+          <calcite-flow-item heading="What are the most popular commute alternatives?">
+            <div slot="menu-actions">
+              <button>Reset</button>
+              <button>Rename</button>
+            </div>
+            <div slot="footer-actions">
+              <button class="btn">Save</button>
+              <button class="btn btn-secondary">Cancel</button>
+            </div>
+            <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
+            <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
+          </calcite-flow-item>
+        </calcite-flow>
+        <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
+
+        <details>
+          <summary>Sample JavaScript</summary>
+          <pre><code class="language-js">&lt;script&gt;
+  var flowNode = document.getElementById("flow");
+
+  flowNode.addEventListener("calciteFlowItemBackClick", function() {
+    flowNode.back();
+  });
+
+  var addFlowButtonNode = document.getElementById("add-flow-item");
+
+  addFlowButtonNode.addEventListener("click", function() {
+  var newNode = document.createElement("calcite-flow-item");
+  newNode.heading = "Item " + (flowNode.childElementCount + 1);
+  newNode.innerHTML = `
+      &lt;p&gt;&lt;img src="https://via.placeholder.com/300x200" alt="placeholder" /&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src="https://via.placeholder.com/300x200" alt="placeholder" /&gt;&lt;/p&gt;
+      &lt;div slot="menu-actions"&gt;
+      &lt;calcite-action&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"&gt;
+            &lt;path d="M14.792 2.666l-1.414-1.413a.965.965 0 0 0-1.385-.03l-1.444 1.444-8.763 8.72L.03 15.481a.371.371
+            0 0 0 .488.488l4.096-1.756 8.763-8.72-.001-.001.002.002 1.443-1.444a.965.965 0 0 0-.03-1.385zM1.569
+            14.431l.554-1.293.74.739zm2.338-.924l-1.414-1.414 7.963-7.92 1.414 1.415zm8.67-8.626l-1.413-1.414
+            1.29-1.29a.306.306 0 0 1 .433 0l.981.98a.306.306 0 0 1 0 .433z"/&gt;
+          &lt;/svg&gt;
+      &lt;/calcite-action&gt;
+      &lt;/div&gt;
+      &lt;div slot="footer-actions"&gt;
+      &lt;button&gt;Save&lt;/button&gt;
+      &lt;button&gt;Cancel&lt;/button&gt;
+      &lt;/div&gt;
+  `;
+  flowNode.appendChild(newNode);
+  });
+&lt;/script&gt;</code></pre>
+        </details>
+      </section>
+    </main>
+    <script>
+      var flowNode = document.getElementById("flow");
+
+      flowNode.addEventListener("calciteFlowItemBackClick", function() {
+        flowNode.back();
+      });
+
+      var addFlowButtonNode = document.getElementById("add-flow-item");
+
+      addFlowButtonNode.addEventListener("click", function() {
+        var newNode = document.createElement("calcite-flow-item");
+        newNode.heading = "Item " + (flowNode.childElementCount + 1);
+        newNode.innerHTML = `
+          <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
+          <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
+          <div slot="menu-actions">
+            <calcite-action>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                <path d="M14.792 2.666l-1.414-1.413a.965.965 0 0 0-1.385-.03l-1.444 1.444-8.763 8.72L.03 15.481a.371.371
+                0 0 0 .488.488l4.096-1.756 8.763-8.72-.001-.001.002.002 1.443-1.444a.965.965 0 0 0-.03-1.385zM1.569
+                14.431l.554-1.293.74.739zm2.338-.924l-1.414-1.414 7.963-7.92 1.414 1.415zm8.67-8.626l-1.413-1.414
+                1.29-1.29a.306.306 0 0 1 .433 0l.981.98a.306.306 0 0 1 0 .433z"/>
+              </svg>
+            </calcite-action>
+          </div>
+          <div slot="footer-actions">
+            <button>Save</button>
+            <button>Cancel</button>
+          </div>
+        `;
+        flowNode.appendChild(newNode);
+        setTimeout(function() {
+          var newDiv = document.createElement("div");
+          newDiv.innerHTML = "new div who dis?";
+          newNode.appendChild(newDiv);
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

@@ -7,6 +7,9 @@ import CalciteIcon from "../utils/CalciteIcon";
 import classnames from "classnames";
 import { CalciteBlockSectionToggleDisplay } from "../interfaces";
 
+/**
+ * @slot - A slot for adding content to the block section.
+ */
 @Component({
   tag: "calcite-block-section",
   styleUrl: "calcite-block-section.scss",
@@ -119,7 +122,7 @@ export class CalciteBlockSection {
       );
 
     return (
-      <section aria-expanded={open ? "true" : "false"}>
+      <section aria-expanded={open.toString()}>
         {headerNode}
         <div class={CSS.content} hidden={!open}>
           <slot />

@@ -2,6 +2,10 @@
 
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
+## New Components
+
+See the [Boilerplate Example](BOILERPLATE_COMPONENT.md) for how to create a new Calcite Component.
+
 ## Pull Requests
 
 This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.

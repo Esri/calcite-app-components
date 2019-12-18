@@ -26,18 +26,11 @@
         </p>
 
         <style>
-            .toggles {
-              margin: 1rem 0;
-            }
             calcite-pick-list {
               margin-bottom: 1rem;
             }
         </style>
 
-        <div class="toggles">
-          <calcite-button onclick="toggleProperty('loading')">Toggle loading</calcite-button>
-          <calcite-button onclick="toggleProperty('disabled')">Toggle disabled</calcite-button>
-        </div>
     </header>
     <main>
       <section class="example-container" style="width: 28vw; margin-top: 2em;">
@@ -416,13 +409,5 @@
         </script>
       </section>
     </main>
-    <script>
-      function toggleProperty(property) {
-        const blocks = document.getElementsByTagName("calcite-pick-list");
-        for (i = 0; i < blocks.length; i++) {
-          blocks[i].toggleAttribute(property);
-        }
-      }
-    </script>
   </body>
 </html>

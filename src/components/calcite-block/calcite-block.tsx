@@ -8,6 +8,7 @@ import CalciteScrim from "../utils/CalciteScrim";
 /**
  * @slot icon - A slot for adding a trailing header icon.
  * @slot control - A slot for adding a single HTML input element in a header.
+ * @slot - A slot for adding content to the block.
  */
 @Component({
   tag: "calcite-block",
@@ -185,7 +186,7 @@ export class CalciteBlock {
 
     return (
       <Host>
-        <article aria-expanded={collapsible ? (open ? "true" : "false") : null} aria-busy={loading}>
+        <article aria-expanded={collapsible ? open.toString() : null} aria-busy={loading}>
           {headerNode}
           <div class={CSS.content} hidden={!hasContent || !open}>
             <CalciteScrim loading={loading} disabled={disabled}>

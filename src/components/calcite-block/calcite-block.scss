@@ -30,7 +30,7 @@ calcite-loader[inline] {
 }
 
 .summary {
-  font-size: var(--font-size--1);
+  font-size: var(--calcite-app-font-size--1);
   padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 
@@ -40,6 +40,7 @@ calcite-loader[inline] {
   border: none;
   cursor: pointer;
   display: flex;
+  font-family: var(--calcite-app-font-family);
   align-items: center;
   justify-content: flex-end;
   flex-wrap: nowrap;
@@ -47,6 +48,7 @@ calcite-loader[inline] {
   text-align: unset;
   width: 100%;
   color: var(--calcite-app-foreground);
+  @include focusRingInset();
 }
 
 .icon {

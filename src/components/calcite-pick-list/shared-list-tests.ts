@@ -88,6 +88,33 @@ export const tests = {
 
         expect(numSelected).toBe(3);
       });
+      it("should multi de-select", async () => {
+        const page = await newE2EPage();
+        await page.setContent(`<calcite-${listType}-list multiple>
+          <calcite-${listType}-list-item value="one" text-label="One" selected></calcite-${listType}-list-item>
+          <calcite-${listType}-list-item value="two" text-label="Two" selected></calcite-${listType}-list-item>
+          <calcite-${listType}-list-item value="three" text-label="Three" selected></calcite-${listType}-list-item>
+        </calcite-${listType}-list>`);
+
+        const list = await page.find(`calcite-${listType}-list`);
+        const item1 = await list.find("[value=one]");
+        const item3 = await list.find("[value=three]");
+
+        await item1.click();
+        await page.keyboard.down("Shift");
+        await item3.click();
+        await page.keyboard.up("Shift");
+
+        const numSelected = await page.evaluate((type) => {
+          const domList: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
+            `calcite-${type}-list`
+          );
+          return domList.getSelectedItems().then((result) => {
+            return result.size;
+          });
+        }, listType);
+        expect(numSelected).toBe(0);
+      });
     });
     describe("calciteListChange event", () => {
       it("should fire event when a selection changed", async () => {
