@@ -46,10 +46,9 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const html = `<h3 class="heading" slot="header-content">Heading</h3>
-${createAction({ text: "Some Action 1", slot: "header-leading-content" }, bluetooth16)}
-${createAction({ text: "Some Action 1", slot: "header-trailing-content" }, attachment16)}
-<p>
+const headerHTML = `<h3 class="heading" slot="header-content">Heading</h3>`;
+
+const contentHTML = `<p>
 Enim nascetur erat faucibus ornare varius arcu fames bibendum habitant felis elit ante. Nibh morbi massa curae; leo semper diam aenean congue taciti eu porta. Varius faucibus ridiculus donec. Montes sit ligula purus porta ante lacus habitasse libero cubilia purus! In quis congue arcu maecenas felis cursus pellentesque nascetur porta donec non. Quisque, rutrum ligula pharetra justo habitasse facilisis rutrum neque. Magnis nostra nec nulla dictumst taciti consectetur. Non porttitor tempor orci dictumst magna porta vitae.
 </p>
 <p>
@@ -57,8 +56,18 @@ Ipsum nostra tempus etiam augue ullamcorper scelerisque sapien potenti erat nisi
 </p>
 <p>
 Tempus per volutpat diam tempor mauris parturient vulputate leo id libero quisque. Mattis aliquam dictum venenatis fringilla. Taciti venenatis, ultrices sollicitudin consequat. Sapien fusce est iaculis potenti ut auctor potenti. Nisi malesuada feugiat vulputate vitae porttitor. Nullam nullam nullam accumsan quis magna in. Elementum, nascetur gravida cras scelerisque inceptos aenean inceptos potenti. Lobortis condimentum accumsan posuere curabitur fermentum diam, natoque quisque. Eget placerat sed aptent orci urna fusce magnis. Vel lacus magnis nunc.
-</p>
-<calcite-button slot="footer" width="half" >Yeah!</calcite-button>
+</p>`;
+
+const footerHTML = `<calcite-button slot="footer" width="half" >Yeah!</calcite-button>
 <calcite-button slot="footer" width="half" appearance="clear">Naw.</calcite-button>`;
 
-export const basic = () => create("calcite-panel", createAttributes(), html);
+export const basic = () =>
+  create(
+    "calcite-panel",
+    createAttributes(),
+    `${headerHTML}
+    ${createAction({ text: "Some Action 1", slot: "header-leading-content" }, bluetooth16)}
+    ${createAction({ text: "Some Action 1", slot: "header-trailing-content" }, attachment16)}
+    ${contentHTML}
+    ${footerHTML}`
+  );

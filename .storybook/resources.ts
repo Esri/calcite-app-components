@@ -1,4 +1,7 @@
 import { CalciteTheme } from "../src/components/interfaces";
+import { Components } from "../src/components";
+
+interface HTMLCalciteActionElement extends Components.CalciteAction, HTMLElement {}
 
 type Direction = "ltr" | "rtl";
 
@@ -41,10 +44,14 @@ export function createSVG(path: string, size: number): string {
 }
 
 export function createAction(
-  { text, label, textEnabled, slot }: { text: string; label?: string; textEnabled?: boolean; slot?: string },
-  path: string
+  { text, label, textEnabled, indicator, slot }: Partial<HTMLCalciteActionElement>,
+  path?: string
 ): string {
-  return `<calcite-action ${slot ? `slot="${slot}"` : null} ${
-    textEnabled ? "text-enabled" : null
-  } text="${text}" label="${label}">${createSVG(path, 16)}</calcite-action>`;
+  return `<calcite-action
+    ${slot ? `slot="${slot}"` : null}
+    ${textEnabled ? "text-enabled" : null}
+    ${indicator ? "indicator" : null}
+    text="${text}"
+    label="${label}"
+  >${path ? createSVG(path, 16) : null}</calcite-action>`;
 }

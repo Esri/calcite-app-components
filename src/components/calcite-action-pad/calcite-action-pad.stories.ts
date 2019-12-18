@@ -21,14 +21,15 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const html = `
-<calcite-action-group>
-  ${createAction({ text: "Undo", label: "Undo Action" }, undo16)}
-  ${createAction({ text: "Redo", label: "Redo Action" }, redo16)}
-</calcite-action-group>
-<calcite-action-group>
-  ${createAction({ text: "Delete", label: "Delete Item" }, trash16)}
-</calcite-action-group>
-`;
-
-export const basic = () => create("calcite-action-pad", createAttributes(), html);
+export const basic = () =>
+  create(
+    "calcite-action-pad",
+    createAttributes(),
+    `<calcite-action-group>
+      ${createAction({ text: "Undo", label: "Undo Action" }, undo16)}
+      ${createAction({ text: "Redo", label: "Redo Action" }, redo16)}
+      </calcite-action-group>
+      <calcite-action-group>
+      ${createAction({ text: "Delete", label: "Delete Item" }, trash16)}
+      </calcite-action-group>`
+  );
