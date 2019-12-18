@@ -76,63 +76,63 @@ const footerHTML = `<footer slot="shell-footer">My Shell Footer</footer>`;
 const contentHTML = `<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Light Gray Canvas" src="//www.arcgis.com/apps/Embed/index.html?webmap=8b3d38c0819547faa83f7b7aca80bd76&extent=-117.2942,33.9774,-117.071,34.1333&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe>`;
 
 const tipManagerHTML = `<calcite-tip-manager slot="tip-manager">
-<calcite-tip-group text-group-title="Astronomy">
+  <calcite-tip-group text-group-title="Astronomy">
+    <calcite-tip
+      heading="The Red Rocks and Blue Water"
+      thumbnail="https://placeimg.com/1000/600"
+      text-thumbnail="This is an image of nature."
+    >
+      <p slot="info">
+        This tip is how a tip should really look. It has a landscape or square image and a small amount of text
+        content. This paragraph is in an "info" slot.
+      </p>
+      <p slot="info">
+        This is another paragraph in a subsequent "info" slot. In publishing and graphic design, Lorem ipsum is
+        a placeholder text commonly used to demonstrate the visual form of a document without relying on
+        meaningful content (also called greeking). Replacing the actual content with placeholder text allows
+        designers to design the form of the content before the content itself has been produced.
+      </p>
+      <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
+    </calcite-tip>
+    <calcite-tip
+      heading="The Long Trees"
+      thumbnail="https://placeimg.com/600/1000"
+      text-thumbnail="This is an image of nature."
+    >
+      <p slot="info">
+        This tip has an image that is a pretty tall. And the text will run out before the end of the image.
+      </p>
+      <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
+      <a slot="link" href="http://www.esri.com">View Esri</a>
+    </calcite-tip>
+  </calcite-tip-group>
   <calcite-tip
-    heading="The Red Rocks and Blue Water"
-    thumbnail="https://placeimg.com/1000/600"
+    heading="Square Nature"
+    thumbnail="https://placeimg.com/1000/1000"
     text-thumbnail="This is an image of nature."
   >
     <p slot="info">
-      This tip is how a tip should really look. It has a landscape or square image and a small amount of text
-      content. This paragraph is in an "info" slot.
-    </p>
-    <p slot="info">
-      This is another paragraph in a subsequent "info" slot. In publishing and graphic design, Lorem ipsum is
-      a placeholder text commonly used to demonstrate the visual form of a document without relying on
-      meaningful content (also called greeking). Replacing the actual content with placeholder text allows
-      designers to design the form of the content before the content itself has been produced.
-    </p>
-    <a slot="link" href="http://www.esri.com">This is the "link" slot.</a>
-  </calcite-tip>
-  <calcite-tip
-    heading="The Long Trees"
-    thumbnail="https://placeimg.com/600/1000"
-    text-thumbnail="This is an image of nature."
-  >
-    <p slot="info">
-      This tip has an image that is a pretty tall. And the text will run out before the end of the image.
+      This tip has an image that is square. And the text will run out before the end of the image.
     </p>
     <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
+    <p slot="info">
+      In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
+      visual form of a document without relying on meaningful content (also called greeking). Replacing the
+      actual content with placeholder text allows designers to design the form of the content before the content
+      itself has been produced.
+    </p>
     <a slot="link" href="http://www.esri.com">View Esri</a>
   </calcite-tip>
-</calcite-tip-group>
-<calcite-tip
-  heading="Square Nature"
-  thumbnail="https://placeimg.com/1000/1000"
-  text-thumbnail="This is an image of nature."
->
-  <p slot="info">
-    This tip has an image that is square. And the text will run out before the end of the image.
-  </p>
-  <p slot="info">In astronomy, the terms object and body are often used interchangeably.</p>
-  <p slot="info">
-    In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
-    visual form of a document without relying on meaningful content (also called greeking). Replacing the
-    actual content with placeholder text allows designers to design the form of the content before the content
-    itself has been produced.
-  </p>
-  <a slot="link" href="http://www.esri.com">View Esri</a>
-</calcite-tip>
-<calcite-tip heading="The lack of imagery">
-  <p slot="info">
-    This tip has no image. As such, the content area will take up the entire width of the tip.
-  </p>
-  <p slot="info">
-    This is the next paragraph and should show how wide the content area is now. Of course, the width of the
-    overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
-  </p>
-  <a slot="link" href="http://www.esri.com">View Esri</a>
-</calcite-tip>
+  <calcite-tip heading="The lack of imagery">
+    <p slot="info">
+      This tip has no image. As such, the content area will take up the entire width of the tip.
+    </p>
+    <p slot="info">
+      This is the next paragraph and should show how wide the content area is now. Of course, the width of the
+      overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
+    </p>
+    <a slot="link" href="http://www.esri.com">View Esri</a>
+  </calcite-tip>
 </calcite-tip-manager>`;
 
 export const basic = () =>
