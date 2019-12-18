@@ -18,7 +18,7 @@ const { theme } = ATTRIBUTES;
 const createAttributes: () => Attributes = () => [
   {
     name: "storage-id",
-    value: text("storageId", "tip-12345")
+    value: text("storageId", "")
   },
   {
     name: "non-dismissible",
