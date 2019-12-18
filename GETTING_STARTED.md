@@ -1,9 +1,5 @@
 # Getting Started
 
-## Issues
-
-Find a bug or want to request a new feature? Please let us know by submitting an issue.
-
 ## Installation
 
 ```
@@ -101,9 +97,3 @@ This will provide autocomplete of component names/properties, as well as additio
 
 1. You'll need to generate a new stencil build for the docs by running `$ npm run docs`.
 1. The docs will need to be committed or merged in the `master` branch before they take effect.
-
-## Resources
-
-- [ArcGIS for JavaScript API Resource Center](http://help.arcgis.com/en/webapi/javascript/arcgis/index.html)
-- [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
-- [twitter@esri](http://twitter.com/esri)

@@ -13,12 +13,6 @@ A collection of calcite components for building single page applications.
 
 Please see our [Getting Started](GETTING_STARTED.md) readme for more information.
 
-## Resources
-
-- [ArcGIS for JavaScript API Resource Center](http://help.arcgis.com/en/webapi/javascript/arcgis/index.html)
-- [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
-- [twitter@esri](http://twitter.com/esri)
-
 ## Issues
 
 Find a bug or want to request a new feature? Please let us know by submitting an issue.
