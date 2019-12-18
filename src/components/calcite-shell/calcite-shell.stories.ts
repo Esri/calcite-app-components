@@ -73,7 +73,16 @@ const headerHTML = `<header slot="shell-header">
 
 const footerHTML = `<footer slot="shell-footer">My Shell Footer</footer>`;
 
-const contentHTML = `<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Light Gray Canvas" src="//www.arcgis.com/apps/Embed/index.html?webmap=8b3d38c0819547faa83f7b7aca80bd76&extent=-117.2942,33.9774,-117.071,34.1333&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe>`;
+const contentHTML = `<div style="
+  width:100%;
+  height:100%;
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+"></div>`;
 
 const tipManagerHTML = `<calcite-tip-manager slot="tip-manager">
   <calcite-tip-group text-group-title="Astronomy">
