@@ -15,7 +15,7 @@ Please see our [Getting Started](GETTING_STARTED.md) readme for more information
 
 ## Issues
 
-Find a bug or want to request a new feature? Please let us know by submitting an issue.
+Find a bug or want to request a new feature? Please let us know by [submitting an issue](https://github.com/Esri/calcite-app-components/issues/new/choose).
 
 ## Contributing
 

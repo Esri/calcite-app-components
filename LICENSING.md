@@ -1,4 +1,4 @@
-## Licensing
+# Licensing
 
 Copyright 2019 Esri
 
