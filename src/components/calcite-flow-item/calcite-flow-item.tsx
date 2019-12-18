@@ -233,10 +233,10 @@ export class CalciteFlowItem {
     const summaryNode = this.renderSummary();
 
     return headingNode || summaryNode ? (
-      <h2 class={CSS.header} slot="header-content">
+      <header class={CSS.header} slot="header-content">
         {headingNode}
         {summaryNode}
-      </h2>
+      </header>
     ) : null;
   }
 
