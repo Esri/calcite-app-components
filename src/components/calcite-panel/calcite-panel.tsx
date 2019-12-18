@@ -4,7 +4,7 @@ import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/dist/declarations";
-import { CalciteTheme } from "../interfaces";
+import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteIcon from "../utils/CalciteIcon";
 import { x16 } from "@esri/calcite-ui-icons";
 import CalciteScrim from "../utils/CalciteScrim";
@@ -58,7 +58,7 @@ export class CalcitePanel {
   /**
    * Specifies the maxiumum height of the panel.
    */
-  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+  @Prop({ reflect: true }) heightScale: CalciteScale;
 
   /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
