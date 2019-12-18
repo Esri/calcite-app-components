@@ -6,6 +6,7 @@ export const create: typeof baseConfigCreator = () => {
 
   const wwwOutputTarget = docsConfig.outputTargets.find((element) => element.type === "www") as OutputTargetWww;
   wwwOutputTarget.dir = "docs";
+  docsConfig.outputTargets = [wwwOutputTarget];
 
   docsConfig.excludeSrc = ["**/*.stories.ts", "**/tests/**"];
 
