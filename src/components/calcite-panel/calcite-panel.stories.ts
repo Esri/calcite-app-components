@@ -7,7 +7,7 @@ import { SCALES } from "./resources";
 import { attachment16, bluetooth16 } from "@esri/calcite-ui-icons";
 
 export default {
-  title: "calcite-panel",
+  title: "components|calcite-panel",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),
