@@ -1,5 +1,5 @@
 :host {
-  display: flex;
+  display: block;
   font-size: var(--calcite-app-base-font-size);
   position: relative;
 
@@ -9,14 +9,12 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
   transition: max-height var(--calcite-app-animation-time) var(--calcite-app-easing-function);
-  width: 100%;
-  height: 100%;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-flow: column;
 }
 
 :host([height-scale="s"]) .container {
@@ -48,7 +46,6 @@
   position: relative;
   z-index: 2;
   border-bottom: 1px solid var(--calcite-app-border);
-  width: 100%;
 }
 
 .header-content {
@@ -62,13 +59,6 @@
 
 .header-leading-content + .header-content {
   padding-left: var(--calcite-app-side-spacing-half);
-}
-
-slot[name="header-content"]::slotted(.heading) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
 }
 
 .header-trailing-content {
@@ -85,7 +75,7 @@ slot[name="header-content"]::slotted(.heading) {
 .footer {
   border-top: 1px solid var(--calcite-app-border);
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
   min-height: var(--calcite-app-header-min-height);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }

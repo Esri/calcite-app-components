@@ -1,12 +1,6 @@
 :host {
   background-color: var(--calcite-app-background-content);
-  display: flex;
-  height: 100%;
-  width: 100%;
-}
-
-calcite-panel {
-  width: 100%;
+  display: block;
 }
 
 .menu-button {
@@ -44,9 +38,4 @@ calcite-panel {
 
 .menu--open {
   display: block;
-}
-
-.footer-actions {
-  display: flex;
-  width: 100%;
 }
