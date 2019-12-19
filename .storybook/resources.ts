@@ -48,10 +48,10 @@ export function createAction(
   path?: string
 ): string {
   return `<calcite-action
-    ${slot ? `slot="${slot}"` : null}
-    ${textEnabled ? "text-enabled" : null}
-    ${indicator ? "indicator" : null}
-    text="${text}"
-    label="${label}"
-  >${path ? createSVG(path, 16) : null}</calcite-action>`;
+    ${slot ? `slot="${slot}"` : ""}
+    ${textEnabled ? "text-enabled" : ""}
+    ${indicator ? "indicator" : ""}
+    ${text ? `slot="${text}"` : ""}
+    ${label ? `slot="${label}"` : ""}
+  >${path ? createSVG(path, 16) : ""}</calcite-action>`;
 }
