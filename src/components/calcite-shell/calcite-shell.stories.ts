@@ -1,6 +1,6 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createAction } from "../../../.storybook/resources";
+import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
@@ -8,7 +8,7 @@ import { CalciteLayoutValues } from "../calcite-shell-panel/resources";
 import { arrowUpRight16, extent16, layers16, play16, plus16, save16 } from "@esri/calcite-ui-icons";
 
 export default {
-  title: "calcite-shell",
+  title: "components|calcite-shell",
   decorators: [withKnobs],
   parameters: {
     notes: {
@@ -50,11 +50,11 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
 };
 
 const actionBarContentHTML = `<calcite-action-group>
-${createAction({ text: "Add", label: "Add Item" }, plus16)}
-${createAction({ text: "Save", label: "Save Item" }, save16)}
+<calcite-action text="Add" label="Add Item">${createSVG(plus16)}</calcite-action>
+<calcite-action text="Save" label="Save Item">${createSVG(save16)}</calcite-action>
 </calcite-action-group>
 <calcite-action-group>
-${createAction({ text: "Layers", label: "View Layers" }, layers16)}
+<calcite-action text="Layers" label="View Layers">${createSVG(layers16)}</calcite-action>
 </calcite-action-group>`;
 
 const actionBarHTML = `<calcite-action-bar slot="action-bar">
@@ -157,9 +157,9 @@ export const basic = () =>
 
 const advancedLeadingPanelHTML = `${actionBarHTML}<calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
 <calcite-block-content>
-  ${createAction({ text: "horizontal ActionPad", textEnabled: true, indicator: true }, play16)}
-  ${createAction({ text: "Vertical Shell Floating Panel", textEnabled: true }, extent16)}
-  ${createAction({ text: "horizontal Shell Floating Panel", textEnabled: true }, arrowUpRight16)}
+  <calcite-action text="horizontal ActionPad" text-enabled indicator>${createSVG(play16)}</calcite-action>
+  <calcite-action text="Vertical Shell Floating Panel" text-enabled>${createSVG(extent16)}</calcite-action>
+  <calcite-action text="horizontal Shell Floating Panel" text-enabled>${createSVG(arrowUpRight16)}</calcite-action>
 </calcite-block-content>
 </calcite-block>
 <calcite-block collapsible open heading="Another Block" summary="This is the primary.">
@@ -187,22 +187,22 @@ const advancedLeadingPanelHTML = `${actionBarHTML}<calcite-block collapsible ope
 const advancedTrailingPanelHTMl = `${actionBarHTML}<calcite-flow>
 <calcite-flow-item heading="Layer settings">
   <div slot="menu-actions">
-    ${createAction({ text: "Do a cool thing", textEnabled: true })}
-    ${createAction({ text: "Do a cool thing", textEnabled: true })}
-    ${createAction({ text: "Do a cool thing", textEnabled: true })}
+    <calcite-action text="Cool thing" text-enabled></calcite-action>
+    <calcite-action text="Cool thing" text-enabled></calcite-action>
+    <calcite-action text="Cool thing" text-enabled></calcite-action>
   </div>
   <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
     <calcite-block-content>
       <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
       <calcite-block-section text="Cool things">
-        ${createAction({ text: "Cool thing", textEnabled: true })}
-        ${createAction({ text: "Cool thing", textEnabled: true })}
-        ${createAction({ text: "Cool thing", textEnabled: true })}
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
       </calcite-block-section>
       <calcite-block-section text="Neat things">
-        ${createAction({ text: "Neat thing", textEnabled: true })}
-        ${createAction({ text: "Neat thing", textEnabled: true })}
-        ${createAction({ text: "Neat thing", textEnabled: true })}
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
       </calcite-block-section>
     </calcite-block-content>
   </calcite-block>
@@ -213,30 +213,30 @@ const advancedTrailingPanelHTMl = `${actionBarHTML}<calcite-flow>
   <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
     <calcite-block-content>
       <calcite-block-section text="Cool things">
-        ${createAction({ text: "Cool thing", textEnabled: true })}
-        ${createAction({ text: "Cool thing", textEnabled: true })}
-        ${createAction({ text: "Cool thing", textEnabled: true })}
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
       </calcite-block-section>
       <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
       <calcite-block-section text="Neat things">
-        ${createAction({ text: "Neat thing", textEnabled: true })}
-        ${createAction({ text: "Neat thing", textEnabled: true })}
-        ${createAction({ text: "Neat thing", textEnabled: true })}
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
       </calcite-block-section>
     </calcite-block-content>
   </calcite-block>
   <calcite-block collapsible open heading="Even more content" summary="Select goodness">
     <calcite-block-content>
       <calcite-block-section text="Cool things">
-        ${createAction({ text: "Cool thing", textEnabled: true })}
-        ${createAction({ text: "Cool thing", textEnabled: true })}
-        ${createAction({ text: "Cool thing", textEnabled: true })}
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
       </calcite-block-section>
       <img alt="demo" src="https://placeimg.com/640/480/nature" width="100%" />
       <calcite-block-section text="Neat things">
-        ${createAction({ text: "Neat thing", textEnabled: true })}
-        ${createAction({ text: "Neat thing", textEnabled: true })}
-        ${createAction({ text: "Neat thing", textEnabled: true })}
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
+        <calcite-action text="Cool thing" text-enabled></calcite-action>
       </calcite-block-section>
     </calcite-block-content>
   </calcite-block>

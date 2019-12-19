@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
 import { CalciteActionAppearance, CalciteTheme } from "../interfaces";
 
@@ -78,6 +78,19 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
+  private buttonEl: HTMLButtonElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocus() {
+    this.buttonEl.focus();
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -138,6 +151,7 @@ export class CalciteAction {
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
+          ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
           {this.renderIconContainer()}
           {this.renderTextContainer()}

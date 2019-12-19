@@ -1,13 +1,13 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
-import { ATTRIBUTES, createAction } from "../../../.storybook/resources";
+import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
 import { LAYOUT_VALUES } from "./resources";
 import { layers16, plus16, save16 } from "@esri/calcite-ui-icons";
 const { theme } = ATTRIBUTES;
 
 export default {
-  title: "calcite-action-bar",
+  title: "components|calcite-action-bar",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),
@@ -47,10 +47,10 @@ export const basic = () =>
     "calcite-action-bar",
     createAttributes(),
     `<calcite-action-group>
-    ${createAction({ text: "Add", label: "Add Item" }, plus16)}
-    ${createAction({ text: "Save", label: "Save Item" }, save16)}
+    <calcite-action text="Add" label="Add Item">${createSVG(plus16)}</calcite-action>
+    <calcite-action text="Save" label="Save Item">${createSVG(save16)}</calcite-action>
   </calcite-action-group>
   <calcite-action-group>
-    ${createAction({ text: "Layers", label: "View Layers" }, layers16)}
+    <calcite-action text="Layers" label="View Layers">${createSVG(layers16)}</calcite-action>
   </calcite-action-group>`
   );

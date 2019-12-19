@@ -10,8 +10,8 @@
     const response = await window.fetch(`${root}demos/toggles.template`);
     const text = await response.text();
     const template = parseTemplate(text);
-    const nav = document.querySelector("nav") || document.querySelector("calcite-demo-nav");
-    nav && nav.after(template.content);
+    const firstChild = document.body.firstChild;
+    firstChild && document.body.insertBefore(template.content, firstChild);
     attachHandlers();
   };
 
@@ -23,7 +23,7 @@
   };
 
   let components: HTMLElement[] = null;
-  const excludedComponents = ["calcite-demo-nav", "calcite-button"];
+  const excludedComponents = ["calcite-button"];
   const toggleProperty = (property: string): void => {
     components = components || Array.from(document.body.querySelectorAll(".hydrated"));
 

@@ -16,3 +16,8 @@ export const TEXT = {
   open: "Open",
   close: "Close"
 };
+
+export const SLOTS = {
+  menuActions: "menu-actions",
+  footerActions: "footer-actions"
+};
