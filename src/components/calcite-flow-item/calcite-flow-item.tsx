@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 import { VNode } from "@stencil/core/dist/declarations";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
-import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteTheme } from "../interfaces";
 
@@ -192,7 +192,7 @@ export class CalciteFlowItem {
   renderBackButton(rtl: boolean): VNode {
     const { showBackButton, textBack, backButtonClick } = this;
 
-    const icon = rtl ? "chevron-right" : "chevron-left";
+    const icon = rtl ? ICONS.backRight : ICONS.backLeft;
 
     return showBackButton ? (
       <calcite-action
@@ -221,7 +221,7 @@ export class CalciteFlowItem {
         onClick={this.toggleMenuOpen}
         onKeyDown={this.menuButtonKeyDown}
       >
-        <calcite-icon scale="s" icon="ellipsis" />
+        <calcite-icon scale="s" icon={ICONS.menu} />
       </calcite-action>
     );
   }

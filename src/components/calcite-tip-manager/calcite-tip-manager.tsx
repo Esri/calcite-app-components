@@ -11,7 +11,7 @@ import {
   h
 } from "@stencil/core";
 import classnames from "classnames";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
@@ -244,13 +244,13 @@ export class CalciteTipManager {
           onClick={this.previousClicked}
           class={CSS.pagePrevious}
         >
-          <calcite-icon scale="s" icon={dir === "ltr" ? "chevron-left" : "chevron-right"} />
+          <calcite-icon scale="s" icon={dir === "ltr" ? ICONS.chevronLeft : ICONS.chevronRight} />
         </calcite-action>
         <span class={CSS.pagePosition}>
           {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
-          <calcite-icon scale="s" icon={dir === "ltr" ? "chevron-right" : "chevron-left"} />
+          <calcite-icon scale="s" icon={dir === "ltr" ? ICONS.chevronRight : ICONS.chevronLeft} />
         </calcite-action>
       </footer>
     ) : null;
@@ -277,7 +277,7 @@ export class CalciteTipManager {
               {groupTitle}
             </h2>
             <calcite-action text={textClose} onClick={this.hideTipManager} class={CSS.close}>
-              <calcite-icon scale="s" icon="x" />
+              <calcite-icon scale="s" icon={ICONS.close} />
             </calcite-action>
           </header>
           <div

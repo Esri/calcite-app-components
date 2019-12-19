@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 
 const filterDebounceInMs = 250;
 
@@ -120,12 +120,12 @@ export class CalciteFilter {
             aria-label={this.textLabel || TEXT.filterLabel}
           />
           <div class={CSS.searchIcon}>
-            <calcite-icon scale="s" icon={"search"} />
+            <calcite-icon scale="s" icon={ICONS.search} />
           </div>
         </label>
         {!this.empty ? (
           <button onClick={this.clear} class={CSS.clearButton} aria-label={TEXT.clear}>
-            <calcite-ico icon={"x"} />
+            <calcite-icon icon={ICONS.close} />
           </button>
         ) : null}
       </Host>

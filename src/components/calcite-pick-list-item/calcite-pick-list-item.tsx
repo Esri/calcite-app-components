@@ -9,7 +9,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 /**
@@ -182,11 +182,11 @@ export class CalcitePickListItem {
     const iconName =
       icon === ICON_TYPES.square
         ? selected
-          ? "check-square"
-          : "square"
+          ? ICONS.checked
+          : ICONS.unchecked
         : selected
-        ? "circle-filled"
-        : "circle";
+        ? ICONS.selected
+        : ICONS.unselected;
     return (
       <span class={CSS.icon}>
         <calcite-icon scale="s" icon={iconName} />

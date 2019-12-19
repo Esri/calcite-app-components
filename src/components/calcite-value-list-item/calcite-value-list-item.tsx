@@ -1,7 +1,7 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
-import { CSS } from "../calcite-pick-list-item/resources";
+import { ICONS } from "./resources";
 
 /**
  * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
@@ -131,7 +131,7 @@ export class CalciteValueListItem {
           onKeyDown={this.handleKeyDown}
           onBlur={this.handleBlur}
         >
-          <calcite-icon scale="s" icon="drag" />
+          <calcite-icon scale="s" icon={ICONS.drag} />
         </span>
       );
     }

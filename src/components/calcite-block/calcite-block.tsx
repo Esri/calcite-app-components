@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-import { CSS, SLOTS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
 
@@ -168,9 +168,7 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            {controlSlot ? null : (
-              <calcite-icon scale="s" icon={open ? "chevron-up" : "chevron-down"} />
-            )}
+            {controlSlot ? null : <calcite-icon scale="s" icon={open ? ICONS.close : ICONS.open} />}
           </button>
         ) : (
           headerContent

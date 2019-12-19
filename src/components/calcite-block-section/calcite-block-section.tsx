@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
 
 import { getElementDir } from "../utils/dom";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 import classnames from "classnames";
 import { CalciteBlockSectionToggleDisplay } from "../interfaces";
 
@@ -97,7 +97,11 @@ export class CalciteBlockSection {
   render() {
     const { el, open, text, textCollapse, textExpand, toggleDisplay } = this;
     const dir = getElementDir(el);
-    const arrowIcon = open ? "caret-down" : dir === "rtl" ? "caret-left" : "caret-right";
+    const arrowIcon = open
+      ? ICONS.menuOpen
+      : dir === "rtl"
+      ? ICONS.menuClosedLeft
+      : ICONS.menuClosedRight;
     const toggleLabel = open ? textCollapse : textExpand;
 
     const headerNode =

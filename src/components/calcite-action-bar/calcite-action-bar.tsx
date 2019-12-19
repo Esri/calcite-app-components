@@ -4,7 +4,7 @@ import { CalciteLayout, CalciteTheme } from "../interfaces";
 
 import { getElementDir } from "../utils/dom";
 
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -122,7 +122,7 @@ export class CalciteActionBar {
     const rtl = getElementDir(el) === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
-    const icons = ["chevrons-left", "chevrons-right"];
+    const icons = [ICONS.chevronsLeft, ICONS.chevronsRight];
 
     if (rtl) {
       icons.reverse();

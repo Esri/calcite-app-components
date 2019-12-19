@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { getItem, setItem } from "../utils/localStorage";
 import { CalciteTheme } from "../interfaces";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/dist/declarations";
 
 /**
@@ -112,7 +112,7 @@ export class CalciteTip {
 
     const dismissButtonNode = !nonDismissible ? (
       <calcite-action text={textClose} onClick={hideTip} class={CSS.close}>
-        <calcite-icon scale="s" icon="x" />
+        <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
 

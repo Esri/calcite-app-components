@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
@@ -137,7 +137,7 @@ export class CalcitePanel {
 
     const dismissibleNode = dismissible ? (
       <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
-        <calcite-icon scale="s" icon="x" />
+        <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
 
