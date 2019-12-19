@@ -1,6 +1,6 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createAction } from "../../../.storybook/resources";
+import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import { SCALES } from "./resources";
@@ -66,8 +66,12 @@ export const basic = () =>
     "calcite-panel",
     createAttributes(),
     `${headerHTML}
-    ${createAction({ text: "Some Action 1", slot: "header-leading-content" }, bluetooth16)}
-    ${createAction({ text: "Some Action 1", slot: "header-trailing-content" }, attachment16)}
+    <calcite-action text="Action" label="Action" slot="header-leading-content">${createSVG(
+      bluetooth16
+    )}</calcite-action>
+    <calcite-action text="Action" label="Action" slot="header-trailing-content">${createSVG(
+      attachment16
+    )}</calcite-action>
     ${contentHTML}
     ${footerHTML}`
   );
