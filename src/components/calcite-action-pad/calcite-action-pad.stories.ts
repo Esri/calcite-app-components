@@ -6,7 +6,7 @@ const { theme } = ATTRIBUTES;
 import { redo16, trash16, undo16 } from "@esri/calcite-ui-icons";
 
 export default {
-  title: "calcite-action-pad",
+  title: "components|calcite-action-pad",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),

@@ -2,7 +2,7 @@
 
 The `calcite-shell-panel` is a child component of `calcite-shell` used to house and display other components like `calcite-block` and `calcite-flow`.
 
-See the [calcite-shell-panel demo](https://esri.github.io/calcite-app-components/demos/calcite-shell-panel.html).
+See the [calcite-shell-panel demo](https://esri.github.io/calcite-app-components/?path=/story/components-calcite-shell--basic).
 
 <!-- Auto Generated Below -->
 
