@@ -46,11 +46,6 @@ export class CalciteAction {
   @Prop({ reflect: true }) indicator = false;
 
   /**
-   * Label of the action, exposed on hover.
-   */
-  @Prop() label: string;
-
-  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
@@ -58,7 +53,7 @@ export class CalciteAction {
   /**
    * Text that accompanies the action icon.
    */
-  @Prop() text: string;
+  @Prop() text!: string;
 
   /**
    * Indicates whether the text is displayed.
@@ -118,9 +113,9 @@ export class CalciteAction {
   }
 
   render() {
-    const { compact, disabled, loading, el, textEnabled, label, text } = this;
+    const { compact, disabled, loading, el, textEnabled, text } = this;
 
-    const labelFallback = label || text;
+    const label = !textEnabled ? text : null;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
@@ -133,8 +128,8 @@ export class CalciteAction {
       <Host>
         <button
           class={classnames(CSS.button, buttonClasses)}
-          title={labelFallback}
-          aria-label={labelFallback}
+          title={label}
+          aria-label={label}
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}

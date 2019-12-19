@@ -12,7 +12,7 @@
     </style>
     <template id="template">
       <calcite-pick-list-item text-label="Chocolate" value="chocolate">
-        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+        <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
           <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <circle cx="7" cy="7" r="7" fill="#f689d8" />
           </svg>
@@ -22,7 +22,7 @@
         document.currentScript.previousElementSibling.metadata = { category: "flavors", tags: ["icecream", "ice cream"] };
       </script>
       <calcite-pick-list-item text-label="Vanilla" text-description="Oldie but goodie" value="vanilla" >
-        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+        <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
           <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <circle cx="7" cy="7" r="7" fill="#f689d8" />
           </svg>
@@ -32,7 +32,7 @@
         document.currentScript.previousElementSibling.metadata = { category: "flavors", tags: ["icecream", "ice cream"] };
       </script>
       <calcite-pick-list-item text-label="Strawberry" text-description="strawberry" value="strawberry">
-        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+        <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
           <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <circle cx="7" cy="7" r="7" fill="#f689d8" />
           </svg>
