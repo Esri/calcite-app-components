@@ -45,7 +45,7 @@ export const basic = () =>
     "calcite-pick-list",
     createAttributes(),
     `
-  <calcite-pick-list-item text-heading="STUPID" text-description="arm strength impaired" value="trex">
+  <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
     ${action}
   </calcite-pick-list-item>
   <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" selected>
