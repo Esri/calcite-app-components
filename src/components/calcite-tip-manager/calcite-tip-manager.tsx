@@ -10,10 +10,8 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { chevronLeft16, chevronRight16, x16 } from "@esri/calcite-ui-icons";
 import classnames from "classnames";
 import { CSS, TEXT } from "./resources";
-import CalciteIcon from "../utils/CalciteIcon";
 import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
@@ -246,13 +244,13 @@ export class CalciteTipManager {
           onClick={this.previousClicked}
           class={CSS.pagePrevious}
         >
-          <CalciteIcon size="16" path={dir === "ltr" ? chevronLeft16 : chevronRight16} />
+          <calcite-icon icon={dir === "ltr" ? "chevron-left" : "chevron-right"} />
         </calcite-action>
         <span class={CSS.pagePosition}>
           {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
         </span>
         <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
-          <CalciteIcon size="16" path={dir === "ltr" ? chevronRight16 : chevronLeft16} />
+          <calcite-icon icon={dir === "ltr" ? "chevron-right" : "chevron-left"} />
         </calcite-action>
       </footer>
     ) : null;
@@ -279,7 +277,7 @@ export class CalciteTipManager {
               {groupTitle}
             </h2>
             <calcite-action text={textClose} onClick={this.hideTipManager} class={CSS.close}>
-              <CalciteIcon size="16" path={x16} />
+              <calcite-icon icon="x" />
             </calcite-action>
           </header>
           <div

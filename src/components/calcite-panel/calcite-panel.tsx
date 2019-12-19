@@ -5,8 +5,6 @@ import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteScale, CalciteTheme } from "../interfaces";
-import CalciteIcon from "../utils/CalciteIcon";
-import { x16 } from "@esri/calcite-ui-icons";
 import CalciteScrim from "../utils/CalciteScrim";
 
 const SLOTS = {
@@ -139,7 +137,7 @@ export class CalcitePanel {
 
     const dismissibleNode = dismissible ? (
       <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
-        <CalciteIcon size="16" path={x16} />
+        <calcite-icon icon="x" />
       </calcite-action>
     ) : null;
 

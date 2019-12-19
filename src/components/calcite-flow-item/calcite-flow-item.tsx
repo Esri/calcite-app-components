@@ -1,10 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
-import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
-import CalciteIcon from "../utils/CalciteIcon";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteTheme } from "../interfaces";
 
@@ -194,7 +192,7 @@ export class CalciteFlowItem {
   renderBackButton(rtl: boolean): VNode {
     const { showBackButton, textBack, backButtonClick } = this;
 
-    const path = rtl ? chevronRight16F : chevronLeft16F;
+    const icon = rtl ? "chevron-right" : "chevron-left";
 
     return showBackButton ? (
       <calcite-action
@@ -205,7 +203,7 @@ export class CalciteFlowItem {
         class={CSS.backButton}
         onClick={backButtonClick}
       >
-        <CalciteIcon size="16" path={path} />
+        <calcite-icon filled icon={icon} />
       </calcite-action>
     ) : null;
   }
@@ -223,7 +221,7 @@ export class CalciteFlowItem {
         onClick={this.toggleMenuOpen}
         onKeyDown={this.menuButtonKeyDown}
       >
-        <CalciteIcon size="16" path={ellipsis16} />
+        <calcite-icon icon="ellipsis" />
       </calcite-action>
     );
   }
