@@ -1,7 +1,6 @@
 :host {
   display: flex;
   height: 100%;
-  font-size: var(--calcite-app-base-font-size);
   position: relative;
 
   --calcite-app-panel-max-height-small: 40vh;
@@ -44,7 +43,9 @@
 .header {
   align-items: center;
   display: flex;
+  flex: 0 0 auto;
   justify-content: space-between;
+  min-height: var(--calcite-app-header-min-height);
   position: relative;
   z-index: 2;
   border-bottom: 1px solid var(--calcite-app-border);
@@ -56,6 +57,10 @@
   padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing);
 }
 
+.header-leading-content,
+.header-trailing-content {
+  margin-bottom: var(--calcite-app-cap-spacing-minimum);
+}
 .header-leading-content + .header-content {
   padding-left: var(--calcite-app-side-spacing-half);
 }
@@ -68,11 +73,11 @@ slot[name="header-content"]::slotted(.heading) {
 }
 
 .header-trailing-content {
+  display: flex;
   margin-left: auto;
 }
 
 .content-container {
-  background-color: var(--calcite-app-background-content);
   flex: 1 1 auto;
   background-color: var(--calcite-app-background-content);
   overflow: auto;
@@ -81,7 +86,9 @@ slot[name="header-content"]::slotted(.heading) {
 .footer {
   border-top: 1px solid var(--calcite-app-border);
   display: flex;
+  flex: 0 0 auto;
   justify-content: space-evenly;
+  min-height: var(--calcite-app-footer-min-height);
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 

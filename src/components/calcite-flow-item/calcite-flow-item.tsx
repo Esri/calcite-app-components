@@ -1,19 +1,19 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-
+import { VNode } from "@stencil/core/dist/declarations";
 import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
-
-import { getElementDir } from "../utils/dom";
-
+import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
-
-import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, TEXT } from "./resources";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
-
+import { getRoundRobinIndex } from "../utils/array";
 import { CalciteTheme } from "../interfaces";
+
+const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ * @slot - A slot for adding content to the flow item.
  */
 @Component({
   tag: "calcite-flow-item",
@@ -98,6 +98,14 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  queryActions(): HTMLCalciteActionElement[] {
+    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
+  }
+
+  isValidKey(key: string, supportedKeys: string[]): boolean {
+    return !!supportedKeys.find((k) => k === key);
+  }
+
   toggleMenuOpen = (): void => {
     this.menuOpen = !this.menuOpen;
   };
@@ -106,13 +114,79 @@ export class CalciteFlowItem {
     this.calciteFlowItemBackClick.emit();
   };
 
+  menuButtonKeyDown = (event: KeyboardEvent): void => {
+    const { key } = event;
+    const { menuOpen } = this;
+
+    if (!this.isValidKey(key, SUPPORTED_ARROW_KEYS)) {
+      return;
+    }
+
+    const actions = this.queryActions();
+    const { length } = actions;
+
+    if (!length) {
+      return;
+    }
+
+    if (!menuOpen) {
+      this.menuOpen = true;
+    }
+
+    if (key === "ArrowUp") {
+      const lastAction = actions[length - 1];
+      focusElement(lastAction);
+    }
+
+    if (key === "ArrowDown") {
+      const firstAction = actions[0];
+      focusElement(firstAction);
+    }
+  };
+
+  menuActionsKeydown = (event: KeyboardEvent): void => {
+    const { key, target } = event;
+
+    if (!this.isValidKey(key, SUPPORTED_ARROW_KEYS)) {
+      return;
+    }
+
+    const actions = this.queryActions();
+    const { length } = actions;
+    const currentIndex = actions.indexOf(target as HTMLCalciteActionElement);
+
+    if (!length || currentIndex === -1) {
+      return;
+    }
+
+    if (key === "ArrowUp") {
+      const value = getRoundRobinIndex(currentIndex - 1, length);
+      const previousAction = actions[value];
+      focusElement(previousAction);
+    }
+
+    if (key === "ArrowDown") {
+      const value = getRoundRobinIndex(currentIndex + 1, length);
+      const nextAction = actions[value];
+      focusElement(nextAction);
+    }
+  };
+
+  menuActionsContainerKeyDown = (event: KeyboardEvent): void => {
+    const { key } = event;
+
+    if (key === "Escape") {
+      this.menuOpen = false;
+    }
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
-  renderBackButton(rtl: boolean) {
+  renderBackButton(rtl: boolean): VNode {
     const { showBackButton, textBack, backButtonClick } = this;
 
     const path = rtl ? chevronRight16F : chevronLeft16F;
@@ -131,7 +205,7 @@ export class CalciteFlowItem {
     ) : null;
   }
 
-  renderMenuButton() {
+  renderMenuButton(): VNode {
     const { menuOpen, textOpen, textClose } = this;
 
     const menuLabel = menuOpen ? textClose : textOpen;
@@ -142,51 +216,55 @@ export class CalciteFlowItem {
         aria-label={menuLabel}
         text={menuLabel}
         onClick={this.toggleMenuOpen}
+        onKeyDown={this.menuButtonKeyDown}
       >
         <CalciteIcon size="16" path={ellipsis16} />
       </calcite-action>
     );
   }
 
-  renderMenuActions() {
+  renderMenuActions(): VNode {
     const { menuOpen } = this;
 
     return (
-      <div class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}>
-        <slot name="menu-actions" />
+      <div
+        class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}
+        onKeyDown={this.menuActionsKeydown}
+      >
+        <slot name={SLOTS.menuActions} />
       </div>
     );
   }
 
-  renderFooterActions() {
-    const hasFooterActions = !!this.el.querySelector("[slot=footer-actions]");
+  renderFooterActions(): VNode {
+    const hasFooterActions = !!this.el.querySelector(`[slot=${SLOTS.footerActions}]`);
 
     return hasFooterActions ? (
       <div slot="footer" class={CSS.footerActions}>
-        <slot name="footer-actions" />
+        <slot name={SLOTS.footerActions} />
       </div>
     ) : null;
   }
 
-  renderSingleActionContainer() {
+  renderSingleActionContainer(): VNode {
     return (
       <div class={CSS.singleActionContainer}>
-        <slot name="menu-actions" />
+        <slot name={SLOTS.menuActions} />
       </div>
     );
   }
 
-  renderMenuActionsContainer() {
+  renderMenuActionsContainer(): VNode {
     return (
-      <div class={CSS.menuContainer}>
+      <div class={CSS.menuContainer} onKeyDown={this.menuActionsContainerKeyDown}>
         {this.renderMenuButton()}
         {this.renderMenuActions()}
       </div>
     );
   }
 
-  renderHeaderActions() {
-    const menuActionsNode = this.el.querySelector("[slot=menu-actions]");
+  renderHeaderActions(): VNode {
+    const menuActionsNode = this.el.querySelector(`[slot=${SLOTS.menuActions}]`);
 
     const hasMenuActionsInBlacklisted =
       menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
@@ -204,8 +282,18 @@ export class CalciteFlowItem {
     return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
   }
 
+  renderHeading(): VNode {
+    const { heading } = this;
+
+    return heading ? (
+      <h2 class={CSS.heading} slot="header-content">
+        {heading}
+      </h2>
+    ) : null;
+  }
+
   render() {
-    const { el, heading } = this;
+    const { el } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -213,9 +301,7 @@ export class CalciteFlowItem {
       <Host>
         <calcite-panel loading={this.loading} disabled={this.disabled}>
           {this.renderBackButton(rtl)}
-          <h2 class={CSS.heading} slot="header-content">
-            {heading}
-          </h2>
+          {this.renderHeading()}
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}

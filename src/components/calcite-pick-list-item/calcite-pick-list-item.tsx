@@ -32,22 +32,27 @@ export class CalcitePickListItem {
   /**
    * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
    */
-  @Prop({ reflect: true }) compact = false;
+  @Prop({ reflect: true }) compact? = false;
 
   /**
    * When true, the item cannot be clicked and is visually muted.
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ reflect: true }) disabled? = false;
+
+  /**
+   * When false, the item cannot be deselected by user interaction.
+   */
+  @Prop() disableDeselect = false;
 
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+  @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
 
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata: object;
+  @Prop() metadata?: object;
 
   @Watch("metadata") metadataWatchHandler() {
     this.calciteListItemPropsUpdated.emit();
@@ -73,7 +78,7 @@ export class CalcitePickListItem {
   /**
    * @deprecated Replaced by textLabel.
    */
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) textHeading?: string;
 
   @Watch("textHeading") textHeadingWatchHandler() {
     this.calciteListItemPropsUpdated.emit();
@@ -100,7 +105,7 @@ export class CalcitePickListItem {
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ reflect: true }) value!: string;
 
   // --------------------------------------------------------------------------
   //
@@ -157,7 +162,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
-    if (this.disabled) {
+    if (this.disabled || (this.disableDeselect && this.selected)) {
       return;
     }
 
@@ -168,6 +173,9 @@ export class CalcitePickListItem {
   pickListKeyDownHandler = (event: KeyboardEvent): void => {
     if (event.key === " ") {
       event.preventDefault();
+      if (this.disableDeselect && this.selected) {
+        return;
+      }
       this.selected = !this.selected;
     }
   };
@@ -205,7 +213,7 @@ export class CalcitePickListItem {
       ) : null;
 
     return (
-      <Host role="checkbox" aria-checked={this.selected}>
+      <Host role="checkbox" aria-checked={this.selected.toString()}>
         <label
           class={CSS.label}
           onClick={this.pickListClickHandler}

@@ -2,7 +2,6 @@
   background-color: var(--calcite-app-background-content);
   display: flex;
   height: 100%;
-  font-size: var(--calcite-app-base-font-size);
 }
 
 calcite-panel {
@@ -32,7 +31,6 @@ calcite-panel {
   min-width: var(--calcite-app-menu-min-width);
   right: var(--calcite-app-menu-offset);
   visibility: visible;
-  display: flex;
   flex-flow: column nowrap;
   border: 1px solid var(--calcite-app-border);
   animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);

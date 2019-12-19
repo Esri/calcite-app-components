@@ -3,6 +3,61 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.11.1](https://github.com/Esri/calcite-app-components/compare/v4.11.0...v4.11.1) (2019-12-18)
+
+### Bug Fixes
+
+- **flow:** remove height rule for frame ([dda4e4b](https://github.com/Esri/calcite-app-components/commit/dda4e4be2dfa5ef662d3d7ff511695c114948032)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565)
+
+## [4.11.0](https://github.com/Esri/calcite-app-components/compare/v4.10.1...v4.11.0) (2019-12-18)
+
+### Features
+
+- clear button only shows when not empty ([#599](https://github.com/Esri/calcite-app-components/issues/599)) ([#634](https://github.com/Esri/calcite-app-components/issues/634)) ([e03487a](https://github.com/Esri/calcite-app-components/commit/e03487ac773bdfd4365d4f5ad3d44dc09b753435)), closes [#597](https://github.com/Esri/calcite-app-components/issues/597)
+
+### [4.10.1](https://github.com/Esri/calcite-app-components/compare/v4.10.0...v4.10.1) (2019-12-12)
+
+### Bug Fixes
+
+- **panel:** flex grow, shrink, basis for panel headers and footers ([8c41414](https://github.com/Esri/calcite-app-components/commit/8c414140d4246a42e1cdcb0cd6c66dc1f8386b69)), closes [#642](https://github.com/Esri/calcite-app-components/issues/642)
+
+## [4.10.0](https://github.com/Esri/calcite-app-components/compare/v4.9.0...v4.10.0) (2019-12-11)
+
+### Bug Fixes
+
+- **panel:** adding min-heights for panel header and footer ([facc4c7](https://github.com/Esri/calcite-app-components/commit/facc4c7988e876244792b86fe832c64c64900693)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565)
+- **flow:** Fix animation being removed when the subtree of a flow changes during the animation. ([876b8963](https://github.com/Esri/calcite-app-components/commit/876b89639961688a69abded9160b09cf4d99431d)), closes [#626](https://github.com/Esri/calcite-app-components/issues/626)
+
+## [4.9.0](https://github.com/Esri/calcite-app-components/compare/v4.8.0...v4.9.0) (2019-12-10)
+
+### Features
+
+- add mixin for interim focus style ([a13cebf](https://github.com/Esri/calcite-app-components/commit/a13cebf85e81c1af8f8e8b036033fbb14627eefb)), closes [#573](https://github.com/Esri/calcite-app-components/issues/573)
+
+### Bug Fixes
+
+- added default slots documentation [#561](https://github.com/Esri/calcite-app-components/issues/561)" ([#622](https://github.com/Esri/calcite-app-components/issues/622)) ([9ed8d74](https://github.com/Esri/calcite-app-components/commit/9ed8d74f25a583c2f1c3d22470528d403d1c8f71))
+- demo pages in IE11 ([#610](https://github.com/Esri/calcite-app-components/issues/610)) ([56c7100](https://github.com/Esri/calcite-app-components/commit/56c7100ddd65e992e225ee101dbad489ee0e027e))
+- JS error in flow demo by removing unnecessary script. [#617](https://github.com/Esri/calcite-app-components/issues/617) ([f2f81d5](https://github.com/Esri/calcite-app-components/commit/f2f81d5e33051fd938c085c6917b719850e2df2f))
+- keep value-list-item selected in sync with pick-list-item ([#623](https://github.com/Esri/calcite-app-components/issues/623)) ([100eaf0](https://github.com/Esri/calcite-app-components/commit/100eaf0e9a2f47e39dd6f55f7464b443b2a30573))
+- **value-list-item:** focus inset ([e461ea9](https://github.com/Esri/calcite-app-components/commit/e461ea9835d086455a5374208a89790e8ceeddd0)), closes [#573](https://github.com/Esri/calcite-app-components/issues/573)
+- Only render header when a heading exists or the dismiss button. [#566](https://github.com/Esri/calcite-app-components/issues/566) ([#613](https://github.com/Esri/calcite-app-components/issues/613)) ([3aaadec](https://github.com/Esri/calcite-app-components/commit/3aaadec2968348198fc34c4f1ce21c2b810f60fc))
+- PickList and ValueList shift deselect list items now working 551 ([#581](https://github.com/Esri/calcite-app-components/issues/581)) ([be6f594](https://github.com/Esri/calcite-app-components/commit/be6f59492586cc6bccfa9b32d66ace676e73eb63))
+
+## [4.8.0](https://github.com/Esri/calcite-app-components/compare/v4.7.1...v4.8.0) (2019-11-27)
+
+### Features
+
+- add clear button to filter ([#575](https://github.com/Esri/calcite-app-components/issues/575)) ([302a13d](https://github.com/Esri/calcite-app-components/commit/302a13dc3e91fd04c8048af3baca97c8d077443d))
+- removed text node from filter label. ([#574](https://github.com/Esri/calcite-app-components/issues/574)) ([d53be8d](https://github.com/Esri/calcite-app-components/commit/d53be8d2b53e3856947ce8527687d4096ff9cd07))
+- value list drag drop keyboard support 356 ([#559](https://github.com/Esri/calcite-app-components/issues/559)) ([630b813](https://github.com/Esri/calcite-app-components/commit/630b81393c7be7b86c969d27efc1e1b29edd2e15))
+
+### Bug Fixes
+
+- Convert js files from es6 to es5 ([#589](https://github.com/Esri/calcite-app-components/issues/589)) ([789554f](https://github.com/Esri/calcite-app-components/commit/789554f2ff7788bcbe0350249f5989d63344bb1e))
+- prevent deselection for single-select lists ([#585](https://github.com/Esri/calcite-app-components/issues/585)) ([c04bdb7](https://github.com/Esri/calcite-app-components/commit/c04bdb75a5ef6ddace10776805b9b1bcf5494a1f))
+- **block:** hide collapse icon when a control is provided in Edge ([#582](https://github.com/Esri/calcite-app-components/issues/582)) ([6d9f0e3](https://github.com/Esri/calcite-app-components/commit/6d9f0e3c51267a0738ff92491e78cd321d07f764)), closes [#540](https://github.com/Esri/calcite-app-components/issues/540) [#540](https://github.com/Esri/calcite-app-components/issues/540)
+
 ### [4.7.1](https://github.com/Esri/calcite-app-components/compare/v4.7.0...v4.7.1) (2019-11-20)
 
 ### Bug Fixes
