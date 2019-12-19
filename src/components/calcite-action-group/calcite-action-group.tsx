@@ -5,6 +5,9 @@ import { Component, Host, h } from "@stencil/core";
   styleUrl: "calcite-action-group.scss",
   shadow: true
 })
+/**
+ * @slot - A slot for adding a group of `calcite-actions`.
+ */
 export class CalciteActionGroup {
   // --------------------------------------------------------------------------
   //

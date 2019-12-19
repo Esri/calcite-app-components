@@ -63,13 +63,9 @@
         <button class="demo-btn" id="add-flow-item">Add Flow Item</button>
 
         <details>
-            <summary>Sample JavaScript</summary>
-<pre><code class="language-js">&lt;script&gt;
+          <summary>Sample JavaScript</summary>
+          <pre><code class="language-js">&lt;script&gt;
   var flowNode = document.getElementById("flow");
-
-  flowNode.addEventListener("calciteFlowItemBackClick", function() {
-    flowNode.back();
-  });
 
   var addFlowButtonNode = document.getElementById("add-flow-item");
 
@@ -103,14 +99,23 @@
     <script>
       var flowNode = document.getElementById("flow");
 
-      flowNode.addEventListener("calciteFlowItemBackClick", function() {
-        flowNode.back();
-      });
-
       var addFlowButtonNode = document.getElementById("add-flow-item");
 
       addFlowButtonNode.addEventListener("click", function() {
         var newNode = document.createElement("calcite-flow-item");
+
+        newNode.beforeBack = function() {
+          newNode.loading = true;
+          newNode.disabled = true;
+          return new Promise((resolve) =>
+            setTimeout(() => {
+              newNode.disabled = false;
+              newNode.loading = false;
+              resolve();
+            }, 1000)
+          );
+        };
+
         newNode.heading = "Item " + (flowNode.childElementCount + 1);
         newNode.innerHTML = `
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
@@ -131,6 +136,11 @@
           </div>
         `;
         flowNode.appendChild(newNode);
+        setTimeout(function() {
+          var newDiv = document.createElement("div");
+          newDiv.innerHTML = "new div who dis?";
+          newNode.appendChild(newDiv);
+        }, 100);
       });
     </script>
   </body>

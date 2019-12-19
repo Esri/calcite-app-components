@@ -7,3 +7,7 @@ export type CalciteTheme = "light" | "dark";
 export type CalciteBlockSectionToggleDisplay = "button" | "switch";
 
 export type FlowDirection = "advancing" | "retreating";
+
+export type CalciteActionAppearance = "solid" | "clear";
+
+export type CalciteScale = "s" | "m" | "l";

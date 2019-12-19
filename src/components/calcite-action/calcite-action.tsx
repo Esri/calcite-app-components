@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
 
-import { CalciteTheme } from "../interfaces";
+import { CalciteActionAppearance, CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -9,7 +9,7 @@ import { CSS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
-import { VNode } from "@esri/calcite-components/dist/types/stencil.core";
+import { VNode } from "@stencil/core/dist/declarations";
 
 @Component({
   tag: "calcite-action",
@@ -23,7 +23,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
   /** Specify the appearance style of the action, defaults to solid. */
-  @Prop({ reflect: true }) appearance: "solid" | "clear" = "solid";
+  @Prop({ reflect: true }) appearance: CalciteActionAppearance = "solid";
 
   /**
    * Indicates whether the action is highlighted.
@@ -79,10 +79,10 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  renderTextContainer(textEnabled: boolean): VNode {
+  renderTextContainer(): VNode {
     const { text } = this;
 
-    return textEnabled ? (
+    return text ? (
       <div key="text-container" class={CSS.textContainer}>
         {text}
       </div>
@@ -135,7 +135,7 @@ export class CalciteAction {
           aria-busy={loading.toString()}
         >
           {this.renderIconContainer()}
-          {this.renderTextContainer(textEnabled)}
+          {this.renderTextContainer()}
         </button>
       </Host>
     );

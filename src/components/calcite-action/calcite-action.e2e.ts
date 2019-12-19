@@ -11,8 +11,8 @@ describe("calcite-action", () => {
 
     await page.setContent(`<calcite-action text="hello world"></calcite-action>`);
 
-    const textcontainer = await page.find("calcite-action >>> .text-container");
-    expect(textcontainer).toBeNull();
+    const textContainer = await page.find("calcite-action >>> .text-container");
+    expect(textContainer).toBeNull();
   });
 
   it("should have text container when text is enabled", async () => {
@@ -20,8 +20,21 @@ describe("calcite-action", () => {
 
     await page.setContent(`<calcite-action text="hello world" text-enabled></calcite-action>`);
 
-    const textcontainer = await page.find("calcite-action >>> .text-container");
-    expect(textcontainer).not.toBeNull();
+    const textContainer = await page.find("calcite-action >>> .text-container");
+
+    expect(textContainer).not.toBeNull();
+  });
+
+  it("should have visible text", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-action text="hello world" text-enabled></calcite-action>`);
+
+    const textContainer = await page.find("calcite-action >>> .text-container");
+
+    const isVisible = await textContainer.isVisible();
+
+    expect(isVisible).toBe(true);
   });
 
   it("should have icon container", async () => {
@@ -50,6 +63,16 @@ describe("calcite-action", () => {
     const button = await page.find("calcite-action >>> .button");
     expect(button.getAttribute("title")).toBe("hello world");
     expect(button.getAttribute("aria-label")).toBe("hello world");
+  });
+
+  it("should have label", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-action text="hello world" label="hi"></calcite-action>`);
+
+    const button = await page.find("calcite-action >>> .button");
+    expect(button.getAttribute("title")).toBe("hi");
+    expect(button.getAttribute("aria-label")).toBe("hi");
   });
 
   it("should be disabled", async () => {

@@ -1,10 +1,16 @@
-import { Config } from "@stencil/core";
-import { config as baseConfig } from "./stencil.config";
+import { create as baseConfigCreator } from "./stencil.config";
 import { OutputTargetWww } from "@stencil/core/dist/declarations";
 
-export const config: Config = baseConfig;
+export const create: typeof baseConfigCreator = () => {
+  const docsConfig = baseConfigCreator();
 
-const wwwOutputTarget = config.outputTargets.find((element) => element.type === "www") as OutputTargetWww;
-wwwOutputTarget.dir = "docs";
-config.outputTargets = [wwwOutputTarget];
-config.excludeSrc = ["**/tests/**", "**/*example*/**"];
+  const wwwOutputTarget = docsConfig.outputTargets.find((element) => element.type === "www") as OutputTargetWww;
+  wwwOutputTarget.dir = "docs";
+  docsConfig.outputTargets = [wwwOutputTarget];
+
+  docsConfig.excludeSrc = ["**/*.stories.ts", "**/tests/**"];
+
+  return docsConfig;
+};
+
+export const config = create();

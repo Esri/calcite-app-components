@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
 
 import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
@@ -15,6 +15,7 @@ import { CalciteTheme } from "../interfaces";
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ * @slot - A slot for adding content to the flow item.
  */
 @Component({
   tag: "calcite-flow-item",
@@ -29,9 +30,9 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Optionally perform a function to run before going back.
+   * When provided, this method will be called before it is removed from the parent flow.
    */
-  @Prop() beforeBack: () => Promise<void> = () => Promise.resolve();
+  @Prop() beforeBack?: () => Promise<void>;
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -80,19 +81,15 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Public Methods
+  //  Events
   //
   // --------------------------------------------------------------------------
 
   /**
-   * Removes the component.
+   * Emitted when the back button has been clicked.
    */
-  @Method()
-  async back(): Promise<void> {
-    await this.beforeBack();
 
-    this.el.remove();
-  }
+  @Event() calciteFlowItemBackClick: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
@@ -113,7 +110,7 @@ export class CalciteFlowItem {
   };
 
   backButtonClick = (): void => {
-    this.back();
+    this.calciteFlowItemBackClick.emit();
   };
 
   // --------------------------------------------------------------------------
