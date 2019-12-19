@@ -83,7 +83,7 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
-  private buttonEl?: HTMLButtonElement;
+  private buttonEl: HTMLButtonElement;
 
   // --------------------------------------------------------------------------
   //

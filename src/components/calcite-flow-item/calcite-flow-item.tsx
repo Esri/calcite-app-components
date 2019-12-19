@@ -1,12 +1,14 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
 import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
-import { getElementDir, setElementFocus } from "../utils/dom";
+import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
 import CalciteIcon from "../utils/CalciteIcon";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteTheme } from "../interfaces";
+
+const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
  * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
@@ -101,7 +103,7 @@ export class CalciteFlowItem {
   }
 
   isValidKey(key: string, supportedKeys: string[]): boolean {
-    return supportedKeys.indexOf(key) !== -1;
+    return !!supportedKeys.find((k) => k === key);
   }
 
   toggleMenuOpen = (): void => {
@@ -116,7 +118,7 @@ export class CalciteFlowItem {
     const { key } = event;
     const { menuOpen } = this;
 
-    if (!this.isValidKey(key, ["ArrowUp", "ArrowDown"])) {
+    if (!this.isValidKey(key, SUPPORTED_ARROW_KEYS)) {
       return;
     }
 
@@ -133,19 +135,19 @@ export class CalciteFlowItem {
 
     if (key === "ArrowUp") {
       const lastAction = actions[length - 1];
-      setElementFocus(lastAction);
+      focusElement(lastAction);
     }
 
     if (key === "ArrowDown") {
       const firstAction = actions[0];
-      setElementFocus(firstAction);
+      focusElement(firstAction);
     }
   };
 
   menuActionsKeydown = (event: KeyboardEvent): void => {
     const { key, target } = event;
 
-    if (!this.isValidKey(key, ["ArrowUp", "ArrowDown"])) {
+    if (!this.isValidKey(key, SUPPORTED_ARROW_KEYS)) {
       return;
     }
 
@@ -160,13 +162,13 @@ export class CalciteFlowItem {
     if (key === "ArrowUp") {
       const value = getRoundRobinIndex(currentIndex - 1, length);
       const previousAction = actions[value];
-      setElementFocus(previousAction);
+      focusElement(previousAction);
     }
 
     if (key === "ArrowDown") {
       const value = getRoundRobinIndex(currentIndex + 1, length);
       const nextAction = actions[value];
-      setElementFocus(nextAction);
+      focusElement(nextAction);
     }
   };
 
@@ -175,7 +177,6 @@ export class CalciteFlowItem {
 
     if (key === "Escape") {
       this.menuOpen = false;
-      return;
     }
   };
 

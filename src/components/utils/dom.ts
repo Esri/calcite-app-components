@@ -61,7 +61,7 @@ export function moveNode(node: HTMLElement, to: number) {
   }
 }
 
-export function setElementFocus(el: HTMLCalciteActionElement | HTMLElement): void {
+export function focusElement(el: HTMLCalciteActionElement | HTMLElement): void {
   if (!el) {
     return;
   }
