@@ -3,7 +3,7 @@ import { Attributes, createComponentHTML as create, darkBackground, parseReadme 
 import readme from "./readme.md";
 
 export default {
-  title: "calcite-pick-list",
+  title: "components|calcite-pick-list",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),
