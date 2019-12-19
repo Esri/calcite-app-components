@@ -39,6 +39,12 @@ Type: `Promise<void>`
 
 Type: `Promise<void>`
 
+## Slots
+
+| Slot | Description                       |
+| ---- | --------------------------------- |
+|      | A slot for adding `calcite-tips`. |
+
 ## Dependencies
 
 ### Depends on

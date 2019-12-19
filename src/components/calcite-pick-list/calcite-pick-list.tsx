@@ -83,7 +83,12 @@ export class CalcitePickList {
   /**
    * @deprecated No longer rendered. Prop will be removed in a future release.
    */
-  @Prop({ reflect: true }) textHeading: string;
+  @Prop({ reflect: true }) textHeading?: string;
+
+  /**
+   * Placeholder text for the filter input field.
+   */
+  @Prop({ reflect: true }) textFilterPlaceholder?: string = TEXT.filterPlaceholder;
 
   // --------------------------------------------------------------------------
   //
@@ -200,6 +205,6 @@ export class CalcitePickList {
   }
 
   render() {
-    return <List props={this} text={TEXT} />;
+    return <List props={this} />;
   }
 }

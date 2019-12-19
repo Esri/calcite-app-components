@@ -9,15 +9,45 @@
     <script src="head.js"></script>
     <style>
       .typography-container {
-        padding: 5rem;
-        max-width: 640px;
-        margin: 0 auto;
+        padding-top: var(--calcite-app-cap-spacing-double);
       }
 
       hr {
         border: none;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         margin: 2rem 0;
+      }
+
+      .typography-container h1,
+      .typography-container h2,
+      .typography-container h3,
+      .typography-container h4,
+      .typography-container h5 {
+        font-family: var(--calcite-app-font-family);
+      }
+
+      .typography-container h1 {
+        font-size: var(--calcite-app-font-size-3);
+        font-weight: var(--calcite-app-font-weight);
+      }
+      .typography-container h2 {
+        font-size: var(--calcite-app-font-size-2);
+        font-weight: var(--calcite-app-font-weight-demi);
+      }
+      .typography-container h3 {
+        font-size: var(--calcite-app-font-size-1);
+        font-weight: var(--calcite-app-font-weight-demi);
+      }
+
+      .typography-container h4,
+      .typography-container h5 {
+        font-size: var(--calcite-app-font-size-0);
+        font-weight: var(--calcite-app-font-weight-demi);
+      }
+
+      .typography-container p {
+        font-size: var(--calcite-app-font-size-0);
+        line-height: var(--calcite-app-line-height);
       }
 
       .small {
@@ -31,8 +61,9 @@
       <calcite-demo-nav page-id="calcite-typography"></calcite-demo-nav>
     </nav>
     <main class="example-container">
+      <h1>Typography</h1>
       <div class="typography-container">
-        <h1 class="heading">Header Level 1 : (font-size-2 &amp; font-weight)</h1>
+        <h1 class="heading">Header Level 1 : (font-size-3 &amp; font-weight)</h1>
         <p>
           In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual
           form of a document without relying on meaningful content (also called greeking). Replacing the actual content
@@ -43,7 +74,7 @@
 
         <hr />
 
-        <h2 class="heading">Header Level 2 : (font-size-1 &amp; font-weight)</h2>
+        <h2 class="heading">Header Level 2 : (font-size-2 &amp; font-weight)</h2>
         <p>
           In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual
           form of a document without relying on meaningful content (also called greeking). Replacing the actual content
@@ -54,7 +85,7 @@
 
         <hr />
 
-        <h3 class="heading">Header Level 3 : (font-size-0 &amp; font-weight-demi)</h3>
+        <h3 class="heading">Header Level 3 : (font-size-1 &amp; font-weight-demi)</h3>
         <p>
           In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual
           form of a document without relying on meaningful content (also called greeking). Replacing the actual content

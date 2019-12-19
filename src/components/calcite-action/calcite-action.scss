@@ -32,6 +32,9 @@
     color: var(--calcite-app-foreground-hover);
     fill: var(--calcite-app-foreground-hover);
   }
+
+  @include focusRingInset();
+
   .icon-container {
     max-width: var(--calcite-app-icon-size);
     max-height: var(--calcite-app-icon-size);

@@ -5,7 +5,7 @@ describe("calcite-action-group", () => {
 
   it("honors hidden attribute", async () => hidden("calcite-action-group"));
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-action-group>
         <calcite-action text="Add">
@@ -14,6 +14,5 @@ describe("calcite-action-group", () => {
           </svg>
         </calcite-action>
       </calcite-action-group>
-    `);
-  });
+    `));
 });

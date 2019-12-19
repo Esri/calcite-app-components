@@ -5,7 +5,7 @@ describe("calcite-action-pad", () => {
 
   it("honors hidden attribute", async () => hidden("calcite-action-pad"));
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-action-pad>
       <calcite-action-group>
@@ -16,6 +16,5 @@ describe("calcite-action-pad", () => {
         </calcite-action>
       </calcite-action-group>
     </calcite-action-pad>
-    `);
-  });
+    `));
 });

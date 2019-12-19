@@ -6,6 +6,40 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 
 <!-- Auto Generated Below -->
 
+## Usage
+
+### Basic
+
+#### Without text
+
+Renders a `calcite-action` that displays only an icon and a tooltip label.
+
+```html
+<calcite-action label="Performs my custom action">
+  <!-- icon -->
+</calcite-action>
+```
+
+#### With text
+
+Renders a `calcite-action` that displays text along side an icon and a tooltip label.
+
+```html
+<calcite-action label="Performs my custom action" text="Perform Action!" text-enabled>
+  <!-- icon -->
+</calcite-action>
+```
+
+#### Clear appearance
+
+Renders a `calcite-action` that has a clear background.
+
+```html
+<calcite-action appearance="clear">
+  <!-- icon -->
+</calcite-action>
+```
+
 ## Properties
 
 | Property      | Attribute      | Description                                                                                       | Type                                     | Default     |
@@ -18,8 +52,8 @@ See the [calcite-action demo](https://esri.github.io/calcite-app-components/demo
 | `label`       | `label`        | Label of the action, exposed on hover.                                                            | `string`                                 | `undefined` |
 | `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                    | `boolean`                                | `false`     |
 | `text`        | `text`         | Text that accompanies the action icon.                                                            | `string`                                 | `undefined` |
-| `textDisplay` | `text-display` | Indicates whether the text is displayed.                                                          | `"hidden" \| "interactive" \| "visible"` | `"hidden"`  |
-| `textEnabled` | `text-enabled` | <span style="color:red">**[DEPRECATED]**</span> Use 'textDisplay' instead.<br/><br/>              | `boolean`                                | `false`     |
+| `textDisplay` | `text-display` | <span style="color:red">**[DEPRECATED]**</span> Use 'textEnabled' instead.<br/><br/>              | `"hidden" \| "interactive" \| "visible"` | `"hidden"`  |
+| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                          | `boolean`                                | `false`     |
 | `theme`       | `theme`        | Used to set the component's color scheme.                                                         | `"dark" \| "light"`                      | `undefined` |
 
 ## Dependencies

@@ -8,13 +8,6 @@
 
     <!-- Loads the link and script tags-->
     <script src="head.js"></script>
-    <style>
-      .panel-container {
-        width: 350px;
-        height: 800px;
-        margin: 20px 0;
-      }
-    </style>
   </head>
 
   <body>
@@ -30,26 +23,33 @@
             calcite-panel readme.</a
           >
         </p>
+        <h2>Basic Panel</h2>
+        <calcite-panel>
+          <div slot="header-content">panel header</div>
+          <p>Slotted content</p>
+        </calcite-panel>
 
-        <div class="panel-container">
-          <calcite-panel>
-            <div slot="header-leading-content">test L</div>
-            <div slot="header-content">test center</div>
-            <div slot="header-summary">test summary</div>
-            <div slot="header-trailing-content">test T</div>
-            <p>Content</p>
-            <div slot="footer">test Footer</div>
-          </calcite-panel>
-        </div>
+        <h2>With Footer</h2>
+        <calcite-panel>
+          <div slot="header-content">panel 2 header</div>
+          <p>I have a footer.</p>
+          <div slot="footer">panel Footer</div>
+        </calcite-panel>
 
-        <div class="panel-container">
-          <calcite-panel dismissible id="dismissible-panel">
-            <div slot="header-leading-content">test L</div>
-            <div slot="header-content">test center</div>
-            <p>Content</p>
-            <div slot="footer">test Footer</div>
-          </calcite-panel>
-        </div>
+        <h2>With Header Actions</h2>
+        <calcite-panel>
+          <div slot="header-leading-content"><button onclick="console.log('left clicked');">L</button></div>
+          <div slot="header-content">panel 3 header</div>
+          <div slot="header-trailing-content"><button onclick="console.log('right clicked');">R</button></div>
+          <p>Buttons in the top left and right. Mainly for calcite-actions and not plain buttons.</p>
+        </calcite-panel>
+
+        <h2>Dismissible Panel</h2>
+        <calcite-panel dismissible id="dismissible-panel">
+          <div slot="header-content">Dismissible panel header</div>
+          <p>Click the X and I go away</p>
+        </calcite-panel>
+
         <script>
           var dismissiblePanel = document.getElementById("dismissible-panel");
           dismissiblePanel.addEventListener("calcitePanelDismissedChange", function() {
@@ -57,24 +57,27 @@
           });
         </script>
 
-        <h2>RTL</h2>
-
         <div class="panel-container" dir="rtl">
+          <h2>RTL</h2>
+
+          <h3>Basic Panel</h3>
           <calcite-panel>
-            <div slot="header-leading-content">test L</div>
-            <div slot="header-content">test center</div>
-            <div slot="header-trailing-content">test T</div>
-            <p>Content</p>
-            <div slot="footer">test Footer</div>
+            <div slot="header-content">panel header</div>
+            <p>Slotted content</p>
           </calcite-panel>
-        </div>
 
-        <div class="panel-container" dir="rtl">
-          <calcite-panel dismissible>
-            <div slot="header-leading-content">test L</div>
-            <div slot="header-content">test center</div>
-            <p>Content</p>
-            <div slot="footer">test Footer</div>
+          <h3>With Header Actions</h3>
+          <calcite-panel>
+            <div slot="header-leading-content"><button onclick="console.log('left clicked');">L</button></div>
+            <div slot="header-content">panel 3 header</div>
+            <div slot="header-trailing-content"><button onclick="console.log('right clicked');">R</button></div>
+            <p>Button positions are reversed!</p>
+          </calcite-panel>
+
+          <h3>Dismissible Panel</h3>
+          <calcite-panel dismissible id="dismissible-panel">
+            <div slot="header-content">Dismissible panel header</div>
+            <p>X position reversed!</p>
           </calcite-panel>
         </div>
       </section>
