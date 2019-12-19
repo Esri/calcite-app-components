@@ -138,9 +138,10 @@ export class CalciteBlock {
     const toggleLabel = open ? textCollapse : textExpand;
     const content = loading ? (
       <calcite-loader inline is-active></calcite-loader>
-    ) : !disabled ? (
+    ) : (
       <slot name={SLOTS.control} />
-    ) : null;
+    );
+
     const hasIcon = el.querySelector(`[slot=${SLOTS.icon}]`);
     const headerContent = (
       <header class={CSS.header}>
@@ -185,7 +186,7 @@ export class CalciteBlock {
     );
 
     return (
-      <Host>
+      <Host tabIndex={disabled ? -1 : null}>
         <article aria-expanded={collapsible ? open.toString() : null} aria-busy={loading}>
           {headerNode}
           <div class={CSS.content} hidden={!hasContent || !open}>

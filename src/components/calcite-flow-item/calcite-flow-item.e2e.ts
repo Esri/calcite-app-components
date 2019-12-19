@@ -150,7 +150,7 @@ describe("calcite-flow-item", () => {
     expect(menuButtonVisible).toBe(true);
   });
 
-  it("back button / showBackButton", async () => {
+  it("showBackButton", async () => {
     const page = await newE2EPage();
 
     await page.setContent("<calcite-flow-item></calcite-flow-item>");
