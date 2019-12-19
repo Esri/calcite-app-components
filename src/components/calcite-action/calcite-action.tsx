@@ -1,6 +1,6 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
-import { CalciteTheme, TextDisplay } from "../interfaces";
+import { CalciteActionAppearance, CalciteTheme, TextDisplay } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -23,7 +23,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
   /** Specify the appearance style of the action, defaults to solid. */
-  @Prop({ reflect: true }) appearance: "solid" | "clear" = "solid";
+  @Prop({ reflect: true }) appearance: CalciteActionAppearance = "solid";
 
   /**
    * Indicates whether the action is highlighted.
@@ -82,6 +82,19 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteActionElement;
+
+  private buttonEl: HTMLButtonElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocus() {
+    this.buttonEl.focus();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -145,6 +158,7 @@ export class CalciteAction {
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
+          ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
           {this.renderIconContainer()}
           {this.renderTextContainer(calculatedTextDisplay)}
