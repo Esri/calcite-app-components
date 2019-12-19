@@ -75,7 +75,9 @@ describe("calcite-block-section", () => {
     });
 
     it("can be toggled", async () => {
-      const page = await setUpPage("<calcite-block-section></calcite-block-section>");
+      const page = await setUpPage("<calcite-block-section></calcite-block-section>", {
+        withPeerDependencies: true
+      });
       await assertToggleBehavior(page);
     });
 
