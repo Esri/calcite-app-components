@@ -60,3 +60,11 @@ export function moveNode(node: HTMLElement, to: number) {
     parent.insertBefore(node, children.item(to));
   }
 }
+
+export function focusElement(el: HTMLCalciteActionElement | HTMLElement): void {
+  if (!el) {
+    return;
+  }
+
+  "setFocus" in el && typeof el.setFocus === "function" ? el.setFocus() : el.focus();
+}
