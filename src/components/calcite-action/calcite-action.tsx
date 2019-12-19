@@ -98,10 +98,14 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   renderTextContainer(): VNode {
-    const { text } = this;
+    const { text, textEnabled } = this;
+
+    const textContainerClasses = {
+      [CSS.textContainerVisible]: textEnabled
+    };
 
     return text ? (
-      <div key="text-container" class={CSS.textContainer}>
+      <div key="text-container" class={classnames(CSS.textContainer, textContainerClasses)}>
         {text}
       </div>
     ) : null;

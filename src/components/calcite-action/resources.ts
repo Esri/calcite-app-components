@@ -7,7 +7,8 @@ export const CSS = {
   iconContainer: "icon-container",
   slotContainer: "slot-container",
   slotContainerHidden: "slot-container--hidden",
-  textContainer: "text-container"
+  textContainer: "text-container",
+  textContainerVisible: "text-container--visible"
 };
 
 export const APPEARANCE_VALUES: CalciteActionAppearance[] = ["solid", "clear"];
