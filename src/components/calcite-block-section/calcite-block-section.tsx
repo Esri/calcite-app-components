@@ -114,7 +114,7 @@ export class CalciteBlockSection {
           class={CSS.toggle}
           onClick={this.toggleSection}
           text={text}
-          textDisplay="visible"
+          textEnabled={true}
           compact
         >
           <CalciteIcon size="16" path={arrowIcon} />

@@ -64,10 +64,6 @@
           <pre><code class="language-js">&lt;script&gt;
   var flowNode = document.getElementById("flow");
 
-  flowNode.addEventListener("calciteFlowItemBackClick", function() {
-    flowNode.back();
-  });
-
   var addFlowButtonNode = document.getElementById("add-flow-item");
 
   addFlowButtonNode.addEventListener("click", function() {
@@ -100,14 +96,23 @@
     <script>
       var flowNode = document.getElementById("flow");
 
-      flowNode.addEventListener("calciteFlowItemBackClick", function() {
-        flowNode.back();
-      });
-
       var addFlowButtonNode = document.getElementById("add-flow-item");
 
       addFlowButtonNode.addEventListener("click", function() {
         var newNode = document.createElement("calcite-flow-item");
+
+        newNode.beforeBack = function() {
+          newNode.loading = true;
+          newNode.disabled = true;
+          return new Promise((resolve) =>
+            setTimeout(() => {
+              newNode.disabled = false;
+              newNode.loading = false;
+              resolve();
+            }, 1000)
+          );
+        };
+
         newNode.heading = "Item " + (flowNode.childElementCount + 1);
         newNode.innerHTML = `
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>

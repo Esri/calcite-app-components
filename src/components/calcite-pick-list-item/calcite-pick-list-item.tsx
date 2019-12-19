@@ -76,15 +76,6 @@ export class CalcitePickListItem {
   }
 
   /**
-   * @deprecated Replaced by textLabel.
-   */
-  @Prop({ reflect: true }) textHeading?: string;
-
-  @Watch("textHeading") textHeadingWatchHandler() {
-    this.calciteListItemPropsUpdated.emit();
-  }
-
-  /**
    * An optional description for this item.  This will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
@@ -131,7 +122,6 @@ export class CalcitePickListItem {
 
   /**
    * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
-   * It also fires on textHeading property changes for backwards compatibility until that's fully removed.
    * @event calciteListItemPropsUpdated
    * @internal
    */
@@ -223,7 +213,7 @@ export class CalcitePickListItem {
         >
           {this.renderIcon()}
           <div class={CSS.textContainer}>
-            <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
+            <span class={CSS.title}>{this.textLabel}</span>
             {description}
           </div>
         </label>

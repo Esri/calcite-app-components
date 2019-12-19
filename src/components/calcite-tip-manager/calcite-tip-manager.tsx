@@ -145,12 +145,6 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   /**
-   * Emitted when the component has been closed.
-   * @deprecated
-   */
-  @Event() calciteTipManagerClose: EventEmitter;
-
-  /**
    * Emitted when the TipManager has been toggled closed or opened.
    */
   @Event() calciteTipManagerToggle: EventEmitter;
