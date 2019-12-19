@@ -29,7 +29,7 @@
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
     "preversion": "npm ci && npm test",
     "release": "git push --follow-tags && npm publish && ts-node ./support/githubReleaseFromChangelog.ts",
-    "start": "concurrently --kill-others --raw \"tsc --project ./tsconfig-demos.json --watch\" \"npm run demoPageSync\" \"stencil build --dev --watch --serve\"",
+    "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --dev --watch --serve\"",
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",
