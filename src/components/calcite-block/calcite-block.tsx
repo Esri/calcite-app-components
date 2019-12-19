@@ -168,7 +168,9 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            {controlSlot ? null : <calcite-icon icon={open ? "chevron-up" : "chevron-down"} />}
+            {controlSlot ? null : (
+              <calcite-icon scale="s" icon={open ? "chevron-up" : "chevron-down"} />
+            )}
           </button>
         ) : (
           headerContent

@@ -189,7 +189,7 @@ export class CalcitePickListItem {
         : "circle";
     return (
       <span class={CSS.icon}>
-        <calcite-icon icon={iconName} />
+        <calcite-icon scale="s" icon={iconName} />
       </span>
     );
   }

@@ -115,7 +115,7 @@ export class CalciteBlockSection {
           textEnabled={true}
           compact
         >
-          <calcite-icon icon={arrowIcon} />
+          <calcite-icon scale="s" icon={arrowIcon} />
         </calcite-action>
       );
 

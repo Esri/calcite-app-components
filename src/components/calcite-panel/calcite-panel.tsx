@@ -137,7 +137,7 @@ export class CalcitePanel {
 
     const dismissibleNode = dismissible ? (
       <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
-        <calcite-icon icon="x" />
+        <calcite-icon scale="s" icon="x" />
       </calcite-action>
     ) : null;
 

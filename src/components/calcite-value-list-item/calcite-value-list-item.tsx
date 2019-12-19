@@ -131,7 +131,7 @@ export class CalciteValueListItem {
           onKeyDown={this.handleKeyDown}
           onBlur={this.handleBlur}
         >
-          <calcite-icon icon="drag" />
+          <calcite-icon scale="s" icon="drag" />
         </span>
       );
     }

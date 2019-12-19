@@ -25,10 +25,10 @@ export const basic = () =>
     "calcite-action-pad",
     createAttributes(),
     `<calcite-action-group>
-      <calcite-action text="Undo" label="Undo Action"><calcite-icon icon="undo"></calcite-icon></calcite-action>
-      <calcite-action text="Redo" label="Redo Action"><calcite-icon icon="redo"></calcite-icon></calcite-action>
+      <calcite-action text="Undo" label="Undo Action"><calcite-icon scale="s" icon="undo"></calcite-icon></calcite-action>
+      <calcite-action text="Redo" label="Redo Action"><calcite-icon scale="s" icon="redo"></calcite-icon></calcite-action>
     </calcite-action-group>
     <calcite-action-group>
-      <calcite-action text="Delete" label="Delete Item"><calcite-icon icon="trash"></calcite-icon></calcite-action>
+      <calcite-action text="Delete" label="Delete Item"><calcite-icon scale="s" icon="trash"></calcite-icon></calcite-action>
     </calcite-action-group>`
   );

@@ -49,11 +49,11 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
 };
 
 const actionBarContentHTML = `<calcite-action-group>
-<calcite-action text="Add" label="Add Item"><calcite-icon icon="plus"></calcite-icon></calcite-action>
-<calcite-action text="Save" label="Save Item"><calcite-icon icon="save"></calcite-icon></calcite-action>
+<calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
+<calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
 </calcite-action-group>
 <calcite-action-group>
-<calcite-action text="Layers" label="View Layers"><calcite-icon icon="layers"></calcite-icon></calcite-action>
+<calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
 </calcite-action-group>`;
 
 const actionBarHTML = `<calcite-action-bar slot="action-bar">
@@ -156,9 +156,9 @@ export const basic = () =>
 
 const advancedLeadingPanelHTML = `${actionBarHTML}<calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
 <calcite-block-content>
-  <calcite-action text="horizontal ActionPad" text-enabled indicator><calcite-icon icon="play"></calcite-icon></calcite-action>
-  <calcite-action text="Vertical Shell Floating Panel" text-enabled><calcite-icon icon="extent"></calcite-icon></calcite-action>
-  <calcite-action text="horizontal Shell Floating Panel" text-enabled><calcite-icon icon="arrow-up-right"></calcite-icon></calcite-action>
+  <calcite-action text="horizontal ActionPad" text-enabled indicator><calcite-icon scale="s" icon="play"></calcite-icon></calcite-action>
+  <calcite-action text="Vertical Shell Floating Panel" text-enabled><calcite-icon scale="s" icon="extent"></calcite-icon></calcite-action>
+  <calcite-action text="horizontal Shell Floating Panel" text-enabled><calcite-icon scale="s" icon="arrow-up-right"></calcite-icon></calcite-action>
 </calcite-block-content>
 </calcite-block>
 <calcite-block collapsible open heading="Another Block" summary="This is the primary.">

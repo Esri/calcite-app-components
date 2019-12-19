@@ -112,7 +112,7 @@ export class CalciteTip {
 
     const dismissButtonNode = !nonDismissible ? (
       <calcite-action text={textClose} onClick={hideTip} class={CSS.close}>
-        <calcite-icon icon="x" />
+        <calcite-icon scale="s" icon="x" />
       </calcite-action>
     ) : null;
 

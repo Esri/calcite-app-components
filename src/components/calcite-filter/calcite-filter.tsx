@@ -120,7 +120,7 @@ export class CalciteFilter {
             aria-label={this.textLabel || TEXT.filterLabel}
           />
           <div class={CSS.searchIcon}>
-            <calcite-icon icon={"search"} />
+            <calcite-icon scale="s" icon={"search"} />
           </div>
         </label>
         {!this.empty ? (

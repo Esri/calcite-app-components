@@ -136,7 +136,7 @@ export class CalciteActionBar {
 
     return expand ? (
       <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
-        <calcite-icon icon={expanded ? expandIcon : collapseIcon} />
+        <calcite-icon scale="s" icon={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;
   }
