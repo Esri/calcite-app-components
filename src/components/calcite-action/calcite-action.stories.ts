@@ -1,9 +1,8 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
-import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 import { APPEARANCE_VALUES } from "./resources";
-import { beaker16 } from "@esri/calcite-ui-icons";
 
 const { theme } = ATTRIBUTES;
 
@@ -59,4 +58,4 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () => create("calcite-action", createAttributes(), createSVG(beaker16, 16));
+export const basic = () => create("calcite-action", createAttributes(), `<calcite-icon icon="beaker"></calcite-icon>`);

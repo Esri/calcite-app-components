@@ -1,11 +1,10 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
 import { CalciteLayoutValues } from "../calcite-shell-panel/resources";
-import { arrowUpRight16, extent16, layers16, play16, plus16, save16 } from "@esri/calcite-ui-icons";
 
 export default {
   title: "components|calcite-shell",
@@ -50,11 +49,11 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
 };
 
 const actionBarContentHTML = `<calcite-action-group>
-<calcite-action text="Add" label="Add Item">${createSVG(plus16)}</calcite-action>
-<calcite-action text="Save" label="Save Item">${createSVG(save16)}</calcite-action>
+<calcite-action text="Add" label="Add Item"><calcite-icon icon="plus"></calcite-icon></calcite-action>
+<calcite-action text="Save" label="Save Item"><calcite-icon icon="save"></calcite-icon></calcite-action>
 </calcite-action-group>
 <calcite-action-group>
-<calcite-action text="Layers" label="View Layers">${createSVG(layers16)}</calcite-action>
+<calcite-action text="Layers" label="View Layers"><calcite-icon icon="layers"></calcite-icon></calcite-action>
 </calcite-action-group>`;
 
 const actionBarHTML = `<calcite-action-bar slot="action-bar">
@@ -157,9 +156,9 @@ export const basic = () =>
 
 const advancedLeadingPanelHTML = `${actionBarHTML}<calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
 <calcite-block-content>
-  <calcite-action text="horizontal ActionPad" text-enabled indicator>${createSVG(play16)}</calcite-action>
-  <calcite-action text="Vertical Shell Floating Panel" text-enabled>${createSVG(extent16)}</calcite-action>
-  <calcite-action text="horizontal Shell Floating Panel" text-enabled>${createSVG(arrowUpRight16)}</calcite-action>
+  <calcite-action text="horizontal ActionPad" text-enabled indicator><calcite-icon icon="play"></calcite-icon></calcite-action>
+  <calcite-action text="Vertical Shell Floating Panel" text-enabled><calcite-icon icon="extent"></calcite-icon></calcite-action>
+  <calcite-action text="horizontal Shell Floating Panel" text-enabled><calcite-icon icon="arrow-up-right"></calcite-icon></calcite-action>
 </calcite-block-content>
 </calcite-block>
 <calcite-block collapsible open heading="Another Block" summary="This is the primary.">

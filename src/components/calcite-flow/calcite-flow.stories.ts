@@ -1,10 +1,9 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
-import { layers16, plus16, save16 } from "@esri/calcite-ui-icons";
 
 export default {
   title: "components|calcite-flow",
@@ -63,9 +62,9 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
 };
 
 const menuActionsHTML = `<div slot="menu-actions">
-  <calcite-action text="Add" label="Add Item">${createSVG(plus16)}</calcite-action>
-  <calcite-action text="Save" label="Save Item">${createSVG(save16)}</calcite-action>
-  <calcite-action text="Layers" label="View Layers">${createSVG(layers16)}</calcite-action>
+  <calcite-action text="Add" label="Add Item"><calcite-icon icon="plus"></calcite-icon></calcite-action>
+  <calcite-action text="Save" label="Save Item"><calcite-icon icon="save"></calcite-icon></calcite-action>
+  <calcite-action text="Layers" label="View Layers"><calcite-icon icon="layers"></calcite-icon></calcite-action>
 </div>`;
 
 const footerActionsHTML = `<calcite-button slot="footer-actions" width="half">Save</calcite-button>
