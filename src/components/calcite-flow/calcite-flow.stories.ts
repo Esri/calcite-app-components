@@ -7,7 +7,7 @@ import itemReadme from "../calcite-flow-item/readme.md";
 import { layers16, plus16, save16 } from "@esri/calcite-ui-icons";
 
 export default {
-  title: "calcite-flow",
+  title: "components|calcite-flow",
   decorators: [withKnobs],
   parameters: {
     notes: {

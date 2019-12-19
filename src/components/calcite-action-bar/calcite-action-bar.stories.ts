@@ -7,7 +7,7 @@ import { layers16, plus16, save16 } from "@esri/calcite-ui-icons";
 const { theme } = ATTRIBUTES;
 
 export default {
-  title: "calcite-action-bar",
+  title: "components|calcite-action-bar",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),

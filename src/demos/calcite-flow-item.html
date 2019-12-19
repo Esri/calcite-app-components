@@ -9,6 +9,7 @@
     <!-- Loads the link and script tags-->
     <script src="head.js"></script>
   </head>
+
   <body>
     <main>
       <section class="example-container">
@@ -23,8 +24,10 @@
         <div class="flow-container">
           <calcite-flow-item heading="Flow items stretch to fill their containers' width">
             <div slot="menu-actions">
-              <button>Example</button>
-              <button>Actions</button>
+              <calcite-action text="Save" text-enabled></calcite-action>
+              <calcite-action text="Do It" text-enabled></calcite-action>
+              <calcite-action text="Load" text-enabled></calcite-action>
+              <calcite-action text="Cancel" text-enabled></calcite-action>
             </div>
             <div slot="footer-actions">
               <button>Example</button>
