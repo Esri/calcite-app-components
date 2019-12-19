@@ -34,7 +34,7 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const action = `<calcite-action slot="secondaryAction" label="click-me" onClick="console.log('clicked');">
+const action = `<calcite-action slot="secondaryAction" label="click-me" onClick="console.log('clicked');" appearance="clear">
   <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <circle cx="7" cy="7" r="7" fill="#f689d8" />
   </svg>
@@ -45,7 +45,7 @@ export const basic = () =>
     "calcite-pick-list",
     createAttributes(),
     `
-  <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+  <calcite-pick-list-item text-heading="STUPID" text-description="arm strength impaired" value="trex">
     ${action}
   </calcite-pick-list-item>
   <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" selected>
