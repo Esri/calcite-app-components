@@ -28,6 +28,11 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
+   * When provided, this method will be called before it is removed from the parent flow.
+   */
+  @Prop() beforeBack?: () => Promise<void>;
+
+  /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
@@ -74,14 +79,6 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLCalciteFlowItemElement;
-
-  // --------------------------------------------------------------------------
-  //
   //  Events
   //
   // --------------------------------------------------------------------------
@@ -91,6 +88,14 @@ export class CalciteFlowItem {
    */
 
   @Event() calciteFlowItemBackClick: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteFlowItemElement;
 
   // --------------------------------------------------------------------------
   //

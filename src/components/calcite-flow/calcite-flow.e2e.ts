@@ -25,13 +25,35 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
-    const element = await page.find("calcite-flow");
+    const flow = await page.find("calcite-flow");
 
-    await element.callMethod("back");
+    await flow.callMethod("back");
 
     await page.waitForChanges();
 
-    expect(element.innerHTML).toEqual("");
+    const flowItem = await page.find("calcite-flow-item");
+
+    expect(flowItem).toBeNull();
+  });
+
+  it("setting 'beforeBack' should be called in 'back()'", async () => {
+    const page = await newE2EPage();
+
+    const mockCallBack = jest.fn().mockReturnValue(Promise.resolve());
+    await page.exposeFunction("beforeBack", mockCallBack);
+
+    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
+
+    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowItemElement) => {
+      elm.beforeBack = this.beforeBack;
+    });
+
+    const flow = await page.find("calcite-flow");
+
+    const backValue = await flow.callMethod("back");
+
+    expect(backValue).toBeDefined();
+    expect(mockCallBack).toBeCalledTimes(1);
   });
 
   it("frame advancing should add animation class", async () => {
@@ -92,6 +114,8 @@ describe("calcite-flow", () => {
       <calcite-flow-item></calcite-flow-item>
       `;
     });
+
+    await page.waitForChanges();
 
     const items = await page.findAll("calcite-flow-item");
 
