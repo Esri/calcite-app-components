@@ -4,7 +4,7 @@ import readme from "./readme.md";
 import { TEXT } from "./resources";
 
 export default {
-  title: "calcite-tip-manager",
+  title: "components|calcite-tip-manager",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),
