@@ -8,7 +8,7 @@ describe("calcite-filter", () => {
   it("is accessible", async () => accessible(`<calcite-filter></calcite-filter>`));
 
   describe("strings", () => {
-    it.only("should update the filter placeholder when a string is provided", async () => {
+    it("should update the filter placeholder when a string is provided", async () => {
       const page = await newE2EPage();
       const placeholderText = "hide em";
       await page.setContent(`<calcite-filter text-placeholder="${placeholderText}"></calcite-filter>`);
@@ -18,7 +18,7 @@ describe("calcite-filter", () => {
     });
   });
 
-  describe.only("clear button", () => {
+  describe("clear button", () => {
     let page;
     beforeEach(async () => {
       page = await newE2EPage();
