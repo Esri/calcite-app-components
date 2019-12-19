@@ -23,4 +23,4 @@ Please see our [Contributing](CONTRIBUTING.md) readme for more information.
 
 ## Licensing
 
-Please see our [LICENSING](LICENSING.md) readme for more information.
+Please see our [Licensing](LICENSING.md) readme for more information.
