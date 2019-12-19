@@ -8,7 +8,7 @@ import { beaker16 } from "@esri/calcite-ui-icons";
 const { theme } = ATTRIBUTES;
 
 export default {
-  title: "calcite-action",
+  title: "components|calcite-action",
   decorators: [withKnobs],
   parameters: {
     notes: parseReadme(readme),

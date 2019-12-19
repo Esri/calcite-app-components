@@ -8,7 +8,7 @@ import { CalciteLayoutValues } from "../calcite-shell-panel/resources";
 import { arrowUpRight16, extent16, layers16, play16, plus16, save16 } from "@esri/calcite-ui-icons";
 
 export default {
-  title: "calcite-shell",
+  title: "components|calcite-shell",
   decorators: [withKnobs],
   parameters: {
     notes: {

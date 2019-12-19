@@ -5,7 +5,7 @@ import sectionReadme from "../calcite-block-section/readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 
 export default {
-  title: "calcite-block",
+  title: "components|calcite-block",
   decorators: [withKnobs],
   parameters: {
     notes: {
