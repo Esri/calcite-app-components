@@ -10,14 +10,14 @@ calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
 }
 
+.header {
+  flex-grow: 1;
+}
+
 .header-container {
   & > .header {
     padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   }
-}
-
-.header {
-  flex-grow: 1;
 }
 
 .title {
