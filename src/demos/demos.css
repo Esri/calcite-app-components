@@ -18,12 +18,7 @@ main {
   margin: 0 auto var(--calcite-app-cap-spacing-double);
   background-color: var(--calcite-app-background-clear);
 }
-/*
-h2 {
-  font-size: 24px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 600;
-} */
+
 .example-container h1,
 .example-container h2,
 .example-container h3,
