@@ -10,7 +10,7 @@ export async function setUpPage(content: string, options?: SetUpPageOptions): Pr
 
   if (options && options.withPeerDependencies) {
     await page.addScriptTag({
-      url: "https://unpkg.com/@esri/calcite-components@1.0.0-beta.10/dist/calcite/calcite.esm.js",
+      url: "vendor/@esri/calcite-components/calcite.esm.js",
       type: "module"
     });
 
