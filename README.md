@@ -7,7 +7,7 @@ A collection of calcite components for building single page applications.
 
 [![App](https://user-images.githubusercontent.com/1231455/68511307-8155fe80-022a-11ea-8c27-a5bc331bacab.png)​](https://esri.github.io/calcite-app-components/)
 
-​[View it live](https://esri.github.io/calcite-app-components/)
+[View it live](https://esri.github.io/calcite-app-components/)
 
 ## Getting Started
 
