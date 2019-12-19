@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core"
 
 import { getElementDir } from "../utils/dom";
 import { CSS, ICONS, TEXT } from "./resources";
+import { guid } from "../utils/guid";
 import classnames from "classnames";
 import { CalciteBlockSectionToggleDisplay } from "../interfaces";
 
@@ -66,6 +67,8 @@ export class CalciteBlockSection {
   @Element()
   el: HTMLCalciteBlockSectionElement;
 
+  guid = `calcite-block-section-${guid()}`;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -95,7 +98,7 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, open, text, textCollapse, textExpand, toggleDisplay } = this;
+    const { el, guid: id, open, text, textCollapse, textExpand, toggleDisplay } = this;
     const dir = getElementDir(el);
     const arrowIcon = open
       ? ICONS.menuOpen
@@ -103,12 +106,22 @@ export class CalciteBlockSection {
       ? ICONS.menuClosedLeft
       : ICONS.menuClosedRight;
     const toggleLabel = open ? textCollapse : textExpand;
+    const labelId = `${id}__label`;
 
     const headerNode =
       toggleDisplay === "switch" ? (
-        <label aria-label={toggleLabel} class={classnames(CSS.toggle, CSS.toggleSwitch)}>
+        <label
+          aria-label={toggleLabel}
+          class={classnames(CSS.toggle, CSS.toggleSwitch)}
+          id={labelId}
+        >
           {text}
-          <calcite-switch switched={open} onChange={this.toggleSection} scale="s" />
+          <calcite-switch
+            aria-labelledby={labelId}
+            switched={open}
+            onChange={this.toggleSection}
+            scale="s"
+          />
         </label>
       ) : (
         <calcite-action
