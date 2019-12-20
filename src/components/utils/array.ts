@@ -5,3 +5,7 @@ export function arrayMove(originalArray, fromIndex, toIndex) {
   arr.splice(toIndex, 0, value);
   return arr;
 }
+
+export function getRoundRobinIndex(index: number, total: number): number {
+  return (index + total) % total;
+}

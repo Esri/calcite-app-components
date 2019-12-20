@@ -2,7 +2,7 @@
 
 The `calcite-action-pad` component is made up of `calcite-actions` in the form of clickable icons. This does not have an expandable option and is a smaller and simpler component than `calcite-action-bar`.
 
-See the [calcite-action-pad demo](https://esri.github.io/calcite-app-components/demos/calcite-action-pad.html).
+See the [calcite-action-pad demo](https://esri.github.io/calcite-app-components/?path=/story/components-calcite-action-pad--basic).
 
 <!-- Auto Generated Below -->
 

@@ -54,11 +54,6 @@ export class CalcitePickList {
   @Prop({ reflect: true }) disabled = false;
 
   /**
-   * @deprecated Prop is ignored. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) dragEnabled = false;
-
-  /**
    * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
    */
   @Prop({ reflect: true }) filterEnabled = false;
@@ -69,21 +64,12 @@ export class CalcitePickList {
   @Prop({ reflect: true }) loading = false;
 
   /**
-   * @deprecated Prop is ignored. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
-  /**
    * Multiple works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time
    * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
-
-  /**
-   * @deprecated No longer rendered. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) textHeading?: string;
 
   /**
    * Placeholder text for the filter input field.
@@ -140,15 +126,8 @@ export class CalcitePickList {
    */
   @Event() calciteListChange: EventEmitter;
 
-  /**
-   * @event calcitePickListSelectionChange
-   * @deprecated use calciteListChange instead.
-   */
-  @Event() calcitePickListSelectionChange: EventEmitter;
-
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
     calciteListItemChangeHandler.call(this, event);
-    this.calcitePickListSelectionChange.emit(this.selectedValues);
   }
 
   @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {

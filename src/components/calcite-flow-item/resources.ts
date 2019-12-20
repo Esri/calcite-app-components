@@ -16,3 +16,14 @@ export const TEXT = {
   open: "Open",
   close: "Close"
 };
+
+export const SLOTS = {
+  menuActions: "menu-actions",
+  footerActions: "footer-actions"
+};
+
+export const ICONS = {
+  menu: "ellipsis",
+  backLeft: "chevron-left",
+  backRight: "chevron-right"
+};

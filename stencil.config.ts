@@ -3,13 +3,7 @@ import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 
-// Exclude demo components for production build
-const isDevBuild = process.argv.includes("--dev");
-
 const DEFAULT_EXCLUDE_SRC = ["**/*.stories.ts", "**/tests/**"];
-if (!isDevBuild) {
-  DEFAULT_EXCLUDE_SRC.push("**/*demo*/**");
-}
 
 export const create: () => Config = () => ({
   namespace: "calcite-app",
@@ -55,7 +49,10 @@ export const create: () => Config = () => ({
     })
   ],
   testing: {
-    setupFilesAfterEnv: ["<rootDir>/src/tests/setup.js"]
+    transform: {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    setupFilesAfterEnv: ["<rootDir>/src/tests/setup.ts"]
   },
   srcDir: "src/components",
   excludeSrc: DEFAULT_EXCLUDE_SRC,

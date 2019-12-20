@@ -9,10 +9,8 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { checkSquare16, circle16, circleFilled16, square16 } from "@esri/calcite-ui-icons";
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
-import CalciteIcon from "../utils/CalciteIcon";
 
 /**
  * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
@@ -76,15 +74,6 @@ export class CalcitePickListItem {
   }
 
   /**
-   * @deprecated Replaced by textLabel.
-   */
-  @Prop({ reflect: true }) textHeading?: string;
-
-  @Watch("textHeading") textHeadingWatchHandler() {
-    this.calciteListItemPropsUpdated.emit();
-  }
-
-  /**
    * An optional description for this item.  This will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
@@ -131,7 +120,6 @@ export class CalcitePickListItem {
 
   /**
    * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
-   * It also fires on textHeading property changes for backwards compatibility until that's fully removed.
    * @event calciteListItemPropsUpdated
    * @internal
    */
@@ -191,17 +179,17 @@ export class CalcitePickListItem {
     if (!icon || compact) {
       return null;
     }
-    const path =
+    const iconName =
       icon === ICON_TYPES.square
         ? selected
-          ? checkSquare16
-          : square16
+          ? ICONS.checked
+          : ICONS.unchecked
         : selected
-        ? circleFilled16
-        : circle16;
+        ? ICONS.selected
+        : ICONS.unselected;
     return (
       <span class={CSS.icon}>
-        <CalciteIcon size="16" path={path} />
+        <calcite-icon scale="s" icon={iconName} />
       </span>
     );
   }
@@ -223,7 +211,7 @@ export class CalcitePickListItem {
         >
           {this.renderIcon()}
           <div class={CSS.textContainer}>
-            <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
+            <span class={CSS.title}>{this.textLabel}</span>
             {description}
           </div>
         </label>
