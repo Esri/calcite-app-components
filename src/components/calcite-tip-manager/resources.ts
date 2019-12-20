@@ -19,3 +19,9 @@ export const CSS = {
   pageNext: "page-next",
   pagePrevious: "page-previous"
 };
+
+export const ICONS = {
+  chevronLeft: "chevron-left",
+  chevronRight: "chevron-right",
+  close: "x"
+};

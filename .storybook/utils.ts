@@ -52,4 +52,4 @@ export interface SimpleAttribute {
 export type Attributes = (KnobbedAttribute | SimpleAttribute)[];
 
 export const createComponentHTML = (tagName: string, attributes: Attributes, contentHTML?: string) =>
-  `<${tagName} ${attributes.map(({ name, value }) => `${name}=${value}`).join(" ")}>${contentHTML}</${tagName}>`;
+  `<${tagName} ${attributes.map(({ name, value }) => `${name}="${value}"`).join(" ")}>${contentHTML}</${tagName}>`;

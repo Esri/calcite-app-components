@@ -6,8 +6,8 @@
   @include borderShadow();
 }
 
-calcite-loader[inline] {
-  color: var(--calcite-app-foreground-subtle);
+.header {
+  flex-grow: 1;
 }
 
 .header-container {
@@ -16,8 +16,17 @@ calcite-loader[inline] {
   }
 }
 
-.header {
-  flex-grow: 1;
+:host([disabled]) {
+  pointer-events: none;
+  user-select: none;
+
+  .header-container {
+    opacity: var(--calcite-app-disabled-opacity);
+  }
+}
+
+calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
 }
 
 .title {
