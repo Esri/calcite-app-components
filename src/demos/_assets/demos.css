@@ -26,7 +26,6 @@ main {
 .example-container h5 {
   font-family: "Courier New", Courier, monospace;
   font-weight: var(--calcite-app-font-weight-demi);
-  /* font-size: 14px; */
 }
 .example-container h1 {
   font-size: var(--calcite-app-font-size-2);
