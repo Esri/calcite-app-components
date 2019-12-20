@@ -6,6 +6,16 @@
   @include borderShadow();
 }
 
+.header {
+  flex-grow: 1;
+}
+
+.header-container {
+  & > .header {
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
+  }
+}
+
 :host([disabled]) {
   pointer-events: none;
   user-select: none;
@@ -17,16 +27,6 @@
 
 calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
-}
-
-.header-container {
-  & > .header {
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
-  }
-}
-
-.header {
-  flex-grow: 1;
 }
 
 .title {
