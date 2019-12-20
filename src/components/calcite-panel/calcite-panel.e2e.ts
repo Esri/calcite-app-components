@@ -1,6 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 import { CSS } from "./resources";
+import { setUpPage } from "../../tests/utils";
 
 describe("calcite-panel", () => {
   it("renders", async () => renders("calcite-panel"));
@@ -27,9 +28,9 @@ describe("calcite-panel", () => {
   });
 
   it("dismissible should fire event when closed", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-panel dismissible>test</calcite-panel>");
+    const page = await setUpPage("<calcite-panel dismissible>test</calcite-panel>", {
+      withPeerDependencies: true
+    });
 
     const eventSpy = await page.spyOnEvent("calcitePanelDismissedChange", "window");
 

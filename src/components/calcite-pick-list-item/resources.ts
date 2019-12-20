@@ -9,3 +9,10 @@ export const CSS = {
   title: "title",
   textContainer: "text-container"
 };
+
+export const ICONS = {
+  unchecked: "square",
+  checked: "check-square",
+  selected: "circle-filled",
+  unselected: "circle"
+};

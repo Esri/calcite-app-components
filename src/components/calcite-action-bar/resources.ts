@@ -6,3 +6,8 @@ export const CSS = {
 };
 
 export const LAYOUT_VALUES: CalciteLayout[] = ["leading", "trailing"];
+
+export const ICONS = {
+  chevronsLeft: "chevrons-left",
+  chevronsRight: "chevrons-right"
+};
