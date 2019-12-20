@@ -1,10 +1,9 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import { SCALES } from "./resources";
-import { attachment16, bluetooth16 } from "@esri/calcite-ui-icons";
 
 export default {
   title: "components|calcite-panel",
@@ -66,12 +65,8 @@ export const basic = () =>
     "calcite-panel",
     createAttributes(),
     `${headerHTML}
-    <calcite-action text="Action" label="Action" slot="header-leading-content">${createSVG(
-      bluetooth16
-    )}</calcite-action>
-    <calcite-action text="Action" label="Action" slot="header-trailing-content">${createSVG(
-      attachment16
-    )}</calcite-action>
+    <calcite-action text="Action" label="Action" slot="header-leading-content"><calcite-icon scale="s" icon="bluetooth"></calcite-icon></calcite-action>
+    <calcite-action text="Action" label="Action" slot="header-trailing-content"><calcite-icon scale="s" icon="attachment"></calcite-icon>}</calcite-action>
     ${contentHTML}
     ${footerHTML}`
   );

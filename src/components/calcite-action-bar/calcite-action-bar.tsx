@@ -1,12 +1,10 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
-import { chevronsLeft16, chevronsRight16 } from "@esri/calcite-ui-icons";
-import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteLayout, CalciteTheme } from "../interfaces";
 
 import { getElementDir } from "../utils/dom";
 
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -124,7 +122,7 @@ export class CalciteActionBar {
     const rtl = getElementDir(el) === "rtl";
 
     const expandText = expanded ? textCollapse : textExpand;
-    const icons = [chevronsLeft16, chevronsRight16];
+    const icons = [ICONS.chevronsLeft, ICONS.chevronsRight];
 
     if (rtl) {
       icons.reverse();
@@ -138,7 +136,7 @@ export class CalciteActionBar {
 
     return expand ? (
       <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
-        <CalciteIcon size="16" path={expanded ? expandIcon : collapseIcon} />
+        <calcite-icon scale="s" icon={expanded ? expandIcon : collapseIcon} />
       </calcite-action>
     ) : null;
   }

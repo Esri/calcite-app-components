@@ -120,8 +120,10 @@ describe("calcite-block", () => {
   });
 
   it("allows toggling its content", async () => {
-    const page = await newE2EPage();
-    await page.setContent("<calcite-block collapsible></calcite-block>");
+    const page = await setUpPage("<calcite-block collapsible></calcite-block>", {
+      withPeerDependencies: true
+    });
+
     const element = await page.find("calcite-block");
     const toggleSpy = await element.spyOnEvent("calciteBlockToggle");
     const toggle = await page.find(`calcite-block >>> .${CSS.toggle}`);

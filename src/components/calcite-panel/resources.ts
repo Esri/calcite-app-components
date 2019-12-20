@@ -15,3 +15,7 @@ export const TEXT = {
 };
 
 export const SCALES: CalciteScale[] = ["s", "m", "l"];
+
+export const ICONS = {
+  close: "x"
+};
