@@ -1,5 +1,8 @@
 (() => {
-  const CSS = ["demos/demos.css", "build/calcite-app.css", "vendor/@esri/calcite-components/calcite.css"];
+  const DEMO_ROOT = "demos";
+  const ASSETS_PATH = "demos/_assets";
+
+  const CSS = [`${ASSETS_PATH}/demos.css`, "build/calcite-app.css", "vendor/@esri/calcite-components/calcite.css"];
 
   interface Script {
     src: string;
@@ -29,7 +32,7 @@
   // Assume server is running in a development environment if there is a port present in the URL and reload demo pages.
   if (location.port) {
     SCRIPTS.push({
-      src: "demos/demoPageReloader.js"
+      src: `${ASSETS_PATH}/demoPageReloader.js`
     });
   }
 
@@ -37,11 +40,11 @@
 
   if (!IS_IE11) {
     SCRIPTS.push({
-      src: "demos/toggles.js"
+      src: `${ASSETS_PATH}/toggles.js`
     });
   }
 
-  const ROOT = window.location.pathname.split("demos").shift();
+  const ROOT = window.location.pathname.split(DEMO_ROOT).shift();
 
   function loadCss(url: string): void {
     const link = document.createElement("link");

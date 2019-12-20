@@ -1,4 +1,7 @@
 (() => {
+  const DEMO_ROOT = "demos";
+  const ASSETS_PATH = "demos/_assets";
+
   const parseTemplate = (text: string): HTMLTemplateElement => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, "text/html");
@@ -6,8 +9,8 @@
   };
 
   const loadToggles = async (): Promise<void> => {
-    const root = window.location.pathname.split("demos").shift();
-    const response = await window.fetch(`${root}demos/toggles.template`);
+    const root = window.location.pathname.split(DEMO_ROOT).shift();
+    const response = await window.fetch(`${root}${ASSETS_PATH}/toggles.template`);
     const text = await response.text();
     const template = parseTemplate(text);
     const firstChild = document.body.firstChild;
