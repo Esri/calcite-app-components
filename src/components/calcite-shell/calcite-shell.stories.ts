@@ -48,7 +48,7 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
   ];
 };
 
-const actionBarContentHTML = `<calcite-action-group>
+const actionBarPrimaryContentHTML = `<calcite-action-group>
 <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
 <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
 </calcite-action-group>
@@ -56,14 +56,26 @@ const actionBarContentHTML = `<calcite-action-group>
 <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
 </calcite-action-group>`;
 
-const actionBarHTML = `<calcite-action-bar slot="action-bar">
-${actionBarContentHTML}
+const actionBarContextualContentHTML = `<calcite-action-group>
+<calcite-action text="Idea" label="Add Item"><calcite-icon scale="s" icon="lightbulb"></calcite-icon></calcite-action>
+<calcite-action text="Information" label="Save Item"><calcite-icon scale="s" icon="information"></calcite-icon></calcite-action>
+</calcite-action-group>
+<calcite-action-group>
+<calcite-action text="Question" label="View Layers"><calcite-icon scale="s" icon="question"></calcite-icon></calcite-action>
+</calcite-action-group>`;
+
+const actionBarPrimaryHTML = `<calcite-action-bar theme="dark" slot="action-bar">
+${actionBarPrimaryContentHTML}
 </calcite-action-bar>`;
 
-const leadingPanelHTML = `${actionBarHTML}
+const actionBarContextualHTML = `<calcite-action-bar theme="light" slot="action-bar">
+${actionBarContextualContentHTML}
+</calcite-action-bar>`;
+
+const leadingPanelHTML = `${actionBarPrimaryHTML}
 <p>My Leading Panel</p>`;
 
-const trailingPanelHTML = `${actionBarHTML}
+const trailingPanelHTML = `${actionBarContextualHTML}
 <p>My Trailing Panel</p>`;
 
 const headerHTML = `<header slot="shell-header">
@@ -154,11 +166,11 @@ export const basic = () =>
     ${footerHTML}`
   );
 
-const advancedLeadingPanelHTML = `${actionBarHTML}<calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
+const advancedLeadingPanelHTML = `${actionBarPrimaryHTML}<calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
 <calcite-block-content>
-  <calcite-action text="horizontal ActionPad" text-enabled indicator><calcite-icon scale="s" icon="play"></calcite-icon></calcite-action>
-  <calcite-action text="Vertical Shell Floating Panel" text-enabled><calcite-icon scale="s" icon="extent"></calcite-icon></calcite-action>
-  <calcite-action text="horizontal Shell Floating Panel" text-enabled><calcite-icon scale="s" icon="arrow-up-right"></calcite-icon></calcite-action>
+  <calcite-action text="Play" text-enabled indicator><calcite-icon scale="s" icon="play"></calcite-icon></calcite-action>
+  <calcite-action text="Extent" text-enabled><calcite-icon scale="s" icon="extent"></calcite-icon></calcite-action>
+  <calcite-action text="Chart" text-enabled><calcite-icon scale="s" icon="arrow-up-right"></calcite-icon></calcite-action>
 </calcite-block-content>
 </calcite-block>
 <calcite-block collapsible open heading="Another Block" summary="This is the primary.">
@@ -183,7 +195,7 @@ const advancedLeadingPanelHTML = `${actionBarHTML}<calcite-block collapsible ope
 </calcite-block-content>
 </calcite-block>`;
 
-const advancedTrailingPanelHTMl = `${actionBarHTML}<calcite-flow>
+const advancedTrailingPanelHTMl = `${actionBarContextualHTML}<calcite-flow>
 <calcite-flow-item heading="Layer settings">
   <div slot="menu-actions">
     <calcite-action text="Cool thing" text-enabled></calcite-action>
