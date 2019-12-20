@@ -9,8 +9,8 @@ import { CalciteTheme } from "../interfaces";
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
- * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
- * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ * @slot menu-actions - A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open.
+ * @slot footer-actions - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the flow item.
  */
 @Component({
