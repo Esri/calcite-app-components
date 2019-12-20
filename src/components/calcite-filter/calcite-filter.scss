@@ -37,11 +37,6 @@ input[type="text"]:focus {
   padding-right: var(--calcite-app-side-spacing-quarter);
 }
 
-input[type="text"]:focus ~ .search-icon {
-  left: calc(var(--calcite-app-icon-size) * -1);
-  opacity: 0;
-}
-
 .search-icon {
   color: var(--calcite-app-foreground-subtle);
   display: flex;
@@ -70,4 +65,9 @@ input[type="text"]:focus ~ .search-icon {
     left: unset;
     right: 0;
   }
+}
+
+input[type="text"]:focus ~ .search-icon {
+  left: calc(var(--calcite-app-icon-size) * -1);
+  opacity: 0;
 }
