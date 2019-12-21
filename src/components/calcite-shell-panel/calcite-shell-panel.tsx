@@ -1,3 +1,5 @@
+import classnames from "classnames";
+
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { CSS } from "./resources";
@@ -31,6 +33,16 @@ export class CalciteShellPanel {
   }
 
   /**
+   * This property makes the content area appear like a "floating" panel.
+   */
+  @Prop({ reflect: true }) detached = false;
+
+  /**
+   * This sets limits the height of the content area. It only applies when detached is true.
+   */
+  @Prop({ reflect: false }) detachedScale: "s" | "m" | "l" = "m";
+
+  /**
    * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "leading";
@@ -53,10 +65,10 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsed, layout } = this;
+    const { collapsed, detached, layout } = this;
 
     const contentNode = (
-      <div class={CSS.content} hidden={collapsed}>
+      <div class={classnames(CSS.content, { [CSS.contentDetached]: detached })} hidden={collapsed}>
         <slot />
       </div>
     );

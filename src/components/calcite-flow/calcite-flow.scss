@@ -1,12 +1,14 @@
 $start-alpha: 0.5;
 
 :host {
+  align-items: stretch;
   display: flex;
-  height: 100%;
+  width: 100%;
   overflow: hidden;
   position: relative;
 
   .frame {
+    align-items: stretch;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -14,6 +16,7 @@ $start-alpha: 0.5;
     flex-flow: column;
     position: relative;
   }
+
   .frame--advancing {
     animation: calcite-flow-item-advance var(--calcite-app-animation-time) var(--calcite-app-easing-function);
   }

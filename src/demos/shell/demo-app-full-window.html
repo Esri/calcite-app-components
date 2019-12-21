@@ -30,14 +30,14 @@
     <script>
       require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
         var map = new Map({
-          basemap: "streets"
+          basemap: "gray-vector"
         });
 
         var view = new MapView({
           container: "viewDiv",
           map: map,
-          zoom: 4,
-          center: [15, 65]
+          zoom: 8,
+          center: [91, 24]
         });
       });
     </script>
@@ -46,14 +46,13 @@
     <main>
       <div class="shell-container">
         <calcite-shell>
-          <calcite-shell-panel slot="primary-panel" layout="leading">
+          <calcite-shell-panel slot="primary-panel" layout="leading" detached>
             <calcite-panel
               id="shell-floating-panel"
               slot="shell-floating-panel"
               heading="Anchored Shell Floating Panel"
               placement="anchor"
               hidden
-              style="height:150px;"
               ><span>
                 Shell Floating Panel Content
               </span>
@@ -64,7 +63,6 @@
               heading="Over Shell Floating Panel"
               placement="over"
               hidden
-              style="height:150px;"
               ><span>
                 Shell Floating Panel Content
               </span>
@@ -123,7 +121,7 @@
               </calcite-action-group>
             </calcite-action-bar>
             <div>
-              <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
+              <calcite-block collapsible  heading="Primary Content" summary="This is the primary.">
                 <calcite-block-content>
                   <calcite-action text="Side ActionPad" text-enabled id="action-pad-button" indicator>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
@@ -153,7 +151,7 @@
                   </calcite-action>
                 </calcite-block-content>
               </calcite-block>
-              <calcite-block collapsible open heading="Transpancy by predominant percentage">
+              <calcite-block collapsible  heading="Transpancy by predominant percentage">
                 <calcite-block-content>
                   <calcite-block-section text="Set transparency based on the predominant percentage" toggle-display="switch" open>
                     <label style="display: flex;flex-flow: column; margin: 15px 0;">
@@ -163,14 +161,14 @@
                   </calcite-block-section>
                 </calcite-block-content>
               </calcite-block>
-              <calcite-block collapsible open heading="Additional Block" summary="This is the primary.">
+              <calcite-block collapsible  heading="Additional Block" summary="This is the primary.">
                 <calcite-block-content>
                   <div style="height: 300px;">
                     <p>Cool thing.</p>
                   </div>
                 </calcite-block-content>
               </calcite-block>
-              <calcite-block collapsible open heading="More Block" summary="This is the primary.">
+              <calcite-block collapsible  heading="More Block" summary="This is the primary.">
                 <calcite-block-content>
                   <div style="height: 300px;">
                     <p>Cool thang.</p>
@@ -180,7 +178,7 @@
             </div>
           </calcite-shell-panel>
 
-          <calcite-shell-panel slot="contextual-panel" layout="trailing">
+          <calcite-shell-panel slot="contextual-panel" layout="trailing" detached detached-scale="l">
             <calcite-action-bar slot="action-bar">
               <calcite-action-group>
                 <calcite-action text="Add" active>
