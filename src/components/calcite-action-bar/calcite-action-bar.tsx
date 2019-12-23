@@ -2,9 +2,9 @@ import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@
 
 import { CalciteLayout, CalciteTheme } from "../interfaces";
 
-import { getElementDir } from "../utils/dom";
+import { ExpandToggle } from "../utils/ExpandToggle";
 
-import { CSS, ICONS } from "./resources";
+import { CSS } from "./resources";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -92,16 +92,6 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  getClosestShellLayout(): CalciteLayout {
-    const shellNode = this.el.closest("calcite-shell-panel");
-
-    if (!shellNode) {
-      return;
-    }
-
-    return shellNode.layout;
-  }
-
   setActionTextEnabled(expanded: boolean): void {
     this.el.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
   }
@@ -116,33 +106,18 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  renderExpandToggle() {
+  renderBottomActionGroup() {
     const { expanded, expand, textExpand, textCollapse, el, layout } = this;
 
-    const rtl = getElementDir(el) === "rtl";
-
-    const expandText = expanded ? textCollapse : textExpand;
-    const icons = [ICONS.chevronsLeft, ICONS.chevronsRight];
-
-    if (rtl) {
-      icons.reverse();
-    }
-
-    const layoutFallback = layout || this.getClosestShellLayout() || "leading";
-
-    const trailing = layoutFallback === "trailing";
-    const expandIcon = trailing ? icons[1] : icons[0];
-    const collapseIcon = trailing ? icons[0] : icons[1];
-
-    return expand ? (
-      <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
-        <calcite-icon scale="s" icon={expanded ? expandIcon : collapseIcon} />
-      </calcite-action>
+    const expandToggleNode = expand ? (
+      <ExpandToggle
+        expanded={expanded}
+        textExpand={textExpand}
+        textCollapse={textCollapse}
+        el={el}
+        layout={layout}
+      />
     ) : null;
-  }
-
-  renderBottomActionGroup() {
-    const expandToggleNode = this.renderExpandToggle();
 
     return this.el.querySelector("[slot=bottom-actions]") || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
