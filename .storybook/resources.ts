@@ -30,7 +30,7 @@ export const ATTRIBUTES: CommonAttributes = {
   },
   scale: {
     values: scaleOptions,
-    defaultValue: scaleOptions[0]
+    defaultValue: scaleOptions[1]
   },
   layout: {
     values: layoutOptions,
