@@ -27,7 +27,7 @@ const {
 } = sharedListMethods;
 
 /**
- * @slot - A slot for adding pick-list-item elements or pick-list-groups elements. Items are displayed as a vertical list.
+ * @slot - A slot for adding `pick-list-item` elements or pick-list-groups elements. Items are displayed as a vertical list.
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
  */
 @Component({
@@ -44,7 +44,7 @@ export class CalcitePickList {
 
   /**
    * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
-   * This allows for a more compact version of the pick-list-item.
+   * This allows for a more compact version of the `pick-list-item`.
    */
   @Prop({ reflect: true }) compact = false;
 
