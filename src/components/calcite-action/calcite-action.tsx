@@ -46,7 +46,7 @@ export class CalciteAction {
   @Prop({ reflect: true }) indicator = false;
 
   /**
-   * Label of the action, exposed on hover.
+   * Label of the action, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
    */
   @Prop() label: string;
 
