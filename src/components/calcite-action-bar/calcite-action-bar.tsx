@@ -122,9 +122,7 @@ export class CalciteActionBar {
 
     return this.el.querySelector("[slot=bottom-actions]") || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
-        <div class={CSS.actionGroupBottomContainer}>
-          <slot name="bottom-actions" />
-        </div>
+        <slot name="bottom-actions" />
         {expandToggleNode}
       </calcite-action-group>
     ) : null;

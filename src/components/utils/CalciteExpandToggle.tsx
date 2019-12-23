@@ -17,7 +17,7 @@ const ICONS = {
 };
 
 function getClosestShellLayout(el: HTMLElement): CalciteLayout {
-  const shellNode = el.closest("calcite-shell-panel"); // todo
+  const shellNode = el.closest("calcite-shell-panel");
 
   if (!shellNode) {
     return;
