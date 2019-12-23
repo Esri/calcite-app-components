@@ -135,4 +135,24 @@ describe("calcite-shell-panel", () => {
       <p>Primary Content</p>
     </calcite-shell-panel>
     `));
+
+  it("should have detached class when detached", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-shell-panel><div>content</div></calcite-shell-panel>");
+
+    let detachedElement = await page.find(`calcite-shell-panel >>> .${CSS.contentDetached}`);
+
+    expect(detachedElement).toBeNull();
+
+    const panel = await page.find("calcite-shell-panel");
+
+    panel.setProperty("detached", true);
+
+    await page.waitForChanges();
+
+    detachedElement = await page.find(`calcite-shell-panel >>> .${CSS.contentDetached}`);
+
+    expect(detachedElement).not.toBeNull();
+  });
 });
