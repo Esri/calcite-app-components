@@ -1,4 +1,4 @@
-import { CalciteTheme } from "../src/components/interfaces";
+import { CalciteLayout, CalciteScale, CalciteTheme } from "../src/components/interfaces";
 
 type Direction = "ltr" | "rtl";
 
@@ -10,10 +10,14 @@ interface AttributeMetadata<T> {
 interface CommonAttributes {
   dir: AttributeMetadata<Direction>;
   theme: AttributeMetadata<CalciteTheme>;
+  scale: AttributeMetadata<CalciteScale>;
+  layout: AttributeMetadata<CalciteLayout>;
 }
 
 const dirOptions: Direction[] = ["ltr", "rtl"];
 const themeOptions: CalciteTheme[] = ["light", "dark"];
+const layoutOptions: CalciteLayout[] = ["leading", "trailing"];
+const scaleOptions: CalciteScale[] = ["s", "m", "l"];
 
 export const ATTRIBUTES: CommonAttributes = {
   dir: {
@@ -23,5 +27,13 @@ export const ATTRIBUTES: CommonAttributes = {
   theme: {
     values: themeOptions,
     defaultValue: themeOptions[0]
+  },
+  scale: {
+    values: scaleOptions,
+    defaultValue: scaleOptions[0]
+  },
+  layout: {
+    values: layoutOptions,
+    defaultValue: layoutOptions[0]
   }
 };

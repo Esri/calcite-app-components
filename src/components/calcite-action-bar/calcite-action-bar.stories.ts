@@ -2,8 +2,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-import { LAYOUT_VALUES } from "./resources";
-const { theme } = ATTRIBUTES;
+const { theme, layout } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action-bar",
@@ -33,7 +32,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "layout",
-    value: select("layout", LAYOUT_VALUES, "leading")
+    value: select("layout", layout.values, layout.defaultValue)
   },
   {
     name: "theme",

@@ -1,9 +1,8 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+const { theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
-import { SCALES } from "./resources";
 
 export default {
   title: "components|calcite-panel",
@@ -29,7 +28,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "height-scale",
-    value: select("heightScale", SCALES, "m")
+    value: select("heightScale", scale.values, scale.defaultValue)
   },
   {
     name: "loading",
