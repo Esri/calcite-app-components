@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@
 
 import { CalciteLayout, CalciteTheme } from "../interfaces";
 
-import { ExpandToggle } from "../utils/ExpandToggle";
+import { CalciteExpandToggle, setActionTextEnabled } from "../utils/CalciteExpandToggle";
 
 import { CSS } from "./resources";
 
@@ -32,8 +32,9 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) expanded = false;
 
   @Watch("expanded")
-  expandedHandler(newValue: boolean) {
-    this.setActionTextEnabled(newValue);
+  expandedHandler(expanded: boolean) {
+    const { el } = this;
+    setActionTextEnabled({ el, expanded });
 
     this.calciteActionBarToggle.emit();
   }
@@ -70,6 +71,8 @@ export class CalciteActionBar {
    */
   @Event() calciteActionBarToggle: EventEmitter;
 
+  // --------------------------------------------------------------------------
+  //
   //  Private Properties
   //
   // --------------------------------------------------------------------------
@@ -83,7 +86,8 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   componentWillLoad() {
-    this.setActionTextEnabled(this.expanded);
+    const { el, expanded } = this;
+    setActionTextEnabled({ el, expanded });
   }
 
   // --------------------------------------------------------------------------
@@ -91,10 +95,6 @@ export class CalciteActionBar {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
-
-  setActionTextEnabled(expanded: boolean): void {
-    this.el.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
-  }
 
   toggleExpand = (): void => {
     this.expanded = !this.expanded;
@@ -107,15 +107,16 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup() {
-    const { expanded, expand, textExpand, textCollapse, el, layout } = this;
+    const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
 
     const expandToggleNode = expand ? (
-      <ExpandToggle
+      <CalciteExpandToggle
         expanded={expanded}
         textExpand={textExpand}
         textCollapse={textCollapse}
         el={el}
         layout={layout}
+        toggleExpand={toggleExpand}
       />
     ) : null;
 

@@ -1,9 +1,5 @@
 :host {
   display: inline-flex;
-}
-
-.container {
-  display: flex;
   flex-direction: column;
   box-shadow: var(--calcite-app-shadow-2);
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);

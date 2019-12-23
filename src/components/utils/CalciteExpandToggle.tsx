@@ -2,12 +2,13 @@ import { FunctionalComponent, h } from "@stencil/core";
 import { getElementDir } from "./dom";
 import { CalciteLayout } from "../interfaces";
 
-interface ExpandToggleProps {
+interface CalciteExpandToggleProps {
   expanded: boolean;
   textExpand: string;
   textCollapse: string;
   el: HTMLElement;
   layout: CalciteLayout;
+  toggleExpand: () => void;
 }
 
 const ICONS = {
@@ -25,10 +26,21 @@ function getClosestShellLayout(el: HTMLElement): CalciteLayout {
   return shellNode.layout;
 }
 
-export const ExpandToggle: FunctionalComponent<ExpandToggleProps> = ({
+export function setActionTextEnabled({
+  el,
+  expanded
+}: {
+  el: HTMLElement;
+  expanded: boolean;
+}): void {
+  el.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
+}
+
+export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> = ({
   expanded,
   textExpand,
   textCollapse,
+  toggleExpand,
   el,
   layout
 }) => {
@@ -48,7 +60,7 @@ export const ExpandToggle: FunctionalComponent<ExpandToggleProps> = ({
   const collapseIcon = trailing ? icons[0] : icons[1];
 
   return (
-    <calcite-action onClick={this.toggleExpand} textEnabled={expanded} text={expandText}>
+    <calcite-action onClick={toggleExpand} textEnabled={expanded} text={expandText}>
       <calcite-icon scale="s" icon={expanded ? expandIcon : collapseIcon} />
     </calcite-action>
   );
