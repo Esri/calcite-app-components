@@ -5,7 +5,7 @@ import { CalciteTheme } from "../interfaces";
 import { CSS } from "./resources";
 
 /**
- * @slot - A slot for adding `calcite-actions` to the action pad.
+ * @slot - A slot for adding `calcite-action`s to the action pad.
  */
 @Component({
   tag: "calcite-action-pad",
