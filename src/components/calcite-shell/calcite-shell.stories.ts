@@ -5,6 +5,7 @@ const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
 import { CalciteLayoutValues } from "../calcite-shell-panel/resources";
+import { SCALES } from "./resources";
 
 export default {
   title: "components|calcite-shell",
@@ -36,6 +37,14 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
     {
       name: "collapsed",
       value: boolean("collapsed", false, group)
+    },
+    {
+      name: "detached",
+      value: boolean("detached", false, group)
+    },
+    {
+      name: "detached-scale",
+      value: select("detachedScale", SCALES, "m", group)
     },
     {
       name: "layout",

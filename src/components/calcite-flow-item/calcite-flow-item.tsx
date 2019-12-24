@@ -4,7 +4,7 @@ import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getRoundRobinIndex } from "../utils/array";
-import { CalciteTheme } from "../interfaces";
+import { CalciteScale, CalciteTheme } from "../interfaces";
 
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
@@ -38,7 +38,7 @@ export class CalciteFlowItem {
   /**
    * Specifies the maxiumum height of the panel that this wraps.
    */
-  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+  @Prop({ reflect: true }) heightScale: CalciteScale;
 
   /**
    * Heading text.
