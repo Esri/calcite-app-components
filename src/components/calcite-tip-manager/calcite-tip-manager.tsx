@@ -30,7 +30,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
   /**
-   * Alternate text for closing the tip manager.
+   * Alternate text for closing the `calcite-tip-manager`.
    */
   @Prop({ reflect: true }) closed = false;
 
@@ -41,12 +41,12 @@ export class CalciteTipManager {
   }
 
   /**
-   * Alternate text for closing the tip manager.
+   * Alternate text for closing the `calcite-tip-manager`.
    */
   @Prop() textClose = TEXT.close;
 
   /**
-   * The default group title for the tip manager.
+   * The default group title for the `calcite-tip-manager`.
    */
   @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
 
@@ -143,7 +143,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   /**
-   * Emitted when the tip manager has been toggled closed or opened.
+   * Emitted when the `calcite-tip-manager` has been toggled open or closed.
    */
   @Event() calciteTipManagerToggle: EventEmitter;
 
