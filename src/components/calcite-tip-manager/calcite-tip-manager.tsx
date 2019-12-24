@@ -16,7 +16,7 @@ import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
 
 /**
- * @slot - A slot for adding `calcite-tips`.
+ * @slot - A slot for adding `calcite-tip`s.
  */
 @Component({
   tag: "calcite-tip-manager",
@@ -30,7 +30,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
   /**
-   * Alternate text for closing the Tip Manager.
+   * Alternate text for closing the tip manager.
    */
   @Prop({ reflect: true }) closed = false;
 
@@ -41,12 +41,12 @@ export class CalciteTipManager {
   }
 
   /**
-   * Alternate text for closing the Tip Manager.
+   * Alternate text for closing the tip manager.
    */
   @Prop() textClose = TEXT.close;
 
   /**
-   * The default group title for the Tip Manager.
+   * The default group title for the tip manager.
    */
   @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
 
@@ -143,7 +143,7 @@ export class CalciteTipManager {
   // --------------------------------------------------------------------------
 
   /**
-   * Emitted when the TipManager has been toggled closed or opened.
+   * Emitted when the tip manager has been toggled closed or opened.
    */
   @Event() calciteTipManagerToggle: EventEmitter;
 

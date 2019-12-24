@@ -35,7 +35,7 @@ export class CalciteTip {
   @Prop() heading: string;
 
   /**
-   * The selected state of the tip if it is being used inside a CalciteTipManager
+   * The selected state of the tip if it is being used inside a `calcite-tip-manager`.
    */
   @Prop({
     reflect: true
