@@ -41,3 +41,16 @@ Renders a panel with leading and trailing `calcite-action`s.
   <p>Actions are in the top left and right.</p>
 </calcite-panel>
 ```
+
+#### RTL dismissable panel
+
+Renders a panel with the direction set to right-to-left. Dismissable with a click of the "x".
+
+```html
+<div class="panel-container" dir="rtl">
+  <calcite-panel dismissible id="dismissible-panel">
+    <div slot="header-content">Dismissible Header</div>
+    <p>Click the X and I go away!</p>
+  </calcite-panel>
+</div>
+```
