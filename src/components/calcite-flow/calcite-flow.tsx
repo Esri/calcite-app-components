@@ -7,7 +7,7 @@ import { CalciteTheme, FlowDirection } from "../interfaces";
 import classnames from "classnames";
 
 /**
- * @slot - A slot for adding `calcite-flow-items` to the flow.
+ * @slot - A slot for adding `calcite-flow-item`s to the flow.
  */
 @Component({
   tag: "calcite-flow",

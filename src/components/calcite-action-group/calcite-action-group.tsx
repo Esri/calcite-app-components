@@ -6,7 +6,7 @@ import { Component, Host, h } from "@stencil/core";
   shadow: true
 })
 /**
- * @slot - A slot for adding a group of `calcite-actions`.
+ * @slot - A slot for adding a group of `calcite-action`s.
  */
 export class CalciteActionGroup {
   // --------------------------------------------------------------------------

@@ -2,8 +2,6 @@
 
 The `calcite-action` component lives in either a `calcite-action-bar` or `calcite-action-pad`. Actions look like an icon with a text description option of the component that will be revealed when the icon/ text is clicked or selected.
 
-See the [calcite-action demo](https://esri.github.io/calcite-app-components/?path=/story/components-calcite-action--basic).
-
 <!-- Auto Generated Below -->
 
 ## Usage

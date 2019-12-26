@@ -4,8 +4,6 @@ The `calcite-shell` component is used for application layout management. It is a
 
 _note: calcite-shell supports tablet as the smallest screen size_
 
-See the [calcite-shell demo](https://esri.github.io/calcite-app-components/?path=/story/components-calcite-shell--basic).
-
 <!-- Auto Generated Below -->
 
 ## Properties

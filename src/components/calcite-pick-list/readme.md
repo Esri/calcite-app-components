@@ -1,6 +1,6 @@
 # calcite-pick-list
 
-`calcite-pick-list` is housed in a panel and contains `calcite-pick-list-items`. Each item is able to be be selected via radio button or checkboxes (which have a multiselect and shift-click capability). There is also an option for a filter at the top of the list for searching.
+`calcite-pick-list` lives in a panel and contains `calcite-pick-list-item`s. Each item is able to be be selected via radio button or checkboxes (which have a multiselect and shift-click capability). There is also an option for a filter at the top of the list for searching.
 
 <!-- Auto Generated Below -->
 

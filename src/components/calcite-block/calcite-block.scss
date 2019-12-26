@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
-  margin: var(--calcite-app-cap-spacing-third) var(--calcite-app-side-spacing-third);
+  margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter) 0;
   @include borderShadow();
 }
 
