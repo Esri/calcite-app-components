@@ -78,3 +78,26 @@ Renders groups of pick list items that are visually separated.
   </calcite-pick-list-group>
 </calcite-pick-list>
 ```
+
+#### Compact
+
+Renders compact list items with the text description and a bit of padding removed from the card.
+
+```html
+<calcite-pick-list compact>
+  <calcite-pick-list-item
+    text-label="ID"
+    text-description="This is an id for this field and people use it for things."
+    value="ID"
+  >
+    <calcite-action slot="secondaryAction" id="action-test">
+      <!-- icon -->
+    </calcite-action>
+  </calcite-pick-list-item>
+  <calcite-pick-list-item text-label="OBJECTID" text-description="" value="OBJECTID">
+    <calcite-action slot="secondaryAction" id="action-test">
+      <!-- icon -->
+    </calcite-action>
+  </calcite-pick-list-item>
+</calcite-pick-list>
+```
