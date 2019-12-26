@@ -4,17 +4,17 @@ Renders a basic pick list with radio buttons and actions on the right side.
 
 ```html
 <calcite-pick-list>
-  <calcite-pick-list-item text-heading="T. Rex" text-description="Arm strength impaired" value="trex">
+  <calcite-pick-list-item text-label="T. Rex" text-description="Arm strength impaired" value="trex">
     <calcite-action slot="secondaryAction">
       <!-- icon -->
     </calcite-action>
   </calcite-pick-list-item>
-  <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" selected>
+  <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
     <calcite-action slot="secondaryAction">
       <!-- icon -->
     </calcite-action>
   </calcite-pick-list-item>
-  <calcite-pick-list-item text-heading="Velociraptor" text-description="Swift seizer" value="velociraptor">
+  <calcite-pick-list-item text-label="Velociraptor" text-description="Swift seizer" value="velociraptor">
     <calcite-action slot="secondaryAction">
       <!-- icon -->
     </calcite-action>
@@ -43,5 +43,38 @@ Renders a pick list with a sticky filter and checkboxes for multiple selection o
       <!-- icon -->
     </calcite-action>
   </calcite-pick-list-item>
+</calcite-pick-list>
+```
+
+#### Sub groups
+
+Renders groups of pick list items that are visually separated.
+
+```html
+<calcite-pick-list>
+  <calcite-pick-list-group text-group-title="numbers">
+    <calcite-pick-list-item text-heading="one" text-description="fish" value="one" icon="grip">
+      <calcite-action slot="secondaryAction">
+        <!-- icon -->
+      </calcite-action>
+    </calcite-pick-list-item>
+    <calcite-pick-list-item text-heading="two" text-description="fish" value="two" icon="grip">
+      <calcite-action slot="secondaryAction">
+        <!-- icon -->
+      </calcite-action>
+    </calcite-pick-list-item>
+  </calcite-pick-list-group>
+  <calcite-pick-list-group text-group-title="colors">
+    <calcite-pick-list-item text-heading="red" text-description="fish" value="red" icon="grip">
+      <calcite-action slot="secondaryAction">
+        <!-- icon -->
+      </calcite-action>
+    </calcite-pick-list-item>
+    <calcite-pick-list-item text-heading="blue" text-description="fish" value="blue" icon="grip">
+      <calcite-action slot="secondaryAction">
+        <!-- icon -->
+      </calcite-action>
+    </calcite-pick-list-item>
+  </calcite-pick-list-group>
 </calcite-pick-list>
 ```
