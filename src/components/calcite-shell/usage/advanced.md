@@ -92,7 +92,7 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
                   <!-- icon -->
                 </calcite-action>
               </calcite-value-list-item>
-              <calcite-value-list-item text-label="2018 Population Density" text-description="{POPDENS_CY}" value="POPDENS_CY2">
+              <calcite-value-list-item text-label="2018 Population Density [Updated]" text-description="{POPDENS_CY}" value="POPDENS_CY2">
                 <calcite-action slot="secondaryAction" id="action-test">
                   <!-- icon -->
                 </calcite-action>
@@ -108,7 +108,7 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
   </calcite-shell-panel>
   <calcite-tip-manager slot="tip-manager" id="tip-manager">
     <calcite-tip heading="The Red Rocks and Blue Water" text-thumbnail="This is an image of nature.">
-    <calcite-tip heading="The Long Trees" text-thumbnail="This is an image of nature.">
+    <calcite-tip heading="The Long Trees" text-thumbnail="This is an image of trees.">
   </calcite-tip-manager>
   <footer slot="shell-footer">Footer</footer>
 </calcite-shell>
