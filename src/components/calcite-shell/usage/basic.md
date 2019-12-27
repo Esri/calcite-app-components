@@ -5,12 +5,12 @@ Renders a basic shell with a header and a footer.
 ```html
 <calcite-shell>
   <div slot="shell-header">
-    <header class="header">
-      <h2 class="heading">Shell Header: My App</h2>
+    <header>
+      <h2>Shell Header: My App</h2>
     </header>
   </div>
   <p>Shell Content</p>
-  <!-- insert map or image here -->
+  <!-- insert map or fillable content here -->
   <footer slot="shell-footer">Footer</footer>
 </calcite-shell>
 ```
@@ -28,12 +28,12 @@ Renders a shell with a header and panels on the left and right sides of the app.
     Trailing panel! (right side)
   </calcite-shell-panel>
   <div slot="shell-header">
-    <header class="header">
-      <h2 class="heading">Shell Header: My App</h2>
+    <header>
+      <h2>Shell Header: My App</h2>
     </header>
   </div>
   <p>Shell Content</p>
-  <!-- insert map or image here -->
+  <!-- insert map or fillable content here -->
 </calcite-shell>
 ```
 
@@ -47,13 +47,13 @@ Renders a single panel with actions in an action bar.
     <img src="https://via.placeholder.com/300x200" alt="placeholder" />
     <calcite-action-bar slot="action-bar">
       <calcite-action text="Add">
-        <!-- icon -->
+        <calcite-icon>
       </calcite-action>
       <calcite-action text="Save">
-        <!-- icon -->
+        <calcite-icon>
       </calcite-action>
       <calcite-action text="Layers">
-        <!-- icon -->
+        <calcite-icon>
       </calcite-action>
     </calcite-action-bar>
   </calcite-shell-panel>
