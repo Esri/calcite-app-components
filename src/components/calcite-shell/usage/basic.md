@@ -36,3 +36,26 @@ Renders a shell with a header and panels on the left and right sides of the app.
   <!-- insert map or image here -->
 </calcite-shell>
 ```
+
+#### Panel with action bar
+
+Renders a single panel with actions in an action bar.
+
+```html
+<calcite-shell>
+  <calcite-shell-panel slot="primary-panel" layout="leading">
+    <img src="https://via.placeholder.com/300x200" alt="placeholder" />
+    <calcite-action-bar slot="action-bar">
+      <calcite-action text="Add">
+        <!-- icon -->
+      </calcite-action>
+      <calcite-action text="Save">
+        <!-- icon -->
+      </calcite-action>
+      <calcite-action text="Layers">
+        <!-- icon -->
+      </calcite-action>
+    </calcite-action-bar>
+  </calcite-shell-panel>
+</calcite-shell>
+```
