@@ -1,6 +1,6 @@
 #### Advanced
 
-Renders a shell with leading and trailing floating panels, action pad, block, flow.
+Renders a shell with leading and trailing floating panels, action bar/pad, block, flow.
 
 ```html
 <calcite-shell>
@@ -78,10 +78,37 @@ Renders a shell with leading and trailing floating panels, action pad, block, fl
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group slot="bottom-actions">
-            <calcite-action text="Tips" id="tip-manager-button">
-                <!-- icon -->
-              </calcite-action>
+          <calcite-action text="Tips" id="tip-manager-button">
+            <!-- icon -->
+          </calcite-action>
         </calcite-action-group>
       </calcite-action-bar>
+      <calcite-flow>
+        <calcite-flow-item heading="Layer settings">
+          <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
+            <calcite-value-list id="one" multiple filter-enabled>
+              <calcite-value-list-item text-label="2018 Population Density (Esri)" text-description="{POPDENS_CY}" value="POPDENS_CY">
+                <calcite-action slot="secondaryAction" id="action-test">
+                  <!-- icon -->
+                </calcite-action>
+              </calcite-value-list-item>
+              <calcite-value-list-item text-label="2018 Population Density" text-description="{POPDENS_CY}" value="POPDENS_CY2">
+                <calcite-action slot="secondaryAction" id="action-test">
+                  <!-- icon -->
+                </calcite-action>
+              </calcite-value-list-item>
+              <calcite-value-list-item text-label="2018 Total Households (Esri)" text-description="{TOTHH_CY}" value="TOTHH_CY">
+                <calcite-action slot="secondaryAction" id="action-test">
+                </calcite-action>
+              </calcite-value-list-item>
+            </calcite-value-list>
+          </calcite-block>
+        </calcite-flow-item>
+      </calcite-flow>
+  </calcite-shell-panel>
+  <calcite-tip-manager slot="tip-manager" id="tip-manager">
+    <calcite-tip heading="The Red Rocks and Blue Water" text-thumbnail="This is an image of nature.">
+    <calcite-tip heading="The Long Trees" text-thumbnail="This is an image of nature.">
+  </calcite-tip-manager>
 </calcite-shell>
 ```
