@@ -1,6 +1,6 @@
 #### Advanced
 
-Renders a shell with leading and trailing floating panels, action bar/pad, block, flow.
+Renders a shell with leading and trailing floating panels, action bar/pad, block, flow, tip manager, footer
 
 ```html
 <calcite-shell>
@@ -110,5 +110,6 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
     <calcite-tip heading="The Red Rocks and Blue Water" text-thumbnail="This is an image of nature.">
     <calcite-tip heading="The Long Trees" text-thumbnail="This is an image of nature.">
   </calcite-tip-manager>
+  <footer slot="shell-footer">Footer</footer>
 </calcite-shell>
 ```
