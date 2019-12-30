@@ -8,34 +8,34 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
     <calcite-action-bar slot="action-bar" theme="dark">
       <calcite-action-group>
         <calcite-action text="Add">
-          <calcite-icon>
+          <calcite-icon scale="s" icon="plus">
         </calcite-action>
         <calcite-action text="Save" disabled>
-          <calcite-icon>
+          <calcite-icon scale="s" icon="save">
         </calcite-action>
         <calcite-action text="Layers" active indicator>
-          <calcite-icon>
+          <calcite-icon scale="s" icon="layers">
         </calcite-action>
       </calcite-action-group>
       <calcite-action-group>
         <calcite-action text="Add">
-          <calcite-icon>
+          <calcite-icon scale="s" icon="plus">
         </calcite-action>
         <calcite-action text="Layers" indicator>
-          <calcite-icon>
+          <calcite-icon scale="s" icon="layers">
         </calcite-action>
       </calcite-action-group>
     </calcite-action-bar>
     <calcite-block collapsible  heading="Primary Content" summary="This is the primary.">
       <calcite-block-content>
         <calcite-action text="Puppies" text-enabled indicator>
-          <calcite-icon>
+          <calcite-icon scale="s" icon="plus">
         </calcite-action>
         <calcite-action text="Kittens" text-enabled>
-          <calcite-icon>
+          <calcite-icon scale="s" icon="save">
         </calcite-action>
         <calcite-action text="Birds?" text-enabled>
-          <calcite-icon>
+          <calcite-icon scale="s" icon="banana">
         </calcite-action>
       </calcite-block-content>
     </calcite-block>
@@ -50,29 +50,29 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
       <calcite-action-bar slot="action-bar">
         <calcite-action-group>
           <calcite-action text="Add" active>
-            <calcite-icon>
+            <calcite-icon scale="s" icon="plus">
           </calcite-action>
           <calcite-action text="Save" disabled>
-            <calcite-icon>
+            <calcite-icon scale="s" icon="save">
           </calcite-action>
           <calcite-action text="Layers">
-            <calcite-icon>
+            <calcite-icon scale="s" icon="layers">
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group>
           <calcite-action text="Add">
-            <calcite-icon>
+            <calcite-icon scale="s" icon="plus">
           </calcite-action>
           <calcite-action text="Save" disabled>
-            <calcite-icon>
+            <calcite-icon scale="s" icon="save">
           </calcite-action>
           <calcite-action text="Layers">
-            <calcite-icon>
+            <calcite-icon scale="s" icon="layers">
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group slot="bottom-actions">
           <calcite-action text="Tips">
-            <calcite-icon>
+            <calcite-icon scale="s" icon="lightbulb">
           </calcite-action>
         </calcite-action-group>
       </calcite-action-bar>
@@ -82,16 +82,17 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
             <calcite-value-list multiple filter-enabled>
               <calcite-value-list-item text-label="2018 Population Density (Esri)" text-description="{POPDENS_CY}" value="POPDENS_CY">
                 <calcite-action slot="secondaryAction">
-                  <calcite-icon>
+                  <calcite-icon scale="s" icon="camera-flash-on">
                 </calcite-action>
               </calcite-value-list-item>
               <calcite-value-list-item text-label="2018 Population Density [Updated]" text-description="{POPDENS_CY}" value="POPDENS_CY2">
                 <calcite-action slot="secondaryAction">
-                  <calcite-icon>
+                  <calcite-icon scale="s" icon="banana">
                 </calcite-action>
               </calcite-value-list-item>
               <calcite-value-list-item text-label="2018 Total Households (Esri)" text-description="{TOTHH_CY}" value="TOTHH_CY">
                 <calcite-action slot="secondaryAction">
+                  <calcite-icon scale="s" icon="person2">
                 </calcite-action>
               </calcite-value-list-item>
             </calcite-value-list>
