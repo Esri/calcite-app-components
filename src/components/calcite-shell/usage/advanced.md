@@ -51,29 +51,29 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
       <calcite-action-bar slot="action-bar">
         <calcite-action-group>
           <calcite-action text="Add" active>
-            <calcite-icon scale="s" icon="plus">
+            <calcite-icon scale="s" icon="plus"></calcite-icon>
           </calcite-action>
           <calcite-action text="Save" disabled>
-            <calcite-icon scale="s" icon="save">
+            <calcite-icon scale="s" icon="save"></calcite-icon>
           </calcite-action>
           <calcite-action text="Layers">
-            <calcite-icon scale="s" icon="layers">
+            <calcite-icon scale="s" icon="layers"></calcite-icon>
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group>
           <calcite-action text="Add">
-            <calcite-icon scale="s" icon="plus">
+            <calcite-icon scale="s" icon="plus"></calcite-icon>
           </calcite-action>
           <calcite-action text="Save" disabled>
-            <calcite-icon scale="s" icon="save">
+            <calcite-icon scale="s" icon="save"></calcite-icon>
           </calcite-action>
           <calcite-action text="Layers">
-            <calcite-icon scale="s" icon="layers">
+            <calcite-icon scale="s" icon="layers"></calcite-icon>
           </calcite-action>
         </calcite-action-group>
         <calcite-action-group slot="bottom-actions">
           <calcite-action text="Tips">
-            <calcite-icon scale="s" icon="lightbulb">
+            <calcite-icon scale="s" icon="lightbulb"></calcite-icon>
           </calcite-action>
         </calcite-action-group>
       </calcite-action-bar>
@@ -83,17 +83,17 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
             <calcite-value-list multiple filter-enabled>
               <calcite-value-list-item text-label="2018 Population Density (Esri)" text-description="{POPDENS_CY}" value="POPDENS_CY">
                 <calcite-action slot="secondaryAction">
-                  <calcite-icon scale="s" icon="camera-flash-on">
+                  <calcite-icon scale="s" icon="camera-flash-on"></calcite-icon>
                 </calcite-action>
               </calcite-value-list-item>
               <calcite-value-list-item text-label="2018 Population Density [Updated]" text-description="{POPDENS_CY}" value="POPDENS_CY2">
                 <calcite-action slot="secondaryAction">
-                  <calcite-icon scale="s" icon="banana">
+                  <calcite-icon scale="s" icon="banana"></calcite-icon>
                 </calcite-action>
               </calcite-value-list-item>
               <calcite-value-list-item text-label="2018 Total Households (Esri)" text-description="{TOTHH_CY}" value="TOTHH_CY">
                 <calcite-action slot="secondaryAction">
-                  <calcite-icon scale="s" icon="person2">
+                  <calcite-icon scale="s" icon="person2"></calcite-icon>
                 </calcite-action>
               </calcite-value-list-item>
             </calcite-value-list>
