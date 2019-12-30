@@ -137,6 +137,8 @@ export class CalciteFlowItem {
       return;
     }
 
+    event.preventDefault();
+
     if (!menuOpen) {
       this.menuOpen = true;
     }
@@ -166,6 +168,8 @@ export class CalciteFlowItem {
     if (!length || currentIndex === -1) {
       return;
     }
+
+    event.preventDefault();
 
     if (key === "ArrowUp") {
       const value = getRoundRobinIndex(currentIndex - 1, length);
