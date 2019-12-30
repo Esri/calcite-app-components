@@ -68,7 +68,7 @@ export class CalciteShell {
 
   renderMain() {
     const primaryPanel = this.el.querySelector(
-      "[slot=primary-panel]"
+      `[slot=${SLOTS.primaryPanel}]`
     ) as HTMLCalciteShellPanelElement;
 
     const mainClasses = {
