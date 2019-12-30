@@ -46,14 +46,14 @@ Renders a single panel with actions in an action bar.
   <calcite-shell-panel slot="primary-panel" layout="leading">
     <img src="https://via.placeholder.com/300x200" alt="placeholder" />
     <calcite-action-bar slot="action-bar">
-      <calcite-action text="Add">
-        <calcite-icon>
+      <calcite-action text="Add" active>
+        <calcite-icon scale="s" icon="plus"></calcite-icon>
       </calcite-action>
-      <calcite-action text="Save">
-        <calcite-icon>
+      <calcite-action text="Save" disabled>
+        <calcite-icon scale="s" icon="save"></calcite-icon>
       </calcite-action>
       <calcite-action text="Layers">
-        <calcite-icon>
+        <calcite-icon scale="s" icon="layers"></calcite-icon>
       </calcite-action>
     </calcite-action-bar>
   </calcite-shell-panel>
