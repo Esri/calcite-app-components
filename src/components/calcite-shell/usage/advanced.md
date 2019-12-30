@@ -1,6 +1,7 @@
 #### Advanced
 
 Renders a shell with leading and trailing floating panels, action bar/pad, block, flow, tip manager, footer.
+note: calcite-icon is pulled in from [calcite-components](https://esri.github.io/calcite-components/).\_
 
 ```html
 <calcite-shell>
