@@ -94,7 +94,7 @@ Renders compact list items with the text description and a bit of padding remove
       <!-- icon -->
     </calcite-action>
   </calcite-pick-list-item>
-  <calcite-pick-list-item text-label="OBJECTID" text-description="" value="OBJECTID">
+  <calcite-pick-list-item text-label="OBJECTID" value="OBJECTID">
     <calcite-action slot="secondaryAction" id="action-test">
       <!-- icon -->
     </calcite-action>
