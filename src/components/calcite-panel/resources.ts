@@ -19,3 +19,10 @@ export const SCALES: CalciteScale[] = ["s", "m", "l"];
 export const ICONS = {
   close: "x"
 };
+
+export const SLOTS = {
+  headerContent: "header-content",
+  headerLeadingContent: "header-leading-content",
+  headerTrailingContent: "header-trailing-content",
+  footer: "footer"
+};
