@@ -10,6 +10,7 @@ import { ATTRIBUTES } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
+import { SLOTS } from "../calcite-flow-item/resources";
 
 export default {
   title: "components|calcite-flow",
@@ -70,14 +71,14 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
   ];
 };
 
-const menuActionsHTML = `<div slot="menu-actions">
+const menuActionsHTML = `<div slot="${SLOTS.menuActions}">
   <calcite-action text-enabled text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
   <calcite-action text-enabled text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
   <calcite-action text-enabled text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
 </div>`;
 
-const footerActionsHTML = `<calcite-button slot="footer-actions" width="half">Save</calcite-button>
-<calcite-button slot="footer-actions" width="half" appearance="clear">Cancel</button>`;
+const footerActionsHTML = `<calcite-button slot="${SLOTS.footerActions}" width="half">Save</calcite-button>
+<calcite-button slot="${SLOTS.footerActions}" width="half" appearance="clear">Cancel</button>`;
 
 function createItemHTML(content: string): string {
   return `${menuActionsHTML}${content}${footerActionsHTML}`;

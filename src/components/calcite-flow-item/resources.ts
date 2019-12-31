@@ -18,6 +18,9 @@ export const TEXT = {
 };
 
 export const SLOTS = {
+  headerContent: "header-content",
+  headerLeadingContent: "header-leading-content",
+  headerTrailingContent: "header-trailing-content",
   menuActions: "menu-actions",
   footerActions: "footer-actions"
 };
