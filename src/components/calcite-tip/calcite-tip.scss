@@ -66,3 +66,6 @@ $tip-image-max-width: 100% !default;
     max-width: $tip-image-max-width;
   }
 }
+.image-frame ::slotted(img) {
+  max-width: $tip-image-max-width;
+}
