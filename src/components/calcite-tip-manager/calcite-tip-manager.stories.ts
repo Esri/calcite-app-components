@@ -1,14 +1,23 @@
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { TEXT } from "./resources";
 
 export default {
-  title: "calcite-tip-manager",
+  title: "components|calcite-tip-manager",
   decorators: [withKnobs],
   parameters: {
-    notes: parseReadme(readme),
-    backgrounds: darkBackground
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
+    notes: parseReadme(readme)
   }
 };
 

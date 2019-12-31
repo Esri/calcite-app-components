@@ -1,27 +1,17 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteScale, CalciteTheme } from "../interfaces";
-import CalciteIcon from "../utils/CalciteIcon";
-import { x16 } from "@esri/calcite-ui-icons";
 import CalciteScrim from "../utils/CalciteScrim";
-
-const SLOTS = {
-  headerContent: "header-content",
-  headerSummary: "header-summary",
-  headerLeadingContent: "header-leading-content",
-  headerTrailingContent: "header-trailing-content",
-  footer: "footer"
-};
 
 /**
  * @slot header-content - A slot for adding content in the center of the header.
  * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
  * @slot header-trailing-content - A slot for adding a `calcite-action` on the trailing side of the header.
- * @slot footer - A slot for adding `calcite-actions` to the footer.
+ * @slot footer - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the panel.
  */
 @Component({
@@ -140,7 +130,7 @@ export class CalcitePanel {
 
     const dismissibleNode = dismissible ? (
       <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
-        <CalciteIcon size="16" path={x16} />
+        <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
 

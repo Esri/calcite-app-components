@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>Calcite App Components: calcite-flow-item</title>
+
+    <!-- Loads the link and script tags-->
+    <script src="../_assets/head.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <section class="example-container">
+        <h1>calcite-flow-item</h1>
+        <p>
+          see the
+          <a
+            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-flow-item/readme.md"
+            >calcite-flow-item readme.</a
+          >
+        </p>
+        <div class="flow-container">
+          <calcite-flow-item heading="What are the most popular commute alternatives?" summary="I don't know.">
+            <div slot="menu-actions">
+              <calcite-action text="Save" text-enabled></calcite-action>
+              <calcite-action text="Do It" text-enabled></calcite-action>
+              <calcite-action text="Load" text-enabled></calcite-action>
+              <calcite-action text="Cancel" text-enabled></calcite-action>
+            </div>
+            <div slot="footer-actions">
+              <button>Example</button>
+              <button>Actions</button>
+            </div>
+            <img src="https://via.placeholder.com/300x200" alt="placeholder" />
+          </calcite-flow-item>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

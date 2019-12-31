@@ -1,5 +1,5 @@
 import { CSS, TEXT } from "./resources";
-import { hidden, reflects, renders } from "../../tests/commonTests";
+import { accessible, hidden, reflects, renders } from "../../tests/commonTests";
 import { setUpPage } from "../../tests/utils";
 import { E2EPage } from "@stencil/core/testing";
 
@@ -17,6 +17,20 @@ describe("calcite-block-section", () => {
     ]));
 
   describe("toggle-display = 'switch'", () => {
+    describe("accessibility", () => {
+      it("when open", async () =>
+        accessible(
+          `<calcite-block-section text="text" toggle-display="switch" open><div>some content</div></calcite-block-section>`,
+          { withPeerDependencies: true }
+        ));
+
+      it("when closed", async () =>
+        accessible(
+          `<calcite-block-section text="text" toggle-display="switch"><div>some content</div></calcite-block-section>`,
+          { withPeerDependencies: true }
+        ));
+    });
+
     it("can display/hide content", async () => {
       const page = await setUpPage(
         `<calcite-block-section toggle-display="switch"><div>some content</div></calcite-block-section>`,
@@ -47,13 +61,23 @@ describe("calcite-block-section", () => {
   });
 
   describe("toggle-display = 'button' (default)", () => {
+    describe("accessibility", () => {
+      it("when open", async () =>
+        accessible(`<calcite-block-section text="text" open><div>some content</div></calcite-block-section>`));
+
+      it("when closed", async () =>
+        accessible(`<calcite-block-section text="text"><div>some content</div></calcite-block-section>`));
+    });
+
     it("can display/hide content", async () => {
       const page = await setUpPage("<calcite-block-section><div>some content</div></calcite-block-section>");
       await assertContentIsDisplayedAndHidden(page);
     });
 
     it("can be toggled", async () => {
-      const page = await setUpPage("<calcite-block-section></calcite-block-section>");
+      const page = await setUpPage("<calcite-block-section></calcite-block-section>", {
+        withPeerDependencies: true
+      });
       await assertToggleBehavior(page);
     });
 

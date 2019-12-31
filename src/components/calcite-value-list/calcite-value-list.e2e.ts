@@ -48,7 +48,7 @@ describe("calcite-value-list", () => {
     disabledStates("value");
   });
 
-  describe.only("drag and drop", () => {
+  describe("drag and drop", () => {
     let page: E2EPage;
     beforeEach(async () => {
       page = await newE2EPage();

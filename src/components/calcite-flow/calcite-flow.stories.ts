@@ -1,20 +1,29 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createAction } from "../../../.storybook/resources";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 const { theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
-import { layers16, plus16, save16 } from "@esri/calcite-ui-icons";
+import { SLOTS } from "../calcite-flow-item/resources";
 
 export default {
-  title: "calcite-flow",
+  title: "components|calcite-flow",
   decorators: [withKnobs],
   parameters: {
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
     notes: {
       flow: parseReadme(readme),
       item: parseReadme(itemReadme)
-    },
-    backgrounds: darkBackground
+    }
   }
 };
 
@@ -62,14 +71,14 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
   ];
 };
 
-const menuActionsHTML = `<div slot="menu-actions">
-${createAction({ text: "Add", label: "Add Item", textEnabled: true }, plus16)}
-${createAction({ text: "Save", label: "Save Item", textEnabled: true }, save16)}
-${createAction({ text: "Layers", label: "View Layers", textEnabled: true }, layers16)}
+const menuActionsHTML = `<div slot="${SLOTS.menuActions}">
+  <calcite-action text-enabled text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
+  <calcite-action text-enabled text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
+  <calcite-action text-enabled text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
 </div>`;
 
-const footerActionsHTML = `<calcite-button slot="footer-actions" width="half">Save</calcite-button>
-<calcite-button slot="footer-actions" width="half" appearance="clear">Cancel</button>`;
+const footerActionsHTML = `<calcite-button slot="${SLOTS.footerActions}" width="half">Save</calcite-button>
+<calcite-button slot="${SLOTS.footerActions}" width="half" appearance="clear">Cancel</button>`;
 
 function createItemHTML(content: string): string {
   return `${menuActionsHTML}${content}${footerActionsHTML}`;

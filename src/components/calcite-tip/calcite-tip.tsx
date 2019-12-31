@@ -1,9 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
-import { x16 } from "@esri/calcite-ui-icons";
 import { getItem, setItem } from "../utils/localStorage";
-import CalciteIcon from "../utils/CalciteIcon";
 import { CalciteTheme } from "../interfaces";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/dist/declarations";
 
 /**
@@ -37,7 +35,7 @@ export class CalciteTip {
   @Prop() heading: string;
 
   /**
-   * The selected state of the tip if it is being used inside a CalciteTipManager
+   * The selected state of the tip if it is being used inside a `calcite-tip-manager`.
    */
   @Prop({
     reflect: true
@@ -114,7 +112,7 @@ export class CalciteTip {
 
     const dismissButtonNode = !nonDismissible ? (
       <calcite-action text={textClose} onClick={hideTip} class={CSS.close}>
-        <CalciteIcon size="16" path={x16} />
+        <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
 

@@ -18,3 +18,17 @@ export const TEXT = {
   open: "Open",
   close: "Close"
 };
+
+export const SLOTS = {
+  headerContent: "header-content",
+  headerLeadingContent: "header-leading-content",
+  headerTrailingContent: "header-trailing-content",
+  menuActions: "menu-actions",
+  footerActions: "footer-actions"
+};
+
+export const ICONS = {
+  menu: "ellipsis",
+  backLeft: "chevron-left",
+  backRight: "chevron-right"
+};

@@ -4,7 +4,7 @@ Esri welcomes contributions from anyone and everyone. Please see our [guidelines
 
 ## New Components
 
-See the [Boilerplate Example](BOILERPLATE_COMPONENT.md) for how to create a new Calcite Component.
+See the [Boilerplate Example](https://github.com/Esri/calcite-app-components/blob/master/BOILERPLATE_COMPONENT.md) for how to create a new Calcite Component.
 
 ## Pull Requests
 

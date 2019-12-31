@@ -1,1 +1,0 @@
-System.register([],(function(t){"use strict";return{execute:function(){var e=t("C",{action:"action",description:"description",handle:"handle",handleActivated:"handle--activated",highlight:"highlight",icon:"icon",label:"label",title:"title",textContainer:"text-container"})}}}));
