@@ -5,10 +5,10 @@ Renders `calcite-action`s that stick to the top of the bar.
 ```html
 <calcite-action-bar>
   <calcite-action text="Add">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="plus"></calcite-icon>
   </calcite-action>
   <calcite-action text="Save">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="save"></calcite-icon>
   </calcite-action>
 </calcite-action-bar>
 ```
@@ -21,19 +21,19 @@ Renders a group of `calcite-action`s contained in a `calcite-action-group`. Acti
 <calcite-action-bar>
   <calcite-action-group>
     <calcite-action text="Add">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="plus"></calcite-icon>
     </calcite-action>
     <calcite-action text="Save">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="save"></calcite-icon>
     </calcite-action>
   </calcite-action-group>
 
   <calcite-action-group>
     <calcite-action text="Layers">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="layers"></calcite-icon>
     </calcite-action>
     <calcite-action text="Basemaps">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="layer-basemap"></calcite-icon>
     </calcite-action>
   </calcite-action-group>
 </calcite-action-bar>
@@ -46,12 +46,12 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 ```html
 <calcite-action-bar>
   <calcite-action text="Information">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="information"></calcite-icon>
   </calcite-action>
 
   <div slot="bottom-actions">
     <calcite-action text="Feedback">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="mega-phone"></calcite-icon>
     </calcite-action>
   </div>
 </calcite-action-bar>
