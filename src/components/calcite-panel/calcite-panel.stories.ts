@@ -1,5 +1,11 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 const { theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
@@ -8,8 +14,11 @@ export default {
   title: "components|calcite-panel",
   decorators: [withKnobs],
   parameters: {
-    notes: parseReadme(readme),
-    backgrounds: darkBackground
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
+    notes: parseReadme(readme)
   }
 };
 

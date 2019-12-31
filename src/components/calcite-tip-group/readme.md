@@ -1,6 +1,6 @@
 # calcite-tip-group
 
-`Calcite-tip-group` is a wrapper for multiple `calcite-tips` and is housed in `calcite-tip-manager`.
+`calcite-tip-group` is a wrapper for multiple `calcite-tip`s and is housed in `calcite-tip-manager`.
 
 <!-- Auto Generated Below -->
 
