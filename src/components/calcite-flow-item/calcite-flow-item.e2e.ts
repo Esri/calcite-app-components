@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 
-import { CSS, TEXT } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
@@ -27,12 +27,12 @@ describe("calcite-flow-item", () => {
     const pageContent = `
     <calcite-flow-item>
       <calcite-pick-list>
-        <calcite-action slot="menu-actions" indicator text="Cool">
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
           <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
           </svg>
         </calcite-action>
-        <calcite-action slot="menu-actions" indicator text="Cool">
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
           <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
           </svg>
@@ -56,7 +56,7 @@ describe("calcite-flow-item", () => {
     const pageContent = `
     <calcite-flow-item>
       <calcite-pick-list>
-        <div slot="menu-actions">
+        <div slot="${SLOTS.menuActions}">
           <calcite-action indicator text="Cool">
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
@@ -80,7 +80,7 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>'
+      `<calcite-flow-item><div slot="${SLOTS.menuActions}"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>`
     );
 
     const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
@@ -120,7 +120,7 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action><calcite-action text="hello2"></calcite-action></div></calcite-flow-item>'
+      `<calcite-flow-item><div slot="${SLOTS.menuActions}"><calcite-action text="hello"></calcite-action><calcite-action text="hello2"></calcite-action></div></calcite-flow-item>`
     );
 
     await page.waitForChanges();
@@ -194,14 +194,14 @@ describe("calcite-flow-item", () => {
   it("should be accessible", async () =>
     accessible(`
       <calcite-flow-item heading="hello world" menu-open show-back-button>
-        <div slot="menu-actions">
+        <div slot="${SLOTS.menuActions}">
           <calcite-action text="Add">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
               <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
             </svg>
           </calcite-action>
         </div>
-        <div slot="footer-actions">
+        <div slot="${SLOTS.footerActions}">
          <calcite-action text="Add">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
               <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
