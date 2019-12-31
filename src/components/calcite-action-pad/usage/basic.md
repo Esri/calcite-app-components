@@ -5,10 +5,10 @@ Renders a basic action pad with `calcite-action`s.
 ```html
 <calcite-action-pad>
   <calcite-action text="Undo">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="undo"></calcite-icon>
   </calcite-action>
   <calcite-action text="Redo">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="redo"></calcite-icon>
   </calcite-action>
 </calcite-action-pad>
 ```
@@ -21,15 +21,15 @@ Renders a group of `calcite-action`s contained in a `calcite-action-group`. Acti
 <calcite-action-pad>
   <calcite-action-group>
     <calcite-action text="Home">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="home"></calcite-icon>
     </calcite-action>
     <calcite-action text="Styles">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="add-in-edit"></calcite-icon>
     </calcite-action>
   </calcite-action-group>
 
   <calcite-action text="Tips">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="lightbulb"></calcite-icon>
   </calcite-action>
 </calcite-action-pad>
 ```
