@@ -7,11 +7,9 @@ import {
   titlelessDocsPage
 } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+const { theme, layout, scale } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
-import { CalciteLayoutValues } from "../calcite-shell-panel/resources";
-import { SCALES } from "./resources";
 
 export default {
   title: "components|calcite-shell",
@@ -53,11 +51,11 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
     },
     {
       name: "detached-scale",
-      value: select("detachedScale", SCALES, "m", group)
+      value: select("detachedScale", scale.values, scale.defaultValue, group)
     },
     {
       name: "layout",
-      value: select("layout", CalciteLayoutValues, group === "Leading Panel" ? "leading" : "trailing", group)
+      value: select("layout", layout.values, group === "Leading Panel" ? layout.values[0] : layout.values[1], group)
     },
     {
       name: "theme",
