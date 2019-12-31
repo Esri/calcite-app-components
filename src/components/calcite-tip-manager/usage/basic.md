@@ -1,6 +1,6 @@
 #### Basic
 
-Renders a tip manager using tip group as well as single tips.
+Renders a tip manager using a group of tips as well as a single tip.
 
 ```html
 <calcite-tip-manager>
