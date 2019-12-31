@@ -1,6 +1,6 @@
 # calcite-value-list-item
 
-`calcite-value-list-items` are cards contained in a `calcite-value-list`. They each can have a label and description, an icon and have their label's be editable (inherited from `calcite-value-list`). The developer can disable or preselect each list item and give it a value.
+`calcite-value-list-item`s are cards contained in a `calcite-value-list`. They each can have a label and description, an icon and can have their label's be editable (inherited from `calcite-value-list`). The developer can disable or preselect each list item and give it a value.
 
 <!-- Auto Generated Below -->
 

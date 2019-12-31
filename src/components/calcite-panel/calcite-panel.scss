@@ -80,6 +80,9 @@ slot[name="header-content"]::slotted(.heading) {
 }
 
 .content-container {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column nowrap;
   flex: 1 1 auto;
   background-color: var(--calcite-app-background-content);
   overflow: auto;

@@ -5,7 +5,7 @@ import { CSS } from "../calcite-pick-list-item/resources";
 import { ICONS } from "./resources";
 
 /**
- * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ * @slot secondaryAction - A slot intended for adding a `calcite-action` or `calcite-button`. This is placed at the end of the item.
  */
 @Component({
   tag: "calcite-value-list-item",
