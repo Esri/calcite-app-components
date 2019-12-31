@@ -26,10 +26,6 @@ const { theme } = ATTRIBUTES;
 
 const createAttributes: () => Attributes = () => [
   {
-    name: "storage-id",
-    value: text("storageId", "")
-  },
-  {
     name: "non-dismissible",
     value: boolean("nonDismissible", false)
   },

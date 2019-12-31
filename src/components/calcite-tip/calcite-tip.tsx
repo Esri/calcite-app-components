@@ -1,11 +1,10 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-import { getItem, setItem } from "../utils/localStorage";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
-import { CSS, ICONS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/dist/declarations";
 
 /**
- * @slot image - A slot for adding an HTML image element to the tip.
+ * @slot thumbnail - A slot for adding an HTML image element to the tip.
  */
 @Component({
   tag: "calcite-tip",
@@ -18,16 +17,6 @@ export class CalciteTip {
   //  Properties
   //
   // --------------------------------------------------------------------------
-  /**
-   * The local storage id used for an instance of a tip.
-   */
-  @Prop() storageId: string;
-
-  @Watch("storageId")
-  handleStorageId(): void {
-    this.setUpStorage();
-  }
-
   /**
    * No longer displays the tip.
    */
@@ -69,18 +58,6 @@ export class CalciteTip {
 
   @Element() el: HTMLCalciteTipElement;
 
-  storageUID: string;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  connectedCallback() {
-    this.setUpStorage();
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -98,22 +75,8 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  setUpStorage = () => {
-    const { el, storageId, dismissed } = this;
-
-    const storageUID = storageId ? `${el.tagName.toLowerCase()}-${storageId}` : null;
-
-    this.storageUID = storageUID;
-
-    if (getItem(storageUID) !== null && !dismissed) {
-      this.dismissed = true;
-    }
-  };
-
   hideTip = () => {
     this.dismissed = true;
-
-    setItem(this.storageUID, "dismissed");
 
     this.calciteTipDismiss.emit();
   };
@@ -146,26 +109,17 @@ export class CalciteTip {
   renderImageFrame(): VNode {
     const { el } = this;
 
-    return el.querySelector("[slot=image]") ? (
+    return el.querySelector(`[slot=${SLOTS.thumbnail}]`) ? (
       <div class={CSS.imageFrame}>
-        <slot name="image" />
+        <slot name={SLOTS.thumbnail} />
       </div>
     ) : null;
   }
 
   renderInfoNode(): VNode {
-    const { el } = this;
-
-    const linkSlotNode = el.querySelector("[slot=link]") ? (
-      <p class={CSS.link}>
-        <slot name="link" />
-      </p>
-    ) : null;
-
     return (
       <div class={CSS.info}>
         <slot />
-        {linkSlotNode}
       </div>
     );
   }
