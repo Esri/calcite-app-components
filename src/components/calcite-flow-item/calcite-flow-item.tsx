@@ -137,6 +137,8 @@ export class CalciteFlowItem {
       return;
     }
 
+    event.preventDefault();
+
     if (!menuOpen) {
       this.menuOpen = true;
     }
@@ -166,6 +168,8 @@ export class CalciteFlowItem {
     if (!length || currentIndex === -1) {
       return;
     }
+
+    event.preventDefault();
 
     if (key === "ArrowUp") {
       const value = getRoundRobinIndex(currentIndex - 1, length);
@@ -201,7 +205,7 @@ export class CalciteFlowItem {
 
     return showBackButton ? (
       <calcite-action
-        slot="header-leading-content"
+        slot={SLOTS.headerLeadingContent}
         key="back-button"
         aria-label={textBack}
         text={textBack}
@@ -287,14 +291,16 @@ export class CalciteFlowItem {
         ? this.renderMenuActionsContainer()
         : null;
 
-    return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
+    return menuActionsNodes ? (
+      <div slot={SLOTS.headerTrailingContent}>{menuActionsNodes}</div>
+    ) : null;
   }
 
   renderHeading(): VNode {
     const { heading } = this;
 
     return heading ? (
-      <h2 class={CSS.heading} slot="header-content">
+      <h2 class={CSS.heading} slot={SLOTS.headerContent}>
         {heading}
       </h2>
     ) : null;
