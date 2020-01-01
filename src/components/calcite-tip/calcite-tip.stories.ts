@@ -22,9 +22,13 @@ export default {
   }
 };
 
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 
 const createAttributes: () => Attributes = () => [
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
   {
     name: "non-dismissible",
     value: boolean("nonDismissible", false)
