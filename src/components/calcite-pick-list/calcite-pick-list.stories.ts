@@ -1,4 +1,4 @@
-import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import {
   Attributes,
   createComponentHTML as create,
@@ -7,6 +7,8 @@ import {
   titlelessDocsPage
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
+import { ATTRIBUTES } from "../../../.storybook/resources";
+const { dir, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-pick-list",
@@ -26,6 +28,10 @@ const createAttributes: () => Attributes = () => [
     value: boolean("compact", false)
   },
   {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
+  {
     name: "disabled",
     value: boolean("disabled", false)
   },
@@ -40,6 +46,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "multiple",
     value: boolean("multiple", false)
+  },
+  {
+    name: "theme",
+    value: select("theme", theme.values, theme.defaultValue)
   }
 ];
 

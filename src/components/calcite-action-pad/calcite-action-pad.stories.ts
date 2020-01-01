@@ -8,7 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action-pad",
@@ -23,6 +23,10 @@ export default {
 };
 
 const createAttributes: () => Attributes = () => [
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
   {
     name: "theme",
     value: select("theme", theme.values, theme.defaultValue)
