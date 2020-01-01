@@ -7,7 +7,7 @@ import {
   titlelessDocsPage
 } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
 import { SLOTS } from "../calcite-flow-item/resources";
@@ -32,6 +32,10 @@ const createAttributes: () => Attributes = () => {
 
   return [
     {
+      name: "dir",
+      value: select("dir", dir.values, dir.defaultValue, group)
+    },
+    {
       name: "theme",
       value: select("theme", theme.values, theme.defaultValue, group)
     }
@@ -40,6 +44,10 @@ const createAttributes: () => Attributes = () => {
 
 const createFlowItemAttributes: (group: string) => Attributes = (group) => {
   return [
+    {
+      name: "dir",
+      value: select("dir", dir.values, dir.defaultValue, group)
+    },
     {
       name: "disabled",
       value: boolean("disabled", false, group)
