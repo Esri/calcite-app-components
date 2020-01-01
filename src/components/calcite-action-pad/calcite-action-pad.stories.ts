@@ -8,7 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme, layout } = ATTRIBUTES;
+const { dir, layout, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action-pad",
@@ -24,6 +24,10 @@ export default {
 
 const createAttributes: () => Attributes = () => [
   {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
+  {
     name: "expand",
     value: boolean("expand", true)
   },
@@ -32,16 +36,16 @@ const createAttributes: () => Attributes = () => [
     value: boolean("expanded", false)
   },
   {
+    name: "layout",
+    value: select("layout", layout.values, layout.defaultValue)
+  },
+  {
     name: "text-expand",
     value: text("textExpand", "Expand")
   },
   {
     name: "text-collapse",
     value: text("textCollapse", "Collapse")
-  },
-  {
-    name: "layout",
-    value: select("layout", layout.values, layout.defaultValue)
   },
   {
     name: "theme",

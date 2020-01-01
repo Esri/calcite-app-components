@@ -8,7 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { appearance, theme } = ATTRIBUTES;
+const { appearance, dir, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action",
@@ -34,6 +34,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "compact",
     value: boolean("compact", false)
+  },
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "disabled",

@@ -8,7 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme, layout } = ATTRIBUTES;
+const { dir, layout, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action-bar",
@@ -30,6 +30,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "expanded",
     value: boolean("expanded", false)
+  },
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "text-expand",
