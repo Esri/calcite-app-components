@@ -58,16 +58,8 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
       value: select("detachedScale", scale.values, scale.defaultValue, group)
     },
     {
-      name: "dir",
-      value: select("dir", dir.values, dir.defaultValue, group)
-    },
-    {
       name: "layout",
       value: select("layout", layout.values, group === "Leading Panel" ? layout.values[0] : layout.values[1], group)
-    },
-    {
-      name: "theme",
-      value: select("theme", theme.values, theme.defaultValue, group)
     }
   ];
 };
