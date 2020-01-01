@@ -1,4 +1,4 @@
-import { boolean, text, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import {
   Attributes,
   createComponentHTML as create,
@@ -8,6 +8,8 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { TEXT } from "./resources";
+import { ATTRIBUTES } from "../../../.storybook/resources";
+const { dir, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-tip-manager",
@@ -25,6 +27,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "closed",
     value: boolean("closed", false)
+  },
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "text-close",
@@ -45,6 +51,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "text-previous",
     value: text("textPrevious", TEXT.previous)
+  },
+  {
+    name: "theme",
+    value: select("theme", theme.values, theme.defaultValue)
   }
 ];
 
