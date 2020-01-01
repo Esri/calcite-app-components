@@ -7,7 +7,7 @@ import {
   titlelessDocsPage
 } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import { SCALES, SLOTS } from "./resources";
 
@@ -24,6 +24,10 @@ export default {
 };
 
 const createAttributes: () => Attributes = () => [
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
   {
     name: "dismissed",
     value: boolean("dismissed", false)
