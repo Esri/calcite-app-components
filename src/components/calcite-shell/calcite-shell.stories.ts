@@ -60,16 +60,8 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
       value: select("detachedScale", SCALES, "m", group)
     },
     {
-      name: "dir",
-      value: select("dir", dir.values, dir.defaultValue, group)
-    },
-    {
       name: "layout",
       value: select("layout", CalciteLayoutValues, group === "Leading Panel" ? "leading" : "trailing", group)
-    },
-    {
-      name: "theme",
-      value: select("theme", theme.values, theme.defaultValue, group)
     }
   ];
 };
