@@ -9,7 +9,7 @@ import { CSS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 
 @Component({
   tag: "calcite-action",

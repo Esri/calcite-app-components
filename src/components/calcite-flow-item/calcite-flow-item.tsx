@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
