@@ -4,6 +4,7 @@ export const CSS = {
   heading: "heading",
   backButton: "back-button",
   footerActions: "footer-actions",
+  headerActions: "header-actions",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",
   menuButton: "menu-button",
