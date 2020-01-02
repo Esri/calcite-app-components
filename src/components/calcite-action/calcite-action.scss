@@ -47,7 +47,6 @@
   }
 
   .text-container {
-    flex: 1 1 auto;
     line-height: 1rem;
     white-space: nowrap;
     overflow: hidden;
@@ -62,9 +61,10 @@
   }
 
   .text-container--visible {
+    flex: 1 1 auto;
     margin: 0 var(--calcite-app-side-spacing-half);
     opacity: 1;
-    width: 100%;
+    width: auto;
   }
 }
 
