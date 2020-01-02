@@ -45,10 +45,6 @@ const createAttributes: () => Attributes = () => {
 const createFlowItemAttributes: (group: string) => Attributes = (group) => {
   return [
     {
-      name: "dir",
-      value: select("dir", dir.values, dir.defaultValue, group)
-    },
-    {
       name: "disabled",
       value: boolean("disabled", false, group)
     },
@@ -71,10 +67,6 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
     {
       name: "text-open",
       value: text("textOpen", "Open", group)
-    },
-    {
-      name: "theme",
-      value: select("theme", theme.values, theme.defaultValue, group)
     }
   ];
 };
