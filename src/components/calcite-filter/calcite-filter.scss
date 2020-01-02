@@ -51,7 +51,8 @@ input[type="text"]:focus {
   background: none;
   border: 0;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--calcite-app-foreground-hover);
   }
 }
