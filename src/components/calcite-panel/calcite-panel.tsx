@@ -7,14 +7,6 @@ import { VNode } from "@stencil/core/dist/declarations";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
 
-const SLOTS = {
-  headerContent: "header-content",
-  headerSummary: "header-summary",
-  headerLeadingContent: "header-leading-content",
-  headerTrailingContent: "header-trailing-content",
-  footer: "footer"
-};
-
 /**
  * @slot header-content - A slot for adding content in the center of the header.
  * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
