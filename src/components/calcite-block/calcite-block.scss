@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
   margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter) 0;
