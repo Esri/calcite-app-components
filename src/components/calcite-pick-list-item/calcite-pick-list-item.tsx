@@ -9,13 +9,12 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { checkSquare16, circle16, circleFilled16, square16 } from "@esri/calcite-ui-icons";
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
-import CalciteIcon from "../utils/CalciteIcon";
 
 /**
- * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ * @slot secondaryAction - A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card.
+ * This is placed at the end of the item.
  */
 @Component({
   tag: "calcite-pick-list-item",
@@ -30,7 +29,8 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the `calcite-pick-list-item`.
    */
   @Prop({ reflect: true }) compact? = false;
 
@@ -181,17 +181,17 @@ export class CalcitePickListItem {
     if (!icon || compact) {
       return null;
     }
-    const path =
+    const iconName =
       icon === ICON_TYPES.square
         ? selected
-          ? checkSquare16
-          : square16
+          ? ICONS.checked
+          : ICONS.unchecked
         : selected
-        ? circleFilled16
-        : circle16;
+        ? ICONS.selected
+        : ICONS.unselected;
     return (
       <span class={CSS.icon}>
-        <CalciteIcon size="16" path={path} />
+        <calcite-icon scale="s" icon={iconName} />
       </span>
     );
   }

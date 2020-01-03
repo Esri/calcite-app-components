@@ -1,13 +1,14 @@
 :host {
   display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
   border-radius: var(--calcite-app-border-radius);
-  margin: var(--calcite-app-cap-spacing-third) var(--calcite-app-side-spacing-third);
+  margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter) 0;
   @include borderShadow();
 }
 
-calcite-loader[inline] {
-  color: var(--calcite-app-foreground-subtle);
+.header {
+  flex-grow: 1;
 }
 
 .header-container {
@@ -16,8 +17,17 @@ calcite-loader[inline] {
   }
 }
 
-.header {
-  flex-grow: 1;
+:host([disabled]) {
+  pointer-events: none;
+  user-select: none;
+
+  .header-container {
+    opacity: var(--calcite-app-disabled-opacity);
+  }
+}
+
+calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
 }
 
 .title {

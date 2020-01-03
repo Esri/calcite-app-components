@@ -7,7 +7,7 @@ import { CalciteTheme, FlowDirection } from "../interfaces";
 import classnames from "classnames";
 
 /**
- * @slot - A slot for adding `calcite-flow-items` to the flow.
+ * @slot - A slot for adding `calcite-flow-item`s to the flow.
  */
 @Component({
   tag: "calcite-flow",
@@ -47,11 +47,11 @@ export class CalciteFlow {
 
     const beforeBack = lastItem.beforeBack ? lastItem.beforeBack : () => Promise.resolve();
 
-    await beforeBack.call(lastItem);
+    return beforeBack.call(lastItem).then(() => {
+      lastItem.remove();
 
-    lastItem.remove();
-
-    return lastItem;
+      return lastItem;
+    });
   }
 
   // --------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
 import { CalciteActionAppearance, CalciteTheme } from "../interfaces";
 
@@ -46,6 +46,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) indicator = false;
 
   /**
+   * Label of the action, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
+   */
+  @Prop() label: string;
+
+  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
@@ -73,6 +78,19 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
+  private buttonEl: HTMLButtonElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocus() {
+    this.buttonEl.focus();
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -80,10 +98,14 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   renderTextContainer(): VNode {
-    const { text } = this;
+    const { text, textEnabled } = this;
+
+    const textContainerClasses = {
+      [CSS.textContainerVisible]: textEnabled
+    };
 
     return text ? (
-      <div key="text-container" class={CSS.textContainer}>
+      <div key="text-container" class={classnames(CSS.textContainer, textContainerClasses)}>
         {text}
       </div>
     ) : null;
@@ -133,6 +155,7 @@ export class CalciteAction {
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
+          ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
           {this.renderIconContainer()}
           {this.renderTextContainer()}

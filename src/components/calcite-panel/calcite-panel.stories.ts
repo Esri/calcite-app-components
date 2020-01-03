@@ -1,21 +1,33 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
-import { ATTRIBUTES, createAction } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
+import { ATTRIBUTES } from "../../../.storybook/resources";
+const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
-import { SCALES } from "./resources";
-import { attachment16, bluetooth16 } from "@esri/calcite-ui-icons";
+import { SCALES, SLOTS } from "./resources";
 
 export default {
-  title: "calcite-panel",
+  title: "components|calcite-panel",
   decorators: [withKnobs],
   parameters: {
-    notes: parseReadme(readme),
-    backgrounds: darkBackground
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
+    notes: parseReadme(readme)
   }
 };
 
 const createAttributes: () => Attributes = () => [
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
   {
     name: "dismissed",
     value: boolean("dismissed", false)
@@ -46,7 +58,7 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const headerHTML = `<h3 class="heading" slot="header-content">Heading</h3>`;
+const headerHTML = `<h3 class="heading" slot="${SLOTS.headerContent}">Heading</h3>`;
 
 const contentHTML = `<p>
 Enim nascetur erat faucibus ornare varius arcu fames bibendum habitant felis elit ante. Nibh morbi massa curae; leo semper diam aenean congue taciti eu porta. Varius faucibus ridiculus donec. Montes sit ligula purus porta ante lacus habitasse libero cubilia purus! In quis congue arcu maecenas felis cursus pellentesque nascetur porta donec non. Quisque, rutrum ligula pharetra justo habitasse facilisis rutrum neque. Magnis nostra nec nulla dictumst taciti consectetur. Non porttitor tempor orci dictumst magna porta vitae.
@@ -58,16 +70,16 @@ Ipsum nostra tempus etiam augue ullamcorper scelerisque sapien potenti erat nisi
 Tempus per volutpat diam tempor mauris parturient vulputate leo id libero quisque. Mattis aliquam dictum venenatis fringilla. Taciti venenatis, ultrices sollicitudin consequat. Sapien fusce est iaculis potenti ut auctor potenti. Nisi malesuada feugiat vulputate vitae porttitor. Nullam nullam nullam accumsan quis magna in. Elementum, nascetur gravida cras scelerisque inceptos aenean inceptos potenti. Lobortis condimentum accumsan posuere curabitur fermentum diam, natoque quisque. Eget placerat sed aptent orci urna fusce magnis. Vel lacus magnis nunc.
 </p>`;
 
-const footerHTML = `<calcite-button slot="footer" width="half" >Yeah!</calcite-button>
-<calcite-button slot="footer" width="half" appearance="clear">Naw.</calcite-button>`;
+const footerHTML = `<calcite-button slot="${SLOTS.footer}" width="half" >Yeah!</calcite-button>
+<calcite-button slot="${SLOTS.footer}" width="half" appearance="clear">Naw.</calcite-button>`;
 
 export const basic = () =>
   create(
     "calcite-panel",
     createAttributes(),
     `${headerHTML}
-    ${createAction({ text: "Some Action 1", slot: "header-leading-content" }, bluetooth16)}
-    ${createAction({ text: "Some Action 1", slot: "header-trailing-content" }, attachment16)}
+    <calcite-action text="Action" label="Action" slot="${SLOTS.headerLeadingContent}"><calcite-icon scale="s" icon="bluetooth"></calcite-icon></calcite-action>
+    <calcite-action text="Action" label="Action" slot="${SLOTS.headerTrailingContent}"><calcite-icon scale="s" icon="attachment"></calcite-icon></calcite-action>
     ${contentHTML}
     ${footerHTML}`
   );
