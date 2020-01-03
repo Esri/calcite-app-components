@@ -320,6 +320,19 @@ export class CalciteFlowItem {
     return summary ? <span class={CSS.summary}>{summary}</span> : null;
   }
 
+  renderHeader(): VNode {
+    const headingNode = this.renderHeading();
+
+    const summaryNode = this.renderSummary();
+
+    return headingNode || summaryNode ? (
+      <header class={CSS.header} slot={SLOTS.headerContent}>
+        {headingNode}
+        {summaryNode}
+      </header>
+    ) : null;
+  }
+
   render() {
     const { el } = this;
 
