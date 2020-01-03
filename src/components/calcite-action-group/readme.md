@@ -1,6 +1,6 @@
 # calcite-action-group
 
-The `calcite-action-group` is a wrapper for multiple `calcite-actions` and housed in `calcite-action-bar` and `calcite-action-pad`.
+The `calcite-action-group` is a wrapper for multiple `calcite-action`s and housed in `calcite-action-bar` and `calcite-action-pad`.
 
 <!-- Auto Generated Below -->
 

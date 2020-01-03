@@ -1,18 +1,26 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import readme from "./readme.md";
-import { ATTRIBUTES, createSVG } from "../../../.storybook/resources";
+import { ATTRIBUTES } from "../../../.storybook/resources";
 import { APPEARANCE_VALUES } from "./resources";
-import { beaker16 } from "@esri/calcite-ui-icons";
 
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action",
   decorators: [withKnobs],
   parameters: {
-    notes: parseReadme(readme),
-    backgrounds: darkBackground
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
+    notes: parseReadme(readme)
   }
 };
 
@@ -28,6 +36,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "compact",
     value: boolean("compact", false)
+  },
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "disabled",
@@ -59,4 +71,5 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () => create("calcite-action", createAttributes(), createSVG(beaker16, 16));
+export const basic = () =>
+  create("calcite-action", createAttributes(), `<calcite-icon scale="s" icon="beaker"></calcite-icon>`);

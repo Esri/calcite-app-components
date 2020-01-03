@@ -1,18 +1,17 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/dist/declarations";
-import { chevronLeft16F, chevronRight16F, ellipsis16 } from "@esri/calcite-ui-icons";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
-import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, SLOTS, TEXT } from "./resources";
-import CalciteIcon from "../utils/CalciteIcon";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getRoundRobinIndex } from "../utils/array";
-import { CalciteTheme } from "../interfaces";
+import { CalciteScale, CalciteTheme } from "../interfaces";
+import { CSS_UTILITY } from "../utils/resources";
 
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
- * @slot menu-actions - A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open.
- * @slot footer-actions - A slot for adding `calcite-actions` to the footer.
+ * @slot menu-actions - A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open.
+ * @slot footer-actions - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the flow item.
  */
 @Component({
@@ -28,9 +27,19 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   /**
+   * When provided, this method will be called before it is removed from the parent flow.
+   */
+  @Prop() beforeBack?: () => Promise<void>;
+
+  /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
+
+  /**
+   * Specifies the maxiumum height of the panel that this wraps.
+   */
+  @Prop({ reflect: true }) heightScale: CalciteScale;
 
   /**
    * Heading text.
@@ -74,14 +83,6 @@ export class CalciteFlowItem {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Properties
-  //
-  // --------------------------------------------------------------------------
-
-  @Element() el: HTMLCalciteFlowItemElement;
-
-  // --------------------------------------------------------------------------
-  //
   //  Events
   //
   // --------------------------------------------------------------------------
@@ -91,6 +92,14 @@ export class CalciteFlowItem {
    */
 
   @Event() calciteFlowItemBackClick: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteFlowItemElement;
 
   // --------------------------------------------------------------------------
   //
@@ -129,6 +138,8 @@ export class CalciteFlowItem {
       return;
     }
 
+    event.preventDefault();
+
     if (!menuOpen) {
       this.menuOpen = true;
     }
@@ -158,6 +169,8 @@ export class CalciteFlowItem {
     if (!length || currentIndex === -1) {
       return;
     }
+
+    event.preventDefault();
 
     if (key === "ArrowUp") {
       const value = getRoundRobinIndex(currentIndex - 1, length);
@@ -189,18 +202,18 @@ export class CalciteFlowItem {
   renderBackButton(rtl: boolean): VNode {
     const { showBackButton, textBack, backButtonClick } = this;
 
-    const path = rtl ? chevronRight16F : chevronLeft16F;
+    const icon = rtl ? ICONS.backRight : ICONS.backLeft;
 
     return showBackButton ? (
       <calcite-action
-        slot="header-leading-content"
+        slot={SLOTS.headerLeadingContent}
         key="back-button"
         aria-label={textBack}
         text={textBack}
         class={CSS.backButton}
         onClick={backButtonClick}
       >
-        <CalciteIcon size="16" path={path} />
+        <calcite-icon scale="s" filled icon={icon} />
       </calcite-action>
     ) : null;
   }
@@ -218,7 +231,7 @@ export class CalciteFlowItem {
         onClick={this.toggleMenuOpen}
         onKeyDown={this.menuButtonKeyDown}
       >
-        <CalciteIcon size="16" path={ellipsis16} />
+        <calcite-icon scale="s" icon={ICONS.menu} />
       </calcite-action>
     );
   }
@@ -279,14 +292,18 @@ export class CalciteFlowItem {
         ? this.renderMenuActionsContainer()
         : null;
 
-    return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
+    return menuActionsNodes ? (
+      <div slot={SLOTS.headerTrailingContent} class={CSS.headerActions}>
+        {menuActionsNodes}
+      </div>
+    ) : null;
   }
 
   renderHeading(): VNode {
     const { heading } = this;
 
     return heading ? (
-      <h2 class={CSS.heading} slot="header-content">
+      <h2 class={CSS.heading} slot={SLOTS.headerContent}>
         {heading}
       </h2>
     ) : null;
@@ -299,7 +316,14 @@ export class CalciteFlowItem {
 
     return (
       <Host>
-        <calcite-panel loading={this.loading} disabled={this.disabled}>
+        <calcite-panel
+          loading={this.loading}
+          disabled={this.disabled}
+          height-scale={this.heightScale}
+          class={classnames({
+            [CSS_UTILITY.rtl]: rtl
+          })}
+        >
           {this.renderBackButton(rtl)}
           {this.renderHeading()}
           {this.renderHeaderActions()}

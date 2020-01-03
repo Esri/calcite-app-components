@@ -48,8 +48,23 @@ describe("calcite-block", () => {
     block.setProperty("disabled", true);
     await page.waitForChanges();
 
+    // `tabindex=-1` on host removes children from the tab order
+    expect(block.getAttribute("tabindex")).toBe("-1");
+
     await content.click();
     expect(clickSpy).toHaveReceivedEventTimes(1);
+
+    const header = await page.find(`calcite-block >>> .${CSS.headerContainer}`);
+    const toggleSpy = await block.spyOnEvent("calciteBlockToggle");
+
+    await header.click();
+    await header.click();
+    expect(toggleSpy).toHaveReceivedEventTimes(0);
+
+    block.setAttribute("disabled", false);
+    await page.waitForChanges();
+
+    expect(block.getAttribute("tabindex")).toBeNull();
   });
 
   it("has a loading state", async () => {
@@ -105,8 +120,10 @@ describe("calcite-block", () => {
   });
 
   it("allows toggling its content", async () => {
-    const page = await newE2EPage();
-    await page.setContent("<calcite-block collapsible></calcite-block>");
+    const page = await setUpPage("<calcite-block collapsible></calcite-block>", {
+      withPeerDependencies: true
+    });
+
     const element = await page.find("calcite-block");
     const toggleSpy = await element.spyOnEvent("calciteBlockToggle");
     const toggle = await page.find(`calcite-block >>> .${CSS.toggle}`);

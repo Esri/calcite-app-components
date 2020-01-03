@@ -1,8 +1,8 @@
-import { newE2EPage } from "@stencil/core/testing";
-import { E2EPage } from "@stencil/core/dist/testing/puppeteer/puppeteer-declarations";
+import { E2EPage } from "@stencil/core/testing";
 import { JSX } from "../components/components";
 import { toHaveNoViolations } from "jest-axe";
 import axe from "axe-core";
+import { SetUpPageOptions, setUpPage } from "./utils";
 
 expect.extend(toHaveNoViolations);
 
@@ -25,15 +25,13 @@ function getTag(tagOrHTML: string): CalciteComponentTag {
   return tagOrHTML as CalciteComponentTag;
 }
 
-async function simplePageSetup(componentTagOrHTML: TagOrHTML): Promise<E2EPage> {
-  const page = await newE2EPage();
+async function simplePageSetup(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<E2EPage> {
   const componentTag = getTag(componentTagOrHTML);
-  await page.setContent(isHTML(componentTagOrHTML) ? componentTagOrHTML : `<${componentTag}><${componentTag}/>`);
-  return page;
+  return setUpPage(isHTML(componentTagOrHTML) ? componentTagOrHTML : `<${componentTag}><${componentTag}/>`, options);
 }
 
-export async function accessible(componentTagOrHTML: TagOrHTML): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML);
+export async function accessible(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML, options);
   await page.addScriptTag({ path: require.resolve("axe-core") });
 
   expect(
@@ -45,8 +43,8 @@ export async function accessible(componentTagOrHTML: TagOrHTML): Promise<void> {
   ).toHaveNoViolations();
 }
 
-export async function renders(componentTagOrHTML: TagOrHTML): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML);
+export async function renders(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const element = await page.find(getTag(componentTagOrHTML));
 
   expect(element).toHaveClass("hydrated");
@@ -58,9 +56,10 @@ export async function reflects(
   propsToTest: {
     propertyName: string;
     value: any;
-  }[]
+  }[],
+  options?: SetUpPageOptions
 ): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML);
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const componentTag = getTag(componentTagOrHTML);
   const element = await page.find(componentTag);
 
@@ -92,9 +91,10 @@ export async function defaults(
   propsToTest: {
     propertyName: string;
     defaultValue: any;
-  }[]
+  }[],
+  options?: SetUpPageOptions
 ): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML);
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const element = await page.find(getTag(componentTagOrHTML));
 
   for (const propAndValue of propsToTest) {
@@ -104,8 +104,8 @@ export async function defaults(
   }
 }
 
-export async function hidden(componentTagOrHTML: TagOrHTML): Promise<void> {
-  const page = await simplePageSetup(componentTagOrHTML);
+export async function hidden(componentTagOrHTML: TagOrHTML, options?: SetUpPageOptions): Promise<void> {
+  const page = await simplePageSetup(componentTagOrHTML, options);
   const element = await page.find(getTag(componentTagOrHTML));
 
   element.setAttribute("hidden", "");

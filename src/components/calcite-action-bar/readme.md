@@ -2,9 +2,7 @@
 
 ## Description
 
-The `calcite-action-bar` component is made up of multiple `calcite-actions` in the form of clickable icons. The action bar can be expanded to view actions with descriptive text or made smaller to view with just icons.
-
-See the [calcite-action-bar demo](https://esri.github.io/calcite-app-components/?path=/story/components-calcite-action-bar--basic).
+The `calcite-action-bar` component is made up of multiple `calcite-action`s in the form of clickable icons. The action bar can be expanded to view actions with descriptive text or made smaller to view with just icons.
 
 <!-- Auto Generated Below -->
 

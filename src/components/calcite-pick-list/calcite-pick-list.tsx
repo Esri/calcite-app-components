@@ -27,7 +27,7 @@ const {
 } = sharedListMethods;
 
 /**
- * @slot - A slot for adding pick-list-item elements or pick-list-groups elements. Items are displayed as a vertical list.
+ * @slot - A slot for adding `calcite-pick-list-item` elements or `calcite-pick-list-group` elements. Items are displayed as a vertical list.
  * @slot menu-actions - A slot for adding a button + menu combo for performing actions like sorting.
  */
 @Component({
@@ -44,7 +44,7 @@ export class CalcitePickList {
 
   /**
    * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
-   * This allows for a more compact version of the pick-list-item.
+   * This allows for a more compact version of the `calcite-pick-list-item`.
    */
   @Prop({ reflect: true }) compact = false;
 
@@ -52,11 +52,6 @@ export class CalcitePickList {
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
-
-  /**
-   * @deprecated Prop is ignored. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) dragEnabled = false;
 
   /**
    * When true, an input appears at the top of the list that can be used by end users to filter items in the list.
@@ -69,21 +64,12 @@ export class CalcitePickList {
   @Prop({ reflect: true }) loading = false;
 
   /**
-   * @deprecated Prop is ignored. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) mode: "selection" | "configuration" = "selection";
-  /**
    * Multiple works similar to standard radio buttons and checkboxes.
    * When true, a user can select multiple items at a time.
    * When false, only a single item can be selected at a time
    * and selecting a new item will deselect any other selected items.
    */
   @Prop({ reflect: true }) multiple = false;
-
-  /**
-   * @deprecated No longer rendered. Prop will be removed in a future release.
-   */
-  @Prop({ reflect: true }) textHeading?: string;
 
   /**
    * Placeholder text for the filter input field.
@@ -140,15 +126,8 @@ export class CalcitePickList {
    */
   @Event() calciteListChange: EventEmitter;
 
-  /**
-   * @event calcitePickListSelectionChange
-   * @deprecated use calciteListChange instead.
-   */
-  @Event() calcitePickListSelectionChange: EventEmitter;
-
   @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
     calciteListItemChangeHandler.call(this, event);
-    this.calcitePickListSelectionChange.emit(this.selectedValues);
   }
 
   @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {

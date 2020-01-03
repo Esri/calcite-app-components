@@ -1,13 +1,24 @@
-import { boolean, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import readme from "./readme.md";
+import { ATTRIBUTES } from "../../../.storybook/resources";
+const { dir, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-value-list",
   decorators: [withKnobs],
   parameters: {
-    notes: parseReadme(readme),
-    backgrounds: darkBackground
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
+    notes: parseReadme(readme)
   }
 };
 
@@ -15,6 +26,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "compact",
     value: boolean("compact", false)
+  },
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "disabled",
@@ -35,10 +50,14 @@ const createAttributes: () => Attributes = () => [
   {
     name: "multiple",
     value: boolean("multiple", false)
+  },
+  {
+    name: "theme",
+    value: select("theme", theme.values, theme.defaultValue)
   }
 ];
 
-const action = `<calcite-action slot="secondaryAction" label="click-me" onClick="console.log('clicked');">
+const action = `<calcite-action slot="secondaryAction" label="click-me" onClick="console.log('clicked');" appearance="clear">
   <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <circle cx="7" cy="7" r="7" fill="#f689d8" />
   </svg>

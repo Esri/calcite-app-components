@@ -12,3 +12,7 @@ export const CSS = {
 export const TEXT = {
   close: "Close"
 };
+
+export const ICONS = {
+  close: "x"
+};
