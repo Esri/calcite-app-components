@@ -48,7 +48,7 @@ export class CalciteAction {
   /**
    * Label of the action, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
    */
-  @Prop() label: string;
+  @Prop() label?: string;
 
   /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
@@ -63,7 +63,7 @@ export class CalciteAction {
   /**
    * Indicates whether the text is displayed.
    */
-  @Prop() textEnabled = false;
+  @Prop({ reflect: true }) textEnabled = false;
 
   /**
    * Used to set the component's color scheme.
@@ -137,7 +137,8 @@ export class CalciteAction {
   render() {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const title = label ? label : !textEnabled ? text : null;
+    const titleText = textEnabled && text;
+    const title = label || titleText;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
