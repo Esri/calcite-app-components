@@ -6,13 +6,13 @@ describe("calcite-action", () => {
 
   it("honors hidden attribute", async () => hidden("calcite-action"));
 
-  it("should not have text container when text is not enabled", async () => {
+  it("should have text container when text is not enabled", async () => {
     const page = await newE2EPage();
 
     await page.setContent(`<calcite-action text="hello world"></calcite-action>`);
 
     const textContainer = await page.find("calcite-action >>> .text-container");
-    expect(textContainer).toBeNull();
+    expect(textContainer).not.toBeNull();
   });
 
   it("should have text container when text is enabled", async () => {
