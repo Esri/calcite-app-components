@@ -1,5 +1,4 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { accessible } from "../../tests/commonTests";
 
 describe("calcite-pick-list-item", () => {
   it("should render", async () => {
@@ -11,9 +10,6 @@ describe("calcite-pick-list-item", () => {
     const isVisible = await item.isVisible();
     expect(isVisible).toBe(true);
   });
-
-  it("is accessible", async () =>
-    accessible(`<calcite-pick-list-item text-label="Sample" value="one"></calcite-pick-list-item>`));
 
   it("should toggle selected attribute when clicked", async () => {
     const page = await newE2EPage();
