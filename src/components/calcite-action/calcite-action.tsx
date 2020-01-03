@@ -137,7 +137,7 @@ export class CalciteAction {
   render() {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const titleText = textEnabled && text;
+    const titleText = !textEnabled && text;
     const title = label || titleText;
     const rtl = getElementDir(el) === "rtl";
 
