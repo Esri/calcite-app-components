@@ -5,6 +5,7 @@ import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteScale, CalciteTheme } from "../interfaces";
+import { CSS_UTILITY } from "../utils/resources";
 
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
@@ -297,7 +298,9 @@ export class CalciteFlowItem {
         : null;
 
     return menuActionsNodes ? (
-      <div slot={SLOTS.headerTrailingContent}>{menuActionsNodes}</div>
+      <div slot={SLOTS.headerTrailingContent} class={CSS.headerActions}>
+        {menuActionsNodes}
+      </div>
     ) : null;
   }
 
@@ -337,6 +340,9 @@ export class CalciteFlowItem {
           loading={this.loading}
           disabled={this.disabled}
           height-scale={this.heightScale}
+          class={classnames({
+            [CSS_UTILITY.rtl]: rtl
+          })}
         >
           {this.renderBackButton(rtl)}
           {this.renderHeader()}
