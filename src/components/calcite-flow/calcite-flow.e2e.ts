@@ -25,13 +25,35 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
-    const element = await page.find("calcite-flow");
+    const flow = await page.find("calcite-flow");
 
-    await element.callMethod("back");
+    await flow.callMethod("back");
 
     await page.waitForChanges();
 
-    expect(element.innerHTML).toEqual("");
+    const flowItem = await page.find("calcite-flow-item");
+
+    expect(flowItem).toBeNull();
+  });
+
+  it("setting 'beforeBack' should be called in 'back()'", async () => {
+    const page = await newE2EPage();
+
+    const mockCallBack = jest.fn().mockReturnValue(Promise.resolve());
+    await page.exposeFunction("beforeBack", mockCallBack);
+
+    await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
+
+    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowItemElement) => {
+      elm.beforeBack = this.beforeBack;
+    });
+
+    const flow = await page.find("calcite-flow");
+
+    const backValue = await flow.callMethod("back");
+
+    expect(backValue).toBeDefined();
+    expect(mockCallBack).toBeCalledTimes(1);
   });
 
   it("frame advancing should add animation class", async () => {
@@ -58,6 +80,28 @@ describe("calcite-flow", () => {
     expect(frame).toHaveClass(CSS.frameAdvancing);
   });
 
+  it("frame advancing should add animation class when subtree is modified", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent("<calcite-flow><calcite-flow-item>flow1</calcite-flow-item></calcite-flow>");
+
+    const element = await page.find("calcite-flow");
+
+    element.innerHTML = `<calcite-flow-item>flow1</calcite-flow-item><calcite-flow-item id="flow2">flow2</calcite-flow-item>`;
+
+    await page.waitForChanges();
+
+    const item2 = await page.find(`calcite-flow-item[id=flow2]`);
+
+    item2.innerHTML = "new flow2 subtree content";
+
+    await page.waitForChanges();
+
+    const frame = await page.find(`calcite-flow >>> .${CSS.frame}`);
+
+    expect(frame).toHaveClass(CSS.frameAdvancing);
+  });
+
   it("frame retreating should add animation class", async () => {
     const page = await newE2EPage();
 
@@ -70,6 +114,8 @@ describe("calcite-flow", () => {
       <calcite-flow-item></calcite-flow-item>
       `;
     });
+
+    await page.waitForChanges();
 
     const items = await page.findAll("calcite-flow-item");
 
@@ -143,7 +189,7 @@ describe("calcite-flow", () => {
     expect(showBackButton2).not.toBe(null);
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-flow>
       <calcite-flow-item>
@@ -153,6 +199,5 @@ describe("calcite-flow", () => {
       <calcite-flow-item>
       </calcite-flow-item>
     </calcite-flow>
-    `);
-  });
+    `));
 });

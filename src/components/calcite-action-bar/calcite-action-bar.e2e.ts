@@ -1,5 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { accessible, hidden, renders } from "../../tests/commonTests";
+import { setUpPage } from "../../tests/utils";
 
 describe("calcite-action-bar", () => {
   it("renders", async () => renders("calcite-action-bar"));
@@ -40,9 +41,9 @@ describe("calcite-action-bar", () => {
   });
 
   it("expanded", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-action-bar></calcite-action-bar>");
+    const page = await setUpPage("<calcite-action-bar></calcite-action-bar>", {
+      withPeerDependencies: true
+    });
 
     const bar = await page.find("calcite-action-bar");
 
@@ -82,12 +83,12 @@ describe("calcite-action-bar", () => {
 
     const button = await buttonGroup.find("calcite-action");
 
-    const textDisplay = await button.getProperty("textDisplay");
+    const textEnabled = await button.getProperty("textEnabled");
 
-    expect(textDisplay).toBe("visible");
+    expect(textEnabled).toBe(true);
   });
 
-  it("should be accessible", async () => {
+  it("should be accessible", async () =>
     accessible(`
     <calcite-action-bar>
       <calcite-action-group>
@@ -98,10 +99,9 @@ describe("calcite-action-bar", () => {
         </calcite-action>
       </calcite-action-group>
     </calcite-action-bar>
-    `);
-  });
+    `));
 
-  it("should be accessible when expanded", async () => {
+  it("should be accessible when expanded", async () =>
     accessible(`
     <calcite-action-bar expanded>
       <calcite-action-group>
@@ -112,6 +112,5 @@ describe("calcite-action-bar", () => {
         </calcite-action>
       </calcite-action-group>
     </calcite-action-bar>
-    `);
-  });
+    `));
 });

@@ -27,11 +27,15 @@
     padding-right: var(--calcite-app-side-spacing-quarter);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--calcite-app-background-hover);
     color: var(--calcite-app-foreground-hover);
     fill: var(--calcite-app-foreground-hover);
   }
+
+  @include focusRingInset();
+
   .icon-container {
     max-width: var(--calcite-app-icon-size);
     max-height: var(--calcite-app-icon-size);
@@ -41,13 +45,26 @@
     display: flex;
     pointer-events: none;
   }
+
   .text-container {
-    flex: 1 1 auto;
     line-height: 1rem;
-    margin: 0 var(--calcite-app-side-spacing-half);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 0;
+    margin-right: 0;
+    opacity: 0;
+    width: 0;
+    transition: opacity var(--calcite-app-animation-time) var(--calcite-app-easing-function),
+      margin var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
+      width var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  }
+
+  .text-container--visible {
+    flex: 1 1 auto;
+    margin: 0 var(--calcite-app-side-spacing-half);
+    opacity: 1;
+    width: auto;
   }
 }
 
@@ -63,28 +80,9 @@
   width: 100%;
 }
 
-.button--text-interactive {
-  .text-container {
-    margin-left: 0;
-    margin-right: 0;
-    opacity: 0;
-    width: 0;
-    transition: opacity var(--calcite-app-animation-time) var(--calcite-app-easing-function),
-      margin var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
-      width var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-  }
-  &:hover,
-  &:focus {
-    .text-container {
-      margin: 0 var(--calcite-app-side-spacing-half);
-      opacity: 1;
-      width: 100%;
-    }
-  }
-}
-
 :host([active]) .button,
 :host([active]) .button:hover,
+:host([active]) .button:focus,
 :host([active][loading]) .button {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
@@ -96,13 +94,15 @@
   transition: box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
-:host([appearance="clear"]) .button:hover {
+:host([appearance="clear"]) .button:hover,
+:host([appearance="clear"]) .button:focus {
   background-color: var(--calcite-app-background-clear);
   @include borderShadowHover();
 }
 
 :host([active][appearance="clear"]) .button,
-:host([active][appearance="clear"]) .button:hover {
+:host([active][appearance="clear"]) .button:hover,
+:host([active][appearance="clear"]) .button:focus {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
@@ -115,7 +115,8 @@
 }
 
 :host([loading]) .button,
-:host([loading]) .button:hover {
+:host([loading]) .button:hover,
+:host([loading]) .button:focus {
   background-color: var(--calcite-app-background);
 }
 
@@ -125,21 +126,21 @@
 }
 
 :host([disabled]) .button,
-:host([disabled]) .button:hover {
+:host([disabled]) .button:hover,
+:host([disabled]) .button:focus {
   cursor: default;
   opacity: var(--calcite-app-disabled-opacity);
   background-color: var(--calcite-app-background);
 }
 
 :host([disabled][active]) .button,
-:host([disabled][active]) .button:hover {
+:host([disabled][active]) .button:hover,
+:host([disabled][active]) .button:focus {
   opacity: var(--calcite-app-disabled-opacity);
   background-color: var(--calcite-app-background-active);
 }
 
-:host([indicator]) .button--text-visible-visible,
-:host([indicator]) .button--text-interactive:focus,
-:host([indicator]) .button--text-interactive:hover {
+:host([indicator]) .button--text-visible {
   padding-right: var(--calcite-app-side-spacing);
 }
 
@@ -161,14 +162,13 @@
   left: var(--calcite-app-side-spacing-quarter);
 }
 
-:host([indicator]) .button--text-visible.calcite--rtl,
-:host([indicator]) .button--text-interactive.calcite--rtl:focus,
-:host([indicator]) .button--text-interactive.calcite--rtl:hover {
+:host([indicator]) .button--text-visible.calcite--rtl {
   padding-right: var(--calcite-app-side-spacing-three-quarters);
   padding-left: var(--calcite-app-side-spacing);
 }
 
-:host([indicator]) .button:hover::after {
+:host([indicator]) .button:hover::after,
+:host([indicator]) .button:focus::after {
   border-color: var(--calcite-app-background-hover);
 }
 
@@ -176,16 +176,12 @@
   border-color: var(--calcite-app-background-active);
 }
 
-:host([indicator]) .button--text-visible::after,
-:host([indicator]) .button--text-interactive:hover::after,
-:host([indicator]) .button--text-interactive:focus::after {
+:host([indicator]) .button--text-visible::after {
   bottom: unset;
   right: var(--calcite-app-side-spacing-half);
 }
 
-:host([indicator]) .button--text-visible.calcite--rtl::after,
-:host([indicator]) .button--text-interactive.calcite--rtl:hover::after,
-:host([indicator]) .button--text-interactive.calcite--rtl:focus::after {
+:host([indicator]) .button--text-visible.calcite--rtl::after {
   right: unset;
   left: var(--calcite-app-side-spacing-half);
 }

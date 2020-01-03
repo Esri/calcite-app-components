@@ -1,8 +1,6 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-import { search16, x16 } from "@esri/calcite-ui-icons";
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
-import CalciteIcon from "../utils/CalciteIcon";
-import { CSS, TEXT } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 
 const filterDebounceInMs = 250;
 
@@ -41,6 +39,8 @@ export class CalciteFilter {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteFilterElement;
+
+  @State() empty = true;
 
   // --------------------------------------------------------------------------
   //
@@ -92,11 +92,13 @@ export class CalciteFilter {
 
   inputHandler = (event: Event): void => {
     const target = event.target as HTMLInputElement;
+    this.empty = target.value === "";
     this.filter(target.value);
   };
 
   clear = (): void => {
     this.el.shadowRoot.querySelector("input").value = "";
+    this.empty = true;
     this.calciteFilterChange.emit(this.data);
   };
 
@@ -112,17 +114,20 @@ export class CalciteFilter {
         <label>
           <input
             type="text"
+            value=""
             placeholder={this.textPlaceholder}
             onInput={this.inputHandler}
             aria-label={this.textLabel || TEXT.filterLabel}
           />
           <div class={CSS.searchIcon}>
-            <CalciteIcon size="16" path={search16} />
+            <calcite-icon scale="s" icon={ICONS.search} />
           </div>
         </label>
-        <button onClick={this.clear} class={CSS.clearButton} aria-label={TEXT.clear}>
-          <CalciteIcon size="16" path={x16} />
-        </button>
+        {!this.empty ? (
+          <button onClick={this.clear} class={CSS.clearButton} aria-label={TEXT.clear}>
+            <calcite-icon icon={ICONS.close} />
+          </button>
+        ) : null}
       </Host>
     );
   }

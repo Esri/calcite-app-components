@@ -6,6 +6,7 @@ export const CSS = {
   summary: "summary",
   backButton: "back-button",
   footerActions: "footer-actions",
+  headerActions: "header-actions",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",
   menuButton: "menu-button",
@@ -17,4 +18,18 @@ export const TEXT = {
   back: "Back",
   open: "Open",
   close: "Close"
+};
+
+export const SLOTS = {
+  headerContent: "header-content",
+  headerLeadingContent: "header-leading-content",
+  headerTrailingContent: "header-trailing-content",
+  menuActions: "menu-actions",
+  footerActions: "footer-actions"
+};
+
+export const ICONS = {
+  menu: "ellipsis",
+  backLeft: "chevron-left",
+  backRight: "chevron-right"
 };

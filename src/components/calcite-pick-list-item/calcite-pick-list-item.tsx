@@ -9,13 +9,12 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { checkSquare16, circle16, circleFilled16, square16 } from "@esri/calcite-ui-icons";
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
-import CalciteIcon from "../utils/CalciteIcon";
 
 /**
- * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ * @slot secondaryAction - A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card.
+ * This is placed at the end of the item.
  */
 @Component({
   tag: "calcite-pick-list-item",
@@ -30,24 +29,30 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the `calcite-pick-list-item`.
    */
-  @Prop({ reflect: true }) compact = false;
+  @Prop({ reflect: true }) compact? = false;
 
   /**
    * When true, the item cannot be clicked and is visually muted.
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ reflect: true }) disabled? = false;
+
+  /**
+   * When false, the item cannot be deselected by user interaction.
+   */
+  @Prop() disableDeselect = false;
 
   /**
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
-  @Prop({ reflect: true }) icon: ICON_TYPES | null = null;
+  @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
 
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata: object;
+  @Prop() metadata?: object;
 
   @Watch("metadata") metadataWatchHandler() {
     this.calciteListItemPropsUpdated.emit();
@@ -71,15 +76,6 @@ export class CalcitePickListItem {
   }
 
   /**
-   * @deprecated Replaced by textLabel.
-   */
-  @Prop({ reflect: true }) textHeading: string;
-
-  @Watch("textHeading") textHeadingWatchHandler() {
-    this.calciteListItemPropsUpdated.emit();
-  }
-
-  /**
    * An optional description for this item.  This will appear below the label text.
    */
   @Prop({ reflect: true }) textDescription?: string;
@@ -100,7 +96,7 @@ export class CalcitePickListItem {
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ reflect: true }) value!: string;
 
   // --------------------------------------------------------------------------
   //
@@ -126,7 +122,6 @@ export class CalcitePickListItem {
 
   /**
    * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
-   * It also fires on textHeading property changes for backwards compatibility until that's fully removed.
    * @event calciteListItemPropsUpdated
    * @internal
    */
@@ -157,7 +152,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   pickListClickHandler = (event: MouseEvent): void => {
-    if (this.disabled) {
+    if (this.disabled || (this.disableDeselect && this.selected)) {
       return;
     }
 
@@ -168,6 +163,9 @@ export class CalcitePickListItem {
   pickListKeyDownHandler = (event: KeyboardEvent): void => {
     if (event.key === " ") {
       event.preventDefault();
+      if (this.disableDeselect && this.selected) {
+        return;
+      }
       this.selected = !this.selected;
     }
   };
@@ -183,17 +181,17 @@ export class CalcitePickListItem {
     if (!icon || compact) {
       return null;
     }
-    const path =
+    const iconName =
       icon === ICON_TYPES.square
         ? selected
-          ? checkSquare16
-          : square16
+          ? ICONS.checked
+          : ICONS.unchecked
         : selected
-        ? circleFilled16
-        : circle16;
+        ? ICONS.selected
+        : ICONS.unselected;
     return (
       <span class={CSS.icon}>
-        <CalciteIcon size="16" path={path} />
+        <calcite-icon scale="s" icon={iconName} />
       </span>
     );
   }
@@ -205,7 +203,7 @@ export class CalcitePickListItem {
       ) : null;
 
     return (
-      <Host role="checkbox" aria-checked={this.selected}>
+      <Host role="checkbox" aria-checked={this.selected.toString()}>
         <label
           class={CSS.label}
           onClick={this.pickListClickHandler}
@@ -215,7 +213,7 @@ export class CalcitePickListItem {
         >
           {this.renderIcon()}
           <div class={CSS.textContainer}>
-            <span class={CSS.title}>{this.textLabel ? this.textLabel : this.textHeading}</span>
+            <span class={CSS.title}>{this.textLabel}</span>
             {description}
           </div>
         </label>

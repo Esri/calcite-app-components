@@ -51,4 +51,18 @@ describe("calcite-pick-list-item", () => {
     expect(properties.get("selected")._remoteObject.value).toBe(true);
     expect(properties.get("shiftPressed")._remoteObject.value).toBe(false);
   });
+
+  it("prevents deselection when disableDeselect is true", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      `<calcite-pick-list-item text-label="test" value="example" disable-deselect selected></calcite-pick-list-item>`
+    );
+    const item = await page.find("calcite-pick-list-item");
+
+    await item.click();
+    await page.waitForChanges();
+
+    expect(await item.getProperty("selected")).toBe(true);
+  });
 });

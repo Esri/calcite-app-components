@@ -1,6 +1,6 @@
 # calcite-block-section
 
-The `calcite-block-section` component is a child element of `calcite-block`. Sections can have their own header and content be toggled open and closed.
+The `calcite-block-section` component is a child element of `calcite-block`. Sections can have their own header and content and can be toggled open or closed.
 
 <!-- Auto Generated Below -->
 
@@ -19,6 +19,12 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 | Event                       | Description                               | Type               |
 | --------------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
+
+## Slots
+
+| Slot | Description                                     |
+| ---- | ----------------------------------------------- |
+|      | A slot for adding content to the block section. |
 
 ## Dependencies
 

@@ -11,6 +11,7 @@ const scrimDivStyle = {
   position: "absolute",
   right: "0",
   top: "0",
+  userSelect: "none",
   zIndex: "2"
 };
 

@@ -1,6 +1,6 @@
 # calcite-panel
 
-The `calcite-panel` component is a container that for a header, content and optionally a footer. The header will have centered content as well as optional leading and trailing content. The panel can also be setup to be dismissible which will allow it to be closed by a user.
+The `calcite-panel` component is a container for a header, content and optional footer. The header will have centered content as well as optional leading and trailing content. The panel can also be setup to be dismissible which allows it to be closed by a user.
 
 <!-- Auto Generated Below -->
 
@@ -26,6 +26,7 @@ The `calcite-panel` component is a container that for a header, content and opti
 
 | Slot                        | Description                                                              |
 | --------------------------- | ------------------------------------------------------------------------ |
+|                             | A slot for adding content to the panel.                                  |
 | `"footer"`                  | A slot for adding `calcite-actions` to the footer.                       |
 | `"header-content"`          | A slot for adding content in the center of the header.                   |
 | `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.  |

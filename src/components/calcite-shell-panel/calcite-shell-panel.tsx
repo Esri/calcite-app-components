@@ -1,12 +1,14 @@
+import classnames from "classnames";
+
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
 import { CSS } from "./resources";
 
-import { CalciteLayout } from "../interfaces";
+import { CalciteLayout, CalciteScale } from "../interfaces";
 
 /**
  * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
- * @slot action-pad - A slot for adding a `calcite-action-pad` to the panel. The action pad will be positioned relative to the shell panel when displayed.
+ * @slot - A slot for adding content to the shell panel.
  */
 @Component({
   tag: "calcite-shell-panel",
@@ -31,6 +33,16 @@ export class CalciteShellPanel {
   }
 
   /**
+   * This property makes the content area appear like a "floating" panel.
+   */
+  @Prop({ reflect: true }) detached = false;
+
+  /**
+   * This sets limits the height of the content area. It only applies when detached is true.
+   */
+  @Prop({ reflect: false }) detachedScale: CalciteScale = "m";
+
+  /**
    * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "leading";
@@ -53,10 +65,10 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsed, layout } = this;
+    const { collapsed, detached, layout } = this;
 
     const contentNode = (
-      <div class={CSS.content} hidden={collapsed}>
+      <div class={classnames(CSS.content, { [CSS.contentDetached]: detached })} hidden={collapsed}>
         <slot />
       </div>
     );

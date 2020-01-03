@@ -1,3 +1,8 @@
+import { CalciteLayout } from "../interfaces";
+
 export const CSS = {
-  content: "content"
+  content: "content",
+  contentDetached: "content--detached"
 };
+
+export const CalciteLayoutValues: CalciteLayout[] = ["leading", "trailing"];

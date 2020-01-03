@@ -1,6 +1,6 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
-import { CalciteTheme } from "../interfaces";
+import { CalciteActionAppearance, CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -9,6 +9,7 @@ import { CSS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
+import { VNode } from "@stencil/core/dist/declarations";
 
 @Component({
   tag: "calcite-action",
@@ -22,7 +23,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
   /** Specify the appearance style of the action, defaults to solid. */
-  @Prop({ reflect: true }) appearance: "solid" | "clear" = "solid";
+  @Prop({ reflect: true }) appearance: CalciteActionAppearance = "solid";
 
   /**
    * Indicates whether the action is highlighted.
@@ -45,7 +46,7 @@ export class CalciteAction {
   @Prop({ reflect: true }) indicator = false;
 
   /**
-   * Label of the action, exposed on hover.
+   * Label of the action, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
    */
   @Prop() label: string;
 
@@ -60,14 +61,9 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
-   * @deprecated Use 'textDisplay' instead.
-   */
-  @Prop() textEnabled = false;
-
-  /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textDisplay: "hidden" | "visible" | "interactive" = "hidden";
+  @Prop() textEnabled = false;
 
   /**
    * Used to set the component's color scheme.
@@ -82,14 +78,41 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
+  private buttonEl: HTMLButtonElement;
+
   // --------------------------------------------------------------------------
   //
-  //  Component Methods
+  //  Methods
   //
   // --------------------------------------------------------------------------
 
-  render() {
-    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
+  @Method()
+  async setFocus() {
+    this.buttonEl.focus();
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Render Methods
+  //
+  // --------------------------------------------------------------------------
+
+  renderTextContainer(): VNode {
+    const { text, textEnabled } = this;
+
+    const textContainerClasses = {
+      [CSS.textContainerVisible]: textEnabled
+    };
+
+    return text ? (
+      <div key="text-container" class={classnames(CSS.textContainer, textContainerClasses)}>
+        {text}
+      </div>
+    ) : null;
+  }
+
+  renderIconContainer(): VNode {
+    const { loading } = this;
 
     const slotContainerNode = (
       <div
@@ -103,29 +126,22 @@ export class CalciteAction {
 
     const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
 
-    const iconContainerNode = (
+    return (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
         {slotContainerNode}
         {calciteLoaderNode}
       </div>
     );
+  }
 
-    const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
-
-    const textContainerNode =
-      calculatedTextDisplay !== "hidden" ? (
-        <div key="text-container" class={CSS.textContainer}>
-          {text}
-        </div>
-      ) : null;
+  render() {
+    const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
     const labelFallback = label || text;
-
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonTextVisible]: calculatedTextDisplay === "visible",
-      [CSS.buttonTextInteractive]: calculatedTextDisplay === "interactive",
+      [CSS.buttonTextVisible]: textEnabled,
       [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };
@@ -137,11 +153,12 @@ export class CalciteAction {
           title={labelFallback}
           aria-label={labelFallback}
           disabled={disabled}
-          aria-disabled={disabled}
-          aria-busy={loading}
+          aria-disabled={disabled.toString()}
+          aria-busy={loading.toString()}
+          ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
-          {iconContainerNode}
-          {textContainerNode}
+          {this.renderIconContainer()}
+          {this.renderTextContainer()}
         </button>
       </Host>
     );

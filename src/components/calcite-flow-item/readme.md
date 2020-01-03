@@ -2,8 +2,6 @@
 
 A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel with a heading and content.
 
-See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/demos/calcite-flow-item.html).
-
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -30,6 +28,7 @@ See the [calcite-flow-item demo](https://esri.github.io/calcite-app-components/d
 
 | Slot               | Description                                                                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+|                    | A slot for adding content to the flow item.                                                                                     |
 | `"footer-actions"` | A slot for adding `calcite-actions` to the footer.                                                                              |
 | `"menu-actions"`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. |
 

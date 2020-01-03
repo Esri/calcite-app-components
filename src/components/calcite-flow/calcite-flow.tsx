@@ -1,9 +1,14 @@
-import { Component, Element, Host, Method, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Listen, Method, Prop, State, h } from "@stencil/core";
 
-import { CSS, FlowDirection } from "./resources";
+import { CSS } from "./resources";
 
-import { CalciteTheme } from "../interfaces";
+import { CalciteTheme, FlowDirection } from "../interfaces";
 
+import classnames from "classnames";
+
+/**
+ * @slot - A slot for adding `calcite-flow-item`s to the flow.
+ */
 @Component({
   tag: "calcite-flow",
   styleUrl: "calcite-flow.scss",
@@ -20,6 +25,34 @@ export class CalciteFlow {
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  /**
+   * Removes the currently active `calcite-flow-item`.
+   */
+  @Method()
+  async back(): Promise<HTMLCalciteFlowItemElement> {
+    const lastItem = this.el.querySelector(
+      "calcite-flow-item:last-child"
+    ) as HTMLCalciteFlowItemElement;
+
+    if (!lastItem) {
+      return;
+    }
+
+    const beforeBack = lastItem.beforeBack ? lastItem.beforeBack : () => Promise.resolve();
+
+    return beforeBack.call(lastItem).then(() => {
+      lastItem.remove();
+
+      return lastItem;
+    });
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -55,30 +88,16 @@ export class CalciteFlow {
 
   // --------------------------------------------------------------------------
   //
-  //  Public Methods
-  //
-  // --------------------------------------------------------------------------
-
-  @Method()
-  async back(): Promise<void> {
-    const lastItem = this.el.querySelector("calcite-flow-item:last-child");
-
-    lastItem && lastItem.remove();
-  }
-
-  // --------------------------------------------------------------------------
-  //
   //  Private Methods
   //
   // --------------------------------------------------------------------------
 
+  @Listen("calciteFlowItemBackClick")
+  handleCalciteFlowItemBackClick(): void {
+    this.back();
+  }
+
   getFlowDirection = (oldFlowCount: number, newFlowCount: number): FlowDirection | null => {
-    const flowCountChanged = oldFlowCount !== newFlowCount;
-
-    if (!flowCountChanged) {
-      return null;
-    }
-
     const allowRetreatingDirection = oldFlowCount > 1;
     const allowAdvancingDirection = oldFlowCount && newFlowCount > 1;
 
@@ -99,7 +118,6 @@ export class CalciteFlow {
     const oldFlowCount = flows.length;
     const newFlowCount = newFlows.length;
 
-    const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
     const activeFlow = newFlows[newFlowCount - 1];
     const previousFlow = newFlows[newFlowCount - 2];
 
@@ -115,8 +133,12 @@ export class CalciteFlow {
     }
 
     this.flows = newFlows;
-    this.flowCount = newFlowCount;
-    this.flowDirection = flowDirection;
+
+    if (oldFlowCount !== newFlowCount) {
+      const flowDirection = this.getFlowDirection(oldFlowCount, newFlowCount);
+      this.flowCount = newFlowCount;
+      this.flowDirection = flowDirection;
+    }
   };
 
   flowItemObserver = new MutationObserver(this.updateFlowProps);
@@ -130,16 +152,14 @@ export class CalciteFlow {
   render() {
     const { flowDirection, flowCount } = this;
 
-    const flowDirectionClass =
-      flowDirection === "advancing"
-        ? CSS.frameAdvancing
-        : flowDirection === "retreating"
-        ? CSS.frameRetreating
-        : "";
+    const frameDirectionClasses = {
+      [CSS.frameAdvancing]: flowDirection === "advancing",
+      [CSS.frameRetreating]: flowDirection === "retreating"
+    };
 
     return (
       <Host>
-        <div key={flowCount} class={`${CSS.frame} ${flowDirectionClass}`}>
+        <div key={flowCount} class={classnames(CSS.frame, frameDirectionClasses)}>
           <slot />
         </div>
       </Host>

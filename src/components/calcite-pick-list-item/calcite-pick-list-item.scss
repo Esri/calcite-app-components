@@ -8,7 +8,8 @@
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
-:host(:hover) {
+:host(:hover),
+:host(:focus) {
   background-color: var(--calcite-app-background-hover);
 }
 
@@ -31,6 +32,8 @@
   padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
   align-items: center;
   cursor: pointer;
+
+  @include focusRingInset();
 }
 
 .text-container {
@@ -42,6 +45,7 @@
 }
 
 .title {
+  font-size: var(--calcite-app-font-size-0);
   @include lineClamp(2);
 }
 
