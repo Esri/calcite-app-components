@@ -22,7 +22,6 @@ export const ICONS = {
 
 export const SLOTS = {
   headerContent: "header-content",
-  headerSummary: "header-summary",
   headerLeadingContent: "header-leading-content",
   headerTrailingContent: "header-trailing-content",
   footer: "footer"

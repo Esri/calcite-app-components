@@ -64,7 +64,7 @@ export class CalciteFlowItem {
   /**
    * Summary text. A description displayed underneath the heading.
    */
-  @Prop() summary: string;
+  @Prop() summary?: string;
 
   /**
    * 'Back' text string.
