@@ -61,16 +61,13 @@
 
 .header-leading-content,
 .header-trailing-content {
-  margin-bottom: var(--calcite-app-cap-spacing-minimum);
+  align-items: stretch;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .header-leading-content + .header-content {
   padding-left: var(--calcite-app-side-spacing-half);
-}
-
-.header-trailing-content {
-  display: flex;
-  margin-bottom: var(--calcite-app-cap-spacing-minimum);
 }
 
 .content-container {
