@@ -98,6 +98,16 @@ describe("calcite-flow-item", () => {
     expect(element).toEqualText("test");
   });
 
+  it("should have default summary", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<calcite-flow-item summary="test"></calcite-flow-item>');
+
+    const element = await page.find(`calcite-flow-item >>> .${CSS.summary}`);
+
+    expect(element).toEqualText("test");
+  });
+
   it("text defaults should be present", async () => {
     const page = await newE2EPage();
 
@@ -193,7 +203,7 @@ describe("calcite-flow-item", () => {
 
   it("should be accessible", async () =>
     accessible(`
-      <calcite-flow-item heading="hello world" menu-open show-back-button>
+      <calcite-flow-item heading="hello world" summary="test" menu-open show-back-button>
         <div slot="${SLOTS.menuActions}">
           <calcite-action text="Add">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">

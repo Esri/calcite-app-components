@@ -44,11 +44,9 @@
 
         <h2>Adding new Flow-items to Flow</h2>
         <calcite-flow id="flow">
-          <calcite-flow-item heading="What are the most popular commute alternatives?">
-            <div slot="menu-actions">
-              <button>Reset</button>
-              <button>Rename</button>
-            </div>
+          <calcite-flow-item heading="What are the most popular commute alternatives?" summary="I don't have an answer to this questions. Stop asking me this question.">
+            <button slot="menu-actions">Reset</button>
+            <button slot="menu-actions">Rename</button>
             <div slot="footer-actions">
               <button class="btn">Save</button>
               <button class="btn btn-secondary">Cancel</button>
@@ -69,11 +67,11 @@
   addFlowButtonNode.addEventListener("click", function() {
   var newNode = document.createElement("calcite-flow-item");
   newNode.heading = "Item " + (flowNode.childElementCount + 1);
+  newNode.summary =  "I don't have an answer to this questions. Stop asking me this question."
   newNode.innerHTML = `
       &lt;p&gt;&lt;img src="https://via.placeholder.com/300x200" alt="placeholder" /&gt;&lt;/p&gt;
       &lt;p&gt;&lt;img src="https://via.placeholder.com/300x200" alt="placeholder" /&gt;&lt;/p&gt;
-      &lt;div slot="menu-actions"&gt;
-      &lt;calcite-action&gt;
+      &lt;calcite-action slot="menu-actions"&gt;
           &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"&gt;
             &lt;path d="M14.792 2.666l-1.414-1.413a.965.965 0 0 0-1.385-.03l-1.444 1.444-8.763 8.72L.03 15.481a.371.371
             0 0 0 .488.488l4.096-1.756 8.763-8.72-.001-.001.002.002 1.443-1.444a.965.965 0 0 0-.03-1.385zM1.569
@@ -81,7 +79,6 @@
             1.29-1.29a.306.306 0 0 1 .433 0l.981.98a.306.306 0 0 1 0 .433z"/&gt;
           &lt;/svg&gt;
       &lt;/calcite-action&gt;
-      &lt;/div&gt;
       &lt;div slot="footer-actions"&gt;
       &lt;button&gt;Save&lt;/button&gt;
       &lt;button&gt;Cancel&lt;/button&gt;
@@ -114,19 +111,18 @@
         };
 
         newNode.heading = "Item " + (flowNode.childElementCount + 1);
+        newNode.summary =  "I don't have an answer to this questions. Stop asking me this question."
         newNode.innerHTML = `
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
-          <div slot="menu-actions">
-            <calcite-action>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                <path d="M14.792 2.666l-1.414-1.413a.965.965 0 0 0-1.385-.03l-1.444 1.444-8.763 8.72L.03 15.481a.371.371
-                0 0 0 .488.488l4.096-1.756 8.763-8.72-.001-.001.002.002 1.443-1.444a.965.965 0 0 0-.03-1.385zM1.569
-                14.431l.554-1.293.74.739zm2.338-.924l-1.414-1.414 7.963-7.92 1.414 1.415zm8.67-8.626l-1.413-1.414
-                1.29-1.29a.306.306 0 0 1 .433 0l.981.98a.306.306 0 0 1 0 .433z"/>
-              </svg>
-            </calcite-action>
-          </div>
+          <calcite-action slot="menu-actions">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M14.792 2.666l-1.414-1.413a.965.965 0 0 0-1.385-.03l-1.444 1.444-8.763 8.72L.03 15.481a.371.371
+              0 0 0 .488.488l4.096-1.756 8.763-8.72-.001-.001.002.002 1.443-1.444a.965.965 0 0 0-.03-1.385zM1.569
+              14.431l.554-1.293.74.739zm2.338-.924l-1.414-1.414 7.963-7.92 1.414 1.415zm8.67-8.626l-1.413-1.414
+              1.29-1.29a.306.306 0 0 1 .433 0l.981.98a.306.306 0 0 1 0 .433z"/>
+            </svg>
+          </calcite-action>
           <div slot="footer-actions">
             <button>Save</button>
             <button>Cancel</button>
