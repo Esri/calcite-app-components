@@ -1,6 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 import { CSS } from "./resources";
+import { setUpPage } from "../../tests/utils";
 
 describe("calcite-tip", () => {
   it("renders", async () => renders("calcite-tip"));
@@ -19,8 +20,9 @@ describe("calcite-tip", () => {
   });
 
   it("should be hidden after the close button is clicked", async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<calcite-tip><p>testing close button</p></calcite-tip>`);
+    const page = await setUpPage(`<calcite-tip><p>testing close button</p></calcite-tip>`, {
+      withPeerDependencies: true
+    });
 
     const eventSpy = await page.spyOnEvent("calciteTipDismiss", "window");
 
@@ -38,8 +40,9 @@ describe("calcite-tip", () => {
   });
 
   it("should hide by default if tip with an id is dismissed", async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`);
+    const page = await setUpPage(`<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`, {
+      withPeerDependencies: true
+    });
 
     const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
 

@@ -3,7 +3,12 @@
   "rules": {
     "declaration-block-semicolon-newline-after": "always-multi-line",
     "declaration-colon-space-after": "always",
-    "no-descending-specificity": null,
+    "no-descending-specificity": [
+      true,
+      {
+        "ignore": ["selectors-within-list"]
+      }
+    ],
     "property-case": "lower",
     "selector-type-no-unknown": [
       true,

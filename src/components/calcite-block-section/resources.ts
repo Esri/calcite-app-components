@@ -8,3 +8,9 @@ export const TEXT = {
   collapse: "Collapse",
   expand: "Expand"
 };
+
+export const ICONS = {
+  menuOpen: "caret-down",
+  menuClosedLeft: "caret-left",
+  menuClosedRight: "caret-right"
+};

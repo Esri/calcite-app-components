@@ -1,6 +1,6 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
-import { CalciteTheme, TextDisplay } from "../interfaces";
+import { CalciteActionAppearance, CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -23,7 +23,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
   /** Specify the appearance style of the action, defaults to solid. */
-  @Prop({ reflect: true }) appearance: "solid" | "clear" = "solid";
+  @Prop({ reflect: true }) appearance: CalciteActionAppearance = "solid";
 
   /**
    * Indicates whether the action is highlighted.
@@ -61,14 +61,9 @@ export class CalciteAction {
   @Prop() text: string;
 
   /**
-   * @deprecated Use 'textDisplay' instead.
-   */
-  @Prop() textEnabled = false;
-
-  /**
    * Indicates whether the text is displayed.
    */
-  @Prop({ reflect: true }) textDisplay: TextDisplay = "hidden";
+  @Prop() textEnabled = false;
 
   /**
    * Used to set the component's color scheme.
@@ -83,17 +78,34 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
+  private buttonEl: HTMLButtonElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocus() {
+    this.buttonEl.focus();
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
-  renderTextContainer(textDisplay: TextDisplay): VNode {
-    const { text } = this;
+  renderTextContainer(): VNode {
+    const { text, textEnabled } = this;
 
-    return textDisplay !== "hidden" ? (
-      <div key="text-container" class={CSS.textContainer}>
+    const textContainerClasses = {
+      [CSS.textContainerVisible]: textEnabled
+    };
+
+    return text ? (
+      <div key="text-container" class={classnames(CSS.textContainer, textContainerClasses)}>
         {text}
       </div>
     ) : null;
@@ -123,15 +135,13 @@ export class CalciteAction {
   }
 
   render() {
-    const { compact, disabled, loading, el, textEnabled, textDisplay, label, text } = this;
+    const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const calculatedTextDisplay = textEnabled ? "visible" : textDisplay;
     const labelFallback = label || text;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
-      [CSS.buttonTextVisible]: calculatedTextDisplay === "visible",
-      [CSS.buttonTextInteractive]: calculatedTextDisplay === "interactive",
+      [CSS.buttonTextVisible]: textEnabled,
       [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
     };
@@ -145,9 +155,10 @@ export class CalciteAction {
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
+          ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
           {this.renderIconContainer()}
-          {this.renderTextContainer(calculatedTextDisplay)}
+          {this.renderTextContainer()}
         </button>
       </Host>
     );

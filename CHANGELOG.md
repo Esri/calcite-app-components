@@ -3,6 +3,31 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.11.1](https://github.com/Esri/calcite-app-components/compare/v4.11.0...v4.11.1) (2019-12-18)
+
+### Bug Fixes
+
+- **flow:** remove height rule for frame ([dda4e4b](https://github.com/Esri/calcite-app-components/commit/dda4e4be2dfa5ef662d3d7ff511695c114948032)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565)
+
+## [4.11.0](https://github.com/Esri/calcite-app-components/compare/v4.10.1...v4.11.0) (2019-12-18)
+
+### Features
+
+- clear button only shows when not empty ([#599](https://github.com/Esri/calcite-app-components/issues/599)) ([#634](https://github.com/Esri/calcite-app-components/issues/634)) ([e03487a](https://github.com/Esri/calcite-app-components/commit/e03487ac773bdfd4365d4f5ad3d44dc09b753435)), closes [#597](https://github.com/Esri/calcite-app-components/issues/597)
+
+### [4.10.1](https://github.com/Esri/calcite-app-components/compare/v4.10.0...v4.10.1) (2019-12-12)
+
+### Bug Fixes
+
+- **panel:** flex grow, shrink, basis for panel headers and footers ([8c41414](https://github.com/Esri/calcite-app-components/commit/8c414140d4246a42e1cdcb0cd6c66dc1f8386b69)), closes [#642](https://github.com/Esri/calcite-app-components/issues/642)
+
+## [4.10.0](https://github.com/Esri/calcite-app-components/compare/v4.9.0...v4.10.0) (2019-12-11)
+
+### Bug Fixes
+
+- **panel:** adding min-heights for panel header and footer ([facc4c7](https://github.com/Esri/calcite-app-components/commit/facc4c7988e876244792b86fe832c64c64900693)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565)
+- **flow:** Fix animation being removed when the subtree of a flow changes during the animation. ([876b8963](https://github.com/Esri/calcite-app-components/commit/876b89639961688a69abded9160b09cf4d99431d)), closes [#626](https://github.com/Esri/calcite-app-components/issues/626)
+
 ## [4.9.0](https://github.com/Esri/calcite-app-components/compare/v4.8.0...v4.9.0) (2019-12-10)
 
 ### Features
