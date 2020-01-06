@@ -96,7 +96,7 @@ export class CalciteSortableList {
 
   @Listen("calciteHandleNudge") calciteHandleNudgeHandler(event: CustomEvent) {
     const sortItem = this.items.find((item) => {
-      return item.contains(event.detail.handle);
+      return item.contains(event.detail.handle) || event.composedPath().includes(item);
     });
 
     const lastIndex = this.items.length - 1;
