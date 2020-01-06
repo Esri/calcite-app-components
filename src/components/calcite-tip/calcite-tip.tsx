@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@
 import { getItem, setItem } from "../utils/localStorage";
 import { CalciteTheme } from "../interfaces";
 import { CSS, ICONS, TEXT } from "./resources";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 
 /**
  * @slot info - A slot for adding an HTML element to the body of the tip.
