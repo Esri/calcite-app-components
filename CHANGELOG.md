@@ -3,6 +3,18 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [4.11.1](https://github.com/Esri/calcite-app-components/compare/v4.11.0...v4.11.1) (2019-12-18)
+
+### Bug Fixes
+
+- **flow:** remove height rule for frame ([dda4e4b](https://github.com/Esri/calcite-app-components/commit/dda4e4be2dfa5ef662d3d7ff511695c114948032)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565)
+
+## [4.11.0](https://github.com/Esri/calcite-app-components/compare/v4.10.1...v4.11.0) (2019-12-18)
+
+### Features
+
+- clear button only shows when not empty ([#599](https://github.com/Esri/calcite-app-components/issues/599)) ([#634](https://github.com/Esri/calcite-app-components/issues/634)) ([e03487a](https://github.com/Esri/calcite-app-components/commit/e03487ac773bdfd4365d4f5ad3d44dc09b753435)), closes [#597](https://github.com/Esri/calcite-app-components/issues/597)
+
 ### [4.10.1](https://github.com/Esri/calcite-app-components/compare/v4.10.0...v4.10.1) (2019-12-12)
 
 ### Bug Fixes

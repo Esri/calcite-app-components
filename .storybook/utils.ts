@@ -14,6 +14,7 @@ import {
 } from "@storybook/addon-knobs";
 
 import colors from "../node_modules/@esri/calcite-colors/colors.json";
+import { DocsPage } from "@storybook/addon-docs/blocks";
 
 export const darkBackground = [
   {
@@ -52,4 +53,10 @@ export interface SimpleAttribute {
 export type Attributes = (KnobbedAttribute | SimpleAttribute)[];
 
 export const createComponentHTML = (tagName: string, attributes: Attributes, contentHTML?: string) =>
-  `<${tagName} ${attributes.map(({ name, value }) => `${name}=${value}`).join(" ")}>${contentHTML}</${tagName}>`;
+  `<${tagName} ${attributes.map(({ name, value }) => `${name}="${value}"`).join(" ")}>${contentHTML}</${tagName}>`;
+
+export const titlelessDocsPage: typeof DocsPage = () =>
+  DocsPage({
+    // no title since README already has one
+    titleSlot: () => ""
+  });

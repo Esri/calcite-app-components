@@ -4,7 +4,7 @@ Renders a `calcite-action` that displays only an icon and a tooltip label.
 
 ```html
 <calcite-action label="Performs my custom action">
-  <!-- icon -->
+  <calcite-icon scale="s" icon="plus"></calcite-icon>
 </calcite-action>
 ```
 
@@ -14,7 +14,7 @@ Renders a `calcite-action` that displays text along side an icon and a tooltip l
 
 ```html
 <calcite-action label="Performs my custom action" text="Perform Action!" text-enabled>
-  <!-- icon -->
+  <calcite-icon scale="s" icon="save"></calcite-icon>
 </calcite-action>
 ```
 
@@ -24,6 +24,6 @@ Renders a `calcite-action` that has a clear background.
 
 ```html
 <calcite-action appearance="clear">
-  <!-- icon -->
+  <calcite-icon scale="s" icon="layers"></calcite-icon>
 </calcite-action>
 ```

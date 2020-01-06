@@ -1,18 +1,27 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import blockReadme from "./readme.md";
 import sectionReadme from "../calcite-block-section/readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 
 export default {
-  title: "calcite-block",
+  title: "components|calcite-block",
   decorators: [withKnobs],
   parameters: {
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
     notes: {
       block: parseReadme(blockReadme),
       section: parseReadme(sectionReadme)
-    },
-    backgrounds: darkBackground
+    }
   }
 };
 
@@ -55,11 +64,11 @@ const createBlockAttributes: () => Attributes = () => {
     },
     {
       name: "text-collapse",
-      value: text("text-collapse", "Collapse", group)
+      value: text("textCollapse", "Collapse", group)
     },
     {
       name: "text-expand",
-      value: text("text-expand", "Expand", group)
+      value: text("textExpand", "Expand", group)
     }
   ];
 };
@@ -79,15 +88,15 @@ const createSectionAttributes: () => Attributes = () => {
     },
     {
       name: "toggle-display",
-      value: select("toggle-display", toggleDisplayOptions, toggleDisplayOptions[0], group)
+      value: select("toggleDisplay", toggleDisplayOptions, toggleDisplayOptions[0], group)
     },
     {
       name: "text-collapse",
-      value: text("text-collapse", "Collapse", group)
+      value: text("textCollapse", "Collapse", group)
     },
     {
       name: "text-expand",
-      value: text("text-expand", "Expand", group)
+      value: text("textExpand", "Expand", group)
     }
   ];
 };

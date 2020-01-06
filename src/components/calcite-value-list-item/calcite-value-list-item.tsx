@@ -2,11 +2,10 @@ import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
 import { CSS } from "../calcite-pick-list-item/resources";
-import { drag16 } from "@esri/calcite-ui-icons";
-import CalciteIcon from "../utils/CalciteIcon";
+import { ICONS } from "./resources";
 
 /**
- * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ * @slot secondary-action - A slot intended for adding a `calcite-action` or `calcite-button`. This is placed at the end of the item.
  */
 @Component({
   tag: "calcite-value-list-item",
@@ -133,7 +132,7 @@ export class CalciteValueListItem {
           onKeyDown={this.handleKeyDown}
           onBlur={this.handleBlur}
         >
-          <CalciteIcon size="16" path={drag16} />
+          <calcite-icon scale="s" icon={ICONS.drag} />
         </span>
       );
     }
@@ -155,7 +154,7 @@ export class CalciteValueListItem {
           onCalciteListItemChange={this.handleSelectChange}
           value={this.value}
         >
-          <slot name="secondaryAction" slot="secondaryAction" />
+          <slot name="secondary-action" slot="secondary-action" />
         </calcite-pick-list-item>
       </Host>
     );

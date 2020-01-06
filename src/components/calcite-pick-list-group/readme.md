@@ -1,6 +1,6 @@
 # calcite-pick-list-group
 
-`calcite-pick-list-group` is a wrapper for multiple `calcite-pick-list-items` and housed in `calcite-pick-list`.
+`calcite-pick-list-group` is a wrapper for multiple `calcite-pick-list-item`s and lives in `calcite-pick-list`.
 
 <!-- Auto Generated Below -->
 

@@ -2,6 +2,7 @@
   align-items: stretch;
   background-color: var(--calcite-app-background-clear);
   display: flex;
+  flex: 1 0 auto;
   flex-flow: column;
   padding-bottom: var(--calcite-app-cap-spacing-half);
   position: relative;
