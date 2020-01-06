@@ -6,3 +6,7 @@ export const CSS = {
 };
 
 export const CalciteLayoutValues: CalciteLayout[] = ["leading", "trailing"];
+
+export const SLOTS = {
+  actionBar: "action-bar"
+};
