@@ -15,7 +15,7 @@ describe("calcite-pick-list-group", () => {
 
   it("is accessible", async () =>
     accessible(
-      `<calcite-pick-list-group><calcite-pick-list-item text-label="Sample" value="one"></calcite-pick-list-item></calcite-pick-list-group>`
+      `<calcite-pick-list><calcite-pick-list-group><calcite-pick-list-item text-label="Sample" value="one"></calcite-pick-list-item></calcite-pick-list-group></calcite-pick-list>`
     ));
 
   it("should render a header if one is provided", async () => {

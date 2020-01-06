@@ -62,6 +62,11 @@ export class CalciteFlowItem {
   @Prop() showBackButton = false;
 
   /**
+   * Summary text. A description displayed underneath the heading.
+   */
+  @Prop() summary?: string;
+
+  /**
    * 'Back' text string.
    */
   @Prop() textBack = TEXT.back;
@@ -309,6 +314,25 @@ export class CalciteFlowItem {
     ) : null;
   }
 
+  renderSummary(): VNode {
+    const { summary } = this;
+
+    return summary ? <span class={CSS.summary}>{summary}</span> : null;
+  }
+
+  renderHeader(): VNode {
+    const headingNode = this.renderHeading();
+
+    const summaryNode = this.renderSummary();
+
+    return headingNode || summaryNode ? (
+      <header class={CSS.header} slot={SLOTS.headerContent}>
+        {headingNode}
+        {summaryNode}
+      </header>
+    ) : null;
+  }
+
   render() {
     const { el } = this;
 
@@ -325,7 +349,10 @@ export class CalciteFlowItem {
           })}
         >
           {this.renderBackButton(rtl)}
-          {this.renderHeading()}
+          <div class={CSS.header} slot="header-content">
+            {this.renderHeading()}
+            {this.renderSummary()}
+          </div>
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
