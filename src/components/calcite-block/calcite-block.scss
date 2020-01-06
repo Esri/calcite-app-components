@@ -12,6 +12,8 @@
 }
 
 .header-container {
+  display: flex;
+  align-items: center;
   & > .header {
     padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   }
@@ -45,18 +47,18 @@ calcite-loader[inline] {
 }
 
 .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  margin: 0;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   background-color: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
   font-family: var(--calcite-app-font-family);
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  margin: 0;
   text-align: unset;
-  width: 100%;
   color: var(--calcite-app-foreground);
   @include focusRingInset();
 }

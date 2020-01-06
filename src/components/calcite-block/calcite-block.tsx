@@ -31,18 +31,19 @@ export class CalciteBlock {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * When true, displays a drag handle in the header.
+   */
+  @Prop({ reflect: true }) dragHandle = false;
+
+  /**
    * Block heading.
    */
-  @Prop()
-  heading: string;
+  @Prop() heading: string;
 
   /**
    * When true, the block's content will be displayed.
    */
-  @Prop({
-    reflect: true
-  })
-  open = false;
+  @Prop({ reflect: true }) open = false;
 
   /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
@@ -52,20 +53,17 @@ export class CalciteBlock {
   /**
    * Block summary.
    */
-  @Prop()
-  summary: string;
+  @Prop() summary: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
    */
-  @Prop()
-  textExpand = TEXT.expand;
+  @Prop() textExpand = TEXT.expand;
 
   /**
    * Tooltip used for the toggle when expanded.
    */
-  @Prop()
-  textCollapse = TEXT.collapse;
+  @Prop() textCollapse = TEXT.collapse;
 
   /**
    * Used to set the component's color scheme.
@@ -161,6 +159,7 @@ export class CalciteBlock {
 
     const headerNode = (
       <div class={CSS.headerContainer}>
+        {this.dragHandle ? <calcite-handle></calcite-handle> : null}
         {collapsible ? (
           <button
             aria-label={toggleLabel}
@@ -178,8 +177,12 @@ export class CalciteBlock {
     );
 
     return (
-      <Host tabIndex={disabled ? -1 : null}>
-        <article aria-expanded={collapsible ? open.toString() : null} aria-busy={loading}>
+      <Host>
+        <article
+          aria-expanded={collapsible ? open.toString() : null}
+          aria-busy={loading}
+          tabIndex={disabled ? -1 : null}
+        >
           {headerNode}
           <div class={CSS.content} hidden={!hasContent || !open}>
             <CalciteScrim loading={loading} disabled={disabled}>
