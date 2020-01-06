@@ -26,6 +26,10 @@
   overflow: hidden;
 }
 
+.main--reversed {
+  flex-direction: row-reverse;
+}
+
 .content {
   height: 100%;
   width: 100%;
