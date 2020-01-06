@@ -1,6 +1,6 @@
 import { Host, h } from "@stencil/core";
 import CalciteScrim from "../utils/CalciteScrim";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 import { CSS } from "./resources";
 
 const renderScrim = (loading, disabled): VNode => {

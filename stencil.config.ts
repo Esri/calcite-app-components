@@ -56,7 +56,10 @@ export const create: () => Config = () => ({
   },
   srcDir: "src/components",
   excludeSrc: DEFAULT_EXCLUDE_SRC,
-  srcIndexHtml: "src/index.html"
+  srcIndexHtml: "src/index.html",
+  extras: {
+    appendChildSlotFix: true
+  }
 });
 
 export const config = create();
