@@ -82,17 +82,17 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
           <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
             <calcite-value-list multiple filter-enabled>
               <calcite-value-list-item text-label="2018 Population Density (Esri)" text-description="{POPDENS_CY}" value="POPDENS_CY">
-                <calcite-action slot="secondaryAction">
+                <calcite-action slot="secondary-action">
                   <calcite-icon scale="s" icon="camera-flash-on"></calcite-icon>
                 </calcite-action>
               </calcite-value-list-item>
               <calcite-value-list-item text-label="2018 Population Density [Updated]" text-description="{POPDENS_CY}" value="POPDENS_CY2">
-                <calcite-action slot="secondaryAction">
+                <calcite-action slot="secondary-action">
                   <calcite-icon scale="s" icon="banana"></calcite-icon>
                 </calcite-action>
               </calcite-value-list-item>
               <calcite-value-list-item text-label="2018 Total Households (Esri)" text-description="{TOTHH_CY}" value="TOTHH_CY">
-                <calcite-action slot="secondaryAction">
+                <calcite-action slot="secondary-action">
                   <calcite-icon scale="s" icon="person2"></calcite-icon>
                 </calcite-action>
               </calcite-value-list-item>
