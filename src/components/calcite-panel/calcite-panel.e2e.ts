@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { accessible, hidden, renders } from "../../tests/commonTests";
-import { CSS } from "./resources";
+import { CSS, SLOTS } from "./resources";
 import { setUpPage } from "../../tests/utils";
 
 describe("calcite-panel", () => {
@@ -44,11 +44,11 @@ describe("calcite-panel", () => {
   it("should be accessible", async () =>
     accessible(`
     <calcite-panel>
-      <div slot="header-leading-content">test L</div>
-      <div slot="header-content">test center</div>
-      <div slot="header-trailing-content">test T</div>
+      <div slot="${SLOTS.headerLeadingContent}">test L</div>
+      <div slot="${SLOTS.headerContent}">test center</div>
+      <div slot="${SLOTS.headerTrailingContent}">test T</div>
       <p>Content</p>
-      <div slot="footer">test Footer</div>
+      <div slot="${SLOTS.footer}">test Footer</div>
     </calcite-panel>
     `));
 });

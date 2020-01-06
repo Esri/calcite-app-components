@@ -4,7 +4,8 @@ import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getRoundRobinIndex } from "../utils/array";
-import { CalciteTheme } from "../interfaces";
+import { CalciteScale, CalciteTheme } from "../interfaces";
+import { CSS_UTILITY } from "../utils/resources";
 
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
@@ -38,7 +39,7 @@ export class CalciteFlowItem {
   /**
    * Specifies the maxiumum height of the panel that this wraps.
    */
-  @Prop({ reflect: true }) heightScale: "s" | "m" | "l";
+  @Prop({ reflect: true }) heightScale: CalciteScale;
 
   /**
    * Heading text.
@@ -59,6 +60,11 @@ export class CalciteFlowItem {
    * Shows a back button in the header.
    */
   @Prop() showBackButton = false;
+
+  /**
+   * Summary text. A description displayed underneath the heading.
+   */
+  @Prop() summary?: string;
 
   /**
    * 'Back' text string.
@@ -137,6 +143,8 @@ export class CalciteFlowItem {
       return;
     }
 
+    event.preventDefault();
+
     if (!menuOpen) {
       this.menuOpen = true;
     }
@@ -166,6 +174,8 @@ export class CalciteFlowItem {
     if (!length || currentIndex === -1) {
       return;
     }
+
+    event.preventDefault();
 
     if (key === "ArrowUp") {
       const value = getRoundRobinIndex(currentIndex - 1, length);
@@ -201,7 +211,7 @@ export class CalciteFlowItem {
 
     return showBackButton ? (
       <calcite-action
-        slot="header-leading-content"
+        slot={SLOTS.headerLeadingContent}
         key="back-button"
         aria-label={textBack}
         text={textBack}
@@ -287,16 +297,39 @@ export class CalciteFlowItem {
         ? this.renderMenuActionsContainer()
         : null;
 
-    return menuActionsNodes ? <div slot="header-trailing-content">{menuActionsNodes}</div> : null;
+    return menuActionsNodes ? (
+      <div slot={SLOTS.headerTrailingContent} class={CSS.headerActions}>
+        {menuActionsNodes}
+      </div>
+    ) : null;
   }
 
   renderHeading(): VNode {
     const { heading } = this;
 
     return heading ? (
-      <h2 class={CSS.heading} slot="header-content">
+      <h2 class={CSS.heading} slot={SLOTS.headerContent}>
         {heading}
       </h2>
+    ) : null;
+  }
+
+  renderSummary(): VNode {
+    const { summary } = this;
+
+    return summary ? <span class={CSS.summary}>{summary}</span> : null;
+  }
+
+  renderHeader(): VNode {
+    const headingNode = this.renderHeading();
+
+    const summaryNode = this.renderSummary();
+
+    return headingNode || summaryNode ? (
+      <header class={CSS.header} slot={SLOTS.headerContent}>
+        {headingNode}
+        {summaryNode}
+      </header>
     ) : null;
   }
 
@@ -311,9 +344,15 @@ export class CalciteFlowItem {
           loading={this.loading}
           disabled={this.disabled}
           height-scale={this.heightScale}
+          class={classnames({
+            [CSS_UTILITY.rtl]: rtl
+          })}
         >
           {this.renderBackButton(rtl)}
-          {this.renderHeading()}
+          <div class={CSS.header} slot="header-content">
+            {this.renderHeading()}
+            {this.renderSummary()}
+          </div>
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}

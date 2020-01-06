@@ -1,9 +1,12 @@
 export const BLACKLISTED_MENU_ACTIONS_COMPONENTS = ["calcite-pick-list", "calcite-value-list"];
 
 export const CSS = {
+  header: "header-content",
   heading: "heading",
+  summary: "summary",
   backButton: "back-button",
   footerActions: "footer-actions",
+  headerActions: "header-actions",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",
   menuButton: "menu-button",
@@ -18,6 +21,9 @@ export const TEXT = {
 };
 
 export const SLOTS = {
+  headerContent: "header-content",
+  headerLeadingContent: "header-leading-content",
+  headerTrailingContent: "header-trailing-content",
   menuActions: "menu-actions",
   footerActions: "footer-actions"
 };

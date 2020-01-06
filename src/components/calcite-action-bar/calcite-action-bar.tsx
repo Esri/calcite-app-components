@@ -7,8 +7,8 @@ import { getElementDir } from "../utils/dom";
 import { CSS, ICONS } from "./resources";
 
 /**
- * @slot bottom-actions - A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button.
- * @slot - A slot for adding `calcite-actions` that will appear at the top of the action bar.
+ * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
+ * @slot - A slot for adding `calcite-action`s that will appear at the top of the action bar.
  */
 @Component({
   tag: "calcite-action-bar",
@@ -49,7 +49,8 @@ export class CalciteActionBar {
   @Prop() textCollapse = "Collapse";
 
   /**
-   * Arrangement of the component.
+   * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
+   * in a LTR app will appear on the left.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
 

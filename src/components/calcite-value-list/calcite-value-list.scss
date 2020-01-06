@@ -2,6 +2,7 @@
   align-items: stretch;
   background-color: var(--calcite-app-background-clear);
   display: flex;
+  flex: 0 0 auto;
   flex-flow: column;
   position: relative;
 }

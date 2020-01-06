@@ -13,7 +13,8 @@ import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 /**
- * @slot secondaryAction - A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item.
+ * @slot secondaryAction - A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card.
+ * This is placed at the end of the item.
  */
 @Component({
   tag: "calcite-pick-list-item",
@@ -28,7 +29,8 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item.
+   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * This allows for a more compact version of the `calcite-pick-list-item`.
    */
   @Prop({ reflect: true }) compact? = false;
 
@@ -201,7 +203,7 @@ export class CalcitePickListItem {
       ) : null;
 
     return (
-      <Host role="checkbox" aria-checked={this.selected.toString()}>
+      <Host role="menuitemcheckbox" aria-checked={this.selected.toString()}>
         <label
           class={CSS.label}
           onClick={this.pickListClickHandler}

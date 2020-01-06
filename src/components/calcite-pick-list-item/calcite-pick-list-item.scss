@@ -8,7 +8,8 @@
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
-:host(:hover) {
+:host(:hover),
+:host(:focus) {
   background-color: var(--calcite-app-background-hover);
 }
 
