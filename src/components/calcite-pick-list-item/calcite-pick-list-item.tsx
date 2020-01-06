@@ -13,7 +13,7 @@ import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 /**
- * @slot secondaryAction - A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card.
+ * @slot secondary-action - A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card.
  * This is placed at the end of the item.
  */
 @Component({
@@ -218,7 +218,7 @@ export class CalcitePickListItem {
           </div>
         </label>
         <div class={CSS.action}>
-          <slot name="secondaryAction" />
+          <slot name="secondary-action" />
         </div>
       </Host>
     );
