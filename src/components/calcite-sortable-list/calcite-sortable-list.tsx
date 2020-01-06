@@ -5,15 +5,14 @@ import {
   Event,
   EventEmitter,
   Host,
-  // Listen,
+  Listen,
   // Method,
   Prop,
   State,
   h
 } from "@stencil/core";
-import { CSS } from "./resources";
-import { drag16 } from "@esri/calcite-ui-icons";
-import CalciteIcon from "../utils/CalciteIcon";
+// import { drag16 } from "@esri/calcite-ui-icons";
+// import CalciteIcon from "../utils/CalciteIcon";
 
 /**
  * @slot - A slot for adding pick-list-item elements or pick-list-groups elements. Items are displayed as a vertical list.
@@ -29,6 +28,11 @@ export class CalciteSortableList {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * The class on the handle elements.
+   */
+  @Prop() handleClass = "handle";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -50,9 +54,12 @@ export class CalciteSortableList {
 
   @State() handleActivated = false;
 
-  @State() items = [];
+  @State() items: HTMLElement[] = [];
 
-  // observer = new MutationObserver(() => { });
+  observer = new MutationObserver(() => {
+    this.cleanUpDragAndDrop();
+    this.setUpDragAndDrop();
+  });
 
   sortable: Sortable;
 
@@ -64,28 +71,14 @@ export class CalciteSortableList {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
-    // console.log(this.el.children);
-  }
-
   componentDidLoad() {
-    // this.handle = this.el.shadowRoot.querySelector(`.${CSS.handle}`).cloneNode(true);
-    // this.el.shadowRoot.querySelector(`.${CSS.handle}`).remove();
-    // this.items = Array.from(this.el.children);
-    // this.items.forEach(item => {
-    //   const sortItem = document.createElement('calcite-sort-item');
-    //   sortItem.classList.add(CSS.sortItem);
-    //   const handle = this.handle.cloneNode(true);
-    //   sortItem.appendChild(handle);
-    //   item.parentNode.insertBefore(sortItem, item);
-    //   sortItem.appendChild(item);
-    // });
+    this.items = Array.from(this.el.children);
     this.setUpDragAndDrop();
-    // this.observer.observe(this.el, { childList: true, subtree: true });
+    this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
   componentDidUnload() {
-    // this.observer.disconnect();
+    this.observer.disconnect();
     this.cleanUpDragAndDrop();
   }
 
@@ -101,6 +94,49 @@ export class CalciteSortableList {
    */
   @Event() calciteListOrderChange: EventEmitter;
 
+  @Listen("calciteHandleNudge") calciteHandleNudgeHandler(event: CustomEvent) {
+    const sortItem = this.items.find((item) => {
+      return item.contains(event.detail.handle);
+    });
+
+    const lastIndex = this.items.length - 1;
+    const startingIndex = this.items.indexOf(sortItem);
+    let appendInstead = false;
+    let buddyIndex;
+    switch (event.detail.direction) {
+      case "up":
+        event.preventDefault();
+        if (startingIndex === 0) {
+          appendInstead = true;
+        } else {
+          buddyIndex = startingIndex - 1;
+        }
+        break;
+      case "down":
+        event.preventDefault();
+        if (startingIndex === lastIndex) {
+          buddyIndex = 0;
+        } else if (startingIndex === lastIndex - 1) {
+          appendInstead = true;
+        } else {
+          buddyIndex = startingIndex + 2;
+        }
+        break;
+      default:
+        return;
+    }
+    if (appendInstead) {
+      sortItem.parentElement.appendChild(sortItem);
+    } else {
+      sortItem.parentElement.insertBefore(sortItem, this.items[buddyIndex]);
+    }
+
+    this.items = Array.from(this.el.children);
+
+    event.detail.handle.activated = true;
+    event.detail.handle.shadowRoot.querySelector(`.${this.handleClass}`).focus();
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -109,7 +145,7 @@ export class CalciteSortableList {
 
   setUpDragAndDrop(): void {
     this.sortable = Sortable.create(this.el, {
-      handle: `.${CSS.handle}`,
+      handle: `.${this.handleClass}`,
       onUpdate: () => {
         this.calciteListOrderChange.emit();
       }
@@ -121,105 +157,15 @@ export class CalciteSortableList {
     this.sortable = null;
   }
 
-  keyDownHandler = (event) => {
-    console.log(event);
-    // const handleElement = event.composedPath().find((item) => {
-    //   return item.dataset?.jsHandle;
-    // });
-    // const valueListElement = event.composedPath().find((item) => {
-    //   return item.tagName?.toLowerCase() === "calcite-block";
-    // });
-    // // Only trigger keyboard sorting when the internal drag handle is focused and activated
-    // if (!handleElement || !this.handleActivated) {
-    //   return;
-    // }
-    // const lastIndex = this.items.length - 1;
-    // const value = valueListElement.value;
-    // const startingIndex = this.items.findIndex((item) => {
-    //   return item.value === value;
-    // });
-    // let appendInstead = false;
-    // let buddyIndex;
-    // switch (event.key) {
-    //   case "ArrowUp":
-    //     event.preventDefault();
-    //     if (startingIndex === 0) {
-    //       appendInstead = true;
-    //     } else {
-    //       buddyIndex = startingIndex - 1;
-    //     }
-    //     break;
-    //   case "ArrowDown":
-    //     event.preventDefault();
-    //     if (startingIndex === lastIndex) {
-    //       buddyIndex = 0;
-    //     } else if (startingIndex === lastIndex - 1) {
-    //       appendInstead = true;
-    //     } else {
-    //       buddyIndex = startingIndex + 2;
-    //     }
-    //     break;
-    //   default:
-    //     return;
-    // }
-    // if (appendInstead) {
-    //   valueListElement.parentElement.appendChild(valueListElement);
-    // } else {
-    //   valueListElement.parentElement.insertBefore(valueListElement, this.items[buddyIndex]);
-    // }
-
-    // handleElement.focus();
-    // valueListElement.handleActivated = true;
-  };
-
-  handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === " ") {
-      this.handleActivated = !this.handleActivated;
-    }
-  };
-
-  handleBlur = () => {
-    this.handleActivated = false;
-  };
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
-  renderHandle() {
-    return this.handle.cloneNode(true);
-    // return (
-    //   <span
-    //       role="button"
-    //       class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
-    //       tabindex="0"
-    //       data-js-handle="true"
-    //       aria-pressed={this.handleActivated.toString()}
-    //       onKeyDown={this.handleKeyDown}
-    //       onBlur={this.handleBlur}
-    //     >
-    //       <CalciteIcon size="16" path={drag16} />
-    //   </span>
-    // );
-  }
-
   render() {
     return (
-      <Host onKeyDown={this.keyDownHandler}>
-        <span
-          role="button"
-          class={{ [CSS.handle]: true, [CSS.handleActivated]: this.handleActivated }}
-          tabindex="0"
-          data-js-handle="true"
-          aria-pressed={this.handleActivated.toString()}
-          onKeyDown={this.handleKeyDown}
-          onBlur={this.handleBlur}
-        >
-          <CalciteIcon size="16" path={drag16} />
-        </span>
-        <span>sort me</span>
+      <Host>
         <slot />
       </Host>
     );
