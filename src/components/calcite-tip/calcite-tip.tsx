@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 
 /**
  * @slot thumbnail - A slot for adding an HTML image element to the tip.
