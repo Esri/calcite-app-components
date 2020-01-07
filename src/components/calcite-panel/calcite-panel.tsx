@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
+  Prop,
+  Watch,
+  h
+} from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
@@ -74,6 +84,8 @@ export class CalcitePanel {
 
   @Element() el: HTMLCalcitePanelElement;
 
+  private dismissButtonEl: HTMLCalciteActionElement;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -104,6 +116,17 @@ export class CalcitePanel {
 
   // --------------------------------------------------------------------------
   //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocusDismissButton() {
+    this.dismissButtonEl?.setFocus();
+  }
+
+  // --------------------------------------------------------------------------
+  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
@@ -129,7 +152,12 @@ export class CalcitePanel {
     const { dismiss, dismissible, textClose } = this;
 
     const dismissibleNode = dismissible ? (
-      <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
+      <calcite-action
+        ref={(dismissButtonEl) => (this.dismissButtonEl = dismissButtonEl)}
+        aria-label={textClose}
+        text={textClose}
+        onClick={dismiss}
+      >
         <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
