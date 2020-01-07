@@ -2,13 +2,15 @@
 
 :host {
   display: inline-flex;
-}
-
-.container {
-  display: flex;
   flex-direction: column;
   box-shadow: var(--calcite-app-shadow-2);
+  max-width: 15vw;
+  overflow-y: auto;
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+}
+
+:host([expanded]) {
+  max-width: 20vw;
 }
 
 ::slotted(calcite-action-group) {
@@ -19,4 +21,10 @@
 
 ::slotted(calcite-action-group:last-child) {
   border-bottom: none;
+}
+
+.action-group--bottom {
+  padding-bottom: 0;
+  flex-grow: 1;
+  justify-content: flex-end;
 }

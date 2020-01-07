@@ -7,9 +7,9 @@ import {
   titlelessDocsPage
 } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { dir, theme } = ATTRIBUTES;
+const { dir, theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
-import { SCALES, SLOTS } from "./resources";
+import { SLOTS } from "./resources";
 
 export default {
   title: "components|calcite-panel",
@@ -42,7 +42,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "height-scale",
-    value: select("heightScale", SCALES, "m")
+    value: select("heightScale", scale.values, scale.defaultValue)
   },
   {
     name: "loading",

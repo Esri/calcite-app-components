@@ -1,12 +1,10 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
-import { getItem, setItem } from "../utils/localStorage";
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
-import { CSS, ICONS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/internal";
 
 /**
- * @slot info - A slot for adding an HTML element to the body of the tip.
- * @slot link - A slot for adding an HTML anchor element to the body of the tip.
+ * @slot thumbnail - A slot for adding an HTML image element to the tip.
  */
 @Component({
   tag: "calcite-tip",
@@ -20,9 +18,9 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
   /**
-   * The local storage id used for an instance of a tip.
+   * No longer displays the tip.
    */
-  @Prop() storageId: string;
+  @Prop({ mutable: true }) dismissed = false;
 
   /**
    * Indicates whether the tip can be dismissed.
@@ -32,7 +30,7 @@ export class CalciteTip {
   /**
    * The heading of the tip.
    */
-  @Prop() heading: string;
+  @Prop() heading?: string;
 
   /**
    * The selected state of the tip if it is being used inside a `calcite-tip-manager`.
@@ -40,22 +38,12 @@ export class CalciteTip {
   @Prop({
     reflect: true
   })
-  selected: boolean;
+  selected?: boolean;
 
   /**
    * Alternate text for closing the tip.
    */
   @Prop() textClose = TEXT.close;
-
-  /**
-   * Alternate text for description of the thumbnail.
-   */
-  @Prop() textThumbnail: string;
-
-  /**
-   * A string of the path to the thumbnail.
-   */
-  @Prop() thumbnail: string;
 
   /**
    * Used to set the component's color scheme.
@@ -69,8 +57,6 @@ export class CalciteTip {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteTipElement;
-
-  @State() dismissed = getItem(`${this.el.tagName.toLowerCase()}-${this.storageId}`) !== null;
 
   // --------------------------------------------------------------------------
   //
@@ -91,12 +77,6 @@ export class CalciteTip {
 
   hideTip = () => {
     this.dismissed = true;
-
-    const { storageId } = this;
-
-    if (storageId) {
-      setItem(`${this.el.tagName.toLowerCase()}-${storageId}`, "dismissed");
-    }
 
     this.calciteTipDismiss.emit();
   };
@@ -127,30 +107,19 @@ export class CalciteTip {
   }
 
   renderImageFrame(): VNode {
-    const { thumbnail, textThumbnail } = this;
+    const { el } = this;
 
-    return thumbnail ? (
+    return el.querySelector(`[slot=${SLOTS.thumbnail}]`) ? (
       <div class={CSS.imageFrame}>
-        <img src={thumbnail} alt={textThumbnail} />
+        <slot name={SLOTS.thumbnail} />
       </div>
     ) : null;
   }
 
   renderInfoNode(): VNode {
-    const { el } = this;
-
-    const infoSlotNode = el.querySelector("[slot=info]") ? <slot name="info" /> : null;
-
-    const linkSlotNode = el.querySelector("[slot=link]") ? (
-      <p class={CSS.link}>
-        <slot name="link" />
-      </p>
-    ) : null;
-
     return (
       <div class={CSS.info}>
-        {infoSlotNode}
-        {linkSlotNode}
+        <slot />
       </div>
     );
   }

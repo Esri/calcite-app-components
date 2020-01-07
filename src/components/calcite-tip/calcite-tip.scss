@@ -54,11 +54,11 @@ $tip-image-max-width: 100% !default;
   }
 }
 
-.info ::slotted(p) {
+::slotted(p) {
   margin-top: 0;
 }
 
-.info ::slotted(a) {
+::slotted(a) {
   color: var(--calcite-app-foreground-link);
 }
 
@@ -67,4 +67,7 @@ $tip-image-max-width: 100% !default;
   img {
     max-width: $tip-image-max-width;
   }
+}
+.image-frame ::slotted(img) {
+  max-width: $tip-image-max-width;
 }
