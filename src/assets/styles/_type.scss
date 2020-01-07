@@ -14,28 +14,4 @@
 
   --calcite-app-font-weight: 400;
   --calcite-app-font-weight-demi: 600;
-
-  font-family: var(--calcite-app-font-family);
-  font-size: var(--calcite-app-base-font-size);
-  line-height: var(--calcite-app-line-height);
-}
-
-.heading {
-  font-weight: var(--calcite-app-font-weight-demi);
-}
-
-h1.heading {
-  font-size: var(--calcite-app-font-size-3);
-}
-
-h2.heading {
-  font-size: var(--calcite-app-font-size-2);
-}
-
-h3.heading {
-  font-size: var(--calcite-app-font-size-1);
-}
-h4.heading,
-h5.heading {
-  font-size: var(--calcite-app-font-size-0);
 }
