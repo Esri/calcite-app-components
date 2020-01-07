@@ -7,7 +7,11 @@ export function getElementProp(el: HTMLElement, prop, value) {
   return closestWithProp ? closestWithProp.getAttribute(prop) : value;
 }
 
-export function focusElement(el: HTMLCalciteActionElement | HTMLElement): void {
+export interface CalciteFocusableElement extends HTMLElement {
+  setFocus?: () => void;
+}
+
+export function focusElement(el: CalciteFocusableElement): void {
   if (!el) {
     return;
   }
