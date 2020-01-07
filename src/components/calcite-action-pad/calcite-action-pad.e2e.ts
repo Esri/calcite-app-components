@@ -94,9 +94,10 @@ describe("calcite-action-pad", () => {
   it("should be accessible", async () =>
     accessible(`
     <calcite-action-pad>
-      (-action as calcite)-group>
-        (-action as calcite) text="Add">
-        (/calcite-action> as )
+       <calcite-action-group>
+        <calcite-action text="Add">
+          <calcite-icon icon="plus" scale="s"></calcite-icon>
+        </calcite-action>
       </calcite-action-group>
     </calcite-action-pad>
     `));
@@ -104,9 +105,10 @@ describe("calcite-action-pad", () => {
   it("should be accessible when expanded", async () =>
     accessible(`
     <calcite-action-pad expanded>
-      (-action as calcite)-group>
-        (-action as calcite) text="Add">
-        (/calcite-action> as )
+      <calcite-action-group>
+        <calcite-action text="Add">
+          <calcite-icon icon="plus" scale="s"></calcite-icon>
+        </calcite-action>
       </calcite-action-group>
     </calcite-action-pad>
     `));

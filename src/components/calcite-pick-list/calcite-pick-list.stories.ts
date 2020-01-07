@@ -54,9 +54,7 @@ const createAttributes: () => Attributes = () => [
 ];
 
 const action = `<calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear">
-  <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-    <circle cx="7" cy="7" r="7" fill="#f689d8" />
-  </svg>
+  <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
 </calcite-action>`;
 
 export const basic = () =>

@@ -28,14 +28,10 @@ describe("calcite-flow-item", () => {
     <calcite-flow-item>
       <calcite-pick-list>
         <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
-          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-          </svg>
+          <calcite-icon icon="hamburger" scale="s"></calcite-icon>
         </calcite-action>
         <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
-          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-          </svg>
+          <calcite-icon icon="hamburger" scale="s"></calcite-icon>
         </calcite-action>
       </calcite-pick-list>
     </calcite-flow-item>
@@ -58,9 +54,7 @@ describe("calcite-flow-item", () => {
       <calcite-pick-list>
         <div slot="${SLOTS.menuActions}">
           <calcite-action indicator text="Cool">
-            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-            </svg>
+            <calcite-icon icon="hamburger" scale="s"></calcite-icon>
           </calcite-action>
         </div>
       </calcite-pick-list>
@@ -206,16 +200,12 @@ describe("calcite-flow-item", () => {
       <calcite-flow-item heading="hello world" summary="test" menu-open show-back-button>
         <div slot="${SLOTS.menuActions}">
           <calcite-action text="Add">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-            </svg>
+            <calcite-icon icon="plus" scale="s"></calcite-icon>
           </calcite-action>
         </div>
         <div slot="${SLOTS.footerActions}">
          <calcite-action text="Add">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-              <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-            </svg>
+            <calcite-icon icon="plus" scale="s"></calcite-icon>
           </calcite-action>
         </div>
       </calcite-flow-item>
