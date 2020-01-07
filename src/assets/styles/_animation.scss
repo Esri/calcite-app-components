@@ -1,7 +1,7 @@
 // Animation
 $animation-time: 250ms !default;
 
-:root {
+%component-animation {
   @keyframes calcite-app-fade-in {
     0% {
       opacity: 0;

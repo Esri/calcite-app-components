@@ -1,5 +1,4 @@
-@include baseComponentHost();
-
+@import "../../assets/styles/component";
 :host {
   background-color: var(--calcite-app-background-clear);
   display: block;

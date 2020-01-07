@@ -1,0 +1,20 @@
+%component-theme-dark {
+  --calcite-app-background: #{$darker-gray};
+  --calcite-app-foreground: #{$light-gray};
+
+  --calcite-app-background-hover: #{$darkest-gray};
+  --calcite-app-foreground-hover: #{$lightest-gray};
+
+  --calcite-app-background-active: #{$off-black};
+  --calcite-app-foreground-active: #{$vibrant-blue};
+
+  --calcite-app-foreground-subtle: #{$lighter-gray};
+
+  --calcite-app-background-content: #{$darkest-gray};
+
+  --calcite-app-border: #{$darkest-gray};
+  --calcite-app-border-hover: #{$darkest-gray};
+  --calcite-app-border-subtle: #{$darkest-gray};
+
+  --calcite-app-scrim: #{rgba($darker-gray, 0.8)};
+}

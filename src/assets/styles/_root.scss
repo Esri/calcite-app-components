@@ -1,0 +1,7 @@
+:root {
+  @extend %component-animation;
+  @extend %component-layout;
+  @extend %component-type;
+  @extend %component-shadow;
+  @extend %component-theme-light;
+}

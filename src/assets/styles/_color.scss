@@ -10,7 +10,3 @@ $blue: $h-bb-060;
 $dark-blue: $h-bb-070;
 $lightest-blue: $h-bb-010;
 $vibrant-blue: $v-bb-120;
-
-:root {
-  @include calciteLightThemeVars();
-}

@@ -1,4 +1,4 @@
-@include baseComponentHost();
+@import "../../assets/styles/component";
 
 :host {
   display: flex;
@@ -6,6 +6,7 @@
   padding: 0;
   padding: var(--calcite-app-cap-spacing-half) 0;
 }
+
 :host(:first-child) {
   padding-top: 0;
 }

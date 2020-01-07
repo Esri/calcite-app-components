@@ -1,5 +1,4 @@
-@include baseComponentHost();
-
+@import "../../assets/styles/component";
 /* Variables, mixins, @keyframes*/
 $tip-manager-height: 18vh;
 $tip-max-width: 540px;
