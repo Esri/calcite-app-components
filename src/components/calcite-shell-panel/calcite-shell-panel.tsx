@@ -1,10 +1,7 @@
 import classnames from "classnames";
-
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-
-import { CSS } from "./resources";
-
-import { CalciteLayout } from "../interfaces";
+import { CSS, SLOTS } from "./resources";
+import { CalciteLayout, CalciteScale } from "../interfaces";
 
 /**
  * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
@@ -40,7 +37,7 @@ export class CalciteShellPanel {
   /**
    * This sets limits the height of the content area. It only applies when detached is true.
    */
-  @Prop({ reflect: false }) detachedScale: "s" | "m" | "l" = "m";
+  @Prop({ reflect: false }) detachedScale: CalciteScale = "m";
 
   /**
    * Arrangement of the component.
@@ -73,7 +70,7 @@ export class CalciteShellPanel {
       </div>
     );
 
-    const actionBarNode = <slot name="action-bar" />;
+    const actionBarNode = <slot name={SLOTS.actionBar} />;
 
     const mainNodes = [actionBarNode, contentNode];
 

@@ -1,18 +1,11 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-import { CSS, ICONS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
-
-const SLOTS = {
-  headerContent: "header-content",
-  headerLeadingContent: "header-leading-content",
-  headerTrailingContent: "header-trailing-content",
-  footer: "footer"
-};
 
 /**
  * @slot header-content - A slot for adding content in the center of the header.

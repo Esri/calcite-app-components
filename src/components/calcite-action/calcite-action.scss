@@ -1,5 +1,5 @@
 :host {
-  display: block;
+  display: flex;
   background-color: var(--calcite-app-background-clear);
 }
 
@@ -27,7 +27,8 @@
     padding-right: var(--calcite-app-side-spacing-quarter);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--calcite-app-background-hover);
     color: var(--calcite-app-foreground-hover);
     fill: var(--calcite-app-foreground-hover);
@@ -46,7 +47,6 @@
   }
 
   .text-container {
-    flex: 1 1 auto;
     line-height: 1rem;
     white-space: nowrap;
     overflow: hidden;
@@ -61,9 +61,10 @@
   }
 
   .text-container--visible {
+    flex: 1 1 auto;
     margin: 0 var(--calcite-app-side-spacing-half);
     opacity: 1;
-    width: 100%;
+    width: auto;
   }
 }
 
@@ -81,6 +82,7 @@
 
 :host([active]) .button,
 :host([active]) .button:hover,
+:host([active]) .button:focus,
 :host([active][loading]) .button {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
@@ -92,13 +94,15 @@
   transition: box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
-:host([appearance="clear"]) .button:hover {
+:host([appearance="clear"]) .button:hover,
+:host([appearance="clear"]) .button:focus {
   background-color: var(--calcite-app-background-clear);
   @include borderShadowHover();
 }
 
 :host([active][appearance="clear"]) .button,
-:host([active][appearance="clear"]) .button:hover {
+:host([active][appearance="clear"]) .button:hover,
+:host([active][appearance="clear"]) .button:focus {
   color: var(--calcite-app-foreground-active);
   fill: var(--calcite-app-foreground-active);
   background-color: var(--calcite-app-background-active);
@@ -111,7 +115,8 @@
 }
 
 :host([loading]) .button,
-:host([loading]) .button:hover {
+:host([loading]) .button:hover,
+:host([loading]) .button:focus {
   background-color: var(--calcite-app-background);
 }
 
@@ -121,14 +126,16 @@
 }
 
 :host([disabled]) .button,
-:host([disabled]) .button:hover {
+:host([disabled]) .button:hover,
+:host([disabled]) .button:focus {
   cursor: default;
   opacity: var(--calcite-app-disabled-opacity);
   background-color: var(--calcite-app-background);
 }
 
 :host([disabled][active]) .button,
-:host([disabled][active]) .button:hover {
+:host([disabled][active]) .button:hover,
+:host([disabled][active]) .button:focus {
   opacity: var(--calcite-app-disabled-opacity);
   background-color: var(--calcite-app-background-active);
 }
@@ -160,7 +167,8 @@
   padding-left: var(--calcite-app-side-spacing);
 }
 
-:host([indicator]) .button:hover::after {
+:host([indicator]) .button:hover::after,
+:host([indicator]) .button:focus::after {
   border-color: var(--calcite-app-background-hover);
 }
 

@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 
-import { CSS, TEXT } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
@@ -27,10 +27,10 @@ describe("calcite-flow-item", () => {
     const pageContent = `
     <calcite-flow-item>
       <calcite-pick-list>
-        <calcite-action slot="menu-actions" indicator text="Cool">
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
           <calcite-icon icon="hamburger" scale="s"></calcite-icon>
         </calcite-action>
-        <calcite-action slot="menu-actions" indicator text="Cool">
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
           <calcite-icon icon="hamburger" scale="s"></calcite-icon>
         </calcite-action>
       </calcite-pick-list>
@@ -52,7 +52,7 @@ describe("calcite-flow-item", () => {
     const pageContent = `
     <calcite-flow-item>
       <calcite-pick-list>
-        <div slot="menu-actions">
+        <div slot="${SLOTS.menuActions}">
           <calcite-action indicator text="Cool">
             <calcite-icon icon="hamburger" scale="s"></calcite-icon>
           </calcite-action>
@@ -74,7 +74,7 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>'
+      `<calcite-flow-item><div slot="${SLOTS.menuActions}"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>`
     );
 
     const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
@@ -88,6 +88,16 @@ describe("calcite-flow-item", () => {
     await page.setContent('<calcite-flow-item heading="test"></calcite-flow-item>');
 
     const element = await page.find(`calcite-flow-item >>> .${CSS.heading}`);
+
+    expect(element).toEqualText("test");
+  });
+
+  it("should have default summary", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<calcite-flow-item summary="test"></calcite-flow-item>');
+
+    const element = await page.find(`calcite-flow-item >>> .${CSS.summary}`);
 
     expect(element).toEqualText("test");
   });
@@ -114,7 +124,7 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-flow-item><div slot="menu-actions"><calcite-action text="hello"></calcite-action><calcite-action text="hello2"></calcite-action></div></calcite-flow-item>'
+      `<calcite-flow-item><div slot="${SLOTS.menuActions}"><calcite-action text="hello"></calcite-action><calcite-action text="hello2"></calcite-action></div></calcite-flow-item>`
     );
 
     await page.waitForChanges();
@@ -187,13 +197,13 @@ describe("calcite-flow-item", () => {
 
   it("should be accessible", async () =>
     accessible(`
-      <calcite-flow-item heading="hello world" menu-open show-back-button>
-        <div slot="menu-actions">
+      <calcite-flow-item heading="hello world" summary="test" menu-open show-back-button>
+        <div slot="${SLOTS.menuActions}">
           <calcite-action text="Add">
             <calcite-icon icon="plus" scale="s"></calcite-icon>
           </calcite-action>
         </div>
-        <div slot="footer-actions">
+        <div slot="${SLOTS.footerActions}">
          <calcite-action text="Add">
             <calcite-icon icon="plus" scale="s"></calcite-icon>
           </calcite-action>

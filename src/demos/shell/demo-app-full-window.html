@@ -13,7 +13,7 @@
     <script src="https://js.arcgis.com/4.12/"></script>
     <style>
       html, body, main, .shell-container {
-        position:relative;
+        position: relative;
         width: 100%;
         height: 100%;
       }
@@ -98,7 +98,6 @@
                 </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
-            <div>
               <calcite-block collapsible  heading="Primary Content" summary="This is the primary.">
                 <calcite-block-content>
                   <calcite-action text="Side ActionPad" text-enabled id="action-pad-button" indicator>
@@ -145,7 +144,6 @@
                   </div>
                 </calcite-block-content>
               </calcite-block>
-            </div>
           </calcite-shell-panel>
 
           <calcite-shell-panel slot="contextual-panel" layout="trailing" detached detached-scale="l">
@@ -194,9 +192,9 @@
                         value="POPDENS_CY"
                       >
                         <calcite-action
-                          slot="secondaryAction"
+                          slot="secondary-action"
                           id="action-test"
-                          label="click-me"
+                         text="click-me"
                           onClick="console.log('clicked');"
                         >
                           <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -208,9 +206,9 @@
                         value="POPDENS_CY2"
                       >
                         <calcite-action
-                          slot="secondaryAction"
+                          slot="secondary-action"
                           id="action-test"
-                          label="click-me"
+                         text="click-me"
                           onClick="console.log('clicked');"
                         >
                           <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -222,9 +220,9 @@
                         value="TOTHH_CY"
                       >
                         <calcite-action
-                          slot="secondaryAction"
+                          slot="secondary-action"
                           id="action-test"
-                          label="click-me"
+                         text="click-me"
                           onClick="console.log('clicked');"
                         >
                           <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -256,9 +254,9 @@
                     value="POPDENS_CY"
                   >
                     <calcite-action
-                      slot="secondaryAction"
+                      slot="secondary-action"
                       id="action-test"
-                      label="click-me"
+                     text="click-me"
                       onClick="console.log('clicked');"
                     >
                       <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -270,9 +268,9 @@
                     value="POPDENS_CY2"
                   >
                     <calcite-action
-                      slot="secondaryAction"
+                      slot="secondary-action"
                       id="action-test"
-                      label="click-me"
+                     text="click-me"
                       onClick="console.log('clicked');"
                     >
                       <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -284,9 +282,9 @@
                     value="TOTHH_CY"
                   >
                     <calcite-action
-                      slot="secondaryAction"
+                      slot="secondary-action"
                       id="action-test"
-                      label="click-me"
+                     text="click-me"
                       onClick="console.log('clicked');"
                     >
                       <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -302,9 +300,9 @@
                         value="POPDENS_CY"
                       >
                         <calcite-action
-                          slot="secondaryAction"
+                          slot="secondary-action"
                           id="action-test"
-                          label="click-me"
+                         text="click-me"
                           onClick="console.log('clicked');"
                         >
                           <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -316,9 +314,9 @@
                         value="POPDENS_CY2"
                       >
                         <calcite-action
-                          slot="secondaryAction"
+                          slot="secondary-action"
                           id="action-test"
-                          label="click-me"
+                         text="click-me"
                           onClick="console.log('clicked');"
                         >
                           <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -330,9 +328,9 @@
                         value="TOTHH_CY"
                       >
                         <calcite-action
-                          slot="secondaryAction"
+                          slot="secondary-action"
                           id="action-test"
-                          label="click-me"
+                         text="click-me"
                           onClick="console.log('clicked');"
                         >
                           <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -366,7 +364,7 @@
                   </calcite-block-content>
                 </calcite-block>
                 <calcite-button slot="footer-actions" width="half">Save</calcite-button>
-                <calcite-button slot="footer-actions" width="half" appearance="clear">Cancel</button>
+                <calcite-button slot="footer-actions" width="half" appearance="clear">Cancel</calcite-button>
               </calcite-flow-item>
             </calcite-flow>
           </calcite-shell-panel>
@@ -443,7 +441,7 @@
         <calcite-panel theme="light">
           <h3 class="heading" slot="header-content">WE CARE A LOT</h3>
           <calcite-pick-list filter-enabled filter-sticky>
-            <calcite-action slot="menu-actions" label="options">
+            <calcite-action slot="menu-actions" text="options">
               <calcite-icon icon="ellipsis" scale="s"></calcite-icon>
             </calcite-action>
             <calcite-pick-list-item text-label="about disasters, fires, floods and killer bees" value="1"></calcite-pick-list-item>

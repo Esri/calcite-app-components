@@ -1,6 +1,6 @@
 import { Host, h } from "@stencil/core";
 import CalciteScrim from "../utils/CalciteScrim";
-import { VNode } from "@stencil/core/dist/declarations";
+import { VNode } from "@stencil/core/internal";
 import { CSS } from "./resources";
 
 const renderScrim = (loading, disabled): VNode => {
@@ -17,7 +17,7 @@ export const List = ({ props, ...rest }): VNode => {
     textFilterPlaceholder
   } = props;
   return (
-    <Host aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
+    <Host role="menu" aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
       <header class={{ [CSS.sticky]: true }}>
         {filterEnabled ? (
           <calcite-filter

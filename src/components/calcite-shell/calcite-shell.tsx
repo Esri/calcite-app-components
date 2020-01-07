@@ -1,8 +1,7 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
-
-import { CSS } from "./resources";
-
+import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
+import classnames from "classnames";
 
 /**
  * @slot shell-header - A slot for adding header content. This content will be positioned at the top of the shell.
@@ -44,9 +43,9 @@ export class CalciteShell {
   // --------------------------------------------------------------------------
 
   renderHeader() {
-    const hasHeader = !!this.el.querySelector("[slot=shell-header]");
+    const hasHeader = !!this.el.querySelector(`[slot=${SLOTS.header}]`);
 
-    return hasHeader ? <slot name="shell-header" /> : null;
+    return hasHeader ? <slot name={SLOTS.header} /> : null;
   }
 
   renderContent() {
@@ -58,22 +57,30 @@ export class CalciteShell {
   }
 
   renderFooter() {
-    const hasFooter = !!this.el.querySelector("[slot=shell-footer]");
+    const hasFooter = !!this.el.querySelector(`[slot=${SLOTS.footer}]`);
 
     return hasFooter ? (
       <div class={CSS.footer}>
-        <slot name="shell-footer" />
+        <slot name={SLOTS.footer} />
       </div>
     ) : null;
   }
 
   renderMain() {
+    const primaryPanel = this.el.querySelector(
+      `[slot=${SLOTS.primaryPanel}]`
+    ) as HTMLCalciteShellPanelElement;
+
+    const mainClasses = {
+      [CSS.mainReversed]: primaryPanel?.layout === "trailing"
+    };
+
     return (
-      <div class={CSS.main}>
-        <slot name="primary-panel" />
+      <div class={classnames(CSS.main, mainClasses)}>
+        <slot name={SLOTS.primaryPanel} />
         {this.renderContent()}
-        <slot name="contextual-panel" />
-        <slot name="tip-manager" />
+        <slot name={SLOTS.contextualPanel} />
+        <slot name={SLOTS.tipManager} />
       </div>
     );
   }

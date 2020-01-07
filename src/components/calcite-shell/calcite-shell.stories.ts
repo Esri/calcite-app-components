@@ -1,25 +1,39 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
 import { CalciteLayoutValues } from "../calcite-shell-panel/resources";
+import { SCALES } from "./resources";
 
 export default {
   title: "components|calcite-shell",
   decorators: [withKnobs],
   parameters: {
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
     notes: {
       shell: parseReadme(readme),
       panel: parseReadme(panelReadme)
-    },
-    backgrounds: darkBackground
+    }
   }
 };
 
 const createAttributes: (group: string) => Attributes = (group) => {
   return [
+    {
+      name: "dir",
+      value: select("dir", dir.values, dir.defaultValue, group)
+    },
     {
       name: "theme",
       value: select("theme", theme.values, theme.defaultValue, group)
@@ -38,12 +52,16 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
       value: boolean("collapsed", false, group)
     },
     {
-      name: "layout",
-      value: select("layout", CalciteLayoutValues, group === "Leading Panel" ? "leading" : "trailing", group)
+      name: "detached",
+      value: boolean("detached", false, group)
     },
     {
-      name: "theme",
-      value: select("theme", theme.values, theme.defaultValue, group)
+      name: "detached-scale",
+      value: select("detachedScale", SCALES, "m", group)
+    },
+    {
+      name: "layout",
+      value: select("layout", CalciteLayoutValues, group === "Leading Panel" ? "leading" : "trailing", group)
     }
   ];
 };

@@ -1,5 +1,11 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { TEXT } from "./resources";
 import { ATTRIBUTES } from "../../../.storybook/resources";
@@ -8,14 +14,21 @@ export default {
   title: "components|calcite-tip",
   decorators: [withKnobs],
   parameters: {
-    notes: parseReadme(readme),
-    backgrounds: darkBackground
+    backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
+    notes: parseReadme(readme)
   }
 };
 
-const { theme } = ATTRIBUTES;
+const { dir, theme } = ATTRIBUTES;
 
 const createAttributes: () => Attributes = () => [
+  {
+    name: "dir",
+    value: select("dir", dir.values, dir.defaultValue)
+  },
   {
     name: "storage-id",
     value: text("storageId", "")

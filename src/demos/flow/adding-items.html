@@ -44,11 +44,9 @@
 
         <h2>Adding new Flow-items to Flow</h2>
         <calcite-flow id="flow">
-          <calcite-flow-item heading="What are the most popular commute alternatives?">
-            <div slot="menu-actions">
-              <button>Reset</button>
-              <button>Rename</button>
-            </div>
+          <calcite-flow-item heading="What are the most popular commute alternatives?" summary="I don't have an answer to this questions. Stop asking me this question.">
+            <button slot="menu-actions">Reset</button>
+            <button slot="menu-actions">Rename</button>
             <div slot="footer-actions">
               <button class="btn">Save</button>
               <button class="btn btn-secondary">Cancel</button>
@@ -69,14 +67,13 @@
   addFlowButtonNode.addEventListener("click", function() {
   var newNode = document.createElement("calcite-flow-item");
   newNode.heading = "Item " + (flowNode.childElementCount + 1);
+  newNode.summary =  "I don't have an answer to this questions. Stop asking me this question."
   newNode.innerHTML = `
       &lt;p&gt;&lt;img src="https://via.placeholder.com/300x200" alt="placeholder" /&gt;&lt;/p>
       &lt;p&gt;&lt;img src="https://via.placeholder.com/300x200" alt="placeholder" /&gt;&lt;/p&gt;
-      &lt;div slot="menu-actions"&gt;
-      &lt;calcite-action&gt;
-        &lt;calcite-icon icon="pencil" scale="s"&gt;&lt;/calcite-icon&gt;
+      &lt;calcite-action slot="menu-actions"&gt;
+          &lt;calcite-icon icon="pencil" scale="s"&gt;&lt;/calcite-icon&gt;
       &lt;/calcite-action&gt;
-      &lt;/div&gt;
       &lt;div slot="footer-actions"&gt;
       &lt;button&gt;Save&lt;/button&gt;
       &lt;button&gt;Cancel&lt;/button&gt;
@@ -109,14 +106,13 @@
         };
 
         newNode.heading = "Item " + (flowNode.childElementCount + 1);
+        newNode.summary =  "I don't have an answer to this questions. Stop asking me this question."
         newNode.innerHTML = `
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
-          <div slot="menu-actions">
-            <calcite-action>
-              <calcite-icon icon="pencil" scale="s"></calcite-icon>
-            </calcite-action>
-          </div>
+          <calcite-action slot="menu-actions">
+            <calcite-icon icon="pencil" scale="s"></calcite-icon>
+          </calcite-action>
           <div slot="footer-actions">
             <button>Save</button>
             <button>Cancel</button>

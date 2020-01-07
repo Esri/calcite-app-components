@@ -12,7 +12,7 @@
     </style>
     <template id="template">
       <calcite-pick-list-item text-label="Chocolate" value="chocolate">
-        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+        <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
           <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
         </calcite-action>
       </calcite-pick-list-item>
@@ -22,8 +22,8 @@
           tags: ["icecream", "ice cream"]
         };
       </script>
-      <calcite-pick-list-item text-label="Vanilla" text-description="Oldie but goodie" value="vanilla">
-        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+      <calcite-pick-list-item text-label="Vanilla" text-description="Oldie but goodie" value="vanilla" >
+        <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
           <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
         </calcite-action>
       </calcite-pick-list-item>
@@ -34,7 +34,7 @@
         };
       </script>
       <calcite-pick-list-item text-label="Strawberry" text-description="strawberry" value="strawberry">
-        <calcite-action slot="secondaryAction" id="action-test" label="click-me" onClick="console.log('clicked');">
+        <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
           <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
         </calcite-action>
       </calcite-pick-list-item>
