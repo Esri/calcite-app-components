@@ -1,3 +1,5 @@
+@include baseComponentHost();
+
 :host {
   align-items: stretch;
   background-color: var(--calcite-app-background-clear);

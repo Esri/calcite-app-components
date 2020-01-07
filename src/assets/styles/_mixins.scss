@@ -1,5 +1,77 @@
 // Mixins
 
+@mixin calciteLightThemeVars {
+  --calcite-app-background: #{$white};
+  --calcite-app-foreground: #{$darker-gray};
+
+  --calcite-app-background-hover: #{$blk-010};
+  --calcite-app-foreground-hover: #{$darkest-gray};
+
+  --calcite-app-background-active: #{$lightest-blue};
+  --calcite-app-foreground-active: #{$dark-blue};
+
+  --calcite-app-foreground-subtle: #{$gray};
+  --calcite-app-foreground-link: #{$blue};
+
+  --calcite-app-background-content: #{$lightest-gray};
+  --calcite-app-background-clear: transparent;
+
+  --calcite-app-border: #{$lighter-gray};
+  --calcite-app-border-hover: #{$light-gray};
+  --calcite-app-border-subtle: #{$lightest-gray};
+  --calcite-app-border-active: #{$blue};
+
+  --calcite-app-disabled-opacity: 0.25;
+  --calcite-app-scrim: #{rgba($white, 0.8)};
+}
+
+@mixin calciteDarkThemeVars {
+  --calcite-app-background: #{$darker-gray};
+  --calcite-app-foreground: #{$light-gray};
+
+  --calcite-app-background-hover: #{$darkest-gray};
+  --calcite-app-foreground-hover: #{$lightest-gray};
+
+  --calcite-app-background-active: #{$off-black};
+  --calcite-app-foreground-active: #{$vibrant-blue};
+
+  --calcite-app-foreground-subtle: #{$lighter-gray};
+
+  --calcite-app-background-content: #{$darkest-gray};
+
+  --calcite-app-border: #{$darkest-gray};
+  --calcite-app-border-hover: #{$darkest-gray};
+  --calcite-app-border-subtle: #{$darkest-gray};
+
+  --calcite-app-scrim: #{rgba($darker-gray, 0.8)};
+}
+
+@mixin baseComponentHost() {
+  :host {
+    background-color: var(--calcite-app-background);
+    box-sizing: border-box;
+    color: var(--calcite-app-foreground);
+    font-size: var(--calcite-app-font-size-0);
+    * {
+      box-sizing: border-box;
+    }
+  }
+
+  :host([hidden]) {
+    display: none;
+  }
+
+  /* keep below :root */
+  :host([theme="dark"]) {
+    @include calciteDarkThemeVars();
+  }
+
+  /* keep below :host([theme="dark"]) */
+  :host([theme="light"]) {
+    @include calciteLightThemeVars();
+  }
+}
+
 @mixin borderShadow() {
   box-shadow: 0 1px 0 var(--calcite-app-border);
 }
@@ -12,7 +84,7 @@
 
 /* line-clamp
 * https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
-* 
+*
 * Interim solution until a more standard solution arrives e.g.
 * https://www.w3.org/TR/css-overflow-3/#propdef--webkit-line-clamp
 */

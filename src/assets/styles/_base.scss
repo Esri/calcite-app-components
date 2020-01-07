@@ -1,17 +1,3 @@
-:host {
-  background-color: var(--calcite-app-background);
-  box-sizing: border-box;
-  color: var(--calcite-app-foreground);
-  font-size: var(--calcite-app-font-size-0);
-  * {
-    box-sizing: border-box;
-  }
-}
-
-:host([hidden]) {
-  display: none;
-}
-
 .header {
   margin: 0;
   display: flex;

@@ -1,3 +1,5 @@
+@include baseComponentHost();
+
 :host {
   background-color: var(--calcite-app-background-clear);
   display: block;

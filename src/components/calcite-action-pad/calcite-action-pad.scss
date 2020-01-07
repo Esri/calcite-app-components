@@ -1,3 +1,5 @@
+@include baseComponentHost();
+
 :host {
   display: inline-flex;
 }

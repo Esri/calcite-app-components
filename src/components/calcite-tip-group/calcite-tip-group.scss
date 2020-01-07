@@ -1,3 +1,5 @@
+@include baseComponentHost();
+
 $tip-max-width: 540px;
 
 ::slotted(calcite-tip) {

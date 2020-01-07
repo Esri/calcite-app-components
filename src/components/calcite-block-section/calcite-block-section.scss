@@ -1,3 +1,5 @@
+@include baseComponentHost();
+
 :host {
   border-bottom: 1px solid var(--calcite-app-border);
   display: block;

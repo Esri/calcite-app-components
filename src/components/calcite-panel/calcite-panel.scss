@@ -1,3 +1,5 @@
+@include baseComponentHost();
+
 :host {
   display: flex;
   font-size: var(--calcite-app-base-font-size);
