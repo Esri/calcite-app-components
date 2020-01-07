@@ -61,7 +61,7 @@
     display: none;
   }
 
-  /* keep below :root */
+  /* keep above :host([theme="light"]) */
   :host([theme="dark"]) {
     @include calciteDarkThemeVars();
   }
