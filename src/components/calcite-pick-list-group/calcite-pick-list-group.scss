@@ -1,7 +1,6 @@
 @import "../../assets/styles/component";
 
 :host {
-  @extend %component-host;
   background-color: var(--calcite-app-background-clear);
   display: block;
   margin-bottom: var(--calcite-app-cap-spacing);

@@ -1,7 +1,6 @@
 @import "../../assets/styles/component";
 
 :host {
-  @extend %component-host;
   width: 100%;
   height: 100%;
   position: absolute;
