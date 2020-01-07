@@ -8,6 +8,6 @@ export type CalciteBlockSectionToggleDisplay = "button" | "switch";
 
 export type FlowDirection = "advancing" | "retreating";
 
-export type CalciteActionAppearance = "solid" | "clear";
+export type CalciteAppearance = "solid" | "clear";
 
 export type CalciteScale = "s" | "m" | "l";
