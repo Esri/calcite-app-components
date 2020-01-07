@@ -1,14 +1,4 @@
-@import "./node_modules/@esri/calcite-colors/colors";
-@import "./node_modules/@esri/calcite-base/dist/variables";
-@import "./theme/_dark";
-@import "./theme/_light";
-@import "./_type";
-@import "./_layout";
-@import "./_shadow";
-@import "./_animation";
-@import "./_mixins";
-
-:host {
+%component-host {
   background-color: var(--calcite-app-background);
   box-sizing: border-box;
   color: var(--calcite-app-foreground);

@@ -1,5 +1,7 @@
 @import "../../assets/styles/component";
+
 :host {
+  @extend %component-host;
   display: flex;
   position: relative;
 

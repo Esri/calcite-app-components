@@ -1,5 +1,7 @@
 @import "../../assets/styles/component";
+
 :host {
+  @extend %component-host;
   align-items: center;
   display: flex;
   margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);

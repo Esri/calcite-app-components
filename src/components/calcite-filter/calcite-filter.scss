@@ -1,5 +1,7 @@
 @import "../../assets/styles/component";
+
 :host {
+  @extend %component-host;
   display: flex;
   padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
   width: 100%;

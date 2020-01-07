@@ -1,6 +1,7 @@
 @import "../../assets/styles/component";
 
 :host {
+  @extend %component-host;
   display: flex;
   flex-direction: column;
   padding: 0;

@@ -1,5 +1,7 @@
 @import "../../assets/styles/component";
+
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background-content);
   display: flex;
   height: 100%;

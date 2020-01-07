@@ -26,6 +26,7 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
+  @extend %component-host;
   display: block;
 }
 
