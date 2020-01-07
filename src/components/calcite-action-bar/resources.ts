@@ -1,13 +1,7 @@
-import { CalciteLayout } from "../interfaces";
-
 export const CSS = {
-  actionGroupBottom: "action-group--bottom",
-  actionGroupBottomContainer: "action-group-bottom-container"
+  actionGroupBottom: "action-group--bottom"
 };
 
-export const LAYOUT_VALUES: CalciteLayout[] = ["leading", "trailing"];
-
-export const ICONS = {
-  chevronsLeft: "chevrons-left",
-  chevronsRight: "chevrons-right"
+export const SLOTS = {
+  bottomActions: "bottom-actions"
 };
