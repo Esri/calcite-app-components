@@ -1,6 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 import { setUpPage } from "../../tests/utils";
+import { CSS } from "./resources";
 
 describe("calcite-action-bar", () => {
   it("renders", async () => renders("calcite-action-bar"));
@@ -16,76 +17,78 @@ describe("calcite-action-bar", () => {
     expect(element.getAttribute("expanded")).toBeNull();
   });
 
-  it("expand: true", async () => {
-    const page = await newE2EPage();
+  describe("expand functionality", () => {
+    it("should show expand by default", async () => {
+      const page = await newE2EPage();
 
-    await page.setContent("<calcite-action-bar></calcite-action-bar>");
+      await page.setContent("<calcite-action-bar></calcite-action-bar>");
 
-    await page.waitForChanges();
+      await page.waitForChanges();
 
-    const expandAction = await page.find("calcite-action-bar >>> calcite-action");
+      const expandAction = await page.find("calcite-action-bar >>> calcite-action");
 
-    expect(expandAction).not.toBeNull();
-  });
-
-  it("expand: false", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent('<calcite-action-bar expand="false"></calcite-action-bar>');
-
-    await page.waitForChanges();
-
-    const expandAction = await page.find("calcite-action-bar >>> calcite-action");
-
-    expect(expandAction).toBeNull();
-  });
-
-  it("expanded", async () => {
-    const page = await setUpPage("<calcite-action-bar></calcite-action-bar>", {
-      withPeerDependencies: true
+      expect(expandAction).not.toBeNull();
     });
 
-    const bar = await page.find("calcite-action-bar");
+    it("should not show expand when false", async () => {
+      const page = await newE2EPage();
 
-    const buttonGroup = await page.find("calcite-action-bar >>> .action-group--bottom");
+      await page.setContent('<calcite-action-bar expand="false"></calcite-action-bar>');
 
-    const button = await buttonGroup.find("calcite-action >>> .button");
+      await page.waitForChanges();
 
-    expect(button).not.toBeNull();
+      const expandAction = await page.find("calcite-action-bar >>> calcite-action");
 
-    await button.click();
+      expect(expandAction).toBeNull();
+    });
 
-    expect(bar).toHaveAttribute("expanded");
-  });
+    it("should toggle expanded", async () => {
+      const page = await setUpPage("<calcite-action-bar></calcite-action-bar>", {
+        withPeerDependencies: true
+      });
 
-  it("expanded change should fire event", async () => {
-    const page = await newE2EPage();
+      const bar = await page.find("calcite-action-bar");
 
-    await page.setContent("<calcite-action-bar></calcite-action-bar>");
+      const buttonGroup = await page.find(`calcite-action-bar >>> .${CSS.actionGroupBottom}`);
 
-    const element = await page.find("calcite-action-bar");
+      const button = await buttonGroup.find("calcite-action");
 
-    const eventSpy = await page.spyOnEvent("calciteActionBarToggle", "window");
+      expect(button).not.toBeNull();
 
-    element.setProperty("expanded", true);
+      await button.click();
 
-    await page.waitForChanges();
+      expect(bar).toHaveAttribute("expanded");
+    });
 
-    expect(eventSpy).toHaveReceivedEvent();
-  });
+    it("should fire expanded event", async () => {
+      const page = await newE2EPage();
 
-  it("expanded by default", async () => {
-    const page = await newE2EPage();
+      await page.setContent("<calcite-action-bar></calcite-action-bar>");
 
-    await page.setContent("<calcite-action-bar expanded></calcite-action-bar>");
+      const element = await page.find("calcite-action-bar");
 
-    const buttonGroup = await page.find("calcite-action-bar >>> .action-group--bottom");
+      const eventSpy = await element.spyOnEvent("calciteActionBarToggle");
 
-    const button = await buttonGroup.find("calcite-action");
+      element.setProperty("expanded", true);
 
-    const textEnabled = await button.getProperty("textEnabled");
+      await page.waitForChanges();
 
-    expect(textEnabled).toBe(true);
+      expect(eventSpy).toHaveReceivedEvent();
+    });
+
+    it("should have child actions be textEnabled when expanded is set", async () => {
+      const page = await newE2EPage();
+
+      await page.setContent("<calcite-action-bar expanded></calcite-action-bar>");
+
+      const buttonGroup = await page.find(`calcite-action-bar >>> .${CSS.actionGroupBottom}`);
+
+      const button = await buttonGroup.find("calcite-action");
+
+      const textEnabled = await button.getProperty("textEnabled");
+
+      expect(textEnabled).toBe(true);
+    });
   });
 
   it("should be accessible", async () =>
