@@ -7,13 +7,6 @@
     <script src="../_assets/head.js"></script>
   </head>
   <body>
-    <svg style="display: none;">
-      <symbol id="deleteIcon" viewBox="0 0 16 16">
-        <path
-          d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-        />
-      </symbol>
-    </svg>
     <main>
       <section class="example-container">
         <h1>calcite-value-list</h1>
@@ -27,23 +20,17 @@
 
         <h3>multiple</h3>
         <calcite-value-list id="one" multiple="true" filter-enabled>
-          <calcite-action slot="menu-actions" indicator text="Cool"
-            ><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-            </svg>
+          <calcite-action slot="menu-actions" indicator text="Cool">
+            <calcite-icon icon="hamburger" scale="s"></calcite-icon>
           </calcite-action>
           <calcite-value-list-item text-label="Dogs" text-description="Man's best friend" value="dogs">
-            <calcite-action slot="secondaryAction" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <use xlink:href="#deleteIcon" />
-              </svg>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="Cats" text-description="Independent and fluffy" value="cats">
-            <calcite-action slot="secondaryAction" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <use xlink:href="#deleteIcon" />
-              </svg>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -51,10 +38,8 @@
             text-description="Easy to care for."
             value="fish"
           >
-            <calcite-action slot="secondaryAction" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <use xlink:href="#deleteIcon" />
-              </svg>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -69,24 +54,18 @@
         <h3>Pick many</h3>
         <calcite-value-list id="two" multiple filter-enabled>
           <calcite-value-list-item text-label="Toughness" text-description="Hard to damage" value="toughness">
-            <calcite-action slot="secondaryAction" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <use xlink:href="#deleteIcon" />
-              </svg>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="Athletics" value="athletics">
-            <calcite-action slot="secondaryAction" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <use xlink:href="#deleteIcon" />
-              </svg>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="Investigation" value="investigation">
-            <calcite-action slot="secondaryAction" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <use xlink:href="#deleteIcon" />
-              </svg>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
