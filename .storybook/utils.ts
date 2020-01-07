@@ -59,13 +59,13 @@ export const titlelessDocsPage: typeof DocsPage = () =>
   DocsPage({
     // no title since README already has one
     titleSlot: () => "",
-    descriptionSlot: ({ parameters }) => {
-      if (typeof parameters.notes === "string") {
-        return parameters.notes;
+    descriptionSlot: ({ parameters: { notes } }) => {
+      if (typeof notes === "string") {
+        return notes;
       }
 
-      return Object.keys(parameters.notes)
-        .map((section) => parameters.notes[section])
+      return Object.keys(notes)
+        .map((section) => notes[section])
         .join("\n");
     }
   });
