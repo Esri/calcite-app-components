@@ -16,7 +16,7 @@ const ICONS = {
   chevronsRight: "chevrons-right"
 };
 
-function getClosestShellLayout(el: HTMLElement): CalciteLayout {
+function getClosestShellLayout(el: HTMLElement): CalciteLayout | null {
   const shellNode = el.closest("calcite-shell-panel");
 
   if (!shellNode) {
@@ -26,14 +26,14 @@ function getClosestShellLayout(el: HTMLElement): CalciteLayout {
   return shellNode.layout;
 }
 
-export function setActionTextEnabled({
-  el,
+export function toggleChildActionText({
+  parent,
   expanded
 }: {
-  el: HTMLElement;
+  parent: HTMLElement;
   expanded: boolean;
 }): void {
-  el.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
+  parent.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
 }
 
 export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> = ({

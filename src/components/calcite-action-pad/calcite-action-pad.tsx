@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@
 
 import { CalciteLayout, CalciteTheme } from "../interfaces";
 
-import { CalciteExpandToggle, setActionTextEnabled } from "../utils/CalciteExpandToggle";
+import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 
 import { CSS } from "./resources";
 
@@ -32,8 +32,7 @@ export class CalciteActionPad {
 
   @Watch("expanded")
   expandedHandler(expanded: boolean) {
-    const { el } = this;
-    setActionTextEnabled({ el, expanded });
+    toggleChildActionText({ parent: this.el, expanded });
 
     this.calciteActionPadToggle.emit();
   }
@@ -85,7 +84,7 @@ export class CalciteActionPad {
 
   componentWillLoad() {
     const { el, expanded } = this;
-    setActionTextEnabled({ el, expanded });
+    toggleChildActionText({ parent: el, expanded });
   }
 
   // --------------------------------------------------------------------------
