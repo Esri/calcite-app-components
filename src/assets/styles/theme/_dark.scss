@@ -1,20 +1,20 @@
 %component-theme-dark {
-  --calcite-app-background: #{$darker-gray};
-  --calcite-app-foreground: #{$light-gray};
+  --calcite-app-background: #{$blk-180};
+  --calcite-app-foreground: #{$blk-030};
 
-  --calcite-app-background-hover: #{$darkest-gray};
-  --calcite-app-foreground-hover: #{$lightest-gray};
+  --calcite-app-background-hover: #{$blk-200};
+  --calcite-app-foreground-hover: #{$blk-010};
 
-  --calcite-app-background-active: #{$off-black};
-  --calcite-app-foreground-active: #{$vibrant-blue};
+  --calcite-app-background-active: #{$blk-220};
+  --calcite-app-foreground-active: #{$v-bb-120};
 
-  --calcite-app-foreground-subtle: #{$lighter-gray};
+  --calcite-app-foreground-subtle: #{$blk-020};
 
-  --calcite-app-background-content: #{$darkest-gray};
+  --calcite-app-background-content: #{$blk-200};
 
-  --calcite-app-border: #{$darkest-gray};
-  --calcite-app-border-hover: #{$darkest-gray};
-  --calcite-app-border-subtle: #{$darkest-gray};
+  --calcite-app-border: #{$blk-200};
+  --calcite-app-border-hover: #{$blk-200};
+  --calcite-app-border-subtle: #{$blk-200};
 
-  --calcite-app-scrim: #{rgba($darker-gray, 0.8)};
+  --calcite-app-scrim: #{rgba($blk-180, 0.8)};
 }
