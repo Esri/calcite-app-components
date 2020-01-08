@@ -12,6 +12,7 @@ $tip-image-max-width: 100% !default;
 }
 
 @import "../../assets/styles/component";
+@import "../../assets/styles/header";
 
 .container {
   background-color: var(--calcite-app-background);

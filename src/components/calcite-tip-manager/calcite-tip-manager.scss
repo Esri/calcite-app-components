@@ -31,6 +31,7 @@ $tip-max-width: 540px;
 }
 
 @import "../../assets/styles/component";
+@import "../../assets/styles/header";
 
 :host([closed]) {
   display: none;
