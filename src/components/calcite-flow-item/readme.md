@@ -6,17 +6,20 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 
 ## Properties
 
-| Property         | Attribute          | Description                                                                                 | Type                | Default      |
-| ---------------- | ------------------ | ------------------------------------------------------------------------------------------- | ------------------- | ------------ |
-| `disabled`       | `disabled`         | When true, disabled prevents interaction. This state shows items with lower opacity/grayed. | `boolean`           | `false`      |
-| `heading`        | `heading`          | Heading text.                                                                               | `string`            | `undefined`  |
-| `loading`        | `loading`          | When true, content is waiting to be loaded. This state shows a busy indicator.              | `boolean`           | `false`      |
-| `menuOpen`       | `menu-open`        | Opens the action menu.                                                                      | `boolean`           | `false`      |
-| `showBackButton` | `show-back-button` | Shows a back button in the header.                                                          | `boolean`           | `false`      |
-| `textBack`       | `text-back`        | 'Back' text string.                                                                         | `string`            | `TEXT.back`  |
-| `textClose`      | `text-close`       | 'Close' text string for the menu.                                                           | `string`            | `TEXT.close` |
-| `textOpen`       | `text-open`        | 'Open' text string for the menu.                                                            | `string`            | `TEXT.open`  |
-| `theme`          | `theme`            | Used to set the component's color scheme.                                                   | `"dark" \| "light"` | `undefined`  |
+| Property         | Attribute          | Description                                                                                 | Type                  | Default      |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------- | --------------------- | ------------ |
+| `beforeBack`     | --                 | When provided, this method will be called before it is removed from the parent flow.        | `() => Promise<void>` | `undefined`  |
+| `disabled`       | `disabled`         | When true, disabled prevents interaction. This state shows items with lower opacity/grayed. | `boolean`             | `false`      |
+| `heading`        | `heading`          | Heading text.                                                                               | `string`              | `undefined`  |
+| `heightScale`    | `height-scale`     | Specifies the maxiumum height of the panel that this wraps.                                 | `"l" or "m" or "s"`   | `undefined`  |
+| `loading`        | `loading`          | When true, content is waiting to be loaded. This state shows a busy indicator.              | `boolean`             | `false`      |
+| `menuOpen`       | `menu-open`        | Opens the action menu.                                                                      | `boolean`             | `false`      |
+| `showBackButton` | `show-back-button` | Shows a back button in the header.                                                          | `boolean`             | `false`      |
+| `summary`        | `summary`          | Summary text. A description displayed underneath the heading.                               | `string`              | `undefined`  |
+| `textBack`       | `text-back`        | 'Back' text string.                                                                         | `string`              | `TEXT.back`  |
+| `textClose`      | `text-close`       | 'Close' text string for the menu.                                                           | `string`              | `TEXT.close` |
+| `textOpen`       | `text-open`        | 'Open' text string for the menu.                                                            | `string`              | `TEXT.open`  |
+| `theme`          | `theme`            | Used to set the component's color scheme.                                                   | `"dark" or "light"`   | `undefined`  |
 
 ## Events
 
@@ -29,8 +32,8 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 | Slot               | Description                                                                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 |                    | A slot for adding content to the flow item.                                                                                     |
-| `"footer-actions"` | A slot for adding `calcite-actions` to the footer.                                                                              |
-| `"menu-actions"`   | A slot for adding `calcite-actions` to a menu under the `...` in the header. These actions are displayed when the menu is open. |
+| `"footer-actions"` | A slot for adding `calcite-button`s to the footer.                                                                              |
+| `"menu-actions"`   | A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open. |
 
 ## Dependencies
 

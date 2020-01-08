@@ -8,6 +8,7 @@
 
     <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
+    <script src="../_assets/toggles.js"></script>
     <style>
       .demo-block {
         width: 100%;
@@ -44,7 +45,10 @@
 
         <h2>Adding new Flow-items to Flow</h2>
         <calcite-flow id="flow">
-          <calcite-flow-item heading="What are the most popular commute alternatives?" summary="I don't have an answer to this questions. Stop asking me this question.">
+          <calcite-flow-item
+            heading="What are the most popular commute alternatives?"
+            summary="I don't have an answer to this questions. Stop asking me this question."
+          >
             <button slot="menu-actions">Reset</button>
             <button slot="menu-actions">Rename</button>
             <div slot="footer-actions">
@@ -106,7 +110,7 @@
         };
 
         newNode.heading = "Item " + (flowNode.childElementCount + 1);
-        newNode.summary =  "I don't have an answer to this questions. Stop asking me this question."
+        newNode.summary = "I don't have an answer to this questions. Stop asking me this question.";
         newNode.innerHTML = `
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
