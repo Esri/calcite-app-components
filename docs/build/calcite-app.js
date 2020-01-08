@@ -4,8 +4,22 @@
   var doc = document;
   var currentScript = doc.currentScript;
 
-  // Safari 10 support type="module" but still download and executes the nomodule script
-  if (!currentScript || !currentScript.hasAttribute('nomodule') || !('onbeforeload' in currentScript)) {
+  // !currentScript
+  // IE11 since it doesnt support document.currentScript
+
+  // !currentScript.hasAttribute('nomodule')
+  // Bundled or doesn't have "nomodule" attribute
+
+  // !('onbeforeload' in currentScript)
+  // Not Safari
+
+  // ('onbeforeload' in currentScript) && !history.scrollRestoration
+  // Safari 10.x supports "module" but does not support async/await
+  // so it should use the es5/system build while Safari >=11 should use esm build
+  // 'onbeforeload' in currentScript only true for Safari
+  // history.scrollRestoration support added in Safari 11
+
+  if (!currentScript || !currentScript.hasAttribute('nomodule') || !('onbeforeload' in currentScript) || (('onbeforeload' in currentScript) && !history.scrollRestoration)) {
 
     /*!
 es6-promise - a tiny implementation of Promises/A+.
@@ -864,7 +878,7 @@ if (!win.__stencil_cssshim && needsShim()) {
 
     var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
     var start = function() {
-      var url = new URL('./p-7824e91f.system.js', resourcesUrl);
+      var url = new URL('./p-965a5e5a.system.js', resourcesUrl);
       System.import(url.href);
     };
 

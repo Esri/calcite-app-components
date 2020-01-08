@@ -10,7 +10,7 @@
 | ------------------------ | ------------------ | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
 | `compact`                | `compact`          | Compact reduces the size of the item.                                                             | `boolean`                                                   | `false`     |
 | `disabled`               | `disabled`         | When true, the item cannot be clicked and is visually muted                                       | `boolean`                                                   | `false`     |
-| `icon`                   | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.      | `ICON_TYPES.circle \| ICON_TYPES.grip \| ICON_TYPES.square` | `null`      |
+| `icon`                   | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.      | `ICON_TYPES.circle or ICON_TYPES.grip or ICON_TYPES.square` | `null`      |
 | `metadata`               | --                 | Used to provide additional metadata to an item, primarily used when the parent list has a filter. | `object`                                                    | `undefined` |
 | `selected`               | `selected`         | Set this to true to pre-select an item. Toggles when an item is checked/unchecked.                | `boolean`                                                   | `false`     |
 | `textDescription`        | `text-description` | An optional description for this item. Will appear below the label text.                          | `string`                                                    | `undefined` |
@@ -27,9 +27,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                | Description                                                                                   |
-| ------------------- | --------------------------------------------------------------------------------------------- |
-| `"secondaryAction"` | A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item. |
+| Slot                 | Description                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `"secondary-action"` | A slot intended for adding a `calcite-action` or `calcite-button`. This is placed at the end of the item. |
 
 ## Dependencies
 

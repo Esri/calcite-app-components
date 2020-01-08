@@ -17,10 +17,10 @@ Renders `calcite-action`s that stick to the top of the bar.
 ```html
 <calcite-action-bar>
   <calcite-action text="Add">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="plus"></calcite-icon>
   </calcite-action>
   <calcite-action text="Save">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="save"></calcite-icon>
   </calcite-action>
 </calcite-action-bar>
 ```
@@ -33,19 +33,19 @@ Renders a group of `calcite-action`s contained in a `calcite-action-group`. Acti
 <calcite-action-bar>
   <calcite-action-group>
     <calcite-action text="Add">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="plus"></calcite-icon>
     </calcite-action>
     <calcite-action text="Save">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="save"></calcite-icon>
     </calcite-action>
   </calcite-action-group>
 
   <calcite-action-group>
     <calcite-action text="Layers">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="layers"></calcite-icon>
     </calcite-action>
     <calcite-action text="Basemaps">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="layer-basemap"></calcite-icon>
     </calcite-action>
   </calcite-action-group>
 </calcite-action-bar>
@@ -58,12 +58,12 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 ```html
 <calcite-action-bar>
   <calcite-action text="Information">
-    <!-- icon -->
+    <calcite-icon scale="s" icon="information"></calcite-icon>
   </calcite-action>
 
   <div slot="bottom-actions">
     <calcite-action text="Feedback">
-      <!-- icon -->
+      <calcite-icon scale="s" icon="mega-phone"></calcite-icon>
     </calcite-action>
   </div>
 </calcite-action-bar>
@@ -71,14 +71,14 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 
 ## Properties
 
-| Property       | Attribute       | Description                                                              | Type                      | Default      |
-| -------------- | --------------- | ------------------------------------------------------------------------ | ------------------------- | ------------ |
-| `expand`       | `expand`        | Indicates whether widget can be expanded.                                | `boolean`                 | `true`       |
-| `expanded`     | `expanded`      | Indicates whether widget is expanded.                                    | `boolean`                 | `false`      |
-| `layout`       | `layout`        | Arrangement of the component.                                            | `"leading" \| "trailing"` | `undefined`  |
-| `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded.   | `string`                  | `"Collapse"` |
-| `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is not expanded. | `string`                  | `"Expand"`   |
-| `theme`        | `theme`         | Used to set the component's color scheme.                                | `"dark" \| "light"`       | `undefined`  |
+| Property       | Attribute       | Description                                                                                                                                                                | Type                      | Default      |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------ |
+| `expand`       | `expand`        | Indicates whether widget can be expanded.                                                                                                                                  | `boolean`                 | `true`       |
+| `expanded`     | `expanded`      | Indicates whether widget is expanded.                                                                                                                                      | `boolean`                 | `false`      |
+| `layout`       | `layout`        | Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading" in a LTR app will appear on the left. | `"leading" or "trailing"` | `undefined`  |
+| `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded.                                                                                                     | `string`                  | `"Collapse"` |
+| `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is not expanded.                                                                                                   | `string`                  | `"Expand"`   |
+| `theme`        | `theme`         | Used to set the component's color scheme.                                                                                                                                  | `"dark" or "light"`       | `undefined`  |
 
 ## Events
 
@@ -90,22 +90,22 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 
 | Slot               | Description                                                                                                             |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-|                    | A slot for adding `calcite-actions` that will appear at the top of the action bar.                                      |
-| `"bottom-actions"` | A slot for adding `calcite-actions` that will appear at the bottom of the action bar, above the collapse/expand button. |
+|                    | A slot for adding `calcite-action`s that will appear at the top of the action bar.                                      |
+| `"bottom-actions"` | A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button. |
 
 ## Dependencies
 
 ### Depends on
 
-- [calcite-action](../calcite-action)
 - [calcite-action-group](../calcite-action-group)
+- [calcite-action](../calcite-action)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  calcite-action-bar --> calcite-action
   calcite-action-bar --> calcite-action-group
+  calcite-action-bar --> calcite-action
   style calcite-action-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
