@@ -1,4 +1,4 @@
-import { select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import {
   Attributes,
   createComponentHTML as create,
@@ -8,7 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { dir, theme } = ATTRIBUTES;
+const { dir, layout, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action-pad",
@@ -26,6 +26,26 @@ const createAttributes: () => Attributes = () => [
   {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
+  },
+  {
+    name: "expand",
+    value: boolean("expand", true)
+  },
+  {
+    name: "expanded",
+    value: boolean("expanded", false)
+  },
+  {
+    name: "layout",
+    value: select("layout", layout.values, layout.defaultValue)
+  },
+  {
+    name: "text-expand",
+    value: text("textExpand", "Expand")
+  },
+  {
+    name: "text-collapse",
+    value: text("textCollapse", "Collapse")
   },
   {
     name: "theme",

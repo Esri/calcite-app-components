@@ -39,25 +39,6 @@ describe("calcite-tip", () => {
     expect(eventSpy).toHaveReceivedEvent();
   });
 
-  it("should hide by default if tip with an id is dismissed", async () => {
-    const page = await setUpPage(`<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`, {
-      withPeerDependencies: true
-    });
-
-    const closeButton = await page.find(`calcite-tip >>> .${CSS.close}`);
-
-    await closeButton.click();
-
-    const page2 = await newE2EPage();
-    await page2.setContent(`<calcite-tip storage-id="foo"><p>testing localstorage</p></calcite-tip>`);
-
-    const tip = await page2.find(`calcite-tip >>> .${CSS.container}`);
-
-    const isVisible = await tip.isVisible();
-
-    expect(isVisible).toBe(false);
-  });
-
   it("header should only be visible if dismissible or has a heading", async () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-tip><p>testing</p></calcite-tip>`);

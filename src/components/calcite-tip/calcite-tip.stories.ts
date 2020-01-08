@@ -30,10 +30,6 @@ const createAttributes: () => Attributes = () => [
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
-    name: "storage-id",
-    value: text("storageId", "")
-  },
-  {
     name: "non-dismissible",
     value: boolean("nonDismissible", false)
   },
