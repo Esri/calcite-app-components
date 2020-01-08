@@ -1,6 +1,5 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   align-items: center;
   display: flex;
   margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
@@ -9,6 +8,8 @@
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
+
+@import "../../assets/styles/component";
 
 :host(:hover),
 :host(:focus) {

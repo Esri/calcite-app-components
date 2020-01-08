@@ -1,15 +1,17 @@
-@import "../../assets/styles/component";
 $tip-content-only-width: 100% !default;
 $tip-content-width: 70% !default;
 $tip-image-frame-width: 25% !default;
 $tip-image-max-width: 100% !default;
 
 :host {
+  @extend %component-host;
   position: relative;
   display: flex;
   flex-flow: column;
   background-color: var(--calcite-app-background-clear);
 }
+
+@import "../../assets/styles/component";
 
 .container {
   background-color: var(--calcite-app-background);

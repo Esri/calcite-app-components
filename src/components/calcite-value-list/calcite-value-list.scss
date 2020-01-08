@@ -1,6 +1,5 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   align-items: stretch;
   background-color: var(--calcite-app-background-clear);
   display: flex;
@@ -8,6 +7,8 @@
   flex-flow: column;
   position: relative;
 }
+
+@import "../../assets/styles/component";
 
 header {
   background-color: var(--calcite-app-background);

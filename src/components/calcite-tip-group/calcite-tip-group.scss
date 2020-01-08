@@ -1,5 +1,10 @@
-@import "../../assets/styles/component";
 $tip-max-width: 540px;
+
+:host {
+  @extend %component-host;
+}
+
+@import "../../assets/styles/component";
 
 ::slotted(calcite-tip) {
   max-width: $tip-max-width;

@@ -1,11 +1,12 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background);
   display: flex;
   padding: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
   width: 100%;
 }
+
+@import "../../assets/styles/component";
 
 label {
   align-items: center;

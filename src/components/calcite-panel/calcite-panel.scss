@@ -1,6 +1,5 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background);
   display: flex;
   position: relative;
@@ -10,6 +9,8 @@
   --calcite-app-panel-max-height-large: 80vh;
   --calcite-app-panel-min-header-height: calc(var(--calcite-app-icon-size) * 3);
 }
+
+@import "../../assets/styles/component";
 
 .container {
   align-items: stretch;

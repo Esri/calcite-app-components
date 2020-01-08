@@ -1,6 +1,5 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background);
   display: flex;
   flex: 1 0 auto;
@@ -9,6 +8,8 @@
   margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter) 0;
   @include borderShadow();
 }
+
+@import "../../assets/styles/component";
 
 .header {
   flex-grow: 1;

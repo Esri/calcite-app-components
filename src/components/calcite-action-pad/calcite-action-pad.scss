@@ -1,6 +1,5 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background);
   display: inline-flex;
   flex-direction: column;
@@ -9,6 +8,8 @@
   overflow-y: auto;
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
+
+@import "../../assets/styles/component";
 
 :host([expanded]) {
   max-width: 20vw;

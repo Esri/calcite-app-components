@@ -1,6 +1,5 @@
-@import "../../assets/styles/component";
-
 :host {
+  @extend %component-host;
   position: relative;
   display: flex;
   align-items: stretch;
@@ -14,6 +13,8 @@
   --calcite-app-shell-panel-max-height-medium: 55vh;
   --calcite-app-shell-panel-max-height-large: 85vh;
 }
+
+@import "../../assets/styles/component";
 
 .content {
   align-items: stretch;

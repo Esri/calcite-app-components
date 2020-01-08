@@ -1,4 +1,3 @@
-@import "../../assets/styles/component";
 /* Variables, mixins, @keyframes*/
 $tip-manager-height: 18vh;
 $tip-max-width: 540px;
@@ -26,9 +25,12 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background);
   display: block;
 }
+
+@import "../../assets/styles/component";
 
 :host([closed]) {
   display: none;
