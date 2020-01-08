@@ -8,7 +8,7 @@ $tip-image-max-width: 100% !default;
   position: relative;
   display: flex;
   flex-flow: column;
-  background-color: transparent;
+  background-color: var(--calcite-app-background-clear);
 }
 
 .container {

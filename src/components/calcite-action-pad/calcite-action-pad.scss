@@ -1,6 +1,7 @@
 @import "../../assets/styles/component";
 
 :host {
+  background-color: var(--calcite-app-background);
   display: inline-flex;
   flex-direction: column;
   box-shadow: var(--calcite-app-shadow-2);
