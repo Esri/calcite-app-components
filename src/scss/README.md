@@ -2,7 +2,7 @@
 
 Each component stylesheet (.scss) should access the CSS variables defined in these partials:
 
-- src/scss/includes.scss
+- src/scss/injected.scss
 
 The CSS variable names are meant to be instructive.
 

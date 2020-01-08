@@ -42,7 +42,7 @@ export const create: () => Config = () => ({
   globalStyle: "src/scss/global.scss",
   plugins: [
     sass({
-      injectGlobalPaths: ["src/scss/includes.scss"]
+      injectGlobalPaths: ["src/scss/injected.scss"]
     }),
     postcss({
       plugins: [autoprefixer()]
