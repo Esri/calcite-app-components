@@ -9,8 +9,8 @@
   @include borderShadow();
 }
 
-@import "../../assets/styles/component";
-@import "../../assets/styles/header";
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 .header {
   flex-grow: 1;

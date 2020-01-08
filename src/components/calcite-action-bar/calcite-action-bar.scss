@@ -9,7 +9,7 @@
   pointer-events: auto;
 }
 
-@import "../../assets/styles/component";
+@import "../../scss/includes/_component";
 
 :host([expanded]) {
   max-width: 20vw;

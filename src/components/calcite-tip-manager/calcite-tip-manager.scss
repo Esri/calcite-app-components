@@ -30,8 +30,8 @@ $tip-max-width: 540px;
   display: block;
 }
 
-@import "../../assets/styles/component";
-@import "../../assets/styles/header";
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 :host([closed]) {
   display: none;

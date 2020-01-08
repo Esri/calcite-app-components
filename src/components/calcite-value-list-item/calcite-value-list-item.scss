@@ -4,7 +4,7 @@
   background-color: var(--calcite-app-background-clear);
 }
 
-@import "../../assets/styles/component";
+@import "../../scss/includes/_component";
 
 calcite-pick-list-item {
   flex-grow: 1;

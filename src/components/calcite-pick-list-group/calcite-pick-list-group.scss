@@ -5,8 +5,8 @@
   margin-bottom: var(--calcite-app-cap-spacing);
 }
 
-@import "../../assets/styles/component";
-@import "../../assets/styles/header";
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 :host(:last-child) {
   margin-bottom: 0;

@@ -7,7 +7,7 @@
   padding: var(--calcite-app-cap-spacing-half) 0;
 }
 
-@import "../../assets/styles/component";
+@import "../../scss/includes/_component";
 
 :host(:first-child) {
   padding-top: 0;

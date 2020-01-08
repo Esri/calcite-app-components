@@ -5,7 +5,7 @@
   display: block;
 }
 
-@import "../../assets/styles/component";
+@import "../../scss/includes/_component";
 
 :host(:last-child) {
   border-bottom: none;

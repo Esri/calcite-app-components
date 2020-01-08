@@ -39,10 +39,10 @@ export const create: () => Config = () => ({
       serviceWorker: null // disable service workers
     }
   ],
-  globalStyle: "src/assets/styles/includes.scss",
+  globalStyle: "src/scss/global.scss",
   plugins: [
     sass({
-      injectGlobalPaths: ["src/assets/styles/includes.scss"]
+      injectGlobalPaths: ["src/scss/includes.scss"]
     }),
     postcss({
       plugins: [autoprefixer()]

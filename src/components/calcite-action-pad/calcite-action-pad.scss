@@ -9,7 +9,7 @@
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
-@import "../../assets/styles/component";
+@import "../../scss/includes/_component";
 
 :host([expanded]) {
   max-width: 20vw;
