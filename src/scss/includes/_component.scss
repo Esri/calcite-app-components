@@ -4,10 +4,10 @@
 
 /* keep above :host([theme="light"]) */
 :host([theme="dark"]) {
-  @extend %component-theme-dark;
+  @include componentDarkThemeVars();
 }
 
 /* keep below :host([theme="dark"]) */
 :host([theme="light"]) {
-  @extend %component-theme-light;
+  @include componentLightThemeVars();
 }
