@@ -1,1 +1,0 @@
-function n(n){return function(n){const t=n.closest("[dir]");return t?t.getAttribute("dir"):"ltr"}(n)}function t(n){n&&("setFocus"in n&&"function"==typeof n.setFocus?n.setFocus():n.focus())}export{t as f,n as g};
