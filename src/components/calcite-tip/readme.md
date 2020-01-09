@@ -4,18 +4,34 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 <!-- Auto Generated Below -->
 
+## Usage
+
+### Basic
+
+#### Basic
+
+Renders a non-dismissible tip with a heading, thumbnail, info and a link.
+
+```html
+<calcite-tip non-dismissible heading="Celestial Bodies!">
+  <img slot="thumbnail" src="https://placeimg.com/1000/600" alt="This is an image of nature." />
+  <p>
+    Normal tip with a landscape or square image and a small amount of text in the "info" slot.
+  </p>
+  <a href="http://www.esri.com">Put a link hurr!</a>
+</calcite-tip>
+```
+
 ## Properties
 
-| Property         | Attribute         | Description                                                                  | Type                | Default      |
-| ---------------- | ----------------- | ---------------------------------------------------------------------------- | ------------------- | ------------ |
-| `heading`        | `heading`         | The heading of the tip.                                                      | `string`            | `undefined`  |
-| `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.                                  | `boolean`           | `false`      |
-| `selected`       | `selected`        | The selected state of the tip if it is being used inside a CalciteTipManager | `boolean`           | `undefined`  |
-| `storageId`      | `storage-id`      | The local storage id used for an instance of a tip.                          | `string`            | `undefined`  |
-| `textClose`      | `text-close`      | Alternate text for closing the tip.                                          | `string`            | `TEXT.close` |
-| `textThumbnail`  | `text-thumbnail`  | Alternate text for description of the thumbnail.                             | `string`            | `undefined`  |
-| `theme`          | `theme`           | Used to set the component's color scheme.                                    | `"dark" \| "light"` | `undefined`  |
-| `thumbnail`      | `thumbnail`       | A string of the path to the thumbnail.                                       | `string`            | `undefined`  |
+| Property         | Attribute         | Description                                                                       | Type                | Default      |
+| ---------------- | ----------------- | --------------------------------------------------------------------------------- | ------------------- | ------------ |
+| `dismissed`      | `dismissed`       | No longer displays the tip.                                                       | `boolean`           | `false`      |
+| `heading`        | `heading`         | The heading of the tip.                                                           | `string`            | `undefined`  |
+| `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.                                       | `boolean`           | `false`      |
+| `selected`       | `selected`        | The selected state of the tip if it is being used inside a `calcite-tip-manager`. | `boolean`           | `undefined`  |
+| `textClose`      | `text-close`      | Alternate text for closing the tip.                                               | `string`            | `TEXT.close` |
+| `theme`          | `theme`           | Used to set the component's color scheme.                                         | `"dark" or "light"` | `undefined`  |
 
 ## Events
 
@@ -25,10 +41,9 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 ## Slots
 
-| Slot     | Description                                                      |
-| -------- | ---------------------------------------------------------------- |
-| `"info"` | A slot for adding an HTML element to the body of the tip.        |
-| `"link"` | A slot for adding an HTML anchor element to the body of the tip. |
+| Slot          | Description                                         |
+| ------------- | --------------------------------------------------- |
+| `"thumbnail"` | A slot for adding an HTML image element to the tip. |
 
 ## Dependencies
 

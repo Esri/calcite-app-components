@@ -1,5 +1,5 @@
 import { create as baseConfigCreator } from "./stencil.config";
-import { OutputTargetWww } from "@stencil/core/dist/declarations";
+import { OutputTargetWww } from "@stencil/core/internal";
 
 export const create: typeof baseConfigCreator = () => {
   const docsConfig = baseConfigCreator();

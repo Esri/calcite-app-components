@@ -36,14 +36,6 @@
     });
   }
 
-  const IS_IE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
-
-  if (!IS_IE11) {
-    SCRIPTS.push({
-      src: `${ASSETS_PATH}/toggles.js`
-    });
-  }
-
   const ROOT = window.location.pathname.split(DEMO_ROOT).shift();
 
   function loadCss(url: string): void {
