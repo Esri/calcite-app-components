@@ -18,6 +18,11 @@ export class CalciteHandle {
    */
   @Prop({ mutable: true }) activated? = false;
 
+  /**
+   * Value for the button title attribute
+   */
+  @Prop({ mutable: true }) textTitle? = "handle";
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -81,6 +86,7 @@ export class CalciteHandle {
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         onBlur={this.handleBlur}
+        title={this.textTitle}
       >
         <calcite-icon scale="s" icon={ICONS.drag} />
       </button>
