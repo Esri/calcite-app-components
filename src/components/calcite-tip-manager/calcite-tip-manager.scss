@@ -26,7 +26,6 @@ $tip-max-width: 540px;
 /* Component Styles */
 :host {
   @extend %component-host;
-  background-color: var(--calcite-app-background);
   display: block;
 }
 

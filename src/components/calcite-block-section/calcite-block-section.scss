@@ -1,6 +1,5 @@
 :host {
   @extend %component-host;
-  background-color: var(--calcite-app-background);
   border-bottom: 1px solid var(--calcite-app-border);
   display: block;
 }

@@ -1,6 +1,5 @@
 :host {
   @extend %component-host;
-  background-color: var(--calcite-app-background);
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;

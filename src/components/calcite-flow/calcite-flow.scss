@@ -2,7 +2,6 @@ $start-alpha: 0.5;
 
 :host {
   @extend %component-host;
-  background-color: var(--calcite-app-background);
   align-items: stretch;
   display: flex;
   width: 100%;
