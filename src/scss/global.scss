@@ -1,9 +1,9 @@
 :root {
-  @extend %component-timing;
-  @extend %component-layout;
-  @extend %component-type;
-  @extend %component-shadow;
-  @extend %component-theme-light;
+  @include componentAnimationVars();
+  @include componentLayoutVars();
+  @include componentTypographyVars();
+  @include componentShadowVars();
+  @include componentLightThemeVars();
 }
 
 @import "./includes/_animation";

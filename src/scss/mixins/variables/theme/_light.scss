@@ -1,4 +1,5 @@
-%component-theme-light {
+@mixin componentLightThemeVars() {
+  // Component Light Theme Variables
   --calcite-app-background: #{$blk-000};
   --calcite-app-foreground: #{$blk-180};
 

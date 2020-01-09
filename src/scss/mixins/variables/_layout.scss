@@ -1,4 +1,5 @@
-%component-layout {
+@mixin componentLayoutVars() {
+  // Component Layout Variables
   --calcite-app-side-spacing: 1rem;
   --calcite-app-cap-spacing: 1rem;
 
