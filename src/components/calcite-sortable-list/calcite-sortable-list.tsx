@@ -6,16 +6,13 @@ import {
   EventEmitter,
   Host,
   Listen,
-  // Method,
   Prop,
   State,
   h
 } from "@stencil/core";
-// import { drag16 } from "@esri/calcite-ui-icons";
-// import CalciteIcon from "../utils/CalciteIcon";
 
 /**
- * @slot - A slot for adding pick-list-item elements or pick-list-groups elements. Items are displayed as a vertical list.
+ * @slot - A slot for adding sortable items
  */
 @Component({
   tag: "calcite-sortable-list",
@@ -54,7 +51,7 @@ export class CalciteSortableList {
 
   @State() handleActivated = false;
 
-  @State() items: HTMLElement[] = [];
+  @State() items: Element[] = [];
 
   observer = new MutationObserver(() => {
     this.cleanUpDragAndDrop();
