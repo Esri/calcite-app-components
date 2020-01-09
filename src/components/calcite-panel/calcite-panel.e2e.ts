@@ -51,4 +51,16 @@ describe("calcite-panel", () => {
       <div slot="${SLOTS.footer}">test Footer</div>
     </calcite-panel>
     `));
+
+  it("should have 'focusDismissButton' method", async () => {
+    const page = await setUpPage("<calcite-panel dismissible>test</calcite-panel>", {
+      withPeerDependencies: true
+    });
+
+    const panel = await page.find("calcite-panel");
+
+    const focusDismissButton = panel.callMethod("focusDismissButton");
+
+    expect(focusDismissButton).toBeInstanceOf(Promise);
+  });
 });

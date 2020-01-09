@@ -121,7 +121,7 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocusDismissButton() {
+  async focusDismissButton() {
     this.dismissButtonEl?.setFocus();
   }
 
