@@ -1,3 +1,4 @@
+/* calcite-app-components global variables */
 :root {
   @include componentAnimationVars();
   @include componentLayoutVars();
@@ -6,4 +7,5 @@
   @include componentLightThemeVars();
 }
 
+/* calcite-app-components global animations */
 @import "./includes/_animation";

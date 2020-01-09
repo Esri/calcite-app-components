@@ -1,5 +1,5 @@
 @mixin componentShadowVars() {
-  // Component Shadow Variables
+  /* Component shadow variables */
   --calcite-app-shadow-0: 0 2px 4px rgba(0, 0, 0, 0.1);
   --calcite-app-shadow-1: #{$shadow-1};
   --calcite-app-shadow-1-hover: #{$shadow-1--hover};
