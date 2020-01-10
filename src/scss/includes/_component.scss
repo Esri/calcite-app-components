@@ -2,12 +2,12 @@
   display: none;
 }
 
-/* keep above :host([theme="light"]) */
+// keep above :host([theme="light"])
 :host([theme="dark"]) {
   @include componentDarkThemeVars();
 }
 
-/* keep below :host([theme="dark"]) */
+// keep below :host([theme="dark"])
 :host([theme="light"]) {
   @include componentLightThemeVars();
 }
