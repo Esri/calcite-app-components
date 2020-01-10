@@ -52,15 +52,15 @@ describe("calcite-panel", () => {
     </calcite-panel>
     `));
 
-  it("should have 'focusDismissButton' method", async () => {
+  it("should have 'setFocus' method", async () => {
     const page = await setUpPage("<calcite-panel dismissible>test</calcite-panel>", {
       withPeerDependencies: true
     });
 
     const panel = await page.find("calcite-panel");
 
-    const focusDismissButton = panel.callMethod("focusDismissButton");
+    const setFocus = panel.callMethod("setFocus");
 
-    expect(focusDismissButton).toBeInstanceOf(Promise);
+    expect(setFocus).toBeInstanceOf(Promise);
   });
 });

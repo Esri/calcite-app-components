@@ -17,6 +17,8 @@ import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
 
+type FocusElement = "dismiss-button";
+
 /**
  * @slot header-content - A slot for adding content in the center of the header.
  * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
@@ -84,7 +86,7 @@ export class CalcitePanel {
 
   @Element() el: HTMLCalcitePanelElement;
 
-  private dismissButtonEl: HTMLCalciteActionElement;
+  dismissButtonEl: HTMLCalciteActionElement;
 
   // --------------------------------------------------------------------------
   //
@@ -121,8 +123,10 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   @Method()
-  async focusDismissButton() {
-    this.dismissButtonEl?.setFocus();
+  async setFocus(focusId?: FocusElement) {
+    if (focusId === "dismiss-button") {
+      this.dismissButtonEl?.setFocus();
+    }
   }
 
   // --------------------------------------------------------------------------
