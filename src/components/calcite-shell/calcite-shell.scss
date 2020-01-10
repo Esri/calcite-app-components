@@ -1,4 +1,5 @@
 :host {
+  @extend %component-host;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -12,6 +13,8 @@
 
   --calcite-app-shell-tip-spacing: 26vw;
 }
+
+@import "../../scss/includes/_component";
 
 .main {
   height: 100%;

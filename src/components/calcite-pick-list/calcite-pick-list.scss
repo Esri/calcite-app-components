@@ -1,4 +1,5 @@
 :host {
+  @extend %component-host;
   align-items: stretch;
   background-color: var(--calcite-app-background-clear);
   display: flex;
@@ -7,6 +8,8 @@
   padding-bottom: var(--calcite-app-cap-spacing-half);
   position: relative;
 }
+
+@import "../../scss/includes/_component";
 
 header {
   background-color: var(--calcite-app-background);

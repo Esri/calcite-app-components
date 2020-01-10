@@ -4,11 +4,15 @@ $tip-image-frame-width: 25% !default;
 $tip-image-max-width: 100% !default;
 
 :host {
+  @extend %component-host;
   position: relative;
   display: flex;
   flex-flow: column;
-  background-color: transparent;
+  background-color: var(--calcite-app-background-clear);
 }
+
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 .container {
   background-color: var(--calcite-app-background);

@@ -1,7 +1,10 @@
 :host {
+  @extend %component-host;
   border-bottom: 1px solid var(--calcite-app-border);
   display: block;
 }
+
+@import "../../scss/includes/_component";
 
 :host(:last-child) {
   border-bottom: none;
