@@ -1,7 +1,10 @@
 :host {
+  @extend %component-host;
   display: flex;
   background-color: var(--calcite-app-background-clear);
 }
+
+@import "../../scss/includes/_component";
 
 .button {
   font-family: var(--calcite-app-font-family);

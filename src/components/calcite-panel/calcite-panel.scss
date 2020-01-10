@@ -1,6 +1,6 @@
 :host {
+  @extend %component-host;
   display: flex;
-  font-size: var(--calcite-app-base-font-size);
   position: relative;
 
   --calcite-app-panel-max-height-small: 40vh;
@@ -8,6 +8,9 @@
   --calcite-app-panel-max-height-large: 80vh;
   --calcite-app-panel-min-header-height: calc(var(--calcite-app-icon-size) * 3);
 }
+
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 .container {
   align-items: stretch;
