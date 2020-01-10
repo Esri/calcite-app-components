@@ -1,9 +1,12 @@
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background-content);
   display: flex;
   height: 100%;
   width: 100%;
 }
+
+@import "../../scss/includes/_component";
 
 calcite-panel {
   width: 100%;

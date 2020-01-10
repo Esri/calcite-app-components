@@ -1,4 +1,5 @@
 :host {
+  @extend %component-host;
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
@@ -6,6 +7,9 @@
   margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-quarter) 0;
   @include borderShadow();
 }
+
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 .header {
   flex-grow: 1;
