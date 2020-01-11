@@ -115,6 +115,18 @@ export class CalciteBlock {
     this.calciteBlockToggle.emit();
   };
 
+  onHeaderKeyDownOrUp = (event: KeyboardEvent) => {
+    const { currentTarget, key, target } = event;
+
+    if (key === " " || key === "Enter") {
+      const shouldBlockBubbledControlEvent = currentTarget !== target;
+
+      if (shouldBlockBubbledControlEvent) {
+        event.preventDefault();
+      }
+    }
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -166,6 +178,8 @@ export class CalciteBlock {
             aria-label={toggleLabel}
             class={CSS.toggle}
             onClick={this.onHeaderClick}
+            onKeyDown={this.onHeaderKeyDownOrUp}
+            onKeyUp={this.onHeaderKeyDownOrUp}
             title={toggleLabel}
           >
             {headerContent}
