@@ -99,7 +99,7 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) value!: string;
 
   @Watch("value") valueWatchHandler(newValue, oldValue) {
-    this.calciteListItemValueUpdated.emit({ oldValue, newValue });
+    this.calciteListItemValueChange.emit({ oldValue, newValue });
   }
 
   // --------------------------------------------------------------------------
@@ -133,10 +133,10 @@ export class CalcitePickListItem {
 
   /**
    * Emitted whenever the the item's value property is modified.
-   * @event calciteListItemPropsUpdated
+   * @event calciteListItemValueChange
    * @internal
    */
-  @Event() calciteListItemValueUpdated: EventEmitter;
+  @Event() calciteListItemValueChange: EventEmitter;
 
   // --------------------------------------------------------------------------
   //

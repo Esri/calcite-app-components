@@ -21,7 +21,7 @@ const {
   initializeObserver,
   cleanUpObserver,
   calciteListItemChangeHandler,
-  calciteListItemValueUpdatedHandler,
+  calciteListItemValueChangeHandler,
   setUpItems,
   deselectSiblingItems,
   selectSiblings,
@@ -153,8 +153,8 @@ export class CalciteValueList {
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueUpdated") calciteListItemValueUpdatedHandler(event: CustomEvent) {
-    calciteListItemValueUpdatedHandler.call(this, event);
+  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(event: CustomEvent) {
+    calciteListItemValueChangeHandler.call(this, event);
   }
 
   // --------------------------------------------------------------------------

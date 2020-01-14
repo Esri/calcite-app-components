@@ -51,7 +51,7 @@ export const sharedListMethods = {
     this.lastSelectedItem = item;
     this.emitCalciteListChange();
   },
-  calciteListItemValueUpdatedHandler(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
+  calciteListItemValueChangeHandler(this: CalcitePickList | CalciteValueList, event: CustomEvent): void {
     event.stopPropagation();
     const oldValue = event.detail.oldValue;
     if (this.selectedValues.has(oldValue)) {
