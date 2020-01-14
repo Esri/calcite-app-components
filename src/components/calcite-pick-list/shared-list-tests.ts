@@ -147,6 +147,49 @@ export const tests = {
         expect(properties.get("hasItem")._remoteObject.value).toBe(true);
       });
     });
+    describe("value changes after item is selected", () => {
+      it.only("should update the value in selectedValues map", async () => {
+        const page = await newE2EPage();
+        await page.setContent(`<calcite-${listType}-list>
+          <calcite-${listType}-list-item value="one" text-label="One" selected></calcite-${listType}-list-item>
+          <calcite-${listType}-list-item value="two" text-label="Two" selected></calcite-${listType}-list-item>
+          <calcite-${listType}-list-item value="three" text-label="Three" selected></calcite-${listType}-list-item>
+        </calcite-${listType}-list>`);
+
+        const list = await page.find(`calcite-${listType}-list`);
+        const item1 = await list.find("[value=one]");
+        await item1.click();
+
+        const hasValueOne = await page.evaluate((type) => {
+          const pageList: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
+            `calcite-${type}-list`
+          );
+          return pageList.getSelectedItems().then((result) => {
+            return result.has("one");
+          });
+        }, listType);
+
+        expect(hasValueOne).toBe(true);
+
+        item1.setProperty("value", "four");
+        await page.waitForChanges();
+
+        const hasValues = await page.evaluate((type) => {
+          const pageList: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
+            `calcite-${type}-list`
+          );
+          return pageList.getSelectedItems().then((result) => {
+            return {
+              four: result.has("four"),
+              one: result.has("one")
+            };
+          });
+        }, listType);
+
+        expect(hasValues.one).toBe(false);
+        expect(hasValues.four).toBe(true);
+      });
+    });
   },
   filterBehavior(listType: "pick" | "value") {
     let page: E2EPage = null;
