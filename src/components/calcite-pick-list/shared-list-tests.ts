@@ -148,7 +148,7 @@ export const tests = {
       });
     });
     describe("value changes after item is selected", () => {
-      it.only("should update the value in selectedValues map", async () => {
+      it("should update the value in selectedValues map", async () => {
         const page = await newE2EPage();
         await page.setContent(`<calcite-${listType}-list>
           <calcite-${listType}-list-item value="one" text-label="One" selected></calcite-${listType}-list-item>
