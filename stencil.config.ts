@@ -26,7 +26,6 @@ export const create: () => Config = () => ({
   ],
   outputTargets: [
     { type: "dist" },
-    { type: "docs-readme" },
     {
       type: "www",
       copy: [
