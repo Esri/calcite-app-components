@@ -88,6 +88,8 @@ export class CalcitePanel {
 
   dismissButtonEl: HTMLCalciteActionElement;
 
+  containerEl: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -126,7 +128,10 @@ export class CalcitePanel {
   async setFocus(focusId?: FocusId) {
     if (focusId === "dismiss-button") {
       this.dismissButtonEl?.setFocus();
+      return;
     }
+
+    this.containerEl?.focus();
   }
 
   // --------------------------------------------------------------------------
@@ -225,6 +230,7 @@ export class CalcitePanel {
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}
+          ref={(containerEl) => (this.containerEl = containerEl)}
           class={classnames(CSS.container, {
             [CSS_UTILITY.rtl]: rtl
           })}
