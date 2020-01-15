@@ -14,7 +14,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build",
+    "build": "stencil build --docs",
     "build:docs": "stencil build --config stencil.storybook.config.ts",
     "demoPageSync": "ts-node ./support/demoPageSync.ts",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"chore(deps): Bump versions.\"",
