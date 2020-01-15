@@ -57,10 +57,13 @@ describe("calcite-panel", () => {
       withPeerDependencies: true
     });
 
-    const panel = await page.find("calcite-panel");
+    const tagName = await page.evaluate(async () => {
+      const calcitePanel = document.querySelector("calcite-panel");
+      await calcitePanel.setFocus("dismiss-button");
+      const activeElement = calcitePanel.shadowRoot.activeElement;
+      return activeElement.tagName;
+    });
 
-    const setFocus = panel.callMethod("setFocus");
-
-    expect(setFocus).toBeInstanceOf(Promise);
+    expect(tagName).toBe("CALCITE-ACTION");
   });
 });
