@@ -111,21 +111,22 @@ export class CalciteBlock {
       return;
     }
 
-    this.open = !this.open;
-    this.calciteBlockToggle.emit();
+    this.toggle();
   };
 
-  onHeaderKeyDownOrUp = (event: KeyboardEvent) => {
+  onHeaderKeyUp = (event: KeyboardEvent) => {
     const { currentTarget, key, target } = event;
+    const bubbled = currentTarget !== target;
 
-    if (key === " " || key === "Enter") {
-      const shouldBlockBubbledControlEvent = currentTarget !== target;
-
-      if (shouldBlockBubbledControlEvent) {
-        event.preventDefault();
-      }
+    if ((key === " " || key === "Enter") && !bubbled) {
+      this.toggle();
     }
   };
+
+  toggle(): void {
+    this.open = !this.open;
+    this.calciteBlockToggle.emit();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -174,17 +175,18 @@ export class CalciteBlock {
     const headerNode = (
       <div class={CSS.headerContainer}>
         {collapsible ? (
-          <button
+          <div
             aria-label={toggleLabel}
             class={CSS.toggle}
             onClick={this.onHeaderClick}
-            onKeyDown={this.onHeaderKeyDownOrUp}
-            onKeyUp={this.onHeaderKeyDownOrUp}
+            onKeyUp={this.onHeaderKeyUp}
+            role="button"
+            tabIndex={0}
             title={toggleLabel}
           >
             {headerContent}
             {controlSlot ? null : <calcite-icon scale="s" icon={open ? ICONS.close : ICONS.open} />}
-          </button>
+          </div>
         ) : (
           headerContent
         )}
