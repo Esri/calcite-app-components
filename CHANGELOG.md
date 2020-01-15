@@ -3,6 +3,40 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.0.0](https://github.com/Esri/calcite-app-components/compare/v4.11.1...v5.0.0) (2020-01-15)
+
+### ⚠ BREAKING CHANGES
+
+- Modify Tip API & remove unused utilities (#720)
+- BREAKING CHANGE rename secondary-action slot
+- **block:** disabled blocks are no longer interactive
+- **block-section:** @esri/calcite-components@1.0.0-beta.14 introduced breaking changes (see https://github.com/Esri/calcite-components/blob/c365346de6866fc46e468985dd19d6beb4624483/CHANGELOG.md#v100-beta14---nov-18th-2019 for more info).
+- Flow - Remove current panel automatically when back is clicked #586 (#608)
+
+### Features
+
+- ActionPad. Add same expand/collapse behavior as ActionBar ([#690](https://github.com/Esri/calcite-app-components/issues/690)) ([9f02abe](https://github.com/Esri/calcite-app-components/commit/9f02abe53f0ce530b90a2b8a5adeb1a290653085))
+- BREAKING CHANGE rename secondary-action slot ([4569a57](https://github.com/Esri/calcite-app-components/commit/4569a57ea317eb8c8b0bc6a72452aea7af1caf53))
+- setFocus on dismiss button method [#740](https://github.com/Esri/calcite-app-components/issues/740) ([#742](https://github.com/Esri/calcite-app-components/issues/742)) ([ec3cfff](https://github.com/Esri/calcite-app-components/commit/ec3cfffe54f9650c04d65e730f505507d77e27c3))
+- **block:** prevent disabled block content from being tabbed into ([#652](https://github.com/Esri/calcite-app-components/issues/652)) ([6ef11c4](https://github.com/Esri/calcite-app-components/commit/6ef11c44d39ad0aaa48f0b07c599f2ab1b1dd7ef))
+- **flow-item, panel:** add summary and related styles ([#583](https://github.com/Esri/calcite-app-components/issues/583)) ([8d1a1b4](https://github.com/Esri/calcite-app-components/commit/8d1a1b423e62dfa7b71a6509c6124c90004aef3f))
+- **shell-panel, action:** Add content-detached property to ShellPanel ([8296e3b](https://github.com/Esri/calcite-app-components/commit/8296e3b725d3b68be10441535617709498bbdb65)), closes [#591](https://github.com/Esri/calcite-app-components/issues/591) [#590](https://github.com/Esri/calcite-app-components/issues/590) [#590](https://github.com/Esri/calcite-app-components/issues/590) [#590](https://github.com/Esri/calcite-app-components/issues/590) [#590](https://github.com/Esri/calcite-app-components/issues/590) [#590](https://github.com/Esri/calcite-app-components/issues/590) [#590](https://github.com/Esri/calcite-app-components/issues/590) [#590](https://github.com/Esri/calcite-app-components/issues/590)
+- Setting focus to a calcite-action & Flow Menu keyboard navigation ([#651](https://github.com/Esri/calcite-app-components/issues/651)) ([12754d4](https://github.com/Esri/calcite-app-components/commit/12754d46e0454b8f34fcdc5189894209fabdf38e))
+
+### Bug Fixes
+
+- [#524](https://github.com/Esri/calcite-app-components/issues/524) updated action appearance ([#678](https://github.com/Esri/calcite-app-components/issues/678)) ([b471baa](https://github.com/Esri/calcite-app-components/commit/b471baa8e1f2ff4a6b2a7291db69028522984784))
+- A shell with only a contextual panel displays on the incorrect side ([#709](https://github.com/Esri/calcite-app-components/issues/709)) ([d869513](https://github.com/Esri/calcite-app-components/commit/d8695131cc75972951c23ba544fcea7bc82e5d34)), closes [#259](https://github.com/Esri/calcite-app-components/issues/259)
+- action display on edge. [#725](https://github.com/Esri/calcite-app-components/issues/725) ([811e76c](https://github.com/Esri/calcite-app-components/commit/811e76c3aba3784b3f1cf590e86c987317fa6a6f))
+- addresses safari bugs with pick-list and value-list ([da46c72](https://github.com/Esri/calcite-app-components/commit/da46c72e5b240597ac606012f071052ed53f307e)), closes [#565](https://github.com/Esri/calcite-app-components/issues/565) [#727](https://github.com/Esri/calcite-app-components/issues/727)
+- Flow - Remove current panel automatically when back is clicked [#586](https://github.com/Esri/calcite-app-components/issues/586) ([#608](https://github.com/Esri/calcite-app-components/issues/608)) ([4237810](https://github.com/Esri/calcite-app-components/commit/4237810cc97b494d8fec81f70dfde9be26b53637))
+- FlowItem RTL trailing icon isn't on the far side [#721](https://github.com/Esri/calcite-app-components/issues/721) ([f0d27be](https://github.com/Esri/calcite-app-components/commit/f0d27be64956e425cfc1a394b7e311cd9c468309))
+- focus button styles [#713](https://github.com/Esri/calcite-app-components/issues/713) ([8a32670](https://github.com/Esri/calcite-app-components/commit/8a326704f72f0fa98750876c0b3727d2be62e1a3))
+- **panel, shell-panel:** flex-flow fix ([3963c1a](https://github.com/Esri/calcite-app-components/commit/3963c1a27c4b0abceeff3f76990b6302b1990358)), closes [#692](https://github.com/Esri/calcite-app-components/issues/692)
+
+* Modify Tip API & remove unused utilities ([#720](https://github.com/Esri/calcite-app-components/issues/720)) ([5cd8777](https://github.com/Esri/calcite-app-components/commit/5cd8777139103038970a9348bc54ef1198262486))
+* **block-section:** add a11y tests ([#580](https://github.com/Esri/calcite-app-components/issues/580)) ([173aa21](https://github.com/Esri/calcite-app-components/commit/173aa21b47f92a180569eb858dc0989fd2b86eb2)), closes [#552](https://github.com/Esri/calcite-app-components/issues/552) [#552](https://github.com/Esri/calcite-app-components/issues/552) [#552](https://github.com/Esri/calcite-app-components/issues/552) [#552](https://github.com/Esri/calcite-app-components/issues/552)
+
 ### [4.11.1](https://github.com/Esri/calcite-app-components/compare/v4.11.0...v4.11.1) (2019-12-18)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@esri/calcite-app-components",
-  "version": "4.11.1",
+  "version": "5.0.0",
   "description": "A collection of web components for building single-page applications.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
