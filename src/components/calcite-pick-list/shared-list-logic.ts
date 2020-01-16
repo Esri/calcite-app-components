@@ -120,7 +120,7 @@ export const sharedListMethods = {
 
       // If item is in a group...
       if (inGroup) {
-        const groupParent = item.parentElement.querySelector("[slot=parentItem]") as pickOrValueListItem;
+        const groupParent = item.parentElement.querySelector("[slot=parent-item]") as pickOrValueListItem;
         // If there is a group parent
         if (groupParent !== null) {
           // If the group parent is a match, show me.
