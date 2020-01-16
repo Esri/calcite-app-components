@@ -28,12 +28,15 @@ function getClosestShellLayout(el: HTMLElement): CalciteLayout | null {
 
 export function toggleChildActionText({
   parent,
+  expand,
   expanded
 }: {
   parent: HTMLElement;
+  expand: boolean;
   expanded: boolean;
 }): void {
-  parent.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
+  expand &&
+    parent.querySelectorAll("calcite-action").forEach((action) => (action.textEnabled = expanded));
 }
 
 export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> = ({
