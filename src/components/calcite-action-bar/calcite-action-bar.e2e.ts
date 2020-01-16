@@ -89,6 +89,30 @@ describe("calcite-action-bar", () => {
 
       expect(textEnabled).toBe(true);
     });
+
+    it("should not have bottomGroup when expand is false", async () => {
+      const page = await newE2EPage();
+
+      await page.setContent(`<calcite-action-bar expand="false"></calcite-action-bar>`);
+
+      const buttonGroup = await page.find(`calcite-action-bar >>> .${CSS.actionGroupBottom}`);
+
+      expect(buttonGroup).toBeNull();
+    });
+
+    it("should not modify textEnabled on actions when expand is false", async () => {
+      const page = await newE2EPage();
+
+      await page.setContent(
+        `<calcite-action-bar expand="false" expanded><calcite-action text="hello"></calcite-action></calcite-action-bar>`
+      );
+
+      const action = await page.find("calcite-action");
+
+      const textEnabled = await action.getProperty("textEnabled");
+
+      expect(textEnabled).toBe(false);
+    });
   });
 
   it("should be accessible", async () =>
