@@ -50,7 +50,7 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
     },
     {
       name: "heading",
-      value: text("heading", "Flow-heading", group)
+      value: text("heading", "Heading", group)
     },
     {
       name: "loading",
@@ -59,6 +59,10 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
     {
       name: "menu-open",
       value: boolean("menuOpen", false, group)
+    },
+    {
+      name: "summary",
+      value: text("summary", "Summary", group)
     },
     {
       name: "text-back",
