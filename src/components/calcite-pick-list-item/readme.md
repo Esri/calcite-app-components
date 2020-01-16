@@ -37,10 +37,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                                   | Description                                                                                      |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `"secondary-action"`                   | A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card. |
-| This is placed at the end of the item. |
+| Slot                 | Description                                                                                                                             |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `"secondary-action"` | A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card. This is placed at the end of the item. |
 
 ## Dependencies
 

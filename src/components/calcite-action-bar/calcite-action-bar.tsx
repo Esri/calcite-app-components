@@ -26,6 +26,13 @@ export class CalciteActionBar {
    */
   @Prop({ reflect: true }) expand = true;
 
+  @Watch("expand")
+  expandHandler(expand: boolean) {
+    if (expand) {
+      toggleChildActionText({ parent: this.el, expanded: this.expanded });
+    }
+  }
+
   /**
    * Indicates whether widget is expanded.
    */
@@ -33,7 +40,9 @@ export class CalciteActionBar {
 
   @Watch("expanded")
   expandedHandler(expanded: boolean) {
-    toggleChildActionText({ parent: this.el, expanded });
+    if (this.expand) {
+      toggleChildActionText({ parent: this.el, expanded });
+    }
 
     this.calciteActionBarToggle.emit();
   }
@@ -86,8 +95,11 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   componentWillLoad() {
-    const { el, expanded } = this;
-    toggleChildActionText({ parent: el, expanded });
+    const { el, expand, expanded } = this;
+
+    if (expand) {
+      toggleChildActionText({ parent: el, expanded });
+    }
   }
 
   // --------------------------------------------------------------------------

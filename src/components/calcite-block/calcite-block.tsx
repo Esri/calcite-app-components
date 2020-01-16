@@ -99,18 +99,7 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  onHeaderClick = (event: MouseEvent) => {
-    const controlSlot = this.el.shadowRoot.querySelector<HTMLSlotElement>(
-      `slot[name=${SLOTS.control}]`
-    );
-    const control = controlSlot && controlSlot.assignedNodes()[0];
-
-    if (control && control.contains(event.target as Node)) {
-      event.stopPropagation();
-      event.preventDefault();
-      return;
-    }
-
+  onHeaderClick = (): void => {
     this.open = !this.open;
     this.calciteBlockToggle.emit();
   };
@@ -134,11 +123,6 @@ export class CalciteBlock {
       textExpand
     } = this;
     const toggleLabel = open ? textCollapse : textExpand;
-    const content = loading ? (
-      <calcite-loader inline is-active></calcite-loader>
-    ) : (
-      <slot name={SLOTS.control} />
-    );
 
     const hasIcon = el.querySelector(`[slot=${SLOTS.icon}]`);
     const headerContent = (
@@ -152,12 +136,11 @@ export class CalciteBlock {
           <h3 class={CSS.heading}>{heading}</h3>
           {summary ? <div class={CSS.summary}>{summary}</div> : null}
         </div>
-        {content}
       </header>
     );
 
-    const controlSlot = el.querySelector(`[slot=${SLOTS.control}]`);
-    const hasContent = el.children.length > (controlSlot ? 1 : 0);
+    const slottedControl = el.querySelector(`[slot=${SLOTS.control}]`);
+    const hasContent = el.children.length > (slottedControl ? 1 : 0);
 
     const headerNode = (
       <div class={CSS.headerContainer}>
@@ -169,10 +152,17 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            {controlSlot ? null : <calcite-icon scale="s" icon={open ? ICONS.close : ICONS.open} />}
+            {slottedControl ? null : (
+              <calcite-icon scale="s" icon={open ? ICONS.close : ICONS.open} />
+            )}
           </button>
         ) : (
           headerContent
+        )}
+        {loading ? (
+          <calcite-loader inline is-active></calcite-loader>
+        ) : (
+          <slot name={SLOTS.control} />
         )}
       </div>
     );

@@ -51,4 +51,34 @@ describe("calcite-panel", () => {
       <div slot="${SLOTS.footer}">test Footer</div>
     </calcite-panel>
     `));
+
+  it("should focus on close button", async () => {
+    const page = await setUpPage("<calcite-panel dismissible>test</calcite-panel>", {
+      withPeerDependencies: true
+    });
+
+    const tagName = await page.evaluate(async () => {
+      const calcitePanel = document.querySelector("calcite-panel");
+      await calcitePanel.setFocus("dismiss-button");
+      const activeElement = calcitePanel.shadowRoot.activeElement;
+      return activeElement.tagName;
+    });
+
+    expect(tagName).toBe("CALCITE-ACTION");
+  });
+
+  it("should focus on container", async () => {
+    const page = await setUpPage("<calcite-panel dismissible>test</calcite-panel>", {
+      withPeerDependencies: true
+    });
+
+    const tagName = await page.evaluate(async () => {
+      const calcitePanel = document.querySelector("calcite-panel");
+      await calcitePanel.setFocus();
+      const activeElement = calcitePanel.shadowRoot.activeElement;
+      return activeElement.tagName;
+    });
+
+    expect(tagName).toBe("ARTICLE");
+  });
 });

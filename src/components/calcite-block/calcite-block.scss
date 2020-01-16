@@ -13,9 +13,14 @@
 
 .header {
   flex-grow: 1;
+  justify-content: flex-start;
 }
 
 .header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+
   & > .header {
     padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   }
@@ -35,7 +40,6 @@ calcite-loader[inline] {
 }
 
 .title {
-  flex-grow: 1;
   margin: 0;
 }
 
@@ -78,4 +82,17 @@ calcite-loader[inline] {
 .content {
   padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
   position: relative;
+}
+
+::slotted([slot="control"]) {
+  position: absolute;
+  margin: auto;
+  right: var(--calcite-app-side-spacing-three-quarters);
+}
+
+.calcite--rtl {
+  ::slotted([slot="control"]) {
+    left: var(--calcite-app-side-spacing-three-quarters);
+    right: unset;
+  }
 }
