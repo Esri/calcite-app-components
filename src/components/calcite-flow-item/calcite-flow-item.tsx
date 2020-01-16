@@ -322,14 +322,13 @@ export class CalciteFlowItem {
 
   renderHeader(): VNode {
     const headingNode = this.renderHeading();
-
     const summaryNode = this.renderSummary();
 
     return headingNode || summaryNode ? (
-      <header class={CSS.header} slot={SLOTS.headerContent}>
+      <div class={CSS.header} slot={SLOTS.headerContent}>
         {headingNode}
         {summaryNode}
-      </header>
+      </div>
     ) : null;
   }
 
@@ -349,10 +348,7 @@ export class CalciteFlowItem {
           })}
         >
           {this.renderBackButton(rtl)}
-          <div class={CSS.header} slot="header-content">
-            {this.renderHeading()}
-            {this.renderSummary()}
-          </div>
+          {this.renderHeader()}
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
