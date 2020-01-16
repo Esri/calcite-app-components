@@ -33,6 +33,10 @@ export const create: () => Config = () => ({
         {
           src: "../../node_modules/@esri/calcite-components/dist/calcite",
           dest: "vendor/@esri/calcite-components"
+        },
+        {
+          src: "../../node_modules/dedent/dist",
+          dest: "vendor/dedent"
         }
       ],
       serviceWorker: null // disable service workers

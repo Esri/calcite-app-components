@@ -26,6 +26,9 @@
     {
       src: "vendor/@esri/calcite-components/calcite.js",
       noModule: true
+    },
+    {
+      src: "vendor/dedent/dedent.js"
     }
   ];
 

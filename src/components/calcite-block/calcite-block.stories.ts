@@ -9,6 +9,7 @@ import {
 import blockReadme from "./readme.md";
 import sectionReadme from "../calcite-block-section/readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
+import dedent from "dedent";
 
 export default {
   title: "components|calcite-block",
@@ -105,7 +106,8 @@ export const basic = () =>
   create(
     "calcite-block",
     createBlockAttributes(),
-    `${create(
+    dedent`
+    ${create(
       "calcite-block-section",
       createSectionAttributes(),
       `<img alt="demo" src="https://placeimg.com/320/240/animals" />`
@@ -114,7 +116,7 @@ export const basic = () =>
     <calcite-block-section text="Nature" open>
       <img alt="demo" src="https://placeimg.com/320/240/nature" />
     </calcite-block-section>
-    `
+  `
   );
 
 export const withHeaderControl = () =>
