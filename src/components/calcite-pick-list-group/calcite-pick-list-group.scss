@@ -23,3 +23,7 @@ h3.heading {
   overflow: hidden;
   @include borderShadow();
 }
+
+.indent {
+  margin-left: 16px;
+}

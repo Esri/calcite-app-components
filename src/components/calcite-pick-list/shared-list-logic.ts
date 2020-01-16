@@ -114,7 +114,25 @@ export const sharedListMethods = {
     const filteredData = event.detail;
     const values = filteredData.map((item) => item.value);
     this.items.forEach((item) => {
+      const inGroup = item.parentElement.matches("calcite-pick-list-group");
+
       item.hidden = values.indexOf(item.value) === -1;
+
+      // If item is in a group...
+      if (inGroup) {
+        const groupParent = item.parentElement.querySelector("[slot=parentItem]") as pickOrValueListItem;
+        // If there is a group parent
+        if (groupParent !== null) {
+          // If the group parent is a match, show me.
+          if (values.indexOf(groupParent.value) !== -1) {
+            item.hidden = false;
+          }
+          // If I am a match, show my parent.
+          if (values.indexOf(item.value) !== -1) {
+            groupParent.hidden = false;
+          }
+        }
+      }
     });
   },
   getItemData(this: CalcitePickList | CalciteValueList): Record<string, string | object>[] {

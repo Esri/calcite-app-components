@@ -26,17 +26,17 @@
         </p>
         <h2>Pick List - Default</h2>
         <calcite-pick-list id="one">
-          <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+          <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex">
             <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="circle" scale="s" filled></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
-          <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" selected>
+          <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
             <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="circle" scale="s" filled></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
-          <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld">
+          <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld">
             <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="circle" scale="s" filled></calcite-icon>
             </calcite-action>
@@ -103,26 +103,31 @@
         </script>
 
         <h2>Pick List with sub-groups</h2>
-        <calcite-pick-list id="three">
-          <calcite-pick-list-group text-group-title="numbers">
-            <calcite-pick-list-item text-heading="one" text-description="fish" value="one" icon="grip">
+        <calcite-pick-list id="three" filter-enabled>
+          <calcite-pick-list-group>
+            <calcite-pick-list-item text-label="numbers" value="numbers" slot="parentItem">
               <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
                 <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
-            <calcite-pick-list-item text-heading="two" text-description="fish" value="two" icon="grip">
+            <calcite-pick-list-item text-label="one" text-description="fish" value="one" icon="grip">
+              <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+                <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+              </calcite-action>
+            </calcite-pick-list-item>
+            <calcite-pick-list-item text-label="two" text-description="fish" value="two" icon="grip">
               <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
                 <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
           </calcite-pick-list-group>
           <calcite-pick-list-group text-group-title="colors">
-            <calcite-pick-list-item text-heading="red" text-description="fish" value="red" icon="grip">
+            <calcite-pick-list-item text-label="red" text-description="fish" value="red" icon="grip">
               <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
                 <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
-            <calcite-pick-list-item text-heading="blue" text-description="fish" value="blue" icon="grip">
+            <calcite-pick-list-item text-label="blue" text-description="fish" value="blue" icon="grip">
               <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
                 <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
               </calcite-action>
