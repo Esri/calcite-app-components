@@ -28,4 +28,16 @@ describe("calcite-pick-list-group", () => {
     expect(isVisible).toBe(true);
     expect(heading.innerText).toBe(headingText);
   });
+
+  it("should indent children if a parent slot is passed", async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-pick-list filter-enabled>
+      <calcite-pick-list-group>
+        <calcite-pick-list-item slot="parent-item" value="nums" text-label="Numbers"></calcite-pick-list-item>
+        <calcite-pick-list-item value="1" text-label="One" text-description="uno"></calcite-pick-list-item>
+      </calcite-pick-list-group>
+    </calcite-pick-list>`);
+    const indentedContainer = await page.find(`calcite-pick-list-group >>> ${CSS.indent}`);
+    expect(indentedContainer).toBeDefined();
+  });
 });
