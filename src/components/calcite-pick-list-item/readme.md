@@ -6,18 +6,17 @@
 
 ## Properties
 
-| Property             | Attribute          | Description                                                                                                                                        | Type                                                        | Default     |
-| -------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------- |
-| `compact`            | `compact`          | Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the pick-list-item. | `boolean`                                                   | `false`     |
-| `disableDeselect`    | `disable-deselect` | When false, the item cannot be deselected by user interaction.                                                                                     | `boolean`                                                   | `false`     |
-| `disabled`           | `disabled`         | When true, the item cannot be clicked and is visually muted.                                                                                       | `boolean`                                                   | `false`     |
-| `icon`               | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.                                                       | `ICON_TYPES.circle \| ICON_TYPES.grip \| ICON_TYPES.square` | `null`      |
-| `metadata`           | --                 | Used to provide additional metadata to an item, primarily used when the parent list has a filter.                                                  | `object`                                                    | `undefined` |
-| `selected`           | `selected`         | Set this to true to pre-select an item. Toggles when an item is checked/unchecked.                                                                 | `boolean`                                                   | `false`     |
-| `textDescription`    | `text-description` | An optional description for this item. This will appear below the label text.                                                                      | `string`                                                    | `undefined` |
-| `textHeading`        | `text-heading`     | <span style="color:red">**[DEPRECATED]**</span> Replaced by textLabel.<br/><br/>                                                                   | `string`                                                    | `undefined` |
-| `textLabel`          | `text-label`       | The main label for this item. This will appear next to the icon.                                                                                   | `string`                                                    | `undefined` |
-| `value` _(required)_ | `value`            | A unique value used to identify this item - similar to the value attribute on an <input>.                                                          | `string`                                                    | `undefined` |
+| Property             | Attribute          | Description                                                                                                                                                  | Type                                                        | Default     |
+| -------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ----------- |
+| `compact`            | `compact`          | Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the `calcite-pick-list-item`. | `boolean`                                                   | `false`     |
+| `disableDeselect`    | `disable-deselect` | When false, the item cannot be deselected by user interaction.                                                                                               | `boolean`                                                   | `false`     |
+| `disabled`           | `disabled`         | When true, the item cannot be clicked and is visually muted.                                                                                                 | `boolean`                                                   | `false`     |
+| `icon`               | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.                                                                 | `ICON_TYPES.circle or ICON_TYPES.grip or ICON_TYPES.square` | `null`      |
+| `metadata`           | --                 | Used to provide additional metadata to an item, primarily used when the parent list has a filter.                                                            | `object`                                                    | `undefined` |
+| `selected`           | `selected`         | Set this to true to pre-select an item. Toggles when an item is checked/unchecked.                                                                           | `boolean`                                                   | `false`     |
+| `textDescription`    | `text-description` | An optional description for this item. This will appear below the label text.                                                                                | `string`                                                    | `undefined` |
+| `textLabel`          | `text-label`       | The main label for this item. This will appear next to the icon.                                                                                             | `string`                                                    | `undefined` |
+| `value` _(required)_ | `value`            | A unique value used to identify this item - similar to the value attribute on an <input>.                                                                    | `string`                                                    | `undefined` |
 
 ## Events
 
@@ -38,9 +37,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                | Description                                                                                   |
-| ------------------- | --------------------------------------------------------------------------------------------- |
-| `"secondaryAction"` | A slot intended for adding a calcite-action or calcite-button. Placed at the end of the item. |
+| Slot                 | Description                                                                                                                             |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `"secondary-action"` | A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card. This is placed at the end of the item. |
 
 ## Dependencies
 

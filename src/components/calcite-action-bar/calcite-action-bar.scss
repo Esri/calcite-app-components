@@ -1,4 +1,5 @@
 :host {
+  @extend %component-host;
   align-self: stretch;
   display: inline-flex;
   flex-direction: column;
@@ -6,6 +7,8 @@
   overflow-y: auto;
   pointer-events: auto;
 }
+
+@import "../../scss/includes/_component";
 
 :host([expanded]) {
   max-width: 20vw;

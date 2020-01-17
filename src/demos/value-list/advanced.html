@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Demos - ValueList</title>
     <script src="../_assets/head.js"></script>
+    <script src="../_assets/toggles.js"></script>
   </head>
   <body>
     <main>
@@ -31,22 +32,16 @@
 
         <h3>multiple</h3>
         <calcite-value-list id="one" multiple="true" filter-enabled>
-          <calcite-action slot="menu-actions" indicator text="Cool"
-            ><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 4H2V3h12zm0 4H2v1h12zm0 5H2v1h12z" />
-            </svg>
+          <calcite-action slot="menu-actions" indicator text="Cool">
+            <calcite-icon icon="hamburger" scale="s"></calcite-icon>
           </calcite-action>
           <calcite-value-list-item
             text-label="2018 Population Density (Esri)"
             text-description="{POPDENS_CY}"
             value="POPDENS_CY"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -54,12 +49,8 @@
             text-description="{POPDENS_CY}"
             value="POPDENS_CY2"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -67,12 +58,8 @@
             text-description="{TOTHH_CY}"
             value="TOTHH_CY"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -94,12 +81,8 @@
             text-description="GENALPHACY"
             value="GENALPHACY"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -107,12 +90,8 @@
             text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
             value="HHGRW10CY"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -120,12 +99,8 @@
             text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
             value="HHGRW10CY2"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -145,30 +120,18 @@
             text-label="2018 Generation Alpha Population (Born 2017 or Later)"
             value="GENALPHACY"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="2010-2018 Households: Annual Growth Rate (Esri)" value="HHGRW10CY">
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="2010-2018 Households" value="HHGRW10CY">
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -185,21 +148,13 @@
         <h3>drag-enabled</h3>
         <calcite-value-list id="four" drag-enabled>
           <calcite-value-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID" icon="grip">
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID2" icon="grip">
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -208,12 +163,8 @@
             value="DIVINDX_FY"
             icon="grip"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -222,12 +173,8 @@
             value="PCI_FY"
             icon="grip"
           >
-            <calcite-action slot="secondaryAction" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                <path
-                  d="M8.718 8l5.303 5.303-.707.707L8.01 8.707 2.707 14.01 2 13.303 7.303 8 2 2.697l.707-.707L8.01 7.293l5.304-5.303.707.707z"
-                />
-              </svg>
+            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>

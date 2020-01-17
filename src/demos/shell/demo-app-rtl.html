@@ -8,6 +8,7 @@
 
     <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
+    <script src="../_assets/toggles.js"></script>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.12/"></script>
@@ -80,44 +81,24 @@
               <calcite-action-bar slot="action-bar" theme="dark">
                 <calcite-action-group>
                   <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers" active indicator>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
                   <calcite-action text="An unbelievably long title">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers" indicator>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
               </calcite-action-bar>
@@ -125,25 +106,17 @@
                 <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
                   <calcite-block-content>
                     <calcite-action text="horizontal ActionPad" text-enabled id="action-pad-button" indicator>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                        <path
-                          d="M13.071 1H1.93a.929.929 0 0 0-.93.929V13.07a.929.929 0 0 0 .929.929H13.07a.929.929 0 0 0 .929-.929V1.93a.929.929 0 0 0-.928-.93zM13 13H2V2h11zm-7-1V3l4.5 4.5zm1-2.414L9.086 7.5 7 5.414z"
-                        />
-                      </svg>
+                      <calcite-icon icon="caret-square-right" scale="s"></calcite-icon>
                     </calcite-action>
                     <calcite-action text="Vertical Shell Floating Panel" text-enabled id="shell-floating-panel-button">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                        <path d="M2 14h4v1H1v-5h1zm12-8h1V1h-5v1h4zm0 4v4h-4v1h5v-5zM1 6h1V2h4V1H1z" />
-                      </svg>
+                      <calcite-icon icon="extent" scale="s"></calcite-icon>
                     </calcite-action>
                     <calcite-action
                       text="horizontal Shell Floating Panel"
                       text-enabled
                       id="shell-floating-panel-button-2"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                        <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z" />
-                      </svg>
+                      <calcite-icon icon="arrow-up-right" scale="s"></calcite-icon>
                     </calcite-action>
                   </calcite-block-content>
                 </calcite-block>
@@ -175,44 +148,24 @@
               <calcite-action-bar slot="action-bar">
                 <calcite-action-group>
                   <calcite-action text="Add" active>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
                   <calcite-action text="An unbelievably long title">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
               </calcite-action-bar>
@@ -301,53 +254,31 @@
               <calcite-action-pad hidden>
                 <calcite-action-group>
                   <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
               </calcite-action-pad>
               <calcite-action-bar slot="action-bar">
                 <calcite-action-group>
                   <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers" active indicator>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
                   <calcite-action text="A long action title">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers" indicator>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
               </calcite-action-bar>
@@ -355,21 +286,13 @@
                 <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
                   <calcite-block-content>
                     <calcite-action text="Side ActionPad" text-enabled indicator>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                        <path
-                          d="M13.071 1H1.93a.929.929 0 0 0-.93.929V13.07a.929.929 0 0 0 .929.929H13.07a.929.929 0 0 0 .929-.929V1.93a.929.929 0 0 0-.928-.93zM13 13H2V2h11zm-7-1V3l4.5 4.5zm1-2.414L9.086 7.5 7 5.414z"
-                        />
-                      </svg>
+                      <calcite-icon icon="caret-square-right" scale="s"></calcite-icon>
                     </calcite-action>
                     <calcite-action text="Vertical Shell Floating Panel" text-enabled>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                        <path d="M2 14h4v1H1v-5h1zm12-8h1V1h-5v1h4zm0 4v4h-4v1h5v-5zM1 6h1V2h4V1H1z" />
-                      </svg>
+                      <calcite-icon icon="extent" scale="s"></calcite-icon>
                     </calcite-action>
                     <calcite-action text="Over Shell Floating Panel" text-enabled>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                        <path d="M2.647 12.584L12.288 3H9V2h5v5h-1V3.702l-9.647 9.591z" />
-                      </svg>
+                      <calcite-icon icon="arrow-up-right" scale="s"></calcite-icon>
                     </calcite-action>
                   </calcite-block-content>
                 </calcite-block>
@@ -401,44 +324,24 @@
               <calcite-action-bar slot="action-bar">
                 <calcite-action-group>
                   <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" indicator disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
                 <calcite-action-group>
                   <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
+                    <calcite-icon icon="plus" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Save" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
+                    <calcite-icon icon="save" scale="s"></calcite-icon>
                   </calcite-action>
                   <calcite-action text="Layers">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
-                      <path
-                        d="M15.71 11.487l-7.4 4.441a.738.738 0 0 1-.635 0L.27 11.487a.272.272 0 0 1 0-.508l.913-.547 6.49 3.895a.738.738 0 0 0 .635 0l6.49-3.895.912.547a.271.271 0 0 1 0 .508zm0-3.74L14.8 7.2l-6.49 3.894a.738.738 0 0 1-.635 0L1.184 7.2l-.913.547a.272.272 0 0 0 0 .507l7.403 4.442a.738.738 0 0 0 .635 0l7.402-4.442a.271.271 0 0 0 0-.507zM.272 5.022l7.403 4.441a.738.738 0 0 0 .635 0l7.402-4.441a.271.271 0 0 0 0-.508L8.309.073a.738.738 0 0 0-.635 0L.27 4.514a.272.272 0 0 0 0 .508z"
-                      />
-                    </svg>
+                    <calcite-icon icon="layers" scale="s"></calcite-icon>
                   </calcite-action>
                 </calcite-action-group>
               </calcite-action-bar>

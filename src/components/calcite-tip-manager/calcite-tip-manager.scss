@@ -25,8 +25,12 @@ $tip-max-width: 540px;
 
 /* Component Styles */
 :host {
+  @extend %component-host;
   display: block;
 }
+
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 :host([closed]) {
   display: none;

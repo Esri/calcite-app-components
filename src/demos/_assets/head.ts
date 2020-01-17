@@ -26,6 +26,9 @@
     {
       src: "vendor/@esri/calcite-components/calcite.js",
       noModule: true
+    },
+    {
+      src: "vendor/dedent/dedent.js"
     }
   ];
 
@@ -33,14 +36,6 @@
   if (location.port) {
     SCRIPTS.push({
       src: `${ASSETS_PATH}/demoPageReloader.js`
-    });
-  }
-
-  const IS_IE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
-
-  if (!IS_IE11) {
-    SCRIPTS.push({
-      src: `${ASSETS_PATH}/toggles.js`
     });
   }
 

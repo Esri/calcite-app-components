@@ -3,6 +3,7 @@ import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
+import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import { CSS_UTILITY } from "../utils/resources";
@@ -211,7 +212,7 @@ export class CalciteFlowItem {
 
     return showBackButton ? (
       <calcite-action
-        slot={SLOTS.headerLeadingContent}
+        slot={PANEL_SLOTS.headerLeadingContent}
         key="back-button"
         aria-label={textBack}
         text={textBack}
@@ -258,7 +259,7 @@ export class CalciteFlowItem {
     const hasFooterActions = !!this.el.querySelector(`[slot=${SLOTS.footerActions}]`);
 
     return hasFooterActions ? (
-      <div slot="footer" class={CSS.footerActions}>
+      <div slot={PANEL_SLOTS.footer} class={CSS.footerActions}>
         <slot name={SLOTS.footerActions} />
       </div>
     ) : null;
@@ -298,7 +299,7 @@ export class CalciteFlowItem {
         : null;
 
     return menuActionsNodes ? (
-      <div slot={SLOTS.headerTrailingContent} class={CSS.headerActions}>
+      <div slot={PANEL_SLOTS.headerTrailingContent} class={CSS.headerActions}>
         {menuActionsNodes}
       </div>
     ) : null;
@@ -308,7 +309,7 @@ export class CalciteFlowItem {
     const { heading } = this;
 
     return heading ? (
-      <h2 class={CSS.heading} slot={SLOTS.headerContent}>
+      <h2 class={CSS.heading} slot={PANEL_SLOTS.headerContent}>
         {heading}
       </h2>
     ) : null;
@@ -322,14 +323,13 @@ export class CalciteFlowItem {
 
   renderHeader(): VNode {
     const headingNode = this.renderHeading();
-
     const summaryNode = this.renderSummary();
 
     return headingNode || summaryNode ? (
-      <header class={CSS.header} slot={SLOTS.headerContent}>
+      <div class={CSS.header} slot={PANEL_SLOTS.headerContent}>
         {headingNode}
         {summaryNode}
-      </header>
+      </div>
     ) : null;
   }
 
@@ -349,10 +349,7 @@ export class CalciteFlowItem {
           })}
         >
           {this.renderBackButton(rtl)}
-          <div class={CSS.header} slot="header-content">
-            {this.renderHeading()}
-            {this.renderSummary()}
-          </div>
+          {this.renderHeader()}
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}

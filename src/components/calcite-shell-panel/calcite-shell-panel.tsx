@@ -1,9 +1,6 @@
 import classnames from "classnames";
-
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-
-import { CSS } from "./resources";
-
+import { CSS, SLOTS } from "./resources";
 import { CalciteLayout, CalciteScale } from "../interfaces";
 
 /**
@@ -73,7 +70,7 @@ export class CalciteShellPanel {
       </div>
     );
 
-    const actionBarNode = <slot name="action-bar" />;
+    const actionBarNode = <slot name={SLOTS.actionBar} />;
 
     const mainNodes = [actionBarNode, contentNode];
 

@@ -4,11 +4,15 @@ $tip-image-frame-width: 25% !default;
 $tip-image-max-width: 100% !default;
 
 :host {
+  @extend %component-host;
   position: relative;
   display: flex;
   flex-flow: column;
-  background-color: transparent;
+  background-color: var(--calcite-app-background-clear);
 }
+
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
 
 .container {
   background-color: var(--calcite-app-background);
@@ -52,11 +56,11 @@ $tip-image-max-width: 100% !default;
   }
 }
 
-.info ::slotted(p) {
+::slotted(p) {
   margin-top: 0;
 }
 
-.info ::slotted(a) {
+::slotted(a) {
   color: var(--calcite-app-foreground-link);
 }
 
@@ -65,4 +69,8 @@ $tip-image-max-width: 100% !default;
   img {
     max-width: $tip-image-max-width;
   }
+}
+
+::slotted(img) {
+  max-width: $tip-image-max-width;
 }

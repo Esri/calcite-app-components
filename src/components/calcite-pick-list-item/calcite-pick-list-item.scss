@@ -1,12 +1,14 @@
 :host {
+  @extend %component-host;
   align-items: center;
   display: flex;
   margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
-  background-color: var(--calcite-app-background);
   color: var(--calcite-app-foreground);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
+
+@import "../../scss/includes/_component";
 
 :host(:hover),
 :host(:focus) {
