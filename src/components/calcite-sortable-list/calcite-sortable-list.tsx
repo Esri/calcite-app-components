@@ -55,6 +55,7 @@ export class CalciteSortableList {
 
   observer = new MutationObserver(() => {
     this.cleanUpDragAndDrop();
+    this.items = Array.from(this.el.children);
     this.setUpDragAndDrop();
   });
 
