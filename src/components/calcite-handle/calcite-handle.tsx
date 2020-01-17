@@ -16,12 +16,12 @@ export class CalciteHandle {
   /**
    * @internal - stores the activated state of the drag handle.
    */
-  @Prop({ mutable: true }) activated? = false;
+  @Prop({ mutable: true, reflect: true }) activated = false;
 
   /**
    * Value for the button title attribute
    */
-  @Prop({ mutable: true }) textTitle? = "handle";
+  @Prop({ mutable: true, reflect: true }) textTitle = "handle";
 
   // --------------------------------------------------------------------------
   //
