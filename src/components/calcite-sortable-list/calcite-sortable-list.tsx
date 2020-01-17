@@ -51,7 +51,7 @@ export class CalciteSortableList {
 
   @State() handleActivated = false;
 
-  @State() items: Element[] = [];
+  items: Element[] = [];
 
   observer = new MutationObserver(() => {
     this.cleanUpDragAndDrop();
