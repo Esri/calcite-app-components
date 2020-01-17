@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Method,
+  Prop,
+  Watch,
+  h
+} from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
@@ -6,6 +16,8 @@ import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
+
+type FocusId = "dismiss-button";
 
 /**
  * @slot header-content - A slot for adding content in the center of the header.
@@ -74,6 +86,10 @@ export class CalcitePanel {
 
   @Element() el: HTMLCalcitePanelElement;
 
+  dismissButtonEl: HTMLCalciteActionElement;
+
+  containerEl: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -104,6 +120,22 @@ export class CalcitePanel {
 
   // --------------------------------------------------------------------------
   //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocus(focusId?: FocusId) {
+    if (focusId === "dismiss-button") {
+      this.dismissButtonEl?.setFocus();
+      return;
+    }
+
+    this.containerEl?.focus();
+  }
+
+  // --------------------------------------------------------------------------
+  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
@@ -129,7 +161,12 @@ export class CalcitePanel {
     const { dismiss, dismissible, textClose } = this;
 
     const dismissibleNode = dismissible ? (
-      <calcite-action aria-label={textClose} text={textClose} onClick={dismiss}>
+      <calcite-action
+        ref={(dismissButtonEl) => (this.dismissButtonEl = dismissButtonEl)}
+        aria-label={textClose}
+        text={textClose}
+        onClick={dismiss}
+      >
         <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
@@ -193,6 +230,7 @@ export class CalcitePanel {
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}
+          ref={(containerEl) => (this.containerEl = containerEl)}
           class={classnames(CSS.container, {
             [CSS_UTILITY.rtl]: rtl
           })}

@@ -26,7 +26,6 @@ export const create: () => Config = () => ({
   ],
   outputTargets: [
     { type: "dist" },
-    { type: "docs-readme" },
     {
       type: "www",
       copy: [
@@ -34,6 +33,10 @@ export const create: () => Config = () => ({
         {
           src: "../../node_modules/@esri/calcite-components/dist/calcite",
           dest: "vendor/@esri/calcite-components"
+        },
+        {
+          src: "../../node_modules/dedent/dist",
+          dest: "vendor/dedent"
         }
       ],
       serviceWorker: null // disable service workers
