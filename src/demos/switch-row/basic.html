@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>Calcite App Components: calcite-action</title>
+
+    <!-- Loads the link and script tags-->
+    <script src="../_assets/head.js"></script>
+    <script src="../_assets/toggles.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <section class="example-container">
+        <h1>calcite-switch-row</h1>
+        <p>
+          see the
+          <a
+            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-switch-row/readme.md"
+            >calcite-switch-row readme.</a
+          >
+        </p>
+
+        <h2>LTR</h2>
+        <div class="action-container">
+          <h3>Switched off (default)</h3>
+          <calcite-switch-row>
+            Cool beamz!
+          </calcite-switch-row>
+
+          <h3>Switched on</h3>
+          <calcite-switch-row switched="true">
+            Cool beamz!
+          </calcite-switch-row>
+
+          <h3>Disabled</h3>
+          <calcite-switch-row disabled>
+              Disabled switch row
+          </calcite-switch-row>
+
+          <h2>RTL</h2>
+
+          <div dir="rtl">
+            <h3>Switched off (default)</h3>
+            <calcite-switch-row>
+              Cool beamz!
+            </calcite-switch-row>
+            <hr />
+            <h3>Switched on</h3>
+            <calcite-switch-row switched="true">
+              Cool beamz!
+            </calcite-switch-row>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+.container {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--calcite-app-cap-spacing-half) 0;
+}
+
+:host([disabled]) .container {
+  pointer-events: none;
+  opacity: var(--calcite-app-disabled-opacity);
+}
+
+calcite-switch {
+  margin: 0;
+}
