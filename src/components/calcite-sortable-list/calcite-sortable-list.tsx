@@ -29,7 +29,7 @@ export class CalciteSortableList {
   /**
    * The class on the handle elements.
    */
-  @Prop() handleClass = "handle";
+  @Prop() handleSelector = ".handle";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -132,7 +132,7 @@ export class CalciteSortableList {
     this.items = Array.from(this.el.children);
 
     event.detail.handle.activated = true;
-    event.detail.handle.shadowRoot.querySelector(`.${this.handleClass}`).focus();
+    event.detail.handle.shadowRoot.querySelector(this.handleSelector).focus();
   }
 
   // --------------------------------------------------------------------------
@@ -143,10 +143,8 @@ export class CalciteSortableList {
 
   setUpDragAndDrop(): void {
     this.sortable = Sortable.create(this.el, {
-      handle: `.${this.handleClass}`,
-      onUpdate: () => {
-        this.calciteListOrderChange.emit();
-      }
+      handle: this.handleSelector,
+      onUpdate: () => this.calciteListOrderChange.emit()
     });
   }
 
