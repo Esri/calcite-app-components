@@ -76,48 +76,15 @@ export class CalciteSwitchRow {
   // --------------------------------------------------------------------------
 
   renderTextContainer(): VNode {
-    // const { text } = this;
-
-    // const textContainerClasses = {
-    //   [CSS.textContainerVisible]: textEnabled
-    // };
-
     return (
-      <div key="text-container" class={CSS.textContainer}>
-        {/* {text} */}
+      <span class={CSS.textContainer}>
         <slot />
-      </div>
+      </span>
     );
   }
 
-  //   renderIconContainer(): VNode {
-  //     const { loading } = this;
-
-  //     const slotContainerNode = (
-  //       <div
-  //         class={classnames(CSS.slotContainer, {
-  //           [CSS.slotContainerHidden]: loading
-  //         })}
-  //       >
-  //         <slot />
-  //       </div>
-  //     );
-
-  //     const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
-
-  //     return (
-  //       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-  //         {slotContainerNode}
-  //         {calciteLoaderNode}
-  //       </div>
-  //     );
-  //   }
-
   render() {
-    const { disabled, loading, el, /*label,*/ switched, scale /*, text*/ } = this;
-
-    // const titleText = !textEnabled && text;
-    // const title = label || text;
+    const { disabled, loading, el, switched, scale } = this;
     const rtl = getElementDir(el) === "rtl";
     const rtlClass = {
       [CSS_UTILITY.rtl]: rtl
@@ -127,9 +94,6 @@ export class CalciteSwitchRow {
       <Host>
         <label
           class={classnames(CSS.container, rtlClass)}
-          //   title={title}
-          //   aria-label={title}
-          //   disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
         >

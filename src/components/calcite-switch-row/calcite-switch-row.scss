@@ -11,6 +11,17 @@
   opacity: var(--calcite-app-disabled-opacity);
 }
 
+.text-container {
+  padding-right: var(--calcite-app-side-spacing-half);
+}
+
 calcite-switch {
+  display: flex;
   margin: 0;
+  top: unset;
+}
+
+.calcite--rtl .text-container {
+  padding-right: 0;
+  padding-left: var(--calcite-app-side-spacing-half);
 }
