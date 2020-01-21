@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
 import { CSS } from "./resources";
 import classnames from "classnames";
 
@@ -30,18 +30,6 @@ export class CalcitePickListGroup {
 
   @Element() el: HTMLElement;
 
-  @State() hasParent: boolean;
-
-  // --------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  // --------------------------------------------------------------------------
-
-  componentWillLoad() {
-    this.hasParent = this.el.querySelector("[slot=parent-item]") !== null;
-  }
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -50,7 +38,7 @@ export class CalcitePickListGroup {
 
   render() {
     const classes = classnames(CSS.container, {
-      [CSS.indent]: this.hasParent
+      [CSS.indent]: this.el.querySelector("[slot=parent-item]") !== null
     });
     return (
       <Host>
