@@ -3,6 +3,19 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.1.0](https://github.com/Esri/calcite-app-components/compare/v5.0.0...v5.1.0) (2020-01-21)
+
+### Features
+
+- lists react to value prop changes in items ([#750](https://github.com/Esri/calcite-app-components/issues/750)) ([837d85d](https://github.com/Esri/calcite-app-components/commit/837d85dde8694886f36d0afff7f86ef72537f892))
+
+### Bug Fixes
+
+- **value-list-item:** focus state fix ([7838d80](https://github.com/Esri/calcite-app-components/commit/7838d80652d7c804d44988462194bb2471066aa4)), closes [#543](https://github.com/Esri/calcite-app-components/issues/543)
+- nesting and height issues. ([2111987](https://github.com/Esri/calcite-app-components/commit/2111987741da68b26cd649d78adb386ff321c7c4)), closes [#772](https://github.com/Esri/calcite-app-components/issues/772)
+- only modify textEnabled when expand functionality is enabled ([#766](https://github.com/Esri/calcite-app-components/issues/766)) ([6fd3aea](https://github.com/Esri/calcite-app-components/commit/6fd3aea9e5b0ff8b664ac7bfc2c640c9c7eec9e7))
+- **block:** prevent unintentional toggling when interacting with a slotted control ([#762](https://github.com/Esri/calcite-app-components/issues/762)) ([217203a](https://github.com/Esri/calcite-app-components/commit/217203a9a2da1df4775dc23a37d28964bada47ed)), closes [#751](https://github.com/Esri/calcite-app-components/issues/751)
+
 ## [5.0.0](https://github.com/Esri/calcite-app-components/compare/v4.11.1...v5.0.0) (2020-01-15)
 
 ### ⚠ BREAKING CHANGES
