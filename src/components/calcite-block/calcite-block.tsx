@@ -142,7 +142,7 @@ export class CalciteBlock {
 
     const headerNode = (
       <div class={CSS.headerContainer}>
-        {this.dragHandle ? <calcite-handle></calcite-handle> : null}
+        {this.dragHandle ? <calcite-handle /> : null}
         {collapsible ? (
           <button
             aria-label={toggleLabel}
