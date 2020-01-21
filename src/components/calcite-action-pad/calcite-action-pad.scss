@@ -1,4 +1,5 @@
 :host {
+  @extend %component-host;
   display: inline-flex;
   flex-direction: column;
   box-shadow: var(--calcite-app-shadow-2);
@@ -6,6 +7,8 @@
   overflow-y: auto;
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
+
+@import "../../scss/includes/_component";
 
 :host([expanded]) {
   max-width: 20vw;

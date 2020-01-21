@@ -81,6 +81,14 @@ Renders a panel that is dismissible with a click of the "x".
 | ----------------------------- | ----------------------------------------------- | ------------------ |
 | `calcitePanelDismissedChange` | Emitted when the close button has been clicked. | `CustomEvent<any>` |
 
+## Methods
+
+### `setFocus(focusId?: "dismiss-button") => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
+
 ## Slots
 
 | Slot                        | Description                                                              |

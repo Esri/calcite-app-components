@@ -53,6 +53,9 @@
           dismissiblePanel.addEventListener("calcitePanelDismissedChange", function() {
             console.log("calcitePanelDismiss event");
           });
+          setTimeout(function() {
+            dismissiblePanel.setFocus("dismiss-button");
+          }, 3000);
         </script>
 
         <div class="panel-container" dir="rtl">
@@ -73,7 +76,7 @@
           </calcite-panel>
 
           <h3>Dismissible Panel</h3>
-          <calcite-panel dismissible id="dismissible-panel">
+          <calcite-panel dismissible>
             <div slot="header-content">Dismissible panel header</div>
             <p>X position reversed!</p>
           </calcite-panel>

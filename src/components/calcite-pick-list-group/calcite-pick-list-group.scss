@@ -1,8 +1,13 @@
 :host {
+  @extend %component-host;
   background-color: var(--calcite-app-background-clear);
   display: block;
   margin-bottom: var(--calcite-app-cap-spacing);
 }
+
+@import "../../scss/includes/_component";
+@import "../../scss/includes/_header";
+
 :host(:last-child) {
   margin-bottom: 0;
 }
