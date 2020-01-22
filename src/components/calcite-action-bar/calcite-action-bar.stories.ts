@@ -8,6 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
+import dedent from "dedent";
 const { dir, layout, theme } = ATTRIBUTES;
 
 export default {
@@ -57,11 +58,13 @@ export const basic = () =>
   create(
     "calcite-action-bar",
     createAttributes(),
-    `<calcite-action-group>
-    <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-    <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
-  </calcite-action-group>
-  <calcite-action-group>
-    <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
-  </calcite-action-group>`
+    dedent`
+    <calcite-action-group>
+      <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
+      <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
+    </calcite-action-group>
+    <calcite-action-group>
+      <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
+    </calcite-action-group>
+  `
   );

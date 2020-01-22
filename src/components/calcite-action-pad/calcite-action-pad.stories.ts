@@ -8,6 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
+import dedent from "dedent";
 const { dir, layout, theme } = ATTRIBUTES;
 
 export default {
@@ -57,11 +58,13 @@ export const basic = () =>
   create(
     "calcite-action-pad",
     createAttributes(),
-    `<calcite-action-group>
+    dedent`
+    <calcite-action-group>
       <calcite-action text="Undo" label="Undo Action"><calcite-icon scale="s" icon="undo"></calcite-icon></calcite-action>
       <calcite-action text="Redo" label="Redo Action"><calcite-icon scale="s" icon="redo"></calcite-icon></calcite-action>
     </calcite-action-group>
     <calcite-action-group>
       <calcite-action text="Delete" label="Delete Item"><calcite-icon scale="s" icon="trash"></calcite-icon></calcite-action>
-    </calcite-action-group>`
+    </calcite-action-group>
+  `
   );

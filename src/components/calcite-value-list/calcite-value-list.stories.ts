@@ -8,6 +8,7 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
+import dedent from "dedent";
 const { dir, theme } = ATTRIBUTES;
 
 export default {
@@ -57,23 +58,26 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-const action = `<calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear">
-  <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
-</calcite-action>`;
+const action = dedent`
+  <calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear">
+    <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+  </calcite-action>
+`;
 
 export const basic = () =>
   create(
     "calcite-value-list",
     createAttributes(),
-    `
-  <calcite-value-list-item text-label="Dogs" text-description="Man's best friend" value="dogs" >
-    ${action}
-  </calcite-value-list-item>
-  <calcite-value-list-item text-label="Cats" text-description="Independent and fluffy" value="cats" >
-    ${action}
-  </calcite-value-list-item>
-  <calcite-value-list-item text-label="Fish. But not just any fish, a tiger fish caught live in the Atlantic Ocean while on vacation."
-    text-description="Easy to care for." value="fish" >
-    ${action}
-  </calcite-value-list-item>`
+    dedent`
+    <calcite-value-list-item text-label="Dogs" text-description="Man's best friend" value="dogs" >
+      ${action}
+    </calcite-value-list-item>
+    <calcite-value-list-item text-label="Cats" text-description="Independent and fluffy" value="cats" >
+      ${action}
+    </calcite-value-list-item>
+    <calcite-value-list-item text-label="Fish. But not just any fish, a tiger fish caught live in the Atlantic Ocean while on vacation."
+      text-description="Easy to care for." value="fish" >
+      ${action}
+    </calcite-value-list-item>
+  `
   );
