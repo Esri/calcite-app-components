@@ -16,3 +16,7 @@ export const ICONS = {
   selected: "circle-filled",
   unselected: "circle"
 };
+
+export const SLOTS = {
+  secondaryAction: "secondary-action"
+};
