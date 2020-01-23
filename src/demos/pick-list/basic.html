@@ -27,18 +27,18 @@
         <h2>Pick List - Default</h2>
         <calcite-pick-list id="one">
           <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
         </calcite-pick-list>
@@ -52,8 +52,8 @@
         <h2>Pick List - multi-select filter-enabled</h2>
         <calcite-pick-list id="two" multiple filter-enabled>
           <calcite-pick-list-item text-label="Chocolate" value="chocolate">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <script>
@@ -63,8 +63,8 @@
             };
           </script>
           <calcite-pick-list-item text-label="Vanilla" text-description="Oldie but goodie" value="vanilla">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <script>
@@ -75,8 +75,8 @@
             document.currentScript.previousElementSibling.selected = true;
           </script>
           <calcite-pick-list-item text-label="Strawberry" text-description="no metadata on this one" value="strawberry">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item
@@ -84,8 +84,8 @@
             text-description="Sooo good"
             value="hulk"
           >
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+              <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <script>
@@ -103,33 +103,33 @@
         </script>
 
         <h2>Pick List with sub-groups</h2>
-        <calcite-pick-list id="three" filter-enabled>
-          <calcite-pick-list-group>
+        <calcite-pick-list id="three" filter-enabled multiple>
+          <calcite-pick-list-group text-group-title="stuff">
             <calcite-pick-list-item text-label="numbers" value="numbers" slot="parent-item">
-              <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-                <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+              <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
             <calcite-pick-list-item text-label="one" text-description="fish" value="one" icon="grip">
-              <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-                <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+              <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
             <calcite-pick-list-item text-label="two" text-description="fish" value="two" icon="grip">
-              <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-                <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+              <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
           </calcite-pick-list-group>
           <calcite-pick-list-group text-group-title="colors">
             <calcite-pick-list-item text-label="red" text-description="fish" value="red" icon="grip">
-              <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-                <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+              <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
             <calcite-pick-list-item text-label="blue" text-description="fish" value="blue" icon="grip">
-              <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-                <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
+              <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-pick-list-item>
           </calcite-pick-list-group>

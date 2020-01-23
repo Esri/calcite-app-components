@@ -1,8 +1,9 @@
 :host {
   @extend %component-host;
   align-items: center;
+  background-color: var(--calcite-app-background-clear);
   display: flex;
-  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
+  margin: 0;
   color: var(--calcite-app-foreground);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
@@ -13,11 +14,6 @@
 :host(:hover),
 :host(:focus) {
   background-color: var(--calcite-app-background-hover);
-}
-
-:host(:last-child) {
-  margin-bottom: 0;
-  @include borderShadow();
 }
 
 .icon {
