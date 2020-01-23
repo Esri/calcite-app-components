@@ -12,7 +12,7 @@ export const CSS = {
 
 export const ICONS = {
   unchecked: "square",
-  checked: "check-square",
+  checked: "check",
   selected: "circle-filled",
   unselected: "circle"
 };

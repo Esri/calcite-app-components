@@ -22,6 +22,12 @@
   line-height: 0;
   width: var(--calcite-app-icon-size);
   margin: 0 var(--calcite-app-side-spacing-half);
+  opacity: 0;
+}
+
+:host([selected]) .icon {
+  transition: opacity var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  opacity: 1;
 }
 
 .label {
@@ -39,7 +45,7 @@
   flex-flow: column nowrap;
   overflow: hidden;
   pointer-events: none;
-  padding: 0 var(--calcite-app-side-spacing-half);
+  padding: 0 var(--calcite-app-side-spacing-quarter);
 }
 
 .title {
