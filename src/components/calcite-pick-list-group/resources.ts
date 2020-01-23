@@ -3,3 +3,7 @@ export const CSS = {
   container: "container",
   indent: "indent"
 };
+
+export const SLOTS = {
+  parentItem: "parent-item"
+};

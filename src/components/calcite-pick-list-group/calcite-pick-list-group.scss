@@ -25,5 +25,5 @@ h3.heading {
 }
 
 .indent {
-  margin-left: 16px;
+  margin-left: var(--calcite-app-side-spacing);
 }

@@ -1,5 +1,5 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
-import { CSS } from "./resources";
+import { CSS, SLOTS } from "./resources";
 import classnames from "classnames";
 
 /**
@@ -43,7 +43,7 @@ export class CalcitePickListGroup {
     return (
       <Host>
         {this.textGroupTitle ? <h3 class={CSS.heading}>{this.textGroupTitle}</h3> : null}
-        <slot name={"parent-item"} />
+        <slot name={SLOTS.parentItem} />
         <section class={classes}>
           <slot />
         </section>
