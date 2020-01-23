@@ -1,8 +1,7 @@
 
 'use strict';
 (function () {
-  var doc = document;
-  var currentScript = doc.currentScript;
+  var currentScript = document.currentScript;
 
   // !currentScript
   // IE11 since it doesnt support document.currentScript
@@ -189,10 +188,11 @@ DOMTokenList
   }
 }(DOMTokenList.prototype));
 
-(function() {
+(function () {
   if (
     // No Reflect, no classes, no need for shim because native custom elements
     // require ES2015 classes or Reflect.
+    typeof window === 'undefined' ||
     window.Reflect === undefined ||
     window.customElements === undefined
   ) {
@@ -201,7 +201,7 @@ DOMTokenList
   var BuiltInHTMLElement = HTMLElement;
   window.HTMLElement = /** @this {!Object} */ function HTMLElement() {
     return Reflect.construct(
-        BuiltInHTMLElement, [], /** @type {!Function} */ (this.constructor));
+      BuiltInHTMLElement, [], /** @type {!Function} */(this.constructor));
   };
   HTMLElement.prototype = BuiltInHTMLElement.prototype;
   HTMLElement.prototype.constructor = HTMLElement;
@@ -777,18 +777,16 @@ var CustomStyle = /** @class */ (function () {
     }
     CustomStyle.prototype.initShim = function () {
         var _this = this;
-        if (this.didInit) {
+        if (this.didInit || !this.win.requestAnimationFrame) {
             return Promise.resolve();
         }
-        else {
-            this.didInit = true;
-            return new Promise(function (resolve) {
-                _this.win.requestAnimationFrame(function () {
-                    startWatcher(_this.doc, _this.globalScopes);
-                    loadDocument(_this.doc, _this.globalScopes).then(function () { return resolve(); });
-                });
+        this.didInit = true;
+        return new Promise(function (resolve) {
+            _this.win.requestAnimationFrame(function () {
+                startWatcher(_this.doc, _this.globalScopes);
+                loadDocument(_this.doc, _this.globalScopes).then(function () { return resolve(); });
             });
-        }
+        });
     };
     CustomStyle.prototype.addLink = function (linkEl) {
         var _this = this;
@@ -866,28 +864,26 @@ var CustomStyle = /** @class */ (function () {
     };
     return CustomStyle;
 }());
-var win = window;
-function needsShim() {
-    return !(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)'));
-}
-if (!win.__stencil_cssshim && needsShim()) {
-    win.__stencil_cssshim = new CustomStyle(win, document);
-}
+(function (win) {
+    if (win && !win.__stencil_cssshim && (!(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)')))) {
+        win.__stencil_cssshim = new CustomStyle(win, win.document);
+    }
+})(typeof window !== 'undefined' && window);
 
     // Figure out currentScript (for IE11, since it does not support currentScript)
     var regex = /\/calcite-app(\.esm)?\.js($|\?|#)/;
-    var scriptElm = currentScript || Array.from(doc.querySelectorAll('script')).find(function(s) {
+    var scriptElm = currentScript || Array.from(document.querySelectorAll('script')).find(function(s) {
       return regex.test(s.src) || s.getAttribute('data-stencil-namespace') === "calcite-app";
     });
 
     var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
     var start = function() {
-      var url = new URL('./p-bdcc0ec4.system.js', resourcesUrl);
+      var url = new URL('./p-b9a61f20.system.js', resourcesUrl);
       System.import(url.href);
     };
 
-    if (win.__stencil_cssshim) {
-      win.__stencil_cssshim.initShim().then(start);
+    if (window.__stencil_cssshim) {
+      window.__stencil_cssshim.initShim().then(start);
     } else {
       start();
     }
