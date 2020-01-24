@@ -24,3 +24,8 @@ h3.heading {
 .container--indented {
   margin-left: var(--calcite-app-side-spacing-plus-half);
 }
+
+.calcite--rtl.container--indented {
+  margin-left: 0;
+  margin-right: var(--calcite-app-side-spacing-plus-half);
+}
