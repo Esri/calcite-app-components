@@ -2,7 +2,7 @@
   @extend %component-host;
   background-color: var(--calcite-app-background-clear);
   display: block;
-  margin-bottom: var(--calcite-app-cap-spacing);
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
 
 @import "../../scss/includes/_component";
@@ -14,14 +14,13 @@
 
 h3.heading {
   font-size: var(--calcite-app-font-size-0);
-  font-weight: var(--calcite-app-font-weight);
-  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
 }
 
 .container {
   overflow: hidden;
 }
 
-.indent {
-  margin-left: var(--calcite-app-side-spacing);
+.container--indented {
+  margin-left: var(--calcite-app-side-spacing-plus-half);
 }

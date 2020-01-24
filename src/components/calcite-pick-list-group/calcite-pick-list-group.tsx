@@ -38,7 +38,7 @@ export class CalcitePickListGroup {
 
   render() {
     const classes = classnames(CSS.container, {
-      [CSS.indent]: this.el.querySelector("[slot=parent-item]") !== null
+      [CSS.indented]: this.el.querySelector("[slot=parent-item]") !== null
     });
     return (
       <Host>
