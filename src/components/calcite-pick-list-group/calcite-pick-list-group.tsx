@@ -1,6 +1,5 @@
 import { Component, Element, Host, Prop, h } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
-import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { getElementDir } from "../utils/dom";
 
@@ -41,7 +40,7 @@ export class CalcitePickListGroup {
   render() {
     const { el, textGroupTitle } = this;
     const rtl = getElementDir(el) === "rtl";
-    const hasParentItem = el.querySelector(`[slot=${SLOTS.parentItem}]`);
+    const hasParentItem = el.querySelector(`[slot=${SLOTS.parentItem}]`) !== null;
     const sectionClasses = {
       [CSS.indented]: hasParentItem,
       [CSS_UTILITY.rtl]: rtl
@@ -51,7 +50,7 @@ export class CalcitePickListGroup {
       <Host>
         {textGroupTitle ? <h3 class={CSS.heading}>{textGroupTitle}</h3> : null}
         <slot name={SLOTS.parentItem} />
-        <section class={classnames(sectionClasses)}>
+        <section class={sectionClasses}>
           <slot />
         </section>
       </Host>
