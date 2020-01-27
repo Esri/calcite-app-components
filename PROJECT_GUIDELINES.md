@@ -2,17 +2,19 @@
 
 Hey there and thanks for stopping by! If you are interested in getting involved with calcite-app-components, we ask that you have a look at Esri's [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md), [Contibution Guidelines](https://github.com/esri/contributing) and give our project guidelines below a quick read through. Here's a list of things we've found work well for us as we continue developing our components.
 
-- Getting started(#getting-started)
-- Github(#github)
-  - Boilerplate Component(#boilerplate-component)
-  - Issues(#issues)
-  - Commits(#commits)
-  - Pull Requests(#pull-requests)
-- Code base(#code-base)
-  - Typescript
-  - Components
-- Ideas or questions?(#ideas)
-- Best Practices
+##TOC
+
+- [Getting started](#getting-started)
+- [Github](#github)
+  - [Boilerplate Component](#boilerplate-component)
+  - [Issues](#issues)
+  - [Commits](#commits)
+  - [Pull Requests](#pull-requests)
+- [Code base](#code-base)
+  - [Typescript]
+  - [Components]
+- [Ideas or questions?](#ideas)
+- [Best Practices]
 
 ## Getting Started
 
