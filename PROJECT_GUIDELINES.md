@@ -1,11 +1,13 @@
 # Project Guidelines
 
-Hey there and thanks for stopping by! If you are interested in getting involved with calcite-app-components, we ask that you have a look at Esri's [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md), [Contibution Guidelines](https://github.com/esri/contributing) and give our project guidelines below a quick read through. Here's a list of things we've found work well for us as we continue developing our components.
+Hey there and thanks for stopping by! We welcome all feedback and contributions to Calcite App Components. If you are interested in getting involved, we ask that you give our guidelines a quick read through. Below is a list of things we've found work well for us as we continue developing our components.
 
-##TOC
+## TOC
 
+- [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
+- [Contibution Guidelines](https://github.com/esri/contributing)
 - [Getting started](#getting-started)
-- [Github](#github)
+- [Github Workflow](#github-workflow)
   - [Boilerplate Component](#boilerplate-component)
   - [Issues](#issues)
   - [Commits](#commits)
@@ -114,7 +116,7 @@ This will provide autocomplete of component names/properties, as well as additio
 1. You'll need to generate a new stencil build for the docs by running `$ npm run docs`.
 1. The docs will need to be committed or merged in the `master` branch before they take effect.
 
-## Github
+## Github Workflow
 
 ### Boilerplate Component
 
