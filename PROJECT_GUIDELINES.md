@@ -1,4 +1,4 @@
-#### Project Guidelines
+# Project Guidelines
 
 Hey there and thanks for stopping by! If you are interested in getting involved with calcite-app-components, we ask that you have a look at Esri's [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md), [Contibution Guidelines](https://github.com/esri/contributing) and give our project guidelines below a quick read through. Here's a list of things we've found work well for us as we continue developing our components.
 
@@ -14,9 +14,9 @@ Hey there and thanks for stopping by! If you are interested in getting involved 
 - Ideas or questions?(#ideas)
 - Best Practices
 
-# Getting Started
+## Getting Started
 
-## Installation
+### Installation
 
 ```
 npm install --save @esri/calcite-app-components
@@ -24,7 +24,7 @@ npm install --save @esri/calcite-app-components
 
 This will load all the dependencies for the project.
 
-### Script tag
+#### Script tag
 
 `calcite-app-components` can be loaded via two `<script>` tags in the head of your HTML document:
 
@@ -43,7 +43,7 @@ You will also need to add a `<link>` tag for the shared component styles:
 
 Once these tags are added, components can be used just like any other HTML element.
 
-### Webpack
+#### Webpack
 
 If you already have a webpack build for your project, you can simply use [@stencil/webpack](https://github.com/ionic-team/stencil-webpack) to add `calcite-app-components` to your bundle.
 
@@ -74,7 +74,7 @@ import '@esri/calcite-app-components/dist/calcite-app.js';
 
 This will add the initial Stencil loader to your bundle, and copy over the actual component code to the output directory you've configured for Webpack. Components will still be lazy-loaded as they are needed. _Note:_ you must use the `.js` file path for the Webpack plugin to work correctly, even if your bundle file is a TypeScript file.
 
-## TypeScript
+### TypeScript
 
 Stencil provides a full set of typings for all the components in this repo. To make TypeScript aware of these components, just import the library:
 
@@ -84,20 +84,20 @@ import '@esri/calcite-app-components';
 
 This will provide autocomplete of component names/properties, as well as additional HTML element types.
 
-## Local Dev
+### Local Dev
 
-### Instructions
+#### Instructions
 
 1. npm install
 2. npm start
 3. npm test
 
-### Requirements
+#### Requirements
 
 - Notepad or your favorite HTML editor
 - Web browser with access to the Internet
 
-### Deployment
+#### Deployment
 
 1. Checkout the master branch. Your git working directory must be clean (no pending un-staged changes). You will also need to have setup a [github release token](https://github.com/medikoo/github-release-from-cc-changelog#prerequisites).
 1. Run `npm version <patch | minor | major>`.
@@ -105,28 +105,28 @@ This will provide autocomplete of component names/properties, as well as additio
 1. This will prepare everything for publishing as well as automatically update `CHANGELOG.md`.
 1. Once `CHANGELOG.md` is reviewed and everything looks OK, you can publish to NPM by running `npm run release`.
 
-## Updating Github Pages Docs
+### Updating Github Pages Docs
 
 **NOTE:** This will happen automatically whenever there's a release. Follow steps below for manual docs update.
 
 1. You'll need to generate a new stencil build for the docs by running `$ npm run docs`.
 1. The docs will need to be committed or merged in the `master` branch before they take effect.
 
-# Github
+## Github
 
-## Boilerplate Component
+### Boilerplate Component
 
 See the [boilerplate example](https://github.com/Esri/calcite-app-components/blob/master/BOILERPLATE_COMPONENT.md) on how to create a new Calcite App Component.
 
-## Issues
+### Issues
 
 There are [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues that should be followed for consistency.
 
-## Commits
+### Commits
 
 We ask that commits have informative headers and if necessary, a detailed body. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it.
 
-## Pull Requests
+### Pull Requests
 
 This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.
 
@@ -134,7 +134,7 @@ The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) st
 
 👮 Note! The default behavior of this bot is not to police all commit messages, but rather to ensure that every PR has just **enough semantic information** to be able to trigger a release when appropriate.
 
-### How it works
+#### How it works
 
 The PR title OR at least one commit messsage needs to have semantic prefix.
 
@@ -144,11 +144,11 @@ The PR title OR at least one commit messsage needs to have semantic prefix.
 | any commit is semantic                                                                                 | 💚     | `ready to be merged or rebased`     |
 | nothing is semantic                                                                                    | 💛     | `add a semantic commit or PR title` |
 
-### Be Semantic!
+#### Be Semantic!
 
 - Add a semantic [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/).
 - Edit the PR title by adding a semantic prefix like `fix:` or `feat:` or any other [conventional commit type](https://github.com/commitizen/conventional-commit-types/blob/master/index.json).
 
-### Merging
+#### Merging
 
 We have configured GitHub to `Squash and Merge` to keep the `master` branch history clean.
