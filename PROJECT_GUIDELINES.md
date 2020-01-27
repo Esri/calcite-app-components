@@ -4,8 +4,10 @@ Hey there and thanks for stopping by! If you are interested in getting involved 
 
 - Getting started(#getting-started)
 - Github(#github)
+  - Boilerplate Component(#boilerplate-component)
+  - Issues(#issues)
   - Commits(#commits)
-  - PRs(#prs)
+  - Pull Requests(#pull-requests)
 - Code base(#code-base)
   - Typescript
   - Components
@@ -103,11 +105,50 @@ This will provide autocomplete of component names/properties, as well as additio
 1. This will prepare everything for publishing as well as automatically update `CHANGELOG.md`.
 1. Once `CHANGELOG.md` is reviewed and everything looks OK, you can publish to NPM by running `npm run release`.
 
-**\*Aside:** It will also update the docs for GitHub Pages and the READMEs for each component.
-
 ## Updating Github Pages Docs
 
 **NOTE:** This will happen automatically whenever there's a release. Follow steps below for manual docs update.
 
 1. You'll need to generate a new stencil build for the docs by running `$ npm run docs`.
 1. The docs will need to be committed or merged in the `master` branch before they take effect.
+
+# Github
+
+## Boilerplate Component
+
+See the [boilerplate example](https://github.com/Esri/calcite-app-components/blob/master/BOILERPLATE_COMPONENT.md) on how to create a new Calcite App Component.
+
+## Issues
+
+There are [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues that should be followed for consistency.
+
+## Commits
+
+We ask that commits have informative headers and if necessary, a detailed body. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it.
+
+## Pull Requests
+
+This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.
+
+The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
+
+👮 Note! The default behavior of this bot is not to police all commit messages, but rather to ensure that every PR has just **enough semantic information** to be able to trigger a release when appropriate.
+
+### How it works
+
+The PR title OR at least one commit messsage needs to have semantic prefix.
+
+| Scenario                                                                                               | Status | Status Check Message                |
+| ------------------------------------------------------------------------------------------------------ | ------ | ----------------------------------- |
+| PR title is [semantic](https://github.com/commitizen/conventional-commit-types/blob/master/index.json) | 💚     | `ready to be squashed`              |
+| any commit is semantic                                                                                 | 💚     | `ready to be merged or rebased`     |
+| nothing is semantic                                                                                    | 💛     | `add a semantic commit or PR title` |
+
+### Be Semantic!
+
+- Add a semantic [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/).
+- Edit the PR title by adding a semantic prefix like `fix:` or `feat:` or any other [conventional commit type](https://github.com/commitizen/conventional-commit-types/blob/master/index.json).
+
+### Merging
+
+We have configured GitHub to `Squash and Merge` to keep the `master` branch history clean.
