@@ -8,12 +8,16 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Contibution Guidelines](https://github.com/esri/contributing)
 
 - [Getting started](#getting-started)
-- [Boilerplate Component](#boilerplate-component)
 - [Github Workflow](#github-workflow)
   - [Issues](#issues)
   - [Commits](#commits)
   - [Pull Requests](#pull-requests)
 - [Code base](#code-base)
+  - [Boilerplate Component](#boilerplate-component)
+  - [Styling](#styling)
+  - [Testing](#testing)
+  - [Browswer Support](#brower-support)
+  - [Gotchas]
 - [Ideas or questions?](#ideas)
 
 ## Getting Started
@@ -114,10 +118,6 @@ This will provide autocomplete of component names/properties, as well as additio
 1. You'll need to generate a new stencil build for the docs by running `$ npm run docs`.
 1. The docs will need to be committed or merged in the `master` branch before they take effect.
 
-## Boilerplate Component
-
-See the [boilerplate example](https://github.com/Esri/calcite-app-components/blob/master/BOILERPLATE_COMPONENT.md) on how to create a new Calcite App Component.
-
 ## Github Workflow
 
 ### Issues
@@ -157,4 +157,14 @@ We have configured GitHub to `Squash and Merge` to keep the `master` branch hist
 
 ## Code Base
 
-Our code base is written in typescript. We have a script that automatically formats our code for us to keep everything looking clean, but we ask that you keep in mind [best practices](https://en.wikipedia.org/wiki/Best_coding_practices) when contributing to our repo.
+Our code base is written in typescript. We have a script that automatically formats our code for us to keep everything looking clean, but we ask that you keep in mind things like formatting and other [best practices](https://en.wikipedia.org/wiki/Best_coding_practices) when contributing to our repo.
+
+### Boilerplate Component
+
+See the [boilerplate example](https://github.com/Esri/calcite-app-components/blob/master/BOILERPLATE_COMPONENT.md) on how to create a new Calcite App Component!
+
+### Styling
+
+### Testing
+
+### Browser Support
