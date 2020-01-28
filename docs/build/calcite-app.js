@@ -694,12 +694,14 @@ function loadDocument(doc, globalScopes) {
     });
 }
 function startWatcher(doc, globalScopes) {
-    var mutation = new MutationObserver(function () {
-        if (loadDocumentStyles(doc, globalScopes)) {
-            updateGlobalScopes(globalScopes);
-        }
-    });
-    mutation.observe(document.head, { childList: true });
+    if (typeof MutationObserver !== 'undefined') {
+        var mutation = new MutationObserver(function () {
+            if (loadDocumentStyles(doc, globalScopes)) {
+                updateGlobalScopes(globalScopes);
+            }
+        });
+        mutation.observe(document.head, { childList: true });
+    }
 }
 function loadDocumentLinks(doc, globalScopes) {
     var promises = [];
@@ -878,7 +880,7 @@ var CustomStyle = /** @class */ (function () {
 
     var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
     var start = function() {
-      var url = new URL('./p-b9a61f20.system.js', resourcesUrl);
+      var url = new URL('./p-1753a528.system.js', resourcesUrl);
       System.import(url.href);
     };
 
