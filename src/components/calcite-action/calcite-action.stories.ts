@@ -32,10 +32,6 @@ const createAttributes: () => Attributes = () => [
     value: boolean("active", false)
   },
   {
-    name: "compact",
-    value: boolean("compact", false)
-  },
-  {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
   },
