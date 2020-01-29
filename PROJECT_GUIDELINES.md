@@ -7,16 +7,17 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
 - [Contibution Guidelines](https://github.com/esri/contributing)
 
-- [Getting started](#getting-started)
+- [Getting Started](#getting-started)
 - [Github Workflow](#github-workflow)
   - [Issues](#issues)
   - [Commits](#commits)
   - [Pull Requests](#pull-requests)
-- [Code base](#code-base)
+- [Code Base](#code-base)
   - [Boilerplate Component](#boilerplate-component)
   - [Styling](#styling)
   - [Testing](#testing)
   - [Browswer Support](#browser-support)
+- [Report a Bug](#report-a-bug)
 
 ## Getting Started
 
@@ -170,3 +171,13 @@ Our setup uses the shadow DOM, so most of our styles are encapsulated in our cal
 ### Browser Support
 
 Our components are best used in most modern browsers, though there have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. Internet Explorer is not recommended to use with our web components.
+
+## Report a Bug
+
+We use Github issues to keep track of bugs. Please follow our [bug issue template](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=bug%2C+0+-+new&template=bug.md&title=Bug%3A+) and explain the problem clearly for us maintainers to understand and reproduce. The more details the better! Things to consider:
+
+- Use a clear and descriptive title
+- What is happening now vs what is expected to happen?
+- Tell us how to reproduce the issue (eg. is it happening in a specific browser?)
+- Screenshots and gifs are our friends!
+- Did this problem start happening after a recent release or was it always a bug?
