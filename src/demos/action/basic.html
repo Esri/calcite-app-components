@@ -23,11 +23,12 @@
         </p>
 
         <h2>LTR</h2>
-        <div class="action-container">
+        <div class="example-container">
           <h3>With text</h3>
           <calcite-action indicator active text="click-me" label="hello world" text-enabled>
             <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
           </calcite-action>
+
 
           <calcite-action
             style="position: -webkit-sticky; position: sticky; top: 0;"
@@ -62,9 +63,39 @@
           <calcite-action indicator text="hello world 2">
             <calcite-icon icon="data-check" scale="s"></calcite-icon>
           </calcite-action>
+        </div>
 
-          <h2>RTL</h2>
+        <h2>Scales</h2>
+        <small>Note: icon scale set to match Action scale. </small>
+        <div class="example-container">
+          <h3>scale="s"</h3>
+          <calcite-action indicator active text="click-me" label="hello world" text-enabled scale="s">
+            <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
+          </calcite-action>
+          <h3>scale="s" without text</h3>
+          <calcite-action indicator active text="click-me" label="hello world" scale="s">
+            <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
+          </calcite-action>
+          <h3>scale="m"</h3>
+          <calcite-action indicator active text="click-me" label="hello world" text-enabled scale="m">
+            <calcite-icon icon="configure-popup" scale="m"></calcite-icon>
+          </calcite-action>
+          <h3>scale="m" without text</h3>
+          <calcite-action indicator active text="click-me" label="hello world" scale="m">
+            <calcite-icon icon="configure-popup" scale="m"></calcite-icon>
+          </calcite-action>
+          <h3>scale="l"</h3>
+          <calcite-action indicator active text="click-me" label="hello world" text-enabled scale="l">
+            <calcite-icon icon="configure-popup" scale="l"></calcite-icon>
+          </calcite-action>
+          <h3>scale="l" without text</h3>
+          <calcite-action indicator active text="click-me" label="hello world" scale="l">
+            <calcite-icon icon="configure-popup" scale="l"></calcite-icon>
+          </calcite-action>
+        </div>
 
+        <h2>RTL</h2>
+        <div class="example-container">
           <div dir="rtl">
             <h3>With text</h3>
 
