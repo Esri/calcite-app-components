@@ -71,6 +71,14 @@
   }
 }
 
+:host([scale="s"]) .button {
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+:host([scale="l"]) .button {
+  padding: var(--calcite-app-cap-spacing-plus-half) var(--calcite-app-side-spacing-plus-half);
+}
+
 .slot-container {
   display: flex;
 }
