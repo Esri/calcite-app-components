@@ -55,7 +55,7 @@ export class CalcitePickListItem {
   @Prop() metadata?: object;
 
   @Watch("metadata") metadataWatchHandler() {
-    this.calciteListItemPropsUpdated.emit();
+    this.calciteListItemPropsChange.emit();
   }
 
   /**
@@ -81,7 +81,7 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) textDescription?: string;
 
   @Watch("textDescription") textDescriptionWatchHandler() {
-    this.calciteListItemPropsUpdated.emit();
+    this.calciteListItemPropsChange.emit();
   }
 
   /**
@@ -90,7 +90,7 @@ export class CalcitePickListItem {
   @Prop({ reflect: true }) textLabel: string;
 
   @Watch("textLabel") textLabelWatchHandler() {
-    this.calciteListItemPropsUpdated.emit();
+    this.calciteListItemPropsChange.emit();
   }
 
   /**
@@ -126,10 +126,10 @@ export class CalcitePickListItem {
 
   /**
    * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
-   * @event calciteListItemPropsUpdated
+   * @event calciteListItemPropsChange
    * @internal
    */
-  @Event() calciteListItemPropsUpdated: EventEmitter;
+  @Event() calciteListItemPropsChange: EventEmitter;
 
   /**
    * Emitted whenever the the item's value property is modified.
