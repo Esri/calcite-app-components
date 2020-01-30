@@ -9,7 +9,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { CSS, ICONS } from "./resources";
+import { CSS, ICONS, SLOTS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 /**
@@ -207,6 +207,15 @@ export class CalcitePickListItem {
     );
   }
 
+  renderSecondaryAction() {
+    const hasSecondaryAction = this.el.querySelector(`[slot=${SLOTS.secondaryAction}]`);
+    return hasSecondaryAction ? (
+      <div class={CSS.action}>
+        <slot name={SLOTS.secondaryAction} />
+      </div>
+    ) : null;
+  }
+
   render() {
     const description =
       this.textDescription && !this.compact ? (
@@ -228,9 +237,7 @@ export class CalcitePickListItem {
             {description}
           </div>
         </label>
-        <div class={CSS.action}>
-          <slot name="secondary-action" />
-        </div>
+        {this.renderSecondaryAction()}
       </Host>
     );
   }

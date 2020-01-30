@@ -37,7 +37,7 @@ describe("calcite-pick-list-group", () => {
         <calcite-pick-list-item value="1" text-label="One" text-description="uno"></calcite-pick-list-item>
       </calcite-pick-list-group>
     </calcite-pick-list>`);
-    const indentedContainer = await page.find(`calcite-pick-list-group >>> ${CSS.indent}`);
+    const indentedContainer = await page.find(`calcite-pick-list-group >>> ${CSS.indented}`);
     expect(indentedContainer).toBeDefined();
   });
 });
