@@ -61,8 +61,6 @@ export class CalciteSortableList {
 
   sortable: Sortable;
 
-  handle: Node = null;
-
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
