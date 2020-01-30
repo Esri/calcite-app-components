@@ -26,52 +26,57 @@ export default {
   }
 };
 
-const createBlockAttributes: () => Attributes = () => {
+const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({ except } = { except: [] }) => {
   const group = "block";
   const { dir, theme } = ATTRIBUTES;
 
   return [
     {
       name: "heading",
-      value: text("heading", "Heading", group)
+      value: () => text("heading", "Heading", group)
     },
     {
       name: "dir",
-      value: select("dir", dir.values, dir.defaultValue, group)
+      value: () => select("dir", dir.values, dir.defaultValue, group)
     },
     {
       name: "summary",
-      value: text("summary", "summary", group)
+      value: () => text("summary", "summary", group)
     },
     {
       name: "open",
-      value: boolean("open", true, group)
+      value: () => boolean("open", true, group)
     },
     {
       name: "collapsible",
-      value: boolean("collapsible", true, group)
+      value: () => boolean("collapsible", true, group)
     },
     {
       name: "loading",
-      value: boolean("loading", false, group)
+      value: () => boolean("loading", false, group)
     },
     {
       name: "disabled",
-      value: boolean("disabled", false, group)
+      value: () => boolean("disabled", false, group)
     },
     {
       name: "theme",
-      value: select("theme", theme.values, theme.defaultValue, group)
+      value: () => select("theme", theme.values, theme.defaultValue, group)
     },
     {
       name: "text-collapse",
-      value: text("textCollapse", "Collapse", group)
+      value: () => text("textCollapse", "Collapse", group)
     },
     {
       name: "text-expand",
-      value: text("textExpand", "Expand", group)
+      value: () => text("textExpand", "Expand", group)
     }
-  ];
+  ]
+    .filter((attr) => !except.find((excluded) => excluded === attr.name))
+    .map((attr) => {
+      (attr as any).value = attr.value();
+      return attr;
+    });
 };
 
 const createSectionAttributes: () => Attributes = () => {
@@ -122,8 +127,9 @@ export const basic = () =>
 export const withHeaderControl = () =>
   create(
     "calcite-block",
-    createBlockAttributes(),
+    createBlockAttributes({ except: ["open", "collapsible"] }),
     `<label slot="control">test <input placeholder="I'm a header control"/></label>`
   );
 
-export const withIconAndHeader = () => create("calcite-block", createBlockAttributes(), `<div slot="icon">✅</div>`);
+export const withIconAndHeader = () =>
+  create("calcite-block", createBlockAttributes({ except: ["open", "collapsible"] }), `<div slot="icon">✅</div>`);
