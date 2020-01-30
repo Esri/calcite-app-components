@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Method, Prop, h } from "@stencil/core";
 import { CSS, ICONS } from "./resources";
 
 @Component({
@@ -31,6 +31,8 @@ export class CalciteHandle {
 
   @Element() el: HTMLCalciteHandleElement;
 
+  handleButton: HTMLElement;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -42,6 +44,17 @@ export class CalciteHandle {
    * @event calciteHandleNudge
    */
   @Event() calciteHandleNudge: EventEmitter;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async setFocus() {
+    this.handleButton.focus();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -69,10 +82,6 @@ export class CalciteHandle {
     this.activated = false;
   };
 
-  handleClick = (event) => {
-    event.stopPropagation();
-  };
-
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -81,15 +90,19 @@ export class CalciteHandle {
 
   render() {
     return (
-      <button
+      // Needs to be a span because of https://github.com/SortableJS/Sortable/issues/1486
+      <span
+        role="button"
+        tabindex="0"
+        aria-pressed={this.activated.toString()}
         class={{ [CSS.handle]: true, [CSS.handleActivated]: this.activated }}
-        onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         onBlur={this.handleBlur}
         title={this.textTitle}
+        ref={(el) => (this.handleButton = el)}
       >
         <calcite-icon scale="s" icon={ICONS.drag} />
-      </button>
+      </span>
     );
   }
 }
