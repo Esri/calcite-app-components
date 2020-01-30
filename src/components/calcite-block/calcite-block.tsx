@@ -138,7 +138,6 @@ export class CalciteBlock {
     );
 
     const slottedControl = el.querySelector(`[slot=${SLOTS.control}]`);
-    const hasContent = el.children.length > (slottedControl ? 1 : 0);
 
     const headerNode = (
       <div class={CSS.headerContainer}>
@@ -170,7 +169,7 @@ export class CalciteBlock {
       <Host tabIndex={disabled ? -1 : null}>
         <article aria-expanded={collapsible ? open.toString() : null} aria-busy={loading}>
           {headerNode}
-          <div class={CSS.content} hidden={!hasContent || !open}>
+          <div class={CSS.content} hidden={!open}>
             <CalciteScrim loading={loading} disabled={disabled}>
               <slot />
             </CalciteScrim>
