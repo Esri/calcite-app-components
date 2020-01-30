@@ -1,5 +1,8 @@
-import { Component, Host, Prop, h } from "@stencil/core";
-import { CSS } from "./resources";
+import { Component, Element, Host, Prop, h } from "@stencil/core";
+import classnames from "classnames";
+import { CSS, SLOTS } from "./resources";
+import { CSS_UTILITY } from "../utils/resources";
+import { getElementDir } from "../utils/dom";
 
 /**
  * @slot - A slot for adding `calcite-pick-list-item` elements.
@@ -23,15 +26,32 @@ export class CalcitePickListGroup {
 
   // --------------------------------------------------------------------------
   //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLElement;
+
+  // --------------------------------------------------------------------------
+  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   render() {
+    const { el, textGroupTitle } = this;
+    const rtl = getElementDir(el) === "rtl";
+    const hasParentItem = el.querySelector(`[slot=${SLOTS.parentItem}]`) !== null;
+    const sectionClasses = {
+      [CSS.indented]: hasParentItem,
+      [CSS_UTILITY.rtl]: rtl
+    };
+
     return (
       <Host>
-        {this.textGroupTitle ? <h3 class={CSS.heading}>{this.textGroupTitle}</h3> : null}
-        <section class={CSS.container}>
+        {textGroupTitle ? <h3 class={CSS.heading}>{textGroupTitle}</h3> : null}
+        <slot name={SLOTS.parentItem} />
+        <section class={classnames(CSS.container, sectionClasses)}>
           <slot />
         </section>
       </Host>
