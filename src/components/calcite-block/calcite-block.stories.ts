@@ -1,5 +1,6 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import {
+  Attribute,
   Attributes,
   createComponentHTML as create,
   darkBackground,
@@ -30,53 +31,95 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
   const group = "block";
   const { dir, theme } = ATTRIBUTES;
 
-  return [
+  interface DeferredAttribute {
+    name: string;
+    commit: () => Attribute;
+  }
+
+  return ([
     {
       name: "heading",
-      value: () => text("heading", "Heading", group)
+      commit() {
+        this.value = text("heading", "Heading", group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "dir",
-      value: () => select("dir", dir.values, dir.defaultValue, group)
+      commit() {
+        this.value = select("dir", dir.values, dir.defaultValue, group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "summary",
-      value: () => text("summary", "summary", group)
+      commit() {
+        this.value = text("summary", "summary", group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "open",
-      value: () => boolean("open", true, group)
+      commit() {
+        this.value = boolean("open", true, group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "collapsible",
-      value: () => boolean("collapsible", true, group)
+      commit() {
+        this.value = boolean("collapsible", true, group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "loading",
-      value: () => boolean("loading", false, group)
+      commit() {
+        this.value = boolean("loading", false, group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "disabled",
-      value: () => boolean("disabled", false, group)
+      commit() {
+        this.value = boolean("disabled", false, group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "theme",
-      value: () => select("theme", theme.values, theme.defaultValue, group)
+      commit() {
+        this.value = select("theme", theme.values, theme.defaultValue, group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "text-collapse",
-      value: () => text("textCollapse", "Collapse", group)
+      commit() {
+        this.value = text("textCollapse", "Collapse", group);
+        delete this.build;
+        return this;
+      }
     },
     {
       name: "text-expand",
-      value: () => text("textExpand", "Expand", group)
+      commit() {
+        this.value = text("textExpand", "Expand", group);
+        delete this.build;
+        return this;
+      }
     }
-  ]
+  ] as DeferredAttribute[])
     .filter((attr) => !except.find((excluded) => excluded === attr.name))
-    .map((attr) => {
-      (attr as any).value = attr.value();
-      return attr;
-    });
+    .map((attr) => attr.commit());
 };
 
 const createSectionAttributes: () => Attributes = () => {
