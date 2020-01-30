@@ -1,6 +1,6 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
-import { CalciteAppearance, CalciteTheme } from "../interfaces";
+import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -54,6 +54,11 @@ export class CalciteAction {
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
+
+  /**
+   * Specifies the size of the action.
+   */
+  @Prop({ reflect: true }) scale: CalciteScale = "m";
 
   /**
    * Text that accompanies the action icon.
