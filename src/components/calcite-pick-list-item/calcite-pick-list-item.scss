@@ -62,6 +62,7 @@
 }
 
 .action {
+  display: flex;
   flex: 0 0 0%;
   justify-self: flex-end;
   margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
