@@ -29,7 +29,7 @@ export class CalciteSortableList {
   /**
    * The class on the handle elements.
    */
-  @Prop() handleSelector = ".handle";
+  @Prop() handleSelector = "calcite-handle";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -72,7 +72,7 @@ export class CalciteSortableList {
   componentDidLoad() {
     this.items = Array.from(this.el.children);
     this.setUpDragAndDrop();
-    this.observer.observe(this.el, { childList: true, subtree: true });
+    this.beginObserving();
   }
 
   componentDidUnload() {
@@ -123,6 +123,8 @@ export class CalciteSortableList {
       default:
         return;
     }
+    this.observer.disconnect();
+
     if (appendInstead) {
       sortItem.parentElement.appendChild(sortItem);
     } else {
@@ -132,7 +134,8 @@ export class CalciteSortableList {
     this.items = Array.from(this.el.children);
 
     event.detail.handle.activated = true;
-    event.detail.handle.shadowRoot.querySelector(this.handleSelector).focus();
+    event.detail.handle.setFocus();
+    this.beginObserving();
   }
 
   // --------------------------------------------------------------------------
@@ -144,13 +147,29 @@ export class CalciteSortableList {
   setUpDragAndDrop(): void {
     this.sortable = Sortable.create(this.el, {
       handle: this.handleSelector,
-      onUpdate: () => this.calciteListOrderChange.emit()
+      // Changed sorting within list
+      onUpdate: () => {
+        this.items = Array.from(this.el.children);
+        this.calciteListOrderChange.emit();
+      },
+      // Element dragging started
+      onStart: () => {
+        this.observer.disconnect();
+      },
+      // Element dragging ended
+      onEnd: () => {
+        this.beginObserving();
+      }
     });
   }
 
   cleanUpDragAndDrop(): void {
     this.sortable.destroy();
     this.sortable = null;
+  }
+
+  beginObserving() {
+    this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
   // --------------------------------------------------------------------------
