@@ -42,6 +42,8 @@ export class CalciteFilter {
 
   @State() empty = true;
 
+  textInput: HTMLInputElement;
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -97,7 +99,7 @@ export class CalciteFilter {
   };
 
   clear = (): void => {
-    this.el.shadowRoot.querySelector("input").value = "";
+    this.textInput.value = "";
     this.empty = true;
     this.calciteFilterChange.emit(this.data);
   };
@@ -118,6 +120,7 @@ export class CalciteFilter {
             placeholder={this.textPlaceholder}
             onInput={this.inputHandler}
             aria-label={this.textLabel || TEXT.filterLabel}
+            ref={(el) => this.textInput = el as HTMLInputElement}
           />
           <div class={CSS.searchIcon}>
             <calcite-icon scale="s" icon={ICONS.search} />
