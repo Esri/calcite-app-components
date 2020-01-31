@@ -148,7 +148,7 @@ export class CalciteValueList {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {
+  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(event: CustomEvent) {
     event.stopPropagation();
     this.setUpFilter();
   }
