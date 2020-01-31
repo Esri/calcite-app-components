@@ -6,8 +6,9 @@ type pickOrValueListItem = HTMLCalcitePickListItemElement | HTMLCalciteValueList
 
 export const sharedListMethods = {
   mutationObserverCallback(this: CalcitePickList | CalciteValueList): void {
-    this.setUpItems();
-    this.setUpFilter();
+    console.log('mutation observer list');
+    // this.setUpItems();
+    // this.setUpFilter();
   },
   // --------------------------------------------------------------------------
   //
