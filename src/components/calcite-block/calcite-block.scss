@@ -80,15 +80,11 @@ calcite-loader[inline] {
 }
 
 .content {
+  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
   position: relative;
 }
 
-::slotted(*) {
-  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
-}
-
 ::slotted([slot="control"]) {
-  padding: unset;
   position: absolute;
   margin: auto;
   right: var(--calcite-app-side-spacing-three-quarters);
