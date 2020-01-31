@@ -49,7 +49,7 @@ Renders a `calcite-action` that has a clear background.
 | `indicator`         | `indicator`    | Indicates unread changes.                                                                                               | `boolean`            | `false`     |
 | `label`             | `label`        | Label of the action, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop. | `string`             | `undefined` |
 | `loading`           | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                          | `boolean`            | `false`     |
-| `scale`             | `scale`        | Indicates the scale of the action.                                                                                      | `CalciteScale`       | `"m"`       |
+| `scale`             | `scale`        | Specifies the size of the action.                                                                                       | `"l" or "m" or "s"`  | `"m"`       |
 | `text` _(required)_ | `text`         | Text that accompanies the action icon.                                                                                  | `string`             | `undefined` |
 | `textEnabled`       | `text-enabled` | Indicates whether the text is displayed.                                                                                | `boolean`            | `false`     |
 | `theme`             | `theme`        | Used to set the component's color scheme.                                                                               | `"dark" or "light"`  | `undefined` |
