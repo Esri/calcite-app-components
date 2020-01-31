@@ -120,7 +120,7 @@ export class CalciteFilter {
             placeholder={this.textPlaceholder}
             onInput={this.inputHandler}
             aria-label={this.textLabel || TEXT.filterLabel}
-            ref={(el) => this.textInput = el as HTMLInputElement}
+            ref={(el) => (this.textInput = el as HTMLInputElement)}
           />
           <div class={CSS.searchIcon}>
             <calcite-icon scale="s" icon={ICONS.search} />
