@@ -8,9 +8,8 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Contibution Guidelines](https://github.com/esri/contributing)
 
 - [Conventions](#conventions)
-  - [Issues](#issues)
-  - [Commits](#commits)
-  - [Pull Requests](#pull-requests)
+  - [Formatting](#formatting)
+  - [Github](#github)
 - [Code Base](#code-base)
   - [Boilerplate Component](#boilerplate-component)
   - [Styling](#styling)
@@ -20,16 +19,21 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 
 ## Conventions
 
-### Issues
+### Formatting
+
+There is a script that automatically formats our code for us to keep everything looking clean, but we ask that you keep in mind things like formatting and other [best practices](https://en.wikipedia.org/wiki/Best_coding_practices) when contributing to our repo.
+
+### Github 
+
+#### Issues
 
 There are [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues that should be followed for consistency.
 
-### Commits
+#### Commits
 
-We ask that commits have informative headers and if necessary, a detailed body- squash-merge commit messages go straight into the changelog. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it. 
+We ask that commits have informative headers and if necessary, a detailed body- squash-merge commit messages go straight into the changelog. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it.
 
-
-### Pull Requests
+#### Pull Requests
 
 This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.
 
@@ -37,28 +41,19 @@ The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) st
 
 👮 Note! The default behavior of this bot is not to police all commit messages, but rather to ensure that every PR has just **enough semantic information** to be able to trigger a release when appropriate.
 
-#### How it works
-
-The PR title OR at least one commit messsage needs to have semantic prefix.
-
-| Scenario                                                                                               | Status | Status Check Message                |
-| ------------------------------------------------------------------------------------------------------ | ------ | ----------------------------------- |
-| PR title is [semantic](https://github.com/commitizen/conventional-commit-types/blob/master/index.json) | 💚     | `ready to be squashed`              |
-| any commit is semantic                                                                                 | 💚     | `ready to be merged or rebased`     |
-| nothing is semantic                                                                                    | 💛     | `add a semantic commit or PR title` |
-
 #### Be Semantic!
 
 - Add a semantic [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/).
 - Edit the PR title by adding a semantic prefix like `fix:` or `feat:` or any other [conventional commit type](https://github.com/commitizen/conventional-commit-types/blob/master/index.json).
 
-#### Merging
+#### Contributing
 
-We have configured GitHub to `Squash and Merge` to keep the `master` branch history clean.
+Please see our [contributing guidelines](https://github.com/Esri/calcite-app-components/blob/master/CONTRIBUTING.md).
+
 
 ## Code Base
 
-Our code base is written in typescript and we love that it keeps our code type safe. There is a script that automatically formats our code for us to keep everything looking clean, but we ask that you keep in mind things like formatting and other [best practices](https://en.wikipedia.org/wiki/Best_coding_practices) when contributing to our repo.
+Our code base is written in typescript. 
 
 ### Boilerplate Component
 
