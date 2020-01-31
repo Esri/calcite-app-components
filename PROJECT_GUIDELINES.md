@@ -10,12 +10,12 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Conventions](#conventions)
   - [Formatting](#formatting)
   - [Github](#github)
+- [Dist/Package](https://github.com/Esri/calcite-app-components/blob/master/GETTING_STARTED.md_)
 - [Code Base](#code-base)
   - [Boilerplate Component](#boilerplate-component)
   - [Styling](#styling)
   - [Testing](#testing)
   - [Browser Support](#browser-support)
-- [Report a Bug](#report-a-bug)
 
 ## Conventions
 
@@ -23,7 +23,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 
 There is a script that automatically formats our code for us to keep everything looking clean, but we ask that you keep in mind things like formatting and other [best practices](https://en.wikipedia.org/wiki/Best_coding_practices) when contributing to our repo.
 
-### Github 
+### Github
 
 #### Issues
 
@@ -50,22 +50,19 @@ The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) st
 
 Please see our [contributing guidelines](https://github.com/Esri/calcite-app-components/blob/master/CONTRIBUTING.md).
 
-
 ## Code Base
 
-Our code base is written in typescript. 
+Our code base is written in typescript.
 
-### Boilerplate Component
+### Components
 
-See the [boilerplate example](https://github.com/Esri/calcite-app-components/blob/master/BOILERPLATE_COMPONENT.md) on how to create a new Calcite App Component!
-
-### Styling
+#### Styling
 
 Our setup uses the shadow DOM, so most of our styles are encapsulated in our calcite design system. We like it this way because it keeps our components consistent across applications.
 
-### Testing
+#### Testing
 
-### Browser Support
+#### Browser Support
 
 Our components are best used in most modern browsers, though there have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. Internet Explorer is not recommended to use with our web components.
 
