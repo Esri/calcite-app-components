@@ -12,11 +12,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
   - [Github](#github)
 - [Dist/Package](https://github.com/Esri/calcite-app-components/blob/master/GETTING_STARTED.md_)
 - [Code Base](#code-base)
-  - [Boilerplate Component](#boilerplate-component)
-  - [Styling](#styling)
-  - [Testing](#testing)
-  - [Browser Support](#browser-support)
-
+  - [Components](#components)
 ## Conventions
 
 ### Formatting
@@ -55,6 +51,8 @@ Please see our [contributing guidelines](https://github.com/Esri/calcite-app-com
 Our code base is written in typescript.
 
 ### Components
+
+If you have an idea for a component, please submi
 
 #### Styling
 
