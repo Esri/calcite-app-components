@@ -5,7 +5,6 @@ import { Component, Element, Host, Method, State, h } from "@stencil/core";
   shadow: true
 })
 export class CalciteTest {
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -25,7 +24,7 @@ export class CalciteTest {
   sortHandler = (event: CustomEvent) => {
     console.log(event.detail);
     this.items = ["two", "one", "three"];
-  }
+  };
 
   @Method() async foo() {
     this.items = ["two", "one", "three"];
@@ -42,7 +41,7 @@ export class CalciteTest {
       <Host>
         <calcite-sortable-list drag-enabled onCalciteListOrderChange={this.sortHandler}>
           {console.log(this.items)}
-          {this.items.map( item => {
+          {this.items.map((item) => {
             return (
               <div>
                 <calcite-handle></calcite-handle> {item}
@@ -50,11 +49,9 @@ export class CalciteTest {
             );
           })}
         </calcite-sortable-list>
-        {
-          this.items.map( (item, key) => {
-            return <p key={key}>{item}</p>
-          })
-        }
+        {this.items.map((item, key) => {
+          return <p key={key}>{item}</p>;
+        })}
       </Host>
     );
   }

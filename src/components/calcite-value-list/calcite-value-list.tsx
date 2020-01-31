@@ -284,7 +284,7 @@ export class CalciteValueList {
   }
 
   render() {
-    console.log('value list render');
+    console.log("value list render");
     return <List props={this} onKeyDown={this.keyDownHandler} />;
   }
 }
