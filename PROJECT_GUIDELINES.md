@@ -26,7 +26,8 @@ There are [templates](https://github.com/Esri/calcite-app-components/issues/new/
 
 ### Commits
 
-We ask that commits have informative headers and if necessary, a detailed body. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it.
+We ask that commits have informative headers and if necessary, a detailed body- squash-merge commit messages go straight into the changelog. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it. 
+
 
 ### Pull Requests
 
