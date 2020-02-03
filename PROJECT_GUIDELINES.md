@@ -52,7 +52,7 @@ Our code base is written in typescript.
 
 ### Components
 
-If you have an idea for a component, please submi
+If you have an idea for a component, please submit an issue for a [new component](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+).
 
 #### Styling
 
