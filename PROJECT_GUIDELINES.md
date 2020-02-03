@@ -51,6 +51,12 @@ Please see our [contributing guidelines](https://github.com/Esri/calcite-app-com
 
 Our code base is written in typescript.
 
+### A11y
+
+We generally follow the guidelines and standards in these articles:
+- [Google accessibility overview](https://developers.google.com/web/fundamentals/accessibility/)
+- [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/)
+
 ### Components
 
 Have an idea for a new component? Awesome! Check out our [new component checklist](https://github.com/Esri/calcite-app-components/wiki/New-Component-Checklist) and submit an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+).
@@ -59,9 +65,9 @@ Have an idea for a new component? Awesome! Check out our [new component checklis
 
 Our setup uses the shadow DOM, so most of our styles are encapsulated in our calcite design system. We like it this way because it keeps our components consistent across applications.
 
-#### Utils 
+#### Utils
 
-##### Unique IDs for components 
+##### Unique IDs for components
 
 Many times it is necessary for components to have a `id="something"` attribute for things like `<label>` and various `aria-*` properties. To safely generate a unique id for a component but to also allow a user supplied `id` attribute to work follow the following pattern:
 
@@ -89,6 +95,7 @@ export class CalciteExample {
   // ...
 }
 ```
+
 This will create a unique id attribute like `id="calcite-example-51af-0941-54ae-22c14d441beb"` which should have a VERY low collision change since guid() generates IDs with `window.crypto.getRandomValues`. If a user supplies an `id` this will respect the users `id`.
 
 ##### i18n
@@ -143,9 +150,8 @@ Your component and its child components can then use `var(--calcite-tabs-tab-mar
 
 In future it will likely become necessary to provide sting translations for components. An example would be the `aria-label` for the `<calcite-modal>` close button. Initial research looks promising and we could likely implement one of these approaches and set a `lang` for each component similar to how we set `dir`.
 
-* https://medium.com/stencil-tricks/implementing-internationalisation-i18n-with-stencil-5e6559554117 and https://codesandbox.io/s/43pmx55vo9
-* https://github.com/ionic-team/ionic-stencil-conference-app/issues/69
-
+- https://medium.com/stencil-tricks/implementing-internationalisation-i18n-with-stencil-5e6559554117 and https://codesandbox.io/s/43pmx55vo9
+- https://github.com/ionic-team/ionic-stencil-conference-app/issues/69
 
 #### Testing
 
