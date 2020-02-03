@@ -12,6 +12,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
   - [Github](#github)
 - [Dist/Package](https://github.com/Esri/calcite-app-components/blob/master/GETTING_STARTED.md_)
 - [Code Base](#code-base)
+  - [A11y](#a11y)
   - [Components](#components)
 
 ## Conventions
@@ -54,6 +55,7 @@ Our code base is written in typescript.
 ### A11y
 
 We generally follow the guidelines and standards in these articles:
+
 - [Google accessibility overview](https://developers.google.com/web/fundamentals/accessibility/)
 - [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/)
 
