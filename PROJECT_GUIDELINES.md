@@ -13,6 +13,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Dist/Package](https://github.com/Esri/calcite-app-components/blob/master/GETTING_STARTED.md_)
 - [Code Base](#code-base)
   - [Components](#components)
+
 ## Conventions
 
 ### Formatting
