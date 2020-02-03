@@ -25,7 +25,7 @@ There is a script that automatically formats our code for us to keep everything 
 
 #### Issues
 
-There are [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues that should be followed for consistency.
+We have created [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues for everyone to follow for consistency.
 
 #### Commits
 
@@ -36,8 +36,6 @@ We ask that commits have informative headers and if necessary, a detailed body- 
 This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.
 
 The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
-
-👮 Note! The default behavior of this bot is not to police all commit messages, but rather to ensure that every PR has just **enough semantic information** to be able to trigger a release when appropriate.
 
 #### Be Semantic!
 
@@ -70,7 +68,7 @@ We generally follow these best practices when authoring our components:
 - [Google Web Component Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
 - [Custom Element Conformance - W3C Editor's Draft](https://html.spec.whatwg.org/multipage/custom-elements.html)
 
-#### Structure 
+#### Structure
 
 Please see Stencil's [style guide](https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md) for details on component structure.
 
@@ -168,7 +166,7 @@ In future it will likely become necessary to provide sting translations for comp
 
 #### Testing
 
-Place the test file in the component folder using the `component.e2e.ts` naming convention. Write testable code and pure functions, avoid and extract side effects. Run tests locally before making any pull requests, and please, document tests with instructions if needed.
+Place test files in the component folder using the `component.e2e.ts` naming convention. Write testable code and pure functions, avoid and extract side effects. Run tests locally before making any pull requests, and please, document tests with instructions if needed.
 
 #### Browser Support
 
