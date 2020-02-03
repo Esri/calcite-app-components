@@ -1,5 +1,5 @@
 @mixin borderShadow() {
-  box-shadow: 0 1px 0 var(--calcite-app-border) inset;
+  box-shadow: 0 -1px 0 var(--calcite-app-border) inset;
 }
 @mixin borderShadowHover() {
   box-shadow: 0 0 0 2px var(--calcite-app-border-hover) inset;

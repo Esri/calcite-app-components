@@ -50,7 +50,8 @@ export interface SimpleAttribute {
   value: string | boolean | number;
 }
 
-export type Attributes = (KnobbedAttribute | SimpleAttribute)[];
+export type Attribute = KnobbedAttribute | SimpleAttribute;
+export type Attributes = Attribute[];
 
 export const createComponentHTML = (tagName: string, attributes: Attributes, contentHTML?: string) =>
   `<${tagName} ${attributes.map(({ name, value }) => `${name}="${value}"`).join(" ")}>${contentHTML}</${tagName}>`;
