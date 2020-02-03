@@ -70,6 +70,10 @@ We generally follow these best practices when authoring our components:
 - [Google Web Component Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
 - [Custom Element Conformance - W3C Editor's Draft](https://html.spec.whatwg.org/multipage/custom-elements.html)
 
+#### Structure 
+
+Please see Stencil's [style guide](https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md) for details on component structure.
+
 #### Styling
 
 Our setup uses the shadow DOM, so most of our styles are encapsulated in our calcite design system. We like it this way because it keeps our components consistent across applications.
@@ -164,7 +168,7 @@ In future it will likely become necessary to provide sting translations for comp
 
 #### Testing
 
-Place the test file in the component folder using the `component.e2e.ts` naming convention. Write testable code and pure functions, avoid and extract side effects. Run tests locally before making any pull requests, and please, document tests with instructions if needed. 
+Place the test file in the component folder using the `component.e2e.ts` naming convention. Write testable code and pure functions, avoid and extract side effects. Run tests locally before making any pull requests, and please, document tests with instructions if needed.
 
 #### Browser Support
 
