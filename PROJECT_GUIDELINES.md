@@ -63,9 +63,10 @@ We generally follow the guidelines and standards in these articles:
 
 Have an idea for a new component? Awesome! Check out our [new component checklist](https://github.com/Esri/calcite-app-components/wiki/New-Component-Checklist) and submit an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+).
 
-#### Best Practices 
+#### Best Practices
 
 We generally follow these best practices when authoring our components:
+
 - [Google Web Component Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
 - [Custom Element Conformance - W3C Editor's Draft](https://html.spec.whatwg.org/multipage/custom-elements.html)
 
@@ -163,7 +164,8 @@ In future it will likely become necessary to provide sting translations for comp
 
 #### Testing
 
+Place the test file in the component folder using the `component.e2e.ts` naming convention. Write testable code and pure functions, avoid and extract side effects. Run tests locally before making any pull requests, and please, document tests with instructions if needed. 
+
 #### Browser Support
 
 Our components are best used in most modern browsers, though there have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. Internet Explorer is not recommended to use with our web components.
-
