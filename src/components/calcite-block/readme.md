@@ -60,6 +60,7 @@ Renders a header with a clickable icon to toggle the block open and closed.
 | -------------- | --------------- | ------------------------------------------------------------------------------------------- | ------------------- | --------------- |
 | `collapsible`  | `collapsible`   | When true, this block will be collapsible.                                                  | `boolean`           | `false`         |
 | `disabled`     | `disabled`      | When true, disabled prevents interaction. This state shows items with lower opacity/grayed. | `boolean`           | `false`         |
+| `dragHandle`   | `drag-handle`   | When true, displays a drag handle in the header.                                            | `boolean`           | `false`         |
 | `heading`      | `heading`       | Block heading.                                                                              | `string`            | `undefined`     |
 | `loading`      | `loading`       | When true, content is waiting to be loaded. This state shows a busy indicator.              | `boolean`           | `false`         |
 | `open`         | `open`          | When true, the block's content will be displayed.                                           | `boolean`           | `false`         |
@@ -81,6 +82,20 @@ Renders a header with a clickable icon to toggle the block open and closed.
 |             | A slot for adding content to the block.                    |
 | `"control"` | A slot for adding a single HTML input element in a header. |
 | `"icon"`    | A slot for adding a trailing header icon.                  |
+
+## Dependencies
+
+### Depends on
+
+- [calcite-handle](../calcite-handle)
+
+### Graph
+
+```mermaid
+graph TD;
+  calcite-block --> calcite-handle
+  style calcite-block fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ---
 

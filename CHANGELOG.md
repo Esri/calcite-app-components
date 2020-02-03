@@ -3,6 +3,20 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.2.0](https://github.com/Esri/calcite-app-components/compare/v5.1.1...v5.2.0) (2020-01-31)
+
+### Features
+
+- Add nesting support to picklist groups ([#770](https://github.com/Esri/calcite-app-components/issues/770)) ([602264b](https://github.com/Esri/calcite-app-components/commit/602264b86de7a18d6b7e222f0b4bfd0d7b0d9acd)), closes [#783](https://github.com/Esri/calcite-app-components/issues/783) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767)
+- drag n drop component 483 ([#747](https://github.com/Esri/calcite-app-components/issues/747)) ([71d5897](https://github.com/Esri/calcite-app-components/commit/71d589749039cd17aa37fa57a505ded86d3cce0a))
+- **action:** add scales to Action ([c5948cb](https://github.com/Esri/calcite-app-components/commit/c5948cb7ad93d864c1b7788876aa29bf869e91a0)), closes [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759)
+
+### Bug Fixes
+
+- **action:** style updates for compact mode ([bc345ce](https://github.com/Esri/calcite-app-components/commit/bc345ce6eb271a2a75e31d35447d517c710cd1f8)), closes [#759](https://github.com/Esri/calcite-app-components/issues/759)
+- **block:** Remove extra padding applied to slotted icon content ([#793](https://github.com/Esri/calcite-app-components/issues/793)) ([9911d3a](https://github.com/Esri/calcite-app-components/commit/9911d3a6796fe599b4a0f96e0ea231af89493627))
+- Calcite-shell-panel remove position relative [#782](https://github.com/Esri/calcite-app-components/issues/782) ([fdc74b5](https://github.com/Esri/calcite-app-components/commit/fdc74b537360f9d13085127c67305333f5fc5f99))
+
 ### [5.1.1](https://github.com/Esri/calcite-app-components/compare/v5.1.0...v5.1.1) (2020-01-28)
 
 ### Bug Fixes

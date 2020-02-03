@@ -1,1 +1,0 @@
-const e={action:"action",description:"description",handle:"handle",handleActivated:"handle--activated",highlight:"highlight",icon:"icon",label:"label",title:"title",textContainer:"text-container"},t={unchecked:"square",checked:"check-square",selected:"circle-filled",unselected:"circle"};export{e as C,t as I};
