@@ -62,8 +62,9 @@
 }
 
 .action {
+  align-items: center;
   display: flex;
-  flex: 0 0 0%;
+  flex: 0 0 auto;
   justify-self: flex-end;
   margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
 }
