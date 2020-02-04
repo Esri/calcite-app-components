@@ -6,7 +6,6 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 
 - [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
 - [Contibution Guidelines](https://github.com/esri/contributing)
-
 - [Conventions](#conventions)
   - [Formatting](#formatting)
   - [Github](#github)
