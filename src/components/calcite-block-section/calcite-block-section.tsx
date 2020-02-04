@@ -86,6 +86,14 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
+  handleHeaderLabelKeyDown(this: HTMLLabelElement, event: KeyboardEvent): void {
+    if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      event.stopPropagation();
+      this.click();
+    }
+  }
+
   toggleSection = () => {
     this.open = !this.open;
     this.calciteBlockSectionToggle.emit();
@@ -114,6 +122,8 @@ export class CalciteBlockSection {
           aria-label={toggleLabel}
           class={classnames(CSS.toggle, CSS.toggleSwitch)}
           id={labelId}
+          onKeyDown={this.handleHeaderLabelKeyDown}
+          tabIndex={0}
         >
           {text}
           <calcite-switch

@@ -75,9 +75,7 @@ describe("calcite-block-section", () => {
     });
 
     it("can be toggled", async () => {
-      const page = await setUpPage("<calcite-block-section></calcite-block-section>", {
-        withPeerDependencies: true
-      });
+      const page = await setUpPage("<calcite-block-section></calcite-block-section>");
       await assertToggleBehavior(page);
     });
 
@@ -118,15 +116,25 @@ describe("calcite-block-section", () => {
 
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
 
+    await toggle.press(" ");
+    expect(toggleSpy).toHaveReceivedEventTimes(1);
+    expect(await element.getProperty("open")).toBe(true);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
+
+    await toggle.press("Enter");
+    expect(toggleSpy).toHaveReceivedEventTimes(2);
+    expect(await element.getProperty("open")).toBe(false);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
+
     await toggle.click();
 
-    expect(toggleSpy).toHaveReceivedEventTimes(1);
+    expect(toggleSpy).toHaveReceivedEventTimes(3);
     expect(await element.getProperty("open")).toBe(true);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
 
     await toggle.click();
 
-    expect(toggleSpy).toHaveReceivedEventTimes(2);
+    expect(toggleSpy).toHaveReceivedEventTimes(4);
     expect(await element.getProperty("open")).toBe(false);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
   }
