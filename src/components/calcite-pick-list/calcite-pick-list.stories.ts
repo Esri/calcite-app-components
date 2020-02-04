@@ -65,13 +65,13 @@ export const basic = () =>
     "calcite-pick-list",
     createAttributes(),
     dedent`
-    <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+    <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex">
       ${action}
     </calcite-pick-list-item>
-    <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" selected>
+    <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
       ${action}
     </calcite-pick-list-item>
-    <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld">
+    <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld">
       ${action}
     </calcite-pick-list-item>
   `
@@ -83,18 +83,18 @@ export const grouped = () =>
     createAttributes(),
     dedent`
     <calcite-pick-list-group text-group-title="numbers">
-      <calcite-pick-list-item text-heading="one" text-description="fish" value="one" icon="grip">
+      <calcite-pick-list-item text-label="one" text-description="fish" value="one" icon="grip">
         ${action}
       </calcite-pick-list-item>
-      <calcite-pick-list-item text-heading="two" text-description="fish" value="two" icon="grip">
+      <calcite-pick-list-item text-label="two" text-description="fish" value="two" icon="grip">
         ${action}
       </calcite-pick-list-item>
     </calcite-pick-list-group>
     <calcite-pick-list-group text-group-title="colors">
-      <calcite-pick-list-item text-heading="red" text-description="fish" value="red" icon="grip">
+      <calcite-pick-list-item text-label="red" text-description="fish" value="red" icon="grip">
         ${action}
       </calcite-pick-list-item>
-      <calcite-pick-list-item text-heading="blue" text-description="fish" value="blue" icon="grip">
+      <calcite-pick-list-item text-label="blue" text-description="fish" value="blue" icon="grip">
         ${action}
       </calcite-pick-list-item>
     </calcite-pick-list-group>
