@@ -5,7 +5,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 ## TOC
 
 - [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
-- [Contibution Guidelines](https://github.com/esri/contributing)
+- [Contribution Guidelines](https://github.com/esri/contributing)
 - [Conventions](#conventions)
   - [Formatting](#formatting)
   - [Github](#github)
@@ -18,7 +18,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 
 ### Formatting
 
-There is a script that automatically formats our code for us to keep everything looking clean, but we ask that you keep in mind things like formatting and other best practices when contributing to our repo.
+This project uses lint-staged to automatically format code on commit, making it easier to contribute.
 
 ### Github
 
@@ -28,7 +28,15 @@ We have created [templates](https://github.com/Esri/calcite-app-components/issue
 
 #### Commits
 
-We ask that commits have informative headers and if necessary, a detailed body- squash-merge commit messages go straight into the changelog. Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)! If the contribution will cause a breaking change, be sure to add sufficient information about it.
+This project follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), which are used to generate the changelog. Be sure to provide clear and sufficient information in commit messages. This is important because the commit messages (type feat and fix) are used to automatically update the changelog. For ease of discoverability, commit messages for breaking changes should use both the header (!) and body (BREAKING CHANGE:) syntax:
+
+```
+<type>!: <descriptive summary>
+
+<optional info>
+
+BREAKING CHANGE: <details about the change and migration options (this can span multiple lines)>
+```
 
 #### Pull Requests
 
