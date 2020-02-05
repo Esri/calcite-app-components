@@ -3,6 +3,16 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.2.1](https://github.com/Esri/calcite-app-components/compare/v5.2.0...v5.2.1) (2020-02-05)
+
+### Features
+
+- multiple actions appear side-by-side ([#798](https://github.com/Esri/calcite-app-components/issues/798)) ([591deaf](https://github.com/Esri/calcite-app-components/commit/591deaf0aada884e24fc8fb6f76322753b8fbe8a))
+
+### Bug Fixes
+
+- Replace shadowroot querying with textInput reference. ([#799](https://github.com/Esri/calcite-app-components/issues/799)) ([5ee3f08](https://github.com/Esri/calcite-app-components/commit/5ee3f085c4f0067850c47db6d912f345b7e88485))
+
 ## [5.2.0](https://github.com/Esri/calcite-app-components/compare/v5.1.1...v5.2.0) (2020-01-31)
 
 ### Features
