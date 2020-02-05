@@ -103,7 +103,7 @@
   }
 }
 
-.calcite--rtl .button--text-visible {
+.button--text-visible.calcite--rtl {
   .icon-container {
     margin: 0 0 0 var(--calcite-app-side-spacing-half);
   }
