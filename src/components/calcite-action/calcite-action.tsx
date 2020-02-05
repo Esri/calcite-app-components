@@ -11,6 +11,9 @@ import { CSS_UTILITY } from "../utils/resources";
 import { getElementDir } from "../utils/dom";
 import { VNode } from "@stencil/core/internal";
 
+/**
+ * @slot - A slot for adding a `calcite-icon`.
+ */
 @Component({
   tag: "calcite-action",
   styleUrl: "calcite-action.scss",
