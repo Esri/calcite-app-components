@@ -122,7 +122,7 @@ export class CalciteAction {
   renderIconContainer(): VNode {
     const { loading } = this;
 
-    const hasIcon = !!this.el.querySelector("calcite-icon");
+    const calciteLoaderNode = <calcite-loader is-active inline></calcite-loader>;
 
     const slotContainerNode = (
       <div
@@ -134,12 +134,15 @@ export class CalciteAction {
       </div>
     );
 
-    const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
+    const iconNode = loading
+      ? calciteLoaderNode
+      : this.el.querySelector("calcite-icon")
+      ? slotContainerNode
+      : null;
 
-    return hasIcon || loading ? (
+    return iconNode ? (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        {slotContainerNode}
-        {calciteLoaderNode}
+        {iconNode}
       </div>
     ) : null;
   }
