@@ -13,6 +13,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Code Base](#code-base)
   - [A11y](#a11y)
   - [Components](#components)
+- [Report a Bug!](#report-a-bug)
 
 ## Conventions
 
@@ -172,3 +173,15 @@ Place test files in the component folder using the `component.e2e.ts` naming con
 #### Browser Support
 
 Our components are best used in most modern browsers, though there have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. Internet Explorer is not recommended to use with our web components.
+
+## Report a Bug
+
+We use Github issues to keep track of bugs. Please follow our [bug issue template](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=bug%2C+0+-+new&template=bug.md&title=Bug%3A+) and explain the problem clearly for us maintainers to understand and reproduce. The more details the better!
+Things to consider:
+
+- Use a clear and descriptive title
+- What is happening now vs what should happen?
+- Tell us how to reproduce the issue (eg. is it happening in a specific browser?)
+- Can it be reliably reproduced? If not, tell us how often it happens and under what circumstances.
+- Screenshots and gifs are our friends!
+- Did this problem start happening after a recent release or was it always a bug?
