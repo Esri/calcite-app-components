@@ -119,7 +119,7 @@ export class CalciteAction {
   renderIconContainer(): VNode {
     const { loading } = this;
 
-    const hasIcon = !!this.el.children.length;
+    const hasIcon = !!this.el.querySelector("calcite-icon");
 
     const slotContainerNode = (
       <div
