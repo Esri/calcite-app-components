@@ -75,7 +75,9 @@ describe("calcite-block-section", () => {
     });
 
     it("can be toggled", async () => {
-      const page = await setUpPage("<calcite-block-section></calcite-block-section>");
+      const page = await setUpPage("<calcite-block-section></calcite-block-section>", {
+        withPeerDependencies: true
+      });
       await assertToggleBehavior(page);
     });
 
@@ -116,23 +118,41 @@ describe("calcite-block-section", () => {
 
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
 
-    await toggle.press(" ");
+    await toggle.click();
+
     expect(toggleSpy).toHaveReceivedEventTimes(1);
     expect(await element.getProperty("open")).toBe(true);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
 
-    await toggle.press("Enter");
+    await toggle.click();
+
     expect(toggleSpy).toHaveReceivedEventTimes(2);
     expect(await element.getProperty("open")).toBe(false);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
 
-    await toggle.click();
+    const keyboardToggleEmitter =
+      toggle.tagName === "CALCITE-ACTION"
+        ? (
+            await page.evaluateHandle(() => {
+              // keyboard event needs to be dispatched from the action's button for it to trigger a click
+              // deep shadow piercing is based on https://github.com/puppeteer/puppeteer/issues/858#issuecomment-438540596
+              return document
+                .querySelector("calcite-block-section")
+                .shadowRoot.querySelector("section > calcite-action")
+                .shadowRoot.querySelector("button");
+            })
+          ).asElement()
+        : toggle;
+
+    await keyboardToggleEmitter.press(" ");
+    await page.waitForChanges();
 
     expect(toggleSpy).toHaveReceivedEventTimes(3);
     expect(await element.getProperty("open")).toBe(true);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
 
-    await toggle.click();
+    await keyboardToggleEmitter.press("Enter");
+    await page.waitForChanges();
 
     expect(toggleSpy).toHaveReceivedEventTimes(4);
     expect(await element.getProperty("open")).toBe(false);
