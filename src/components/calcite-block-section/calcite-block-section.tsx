@@ -131,6 +131,7 @@ export class CalciteBlockSection {
             switched={open}
             onChange={this.toggleSection}
             scale="s"
+            tabIndex={-1}
           />
         </label>
       ) : (

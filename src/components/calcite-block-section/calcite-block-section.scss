@@ -18,6 +18,7 @@
   user-select: none;
 
   calcite-switch {
+    pointer-events: none;
     margin: var(--calcite-app-cap-spacing-third) 0 0 var(--calcite-app-side-spacing-half);
   }
 }
