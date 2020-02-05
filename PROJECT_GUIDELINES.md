@@ -40,7 +40,7 @@ BREAKING CHANGE: <details about the change and migration options (this can span 
 
 #### Pull Requests
 
-In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not.  The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
+In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not. The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
 #### Be Semantic!
 
@@ -116,11 +116,11 @@ This will create a unique id attribute like `id="calcite-example-51af-0941-54ae-
 
 ##### i18n
 
-Components should require as a few text translations as possible. In general lets users supply text values via slots and attributes. The lets user handle translations with their apps.
+Components should require as a few text translations as possible. In general, this allows users to supply text values via slots and attributes and handle translations within their apps.
 
-If you component involves formatting numbers or dates use the [`Intl` APIs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) for formating the display of numbers and dates in your component.
+If your component involves formatting numbers or dates use the [`Intl` APIs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) for formating the display of numbers and dates in the component.
 
-To add RTL support to your components you should use the internal `getElementDir` helper to apply the `dir` attribute to your component. This means that your components `dir` attribute will always match the documents `dir`.
+To add RTL support to your components, use the internal `getElementDir` helper to apply the `dir` attribute to the component. That way, the `dir` attribute of the component will always match that of the document.
 
 ```tsx
 import { Component, Host, Element, h} from "@stencil/core";
@@ -148,7 +148,7 @@ export class CalciteComponent {
 }
 ```
 
-You can then implement direction specific CSS with CSS variables:
+Direction specific CSS can be implemented with CSS variables:
 
 ```scss
 :host {
@@ -161,10 +161,6 @@ You can then implement direction specific CSS with CSS variables:
   --calcite-tabs-tab-margin-end: 1.25rem;
 }
 ```
-
-Your component and its child components can then use `var(--calcite-tabs-tab-margin-start)` to access their proper values based on the direction of the document.
-
-In future it will likely become necessary to provide sting translations for components. An example would be the `aria-label` for the `<calcite-modal>` close button. Initial research looks promising and we could likely implement one of these approaches and set a `lang` for each component similar to how we set `dir`.
 
 - https://medium.com/stencil-tricks/implementing-internationalisation-i18n-with-stencil-5e6559554117 and https://codesandbox.io/s/43pmx55vo9
 - https://github.com/ionic-team/ionic-stencil-conference-app/issues/69
