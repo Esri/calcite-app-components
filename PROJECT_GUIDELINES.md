@@ -28,7 +28,7 @@ We have created [templates](https://github.com/Esri/calcite-app-components/issue
 
 #### Commits
 
-This project follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), which are used to generate the changelog. Be sure to provide clear and sufficient information in commit messages. This is important because the commit messages (type feat and fix) are used to automatically update the changelog. For ease of discoverability, commit messages for breaking changes should use both the header (!) and body (BREAKING CHANGE:) syntax:
+This project follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), which are used to generate the changelog. Be sure to provide clear and sufficient information in commit messages. This is important because the commit messages (type `feat` and `fix`) are used to automatically update the changelog. For ease of discoverability, commit messages for breaking changes should use both the header (`!`) and body (`BREAKING CHANGE:`) syntax:
 
 ```
 <type>!: <descriptive summary>
@@ -40,9 +40,7 @@ BREAKING CHANGE: <details about the change and migration options (this can span 
 
 #### Pull Requests
 
-This project has an GitHub App installed to automatically perform semantic status checks on open pull requests.
-
-The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
+In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not.  The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
 #### Be Semantic!
 
