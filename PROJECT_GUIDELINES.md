@@ -15,7 +15,6 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
   - [A11y](#a11y)
   - [Components](#components)
 
-
 ## Conventions
 
 ### Formatting
@@ -65,7 +64,6 @@ Things to consider:
 - Screenshots and gifs are our friends!
 - Did this problem start happening after a recent release or was it always a bug?
 
-
 ## Code Base
 
 Our code base is written in typescript.
@@ -100,7 +98,7 @@ Our setup uses the shadow DOM, so most of our styles are encapsulated in our cal
 
 ##### Unique IDs for components
 
-Many times it is necessary for components to have a `id="something"` attribute for things like `<label>` and various `aria-*` properties. To safely generate a unique id for a component but to also allow a user supplied `id` attribute to work follow the following pattern:
+Many times it is necessary for components to have an `id="something"` attribute for things like `<label>` and various `aria-*` properties. To safely generate a unique id for a component, but to also allow a user supplied `id` attribute to work, follow the following pattern:
 
 ```
 import { guid } from "../../utils/guid";
@@ -127,7 +125,7 @@ export class CalciteExample {
 }
 ```
 
-This will create a unique id attribute like `id="calcite-example-51af-0941-54ae-22c14d441beb"` which should have a VERY low collision change since guid() generates IDs with `window.crypto.getRandomValues`. If a user supplies an `id` this will respect the users `id`.
+This will create a unique id attribute like `id="calcite-example-51af-0941-54ae-22c14d441beb"`, which should have a VERY low collision change since guid() generates IDs with `window.crypto.getRandomValues`. If a user supplies an `id`, it will respect the users `id`.
 
 ##### i18n
 
@@ -182,9 +180,10 @@ Direction specific CSS can be implemented with CSS variables:
 
 #### Testing
 
-Place test files in the component folder using the `component.e2e.ts` naming convention. Write testable code and pure functions, avoid and extract side effects. Run tests locally before making any pull requests, and please, document tests with instructions if needed.
+Please see Stencil's doc for [end-to-end testing](https://stenciljs.com/docs/end-to-end-testing)! 
+
+Components should have an automated test for any incoming features or bug fix.  We utilize Travis CI to check our work, so PRs will run tests and now allow merging unless all the tests pass (we suggest running locally before making a PR to save time).  We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved.  Keep it clean!
 
 #### Browser Support
 
 Our components are best used in most modern browsers, though there have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. Internet Explorer is not recommended to use with our web components.
-
