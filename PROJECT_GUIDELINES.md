@@ -193,3 +193,4 @@ Our components are best used in most modern browsers including Chrome, Firefox a
 
 - There have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge.
 - Internet Explorer is _not_ recommended to use with our web components.
+- We have a [wiki](https://github.com/Esri/calcite-app-components/wiki/Stencil-Tidbits#gotchas) of gotchas we've found with Stencil. 
