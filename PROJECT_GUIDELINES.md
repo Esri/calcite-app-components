@@ -1,10 +1,11 @@
 # Project Guidelines
 
-Hey there and thanks for stopping by! We welcome all feedback and contributions to Calcite App Components. If you are interested in getting involved, we ask that you give our guidelines a quick read through. Below is a list of things we've found work well for us as we continue developing our components.
+Hey there and thanks for stopping by! We welcome all feedback and contributions to [Calcite App Components](https://github.com/Esri/calcite-app-components/blob/master/README.md). If you are interested in getting involved, we ask that you give our guidelines a quick read through. Below is a list of things we've found work well for us as we continue developing our components.
 
 ## TOC
 
 - [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
+
 - [Contribution Guidelines](https://github.com/esri/contributing)
 - [Conventions](#conventions)
   - [Formatting](#formatting)
@@ -193,4 +194,4 @@ Our components are best used in most modern browsers including Chrome, Firefox a
 
 - There have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge.
 - Internet Explorer is _not_ recommended to use with our web components.
-- We have a [wiki](https://github.com/Esri/calcite-app-components/wiki/Stencil-Tidbits#gotchas) of gotchas we've found with Stencil. 
+- We have a [wiki](https://github.com/Esri/calcite-app-components/wiki/Stencil-Tidbits#gotchas) of gotchas we've found with Stencil.
