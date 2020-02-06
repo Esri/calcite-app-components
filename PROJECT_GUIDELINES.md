@@ -5,7 +5,6 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 ## TOC
 
 - [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
-
 - [Contribution Guidelines](https://github.com/esri/contributing)
 - [Conventions](#conventions)
   - [Formatting](#formatting)
