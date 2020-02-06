@@ -14,6 +14,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Code Base](#code-base)
   - [A11y](#a11y)
   - [Components](#components)
+- [Gotchas](#gotchas)
 
 ## Conventions
 
@@ -25,7 +26,7 @@ This project uses lint-staged to automatically format code on commit, making it 
 
 #### Issues
 
-We have created [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues for everyone to follow for consistency.
+We have created [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues for everyone to follow for consistency.  Please be specific and thorough when submitting new issues! Think about things like user stories, acceptance criteria, design, and any other details that might be helpful for developers and designers. 
 
 #### Commits
 
@@ -180,10 +181,17 @@ Direction specific CSS can be implemented with CSS variables:
 
 #### Testing
 
-Please see Stencil's doc for [end-to-end testing](https://stenciljs.com/docs/end-to-end-testing)! 
+Please see Stencil's doc for [end-to-end testing](https://stenciljs.com/docs/end-to-end-testing)!
 
-Components should have an automated test for any incoming features or bug fix.  We utilize Travis CI to check our work, so PRs will run tests and now allow merging unless all the tests pass (we suggest running locally before making a PR to save time).  We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved.  Keep it clean!
+Components should have an automated test for any incoming features or bug fix. We utilize Travis CI to check our work, so PRs will run tests and now allow merging unless all the tests pass (we suggest running locally before making a PR to save time). We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved. Keep it clean!
 
 #### Browser Support
 
-Our components are best used in most modern browsers, though there have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. Internet Explorer is not recommended to use with our web components.
+Our components are best used in most modern browsers including Chrome, Firefox and Safari.
+
+## Gotchas
+
+- There have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. 
+- Internet Explorer is *not* recommended to use with our web components.
+
+
