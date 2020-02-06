@@ -26,7 +26,7 @@ This project uses lint-staged to automatically format code on commit, making it 
 
 #### Issues
 
-We have created [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues for everyone to follow for consistency.  Please be specific and thorough when submitting new issues! Think about things like user stories, acceptance criteria, design, and any other details that might be helpful for developers and designers. 
+We have created [templates](https://github.com/Esri/calcite-app-components/issues/new/choose) for new issues for everyone to follow for consistency. Please be specific and thorough when submitting new issues! Think about things like user stories, acceptance criteria, design, and any other details that might be helpful for developers and designers.
 
 #### Commits
 
@@ -191,7 +191,5 @@ Our components are best used in most modern browsers including Chrome, Firefox a
 
 ## Gotchas
 
-- There have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge. 
-- Internet Explorer is *not* recommended to use with our web components.
-
-
+- There have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge.
+- Internet Explorer is _not_ recommended to use with our web components.
