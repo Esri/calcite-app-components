@@ -64,3 +64,25 @@
 .footer {
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
 }
+
+@include media-breakpoint-down(md) {
+  .main {
+    flex-direction: column;
+    overflow: auto;
+  }
+  .content {
+    position: relative;
+    left: unset;
+    top: unset;
+    bottom: unset;
+    right: unset;
+    min-height: 200px;
+  }
+  ::slotted(calcite-tip-manager) {
+    position: relative;
+    left: unset;
+    top: unset;
+    bottom: unset;
+    right: unset;
+  }
+}
