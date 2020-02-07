@@ -62,10 +62,9 @@ Things to consider:
 
 ## Code Base
 
-Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible!
+Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible.
 
 Please follow [tslint-iconic-rules](https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js).
-
 
 ### A11y
 
@@ -105,7 +104,7 @@ The following resources showcase best practices we follow for our web components
 
 #### Structure
 
-Please see Stencil's [style guide](https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md) for details on component structure.
+Please see Stencil's [style guide]( https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md#file-structure) for details on component structure.
 
 #### Styling
 
