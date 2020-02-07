@@ -80,16 +80,23 @@ We generally follow the guidelines and standards in these articles:
 
 Have an idea for a new component? Awesome! Check out our [new component checklist](https://github.com/Esri/calcite-app-components/wiki/New-Component-Checklist) and submit an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+).
 
-#### General 
+#### General
 
-- We document our slots at the beginning of each component file. 
+- Slots are documented at the beginning of each component file after the import statements and before the @Component decorator. 
 - Please properly mutate and reflect props.
 - Make sure to document props.
-- UI text props start with `text`. For example: `textCollapse` updates the label of the collapse icon when the component is expanded in the calcite action bar. 
+- UI text props start with `text`. For example: `textCollapse` updates the label of the collapse icon when the component is expanded in the calcite action bar.
 - Events are named in present tense and start with the `calciteComponent`. For example: `calciteBlockToggle` is emitted when the header in a calcite block has been clicked.
 - Properties without values are marked as required (with a `!` in front) or optional (`?`). For example: `@Prop() label?: string;` or `@Prop() text!: string;`
-- Naming conventions of properties, methods, and events are consistent between components for consistency.  
-- 
+- Naming conventions of properties, methods, and events are consistent between components for consistency.
+- A resource file resides inside each component folder. These contain CSS, ICONS, and SLOTS constants.
+- Internal events are not propagated. 
+
+#### Documentation
+
+- We use storybook for a front end view of our doc.  In each component folder resides a `component.stories.ts` file. 
+- Knobs are added in the stories file so users can edit props dynamically in the storybook UI.
+- Usage folders are in the component folder with a `basic.md` or `advanced.md` file depending on the complexity of the component for notes and snippets that would help the understanding of the component. 
 
 #### Best Practices
 
