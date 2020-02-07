@@ -64,6 +64,9 @@ Things to consider:
 
 Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible!
 
+Please follow [tslint-iconic-rules](https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js).
+
+
 ### A11y
 
 Components should be accessible and we use the following resources as guides:
@@ -95,7 +98,7 @@ Have an idea for a new component? Awesome! Check out our [new component checklis
 
 #### Best Practices
 
-We generally follow these best practices when authoring our components:
+The following resources showcase best practices we follow for our web components:
 
 - [Google Web Component Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
 - [Custom Element Conformance - W3C Editor's Draft](https://html.spec.whatwg.org/multipage/custom-elements.html)
