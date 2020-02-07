@@ -44,11 +44,6 @@ BREAKING CHANGE: <details about the change and migration options (this can span 
 
 In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not. The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
-#### Be Semantic!
-
-- Add a semantic [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/).
-- Edit the PR title by adding a semantic prefix like `fix:` or `feat:` or any other [conventional commit type](https://github.com/commitizen/conventional-commit-types/blob/master/index.json).
-
 #### Contributing
 
 Please see our [contributing guidelines](https://github.com/Esri/calcite-app-components/blob/master/CONTRIBUTING.md).
