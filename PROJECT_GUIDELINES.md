@@ -4,14 +4,14 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 
 ## TOC
 
-- [Code of Conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
-- [Contribution Guidelines](https://github.com/esri/contributing)
+- [Code of conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
+- [Contribution guidelines](https://github.com/esri/contributing)
 - [Conventions](#conventions)
   - [Formatting](#formatting)
   - [Github](#github)
-  - [Report a Bug!](#report-a-bug)
-- [Dist/Package](https://github.com/Esri/calcite-app-components/blob/master/GETTING_STARTED.md_)
-- [Code Base](#code-base)
+  - [Report a bug!](#report-a-bug)
+- [Dist/package](https://github.com/Esri/calcite-app-components/blob/master/GETTING_STARTED.md_)
+- [Code base](#code-base)
   - [A11y](#a11y)
   - [Components](#components)
 - [Gotchas](#gotchas)
@@ -40,7 +40,7 @@ This project follows [conventional commits](https://www.conventionalcommits.org/
 BREAKING CHANGE: <details about the change and migration options (this can span multiple lines)>
 ```
 
-#### Pull Requests
+#### Pull requests
 
 In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not. The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
@@ -48,7 +48,7 @@ In order to ensure conventional commits are followed, pull requests will run a c
 
 Please see our [contributing guidelines](https://github.com/Esri/calcite-app-components/blob/master/CONTRIBUTING.md).
 
-### Report a Bug
+### Report a bug
 
 We use Github issues to keep track of bugs. Please follow our [bug issue template](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=bug%2C+0+-+new&template=bug.md&title=Bug%3A+) and explain the problem clearly for us maintainers to understand and reproduce. The more details the better!
 Things to consider:
@@ -60,7 +60,7 @@ Things to consider:
 - Screenshots and gifs are our friends!
 - Did this problem start happening after a recent release or was it always a bug?
 
-## Code Base
+## Code base
 
 Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible.
 
@@ -77,7 +77,7 @@ Components should be accessible and we use the following resources as guides:
 
 Have an idea for a new component? Awesome! Check out our [new component checklist](https://github.com/Esri/calcite-app-components/wiki/New-Component-Checklist) and submit an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+).
 
-#### General
+#### General checklist
 
 - Slots are documented at the beginning of each component file after the import statements and before the @Component decorator.
 - Please properly mutate and reflect props.
@@ -95,7 +95,7 @@ Have an idea for a new component? Awesome! Check out our [new component checklis
 - Knobs are added in the stories file so users can edit props dynamically in the storybook UI.
 - Usage folders are in the component folder with a `basic.md` or `advanced.md` file depending on the complexity of the component for notes and snippets that would help the understanding of the component.
 
-#### Best Practices
+#### Best practices
 
 The following resources showcase best practices we follow for our web components:
 
@@ -104,11 +104,11 @@ The following resources showcase best practices we follow for our web components
 
 #### Structure
 
-Please see Stencil's [style guide]( https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md#file-structure) for details on component structure.
+Please see Stencil's [style guide](https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md#file-structure) for details on component structure.
 
 #### Styling
 
-Our setup uses the shadow DOM, so most of our styles are encapsulated in our calcite design system. We like it this way because it keeps our components consistent across applications.
+Be sure to set `shadow: true` in Stencil's `@Component` options to make sure styles are encapsulated in our calcite design system. This helps keep our components consistent across applications.
 
 #### Utils
 
@@ -200,7 +200,7 @@ Please see Stencil's doc for [end-to-end testing](https://stenciljs.com/docs/end
 
 Components should have an automated test for any incoming features or bug fix. We utilize Travis CI to check our work, so PRs will run tests and now allow merging unless all the tests pass (we suggest running locally before making a PR to save time). We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved. Keep it clean!
 
-#### Browser Support
+#### Browser support
 
 Our components are best used in most modern browsers including Chrome, Firefox and Safari.
 
