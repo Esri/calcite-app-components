@@ -64,7 +64,23 @@ Things to consider:
 
 Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible.
 
-Please follow [tslint-iconic-rules](https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js).
+1. Please follow [tslint-iconic-rules](https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js).
+
+2. Variable decorators should be inlined.
+`@Prop() name: string;`
+
+3. Method decorators should be multi-line. 
+```
+@Listen('click')
+onClick() {
+ ...
+}
+```
+
+4. Use private variables and methods when possible. These are useful for detecting deadcode and enforcing encapsulation. Note that this is a feature which TypeScript provides to help harden your code, but using `private`, `public` or `protected` does not make a difference in the actual JavaScript output.
+
+5. Code with Method/Prop/Event/Component decorators should have jsdocs. This allows for documentation generation and for better user experience in an editor that has TypeScript intellisense.
+
 
 ### A11y
 
@@ -79,7 +95,7 @@ Before the checklist, new components should have an [issue](https://github.com/E
 
 #### General checklist
 
-- Slots are documented at the beginning of each component file after the import statements and before the @Component decorator.
+- Slots are documented at the beginning of each component file after the import statements and before the `@Component` decorator.
 - Please properly mutate and reflect props.
 - Make sure to document props.
 - UI text props start with `text`. For example: `textCollapse` updates the label of the collapse icon when the component is expanded in the calcite action bar.
