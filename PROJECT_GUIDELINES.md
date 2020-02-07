@@ -67,9 +67,10 @@ Our code base is written in TypeScript. We love it because it keeps our code typ
 1. Please follow [tslint-iconic-rules](https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js).
 
 2. Variable decorators should be inlined.
-`@Prop() name: string;`
+   `@Prop() name: string;`
 
-3. Method decorators should be multi-line. 
+3. Method decorators should be multi-line.
+
 ```
 @Listen('click')
 onClick() {
@@ -80,7 +81,6 @@ onClick() {
 4. Use private variables and methods when possible. These are useful for detecting deadcode and enforcing encapsulation. Note that this is a feature which TypeScript provides to help harden your code, but using `private`, `public` or `protected` does not make a difference in the actual JavaScript output.
 
 5. Code with Method/Prop/Event/Component decorators should have jsdocs. This allows for documentation generation and for better user experience in an editor that has TypeScript intellisense.
-
 
 ### A11y
 
