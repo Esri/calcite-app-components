@@ -62,11 +62,11 @@ Things to consider:
 
 ## Code Base
 
-Our code base is written in typescript.
+Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible!
 
 ### A11y
 
-We generally follow the guidelines and standards in these articles:
+Components should be accessible and we use the following resources as guides:
 
 - [Google accessibility overview](https://developers.google.com/web/fundamentals/accessibility/)
 - [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/)
