@@ -72,7 +72,7 @@ export class CalciteShell {
     ) as HTMLCalciteShellPanelElement;
 
     const mainClasses = {
-      [CSS.mainReversed]: primaryPanel?.layout === "trailing"
+      [CSS.mainReversed]: primaryPanel?.position === "end"
     };
 
     return (

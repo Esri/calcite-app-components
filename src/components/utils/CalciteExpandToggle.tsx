@@ -1,13 +1,13 @@
 import { FunctionalComponent, h } from "@stencil/core";
 import { getElementDir } from "./dom";
-import { CalciteLayout } from "../interfaces";
+import { CalcitePosition } from "../interfaces";
 
 interface CalciteExpandToggleProps {
   expanded: boolean;
   textExpand: string;
   textCollapse: string;
   el: HTMLElement;
-  layout: CalciteLayout;
+  position: CalcitePosition;
   toggleExpand: () => void;
 }
 
@@ -16,14 +16,14 @@ const ICONS = {
   chevronsRight: "chevrons-right"
 };
 
-function getClosestShellLayout(el: HTMLElement): CalciteLayout | null {
+function getClosestShellPosition(el: HTMLElement): CalcitePosition | null {
   const shellNode = el.closest("calcite-shell-panel");
 
   if (!shellNode) {
     return;
   }
 
-  return shellNode.layout;
+  return shellNode.position;
 }
 
 export function toggleChildActionText({
@@ -42,7 +42,7 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
   textCollapse,
   toggleExpand,
   el,
-  layout
+  position
 }) => {
   const rtl = getElementDir(el) === "rtl";
 
@@ -53,11 +53,11 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
     icons.reverse();
   }
 
-  const layoutFallback = layout || getClosestShellLayout(el) || "leading";
+  const positionFallback = position || getClosestShellPosition(el) || "start";
 
-  const trailing = layoutFallback === "trailing";
-  const expandIcon = trailing ? icons[1] : icons[0];
-  const collapseIcon = trailing ? icons[0] : icons[1];
+  const end = positionFallback === "end";
+  const expandIcon = end ? icons[1] : icons[0];
+  const collapseIcon = end ? icons[0] : icons[1];
 
   return (
     <calcite-action onClick={toggleExpand} textEnabled={expanded} text={expandText}>

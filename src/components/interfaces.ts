@@ -2,6 +2,8 @@
 
 export type CalciteLayout = "leading" | "trailing";
 
+export type CalcitePosition = "start" | "end";
+
 export type CalciteTheme = "light" | "dark";
 
 export type CalciteBlockSectionToggleDisplay = "button" | "switch";

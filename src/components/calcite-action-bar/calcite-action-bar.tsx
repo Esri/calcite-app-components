@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 
-import { CalciteLayout, CalciteTheme } from "../interfaces";
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 
@@ -60,8 +60,14 @@ export class CalciteActionBar {
   /**
    * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
    * in a LTR app will appear on the left.
+   * @deprecated()
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
+   * Arranges the component depending on the elements 'dir' property.
+   */
+  @Prop({ reflect: true }) position: CalcitePosition;
 
   /**
    * Used to set the component's color scheme.
@@ -119,7 +125,7 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup() {
-    const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
+    const { expanded, expand, textExpand, textCollapse, el, position, toggleExpand } = this;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -127,7 +133,7 @@ export class CalciteActionBar {
         textExpand={textExpand}
         textCollapse={textCollapse}
         el={el}
-        layout={layout}
+        position={position}
         toggleExpand={toggleExpand}
       />
     ) : null;
