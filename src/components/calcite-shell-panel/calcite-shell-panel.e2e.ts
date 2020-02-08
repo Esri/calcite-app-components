@@ -11,8 +11,8 @@ describe("calcite-shell-panel", () => {
   it("defaults", async () =>
     defaults("calcite-shell-panel", [
       {
-        propertyName: "layout",
-        defaultValue: "leading"
+        propertyName: "position",
+        defaultValue: "start"
       },
       {
         propertyName: "collapsed",
@@ -78,11 +78,11 @@ describe("calcite-shell-panel", () => {
     expect(eventSpy).toHaveReceivedEvent();
   });
 
-  it("leading layout property should have action slot first ", async () => {
+  it("leading position property should have action slot first ", async () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-shell-panel layout="leading"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
+      '<calcite-shell-panel position="start"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
     );
 
     const element = await page.find("calcite-shell-panel");
@@ -92,11 +92,11 @@ describe("calcite-shell-panel", () => {
     expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
   });
 
-  it("trailing layout property should have DIV first ", async () => {
+  it("trailing position property should have DIV first ", async () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      '<calcite-shell-panel layout="trailing"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
+      '<calcite-shell-panel position="end"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
     );
 
     const element = await page.find("calcite-shell-panel");
@@ -108,7 +108,7 @@ describe("calcite-shell-panel", () => {
 
   it("should be accessible", async () =>
     accessible(`
-    <calcite-shell-panel slot="primary-panel" layout="leading">
+    <calcite-shell-panel slot="primary-panel" position="start">
       <calcite-action-bar slot="action-bar">
         <calcite-action-group>
           <calcite-action text="Add">

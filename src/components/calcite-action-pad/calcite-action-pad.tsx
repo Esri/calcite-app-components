@@ -122,7 +122,8 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup() {
-    const { expanded, expand, textExpand, textCollapse, el, position, toggleExpand } = this;
+    const { expanded, expand, textExpand, textCollapse, el, layout, position, toggleExpand } = this;
+    const positionFallback = layout ? (layout === "trailing" ? "end" : "start") : position;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -130,7 +131,7 @@ export class CalciteActionPad {
         textExpand={textExpand}
         textCollapse={textCollapse}
         el={el}
-        position={position}
+        position={positionFallback}
         toggleExpand={toggleExpand}
       />
     ) : null;

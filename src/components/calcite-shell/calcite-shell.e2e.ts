@@ -42,10 +42,10 @@ describe("calcite-shell", () => {
   it("should be accessible", async () =>
     accessible(`
     <calcite-shell>
-      <calcite-shell-panel slot="${SLOTS.primaryPanel}" layout="leading">
+      <calcite-shell-panel slot="${SLOTS.primaryPanel}" position="start">
         <p>Primary Content</p>
       </calcite-shell-panel>
-      <calcite-shell-panel slot="${SLOTS.contextualPanel}" layout="trailing">
+      <calcite-shell-panel slot="${SLOTS.contextualPanel}" position="end">
         <p>Primary Content</p>
       </calcite-shell-panel>
     </calcite-shell>
@@ -55,10 +55,10 @@ describe("calcite-shell", () => {
     const page = await newE2EPage();
 
     await page.setContent(`<calcite-shell>
-    <calcite-shell-panel slot="${SLOTS.primaryPanel}" layout="leading">
+    <calcite-shell-panel slot="${SLOTS.primaryPanel}" position="start">
       <p>Primary Content</p>
     </calcite-shell-panel>
-    <calcite-shell-panel slot="${SLOTS.contextualPanel}" layout="trailing">
+    <calcite-shell-panel slot="${SLOTS.contextualPanel}" position="end">
       <p>Primary Content</p>
     </calcite-shell-panel>
   </calcite-shell>`);
@@ -74,10 +74,10 @@ describe("calcite-shell", () => {
     const page = await newE2EPage();
 
     await page.setContent(`<calcite-shell>
-    <calcite-shell-panel slot="${SLOTS.primaryPanel}" layout="trailing">
+    <calcite-shell-panel slot="${SLOTS.primaryPanel}" position="start">
       <p>Primary Content</p>
     </calcite-shell-panel>
-    <calcite-shell-panel slot="${SLOTS.contextualPanel}" layout="leading">
+    <calcite-shell-panel slot="${SLOTS.contextualPanel}" position="end">
       <p>Primary Content</p>
     </calcite-shell-panel>
   </calcite-shell>`);

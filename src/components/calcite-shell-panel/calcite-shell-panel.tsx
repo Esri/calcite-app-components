@@ -43,7 +43,7 @@ export class CalciteShellPanel {
    * Arrangement of the component.
    * @deprecated()
    */
-  @Prop({ reflect: true }) layout: CalciteLayout = "leading";
+  @Prop({ reflect: true }) layout: CalciteLayout;
 
   /**
    * Arranges the component depending on the elements 'dir' property.
@@ -68,7 +68,8 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render() {
-    const { collapsed, detached, position } = this;
+    const { collapsed, detached, layout, position } = this;
+    const positionFallback = layout ? (layout === "trailing" ? "end" : "start") : position;
 
     const contentNode = (
       <div class={classnames(CSS.content, { [CSS.contentDetached]: detached })} hidden={collapsed}>
@@ -80,7 +81,7 @@ export class CalciteShellPanel {
 
     const mainNodes = [actionBarNode, contentNode];
 
-    if (position === "end") {
+    if (positionFallback === "end") {
       mainNodes.reverse();
     }
 
