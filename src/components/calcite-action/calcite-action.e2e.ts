@@ -28,15 +28,23 @@ describe("calcite-action", () => {
 
   it("should have icon container", async () => {
     const page = await newE2EPage();
-    await page.setContent(`<calcite-action><svg><path></svg></calcite-action>`);
+    await page.setContent(`<calcite-action><calcite-icon icon="hamburger" scale="s"></calcite-icon></calcite-action>`);
 
     const iconContainer = await page.find("calcite-action >>> .icon-container");
     expect(iconContainer).not.toBeNull();
   });
 
-  it("should always have icon container", async () => {
+  it("should not have icon container if no calcite-icon present", async () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-action></calcite-action>`);
+
+    const iconContainer = await page.find("calcite-action >>> .icon-container");
+    expect(iconContainer).toBeNull();
+  });
+
+  it("should have icon container if loading", async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-action loading></calcite-action>`);
 
     const iconContainer = await page.find("calcite-action >>> .icon-container");
     expect(iconContainer).not.toBeNull();
