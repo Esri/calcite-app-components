@@ -74,10 +74,10 @@ describe("calcite-shell", () => {
     const page = await newE2EPage();
 
     await page.setContent(`<calcite-shell>
-    <calcite-shell-panel slot="${SLOTS.primaryPanel}" position="start">
+    <calcite-shell-panel slot="${SLOTS.primaryPanel}" position="end">
       <p>Primary Content</p>
     </calcite-shell-panel>
-    <calcite-shell-panel slot="${SLOTS.contextualPanel}" position="end">
+    <calcite-shell-panel slot="${SLOTS.contextualPanel}" position="start">
       <p>Primary Content</p>
     </calcite-shell-panel>
   </calcite-shell>`);

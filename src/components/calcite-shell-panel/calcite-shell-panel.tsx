@@ -69,7 +69,11 @@ export class CalciteShellPanel {
 
   render() {
     const { collapsed, detached, layout, position } = this;
-    const positionFallback = layout ? (layout === "trailing" ? "end" : "start") : position;
+    const positionFallback: CalcitePosition = layout
+      ? layout === "trailing"
+        ? "end"
+        : "start"
+      : position || "start";
 
     const contentNode = (
       <div class={classnames(CSS.content, { [CSS.contentDetached]: detached })} hidden={collapsed}>

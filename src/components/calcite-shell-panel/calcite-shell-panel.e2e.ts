@@ -11,10 +11,6 @@ describe("calcite-shell-panel", () => {
   it("defaults", async () =>
     defaults("calcite-shell-panel", [
       {
-        propertyName: "position",
-        defaultValue: "start"
-      },
-      {
         propertyName: "collapsed",
         defaultValue: false
       }
