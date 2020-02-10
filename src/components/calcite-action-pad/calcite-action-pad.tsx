@@ -57,7 +57,8 @@ export class CalciteActionPad {
   @Prop() textCollapse = "Collapse";
 
   /**
-   * @deprecated Use `position` instead.
+   * @deprecated since 5.3 - use "position" instead.
+   * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
 
