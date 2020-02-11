@@ -2,7 +2,8 @@ import { getSlotted } from "./dom";
 
 describe("dom", () => {
   describe("getSlotted()", () => {
-    const testSlotName = "test";
+    const slotNameMultiple = "multiple";
+    const slotNameSingle = "single";
 
     beforeAll(() => {
       class SlotTest extends HTMLElement {
@@ -12,7 +13,10 @@ describe("dom", () => {
         }
 
         connectedCallback() {
-          this.shadowRoot.innerHTML = `<slot name="${testSlotName}"></slot>`;
+          this.shadowRoot.innerHTML = `
+            <slot name="${slotNameMultiple}"></slot>
+            <slot name="${slotNameSingle}"></slot>
+          `;
         }
       }
 
@@ -22,8 +26,9 @@ describe("dom", () => {
     beforeEach(() => {
       document.body.innerHTML = `
       <slot-test>
-        <h2 slot=${testSlotName}>😃</h2>
-        <h2 slot=${testSlotName}>😂</h2>
+        <h2 slot=${slotNameMultiple}>😃</h2>
+        <h2 slot=${slotNameMultiple}>😄</h2>
+        <h2 slot=${slotNameSingle}>😂</h2>
       </slot-test>
     `;
     });
@@ -34,24 +39,11 @@ describe("dom", () => {
       }
     });
 
-    describe("single slotted", () => {
-      it("returns elements with matching slot name", () => {
-        expect(getSlotted(document.body, testSlotName)).toBeTruthy();
-      });
-
-      it("returns null when no results", () => {
-        expect(getSlotted(document.body, "non-existent-slot")).toBeNull();
-      });
+    it("returns elements with matching slot name", () => {
+      expect(getSlotted(document.body, slotNameMultiple)).toHaveLength(2);
+      expect(getSlotted(document.body, slotNameSingle)).toHaveLength(1);
     });
 
-    describe("multiple slotted", () => {
-      it("returns elements with matching slot name", () => {
-        expect(getSlotted(document.body, testSlotName, { all: true })).toHaveLength(2);
-      });
-
-      it("returns empty list when no results", () => {
-        expect(getSlotted(document.body, "non-existent-slot", { all: true })).toHaveLength(0);
-      });
-    });
+    it("returns null when no results", () => expect(getSlotted(document.body, "non-existent-slot")).toHaveLength(0));
   });
 });
