@@ -1,10 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-
-import { CalciteLayout, CalciteTheme } from "../interfaces";
-
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-
 import { CSS } from "./resources";
+import { getCalcitePosition } from "../utils/dom";
 
 /**
  * @slot - A slot for adding `calcite-action`s to the action pad.
@@ -57,9 +55,15 @@ export class CalciteActionPad {
   @Prop() textCollapse = "Collapse";
 
   /**
+   * @deprecated since 5.3 - use "position" instead.
    * Arrangement of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
+   * Arranges the component depending on the elements 'dir' property.
+   */
+  @Prop({ reflect: true }) position: CalcitePosition;
 
   /**
    * Used to set the component's color scheme.
@@ -116,7 +120,7 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup() {
-    const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
+    const { expanded, expand, textExpand, textCollapse, el, layout, position, toggleExpand } = this;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -124,7 +128,7 @@ export class CalciteActionPad {
         textExpand={textExpand}
         textCollapse={textCollapse}
         el={el}
-        layout={layout}
+        position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
       />
     ) : null;
