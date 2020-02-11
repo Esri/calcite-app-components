@@ -6,7 +6,6 @@
 
     <title>Calcite App Components: calcite-shell</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
@@ -32,11 +31,11 @@
 
     <script>
       require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
-        var map = new Map({
+        const map = new Map({
           basemap: "gray-vector"
         });
 
-        var view = new MapView({
+        const view = new MapView({
           container: "viewDiv",
           map: map,
           zoom: 8,
@@ -456,24 +455,24 @@
         </calcite-panel>
       </calcite-popover>
       <script>
-        var tipManagerButton = document.getElementById("tip-manager-button");
-        var tipManager = document.getElementById("tip-manager");
+        const tipManagerButton = document.getElementById("tip-manager-button");
+        const tipManager = document.getElementById("tip-manager");
         tipManagerButton.addEventListener("click", function() {
           tipManager.hasAttribute("hidden")
             ? tipManager.removeAttribute("hidden")
             : tipManager.setAttribute("hidden", "");
         });
 
-        var actionPad = document.getElementById("action-pad");
-        var actionPadButton = document.getElementById("action-pad-button");
+        const actionPad = document.getElementById("action-pad");
+        const actionPadButton = document.getElementById("action-pad-button");
         actionPadButton.addEventListener("click", function() {
           actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
 
           actionPad.positionElement = actionPadButton;
         });
 
-        var shellFloatingPanel = document.getElementById("shell-floating-panel");
-        var shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
+        const shellFloatingPanel = document.getElementById("shell-floating-panel");
+        const shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
         shellFloatingPanelButton.addEventListener("click", function() {
           shellFloatingPanel.hasAttribute("hidden")
             ? shellFloatingPanel.removeAttribute("hidden")
@@ -482,8 +481,8 @@
           shellFloatingPanel.positionElement = shellFloatingPanelButton;
         });
 
-        var shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
-        var shellFloatingPanelOverButton = document.getElementById("shell-floating-panel-over-button");
+        const shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
+        const shellFloatingPanelOverButton = document.getElementById("shell-floating-panel-over-button");
         shellFloatingPanelOverButton.addEventListener("click", function() {
           shellFloatingPanelOver.hasAttribute("hidden")
             ? shellFloatingPanelOver.removeAttribute("hidden")
@@ -492,7 +491,7 @@
           shellFloatingPanelOver.positionElement = shellFloatingPanelOverButton;
         });
 
-        var flowNode = document.getElementById("flow");
+        const flowNode = document.getElementById("flow");
       </script>
     </main>
   </body>

@@ -6,7 +6,6 @@
 
     <title>Calcite App Components: calcite-shell</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
 
@@ -25,20 +24,6 @@
     <main>
       <div class="example-container">
         <h1>calcite-shell</h1>
-        <p>
-          see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell/readme.md"
-            >calcite-shell readme.</a
-          >
-        </p>
-        <p>
-          <em
-            >The shell is absolutely positioned and sized to fill its container. In normal application it might fill up
-            the entire viewport. For demo purposes, it's inside a relatively positioned container sized to fit in this
-            area. <a href="/demos/advanced/shell-demo-app-full-window.html">See the full-window demo.</a></em
-          >
-        </p>
-        <p><em>Please note: calcite-shell supports tablet as the smallest screen size.</em></p>
 
         <style>
           #viewDiv,
@@ -52,18 +37,18 @@
 
         <script>
           require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
-            var map = new Map({
+            const map = new Map({
               basemap: "streets"
             });
 
-            var view = new MapView({
+            const view = new MapView({
               container: "viewDiv",
               map: map,
               zoom: 4,
               center: [15, 65]
             });
 
-            var view2 = new MapView({
+            const view2 = new MapView({
               container: "viewDiv2",
               map: map,
               zoom: 4,
@@ -463,14 +448,12 @@
                 <h2 class="heading">My App</h2>
               </header>
             </div>
-            <!-- <calcite-tip-manager slot="tip-manager" /> -->
             <div id="viewDiv2"></div>
 
             <footer slot="shell-footer">Footer</footer>
           </calcite-shell>
         </div>
       </div>
-      <p style="text-align: center;">Box Shadow added to show app edges.</p>
     </main>
   </body>
 </html>
