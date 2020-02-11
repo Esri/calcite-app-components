@@ -44,6 +44,7 @@ describe("dom", () => {
       expect(getSlotted(document.body, slotNameSingle)).toHaveLength(1);
     });
 
-    it("returns null when no results", () => expect(getSlotted(document.body, "non-existent-slot")).toHaveLength(0));
+    it("returns empty array when there are no matches", () =>
+      expect(getSlotted(document.body, "non-existent-slot")).toHaveLength(0));
   });
 });
