@@ -11,6 +11,9 @@ import { CSS_UTILITY } from "../utils/resources";
 import { getElementDir } from "../utils/dom";
 import { VNode } from "@stencil/core/internal";
 
+/**
+ * @slot - A slot for adding a `calcite-icon`.
+ */
 @Component({
   tag: "calcite-action",
   styleUrl: "calcite-action.scss",
@@ -119,6 +122,8 @@ export class CalciteAction {
   renderIconContainer(): VNode {
     const { loading } = this;
 
+    const calciteLoaderNode = <calcite-loader is-active inline></calcite-loader>;
+
     const slotContainerNode = (
       <div
         class={classnames(CSS.slotContainer, {
@@ -129,14 +134,17 @@ export class CalciteAction {
       </div>
     );
 
-    const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
+    const iconNode = loading
+      ? calciteLoaderNode
+      : this.el.querySelector("calcite-icon")
+      ? slotContainerNode
+      : null;
 
-    return (
+    return iconNode ? (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
-        {slotContainerNode}
-        {calciteLoaderNode}
+        {iconNode}
       </div>
-    );
+    ) : null;
   }
 
   render() {

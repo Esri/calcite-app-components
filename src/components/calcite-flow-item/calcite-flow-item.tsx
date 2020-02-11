@@ -6,7 +6,6 @@ import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./
 import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteScale, CalciteTheme } from "../interfaces";
-import { CSS_UTILITY } from "../utils/resources";
 
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
@@ -335,8 +334,7 @@ export class CalciteFlowItem {
 
   render() {
     const { el } = this;
-
-    const rtl = getElementDir(el) === "rtl";
+    const dir = getElementDir(el);
 
     return (
       <Host>
@@ -344,11 +342,9 @@ export class CalciteFlowItem {
           loading={this.loading}
           disabled={this.disabled}
           height-scale={this.heightScale}
-          class={classnames({
-            [CSS_UTILITY.rtl]: rtl
-          })}
+          dir={dir}
         >
-          {this.renderBackButton(rtl)}
+          {this.renderBackButton(dir === "rtl")}
           {this.renderHeader()}
           {this.renderHeaderActions()}
           <slot />
