@@ -62,6 +62,12 @@ Renders a `calcite-action` that has a clear background.
 
 Type: `Promise<void>`
 
+## Slots
+
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | A slot for adding a `calcite-icon`. |
+
 ## Dependencies
 
 ### Used by
