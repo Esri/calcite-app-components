@@ -1,10 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
-
-import { CalciteLayout, CalciteTheme } from "../interfaces";
-
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-
 import { CSS, SLOTS } from "./resources";
+import { getCalcitePosition } from "../utils/dom";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -58,10 +56,16 @@ export class CalciteActionBar {
   @Prop() textCollapse = "Collapse";
 
   /**
+   * @deprecated since 5.3 - use "position" instead.
    * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
    * in a LTR app will appear on the left.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
+   * Arranges the component depending on the elements 'dir' property.
+   */
+  @Prop({ reflect: true }) position: CalcitePosition;
 
   /**
    * Used to set the component's color scheme.
@@ -119,7 +123,7 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup() {
-    const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
+    const { expanded, expand, textExpand, textCollapse, el, layout, position, toggleExpand } = this;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -127,7 +131,7 @@ export class CalciteActionBar {
         textExpand={textExpand}
         textCollapse={textCollapse}
         el={el}
-        layout={layout}
+        position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
       />
     ) : null;
