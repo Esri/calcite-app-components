@@ -26,6 +26,10 @@ function getClosestShellPosition(el: HTMLElement): CalcitePosition | null {
   return shellNode.position;
 }
 
+function getCalcitePosition(position: CalcitePosition, el: HTMLElement) {
+  return position || getClosestShellPosition(el) || "start";
+}
+
 export function toggleChildActionText({
   parent,
   expanded
@@ -53,9 +57,7 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
     icons.reverse();
   }
 
-  const positionFallback = position || getClosestShellPosition(el) || "start";
-
-  const end = positionFallback === "end";
+  const end = getCalcitePosition(position, el) === "end";
   const expandIcon = end ? icons[1] : icons[0];
   const collapseIcon = end ? icons[0] : icons[1];
 

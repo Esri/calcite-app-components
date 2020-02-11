@@ -51,6 +51,25 @@ describe("calcite-shell", () => {
     </calcite-shell>
     `));
 
+  it("deprecated: flex row should not be reversed", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-shell>
+      <calcite-shell-panel slot="${SLOTS.primaryPanel}" layout="leading">
+        <p>Primary Content</p>
+      </calcite-shell-panel>
+      <calcite-shell-panel slot="${SLOTS.contextualPanel}" layout="trailing">
+        <p>Primary Content</p>
+      </calcite-shell-panel>
+    </calcite-shell>`);
+
+    await page.waitForChanges();
+
+    const mainReversed = await page.find(`calcite-shell >>> .${CSS.mainReversed}`);
+
+    expect(mainReversed).toBeNull();
+  });
+
   it("flex row should not be reversed", async () => {
     const page = await newE2EPage();
 
@@ -68,6 +87,25 @@ describe("calcite-shell", () => {
     const mainReversed = await page.find(`calcite-shell >>> .${CSS.mainReversed}`);
 
     expect(mainReversed).toBeNull();
+  });
+
+  it("deprecated: flex row should be reversed", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-shell>
+    <calcite-shell-panel slot="${SLOTS.primaryPanel}" layout="trailing">
+      <p>Primary Content</p>
+    </calcite-shell-panel>
+    <calcite-shell-panel slot="${SLOTS.contextualPanel}" layout="leading">
+      <p>Primary Content</p>
+    </calcite-shell-panel>
+  </calcite-shell>`);
+
+    await page.waitForChanges();
+
+    const mainReversed = await page.find(`calcite-shell >>> .${CSS.mainReversed}`);
+
+    expect(mainReversed).not.toBeNull();
   });
 
   it("flex row should be reversed", async () => {
