@@ -41,19 +41,6 @@
   overflow: auto;
 }
 
-@include media-breakpoint-down(md) {
-  .content {
-    max-width: unset;
-    min-width: unset;
-    width: 100%;
-    min-height: unset;
-    margin: 0;
-  }
-  .content--detached {
-    max-height: unset;
-  }
-}
-
 :host([detached-scale="s"]) .content--detached {
   max-height: var(--calcite-app-shell-panel-max-height-small);
 }
