@@ -6,7 +6,6 @@
 
     <title>Calcite App Components: calcite-action</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -15,12 +14,6 @@
     <main>
       <section class="example-container">
         <h1>calcite-action</h1>
-        <p>
-          see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-action/readme.md"
-            >calcite-action readme.</a
-          >
-        </p>
 
         <h2>LTR</h2>
         <div class="action-container">
@@ -30,15 +23,14 @@
           </calcite-action>
 
           <script>
-          var slotTestNode = document.getElementById("slot-test");
-          setTimeout(function(){
-            var div = document.createElement("div");
+            const slotTestNode = document.getElementById("slot-test");
+            setTimeout(function(){
+            const div = document.createElement("div");
             div.innerHTML = `<calcite-icon scale="s" icon="configure-popup"></calcite-icon>`;
             slotTestNode.appendChild(div);
           }, 2000)
           </script>
 
-          </div>
         </div>
       </section>
     </main>
