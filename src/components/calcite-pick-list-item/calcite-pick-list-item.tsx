@@ -59,6 +59,11 @@ export class CalcitePickListItem {
   }
 
   /**
+   * Set this to true to display a remove action that removes the item from the list.
+   */
+  @Prop({ reflect: true }) removable = false;
+
+  /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
   @Prop({ reflect: true, mutable: true }) selected = false;
@@ -125,6 +130,12 @@ export class CalcitePickListItem {
   @Event() calciteListItemChange: EventEmitter;
 
   /**
+   * Emitted whenever the remove button is pressed.
+   * @event calciteListItemRemove
+   */
+  @Event() calciteListItemRemove: EventEmitter;
+
+  /**
    * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
    * @event calciteListItemPropsChange
    * @internal
@@ -181,6 +192,10 @@ export class CalcitePickListItem {
     }
   };
 
+  removeClickHandler = () => {
+    this.calciteListItemRemove.emit();
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -207,11 +222,23 @@ export class CalcitePickListItem {
     );
   }
 
+  renderRemoveAction() {
+    if (!this.removable) {
+      return null;
+    }
+    return (
+      <calcite-action class={CSS.remove} text="remove" onClick={this.removeClickHandler}>
+        <calcite-icon scale="s" icon="x" />
+      </calcite-action>
+    );
+  }
+
   renderSecondaryAction() {
     const hasSecondaryAction = this.el.querySelector(`[slot=${SLOTS.secondaryAction}]`);
-    return hasSecondaryAction ? (
+    return hasSecondaryAction || this.removable ? (
       <div class={CSS.action}>
         <slot name={SLOTS.secondaryAction} />
+        {this.renderRemoveAction()}
       </div>
     ) : null;
   }

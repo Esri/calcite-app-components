@@ -6,6 +6,7 @@ export const CSS = {
   highlight: "highlight",
   icon: "icon",
   label: "label",
+  remove: "remove",
   title: "title",
   textContainer: "text-container"
 };

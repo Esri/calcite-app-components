@@ -1,5 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
+import { CSS } from "./resources";
+
 describe("calcite-pick-list-item", () => {
   it("should render", async () => {
     const page = await newE2EPage();
@@ -60,5 +62,18 @@ describe("calcite-pick-list-item", () => {
     await page.waitForChanges();
 
     expect(await item.getProperty("selected")).toBe(true);
+  });
+
+  it("displays the remove button when removable is true", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(
+      `<calcite-pick-list-item text-label="test" value="example" removable></calcite-pick-list-item>`
+    );
+
+    page.debugger();
+
+    const removeButton = await page.find(`calcite-pick-list-item >>> .${CSS.remove}`);
+    expect(removeButton).not.toBe(null);
   });
 });

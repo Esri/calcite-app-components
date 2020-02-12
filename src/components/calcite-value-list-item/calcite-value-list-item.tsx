@@ -50,6 +50,11 @@ export class CalciteValueListItem {
   @Prop() metadata?: object;
 
   /**
+   * Set this to true to display a remove action that removes the item from the list.
+   */
+  @Prop({ reflect: true }) removable = false;
+
+  /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
    */
   @Prop({ reflect: true, mutable: true }) selected = false;
@@ -149,6 +154,7 @@ export class CalciteValueListItem {
           disableDeselect={this.disableDeselect}
           selected={this.selected}
           metadata={this.metadata}
+          removable={this.removable}
           textLabel={this.textLabel}
           textDescription={this.textDescription}
           onCalciteListItemChange={this.handleSelectChange}
