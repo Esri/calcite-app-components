@@ -1,3 +1,5 @@
+import { CalciteLayout, CalcitePosition } from "../interfaces";
+
 export function getElementDir(el: HTMLElement) {
   return getElementProp(el, "dir", "ltr");
 }
@@ -17,4 +19,22 @@ export function focusElement(el: CalciteFocusableElement): void {
   }
 
   "setFocus" in el && typeof el.setFocus === "function" ? el.setFocus() : el.focus();
+}
+
+export function getCalcitePosition(position: CalcitePosition, layout: CalciteLayout): CalcitePosition {
+  if (position) {
+    return position;
+  }
+
+  if (layout) {
+    return layout === "trailing" ? "end" : "start";
+  }
+
+  return "start";
+}
+
+export function getSlotted<T extends Element = Element>(element: Element, slotName: string): T[] {
+  const slottedSelector = `[slot="${slotName}"]`;
+
+  return Array.from(element.querySelectorAll<T>(slottedSelector));
 }

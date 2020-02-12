@@ -2,6 +2,7 @@ import { Component, Element, Host, Prop, h } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import classnames from "classnames";
+import { getCalcitePosition } from "../utils/dom";
 
 /**
  * @slot shell-header - A slot for adding header content. This content will be positioned at the top of the shell.
@@ -72,7 +73,7 @@ export class CalciteShell {
     ) as HTMLCalciteShellPanelElement;
 
     const mainClasses = {
-      [CSS.mainReversed]: primaryPanel?.layout === "trailing"
+      [CSS.mainReversed]: getCalcitePosition(primaryPanel?.position, primaryPanel?.layout) === "end"
     };
 
     return (

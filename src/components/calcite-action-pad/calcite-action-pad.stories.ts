@@ -9,7 +9,7 @@ import {
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
-const { dir, layout, theme } = ATTRIBUTES;
+const { dir, position, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action-pad",
@@ -37,8 +37,8 @@ const createAttributes: () => Attributes = () => [
     value: boolean("expanded", false)
   },
   {
-    name: "layout",
-    value: select("layout", layout.values, layout.defaultValue)
+    name: "position",
+    value: select("position", position.values, position.defaultValue)
   },
   {
     name: "text-expand",

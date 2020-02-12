@@ -3,6 +3,18 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.3.0](https://github.com/Esri/calcite-app-components/compare/v5.2.1...v5.3.0) (2020-02-11)
+
+### Features
+
+- deprecate layout in favor of position ([#812](https://github.com/Esri/calcite-app-components/issues/812)) ([5e11467](https://github.com/Esri/calcite-app-components/commit/5e11467d14ce96a430ef2b2408dbce76d30034c6))
+- **Panel, FlowItem:** better header layout and header retains summary when panel is short ([3f3b1e3](https://github.com/Esri/calcite-app-components/commit/3f3b1e3051efe0b8d2953f04bea12fe6e0569199)), closes [#807](https://github.com/Esri/calcite-app-components/issues/807) [#764](https://github.com/Esri/calcite-app-components/issues/764)
+
+### Bug Fixes
+
+- Action - Remove padding when used without an icon ([#810](https://github.com/Esri/calcite-app-components/issues/810)) ([30d3510](https://github.com/Esri/calcite-app-components/commit/30d3510b41cde34d7cec627b345420d644056e59))
+- **block-section:** toggle section (with toggleDisplay=switch) when Enter or Space key is pressed ([#809](https://github.com/Esri/calcite-app-components/issues/809)) ([5fa12ec](https://github.com/Esri/calcite-app-components/commit/5fa12eca1e8e70103079bbb7588ad89ea7db6122)), closes [#801](https://github.com/Esri/calcite-app-components/issues/801)
+
 ### [5.2.1](https://github.com/Esri/calcite-app-components/compare/v5.2.0...v5.2.1) (2020-02-05)
 
 ### Features
