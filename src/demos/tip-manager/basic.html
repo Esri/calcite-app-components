@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Calcite App Components: calcite-tip-manager</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -14,13 +13,7 @@
     <main>
       <section class="example-container">
         <h1>Tip Manager</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-tip-manager/readme.md"
-            >calcite-tip-manager readme.</a
-          >
-        </p>
+
         <calcite-tip-manager>
           <calcite-tip-group text-group-title="Astronomy">
             <calcite-tip heading="The Red Rocks and Blue Water">
@@ -80,7 +73,7 @@
           document.getElementById("add").addEventListener("click", () => {
             const mgr = document.querySelector("calcite-tip-manager");
             const tips = mgr.querySelectorAll("calcite-tip");
-            newTip = tips[tips.length - 1].cloneNode(true);
+            const newTip = tips[tips.length - 1].cloneNode(true);
             mgr.appendChild(newTip);
           });
           document.getElementById("remove").addEventListener("click", () => {
