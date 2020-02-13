@@ -1,0 +1,9 @@
+:host {
+  @extend %component-host;
+}
+
+@import "../../scss/includes/_component";
+
+.loader {
+  margin: 0;
+}
