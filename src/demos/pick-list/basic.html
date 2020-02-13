@@ -51,6 +51,9 @@
 
         <h2>Pick List - multi-select filter-enabled</h2>
         <calcite-pick-list id="two" multiple filter-enabled>
+          <calcite-action scale="s" text="filters" text-enabled="false" slot="menu-actions">
+            <calcite-icon icon="sliders" scale="s"></calcite-icon>
+          </calcite-action>
           <calcite-pick-list-item text-label="Chocolate" text-description="Dark is the best." value="chocolate">
             <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="x" scale="s"></calcite-icon>

@@ -21,12 +21,13 @@ header {
     top: 0;
     z-index: 1;
   }
+  @include borderShadow();
+}
+
+calcite-filter {
+  margin-bottom: 1px;
 }
 
 slot[name="menu-actions"]::slotted(calcite-action) {
   padding: 0 var(--calcite-app-side-spacing-half);
 }
-
-// calcite-filter {
-//   @include borderShadow();
-// }
