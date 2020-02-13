@@ -1,4 +1,4 @@
 export const CSS = {
   button: "button",
-  loader: "loader"
+  loaderNoText: "loader--no-text"
 };

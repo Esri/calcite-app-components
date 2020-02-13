@@ -1,5 +1,5 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
-import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
+import { CalciteAppearance, CalciteExpandedScale, CalciteTheme } from "../interfaces";
 import { CSS } from "./resources";
 import { plus24 } from "@esri/calcite-ui-icons";
 
@@ -35,7 +35,7 @@ export class CalciteFab {
   /**
    * Specifies the size of the fab.
    */
-  @Prop({ reflect: true }) scale: CalciteScale = "m";
+  @Prop({ reflect: true }) scale: CalciteExpandedScale = "m";
 
   /**
    * Text that accompanies the fab icon.
@@ -103,7 +103,15 @@ export class CalciteFab {
           color="blue"
           ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
-          {loading ? <calcite-loader class={CSS.loader} is-active inline></calcite-loader> : null}
+          {loading ? (
+            <calcite-loader
+              class={{
+                [CSS.loaderNoText]: !textEnabled
+              }}
+              is-active
+              inline
+            ></calcite-loader>
+          ) : null}
           {textEnabled ? text : null}
         </calcite-button>
       </Host>

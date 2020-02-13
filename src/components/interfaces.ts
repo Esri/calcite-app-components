@@ -13,3 +13,5 @@ export type FlowDirection = "advancing" | "retreating";
 export type CalciteAppearance = "solid" | "clear";
 
 export type CalciteScale = "s" | "m" | "l";
+
+export type CalciteExpandedScale = CalciteScale | "xs" | "xl";
