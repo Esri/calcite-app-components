@@ -1,5 +1,6 @@
 :host {
   @extend %component-host;
+  background-color: var(--calcite-app-background-transparent);
 }
 
 @import "../../scss/includes/_component";

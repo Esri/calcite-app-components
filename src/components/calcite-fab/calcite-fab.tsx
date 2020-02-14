@@ -1,7 +1,7 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
 import { CSS } from "./resources";
-import { getElementDir } from "../utils/dom";
+import { focusElement, getElementDir } from "../utils/dom";
 import { plus24F } from "@esri/calcite-ui-icons"; // todo: will remove once icon string supported in `calcite-button`
 
 @Component({
@@ -54,7 +54,7 @@ export class CalciteFab {
 
   @Element() el: HTMLCalciteFabElement;
 
-  private buttonEl: HTMLCalciteButtonElement;
+  private buttonEl: HTMLElement;
 
   // --------------------------------------------------------------------------
   //
@@ -64,7 +64,7 @@ export class CalciteFab {
 
   @Method()
   async setFocus() {
-    this.buttonEl.setFocus();
+    focusElement(this.buttonEl);
   }
 
   // --------------------------------------------------------------------------
