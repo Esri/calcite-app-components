@@ -1,5 +1,5 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
-import { CalciteAppearance, CalciteExpandedScale, CalciteTheme } from "../interfaces";
+import { CalciteTheme } from "../interfaces";
 import { CSS } from "./resources";
 import { plus24 } from "@esri/calcite-ui-icons";
 
@@ -14,8 +14,6 @@ export class CalciteFab {
   //  Properties
   //
   // --------------------------------------------------------------------------
-  /** Specify the appearance style of the fab, defaults to solid. */
-  @Prop({ reflect: true }) appearance: CalciteAppearance = "solid";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -31,11 +29,6 @@ export class CalciteFab {
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
-
-  /**
-   * Specifies the size of the fab.
-   */
-  @Prop({ reflect: true }) scale: CalciteExpandedScale = "m";
 
   /**
    * Text that accompanies the fab icon.
@@ -80,7 +73,7 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   render() {
-    const { disabled, theme, scale, appearance, loading, textEnabled, label, text } = this;
+    const { disabled, theme, loading, textEnabled, label, text } = this;
 
     const titleText = !textEnabled && text;
     const title = label || titleText;
@@ -94,12 +87,12 @@ export class CalciteFab {
           title={title}
           aria-label={label}
           theme={theme}
-          scale={scale}
+          scale="m"
           round={true}
           floating={true}
           width="auto"
           icon={iconPath}
-          appearance={appearance}
+          appearance="solid"
           color="blue"
           ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
