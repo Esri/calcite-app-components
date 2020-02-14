@@ -37,12 +37,12 @@ const createAttributes: () => Attributes = () => [
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
-    name: "text-expand",
-    value: text("textExpand", "Expand")
+    name: "locale-expand",
+    value: text("localeExpand", "Expand")
   },
   {
-    name: "text-collapse",
-    value: text("textCollapse", "Collapse")
+    name: "locale-collapse",
+    value: text("localeCollapse", "Collapse")
   },
   {
     name: "position",

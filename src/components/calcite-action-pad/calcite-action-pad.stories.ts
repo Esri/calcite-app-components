@@ -41,12 +41,12 @@ const createAttributes: () => Attributes = () => [
     value: select("position", position.values, position.defaultValue)
   },
   {
-    name: "text-expand",
-    value: text("textExpand", "Expand")
+    name: "locale-expand",
+    value: text("localeExpand", "Expand")
   },
   {
-    name: "text-collapse",
-    value: text("textCollapse", "Collapse")
+    name: "locale-collapse",
+    value: text("localeCollapse", "Collapse")
   },
   {
     name: "theme",
