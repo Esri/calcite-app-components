@@ -1,8 +1,8 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
 import { CSS } from "./resources";
-import { plus24F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "../utils/dom";
+import { plus24F } from "@esri/calcite-ui-icons"; // todo: will remove once icon string supported in `calcite-button`
 
 @Component({
   tag: "calcite-fab",
