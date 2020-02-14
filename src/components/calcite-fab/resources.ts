@@ -1,4 +1,8 @@
 export const CSS = {
   button: "button",
-  loaderNoText: "loader--no-text"
+  buttonTextless: "button--textless"
+};
+
+export const ICONS = {
+  plus: "plus"
 };

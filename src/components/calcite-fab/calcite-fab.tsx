@@ -1,7 +1,10 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
-import { CSS } from "./resources";
-import { plus24 } from "@esri/calcite-ui-icons";
+import { CSS, ICONS } from "./resources";
+import classnames from "classnames";
+import { getElementDir } from "../utils/dom";
+import { CSS_UTILITY } from "../utils/resources";
+import { VNode } from "@stencil/core/internal";
 
 @Component({
   tag: "calcite-fab",
@@ -73,16 +76,18 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   render() {
-    const { disabled, theme, loading, textEnabled, label, text } = this;
-
+    const { el, disabled, theme, textEnabled, label, text } = this;
+    const rtl = getElementDir(el) === "rtl";
     const titleText = !textEnabled && text;
     const title = label || titleText;
-    const iconPath = !loading ? plus24 : null;
 
     return (
       <Host>
         <calcite-button
-          class={CSS.button}
+          class={classnames(CSS.button, {
+            [CSS.buttonTextless]: !textEnabled,
+            [CSS_UTILITY.rtl]: rtl
+          })}
           disabled={disabled}
           title={title}
           aria-label={label}
@@ -91,23 +96,35 @@ export class CalciteFab {
           round={true}
           floating={true}
           width="auto"
-          icon={iconPath}
           appearance="solid"
           color="blue"
           ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
-          {loading ? (
-            <calcite-loader
-              class={{
-                [CSS.loaderNoText]: !textEnabled
-              }}
-              is-active
-              inline
-            ></calcite-loader>
-          ) : null}
-          {textEnabled ? text : null}
+          {this.renderButtonContent(rtl)}
         </calcite-button>
       </Host>
     );
+  }
+
+  renderText(): string {
+    return this.textEnabled ? this.text : null;
+  }
+
+  renderIcon(): VNode {
+    return this.loading ? (
+      <calcite-loader is-active inline></calcite-loader>
+    ) : (
+      <calcite-icon icon={ICONS.plus} filled scale="s"></calcite-icon>
+    );
+  }
+
+  renderButtonContent(rtl: boolean): (VNode | string)[] {
+    const nodes = [this.renderIcon(), this.renderText()];
+
+    if (rtl) {
+      nodes.reverse();
+    }
+
+    return nodes;
   }
 }

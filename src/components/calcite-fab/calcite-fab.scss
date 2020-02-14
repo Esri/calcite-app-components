@@ -4,6 +4,29 @@
 
 @import "../../scss/includes/_component";
 
-.loader--no-text {
-  margin: 0;
+calcite-icon {
+  margin-right: 8px;
+}
+calcite-loader {
+  margin-right: 8px;
+}
+
+.calcite--rtl {
+  calcite-icon {
+    margin-right: unset;
+    margin-left: 8px;
+  }
+  calcite-loader {
+    margin-right: unset;
+    margin-left: 8px;
+  }
+}
+
+.button--textless {
+  calcite-icon {
+    margin: 0;
+  }
+  calcite-loader {
+    margin: 0;
+  }
 }
