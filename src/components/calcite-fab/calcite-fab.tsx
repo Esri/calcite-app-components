@@ -1,10 +1,8 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
-import { CSS, ICONS } from "./resources";
-import classnames from "classnames";
+import { CSS } from "./resources";
+import { plus24F } from "@esri/calcite-ui-icons";
 import { getElementDir } from "../utils/dom";
-import { CSS_UTILITY } from "../utils/resources";
-import { VNode } from "@stencil/core/internal";
 
 @Component({
   tag: "calcite-fab",
@@ -76,23 +74,23 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, disabled, theme, textEnabled, label, text } = this;
-    const rtl = getElementDir(el) === "rtl";
+    const { disabled, el, loading, theme, textEnabled, label, text } = this;
     const titleText = !textEnabled && text;
     const title = label || titleText;
+    const dir = getElementDir(el);
 
     return (
       <Host>
         <calcite-button
-          class={classnames(CSS.button, {
-            [CSS.buttonTextless]: !textEnabled,
-            [CSS_UTILITY.rtl]: rtl
-          })}
+          class={CSS.button}
+          loading={loading}
           disabled={disabled}
           title={title}
           aria-label={label}
           theme={theme}
+          dir={dir}
           scale="m"
+          icon={plus24F}
           round={true}
           floating={true}
           width="auto"
@@ -100,31 +98,9 @@ export class CalciteFab {
           color="blue"
           ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
-          {this.renderButtonContent(rtl)}
+          {this.textEnabled ? this.text : null}
         </calcite-button>
       </Host>
     );
-  }
-
-  renderText(): string {
-    return this.textEnabled ? this.text : null;
-  }
-
-  renderIcon(): VNode {
-    return this.loading ? (
-      <calcite-loader is-active inline></calcite-loader>
-    ) : (
-      <calcite-icon icon={ICONS.plus} filled scale="s"></calcite-icon>
-    );
-  }
-
-  renderButtonContent(rtl: boolean): (VNode | string)[] {
-    const nodes = [this.renderIcon(), this.renderText()];
-
-    if (rtl) {
-      nodes.reverse();
-    }
-
-    return nodes;
   }
 }

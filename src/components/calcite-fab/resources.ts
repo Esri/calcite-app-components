@@ -1,6 +1,5 @@
 export const CSS = {
-  button: "button",
-  buttonTextless: "button--textless"
+  button: "button"
 };
 
 export const ICONS = {
