@@ -46,15 +46,17 @@ Renders a group of `calcite-action`s contained in a `calcite-action-group`. Acti
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                 | Type                      | Default      |
-| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------ |
-| `expand`       | `expand`        | Indicates whether widget can be expanded.                                                                                   | `boolean`                 | `true`       |
-| `expanded`     | `expanded`      | Indicates whether widget is expanded.                                                                                       | `boolean`                 | `false`      |
-| `layout`       | `layout`        | <span style="color:red">**[DEPRECATED]**</span> since 5.3 - use "position" instead. Arrangement of the component.<br/><br/> | `"leading" or "trailing"` | `undefined`  |
-| `position`     | `position`      | Arranges the component depending on the elements 'dir' property.                                                            | `"end" or "start"`        | `undefined`  |
-| `textCollapse` | `text-collapse` | Updates the label of the collapse icon when the component is expanded.                                                      | `string`                  | `"Collapse"` |
-| `textExpand`   | `text-expand`   | Updates the label of the expand icon when the component is not expanded.                                                    | `string`                  | `"Expand"`   |
-| `theme`        | `theme`         | Used to set the component's color scheme.                                                                                   | `"dark" or "light"`       | `undefined`  |
+| Property         | Attribute         | Description                                                                                                                                                                 | Type                      | Default     |
+| ---------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------- |
+| `expand`         | `expand`          | Indicates whether widget can be expanded.                                                                                                                                   | `boolean`                 | `true`      |
+| `expanded`       | `expanded`        | Indicates whether widget is expanded.                                                                                                                                       | `boolean`                 | `false`     |
+| `layout`         | `layout`          | <span style="color:red">**[DEPRECATED]**</span> since 5.3.0 - use "position" instead. Arrangement of the component.<br/><br/>                                               | `"leading" or "trailing"` | `undefined` |
+| `localeCollapse` | `locale-collapse` | Updates the label of the collapse icon when the component is expanded.                                                                                                      | `string`                  | `undefined` |
+| `localeExpand`   | `locale-expand`   | Updates the label of the expand icon when the component is not expanded.                                                                                                    | `string`                  | `undefined` |
+| `position`       | `position`        | Arranges the component depending on the elements 'dir' property.                                                                                                            | `"end" or "start"`        | `undefined` |
+| `textCollapse`   | `text-collapse`   | <span style="color:red">**[DEPRECATED]**</span> since 5.4.0 - use "localeCollapse" instead.<br/><br/>Updates the label of the collapse icon when the component is expanded. | `string`                  | `undefined` |
+| `textExpand`     | `text-expand`     | <span style="color:red">**[DEPRECATED]**</span> since 5.4.0 - use "localeExpand" instead.<br/><br/>Updates the label of the expand icon when the component is not expanded. | `string`                  | `undefined` |
+| `theme`          | `theme`           | Used to set the component's color scheme.                                                                                                                                   | `"dark" or "light"`       | `undefined` |
 
 ## Events
 
