@@ -13,6 +13,21 @@ addParameters({
 
       return sectionB.localeCompare(sectionA);
     }
+  },
+  docs: {
+    extractComponentDescription: (_component, { notes }) => {
+      if (notes) {
+        if (typeof notes === "string") {
+          return notes;
+        }
+
+        return Object.keys(notes)
+          .map((section) => notes[section])
+          .join("\n");
+      }
+
+      return null;
+    }
   }
 });
 
