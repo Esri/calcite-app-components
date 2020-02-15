@@ -1,4 +1,4 @@
-import { addDecorator, addParameters, configure } from "@storybook/html";
+import { addDecorator, addParameters } from "@storybook/html";
 import centered from "@storybook/addon-centered/html";
 import theme from "./theme";
 
@@ -15,5 +15,3 @@ addParameters({
     }
   }
 });
-
-configure(require.context("../src", true, /\.stories\.(ts|mdx)$/), module);
