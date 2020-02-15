@@ -24,8 +24,19 @@ export const darkBackground = [
   }
 ];
 
-// the generated readme includes escape characters which actually get rendered, remove them
-export const parseReadme = (content: string) => content.replace(/ \\\| /g, " | ");
+/**
+ * This transforms a component markdown to properly render in Storybook notes.
+ */
+export const parseReadme = (content: string): string => {
+  return (
+    content
+      // strip out escape characters to not render them
+      .replace(/ \\\| /g, " | ")
+
+      // markdown uses relative paths for component links
+      .replace("../", "https://github.com/Esri/calcite-app-components/tree/master/src/components/")
+  );
+};
 
 export interface KnobbedAttribute {
   name: string;
