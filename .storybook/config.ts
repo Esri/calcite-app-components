@@ -1,6 +1,7 @@
 import { addDecorator, addParameters, configure } from "@storybook/html";
 import centered from "@storybook/addon-centered/html";
 import theme from "./theme";
+import { titlelessDocsPage } from "./utils";
 
 addDecorator(centered);
 addParameters({
@@ -15,6 +16,7 @@ addParameters({
     }
   },
   docs: {
+    page: titlelessDocsPage,
     extractComponentDescription: (_component, { notes }) => {
       if (notes) {
         if (typeof notes === "string") {
