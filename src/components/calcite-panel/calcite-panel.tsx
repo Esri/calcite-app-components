@@ -23,6 +23,7 @@ type FocusId = "dismiss-button";
  * @slot header-content - A slot for adding content in the center of the header.
  * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
  * @slot header-trailing-content - A slot for adding a `calcite-action` on the trailing side of the header.
+ * @slot fab - A slot for adding a `calcite-fab` (floating action button) to perform an action.
  * @slot footer - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the panel.
  */
@@ -214,8 +215,19 @@ export class CalcitePanel {
     return (
       <section class={CSS.contentContainer}>
         <slot />
+        {this.renderFAB()}
       </section>
     );
+  }
+
+  renderFAB(): VNode {
+    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+
+    return hasFab ? (
+      <div class={CSS.fabContainer}>
+        <slot name={SLOTS.fab} />
+      </div>
+    ) : null;
   }
 
   render() {
