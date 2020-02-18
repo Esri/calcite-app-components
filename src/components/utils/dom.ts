@@ -32,3 +32,9 @@ export function getCalcitePosition(position: CalcitePosition, layout: CalciteLay
 
   return "start";
 }
+
+export function getSlotted<T extends Element = Element>(element: Element, slotName: string): T[] {
+  const slottedSelector = `[slot="${slotName}"]`;
+
+  return Array.from(element.querySelectorAll<T>(slottedSelector));
+}

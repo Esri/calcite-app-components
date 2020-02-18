@@ -16,28 +16,21 @@
     <main>
       <section class="example-container">
         <h1>calcite-pick-list</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-pick-list/readme.md"
-            >calcite-pick-list readme.</a
-          >
-          <a href="calcite-pick-list-advanced.html">Advanced Pick List Demos</a>
-        </p>
+
         <h2>Pick List - Default</h2>
-        <calcite-pick-list id="one">
+        <calcite-pick-list id="one" compact>
           <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex">
-            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+            <calcite-action scale="s" appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
-            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+            <calcite-action scale="s" appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
           <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld">
-            <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
+            <calcite-action scale="s" appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="x" scale="s"></calcite-icon>
             </calcite-action>
           </calcite-pick-list-item>
@@ -51,6 +44,9 @@
 
         <h2>Pick List - multi-select filter-enabled</h2>
         <calcite-pick-list id="two" multiple filter-enabled>
+          <calcite-action scale="s" text="filters" text-enabled="false" slot="menu-actions">
+            <calcite-icon icon="sliders" scale="s"></calcite-icon>
+          </calcite-action>
           <calcite-pick-list-item text-label="Chocolate" text-description="Dark is the best." value="chocolate">
             <calcite-action appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
               <calcite-icon icon="x" scale="s"></calcite-icon>
@@ -144,7 +140,6 @@
           pickList3.addEventListener("calciteListChange", (event) => {
             console.log(event.detail);
           });
-        </script>
         </script>
 
         <h2>Pick List with sub-groups</h2>
