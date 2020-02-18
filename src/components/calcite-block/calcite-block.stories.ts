@@ -4,8 +4,7 @@ import {
   Attributes,
   createComponentHTML as create,
   darkBackground,
-  parseReadme,
-  titlelessDocsPage
+  parseReadme
 } from "../../../.storybook/utils";
 import blockReadme from "./readme.md";
 import sectionReadme from "../calcite-block-section/readme.md";
@@ -17,9 +16,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: {
       block: parseReadme(blockReadme),
       section: parseReadme(sectionReadme)

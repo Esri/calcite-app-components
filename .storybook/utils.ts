@@ -70,14 +70,5 @@ export const createComponentHTML = (tagName: string, attributes: Attributes, con
 export const titlelessDocsPage: typeof DocsPage = () =>
   DocsPage({
     // no title since README already has one
-    titleSlot: () => "",
-    descriptionSlot: ({ parameters: { notes } }) => {
-      if (typeof notes === "string") {
-        return notes;
-      }
-
-      return Object.keys(notes)
-        .map((section) => notes[section])
-        .join("\n");
-    }
+    titleSlot: () => ""
   });
