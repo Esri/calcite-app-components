@@ -136,7 +136,7 @@ export class CalciteAction {
 
     const iconNode = loading
       ? calciteLoaderNode
-      : this.el.querySelector("calcite-icon")
+      : this.el.querySelector("calcite-icon,svg")
       ? slotContainerNode
       : null;
 
