@@ -44,6 +44,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * Icon to display - accepts calcite ui icon names.
+   */
+  @Prop() icon?: string;
+
+  /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
@@ -120,9 +125,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { loading } = this;
+    const { loading, icon } = this;
 
     const calciteLoaderNode = <calcite-loader is-active inline></calcite-loader>;
+    const calciteIconNode = <calcite-icon icon={icon} scale="s"></calcite-icon>;
+    const iconNode = loading ? calciteLoaderNode : calciteIconNode;
+    const hasIconToDisplay = iconNode; // todo: need way to query for default slot elements.
 
     const slotContainerNode = (
       <div
@@ -134,15 +142,10 @@ export class CalciteAction {
       </div>
     );
 
-    const iconNode = loading
-      ? calciteLoaderNode
-      : this.el.querySelector("calcite-icon")
-      ? slotContainerNode
-      : null;
-
-    return iconNode ? (
+    return hasIconToDisplay ? (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
         {iconNode}
+        {slotContainerNode}
       </div>
     ) : null;
   }
