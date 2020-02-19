@@ -3,7 +3,7 @@ import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, SLOTS } from "./resources";
 import { getCalcitePosition } from "../utils/dom";
-import locale from "../locale/en-us";
+import intl from "../intl/en-us";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -48,25 +48,25 @@ export class CalciteActionBar {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
-   * @deprecated since 5.4.0 - use "localeExpand" instead.
+   * @deprecated since 5.4.0 - use "intlExpand" instead.
    */
   @Prop() textExpand?: string;
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
    */
-  @Prop() localeExpand?: string;
+  @Prop() intlExpand?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
-   * @deprecated since 5.4.0 - use "localeCollapse" instead.
+   * @deprecated since 5.4.0 - use "intlCollapse" instead.
    */
   @Prop() textCollapse?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
    */
-  @Prop() localeCollapse?: string;
+  @Prop() intlCollapse?: string;
 
   /**
    * @deprecated since 5.3.0 - use "position" instead.
@@ -139,8 +139,8 @@ export class CalciteActionBar {
     const {
       expanded,
       expand,
-      localeExpand,
-      localeCollapse,
+      intlExpand,
+      intlCollapse,
       textExpand,
       textCollapse,
       el,
@@ -152,8 +152,8 @@ export class CalciteActionBar {
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
         expanded={expanded}
-        localeExpand={localeExpand || textExpand || locale.expand}
-        localeCollapse={localeCollapse || textCollapse || locale.collapse}
+        intlExpand={intlExpand || textExpand || intl.expand}
+        intlCollapse={intlCollapse || textCollapse || intl.collapse}
         el={el}
         position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}

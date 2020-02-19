@@ -4,8 +4,8 @@ import { CalcitePosition } from "../interfaces";
 
 interface CalciteExpandToggleProps {
   expanded: boolean;
-  localeExpand: string;
-  localeCollapse: string;
+  intlExpand: string;
+  intlCollapse: string;
   el: HTMLElement;
   position: CalcitePosition;
   toggleExpand: () => void;
@@ -42,15 +42,15 @@ export function toggleChildActionText({
 
 export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> = ({
   expanded,
-  localeExpand,
-  localeCollapse,
+  intlExpand,
+  intlCollapse,
   toggleExpand,
   el,
   position
 }) => {
   const rtl = getElementDir(el) === "rtl";
 
-  const expandText = expanded ? localeCollapse : localeExpand;
+  const expandText = expanded ? intlCollapse : intlExpand;
   const icons = [ICONS.chevronsLeft, ICONS.chevronsRight];
 
   if (rtl) {
