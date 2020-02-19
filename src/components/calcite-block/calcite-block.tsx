@@ -151,7 +151,11 @@ export class CalciteBlock {
           >
             {headerContent}
             {slottedControl ? null : (
-              <calcite-icon scale="s" icon={open ? ICONS.close : ICONS.open} />
+              <calcite-icon
+                scale="s"
+                icon={open ? ICONS.close : ICONS.open}
+                class={CSS.toggleIcon}
+              />
             )}
           </button>
         ) : (
