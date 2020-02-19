@@ -333,7 +333,7 @@ export class CalciteFlowItem {
     ) : null;
   }
 
-  renderFAB(): VNode {
+  renderFab(): VNode {
     return (
       <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
         <slot name={SLOTS.fab} />
@@ -358,7 +358,7 @@ export class CalciteFlowItem {
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
-          {this.renderFAB()}
+          {this.renderFab()}
         </calcite-panel>
       </Host>
     );

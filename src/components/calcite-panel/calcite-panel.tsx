@@ -10,7 +10,7 @@ import {
   h
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
-import { getElementDir } from "../utils/dom";
+import { getElementDir, getSlotted } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
@@ -142,7 +142,7 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    const hasLeadingContent = this.el.querySelector(`[slot=${SLOTS.headerLeadingContent}]`);
+    const hasLeadingContent = getSlotted(this.el, SLOTS.headerLeadingContent).length;
     return hasLeadingContent ? (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
@@ -215,12 +215,12 @@ export class CalcitePanel {
     return (
       <section class={CSS.contentContainer}>
         <slot />
-        {this.renderFAB()}
+        {this.renderFab()}
       </section>
     );
   }
 
-  renderFAB(): VNode {
+  renderFab(): VNode {
     const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
 
     return hasFab ? (

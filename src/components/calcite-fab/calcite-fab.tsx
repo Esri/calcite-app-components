@@ -22,7 +22,7 @@ export class CalciteFab {
   @Prop({ reflect: true }) disabled = false;
 
   /**
-   * Label of the fab, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
+   * Label of the FAB, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
    */
   @Prop() label?: string;
 
@@ -32,7 +32,7 @@ export class CalciteFab {
   @Prop({ reflect: true }) loading = false;
 
   /**
-   * Text that accompanies the fab icon.
+   * Text that accompanies the FAB icon.
    */
   @Prop() text?: string;
 
@@ -48,7 +48,7 @@ export class CalciteFab {
 
   // --------------------------------------------------------------------------
   //
-  //  Variables
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
 
