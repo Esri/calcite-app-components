@@ -44,12 +44,11 @@
   "dependencies": {
     "@esri/calcite-base": "1.2.0",
     "@esri/calcite-colors": "1.7.1",
-    "@esri/calcite-ui-icons": "2.7.1",
     "lodash-es": "4.17.15",
     "sortablejs": "1.10.2"
   },
   "devDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.18",
+    "@esri/calcite-components": "1.0.0-beta.19",
     "@stencil/core": "1.9.0-18",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.1.1",
@@ -104,7 +103,7 @@
     "updtr": "3.1.0"
   },
   "peerDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.16"
+    "@esri/calcite-components": "1.0.0-beta.19"
   },
   "license": "Apache-2.0"
 }

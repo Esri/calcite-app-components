@@ -1,8 +1,7 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
-import { CSS } from "./resources";
+import { CSS, ICONS } from "./resources";
 import { focusElement, getElementDir } from "../utils/dom";
-import { plus24F } from "@esri/calcite-ui-icons"; // todo: will remove once icon string supported in `calcite-button`
 
 @Component({
   tag: "calcite-fab",
@@ -90,7 +89,7 @@ export class CalciteFab {
           theme={theme}
           dir={dir}
           scale="m"
-          icon={plus24F}
+          icon={ICONS.plus}
           round={true}
           floating={true}
           width="auto"
