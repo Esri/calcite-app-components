@@ -777,7 +777,7 @@ var CustomStyle = /** @class */ (function () {
         this.scopesMap = new Map();
         this.didInit = false;
     }
-    CustomStyle.prototype.initShim = function () {
+    CustomStyle.prototype.i = function () {
         var _this = this;
         if (this.didInit || !this.win.requestAnimationFrame) {
             return Promise.resolve();
@@ -867,8 +867,8 @@ var CustomStyle = /** @class */ (function () {
     return CustomStyle;
 }());
 (function (win) {
-    if (win && !win.__stencil_cssshim && (!(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)')))) {
-        win.__stencil_cssshim = new CustomStyle(win, win.document);
+    if (win && !win.__cssshim && (!(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)')))) {
+        win.__cssshim = new CustomStyle(win, win.document);
     }
 })(typeof window !== 'undefined' && window);
 
@@ -880,12 +880,12 @@ var CustomStyle = /** @class */ (function () {
 
     var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
     var start = function() {
-      var url = new URL('./p-182d53e3.system.js', resourcesUrl);
+      var url = new URL('./p-e09a508f.system.js', resourcesUrl);
       System.import(url.href);
     };
 
-    if (window.__stencil_cssshim) {
-      window.__stencil_cssshim.initShim().then(start);
+    if (window.__cssshim) {
+      window.__cssshim.i().then(start);
     } else {
       start();
     }
