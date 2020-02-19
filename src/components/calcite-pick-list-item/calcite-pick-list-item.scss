@@ -1,5 +1,6 @@
 :host {
   @extend %component-host;
+  @include borderShadow();
   align-items: center;
   background-color: var(--calcite-app-background-clear);
   display: flex;
