@@ -125,12 +125,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { loading, icon } = this;
+    const { el, loading, icon } = this;
 
     const calciteLoaderNode = <calcite-loader is-active inline></calcite-loader>;
     const calciteIconNode = <calcite-icon icon={icon} scale="s"></calcite-icon>;
     const iconNode = loading ? calciteLoaderNode : calciteIconNode;
-    const hasIconToDisplay = iconNode; // todo: need way to query for default slot elements.
+    const hasIconToDisplay = iconNode || el.querySelector("calcite-icon, svg");
 
     const slotContainerNode = (
       <div
