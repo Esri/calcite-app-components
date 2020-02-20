@@ -3,6 +3,12 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.3.2](https://github.com/Esri/calcite-app-components/compare/v5.3.1...v5.3.2) (2020-02-19)
+
+### Bug Fixes
+
+- **Action:** Allow SVGs to be slotted into the calcite-action. ([#836](https://github.com/Esri/calcite-app-components/issues/836)) ([6a661e1](https://github.com/Esri/calcite-app-components/commit/6a661e15f389cb809b53c1dd84b7fb23861d20eb))
+
 ### [5.3.1](https://github.com/Esri/calcite-app-components/compare/v5.3.0...v5.3.1) (2020-02-18)
 
 ### Features
