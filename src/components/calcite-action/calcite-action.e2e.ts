@@ -26,6 +26,14 @@ describe("calcite-action", () => {
     expect(isVisible).toBe(false);
   });
 
+  it("should have icon container with icon prop", async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-action icon="hamburger"></calcite-action>`);
+
+    const iconContainer = await page.find("calcite-action >>> .icon-container");
+    expect(iconContainer).not.toBeNull();
+  });
+
   it("should have icon container with calcite-icon", async () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-action><calcite-icon icon="hamburger" scale="s"></calcite-icon></calcite-action>`);
@@ -42,7 +50,7 @@ describe("calcite-action", () => {
     expect(iconContainer).not.toBeNull();
   });
 
-  it("should not have icon container if no calcite-icon present", async () => {
+  it("should not have icon container if no icon present", async () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-action></calcite-action>`);
 
