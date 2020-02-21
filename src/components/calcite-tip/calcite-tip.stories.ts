@@ -1,7 +1,7 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
-import { TEXT } from "./resources";
+import intl from "../intl/en-us";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 
 export default {
@@ -33,8 +33,8 @@ const createAttributes: () => Attributes = () => [
     value: text("heading", "My Tip")
   },
   {
-    name: "text-close",
-    value: text("textClose", TEXT.close)
+    name: "intl-close",
+    value: text("intlClose", intl.close)
   },
   {
     name: "theme",

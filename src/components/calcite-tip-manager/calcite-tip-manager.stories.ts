@@ -1,7 +1,7 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
-import { TEXT } from "./resources";
+import intl from "../intl/en-us";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
 const { dir, theme } = ATTRIBUTES;
@@ -25,24 +25,24 @@ const createAttributes: () => Attributes = () => [
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
-    name: "text-close",
-    value: text("textClose", TEXT.close)
+    name: "intl-close",
+    value: text("intlClose", intl.close)
   },
   {
     name: "text-defalut-title",
-    value: text("textDefaultTitle", TEXT.defaultGroupTitle)
+    value: text("textDefaultTitle", intl.tipGroupTitle)
   },
   {
-    name: "text-pagination-label",
-    value: text("textPaginationLabel", TEXT.defaultPaginationLabel)
+    name: "intl-pagination-label",
+    value: text("intlPaginationLabel", intl.tipPaginationLabel)
   },
   {
-    name: "text-next",
-    value: text("textNext", TEXT.next)
+    name: "intl-next",
+    value: text("intlNext", intl.next)
   },
   {
-    name: "text-previous",
-    value: text("textPrevious", TEXT.previous)
+    name: "intl-previous",
+    value: text("intlPrevious", intl.previous)
   },
   {
     name: "theme",
