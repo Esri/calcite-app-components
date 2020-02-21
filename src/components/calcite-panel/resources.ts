@@ -8,10 +8,6 @@ export const CSS = {
   footer: "footer"
 };
 
-export const TEXT = {
-  close: "Close"
-};
-
 export const ICONS = {
   close: "x"
 };

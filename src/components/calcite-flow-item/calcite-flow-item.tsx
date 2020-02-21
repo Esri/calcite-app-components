@@ -2,10 +2,11 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
-import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
+import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS } from "./resources";
 import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteScale, CalciteTheme } from "../interfaces";
+import intl from "../intl/en-us";
 
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
@@ -69,17 +70,35 @@ export class CalciteFlowItem {
   /**
    * 'Back' text string.
    */
-  @Prop() textBack = TEXT.back;
+  @Prop() intlBack?: string;
+
+  /**
+   * 'Back' text string.
+   * @deprecated since 5.4.0 - use "intlBack" instead.
+   */
+  @Prop() textBack?: string;
+
+  /**
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
+   */
+  @Prop() intlClose?: string;
 
   /**
    * 'Close' text string for the menu.
+   * @deprecated since 5.4.0 - use "intlClose" instead.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() textClose?: string;
 
   /**
    * 'Open' text string for the menu.
    */
-  @Prop() textOpen = TEXT.open;
+  @Prop() intlOpen?: string;
+
+  /**
+   * 'Open' text string for the menu.
+   * @deprecated since 5.4.0 - use "intlOpen" instead.
+   */
+  @Prop() textOpen?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -205,16 +224,16 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton(rtl: boolean): VNode {
-    const { showBackButton, textBack, backButtonClick } = this;
-
+    const { showBackButton, intlBack, textBack, backButtonClick } = this;
+    const label = intlBack || textBack || intl.back;
     const icon = rtl ? ICONS.backRight : ICONS.backLeft;
 
     return showBackButton ? (
       <calcite-action
         slot={PANEL_SLOTS.headerLeadingContent}
         key="back-button"
-        aria-label={textBack}
-        text={textBack}
+        aria-label={label}
+        text={label}
         class={CSS.backButton}
         onClick={backButtonClick}
       >
@@ -224,9 +243,11 @@ export class CalciteFlowItem {
   }
 
   renderMenuButton(): VNode {
-    const { menuOpen, textOpen, textClose } = this;
+    const { menuOpen, textOpen, intlOpen, intlClose, textClose } = this;
+    const closeLabel = intlClose || textClose || intl.close;
+    const openLabel = intlOpen || textOpen || intl.open;
 
-    const menuLabel = menuOpen ? textClose : textOpen;
+    const menuLabel = menuOpen ? closeLabel : openLabel;
 
     return (
       <calcite-action

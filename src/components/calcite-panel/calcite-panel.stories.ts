@@ -5,6 +5,7 @@ const { dir, theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
 import { SLOTS } from "./resources";
 import dedent from "dedent";
+import intl from "../intl/en-us";
 
 export default {
   title: "components|calcite-panel",
@@ -41,8 +42,8 @@ const createAttributes: () => Attributes = () => [
     value: boolean("loading", false)
   },
   {
-    name: "text-close",
-    value: text("textClose", "Close")
+    name: "intl-close",
+    value: text("intlClose", intl.close)
   },
   {
     name: "theme",

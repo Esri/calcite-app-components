@@ -14,12 +14,6 @@ export const CSS = {
   menuOpen: "menu--open"
 };
 
-export const TEXT = {
-  back: "Back",
-  open: "Open",
-  close: "Close"
-};
-
 export const SLOTS = {
   menuActions: "menu-actions",
   footerActions: "footer-actions"

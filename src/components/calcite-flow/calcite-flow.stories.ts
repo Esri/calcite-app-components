@@ -6,6 +6,7 @@ import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
 import { SLOTS } from "../calcite-flow-item/resources";
 import dedent from "dedent";
+import intl from "../intl/en-us";
 
 export default {
   title: "components|calcite-flow",
@@ -57,12 +58,16 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
       value: text("summary", "Summary", group)
     },
     {
-      name: "text-back",
-      value: text("textBack", "Back", group)
+      name: "intl-back",
+      value: text("intlBack", intl.back, group)
     },
     {
-      name: "text-open",
-      value: text("textOpen", "Open", group)
+      name: "intl-open",
+      value: text("intlOpen", intl.open, group)
+    },
+    {
+      name: "intl-close",
+      value: text("intlClose", intl.close, group)
     }
   ];
 };

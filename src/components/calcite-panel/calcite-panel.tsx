@@ -9,13 +9,14 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { CSS, ICONS, SLOTS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
+import intl from "../intl/en-us";
 
 type FocusId = "dismiss-button";
 
@@ -71,7 +72,13 @@ export class CalcitePanel {
   /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() intlClose?: string;
+
+  /**
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
+   * @deprecated since 5.4.0 - use "intlClose" instead.
+   */
+  @Prop() textClose?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -158,13 +165,14 @@ export class CalcitePanel {
   }
 
   renderHeaderTrailingContent(): VNode {
-    const { dismiss, dismissible, textClose } = this;
+    const { dismiss, dismissible, intlClose, textClose } = this;
+    const text = intlClose || textClose || intl.close;
 
     const dismissibleNode = dismissible ? (
       <calcite-action
         ref={(dismissButtonEl) => (this.dismissButtonEl = dismissButtonEl)}
-        aria-label={textClose}
-        text={textClose}
+        aria-label={text}
+        text={text}
         onClick={dismiss}
       >
         <calcite-icon scale="s" icon={ICONS.close} />
