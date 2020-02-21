@@ -61,7 +61,7 @@ export class CalcitePickListItem {
   /**
    * Set this to true to display a remove action that removes the item from the list.
    */
-  @Prop({ reflect: true }) removable = false;
+  @Prop({ reflect: true }) removable? = false;
 
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
