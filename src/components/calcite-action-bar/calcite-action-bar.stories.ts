@@ -4,6 +4,7 @@ import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
 const { dir, position, theme } = ATTRIBUTES;
+import intl from "../intl/en-us";
 
 export default {
   title: "components|calcite-action-bar",
@@ -29,11 +30,11 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "intl-expand",
-    value: text("intlExpand", "Expand")
+    value: text("intlExpand", intl.expand)
   },
   {
     name: "intl-collapse",
-    value: text("intlCollapse", "Collapse")
+    value: text("intlCollapse", intl.collapse)
   },
   {
     name: "position",
