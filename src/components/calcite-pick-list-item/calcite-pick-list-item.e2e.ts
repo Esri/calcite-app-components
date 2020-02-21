@@ -71,8 +71,6 @@ describe("calcite-pick-list-item", () => {
       `<calcite-pick-list-item text-label="test" value="example" removable></calcite-pick-list-item>`
     );
 
-    page.debugger();
-
     const removeButton = await page.find(`calcite-pick-list-item >>> .${CSS.remove}`);
     expect(removeButton).not.toBe(null);
   });
