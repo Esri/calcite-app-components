@@ -149,11 +149,14 @@ export class CalciteActionBar {
       toggleExpand
     } = this;
 
+    const expandLabel = intlExpand || textExpand || intl.expand;
+    const collapseLabel = intlCollapse || textCollapse || intl.collapse;
+
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
         expanded={expanded}
-        intlExpand={intlExpand || textExpand || intl.expand}
-        intlCollapse={intlCollapse || textCollapse || intl.collapse}
+        intlExpand={expandLabel}
+        intlCollapse={collapseLabel}
         el={el}
         position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
