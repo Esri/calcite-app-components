@@ -9,7 +9,7 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { CSS, ICONS, SLOTS } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 
 /**
@@ -97,6 +97,11 @@ export class CalcitePickListItem {
   @Watch("textLabel") textLabelWatchHandler() {
     this.calciteListItemPropsChange.emit();
   }
+
+  /**
+   * The text for the remove item buttons. Only applicable if removable is true.
+   */
+  @Prop({ reflect: true }) textRemove = TEXT.remove;
 
   /**
    * A unique value used to identify this item - similar to the value attribute on an <input>.
@@ -227,8 +232,8 @@ export class CalcitePickListItem {
       return null;
     }
     return (
-      <calcite-action class={CSS.remove} text="remove" onClick={this.removeClickHandler}>
-        <calcite-icon scale="s" icon="x" />
+      <calcite-action scale="s" class={CSS.remove} text={this.textRemove} onClick={this.removeClickHandler}>
+        <calcite-icon scale="s" icon={ICONS.remove} />
       </calcite-action>
     );
   }
