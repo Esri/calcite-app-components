@@ -3,12 +3,19 @@
   display: flex;
   flex: 0 0 auto;
   flex-direction: column;
-  padding: var(--calcite-app-cap-spacing-half) 0;
+  padding: 0;
   border-bottom: 1px solid var(--calcite-app-border);
+  border-top: 1px solid var(--calcite-app-border);
+  transition: margin 250ms ease-in-out;
 }
 
 @import "../../scss/includes/_component";
 @import "../../scss/includes/_header";
+
+:host([open]) {
+  margin-top: var(--calcite-app-cap-spacing-quarter);
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
+}
 
 .header {
   flex-grow: 1;
@@ -43,7 +50,8 @@ calcite-loader[inline] {
 }
 
 .header .title .heading {
-  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
+  padding: 0;
+  font-size: var(--calcite-app-font-size-0);
 }
 
 .summary {
@@ -69,7 +77,7 @@ calcite-loader[inline] {
 }
 
 .icon {
-  margin-right: var(--calcite-app-side-spacing-third); //TODO RTL
+  margin-right: var(--calcite-app-side-spacing-half); //TODO RTL
 }
 
 .toggle-icon {
@@ -93,5 +101,9 @@ calcite-loader[inline] {
   ::slotted([slot="control"]) {
     left: var(--calcite-app-side-spacing-three-quarters);
     right: unset;
+  }
+  .icon {
+    margin-right: 0;
+    margin-left: var(--calcite-app-side-spacing-half);
   }
 }
