@@ -1,5 +1,5 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
-import { CalciteTheme } from "../interfaces";
+import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 import { CSS, ICONS } from "./resources";
 import { focusElement, getElementDir } from "../utils/dom";
 
@@ -16,9 +16,19 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   /**
+   * Used to set the button's appearance. Default is outline.
+   */
+  @Prop({ reflect: true }) appearance: CalciteAppearance = "outline";
+
+  /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
    */
   @Prop({ reflect: true }) disabled = false;
+
+  /**
+   * The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/.
+   */
+  @Prop() icon?: string = ICONS.plus;
 
   /**
    * Label of the FAB, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.
@@ -29,6 +39,11 @@ export class CalciteFab {
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
+
+  /**
+   * Specifies the size of the fab.
+   */
+  @Prop({ reflect: true }) scale: CalciteScale = "m";
 
   /**
    * Text that accompanies the FAB icon.
@@ -73,7 +88,18 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   render() {
-    const { disabled, el, loading, theme, textEnabled, label, text } = this;
+    const {
+      appearance,
+      disabled,
+      el,
+      loading,
+      scale,
+      theme,
+      textEnabled,
+      icon,
+      label,
+      text
+    } = this;
     const titleText = !textEnabled && text;
     const title = label || titleText;
     const dir = getElementDir(el);
@@ -88,12 +114,12 @@ export class CalciteFab {
           aria-label={label}
           theme={theme}
           dir={dir}
-          scale="m"
-          icon={ICONS.plus}
+          scale={scale}
+          icon={icon}
           round={true}
           floating={true}
           width="auto"
-          appearance="solid"
+          appearance={appearance}
           color="blue"
           ref={(buttonEl) => (this.buttonEl = buttonEl)}
         >
