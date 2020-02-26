@@ -16,9 +16,9 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   /**
-   * Used to set the button's appearance.
+   * Used to set the button's appearance. Default is outline.
    */
-  @Prop({ reflect: true }) appearance: CalciteAppearance = "clear";
+  @Prop({ reflect: true }) appearance: CalciteAppearance = "outline";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.

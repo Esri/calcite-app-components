@@ -43,12 +43,12 @@ describe("calcite-fab", () => {
     expect(button).toHaveAttribute("disabled");
   });
 
-  it("should have appearance=solid", async () => {
+  it("should have appearance=outline", async () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-fab text="hello world"></calcite-fab>`);
 
     const fab = await page.find("calcite-fab >>> .button");
-    expect(fab.getAttribute("appearance")).toBe("solid");
+    expect(fab.getAttribute("appearance")).toBe("outline");
   });
 
   it("should be accessible", async () => {
