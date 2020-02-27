@@ -33,6 +33,11 @@ export class CalciteFilter {
   @Prop() intlLabel?: string;
 
   /**
+   * Placeholder text for the input element's placeholder attribute
+   */
+  @Prop() placeholder?: string;
+
+  /**
    * A text label that will appear next to the input field.
    *
    * @deprecated since 5.4.0 - use "intlLabel" instead.
@@ -41,8 +46,10 @@ export class CalciteFilter {
 
   /**
    * Placeholder text for the input element's placeholder attribute
+   *
+   * @deprecated since 5.4.0 - use "placeholder" instead.
    */
-  @Prop() textPlaceholder: string;
+  @Prop() textPlaceholder?: string;
 
   // --------------------------------------------------------------------------
   //
@@ -129,7 +136,7 @@ export class CalciteFilter {
           <input
             type="text"
             value=""
-            placeholder={this.textPlaceholder}
+            placeholder={this.placeholder || this.textPlaceholder}
             onInput={this.inputHandler}
             aria-label={this.intlLabel || this.textLabel || TEXT.filterLabel}
             ref={(el) => (this.textInput = el as HTMLInputElement)}
