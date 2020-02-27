@@ -91,13 +91,14 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                        | Description                                                              |
-| --------------------------- | ------------------------------------------------------------------------ |
-|                             | A slot for adding content to the panel.                                  |
-| `"footer"`                  | A slot for adding `calcite-button`s to the footer.                       |
-| `"header-content"`          | A slot for adding content in the center of the header.                   |
-| `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.  |
-| `"header-trailing-content"` | A slot for adding a `calcite-action` on the trailing side of the header. |
+| Slot                        | Description                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------- |
+|                             | A slot for adding content to the panel.                                          |
+| `"fab"`                     | A slot for adding a `calcite-fab` (floating action button) to perform an action. |
+| `"footer"`                  | A slot for adding `calcite-button`s to the footer.                               |
+| `"header-content"`          | A slot for adding content in the center of the header.                           |
+| `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.          |
+| `"header-trailing-content"` | A slot for adding a `calcite-action` on the trailing side of the header.         |
 
 ## Dependencies
 

@@ -40,14 +40,14 @@ export class CalciteFilter {
   /**
    * A text label that will appear next to the input field.
    *
-   * @deprecated since 5.4.0 - use "intlLabel" instead.
+   * @deprecated use "intlLabel" instead.
    */
   @Prop() textLabel?: string;
 
   /**
    * Placeholder text for the input element's placeholder attribute
    *
-   * @deprecated since 5.4.0 - use "placeholder" instead.
+   * @deprecated use "placeholder" instead.
    */
   @Prop() textPlaceholder?: string;
 
