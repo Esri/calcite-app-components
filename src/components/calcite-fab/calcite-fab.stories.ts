@@ -38,7 +38,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "icon",
-    value: text("icon", ICONS.plus, "")
+    value: text("icon", ICONS.plus)
   },
   {
     name: "label",
