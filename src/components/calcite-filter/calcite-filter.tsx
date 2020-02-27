@@ -136,7 +136,7 @@ export class CalciteFilter {
           <input
             type="text"
             value=""
-            placeholder={this.textPlaceholder}
+            placeholder={this.textPlaceholder || this.placeholder}
             onInput={this.inputHandler}
             aria-label={this.intlLabel || this.textLabel || TEXT.filterLabel}
             ref={(el) => (this.textInput = el as HTMLInputElement)}
