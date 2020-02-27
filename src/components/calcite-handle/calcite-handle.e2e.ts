@@ -22,6 +22,8 @@ describe("calcite-handle", () => {
 
     page.keyboard.press(" ");
 
+    await page.waitForChanges();
+
     expect(await handle.getProperty("activated")).toBe(true);
   });
 
