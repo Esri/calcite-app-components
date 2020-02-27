@@ -1,11 +1,25 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
-import { accessible, hidden, renders } from "../../tests/commonTests";
+import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
+import { TEXT } from "../calcite-filter/resources";
 
 describe("calcite-filter", () => {
   it("renders", async () => renders("calcite-filter"));
 
   it("honors hidden attribute", async () => hidden("calcite-filter"));
-  it("is accessible", async () => accessible(`<calcite-filter></calcite-filter>`));
+
+  it("is accessible", async () => accessible("calcite-filter"));
+
+  it("has property defaults", async () =>
+    defaults("calcite-filter", [
+      {
+        propertyName: "intlClear",
+        defaultValue: TEXT.clear
+      },
+      {
+        propertyName: "intlLabel",
+        defaultValue: TEXT.filterLabel
+      }
+    ]));
 
   describe("strings", () => {
     it("should update the filter placeholder when a string is provided", async () => {
@@ -20,6 +34,7 @@ describe("calcite-filter", () => {
 
   describe("clear button", () => {
     let page;
+
     beforeEach(async () => {
       page = await newE2EPage();
       await page.setContent("<calcite-filter></calcite-filter>");
@@ -28,6 +43,7 @@ describe("calcite-filter", () => {
         filter.data = [{ foo: "bar" }];
       });
     });
+
     it("should only display when the input has a value", async () => {
       let button = await page.find(`calcite-filter >>> button`);
 
@@ -46,6 +62,7 @@ describe("calcite-filter", () => {
 
       expect(button).not.toBeNull();
     });
+
     it("should clear the value in the input when pressed", async () => {
       await page.evaluate(() => {
         const filter = document.querySelector("calcite-filter");
@@ -72,6 +89,7 @@ describe("calcite-filter", () => {
 
   describe("filter behavior", () => {
     let page: E2EPage;
+
     beforeEach(async () => {
       page = await newE2EPage();
       await page.setContent("<calcite-filter></calcite-filter>");
@@ -111,6 +129,7 @@ describe("calcite-filter", () => {
         ];
       });
     });
+
     it("emits an event with filtered data after a search query is typed into the input", async () => {
       await page.evaluate(() => {
         const filter = document.querySelector("calcite-filter");
@@ -126,6 +145,7 @@ describe("calcite-filter", () => {
       expect(event.detail.find((element) => element.value === "jon")).toBeDefined();
       expect(event.detail.find((element) => element.value === "katy")).toBeUndefined();
     });
+
     it("searches recursively in data and works and matches on a partial string ignoring case", async () => {
       await page.evaluate(() => {
         const filter = document.querySelector("calcite-filter");

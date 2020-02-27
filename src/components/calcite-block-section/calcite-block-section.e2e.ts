@@ -1,5 +1,5 @@
 import { CSS, TEXT } from "./resources";
-import { accessible, hidden, reflects, renders } from "../../tests/commonTests";
+import { accessible, defaults, hidden, reflects, renders } from "../../tests/commonTests";
 import { setUpPage } from "../../tests/utils";
 import { E2EPage } from "@stencil/core/testing";
 
@@ -13,6 +13,26 @@ describe("calcite-block-section", () => {
       {
         propertyName: "open",
         value: true
+      }
+    ]));
+
+  it("has property defaults", async () =>
+    defaults("calcite-block-section", [
+      {
+        propertyName: "intlCollapse",
+        defaultValue: TEXT.collapse
+      },
+      {
+        propertyName: "intlExpand",
+        defaultValue: TEXT.expand
+      },
+      {
+        propertyName: "open",
+        defaultValue: false
+      },
+      {
+        propertyName: "toggleDisplay",
+        defaultValue: "button"
       }
     ]));
 

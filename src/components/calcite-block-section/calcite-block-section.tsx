@@ -22,6 +22,16 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   /**
+   * Tooltip used for the toggle when expanded.
+   */
+  @Prop() intlCollapse = TEXT.collapse;
+
+  /**
+   * Tooltip used for the toggle when collapsed.
+   */
+  @Prop() intlExpand = TEXT.expand;
+
+  /**
    * When true, the block's section content will be displayed.
    */
   @Prop({
@@ -35,16 +45,20 @@ export class CalciteBlockSection {
   @Prop() text: string;
 
   /**
-   * Tooltip used for the toggle when collapsed.
+   * Tooltip used for the toggle when expanded.
+   *
+   * @deprecated since 5.4.0 - use "intlCollapse" instead.
    */
   @Prop()
-  textExpand = TEXT.expand;
+  textCollapse?: string;
 
   /**
-   * Tooltip used for the toggle when expanded.
+   * Tooltip used for the toggle when collapsed.
+   *
+   * @deprecated since 5.4.0 - use "intlExpand" instead.
    */
   @Prop()
-  textCollapse = TEXT.collapse;
+  textExpand?: string;
 
   /**
    * This property determines the look of the section toggle.
@@ -106,14 +120,25 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render() {
-    const { el, guid: id, open, text, textCollapse, textExpand, toggleDisplay } = this;
+    const {
+      el,
+      guid: id,
+      intlCollapse,
+      intlExpand,
+      open,
+      text,
+      textCollapse,
+      textExpand,
+      toggleDisplay
+    } = this;
     const dir = getElementDir(el);
     const arrowIcon = open
       ? ICONS.menuOpen
       : dir === "rtl"
       ? ICONS.menuClosedLeft
       : ICONS.menuClosedRight;
-    const toggleLabel = open ? textCollapse : textExpand;
+
+    const toggleLabel = open ? intlCollapse || textCollapse : intlExpand || textExpand;
     const labelId = `${id}__label`;
 
     const headerNode =
