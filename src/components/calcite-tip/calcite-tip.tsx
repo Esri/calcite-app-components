@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 import { CalciteTheme } from "../interfaces";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/internal";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot thumbnail - A slot for adding an HTML image element to the tip.
@@ -109,7 +110,7 @@ export class CalciteTip {
   renderImageFrame(): VNode {
     const { el } = this;
 
-    return el.querySelector(`[slot=${SLOTS.thumbnail}]`) ? (
+    return getSlotted(el, SLOTS.thumbnail)[0] ? (
       <div class={CSS.imageFrame}>
         <slot name={SLOTS.thumbnail} />
       </div>
