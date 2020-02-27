@@ -32,6 +32,7 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 | Slot               | Description                                                                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 |                    | A slot for adding content to the flow item.                                                                                     |
+| `"fab"`            | A slot for adding a `calcite-fab` (floating action button) to perform an action.                                                |
 | `"footer-actions"` | A slot for adding `calcite-button`s to the footer.                                                                              |
 | `"menu-actions"`   | A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open. |
 
