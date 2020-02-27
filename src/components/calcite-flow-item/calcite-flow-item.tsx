@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
@@ -99,6 +99,12 @@ export class CalciteFlowItem {
 
   @Event() calciteFlowItemBackClick: EventEmitter;
 
+  /**
+   * Emitted when the content has been scrolled.
+   */
+
+  @Event() calciteFlowItemScroll: EventEmitter;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -112,6 +118,12 @@ export class CalciteFlowItem {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+
+  @Listen("calcitePanelScroll")
+  handleCalcitePanelScroll(event: CustomEvent): void {
+    event.stopPropagation();
+    this.calciteFlowItemScroll.emit();
+  }
 
   queryActions(): HTMLCalciteActionElement[] {
     return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
