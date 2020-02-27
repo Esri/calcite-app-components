@@ -44,6 +44,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/.
+   */
+  @Prop() icon?: string;
+
+  /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
@@ -120,9 +125,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { loading } = this;
-
-    const calciteLoaderNode = <calcite-loader is-active inline></calcite-loader>;
+    const { el, loading, icon, scale } = this;
+    const iconScale = scale === "l" ? "m" : "s";
+    const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
+    const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
+    const iconNode = calciteLoaderNode || calciteIconNode;
+    const hasIconToDisplay = iconNode || el.querySelector("calcite-icon, svg");
 
     const slotContainerNode = (
       <div
@@ -134,15 +142,10 @@ export class CalciteAction {
       </div>
     );
 
-    const iconNode = loading
-      ? calciteLoaderNode
-      : this.el.querySelector("calcite-icon, svg")
-      ? slotContainerNode
-      : null;
-
-    return iconNode ? (
+    return hasIconToDisplay ? (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
         {iconNode}
+        {slotContainerNode}
       </div>
     ) : null;
   }

@@ -103,6 +103,12 @@ export class CalcitePanel {
 
   @Event() calcitePanelDismissedChange: EventEmitter;
 
+  /**
+   * Emitted when the content has been scrolled.
+   */
+
+  @Event() calcitePanelScroll: EventEmitter;
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -117,6 +123,10 @@ export class CalcitePanel {
 
   dismiss = (): void => {
     this.dismissed = true;
+  };
+
+  panelScrollHandler = (): void => {
+    this.calcitePanelScroll.emit();
   };
 
   // --------------------------------------------------------------------------
@@ -213,7 +223,7 @@ export class CalcitePanel {
 
   renderContent(): VNode {
     return (
-      <section class={CSS.contentContainer}>
+      <section class={CSS.contentContainer} onScroll={this.panelScrollHandler}>
         <slot />
         {this.renderFab()}
       </section>
