@@ -11,6 +11,7 @@ const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
  * @slot menu-actions - A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open.
+ * @slot fab - A slot for adding a `calcite-fab` (floating action button) to perform an action.
  * @slot footer-actions - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the flow item.
  */
@@ -344,6 +345,14 @@ export class CalciteFlowItem {
     ) : null;
   }
 
+  renderFab(): VNode {
+    return (
+      <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
+        <slot name={SLOTS.fab} />
+      </div>
+    );
+  }
+
   render() {
     const { el } = this;
     const dir = getElementDir(el);
@@ -361,6 +370,7 @@ export class CalciteFlowItem {
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
+          {this.renderFab()}
         </calcite-panel>
       </Host>
     );
