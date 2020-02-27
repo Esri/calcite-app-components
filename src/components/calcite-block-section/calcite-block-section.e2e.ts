@@ -19,14 +19,6 @@ describe("calcite-block-section", () => {
   it("has property defaults", async () =>
     defaults("calcite-block-section", [
       {
-        propertyName: "intlCollapse",
-        defaultValue: TEXT.collapse
-      },
-      {
-        propertyName: "intlExpand",
-        defaultValue: TEXT.expand
-      },
-      {
         propertyName: "open",
         defaultValue: false
       },
