@@ -8,7 +8,8 @@ import {
 } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { dir, theme } = ATTRIBUTES;
+import { ICONS } from "./resources";
+const { appearance, dir, scale, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-fab",
@@ -24,12 +25,20 @@ export default {
 
 const createAttributes: () => Attributes = () => [
   {
+    name: "appearance",
+    value: select("appearance", appearance.values, appearance.values[2])
+  },
+  {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "disabled",
     value: boolean("disabled", false)
+  },
+  {
+    name: "icon",
+    value: text("icon", ICONS.plus, "")
   },
   {
     name: "label",
@@ -46,6 +55,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "text-enabled",
     value: boolean("textEnabled", false)
+  },
+  {
+    name: "scale",
+    value: select("scale", scale.values, scale.defaultValue)
   },
   {
     name: "theme",
