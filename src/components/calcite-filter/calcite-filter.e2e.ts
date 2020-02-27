@@ -12,6 +12,10 @@ describe("calcite-filter", () => {
   it("has property defaults", async () =>
     defaults("calcite-filter", [
       {
+        propertyName: "intlClear",
+        defaultValue: TEXT.clear
+      },
+      {
         propertyName: "intlLabel",
         defaultValue: TEXT.filterLabel
       }
