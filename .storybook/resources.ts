@@ -19,7 +19,7 @@ const dirOptions: Direction[] = ["ltr", "rtl"];
 const themeOptions: CalciteTheme[] = ["light", "dark"];
 const positionOptions: CalcitePosition[] = ["start", "end"];
 const scaleOptions: CalciteScale[] = ["s", "m", "l"];
-const appearanceOptions: CalciteAppearance[] = ["solid", "clear"];
+const appearanceOptions: CalciteAppearance[] = ["solid", "clear", "outline"];
 
 export const ATTRIBUTES: CommonAttributes = {
   dir: {
