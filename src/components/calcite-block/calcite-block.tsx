@@ -43,12 +43,12 @@ export class CalciteBlock {
   /**
    * Tooltip used for the toggle when expanded.
    */
-  @Prop() intlCollapse = TEXT.collapse;
+  @Prop() intlCollapse?: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
    */
-  @Prop() intlExpand = TEXT.expand;
+  @Prop() intlExpand?: string;
 
   /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
@@ -137,7 +137,9 @@ export class CalciteBlock {
       textExpand
     } = this;
 
-    const toggleLabel = open ? intlCollapse || textCollapse : intlExpand || textExpand;
+    const toggleLabel = open
+      ? intlCollapse || textCollapse || TEXT.collapse
+      : intlExpand || textExpand || TEXT.expand;
 
     const hasIcon = el.querySelector(`[slot=${SLOTS.icon}]`);
     const headerContent = (
