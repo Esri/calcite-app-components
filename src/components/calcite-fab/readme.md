@@ -32,17 +32,17 @@ Renders a `calcite-fab` that is loading and disabled.
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                                                         | Type                | Default     |
-| ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
-| `appearance`  | `appearance`   | Used to set the button's appearance. Default is outline.                                                                            | `CalciteAppearance` | `outline`   |
-| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                         | `boolean`           | `false`     |
-| `icon`        | `icon`         | The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/. | `string`            | `plus`      |
-| `label`       | `label`        | Label of the fab, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.                | `string`            | `undefined` |
-| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                                      | `boolean`           | `false`     |
-| `scale`       | `scale`        | Specifies the size of the fab.                                                                                                      | `CalciteScale`      | `m`         |
-| `text`        | `text`         | Text that accompanies the fab icon.                                                                                                 | `string`            | `undefined` |
-| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                                                            | `boolean`           | `false`     |
-| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                           | `"dark" or "light"` | `undefined` |
+| Property      | Attribute      | Description                                                                                                                         | Type                              | Default      |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------ |
+| `appearance`  | `appearance`   | Used to set the button's appearance. Default is outline.                                                                            | `"clear" or "outline" or "solid"` | `"outline"`  |
+| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                         | `boolean`                         | `false`      |
+| `icon`        | `icon`         | The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/. | `string`                          | `ICONS.plus` |
+| `label`       | `label`        | Label of the FAB, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.                | `string`                          | `undefined`  |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                                      | `boolean`                         | `false`      |
+| `scale`       | `scale`        | Specifies the size of the fab.                                                                                                      | `"l" or "m" or "s"`               | `"m"`        |
+| `text`        | `text`         | Text that accompanies the FAB icon.                                                                                                 | `string`                          | `undefined`  |
+| `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                                                            | `boolean`                         | `false`      |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                           | `"dark" or "light"`               | `undefined`  |
 
 ## Methods
 
