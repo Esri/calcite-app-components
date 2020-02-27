@@ -1,11 +1,21 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
-import { accessible, hidden, renders } from "../../tests/commonTests";
+import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
+import { TEXT } from "../calcite-filter/resources";
 
 describe("calcite-filter", () => {
   it("renders", async () => renders("calcite-filter"));
 
   it("honors hidden attribute", async () => hidden("calcite-filter"));
-  it("is accessible", async () => accessible(`<calcite-filter></calcite-filter>`));
+
+  it("is accessible", async () => accessible("calcite-filter"));
+
+  it("has property defaults", async () =>
+    defaults("calcite-filter", [
+      {
+        propertyName: "intlLabel",
+        defaultValue: TEXT.filterLabel
+      }
+    ]));
 
   describe("strings", () => {
     it("should update the filter placeholder when a string is provided", async () => {

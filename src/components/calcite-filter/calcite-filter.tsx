@@ -25,6 +25,13 @@ export class CalciteFilter {
   /**
    * A text label that will appear next to the input field.
    */
+  @Prop() intlLabel: string = TEXT.filterLabel;
+
+  /**
+   * A text label that will appear next to the input field.
+   *
+   * @deprecated since 5.4.0 - use "intlLabel" instead.
+   */
   @Prop() textLabel: string;
 
   /**
@@ -111,6 +118,8 @@ export class CalciteFilter {
   // --------------------------------------------------------------------------
 
   render() {
+    const placeholderLabel = this.intlLabel || this.textLabel;
+
     return (
       <Host>
         <label>
@@ -119,7 +128,7 @@ export class CalciteFilter {
             value=""
             placeholder={this.textPlaceholder}
             onInput={this.inputHandler}
-            aria-label={this.textLabel || TEXT.filterLabel}
+            aria-label={placeholderLabel}
             ref={(el) => (this.textInput = el as HTMLInputElement)}
           />
           <div class={CSS.searchIcon}>

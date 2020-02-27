@@ -15,6 +15,14 @@ describe("calcite-block", () => {
         defaultValue: false
       },
       {
+        propertyName: "intlCollapse",
+        defaultValue: TEXT.collapse
+      },
+      {
+        propertyName: "intlExpand",
+        defaultValue: TEXT.expand
+      },
+      {
         propertyName: "open",
         defaultValue: false
       }
