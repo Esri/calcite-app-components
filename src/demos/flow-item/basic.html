@@ -15,8 +15,27 @@
       <section class="example-container">
         <h1>calcite-flow-item</h1>
 
+        <h2>Basic</h2>
         <div class="flow-container">
           <calcite-flow-item heading="What are the most popular commute alternatives?" summary="I don't know.">
+            <div slot="menu-actions">
+              <calcite-action text="Save" text-enabled></calcite-action>
+              <calcite-action text="Do It" text-enabled></calcite-action>
+              <calcite-action text="Load" text-enabled></calcite-action>
+              <calcite-action text="Cancel" text-enabled></calcite-action>
+            </div>
+            <div slot="footer-actions">
+              <button>Example</button>
+              <button>Actions</button>
+            </div>
+            <img src="https://via.placeholder.com/300x200" alt="placeholder" />
+          </calcite-flow-item>
+        </div>
+
+        <h2>Using header-content slot</h2>
+        <div class="flow-container">
+          <calcite-flow-item heading="What are the most popular commute alternatives?" summary="I don't know.">
+            <div slot="header-content">Heres my custom stuff!</div>
             <div slot="menu-actions">
               <calcite-action text="Save" text-enabled></calcite-action>
               <calcite-action text="Do It" text-enabled></calcite-action>

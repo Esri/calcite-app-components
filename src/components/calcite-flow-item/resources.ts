@@ -21,6 +21,7 @@ export const TEXT = {
 };
 
 export const SLOTS = {
+  headerContent: "header-content",
   menuActions: "menu-actions",
   footerActions: "footer-actions"
 };

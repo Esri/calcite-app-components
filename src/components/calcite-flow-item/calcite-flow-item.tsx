@@ -10,6 +10,7 @@ import { CalciteScale, CalciteTheme } from "../interfaces";
 const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
+ * @slot header-content - A slot for adding header content which will be displayed instead of the heading and summary.
  * @slot menu-actions - A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open.
  * @slot footer-actions - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the flow item.
@@ -254,6 +255,16 @@ export class CalciteFlowItem {
     );
   }
 
+  renderHeaderSlot(): VNode {
+    const hasHeaderContentSlot = !!this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
+
+    return hasHeaderContentSlot ? (
+      <div slot={PANEL_SLOTS.headerContent}>
+        <slot name={SLOTS.headerContent} />
+      </div>
+    ) : null;
+  }
+
   renderFooterActions(): VNode {
     const hasFooterActions = !!this.el.querySelector(`[slot=${SLOTS.footerActions}]`);
 
@@ -345,7 +356,7 @@ export class CalciteFlowItem {
           dir={dir}
         >
           {this.renderBackButton(dir === "rtl")}
-          {this.renderHeader()}
+          {this.renderHeaderSlot() || this.renderHeader()}
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
