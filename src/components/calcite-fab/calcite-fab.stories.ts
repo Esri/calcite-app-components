@@ -1,14 +1,24 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
+import {
+  Attributes,
+  createComponentHTML as create,
+  darkBackground,
+  parseReadme,
+  titlelessDocsPage
+} from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
+import { ICONS } from "./resources";
 const { appearance, dir, scale, theme } = ATTRIBUTES;
 
 export default {
-  title: "components|calcite-action",
+  title: "components|calcite-fab",
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
+    docs: {
+      page: titlelessDocsPage
+    },
     notes: parseReadme(readme)
   }
 };
@@ -16,11 +26,7 @@ export default {
 const createAttributes: () => Attributes = () => [
   {
     name: "appearance",
-    value: select("appearance", appearance.values, appearance.defaultValue)
-  },
-  {
-    name: "active",
-    value: boolean("active", false)
+    value: select("appearance", appearance.values, appearance.values[2])
   },
   {
     name: "dir",
@@ -32,11 +38,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "icon",
-    value: text("icon", "beaker")
-  },
-  {
-    name: "indicator",
-    value: boolean("indicator", false)
+    value: text("icon", ICONS.plus)
   },
   {
     name: "label",
@@ -47,10 +49,6 @@ const createAttributes: () => Attributes = () => [
     value: boolean("loading", false)
   },
   {
-    name: "scale",
-    value: select("scale", scale.values, scale.defaultValue)
-  },
-  {
     name: "text",
     value: text("text", "Text")
   },
@@ -59,9 +57,13 @@ const createAttributes: () => Attributes = () => [
     value: boolean("textEnabled", false)
   },
   {
+    name: "scale",
+    value: select("scale", scale.values, scale.defaultValue)
+  },
+  {
     name: "theme",
     value: select("theme", theme.values, theme.defaultValue)
   }
 ];
 
-export const basic = () => create("calcite-action", createAttributes(), "");
+export const basic = () => create("calcite-fab", createAttributes(), `<calcite-fab></calcite-fab>`);

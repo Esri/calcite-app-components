@@ -11,7 +11,8 @@ export const CSS = {
   menuContainer: "menu-container",
   menuButton: "menu-button",
   menu: "menu",
-  menuOpen: "menu--open"
+  menuOpen: "menu--open",
+  fabContainer: "fab-container"
 };
 
 export const TEXT = {
@@ -23,6 +24,7 @@ export const TEXT = {
 export const SLOTS = {
   headerContent: "header-content",
   menuActions: "menu-actions",
+  fab: "fab",
   footerActions: "footer-actions"
 };
 

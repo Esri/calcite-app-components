@@ -48,7 +48,7 @@
     "sortablejs": "1.10.2"
   },
   "devDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.18",
+    "@esri/calcite-components": "1.0.0-beta.19",
     "@stencil/core": "1.9.0-18",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.1.1",
@@ -104,7 +104,7 @@
     "updtr": "3.1.0"
   },
   "peerDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.16"
+    "@esri/calcite-components": "1.0.0-beta.19"
   },
   "license": "Apache-2.0"
 }

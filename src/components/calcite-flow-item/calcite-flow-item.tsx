@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir } from "../utils/dom";
 import classnames from "classnames";
@@ -12,6 +12,7 @@ const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 /**
  * @slot header-content - A slot for adding header content which will be displayed instead of the heading and summary.
  * @slot menu-actions - A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open.
+ * @slot fab - A slot for adding a `calcite-fab` (floating action button) to perform an action.
  * @slot footer-actions - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the flow item.
  */
@@ -99,6 +100,12 @@ export class CalciteFlowItem {
 
   @Event() calciteFlowItemBackClick: EventEmitter;
 
+  /**
+   * Emitted when the content has been scrolled.
+   */
+
+  @Event() calciteFlowItemScroll: EventEmitter;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -112,6 +119,12 @@ export class CalciteFlowItem {
   //  Private Methods
   //
   // --------------------------------------------------------------------------
+
+  @Listen("calcitePanelScroll")
+  handleCalcitePanelScroll(event: CustomEvent): void {
+    event.stopPropagation();
+    this.calciteFlowItemScroll.emit();
+  }
 
   queryActions(): HTMLCalciteActionElement[] {
     return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
@@ -343,6 +356,14 @@ export class CalciteFlowItem {
     ) : null;
   }
 
+  renderFab(): VNode {
+    return (
+      <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
+        <slot name={SLOTS.fab} />
+      </div>
+    );
+  }
+
   render() {
     const { el } = this;
     const dir = getElementDir(el);
@@ -360,6 +381,7 @@ export class CalciteFlowItem {
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
+          {this.renderFab()}
         </calcite-panel>
       </Host>
     );
