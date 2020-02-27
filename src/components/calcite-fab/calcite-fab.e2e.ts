@@ -1,5 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 import { accessible, hidden, renders } from "../../tests/commonTests";
+import { CSS } from "./resources";
 
 describe("calcite-fab", () => {
   it("renders", async () => renders("calcite-fab"));
@@ -10,7 +11,7 @@ describe("calcite-fab", () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-fab text="hello world" text-enabled></calcite-fab>`);
 
-    const button = await page.find("calcite-fab >>> .button");
+    const button = await page.find(`calcite-fab >>> ${CSS.button}`);
     const text = button.textContent;
 
     expect(text).toBe("hello world");
@@ -20,7 +21,7 @@ describe("calcite-fab", () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-fab text="hello world"></calcite-fab>`);
 
-    const button = await page.find("calcite-fab >>> .button");
+    const button = await page.find(`calcite-fab >>> ${CSS.button}`);
     const text = button.textContent;
 
     expect(text).toBe("");
@@ -30,7 +31,7 @@ describe("calcite-fab", () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-fab text="hello world" label="hi"></calcite-fab>`);
 
-    const button = await page.find("calcite-fab >>> .button");
+    const button = await page.find(`calcite-fab >>> ${CSS.button}`);
     expect(button.getAttribute("title")).toBe("hi");
     expect(button.getAttribute("aria-label")).toBe("hi");
   });
@@ -39,7 +40,7 @@ describe("calcite-fab", () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-fab disabled></calcite-fab>`);
 
-    const button = await page.find("calcite-fab >>> .button");
+    const button = await page.find(`calcite-fab >>> ${CSS.button}`);
     expect(button).toHaveAttribute("disabled");
   });
 
@@ -47,7 +48,7 @@ describe("calcite-fab", () => {
     const page = await newE2EPage();
     await page.setContent(`<calcite-fab text="hello world"></calcite-fab>`);
 
-    const fab = await page.find("calcite-fab >>> .button");
+    const fab = await page.find(`calcite-fab >>> ${CSS.button}`);
     expect(fab.getAttribute("appearance")).toBe("outline");
   });
 
