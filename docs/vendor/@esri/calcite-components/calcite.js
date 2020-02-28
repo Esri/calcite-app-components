@@ -775,9 +775,9 @@ var CustomStyle = /** @class */ (function () {
         this.scopesMap = new Map();
         this.didInit = false;
     }
-    CustomStyle.prototype.initShim = function () {
+    CustomStyle.prototype.i = function () {
         var _this = this;
-        if (this.didInit) {
+        if (this.didInit || !this.win.requestAnimationFrame) {
             return Promise.resolve();
         }
         else {
@@ -866,13 +866,11 @@ var CustomStyle = /** @class */ (function () {
     };
     return CustomStyle;
 }());
-var win = window;
-function needsShim() {
-    return !(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)'));
-}
-if (!win.__stencil_cssshim && needsShim()) {
-    win.__stencil_cssshim = new CustomStyle(win, document);
-}
+(function (win) {
+    if (win && !win.__cssshim && (!(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)')))) {
+        win.__cssshim = new CustomStyle(win, win.document);
+    }
+})(typeof window !== 'undefined' && window);
 
     // Figure out currentScript (for IE11, since it does not support currentScript)
     var regex = /\/calcite(\.esm)?\.js($|\?|#)/;
@@ -882,12 +880,12 @@ if (!win.__stencil_cssshim && needsShim()) {
 
     var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
     var start = function() {
-      var url = new URL('./p-18dae419.system.js', resourcesUrl);
+      var url = new URL('./p-640c101e.system.js', resourcesUrl);
       System.import(url.href);
     };
 
-    if (win.__stencil_cssshim) {
-      win.__stencil_cssshim.initShim().then(start);
+    if (window.__cssshim) {
+      window.__cssshim.i().then(start);
     } else {
       start();
     }
