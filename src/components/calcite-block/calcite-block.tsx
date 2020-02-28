@@ -41,9 +41,14 @@ export class CalciteBlock {
   @Prop() heading: string;
 
   /**
-   * When true, the block's content will be displayed.
+   * Tooltip used for the toggle when expanded.
    */
-  @Prop({ reflect: true }) open = false;
+  @Prop() intlCollapse?: string;
+
+  /**
+   * Tooltip used for the toggle when collapsed.
+   */
+  @Prop() intlExpand?: string;
 
   /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
@@ -51,19 +56,28 @@ export class CalciteBlock {
   @Prop({ reflect: true }) loading = false;
 
   /**
+   * When true, the block's content will be displayed.
+   */
+  @Prop({ reflect: true }) open = false;
+
+  /**
    * Block summary.
    */
   @Prop() summary: string;
 
   /**
-   * Tooltip used for the toggle when collapsed.
+   * Tooltip used for the toggle when expanded.
+   *
+   * @deprecated use "intlCollapse" instead.
    */
-  @Prop() textExpand = TEXT.expand;
+  @Prop() textCollapse?: string;
 
   /**
-   * Tooltip used for the toggle when expanded.
+   * Tooltip used for the toggle when collapsed.
+   *
+   * @deprecated use "intlExpand" instead.
    */
-  @Prop() textCollapse = TEXT.collapse;
+  @Prop() textExpand?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -114,13 +128,18 @@ export class CalciteBlock {
       disabled,
       el,
       heading,
+      intlCollapse,
+      intlExpand,
       loading,
       open,
       summary,
       textCollapse,
       textExpand
     } = this;
-    const toggleLabel = open ? textCollapse : textExpand;
+
+    const toggleLabel = open
+      ? intlCollapse || textCollapse || TEXT.collapse
+      : intlExpand || textExpand || TEXT.expand;
 
     const hasIcon = el.querySelector(`[slot=${SLOTS.icon}]`);
     const headerContent = (
