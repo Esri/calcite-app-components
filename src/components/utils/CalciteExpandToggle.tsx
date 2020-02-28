@@ -18,12 +18,15 @@ const ICONS = {
 
 function getClosestShellPosition(el: HTMLElement): CalcitePosition | null {
   const shellNode = el.closest("calcite-shell-panel");
-
   if (!shellNode) {
     return;
   }
-
-  return shellNode.position;
+  if (shellNode.position) {
+    return shellNode.position;
+  }
+  if (shellNode.layout) {
+    return shellNode.layout === "trailing" ? "end" : "start";
+  }
 }
 
 function getCalcitePosition(position: CalcitePosition, el: HTMLElement) {
