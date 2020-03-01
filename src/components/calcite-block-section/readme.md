@@ -6,13 +6,15 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                                                                                                                      | Type                   | Default         |
-| --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------- |
-| `open`          | `open`           | When true, the block's section content will be displayed.                                                                                                                        | `boolean`              | `false`         |
-| `text`          | `text`           | Text displayed in the button.                                                                                                                                                    | `string`               | `undefined`     |
-| `textCollapse`  | `text-collapse`  | Tooltip used for the toggle when expanded.                                                                                                                                       | `string`               | `TEXT.collapse` |
-| `textExpand`    | `text-expand`    | Tooltip used for the toggle when collapsed.                                                                                                                                      | `string`               | `TEXT.expand`   |
-| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" or "switch"` | `"button"`      |
+| Property        | Attribute        | Description                                                                                                                                                                      | Type                   | Default     |
+| --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
+| `intlCollapse`  | `intl-collapse`  | Tooltip used for the toggle when expanded.                                                                                                                                       | `string`               | `undefined` |
+| `intlExpand`    | `intl-expand`    | Tooltip used for the toggle when collapsed.                                                                                                                                      | `string`               | `undefined` |
+| `open`          | `open`           | When true, the block's section content will be displayed.                                                                                                                        | `boolean`              | `false`     |
+| `text`          | `text`           | Text displayed in the button.                                                                                                                                                    | `string`               | `undefined` |
+| `textCollapse`  | `text-collapse`  | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Tooltip used for the toggle when expanded.                                                  | `string`               | `undefined` |
+| `textExpand`    | `text-expand`    | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Tooltip used for the toggle when collapsed.                                                   | `string`               | `undefined` |
+| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" or "switch"` | `"button"`  |
 
 ## Events
 

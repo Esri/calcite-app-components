@@ -12,7 +12,7 @@ describe("calcite-filter", () => {
     it("should update the filter placeholder when a string is provided", async () => {
       const page = await newE2EPage();
       const placeholderText = "hide em";
-      await page.setContent(`<calcite-filter text-placeholder="${placeholderText}"></calcite-filter>`);
+      await page.setContent(`<calcite-filter placeholder="${placeholderText}"></calcite-filter>`);
 
       const input = await page.find(`calcite-filter >>> input`);
       expect(await input.getProperty("placeholder")).toBe(placeholderText);

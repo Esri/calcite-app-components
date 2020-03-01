@@ -5,6 +5,7 @@ export const CSS = {
   headerContent: "header-content",
   headerTrailingContent: "header-trailing-content",
   contentContainer: "content-container",
+  fabContainer: "fab-container",
   footer: "footer"
 };
 
@@ -20,5 +21,6 @@ export const SLOTS = {
   headerContent: "header-content",
   headerLeadingContent: "header-leading-content",
   headerTrailingContent: "header-trailing-content",
+  fab: "fab",
   footer: "footer"
 };
