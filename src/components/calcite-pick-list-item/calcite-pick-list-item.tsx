@@ -231,8 +231,14 @@ export class CalcitePickListItem {
     if (!this.removable) {
       return null;
     }
+
     return (
-      <calcite-action scale="s" class={CSS.remove} text={this.textRemove} onClick={this.removeClickHandler}>
+      <calcite-action
+        scale="s"
+        class={CSS.remove}
+        text={this.textRemove}
+        onClick={this.removeClickHandler}
+      >
         <calcite-icon scale="s" icon={ICONS.remove} />
       </calcite-action>
     );
@@ -242,8 +248,7 @@ export class CalcitePickListItem {
     const hasSecondaryAction = this.el.querySelector(`[slot=${SLOTS.secondaryAction}]`);
     return hasSecondaryAction || this.removable ? (
       <div class={CSS.action}>
-        <slot name={SLOTS.secondaryAction} />
-        {this.renderRemoveAction()}
+        <slot name={SLOTS.secondaryAction}>{this.renderRemoveAction()}</slot>
       </div>
     ) : null;
   }

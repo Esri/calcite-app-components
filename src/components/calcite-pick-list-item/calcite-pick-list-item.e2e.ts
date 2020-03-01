@@ -1,6 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS } from "./resources";
+import { setUpPage } from "../../tests/utils";
 
 describe("calcite-pick-list-item", () => {
   it("should render", async () => {
@@ -64,14 +65,19 @@ describe("calcite-pick-list-item", () => {
     expect(await item.getProperty("selected")).toBe(true);
   });
 
-  it("displays the remove button when removable is true", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
+  it("allows for easy removal", async () => {
+    const page = await setUpPage(
       `<calcite-pick-list-item text-label="test" value="example" removable></calcite-pick-list-item>`
     );
 
     const removeButton = await page.find(`calcite-pick-list-item >>> .${CSS.remove}`);
-    expect(removeButton).not.toBe(null);
+
+    expect(removeButton).toBeTruthy();
+
+    const item = await page.find("calcite-pick-list-item");
+    const removeEventSpy = await item.spyOnEvent("calciteListItemRemove");
+    await removeButton.click();
+
+    expect(removeEventSpy).toHaveReceivedEventTimes(1);
   });
 });
