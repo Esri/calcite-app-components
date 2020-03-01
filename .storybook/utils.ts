@@ -34,7 +34,7 @@ export const parseReadme = (content: string): string => {
       .replace(/ \\\| /g, " | ")
 
       // markdown uses relative paths for component links
-      .replace(/ \.\.\/ /g, "https://github.com/Esri/calcite-app-components/tree/master/src/components/")
+      .replace(/\.\.\//g, "https://github.com/Esri/calcite-app-components/tree/master/src/components/")
   );
 };
 
