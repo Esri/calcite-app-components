@@ -187,7 +187,7 @@ export class CalciteTipManager {
   updateGroupTitle() {
     const selectedTip = this.tips[this.selectedIndex];
     const tipParent = selectedTip.closest("calcite-tip-group");
-    this.groupTitle = (tipParent && tipParent.textGroupTitle) || this.textDefaultTitle;
+    this.groupTitle = tipParent.textGroupTitle || this.textDefaultTitle;
   }
 
   previousClicked = (): void => {
