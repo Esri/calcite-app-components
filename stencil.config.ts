@@ -53,7 +53,7 @@ export const create: () => Config = () => ({
   ],
   testing: {
     transform: {
-      "^.+\\.(ts|tsx)$": "ts-jest"
+      "^src/tests/.+\\.(ts|tsx)$": "ts-jest"
     },
     setupFilesAfterEnv: ["<rootDir>/src/tests/setup.ts"]
   },
