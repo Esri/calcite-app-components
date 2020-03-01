@@ -14,8 +14,8 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
-    "build:docs": "stencil build --config stencil.storybook.config.ts",
+    "build": "stencil build --next --docs",
+    "build:docs": "stencil build --next --config stencil.storybook.config.ts",
     "demoPageSync": "ts-node ./support/demoPageSync.ts",
     "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"build(deps): bump versions\"",
     "docs": "concurrently --kill-others --raw \"npm run build:docs && build-storybook --static-dir ./__docs-temp__ --output-dir ./docs && ts-node ./support/ensureStorybookBuildHasModuleScripts.ts\"  \"ts-node ./support/tempDocDirCleaner.ts\"",
@@ -30,7 +30,7 @@
     "preversion": "npm ci && npm test",
     "previewChangelog": "standard-version --no-skip.bump --silent && cat CHANGELOG.md && git reset --hard --quiet",
     "release": "git push --follow-tags && npm publish && ts-node ./support/githubReleaseFromChangelog.ts",
-    "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --dev --watch --serve\"",
+    "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --next --dev --watch --serve\"",
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
     "test:watch": "stencil test --spec --e2e --watch",

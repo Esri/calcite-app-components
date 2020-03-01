@@ -3,8 +3,6 @@ import { postcss } from "@stencil/postcss";
 import { sass } from "@stencil/sass";
 import autoprefixer from "autoprefixer";
 
-const DEFAULT_EXCLUDE_SRC = ["**/*.stories.ts", "**/tests/**"];
-
 export const create: () => Config = () => ({
   namespace: "calcite-app",
   bundles: [
@@ -58,7 +56,6 @@ export const create: () => Config = () => ({
     setupFilesAfterEnv: ["<rootDir>/src/tests/setup.ts"]
   },
   srcDir: "src/components",
-  excludeSrc: DEFAULT_EXCLUDE_SRC,
   srcIndexHtml: "src/index.html",
   extras: {
     appendChildSlotFix: true
