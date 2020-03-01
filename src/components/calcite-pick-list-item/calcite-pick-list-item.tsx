@@ -54,7 +54,7 @@ export class CalcitePickListItem {
    */
   @Prop() metadata?: object;
 
-  @Watch("metadata") metadataWatchHandler() {
+  @Watch("metadata") metadataWatchHandler(): void {
     this.calciteListItemPropsChange.emit();
   }
 
@@ -69,7 +69,7 @@ export class CalcitePickListItem {
   @Prop({ reflect: true, mutable: true }) selected = false;
 
   @Watch("selected")
-  selectedWatchHandler() {
+  selectedWatchHandler(): void {
     this.calciteListItemChange.emit({
       item: this.el,
       value: this.value,
@@ -85,7 +85,7 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textDescription?: string;
 
-  @Watch("textDescription") textDescriptionWatchHandler() {
+  @Watch("textDescription") textDescriptionWatchHandler(): void {
     this.calciteListItemPropsChange.emit();
   }
 
@@ -94,7 +94,7 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textLabel: string;
 
-  @Watch("textLabel") textLabelWatchHandler() {
+  @Watch("textLabel") textLabelWatchHandler(): void {
     this.calciteListItemPropsChange.emit();
   }
 
@@ -108,7 +108,7 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) value!: string;
 
-  @Watch("value") valueWatchHandler(newValue, oldValue) {
+  @Watch("value") valueWatchHandler(newValue: string, oldValue: string): void {
     this.calciteListItemValueChange.emit({ oldValue, newValue });
   }
 
@@ -132,27 +132,32 @@ export class CalcitePickListItem {
    * Emitted whenever the item is selected or unselected.
    * @event calciteListItemChange
    */
-  @Event() calciteListItemChange: EventEmitter;
+  @Event() calciteListItemChange: EventEmitter<{
+    item: HTMLCalcitePickListItemElement;
+    value: string;
+    selected: boolean;
+    shiftPressed: boolean;
+  }>;
 
   /**
    * Emitted whenever the remove button is pressed.
    * @event calciteListItemRemove
    */
-  @Event() calciteListItemRemove: EventEmitter;
+  @Event() calciteListItemRemove: EventEmitter<void>;
 
   /**
    * Emitted whenever the the item's textLabel, textDescription, value or metadata properties are modified.
    * @event calciteListItemPropsChange
    * @internal
    */
-  @Event() calciteListItemPropsChange: EventEmitter;
+  @Event() calciteListItemPropsChange: EventEmitter<void>;
 
   /**
    * Emitted whenever the the item's value property is modified.
    * @event calciteListItemValueChange
    * @internal
    */
-  @Event() calciteListItemValueChange: EventEmitter;
+  @Event() calciteListItemValueChange: EventEmitter<{ oldValue: string; newValue: string }>;
 
   // --------------------------------------------------------------------------
   //
@@ -164,7 +169,7 @@ export class CalcitePickListItem {
    * Used to toggle the selection state. By default this won't trigger an event.
    * The first argument allows the value to be coerced, rather than swapping values.
    */
-  @Method() async toggleSelected(coerce?: boolean) {
+  @Method() async toggleSelected(coerce?: boolean): Promise<void> {
     if (this.disabled) {
       return;
     }
@@ -197,7 +202,7 @@ export class CalcitePickListItem {
     }
   };
 
-  removeClickHandler = () => {
+  removeClickHandler = (): void => {
     this.calciteListItemRemove.emit();
   };
 
@@ -209,9 +214,11 @@ export class CalcitePickListItem {
 
   renderIcon() {
     const { compact, icon, selected } = this;
+
     if (!icon || compact) {
       return null;
     }
+
     const iconName =
       icon === ICON_TYPES.square
         ? selected
@@ -220,6 +227,7 @@ export class CalcitePickListItem {
         : selected
         ? ICONS.selected
         : ICONS.unselected;
+
     return (
       <span class={CSS.icon}>
         <calcite-icon scale="s" icon={iconName} />

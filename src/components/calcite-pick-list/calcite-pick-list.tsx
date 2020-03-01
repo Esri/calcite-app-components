@@ -103,15 +103,15 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
+  connectedCallback(): void {
     initialize.call(this);
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     initializeObserver.call(this);
   }
 
-  componentDidUnload() {
+  componentDidUnload(): void {
     cleanUpObserver.call(this);
   }
 
@@ -180,12 +180,8 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  getIconType(): ICON_TYPES | null {
-    let type = ICON_TYPES.circle;
-    if (this.multiple) {
-      type = ICON_TYPES.square;
-    }
-    return type;
+  getIconType(): ICON_TYPES {
+    return this.multiple ? ICON_TYPES.square : ICON_TYPES.circle;
   }
 
   render() {
