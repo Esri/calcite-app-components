@@ -44,7 +44,7 @@ export class CalcitePanel {
   @Prop({ mutable: true, reflect: true }) dismissed = false;
 
   @Watch("dismissed")
-  dismissedHandler() {
+  dismissedHandler(): void {
     this.calcitePanelDismissedChange.emit();
   }
 
@@ -125,7 +125,7 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus(focusId?: FocusId) {
+  async setFocus(focusId?: FocusId): void {
     if (focusId === "dismiss-button") {
       this.dismissButtonEl?.setFocus();
       return;
@@ -162,7 +162,9 @@ export class CalcitePanel {
 
     const dismissibleNode = dismissible ? (
       <calcite-action
-        ref={(dismissButtonEl) => (this.dismissButtonEl = dismissButtonEl)}
+        ref={(dismissButtonEl): HTMLCalciteActionElement =>
+          (this.dismissButtonEl = dismissButtonEl)
+        }
         aria-label={textClose}
         text={textClose}
         onClick={dismiss}
@@ -218,7 +220,7 @@ export class CalcitePanel {
     );
   }
 
-  render() {
+  render(): VNode {
     const { dismissed, disabled, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
@@ -230,7 +232,7 @@ export class CalcitePanel {
           onKeyUp={panelKeyUpHandler}
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}
-          ref={(containerEl) => (this.containerEl = containerEl)}
+          ref={(containerEl): HTMLElement => (this.containerEl = containerEl)}
           class={classnames(CSS.container, {
             [CSS_UTILITY.rtl]: rtl
           })}

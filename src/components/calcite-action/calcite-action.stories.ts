@@ -69,5 +69,5 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () =>
+export const basic = (): string =>
   create("calcite-action", createAttributes(), `<calcite-icon scale="s" icon="beaker"></calcite-icon>`);

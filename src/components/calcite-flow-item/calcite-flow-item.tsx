@@ -333,7 +333,7 @@ export class CalciteFlowItem {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     const { el } = this;
 
     const rtl = getElementDir(el) === "rtl";

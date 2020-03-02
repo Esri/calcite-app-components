@@ -75,7 +75,7 @@ export class CalciteTip {
   //
   // --------------------------------------------------------------------------
 
-  hideTip = () => {
+  hideTip = (): void => {
     this.dismissed = true;
 
     this.calciteTipDismiss.emit();
@@ -124,7 +124,7 @@ export class CalciteTip {
     );
   }
 
-  renderContent() {
+  renderContent(): VNode {
     return (
       <div class={CSS.content}>
         {this.renderImageFrame()}
@@ -133,7 +133,7 @@ export class CalciteTip {
     );
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <article class={CSS.container} hidden={this.dismissed}>

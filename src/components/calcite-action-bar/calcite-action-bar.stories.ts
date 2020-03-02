@@ -54,7 +54,7 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-action-bar",
     createAttributes(),

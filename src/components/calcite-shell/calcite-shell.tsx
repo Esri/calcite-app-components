@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import classnames from "classnames";
@@ -42,13 +42,13 @@ export class CalciteShell {
   //
   // --------------------------------------------------------------------------
 
-  renderHeader() {
+  renderHeader(): VNode {
     const hasHeader = !!this.el.querySelector(`[slot=${SLOTS.header}]`);
 
     return hasHeader ? <slot name={SLOTS.header} /> : null;
   }
 
-  renderContent() {
+  renderContent(): VNode {
     return (
       <div class={CSS.content}>
         <slot />
@@ -56,7 +56,7 @@ export class CalciteShell {
     );
   }
 
-  renderFooter() {
+  renderFooter(): VNode {
     const hasFooter = !!this.el.querySelector(`[slot=${SLOTS.footer}]`);
 
     return hasFooter ? (
@@ -66,7 +66,7 @@ export class CalciteShell {
     ) : null;
   }
 
-  renderMain() {
+  renderMain(): VNode {
     const primaryPanel = this.el.querySelector(
       `[slot=${SLOTS.primaryPanel}]`
     ) as HTMLCalciteShellPanelElement;
@@ -85,7 +85,7 @@ export class CalciteShell {
     );
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         {this.renderHeader()}

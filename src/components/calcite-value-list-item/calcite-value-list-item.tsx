@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, VNode } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
 import { CSS } from "../calcite-pick-list-item/resources";
@@ -87,7 +87,7 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggleSelected(coerce?: boolean) {
+  @Method() async toggleSelected(coerce?: boolean): Promise<void> {
     this.pickListItem.toggleSelected(coerce);
   }
 
@@ -97,19 +97,19 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  getPickListRef = (el) => (this.pickListItem = el as HTMLCalcitePickListItemElement);
+  getPickListRef = (el): HTMLCalcitePickListItemElement => (this.pickListItem = el);
 
-  handleKeyDown = (event: KeyboardEvent) => {
+  handleKeyDown = (event: KeyboardEvent): void => {
     if (event.key === " ") {
       this.handleActivated = !this.handleActivated;
     }
   };
 
-  handleBlur = () => {
+  handleBlur = (): void => {
     this.handleActivated = false;
   };
 
-  handleSelectChange = (event: CustomEvent) => {
+  handleSelectChange = (event: CustomEvent): void => {
     this.selected = event.detail.selected;
   };
 
@@ -119,7 +119,7 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  renderHandle() {
+  renderHandle(): VNode {
     const { icon } = this;
     if (icon === ICON_TYPES.grip) {
       return (
@@ -138,7 +138,7 @@ export class CalciteValueListItem {
     }
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host data-id={this.guid}>
         {this.renderHandle()}

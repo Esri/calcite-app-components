@@ -78,7 +78,7 @@ const footerHTML = dedent`
   <calcite-button slot="${SLOTS.footer}" width="half" appearance="clear">Naw.</calcite-button>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-panel",
     createAttributes(),

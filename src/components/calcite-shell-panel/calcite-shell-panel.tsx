@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { Component, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
+import { Component, Event, EventEmitter, Host, Prop, Watch, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteLayout, CalciteScale } from "../interfaces";
 
@@ -25,7 +25,7 @@ export class CalciteShellPanel {
   @Prop({ reflect: true }) collapsed = false;
 
   @Watch("collapsed")
-  watchHandler() {
+  watchHandler(): void {
     this.calciteShellPanelToggle.emit();
   }
 
@@ -61,7 +61,7 @@ export class CalciteShellPanel {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const { collapsed, detached, layout } = this;
 
     const contentNode = (

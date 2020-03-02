@@ -102,7 +102,7 @@ const createSectionAttributes: () => Attributes = () => {
   ];
 };
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-block",
     createBlockAttributes(),
@@ -119,11 +119,12 @@ export const basic = () =>
   `
   );
 
-export const withHeaderControl = () =>
+export const withHeaderControl = (): string =>
   create(
     "calcite-block",
     createBlockAttributes(),
     `<label slot="control">test <input placeholder="I'm a header control"/></label>`
   );
 
-export const withIconAndHeader = () => create("calcite-block", createBlockAttributes(), `<div slot="icon">✅</div>`);
+export const withIconAndHeader = (): string =>
+  create("calcite-block", createBlockAttributes(), `<div slot="icon">✅</div>`);

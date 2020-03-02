@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  Watch,
+  h,
+  VNode
+} from "@stencil/core";
 
 import { CalciteLayout, CalciteTheme } from "../interfaces";
 
@@ -26,7 +36,7 @@ export class CalciteActionPad {
   @Prop({ reflect: true }) expand = true;
 
   @Watch("expand")
-  expandHandler(expand: boolean) {
+  expandHandler(expand: boolean): void {
     if (expand) {
       toggleChildActionText({ parent: this.el, expanded: this.expanded });
     }
@@ -38,7 +48,7 @@ export class CalciteActionPad {
   @Prop({ reflect: true }) expanded = false;
 
   @Watch("expanded")
-  expandedHandler(expanded: boolean) {
+  expandedHandler(expanded: boolean): void {
     if (this.expand) {
       toggleChildActionText({ parent: this.el, expanded });
     }
@@ -91,7 +101,7 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     const { el, expand, expanded } = this;
 
     if (expand) {
@@ -115,7 +125,7 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  renderBottomActionGroup() {
+  renderBottomActionGroup(): VNode {
     const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
 
     const expandToggleNode = expand ? (
@@ -134,7 +144,7 @@ export class CalciteActionPad {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <slot />

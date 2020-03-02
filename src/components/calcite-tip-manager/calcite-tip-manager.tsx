@@ -8,7 +8,8 @@ import {
   Prop,
   State,
   Watch,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import classnames from "classnames";
 import { CSS, ICONS, TEXT } from "./resources";
@@ -35,7 +36,7 @@ export class CalciteTipManager {
   @Prop({ reflect: true }) closed = false;
 
   @Watch("closed")
-  closedChangeHandler() {
+  closedChangeHandler(): void {
     this.direction = null;
     this.calciteTipManagerToggle.emit();
   }
@@ -81,7 +82,7 @@ export class CalciteTipManager {
   @State() selectedIndex: number;
 
   @Watch("selectedIndex")
-  selectedChangeHandler() {
+  selectedChangeHandler(): void {
     this.showSelectedTip();
     this.updateGroupTitle();
   }
@@ -104,15 +105,15 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
+  connectedCallback(): void {
     this.setUpTips();
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
-  componentDidUnload() {
+  componentDidUnload(): void {
     this.observer.disconnect();
   }
 
@@ -176,7 +177,7 @@ export class CalciteTipManager {
     this.calciteTipManagerToggle.emit();
   };
 
-  showSelectedTip() {
+  showSelectedTip(): void {
     this.tips.forEach((tip, index) => {
       const isSelected = this.selectedIndex === index;
       tip.selected = isSelected;
@@ -184,7 +185,7 @@ export class CalciteTipManager {
     });
   }
 
-  updateGroupTitle() {
+  updateGroupTitle(): void {
     const selectedTip = this.tips[this.selectedIndex];
     const tipParent = selectedTip.closest("calcite-tip-group");
     this.groupTitle = (tipParent && tipParent.textGroupTitle) || this.textDefaultTitle;
@@ -223,7 +224,7 @@ export class CalciteTipManager {
     }
   };
 
-  storeContainerRef = (el: HTMLDivElement) => {
+  storeContainerRef = (el: HTMLDivElement): void => {
     this.container = el;
   };
 
@@ -233,7 +234,7 @@ export class CalciteTipManager {
   //
   // --------------------------------------------------------------------------
 
-  renderPagination() {
+  renderPagination(): VNode {
     const dir = getElementDir(this.el);
     const { selectedIndex, tips, total } = this;
 
@@ -256,7 +257,7 @@ export class CalciteTipManager {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     const { closed, direction, groupTitle, selectedIndex, textClose, total } = this;
 
     if (total === 0) {

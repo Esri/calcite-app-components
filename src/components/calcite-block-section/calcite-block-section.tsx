@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Prop, h, VNode } from "@stencil/core";
 
 import { getElementDir } from "../utils/dom";
 import { CSS, ICONS, TEXT } from "./resources";
@@ -86,7 +86,7 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
-  toggleSection = () => {
+  toggleSection = (): void => {
     this.open = !this.open;
     this.calciteBlockSectionToggle.emit();
   };
@@ -97,7 +97,7 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const { el, guid: id, open, text, textCollapse, textExpand, toggleDisplay } = this;
     const dir = getElementDir(el);
     const arrowIcon = open

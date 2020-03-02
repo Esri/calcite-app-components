@@ -181,7 +181,7 @@ const tipManagerHTML = dedent`
   </calcite-tip-manager>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-shell",
     createAttributes("Shell"),
@@ -292,7 +292,7 @@ const advancedTrailingPanelHTMl = dedent`
   </calcite-flow>
 `;
 
-export const advanced = () =>
+export const advanced = (): string =>
   create(
     "calcite-shell",
     createAttributes("Shell"),

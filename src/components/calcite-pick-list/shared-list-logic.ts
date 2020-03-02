@@ -89,7 +89,7 @@ export const sharedListMethods = {
       this.dataForFilter = this.getItemData();
     }
   },
-  deselectSiblingItems(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem) {
+  deselectSiblingItems(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem): void {
     this.items.forEach((currentItem) => {
       if (currentItem.value !== item.value) {
         currentItem.toggleSelected(false);
@@ -99,7 +99,7 @@ export const sharedListMethods = {
       }
     });
   },
-  selectSiblings(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem, deselect = false) {
+  selectSiblings(this: CalcitePickList | CalciteValueList, item: pickOrValueListItem, deselect = false): void {
     if (!this.lastSelectedItem) {
       return;
     }

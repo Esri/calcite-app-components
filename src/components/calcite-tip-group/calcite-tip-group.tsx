@@ -1,4 +1,4 @@
-import { Component, Prop, h } from "@stencil/core";
+import { Component, Prop, h, VNode } from "@stencil/core";
 import { TEXT } from "../calcite-tip-manager/resources";
 
 @Component({
@@ -18,7 +18,7 @@ export class CalciteTipGroup {
    */
   @Prop({ reflect: true }) textGroupTitle = TEXT.defaultGroupTitle;
 
-  render() {
+  render(): VNode {
     return <slot />;
   }
 }

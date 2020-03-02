@@ -7,7 +7,8 @@ import {
   Method,
   Prop,
   Watch,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import { CSS, ICONS } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
@@ -54,7 +55,7 @@ export class CalcitePickListItem {
    */
   @Prop() metadata?: object;
 
-  @Watch("metadata") metadataWatchHandler() {
+  @Watch("metadata") metadataWatchHandler(): void {
     this.calciteListItemPropsUpdated.emit();
   }
 
@@ -64,7 +65,7 @@ export class CalcitePickListItem {
   @Prop({ reflect: true, mutable: true }) selected = false;
 
   @Watch("selected")
-  selectedWatchHandler() {
+  selectedWatchHandler(): void {
     this.calciteListItemChange.emit({
       item: this.el,
       value: this.value,
@@ -80,7 +81,7 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textDescription?: string;
 
-  @Watch("textDescription") textDescriptionWatchHandler() {
+  @Watch("textDescription") textDescriptionWatchHandler(): void {
     this.calciteListItemPropsUpdated.emit();
   }
 
@@ -89,7 +90,7 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textLabel: string;
 
-  @Watch("textLabel") textLabelWatchHandler() {
+  @Watch("textLabel") textLabelWatchHandler(): void {
     this.calciteListItemPropsUpdated.emit();
   }
 
@@ -98,7 +99,7 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) value!: string;
 
-  @Watch("value") valueWatchHandler(newValue, oldValue) {
+  @Watch("value") valueWatchHandler(newValue, oldValue): void {
     this.calciteListItemValueChange.emit({ oldValue, newValue });
   }
 
@@ -148,7 +149,7 @@ export class CalcitePickListItem {
    * Used to toggle the selection state. By default this won't trigger an event.
    * The first argument allows the value to be coerced, rather than swapping values.
    */
-  @Method() async toggleSelected(coerce?: boolean) {
+  @Method() async toggleSelected(coerce?: boolean): void {
     if (this.disabled) {
       return;
     }
@@ -187,7 +188,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  renderIcon() {
+  renderIcon(): VNode {
     const { compact, icon, selected } = this;
     if (!icon || compact) {
       return null;
@@ -207,7 +208,7 @@ export class CalcitePickListItem {
     );
   }
 
-  render() {
+  render(): VNode {
     const description =
       this.textDescription && !this.compact ? (
         <span class={CSS.description}>{this.textDescription}</span>

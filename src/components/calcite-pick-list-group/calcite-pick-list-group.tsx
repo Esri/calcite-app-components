@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from "@stencil/core";
+import { Component, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS } from "./resources";
 
 /**
@@ -27,7 +27,7 @@ export class CalcitePickListGroup {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         {this.textGroupTitle ? <h3 class={CSS.heading}>{this.textGroupTitle}</h3> : null}

@@ -8,7 +8,8 @@ import {
   Method,
   Prop,
   State,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
@@ -112,16 +113,16 @@ export class CalciteValueList {
   //  Lifecycle
   //
   // --------------------------------------------------------------------------
-  connectedCallback() {
+  connectedCallback(): void {
     initialize.call(this);
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     this.setUpDragAndDrop();
     initializeObserver.call(this);
   }
 
-  componentDidUnload() {
+  componentDidUnload(): void {
     cleanUpObserver.call(this);
     this.cleanUpDragAndDrop();
   }
@@ -144,16 +145,20 @@ export class CalciteValueList {
    */
   @Event() calciteListOrderChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {
+  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(
+    event: CustomEvent
+  ): void {
     event.stopPropagation();
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(
+    event: CustomEvent
+  ): void {
     calciteListItemValueChangeHandler.call(this, event);
   }
 
@@ -209,7 +214,7 @@ export class CalciteValueList {
 
   getItemData = getItemData.bind(this);
 
-  keyDownHandler = (event) => {
+  keyDownHandler = (event): void => {
     const handleElement = event.composedPath().find((item) => {
       return item.dataset?.jsHandle;
     });
@@ -283,7 +288,7 @@ export class CalciteValueList {
     return type;
   }
 
-  render() {
+  render(): VNode {
     return <List props={this} onKeyDown={this.keyDownHandler} />;
   }
 }

@@ -60,7 +60,7 @@ const action = dedent`
   </calcite-action>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-pick-list",
     createAttributes(),
@@ -77,7 +77,7 @@ export const basic = () =>
   `
   );
 
-export const grouped = () =>
+export const grouped = (): string =>
   create(
     "calcite-pick-list",
     createAttributes(),

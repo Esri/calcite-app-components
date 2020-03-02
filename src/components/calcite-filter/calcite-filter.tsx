@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  h,
+  VNode
+} from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 import { CSS, ICONS, TEXT } from "./resources";
 
@@ -66,7 +76,7 @@ export class CalciteFilter {
       return;
     }
 
-    const find = (input: object, RE: RegExp) => {
+    const find = (input: object, RE: RegExp): any => {
       let found = false;
       forIn(input, (val) => {
         if (typeof val === "function") {
@@ -108,7 +118,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <label>

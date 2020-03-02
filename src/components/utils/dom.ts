@@ -1,8 +1,8 @@
-export function getElementDir(el: HTMLElement) {
+export function getElementDir(el: HTMLElement): "ltr" | "rtl" {
   return getElementProp(el, "dir", "ltr");
 }
 
-export function getElementProp(el: HTMLElement, prop, value) {
+export function getElementProp(el: HTMLElement, prop, value): any {
   const closestWithProp = el.closest(`[${prop}]`);
   return closestWithProp ? closestWithProp.getAttribute(prop) : value;
 }

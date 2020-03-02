@@ -120,7 +120,7 @@ const item2HTML = dedent`
   </ul>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-flow",
     createAttributes(),

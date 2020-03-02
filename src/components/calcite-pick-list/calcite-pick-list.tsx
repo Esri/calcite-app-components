@@ -7,7 +7,8 @@ import {
   Method,
   Prop,
   State,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
 import { sharedListMethods } from "./shared-list-logic";
@@ -103,15 +104,15 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  connectedCallback() {
+  connectedCallback(): void {
     initialize.call(this);
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     initializeObserver.call(this);
   }
 
-  componentDidUnload() {
+  componentDidUnload(): void {
     cleanUpObserver.call(this);
   }
 
@@ -127,16 +128,20 @@ export class CalcitePickList {
    */
   @Event() calciteListChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(event: CustomEvent) {
+  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(
+    event: CustomEvent
+  ): void {
     event.stopPropagation();
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(
+    event: CustomEvent
+  ): void {
     calciteListItemValueChangeHandler.call(this, event);
   }
 
@@ -188,7 +193,7 @@ export class CalcitePickList {
     return type;
   }
 
-  render() {
+  render(): VNode {
     return <List props={this} />;
   }
 }
