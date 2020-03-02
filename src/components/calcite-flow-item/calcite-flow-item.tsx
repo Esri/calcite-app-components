@@ -347,11 +347,12 @@ export class CalciteFlowItem {
   }
 
   renderFab(): VNode {
-    return (
+    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+    return hasFab ? (
       <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
         <slot name={SLOTS.fab} />
       </div>
-    );
+    ) : null;
   }
 
   render() {
