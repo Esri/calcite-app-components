@@ -50,14 +50,14 @@
 }
 
 .title {
-  font-size: var(--calcite-app-font-size-0);
+  font-size: var(--calcite-app-font-size--1);
   @include lineClamp(2);
 }
 
 .description {
   color: var(--calcite-app-foreground-subtle);
   font-family: var(--calcite-app-font-family-monospace);
-  font-size: var(--calcite-app-font-size--1);
+  font-size: var(--calcite-app-font-size--2);
   margin-top: var(--calcite-app-cap-spacing-quarter);
   @include lineClamp(2);
 }

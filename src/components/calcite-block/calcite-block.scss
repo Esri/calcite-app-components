@@ -55,7 +55,8 @@ calcite-loader[inline] {
 }
 
 .summary {
-  font-size: var(--calcite-app-font-size--1);
+  // color: var(--calcite-app-foreground-subtle);
+  font-size: var(--calcite-app-font-size-0);
   padding: 0 0 var(--calcite-app-cap-spacing-quarter);
 }
 

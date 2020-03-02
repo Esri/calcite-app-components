@@ -16,14 +16,15 @@ calcite-panel {
 .header-content {
   display: block;
   .heading {
-    font-size: var(--calcite-app-font-size-1);
+    font-size: var(--calcite-app-font-size-0);
+    font-weight: var(--calcite-app-font-weight);
     margin: 0 0 var(--calcite-app-cap-spacing-quarter);
     &:only-child {
       margin-bottom: 0;
     }
   }
   .summary {
-    color: var(--calcite-app-foreground-subtle);
+    // color: var(--calcite-app-foreground-subtle);
   }
   .heading,
   .summary {
