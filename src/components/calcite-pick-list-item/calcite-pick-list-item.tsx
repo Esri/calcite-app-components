@@ -244,11 +244,10 @@ export class CalcitePickListItem {
       <calcite-action
         scale="s"
         class={CSS.remove}
+        icon={ICONS.remove}
         text={this.textRemove}
         onClick={this.removeClickHandler}
-      >
-        <calcite-icon scale="s" icon={ICONS.remove} />
-      </calcite-action>
+      />
     );
   }
 
