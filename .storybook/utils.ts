@@ -30,11 +30,8 @@ export const darkBackground = [
 export const parseReadme = (content: string): string => {
   return (
     content
-      // strip out escape characters to not render them
-      .replace(/ \\\| /g, " | ")
-
       // markdown uses relative paths for component links
-      .replace("../", "https://github.com/Esri/calcite-app-components/tree/master/src/components/")
+      .replace(/\.\.\//g, "https://github.com/Esri/calcite-app-components/tree/master/src/components/")
   );
 };
 
