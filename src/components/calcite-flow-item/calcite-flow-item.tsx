@@ -297,8 +297,9 @@ export class CalciteFlowItem {
   renderHeaderActions(): VNode {
     const menuActionsNode = this.el.querySelector(`[slot=${SLOTS.menuActions}]`);
 
-    const hasMenuActionsInBlacklisted =
-      menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
+    const hasMenuActionsInBlacklisted = menuActionsNode?.closest(
+      BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(",")
+    );
 
     const hasMenuActions = !!menuActionsNode && !hasMenuActionsInBlacklisted;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
@@ -346,11 +347,12 @@ export class CalciteFlowItem {
   }
 
   renderFab(): VNode {
-    return (
+    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+    return hasFab ? (
       <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
         <slot name={SLOTS.fab} />
       </div>
-    );
+    ) : null;
   }
 
   render() {
