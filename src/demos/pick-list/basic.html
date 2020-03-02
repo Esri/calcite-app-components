@@ -19,27 +19,16 @@
 
         <h2>Pick List - Default</h2>
         <calcite-pick-list id="one" compact>
-          <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex">
-            <calcite-action scale="s" appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
-            </calcite-action>
-          </calcite-pick-list-item>
-          <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
-            <calcite-action scale="s" appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
-            </calcite-action>
-          </calcite-pick-list-item>
-          <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld">
-            <calcite-action scale="s" appearance="clear" slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
-            </calcite-action>
-          </calcite-pick-list-item>
+          <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex" removable></calcite-pick-list-item>
+          <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" removable selected></calcite-pick-list-item>
+          <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld" removable></calcite-pick-list-item>
         </calcite-pick-list>
         <script>
           const pickList1 = document.querySelector("#one");
-          pickList1.addEventListener("calciteListChange", (event) => {
-            console.log(event.detail);
-          });
+
+          pickList1.addEventListener("calciteListChange", (event) => console.log(event.detail));
+
+          pickList1.addEventListener("calciteListItemRemove", (event) => event.target.remove());
         </script>
 
         <h2>Pick List - multi-select filter-enabled</h2>
