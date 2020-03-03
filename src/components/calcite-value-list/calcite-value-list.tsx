@@ -103,7 +103,7 @@ export class CalciteValueList {
 
   sortables: Sortable[] = [];
 
-  @Element() el: HTMLCalciteValueListItemElement;
+  @Element() el: HTMLCalciteValueListElement;
 
   emitCalciteListChange: () => void;
 
