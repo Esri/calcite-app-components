@@ -41,7 +41,7 @@ export class CalcitePickListGroup {
   render() {
     const { el, textGroupTitle } = this;
     const rtl = getElementDir(el) === "rtl";
-    const hasParentItem = getSlotted(el, SLOTS.parentItem)[0] !== null;
+    const hasParentItem = getSlotted(el, SLOTS.parentItem) !== null;
     const sectionClasses = {
       [CSS.indented]: hasParentItem,
       [CSS_UTILITY.rtl]: rtl

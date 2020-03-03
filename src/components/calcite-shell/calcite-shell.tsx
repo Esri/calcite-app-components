@@ -44,7 +44,7 @@ export class CalciteShell {
   // --------------------------------------------------------------------------
 
   renderHeader() {
-    const hasHeader = !!getSlotted(this.el, SLOTS.header)[0];
+    const hasHeader = !!getSlotted(this.el, SLOTS.header);
 
     return hasHeader ? <slot name={SLOTS.header} /> : null;
   }
@@ -58,7 +58,7 @@ export class CalciteShell {
   }
 
   renderFooter() {
-    const hasFooter = !!getSlotted(this.el, SLOTS.footer)[0];
+    const hasFooter = !!getSlotted(this.el, SLOTS.footer);
 
     return hasFooter ? (
       <div class={CSS.footer}>
@@ -68,7 +68,7 @@ export class CalciteShell {
   }
 
   renderMain() {
-    const [primaryPanel] = getSlotted<HTMLCalciteShellPanelElement>(this.el, SLOTS.primaryPanel);
+    const primaryPanel = getSlotted<HTMLCalciteShellPanelElement>(this.el, SLOTS.primaryPanel);
 
     const mainClasses = {
       [CSS.mainReversed]: getCalcitePosition(primaryPanel?.position, primaryPanel?.layout) === "end"

@@ -136,7 +136,7 @@ export class CalciteActionBar {
       />
     ) : null;
 
-    return getSlotted(el, SLOTS.bottomActions)[0] || expandToggleNode ? (
+    return getSlotted(el, SLOTS.bottomActions) || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
         <slot name={SLOTS.bottomActions} />
         {expandToggleNode}

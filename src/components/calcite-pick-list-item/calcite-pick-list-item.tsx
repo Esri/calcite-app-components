@@ -209,7 +209,7 @@ export class CalcitePickListItem {
   }
 
   renderSecondaryAction() {
-    const [hasSecondaryAction] = getSlotted(this.el, SLOTS.secondaryAction);
+    const hasSecondaryAction = getSlotted(this.el, SLOTS.secondaryAction);
     return hasSecondaryAction ? (
       <div class={CSS.action}>
         <slot name={SLOTS.secondaryAction} />

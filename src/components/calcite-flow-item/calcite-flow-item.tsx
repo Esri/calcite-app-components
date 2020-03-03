@@ -113,7 +113,10 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   queryActions(): HTMLCalciteActionElement[] {
-    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
+    return getSlotted<HTMLCalciteActionElement>(this.el, SLOTS.menuActions, {
+      all: true,
+      selector: "calcite-action"
+    });
   }
 
   isValidKey(key: string, supportedKeys: string[]): boolean {
@@ -255,7 +258,7 @@ export class CalciteFlowItem {
   }
 
   renderFooterActions(): VNode {
-    const hasFooterActions = !!getSlotted(this.el, SLOTS.footerActions)[0];
+    const hasFooterActions = !!getSlotted(this.el, SLOTS.footerActions);
 
     return hasFooterActions ? (
       <div slot={PANEL_SLOTS.footer} class={CSS.footerActions}>
@@ -282,7 +285,7 @@ export class CalciteFlowItem {
   }
 
   renderHeaderActions(): VNode {
-    const [menuActionsNode] = getSlotted(this.el, SLOTS.menuActions);
+    const menuActionsNode = getSlotted(this.el, SLOTS.menuActions);
 
     const hasMenuActionsInBlacklisted =
       menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));

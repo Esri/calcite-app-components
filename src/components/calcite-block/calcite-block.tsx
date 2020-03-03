@@ -142,7 +142,7 @@ export class CalciteBlock {
       ? intlCollapse || textCollapse || TEXT.collapse
       : intlExpand || textExpand || TEXT.expand;
 
-    const [hasIcon] = getSlotted(el, SLOTS.icon);
+    const hasIcon = getSlotted(el, SLOTS.icon);
     const headerContent = (
       <header class={CSS.header}>
         {hasIcon ? (
@@ -157,7 +157,7 @@ export class CalciteBlock {
       </header>
     );
 
-    const [slottedControl] = getSlotted(el, SLOTS.control);
+    const slottedControl = getSlotted(el, SLOTS.control);
 
     const headerNode = (
       <div class={CSS.headerContainer}>

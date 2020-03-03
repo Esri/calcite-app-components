@@ -110,7 +110,7 @@ export class CalciteTip {
   renderImageFrame(): VNode {
     const { el } = this;
 
-    return getSlotted(el, SLOTS.thumbnail)[0] ? (
+    return getSlotted(el, SLOTS.thumbnail) ? (
       <div class={CSS.imageFrame}>
         <slot name={SLOTS.thumbnail} />
       </div>
