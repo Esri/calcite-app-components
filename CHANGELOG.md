@@ -3,6 +3,17 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.5.0](https://github.com/Esri/calcite-app-components/compare/v5.4.0...v5.5.0) (2020-03-03)
+
+### Features
+
+- **pick-list:** add removable prop for easier item removal ([#820](https://github.com/Esri/calcite-app-components/issues/820)) ([e41e460](https://github.com/Esri/calcite-app-components/commit/e41e460d3340d17a07b66dab9c648f783a638d1d)), closes [#753](https://github.com/Esri/calcite-app-components/issues/753)
+
+### Bug Fixes
+
+- **block-section:** increased top and bottom margins on block-section label to fix focus ring overlap ([#862](https://github.com/Esri/calcite-app-components/issues/862)) ([#863](https://github.com/Esri/calcite-app-components/issues/863)) ([3b00652](https://github.com/Esri/calcite-app-components/commit/3b006529abae911f3879127b087bf9ff3613bddb))
+- **flow-item:** update to only show fab-container when fab slot is used ([004019f](https://github.com/Esri/calcite-app-components/commit/004019f8042cb5a2fc9928b241e4da17b3fe4118))
+
 ## [5.4.0](https://github.com/Esri/calcite-app-components/compare/v5.3.2...v5.4.0) (2020-02-28)
 
 ### Features
