@@ -3,6 +3,12 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.5.1](https://github.com/Esri/calcite-app-components/compare/v5.5.0...v5.5.1) (2020-03-03)
+
+### Bug Fixes
+
+- **action:** When using tooltips with an action, browsers title popup shows up ([#872](https://github.com/Esri/calcite-app-components/issues/872)) ([0c1fa41](https://github.com/Esri/calcite-app-components/commit/0c1fa413a1dbfa80555214d98438689c79124137)), closes [#871](https://github.com/Esri/calcite-app-components/issues/871)
+
 ## [5.5.0](https://github.com/Esri/calcite-app-components/compare/v5.4.0...v5.5.0) (2020-03-03)
 
 ### Features
