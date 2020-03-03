@@ -72,7 +72,6 @@ describe("calcite-action", () => {
     await page.setContent(`<calcite-action text="hello world"></calcite-action>`);
 
     const button = await page.find(`calcite-action >>> .${CSS.button}`);
-    expect(button.getAttribute("title")).toBe("hello world");
     expect(button.getAttribute("aria-label")).toBe("hello world");
   });
 
@@ -81,7 +80,6 @@ describe("calcite-action", () => {
     await page.setContent(`<calcite-action text="hello world" label="hi"></calcite-action>`);
 
     const button = await page.find(`calcite-action >>> .${CSS.button}`);
-    expect(button.getAttribute("title")).toBe("hi");
     expect(button.getAttribute("aria-label")).toBe("hi");
   });
 
