@@ -17,7 +17,7 @@
       <section class="example-container">
         <h1>calcite-pick-list</h1>
 
-        <h2>Pick List - default selection - removable items</h2>
+        <h2>default selection - removable items</h2>
         <calcite-pick-list id="one">
           <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex" removable></calcite-pick-list-item>
           <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" removable selected></calcite-pick-list-item>
@@ -31,7 +31,7 @@
           pickList1.addEventListener("calciteListItemRemove", (event) => event.target.remove());
         </script>
 
-        <h2>Pick List - multi-select filter-enabled</h2>
+        <h2>multi-select filter-enabled</h2>
         <calcite-pick-list id="two" multiple filter-enabled>
           <calcite-action scale="s" text="filters" text-enabled="false" slot="menu-actions">
             <calcite-icon icon="sliders" scale="s"></calcite-icon>
@@ -87,7 +87,7 @@
           });
         </script>
 
-        <h2>Pick List with sub-groups</h2>
+        <h2>sub-groups filter-enabled multi-select</h2>
         <calcite-pick-list id="three" filter-enabled multiple>
           <calcite-pick-list-group>
             <calcite-pick-list-item text-label="You can count on numbers." text-description="Are real" value="numbers" slot="parent-item">
@@ -131,7 +131,7 @@
           });
         </script>
 
-        <h2>Pick List with sub-groups</h2>
+        <h2>grouped filter-enabled multi-select</h2>
         <calcite-pick-list id="four" filter-enabled multiple>
           <calcite-pick-list-group text-group-title="Cool group">
             <calcite-pick-list-item text-label="You can count on numbers."  value="numbers"></calcite-pick-list-item>
