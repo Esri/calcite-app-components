@@ -29,7 +29,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   *  ** DEPRECATED **Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
+   * ** DEPRECATED ** Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
    * This allows for a more compact version of the `calcite-pick-list-item`.
    */
   @Prop({ reflect: true }) compact? = false;
