@@ -46,7 +46,7 @@ export class CalciteValueList {
   // --------------------------------------------------------------------------
 
   /**
-   * Compact ** DEPRECATED ** reduces the size of all items in the list.
+   * ** DEPRECATED ** Compact reduces the size of all items in the list.
    */
   @Prop({ reflect: true }) compact = false;
 
