@@ -153,8 +153,7 @@ export class CalciteAction {
   render() {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const titleText = !textEnabled && text;
-    const title = label || titleText;
+    const ariaLabel = label || (!textEnabled && text);
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
@@ -167,8 +166,7 @@ export class CalciteAction {
       <Host>
         <button
           class={classnames(CSS.button, buttonClasses)}
-          title={title}
-          aria-label={title}
+          aria-label={ariaLabel}
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
