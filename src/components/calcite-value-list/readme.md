@@ -1,14 +1,12 @@
 # calcite-value-list
 
-`calcite-value-list` is housed in a panel and contains `calcite-value-list-item`s. The value list has options for drag and drop, label editing, and single or multi select of items which can be done through shift+click.
+`calcite-value-list` is housed in a panel and contains `calcite-value-list-item`s. The value list has options for drag and drop, label editing, and single or multi-select of items which can be done through shift+click.
 
 <!-- Auto Generated Below -->
 
 ## Usage
 
 ### Basic
-
-#### Basic
 
 Renders a value list with multiple items able to be selected and a filter.
 
@@ -38,10 +36,10 @@ Renders a value list with multiple items able to be selected and a filter.
 
 #### Drag and drop
 
-Renders a compact value list (no text descriptions) with drag and drop capability between the items.
+Renders a value list with drag and drop capability.
 
 ```html
-<calcite-value-list drag-enabled compact>
+<calcite-value-list drag-enabled>
   <calcite-value-list-item text-label="Rent" text-description="Mortgage + housing costs" value="rent">
   </calcite-value-list-item>
   <calcite-value-list-item text-label="Food" text-description="its what you eat." value="food">
