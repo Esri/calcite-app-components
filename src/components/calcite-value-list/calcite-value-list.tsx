@@ -47,6 +47,8 @@ export class CalciteValueList {
 
   /**
    * Compact reduces the size of all items in the list.
+   *
+   * @deprecated This property will be removed in a future release.
    */
   @Prop({ reflect: true }) compact = false;
 
@@ -103,7 +105,7 @@ export class CalciteValueList {
 
   sortables: Sortable[] = [];
 
-  @Element() el: HTMLCalciteValueListItemElement;
+  @Element() el: HTMLCalciteValueListElement;
 
   emitCalciteListChange: () => void;
 

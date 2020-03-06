@@ -25,6 +25,8 @@
     </header>
     <main>
       <section class="example-container" style="width: 28vw; margin-top: 2em;">
+        <h1>LTR</h1>
+        <h2>multi-select w/ filter</h2>
         <calcite-pick-list id="one" multiple filter-enabled>
           <calcite-action slot="menu-actions" indicator label="Cool" text="Cool"
             ><calcite-icon icon="hamburger" scale="s"></calcite-icon>
@@ -90,6 +92,7 @@
           });
         </script>
 
+        <h2>single-select</h2>
         <calcite-pick-list id="two">
           <calcite-pick-list-item
             text-label="ID"
@@ -121,35 +124,7 @@
           });
         </script>
 
-        <h4>Compact</h4>
-        <calcite-pick-list id="compact" compact>
-          <calcite-pick-list-item
-            text-heading="ID"
-            text-description="This is an id for this field and people use it for things."
-            value="ID"
-          >
-            <calcite-action slot="secondary-action" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="information" scale="s"></calcite-icon>
-            </calcite-action>
-          </calcite-pick-list-item>
-          <calcite-pick-list-item text-heading="OBJECTID" text-description="OBJECTID" value="OBJECTID">
-            <calcite-action slot="secondary-action" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="information" scale="s"></calcite-icon>
-            </calcite-action>
-          </calcite-pick-list-item>
-          <calcite-pick-list-item text-heading="ST_ABBREV" text-description="ST_ABBREV" value="ST_ABBREV">
-            <calcite-action slot="secondary-action" id="action-test" label="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="information" scale="s"></calcite-icon>
-            </calcite-action>
-          </calcite-pick-list-item>
-        </calcite-pick-list>
-        <script>
-          const pickListCompact = document.querySelector("#compact");
-          pickListCompact.addEventListener("calcitePickListSelectionChange", (event) => {
-            console.log(event.detail);
-          });
-        </script>
-
+        <h2>grouped single-select</h2>
         <calcite-pick-list id="three">
           <calcite-pick-list-group text-group-title="numbers">
             <calcite-pick-list-item
@@ -217,7 +192,8 @@
       </section>
       <!-- RTL -->
       <section class="example-container" style="width: 28vw; margin-top: 2em;" dir="rtl">
-        <h2>RTL</h2>
+        <h1>RTL</h1>
+        <h2>multi-select</h2>
         <calcite-pick-list id="one_rtl" multiple>
           <calcite-pick-list-item text-label="2018 Population Density (NO SUMMARY) (Esri)" value="POPDENS_CY">
             <calcite-action slot="secondary-action" id="action-test" label="click-me" onClick="console.log('clicked');">
@@ -268,6 +244,7 @@
           });
         </script>
 
+        <h2>single-select</h2>
         <calcite-pick-list id="two_rtl">
           <calcite-pick-list-item
             text-label="ID"
@@ -295,6 +272,7 @@
             console.log(event.detail);
           });
         </script>
+        <h2>grouped single-select</h2>
         <calcite-pick-list id="three_rtl">
           <calcite-pick-list-group text-group-title="numbers">
             <calcite-pick-list-item
