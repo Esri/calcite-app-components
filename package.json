@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@esri/calcite-components": "1.0.0-beta.20",
-    "@stencil/core": "1.9.0-18",
+    "@stencil/core": "1.9.0-22",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.1.1",
     "@stencil/state-tunnel": "1.0.1",
@@ -81,7 +81,7 @@
     "github-release-from-cc-changelog": "2.2.0",
     "husky": "4.2.3",
     "jest": "24.9.0",
-    "jest-axe": "3.3.0",
+    "jest-axe": "3.4.0",
     "jest-cli": "24.9.0",
     "jest-runner": "24.9.0",
     "lint-staged": "10.0.8",
