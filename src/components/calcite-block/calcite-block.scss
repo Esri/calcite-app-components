@@ -6,7 +6,7 @@
   padding: 0;
   border-bottom: 1px solid var(--calcite-app-border);
   border-top: 1px solid var(--calcite-app-border);
-  transition: margin 250ms ease-in-out;
+  transition: margin var(--calcite-app-animation-time) ease-in-out;
 
   --calcite-app-block-header-min-height: 2.5rem;
 }
@@ -17,6 +17,14 @@
 :host([open]) {
   margin-top: var(--calcite-app-cap-spacing-quarter);
   margin-bottom: var(--calcite-app-cap-spacing-quarter);
+  border-top: 1px solid var(--calcite-app-border-active);
+  // border-top: 1px solid var(--calcite-app-border);
+  // box-shadow: var(--calcite-app-shadow-2);
+  // .header .title .heading,
+  // .summary {
+  //   color: var(--calcite-app-foreground-active);
+  //   // background-color: var(--calcite-app-background-active);
+  // }
 }
 
 .header {
@@ -37,6 +45,8 @@
 
 :host([open]) .header-container {
   border-bottom: 1px solid var(--calcite-app-border);
+  // background-color: var(--calcite-app-background-active);
+  // color: var(--calcite-app-background);
 }
 
 :host([disabled]) {
@@ -59,12 +69,14 @@ calcite-loader[inline] {
 .header .title .heading {
   padding: 0;
   font-size: var(--calcite-app-font-size-0);
+  // transition: all var(--calcite-app-animation-time) ease-in-out;
 }
 
 .summary {
   color: var(--calcite-app-foreground-subtle);
   font-size: var(--calcite-app-font-size--1);
-  padding: 0 0 var(--calcite-app-cap-spacing-quarter);
+  padding: var(--calcite-app-cap-spacing-eighth) 0 var(--calcite-app-cap-spacing-quarter);
+  // transition: all var(--calcite-app-animation-time) ease-in-out;
 }
 
 .toggle {

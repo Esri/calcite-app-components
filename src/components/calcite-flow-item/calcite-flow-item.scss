@@ -17,7 +17,7 @@ calcite-panel {
   display: block;
   .heading {
     font-size: var(--calcite-app-font-size-0);
-    font-weight: var(--calcite-app-font-weight);
+    font-weight: var(--calcite-app-font-weight-demi);
     margin: 0 0 var(--calcite-app-cap-spacing-quarter);
     &:only-child {
       margin-bottom: 0;
