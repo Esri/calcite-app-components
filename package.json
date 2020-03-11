@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@esri/calcite-components": "1.0.0-beta.20",
-    "@stencil/core": "1.9.0",
+    "@stencil/core": "1.9.1",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.1.1",
     "@stencil/state-tunnel": "1.0.1",
@@ -59,7 +59,7 @@
     "@storybook/addon-knobs": "5.3.14",
     "@storybook/addon-notes": "5.3.14",
     "@storybook/html": "5.3.14",
-    "@types/autoprefixer": "9.7.0",
+    "@types/autoprefixer": "9.7.1",
     "@types/dedent": "0.7.0",
     "@types/jest": "24.0.21",
     "@types/jest-axe": "3.2.1",
