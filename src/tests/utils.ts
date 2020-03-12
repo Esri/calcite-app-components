@@ -8,7 +8,7 @@ export async function setUpPage(content: string, options?: SetUpPageOptions): Pr
   const page = await newE2EPage();
   await page.setContent(content);
 
-  if (options && options.withPeerDependencies) {
+  if (options?.withPeerDependencies) {
     await page.addScriptTag({
       url: "vendor/@esri/calcite-components/calcite.esm.js",
       type: "module"

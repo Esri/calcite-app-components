@@ -48,7 +48,7 @@ export class CalciteActionBar {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
-   * @deprecated since 5.4.0 - use "intlExpand" instead.
+   * @deprecated use "intlExpand" instead.
    */
   @Prop() textExpand?: string;
 
@@ -59,7 +59,7 @@ export class CalciteActionBar {
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
-   * @deprecated since 5.4.0 - use "intlCollapse" instead.
+   * @deprecated use "intlCollapse" instead.
    */
   @Prop() textCollapse?: string;
 
@@ -69,9 +69,10 @@ export class CalciteActionBar {
   @Prop() intlCollapse?: string;
 
   /**
-   * @deprecated since 5.3.0 - use "position" instead.
    * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
    * in a LTR app will appear on the left.
+   *
+   * @deprecated use "position" instead.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
 

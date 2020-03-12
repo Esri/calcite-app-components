@@ -47,7 +47,7 @@ export class CalciteActionPad {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
-   * @deprecated since 5.4.0 - use "intlExpand" instead.
+   * @deprecated use "intlExpand" instead.
    */
   @Prop() textExpand?: string;
 
@@ -58,7 +58,7 @@ export class CalciteActionPad {
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
-   * @deprecated since 5.4.0 - use "intlCollapse" instead.
+   * @deprecated use "intlCollapse" instead.
    */
   @Prop() textCollapse?: string;
 
@@ -68,8 +68,9 @@ export class CalciteActionPad {
   @Prop() intlCollapse?: string;
 
   /**
-   * @deprecated since 5.3.0 - use "position" instead.
    * Arrangement of the component.
+   *
+   * @deprecated use "position" instead.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
 

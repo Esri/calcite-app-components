@@ -41,8 +41,9 @@ export class CalciteShellPanel {
   @Prop({ reflect: false }) detachedScale: CalciteScale = "m";
 
   /**
-   * @deprecated since 5.3.0 - use "position" instead.
    * Arrangement of the component.
+   *
+   * @deprecated use "position" instead.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
 
