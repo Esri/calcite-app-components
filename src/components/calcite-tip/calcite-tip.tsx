@@ -47,7 +47,7 @@ export class CalciteTip {
 
   /**
    * Alternate text for closing the tip.
-   * @deprecated since 5.4.0 - use "intlClose" instead.
+   * @deprecated use "intlClose" instead.
    */
   @Prop() textClose?: string;
 

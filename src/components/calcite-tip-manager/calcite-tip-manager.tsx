@@ -47,7 +47,7 @@ export class CalciteTipManager {
 
   /**
    * Alternate text for closing the tip.
-   * @deprecated since 5.4.0 - use "intlClose" instead.
+   * @deprecated use "intlClose" instead.
    */
   @Prop() textClose?: string;
 
@@ -58,7 +58,7 @@ export class CalciteTipManager {
 
   /**
    * The default group title for the `calcite-tip-manager`.
-   * @deprecated since 5.4.0 - use "intlDefaultTitle" instead.
+   * @deprecated use "intlDefaultTitle" instead.
    */
   @Prop() textDefaultTitle?: string;
 
@@ -69,7 +69,7 @@ export class CalciteTipManager {
 
   /**
    * Alternate text for navigating to the next tip.
-   * @deprecated since 5.4.0 - use "intlNext" instead.
+   * @deprecated use "intlNext" instead.
    */
   @Prop() textNext?: string;
 
@@ -80,7 +80,7 @@ export class CalciteTipManager {
 
   /**
    * Label that appears on hover of pagination icon.
-   * @deprecated since 5.4.0 - use "intlPaginationLabel" instead.
+   * @deprecated use "intlPaginationLabel" instead.
    */
   @Prop() textPaginationLabel?: string;
 
@@ -91,7 +91,7 @@ export class CalciteTipManager {
 
   /**
    * Alternate text for navigating to the previous tip.
-   * @deprecated since 5.4.0 - use "intlPrevious" instead.
+   * @deprecated use "intlPrevious" instead.
    */
   @Prop() textPrevious?: string;
 
