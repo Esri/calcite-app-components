@@ -9,14 +9,13 @@ import {
   Watch,
   h
 } from "@stencil/core";
-import { CSS, ICONS, SLOTS } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
-import intl from "../intl/en-us";
 
 type FocusId = "dismiss-button";
 
@@ -166,7 +165,7 @@ export class CalcitePanel {
 
   renderHeaderTrailingContent(): VNode {
     const { dismiss, dismissible, intlClose, textClose } = this;
-    const text = intlClose || textClose || intl.close;
+    const text = intlClose || textClose || TEXT.close;
 
     const dismissibleNode = dismissible ? (
       <calcite-action

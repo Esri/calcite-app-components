@@ -18,3 +18,7 @@ export const SLOTS = {
   headerTrailingContent: "header-trailing-content",
   footer: "footer"
 };
+
+export const TEXT = {
+  close: "Close"
+};

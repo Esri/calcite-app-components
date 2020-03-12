@@ -3,9 +3,8 @@ import { Attributes, createComponentHTML as create, darkBackground, parseReadme 
 import { ATTRIBUTES } from "../../../.storybook/resources";
 const { dir, theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
-import { SLOTS } from "./resources";
+import { SLOTS, TEXT } from "./resources";
 import dedent from "dedent";
-import intl from "../intl/en-us";
 
 export default {
   title: "components|calcite-panel",
@@ -43,7 +42,7 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "intl-close",
-    value: text("intlClose", intl.close)
+    value: text("intlClose", TEXT.close)
   },
   {
     name: "theme",

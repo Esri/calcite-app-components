@@ -24,3 +24,9 @@ export const ICONS = {
   backLeft: "chevron-left",
   backRight: "chevron-right"
 };
+
+export const TEXT = {
+  back: "Back",
+  open: "Open",
+  close: "Close"
+};
