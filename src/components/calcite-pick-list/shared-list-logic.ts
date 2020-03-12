@@ -31,13 +31,13 @@ export function cleanUpObserver<T extends Lists>(this: List<T>): void {
   this.observer.disconnect();
 }
 
-export function // --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 //
 //  Listeners
 //
 // --------------------------------------------------------------------------
 
-calciteListItemChangeHandler<T extends Lists>(this: List<T>, event: CustomEvent): void {
+export function calciteListItemChangeHandler<T extends Lists>(this: List<T>, event: CustomEvent): void {
   const { selectedValues } = this;
   const { item, value, selected, shiftPressed } = event.detail;
   if (selected) {
@@ -62,12 +62,12 @@ calciteListItemChangeHandler<T extends Lists>(this: List<T>, event: CustomEvent)
 export function calciteListItemValueChangeHandler<T extends Lists>(this: List<T>, event: CustomEvent): void {
   event.stopPropagation();
   const oldValue = event.detail.oldValue;
-  type SelectedValuesMap = Map<string, ListItemElement<T>>;
+  const selectedValues = this.selectedValues as Map<string, ListItemElement<T>>;
 
-  if (this.selectedValues.has(oldValue)) {
-    const item = (this.selectedValues as SelectedValuesMap).get(oldValue);
-    this.selectedValues.delete(oldValue);
-    (this.selectedValues as SelectedValuesMap).set(event.detail.newValue, item);
+  if (selectedValues.has(oldValue)) {
+    const item = selectedValues.get(oldValue);
+    selectedValues.delete(oldValue);
+    selectedValues.set(event.detail.newValue, item);
   }
 }
 
