@@ -21,6 +21,8 @@ export class CalciteValueListItem {
 
   /**
    * Compact reduces the size of the item.
+   *
+   * @deprecated This property will be removed in a future release.
    */
   @Prop({ reflect: true }) compact? = false;
 

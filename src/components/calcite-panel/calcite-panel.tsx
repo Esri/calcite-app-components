@@ -72,7 +72,13 @@ export class CalcitePanel {
   /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() intlClose?: string;
+
+  /**
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
+   * @deprecated use "intlClose" instead.
+   */
+  @Prop() textClose?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -169,13 +175,14 @@ export class CalcitePanel {
   }
 
   renderHeaderTrailingContent(): VNode {
-    const { dismiss, dismissible, textClose } = this;
+    const { dismiss, dismissible, intlClose, textClose } = this;
+    const text = intlClose || textClose || TEXT.close;
 
     const dismissibleNode = dismissible ? (
       <calcite-action
         ref={(dismissButtonEl) => (this.dismissButtonEl = dismissButtonEl)}
-        aria-label={textClose}
-        text={textClose}
+        aria-label={text}
+        text={text}
         onClick={dismiss}
       >
         <calcite-icon scale="s" icon={ICONS.close} />

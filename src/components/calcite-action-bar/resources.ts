@@ -5,3 +5,8 @@ export const CSS = {
 export const SLOTS = {
   bottomActions: "bottom-actions"
 };
+
+export const TEXT = {
+  expand: "Expand",
+  collapse: "Collapse"
+};

@@ -33,8 +33,8 @@ const createAttributes: () => Attributes = () => [
     value: text("heading", "My Tip")
   },
   {
-    name: "text-close",
-    value: text("textClose", TEXT.close)
+    name: "intl-close",
+    value: text("intlClose", TEXT.close)
   },
   {
     name: "theme",
