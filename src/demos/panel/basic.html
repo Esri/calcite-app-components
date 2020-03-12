@@ -52,6 +52,87 @@
           }, 3000);
         </script>
 
+        <h2>Scrolling Panel</h2>
+        <calcite-panel style="height: 500px;" id="panel">
+          <div slot="header-content">panel header</div>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+        </calcite-panel>
+        <script>
+          const panel = document.getElementById("panel");
+          panel.addEventListener("calcitePanelScroll", function(event) {
+            console.log("scrolled", event);
+          });
+        </script>
+
         <div class="panel-container" dir="rtl">
           <h2>RTL</h2>
 

@@ -12,6 +12,7 @@
 | `disabled`               | `disabled`         | When true, the item cannot be clicked and is visually muted                                       | `boolean`                                                   | `false`     |
 | `icon`                   | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.      | `ICON_TYPES.circle or ICON_TYPES.grip or ICON_TYPES.square` | `null`      |
 | `metadata`               | --                 | Used to provide additional metadata to an item, primarily used when the parent list has a filter. | `object`                                                    | `undefined` |
+| `removable`              | `removable`        | Set this to true to display a remove action that removes the item from the list.                  | `boolean`                                                   | `false`     |
 | `selected`               | `selected`         | Set this to true to pre-select an item. Toggles when an item is checked/unchecked.                | `boolean`                                                   | `false`     |
 | `textDescription`        | `text-description` | An optional description for this item. Will appear below the label text.                          | `string`                                                    | `undefined` |
 | `textLabel` _(required)_ | `text-label`       | The main label for this item. Appears next to the icon.                                           | `string`                                                    | `undefined` |
@@ -42,6 +43,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   calcite-value-list-item --> calcite-pick-list-item
+  calcite-pick-list-item --> calcite-action
   style calcite-value-list-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
