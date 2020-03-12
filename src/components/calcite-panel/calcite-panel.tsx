@@ -76,7 +76,7 @@ export class CalcitePanel {
 
   /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
-   * @deprecated since 5.4.0 - use "intlClose" instead.
+   * @deprecated use "intlClose" instead.
    */
   @Prop() textClose?: string;
 

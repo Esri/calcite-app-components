@@ -74,7 +74,7 @@ export class CalciteFlowItem {
 
   /**
    * 'Back' text string.
-   * @deprecated since 5.4.0 - use "intlBack" instead.
+   * @deprecated use "intlBack" instead.
    */
   @Prop() textBack?: string;
 
@@ -85,7 +85,7 @@ export class CalciteFlowItem {
 
   /**
    * 'Close' text string for the menu.
-   * @deprecated since 5.4.0 - use "intlClose" instead.
+   * @deprecated use "intlClose" instead.
    */
   @Prop() textClose?: string;
 
@@ -96,7 +96,7 @@ export class CalciteFlowItem {
 
   /**
    * 'Open' text string for the menu.
-   * @deprecated since 5.4.0 - use "intlOpen" instead.
+   * @deprecated use "intlOpen" instead.
    */
   @Prop() textOpen?: string;
 
