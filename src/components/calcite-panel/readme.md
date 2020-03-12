@@ -80,6 +80,7 @@ Renders a panel that is dismissible with a click of the "x".
 | Event                         | Description                                     | Type               |
 | ----------------------------- | ----------------------------------------------- | ------------------ |
 | `calcitePanelDismissedChange` | Emitted when the close button has been clicked. | `CustomEvent<any>` |
+| `calcitePanelScroll`          | Emitted when the content has been scrolled.     | `CustomEvent<any>` |
 
 ## Methods
 

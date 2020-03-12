@@ -16,10 +16,6 @@ export default {
 
 const createAttributes: () => Attributes = () => [
   {
-    name: "compact",
-    value: boolean("compact", false)
-  },
-  {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
   },

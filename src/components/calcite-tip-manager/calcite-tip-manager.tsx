@@ -41,29 +41,59 @@ export class CalciteTipManager {
   }
 
   /**
-   * Alternate text for closing the `calcite-tip-manager`.
+   * Alternate text for closing the tip.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() intlClose?: string;
+
+  /**
+   * Alternate text for closing the tip.
+   * @deprecated use "intlClose" instead.
+   */
+  @Prop() textClose?: string;
 
   /**
    * The default group title for the `calcite-tip-manager`.
    */
-  @Prop({ reflect: true }) textDefaultTitle = TEXT.defaultGroupTitle;
+  @Prop() intlDefaultTitle?: string;
+
+  /**
+   * The default group title for the `calcite-tip-manager`.
+   * @deprecated use "intlDefaultTitle" instead.
+   */
+  @Prop() textDefaultTitle?: string;
 
   /**
    * Alternate text for navigating to the next tip.
    */
-  @Prop() textNext = TEXT.next;
+  @Prop() intlNext?: string;
+
+  /**
+   * Alternate text for navigating to the next tip.
+   * @deprecated use "intlNext" instead.
+   */
+  @Prop() textNext?: string;
 
   /**
    * Label that appears on hover of pagination icon.
    */
-  @Prop({ reflect: true }) textPaginationLabel = TEXT.defaultPaginationLabel;
+  @Prop() intlPaginationLabel?: string;
+
+  /**
+   * Label that appears on hover of pagination icon.
+   * @deprecated use "intlPaginationLabel" instead.
+   */
+  @Prop() textPaginationLabel?: string;
 
   /**
    * Alternate text for navigating to the previous tip.
    */
-  @Prop() textPrevious = TEXT.previous;
+  @Prop() intlPrevious?: string;
+
+  /**
+   * Alternate text for navigating to the previous tip.
+   * @deprecated use "intlPrevious" instead.
+   */
+  @Prop() textPrevious?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -92,7 +122,7 @@ export class CalciteTipManager {
 
   @State() direction: "advancing" | "retreating";
 
-  @State() groupTitle = this.textDefaultTitle;
+  @State() groupTitle: string;
 
   observer = new MutationObserver(() => this.setUpTips());
 
@@ -187,7 +217,11 @@ export class CalciteTipManager {
   updateGroupTitle() {
     const selectedTip = this.tips[this.selectedIndex];
     const tipParent = selectedTip.closest("calcite-tip-group");
-    this.groupTitle = (tipParent && tipParent.textGroupTitle) || this.textDefaultTitle;
+    this.groupTitle =
+      tipParent?.textGroupTitle ||
+      this.intlDefaultTitle ||
+      this.textDefaultTitle ||
+      TEXT.defaultGroupTitle;
   }
 
   previousClicked = (): void => {
@@ -235,21 +269,34 @@ export class CalciteTipManager {
 
   renderPagination() {
     const dir = getElementDir(this.el);
-    const { selectedIndex, tips, total } = this;
+    const {
+      selectedIndex,
+      tips,
+      total,
+      intlNext,
+      textNext,
+      intlPrevious,
+      textPrevious,
+      intlPaginationLabel,
+      textPaginationLabel
+    } = this;
+
+    const nextLabel = intlNext || textNext || TEXT.next;
+    const previousLabel = intlPrevious || textPrevious || TEXT.previous;
+    const paginationLabel =
+      intlPaginationLabel || textPaginationLabel || TEXT.defaultPaginationLabel;
 
     return tips.length > 1 ? (
       <footer class={CSS.pagination}>
         <calcite-action
-          text={this.textPrevious}
+          text={previousLabel}
           onClick={this.previousClicked}
           class={CSS.pagePrevious}
         >
           <calcite-icon scale="s" icon={dir === "ltr" ? ICONS.chevronLeft : ICONS.chevronRight} />
         </calcite-action>
-        <span class={CSS.pagePosition}>
-          {`${this.textPaginationLabel} ${selectedIndex + 1}/${total}`}
-        </span>
-        <calcite-action text={this.textNext} onClick={this.nextClicked} class={CSS.pageNext}>
+        <span class={CSS.pagePosition}>{`${paginationLabel} ${selectedIndex + 1}/${total}`}</span>
+        <calcite-action text={nextLabel} onClick={this.nextClicked} class={CSS.pageNext}>
           <calcite-icon scale="s" icon={dir === "ltr" ? ICONS.chevronRight : ICONS.chevronLeft} />
         </calcite-action>
       </footer>
@@ -257,7 +304,9 @@ export class CalciteTipManager {
   }
 
   render() {
-    const { closed, direction, groupTitle, selectedIndex, textClose, total } = this;
+    const { closed, direction, groupTitle, selectedIndex, intlClose, textClose, total } = this;
+
+    const closeLabel = intlClose || textClose || TEXT.close;
 
     if (total === 0) {
       return <Host />;
@@ -276,7 +325,7 @@ export class CalciteTipManager {
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}
             </h2>
-            <calcite-action text={textClose} onClick={this.hideTipManager} class={CSS.close}>
+            <calcite-action text={closeLabel} onClick={this.hideTipManager} class={CSS.close}>
               <calcite-icon scale="s" icon={ICONS.close} />
             </calcite-action>
           </header>

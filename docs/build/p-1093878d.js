@@ -1,0 +1,1 @@
+function n(n){return function(n){const t=n.closest("[dir]");return t?t.getAttribute("dir"):"ltr"}(n)}function t(n){n&&("setFocus"in n&&"function"==typeof n.setFocus?n.setFocus():n.focus())}function r(n,t){return n||(t?"trailing"===t?"end":"start":void 0)}function i(n,t){return Array.from(n.querySelectorAll(`[slot="${t}"]`))}export{r as a,i as b,t as f,n as g};

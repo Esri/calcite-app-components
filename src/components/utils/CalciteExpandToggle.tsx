@@ -4,8 +4,8 @@ import { CalcitePosition } from "../interfaces";
 
 interface CalciteExpandToggleProps {
   expanded: boolean;
-  textExpand: string;
-  textCollapse: string;
+  intlExpand: string;
+  intlCollapse: string;
   el: HTMLElement;
   position: CalcitePosition;
   toggleExpand: () => void;
@@ -18,12 +18,15 @@ const ICONS = {
 
 function getClosestShellPosition(el: HTMLElement): CalcitePosition | null {
   const shellNode = el.closest("calcite-shell-panel");
-
   if (!shellNode) {
     return;
   }
-
-  return shellNode.position;
+  if (shellNode.position) {
+    return shellNode.position;
+  }
+  if (shellNode.layout) {
+    return shellNode.layout === "trailing" ? "end" : "start";
+  }
 }
 
 function getCalcitePosition(position: CalcitePosition, el: HTMLElement) {
@@ -42,15 +45,15 @@ export function toggleChildActionText({
 
 export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> = ({
   expanded,
-  textExpand,
-  textCollapse,
+  intlExpand,
+  intlCollapse,
   toggleExpand,
   el,
   position
 }) => {
   const rtl = getElementDir(el) === "rtl";
 
-  const expandText = expanded ? textCollapse : textExpand;
+  const expandText = expanded ? intlCollapse : intlExpand;
   const icons = [ICONS.chevronsLeft, ICONS.chevronsRight];
 
   if (rtl) {

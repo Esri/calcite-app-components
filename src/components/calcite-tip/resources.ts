@@ -8,14 +8,14 @@ export const CSS = {
   info: "info"
 };
 
-export const TEXT = {
-  close: "Close"
-};
-
 export const ICONS = {
   close: "x"
 };
 
 export const SLOTS = {
   thumbnail: "thumbnail"
+};
+
+export const TEXT = {
+  close: "Close"
 };

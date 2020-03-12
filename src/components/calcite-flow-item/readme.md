@@ -26,6 +26,7 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 | Event                      | Description                                    | Type               |
 | -------------------------- | ---------------------------------------------- | ------------------ |
 | `calciteFlowItemBackClick` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
+| `calciteFlowItemScroll`    | Emitted when the content has been scrolled.    | `CustomEvent<any>` |
 
 ## Slots
 
