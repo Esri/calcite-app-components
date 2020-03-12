@@ -4,7 +4,7 @@ import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
 const { dir, position, theme } = ATTRIBUTES;
-import intl from "../intl/en-us";
+import { TEXT } from "./resources";
 
 export default {
   title: "components|calcite-action-pad",
@@ -34,11 +34,11 @@ const createAttributes: () => Attributes = () => [
   },
   {
     name: "intl-expand",
-    value: text("intlExpand", intl.expand)
+    value: text("intlExpand", TEXT.expand)
   },
   {
     name: "intl-collapse",
-    value: text("intlCollapse", intl.collapse)
+    value: text("intlCollapse", TEXT.collapse)
   },
   {
     name: "theme",

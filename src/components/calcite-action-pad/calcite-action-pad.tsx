@@ -1,9 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-import { CSS } from "./resources";
+import { CSS, TEXT } from "./resources";
 import { getCalcitePosition } from "../utils/dom";
-import intl from "../intl/en-us";
 
 /**
  * @slot - A slot for adding `calcite-action`s to the action pad.
@@ -147,8 +146,8 @@ export class CalciteActionPad {
       toggleExpand
     } = this;
 
-    const expandLabel = intlExpand || textExpand || intl.expand;
-    const collapseLabel = intlCollapse || textCollapse || intl.collapse;
+    const expandLabel = intlExpand || textExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle

@@ -1,9 +1,8 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
 import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-import { CSS, SLOTS } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
 import { getCalcitePosition } from "../utils/dom";
-import intl from "../intl/en-us";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -150,8 +149,8 @@ export class CalciteActionBar {
       toggleExpand
     } = this;
 
-    const expandLabel = intlExpand || textExpand || intl.expand;
-    const collapseLabel = intlCollapse || textCollapse || intl.collapse;
+    const expandLabel = intlExpand || textExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
