@@ -23,14 +23,33 @@ export class CalciteFilter {
   @Prop() data: object[];
 
   /**
+   * A text label that will appear on the clear button.
+   */
+  @Prop() intlClear?: string;
+
+  /**
    * A text label that will appear next to the input field.
    */
-  @Prop() textLabel: string;
+  @Prop() intlLabel?: string;
 
   /**
    * Placeholder text for the input element's placeholder attribute
    */
-  @Prop() textPlaceholder: string;
+  @Prop() placeholder?: string;
+
+  /**
+   * A text label that will appear next to the input field.
+   *
+   * @deprecated use "intlLabel" instead.
+   */
+  @Prop() textLabel?: string;
+
+  /**
+   * Placeholder text for the input element's placeholder attribute
+   *
+   * @deprecated use "placeholder" instead.
+   */
+  @Prop() textPlaceholder?: string;
 
   // --------------------------------------------------------------------------
   //
@@ -117,9 +136,9 @@ export class CalciteFilter {
           <input
             type="text"
             value=""
-            placeholder={this.textPlaceholder}
+            placeholder={this.placeholder || this.textPlaceholder}
             onInput={this.inputHandler}
-            aria-label={this.textLabel || TEXT.filterLabel}
+            aria-label={this.intlLabel || this.textLabel || TEXT.filterLabel}
             ref={(el) => (this.textInput = el as HTMLInputElement)}
           />
           <div class={CSS.searchIcon}>
@@ -127,7 +146,11 @@ export class CalciteFilter {
           </div>
         </label>
         {!this.empty ? (
-          <button onClick={this.clear} class={CSS.clearButton} aria-label={TEXT.clear}>
+          <button
+            onClick={this.clear}
+            class={CSS.clearButton}
+            aria-label={this.intlClear || TEXT.clear}
+          >
             <calcite-icon icon={ICONS.close} />
           </button>
         ) : null}

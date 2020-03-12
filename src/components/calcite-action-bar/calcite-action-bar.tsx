@@ -56,9 +56,10 @@ export class CalciteActionBar {
   @Prop() textCollapse = "Collapse";
 
   /**
-   * @deprecated since 5.3 - use "position" instead.
    * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
    * in a LTR app will appear on the left.
+   *
+   * @deprecated use "position" instead.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
 

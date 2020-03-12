@@ -31,6 +31,10 @@ const createAttributes: () => Attributes = () => [
     value: boolean("disabled", false)
   },
   {
+    name: "icon",
+    value: text("icon", "beaker")
+  },
+  {
     name: "indicator",
     value: boolean("indicator", false)
   },
@@ -60,5 +64,4 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () =>
-  create("calcite-action", createAttributes(), `<calcite-icon scale="s" icon="beaker"></calcite-icon>`);
+export const basic = () => create("calcite-action", createAttributes(), "");
