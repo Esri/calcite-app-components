@@ -1,8 +1,7 @@
 import { newE2EPage } from "@stencil/core/testing";
-import { CSS } from "./resources";
+import { CSS, TEXT } from "./resources";
 import { accessible } from "../../tests/commonTests";
 import { setUpPage } from "../../tests/utils";
-import intl from "../intl/en-us";
 
 describe("calcite-tip-manager", () => {
   describe("first render", () => {
@@ -18,7 +17,7 @@ describe("calcite-tip-manager", () => {
       expect(isVisible).toBe(true);
 
       const title = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
-      expect(title.innerText).toBe(intl.tipGroupTitle);
+      expect(title.innerText).toBe(TEXT.defaultGroupTitle);
     });
 
     it("is accessible", async () =>
@@ -96,7 +95,7 @@ describe("calcite-tip-manager", () => {
       expect(selectedTip.id).toEqual("one"); // default selected tip is index 0
 
       let paginationText = await page.find(`calcite-tip-manager >>> .${CSS.pagePosition}`);
-      expect(paginationText.textContent).toEqual(`${intl.tipPaginationLabel} 1/2`);
+      expect(paginationText.textContent).toEqual(`${TEXT.defaultPaginationLabel} 1/2`);
 
       const nextButton = await page.find(`calcite-tip-manager >>> .${CSS.pageNext}`);
       await nextButton.click();
@@ -106,7 +105,7 @@ describe("calcite-tip-manager", () => {
       expect(selectedTip.id).toEqual("two");
 
       paginationText = await page.find(`calcite-tip-manager >>> .${CSS.pagePosition}`);
-      expect(paginationText.textContent).toEqual(`${intl.tipPaginationLabel} 2/2`);
+      expect(paginationText.textContent).toEqual(`${TEXT.defaultPaginationLabel} 2/2`);
 
       const previousButton = await page.find(`calcite-tip-manager >>> .${CSS.pagePrevious}`);
       await previousButton.click();
@@ -116,7 +115,7 @@ describe("calcite-tip-manager", () => {
       expect(selectedTip.id).toEqual("one");
 
       paginationText = await page.find(`calcite-tip-manager >>> .${CSS.pagePosition}`);
-      expect(paginationText.textContent).toEqual(`${intl.tipPaginationLabel} 1/2`);
+      expect(paginationText.textContent).toEqual(`${TEXT.defaultPaginationLabel} 1/2`);
     });
 
     // TODO: split the group-title test into one for first render, and another for pagination
@@ -159,7 +158,7 @@ describe("calcite-tip-manager", () => {
       await nextButton.click();
 
       const defaultTitleNode = await page.find(`calcite-tip-manager >>> .${CSS.heading}`);
-      expect(defaultTitleNode.innerText).toBe(intl.tipGroupTitle);
+      expect(defaultTitleNode.innerText).toBe(TEXT.defaultGroupTitle);
     });
     it("pagination should be hidden if there is 1 or fewer tips", async () => {
       const page = await newE2EPage();

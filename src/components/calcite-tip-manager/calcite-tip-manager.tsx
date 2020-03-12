@@ -11,10 +11,9 @@ import {
   h
 } from "@stencil/core";
 import classnames from "classnames";
-import { CSS, ICONS } from "./resources";
+import { CSS, ICONS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
-import intl from "../intl/en-us";
 
 /**
  * @slot - A slot for adding `calcite-tip`s.
@@ -220,7 +219,7 @@ export class CalciteTipManager {
     const tipParent = selectedTip.closest("calcite-tip-group");
     const parentGroupTitle = tipParent && tipParent.textGroupTitle;
     this.groupTitle =
-      parentGroupTitle || this.intlDefaultTitle || this.textDefaultTitle || intl.tipGroupTitle;
+      parentGroupTitle || this.intlDefaultTitle || this.textDefaultTitle || TEXT.defaultGroupTitle;
   }
 
   previousClicked = (): void => {
@@ -280,9 +279,10 @@ export class CalciteTipManager {
       textPaginationLabel
     } = this;
 
-    const nextLabel = intlNext || textNext || intl.next;
-    const previousLabel = intlPrevious || textPrevious || intl.previous;
-    const paginationLabel = intlPaginationLabel || textPaginationLabel || intl.tipPaginationLabel;
+    const nextLabel = intlNext || textNext || TEXT.next;
+    const previousLabel = intlPrevious || textPrevious || TEXT.previous;
+    const paginationLabel =
+      intlPaginationLabel || textPaginationLabel || TEXT.defaultPaginationLabel;
 
     return tips.length > 1 ? (
       <footer class={CSS.pagination}>
@@ -304,7 +304,7 @@ export class CalciteTipManager {
   render() {
     const { closed, direction, groupTitle, selectedIndex, intlClose, textClose, total } = this;
 
-    const closeLabel = intlClose || textClose || intl.close;
+    const closeLabel = intlClose || textClose || TEXT.close;
 
     if (total === 0) {
       return <Host />;

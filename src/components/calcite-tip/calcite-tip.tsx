@@ -1,8 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
 import { CalciteTheme } from "../interfaces";
-import { CSS, ICONS, SLOTS } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/internal";
-import intl from "../intl/en-us";
 
 /**
  * @slot thumbnail - A slot for adding an HTML image element to the tip.
@@ -96,7 +95,7 @@ export class CalciteTip {
 
   renderHeader(): VNode {
     const { nonDismissible, hideTip, intlClose, textClose, heading } = this;
-    const text = intlClose || textClose || intl.close;
+    const text = intlClose || textClose || TEXT.close;
 
     const dismissButtonNode = !nonDismissible ? (
       <calcite-action text={text} onClick={hideTip} class={CSS.close}>

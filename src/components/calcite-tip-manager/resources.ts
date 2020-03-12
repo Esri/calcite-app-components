@@ -17,3 +17,11 @@ export const ICONS = {
   chevronRight: "chevron-right",
   close: "x"
 };
+
+export const TEXT = {
+  defaultGroupTitle: "Tips",
+  defaultPaginationLabel: "Tip",
+  close: "Close",
+  previous: "Previous",
+  next: "Next"
+};
