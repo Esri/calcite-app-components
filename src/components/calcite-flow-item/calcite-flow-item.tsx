@@ -292,7 +292,7 @@ export class CalciteFlowItem {
     const hasHeaderContentSlot = !!this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
 
     return hasHeaderContentSlot ? (
-      <div slot={PANEL_SLOTS.headerContent}>
+      <div class={CSS.header} slot={PANEL_SLOTS.headerContent}>
         <slot name={SLOTS.headerContent} />
       </div>
     ) : null;

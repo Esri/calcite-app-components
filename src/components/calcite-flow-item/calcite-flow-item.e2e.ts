@@ -21,6 +21,28 @@ describe("calcite-flow-item", () => {
     expect(singleActionContainer).toBeNull();
   });
 
+  it("header-content slot should override header", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item heading="my heading">
+      <button id="test" slot="header-content"></button>
+    </calcite-flow-item>
+  `;
+
+    await page.setContent(pageContent);
+
+    await page.waitForChanges();
+
+    const headingNode = await page.find(`calcite-flow-item >>> .${CSS.heading}`);
+
+    expect(headingNode).toBeNull();
+
+    const headerNode = await page.find(`calcite-flow-item >>> .${CSS.header}`);
+
+    expect(headerNode).not.toBeNull();
+  });
+
   it("should not show menu button when actions are inside blacklisted component", async () => {
     const page = await newE2EPage();
 
