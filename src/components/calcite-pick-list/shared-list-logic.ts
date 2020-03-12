@@ -167,9 +167,9 @@ export function getItemData<T extends Lists>(
   this: List<T>
 ): { label: string; description: string; metadata: object; value: string }[] {
   return (this.items as ListItemElement<T>[]).map((item) => ({
-    label: item?.textLabel,
-    description: item?.textDescription,
-    metadata: item?.metadata,
-    value: item?.value
+    label: item.textLabel,
+    description: item.textDescription,
+    metadata: item.metadata,
+    value: item.value
   }));
 }
