@@ -29,8 +29,6 @@ export function getCalcitePosition(position: CalcitePosition, layout: CalciteLay
   if (layout) {
     return layout === "trailing" ? "end" : "start";
   }
-
-  return "start";
 }
 
 interface GetSlottedOptions {

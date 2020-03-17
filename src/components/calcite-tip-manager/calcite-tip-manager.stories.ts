@@ -25,24 +25,24 @@ const createAttributes: () => Attributes = () => [
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
-    name: "text-close",
-    value: text("textClose", TEXT.close)
+    name: "intl-close",
+    value: text("intlClose", TEXT.close)
   },
   {
     name: "text-defalut-title",
     value: text("textDefaultTitle", TEXT.defaultGroupTitle)
   },
   {
-    name: "text-pagination-label",
-    value: text("textPaginationLabel", TEXT.defaultPaginationLabel)
+    name: "intl-pagination-label",
+    value: text("intlPaginationLabel", TEXT.defaultPaginationLabel)
   },
   {
-    name: "text-next",
-    value: text("textNext", TEXT.next)
+    name: "intl-next",
+    value: text("intlNext", TEXT.next)
   },
   {
-    name: "text-previous",
-    value: text("textPrevious", TEXT.previous)
+    name: "intl-previous",
+    value: text("intlPrevious", TEXT.previous)
   },
   {
     name: "theme",

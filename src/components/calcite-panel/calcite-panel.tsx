@@ -23,6 +23,7 @@ type FocusId = "dismiss-button";
  * @slot header-content - A slot for adding content in the center of the header.
  * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
  * @slot header-trailing-content - A slot for adding a `calcite-action` on the trailing side of the header.
+ * @slot fab - A slot for adding a `calcite-fab` (floating action button) to perform an action.
  * @slot footer - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the panel.
  */
@@ -71,7 +72,13 @@ export class CalcitePanel {
   /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() intlClose?: string;
+
+  /**
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
+   * @deprecated use "intlClose" instead.
+   */
+  @Prop() textClose?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -102,6 +109,12 @@ export class CalcitePanel {
 
   @Event() calcitePanelDismissedChange: EventEmitter;
 
+  /**
+   * Emitted when the content has been scrolled.
+   */
+
+  @Event() calcitePanelScroll: EventEmitter;
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -116,6 +129,10 @@ export class CalcitePanel {
 
   dismiss = (): void => {
     this.dismissed = true;
+  };
+
+  panelScrollHandler = (): void => {
+    this.calcitePanelScroll.emit();
   };
 
   // --------------------------------------------------------------------------
@@ -158,13 +175,14 @@ export class CalcitePanel {
   }
 
   renderHeaderTrailingContent(): VNode {
-    const { dismiss, dismissible, textClose } = this;
+    const { dismiss, dismissible, intlClose, textClose } = this;
+    const text = intlClose || textClose || TEXT.close;
 
     const dismissibleNode = dismissible ? (
       <calcite-action
         ref={(dismissButtonEl) => (this.dismissButtonEl = dismissButtonEl)}
-        aria-label={textClose}
-        text={textClose}
+        aria-label={text}
+        text={text}
         onClick={dismiss}
       >
         <calcite-icon scale="s" icon={ICONS.close} />
@@ -212,10 +230,21 @@ export class CalcitePanel {
 
   renderContent(): VNode {
     return (
-      <section class={CSS.contentContainer}>
+      <section class={CSS.contentContainer} onScroll={this.panelScrollHandler}>
         <slot />
+        {this.renderFab()}
       </section>
     );
+  }
+
+  renderFab(): VNode {
+    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+
+    return hasFab ? (
+      <div class={CSS.fabContainer}>
+        <slot name={SLOTS.fab} />
+      </div>
+    ) : null;
   }
 
   render() {

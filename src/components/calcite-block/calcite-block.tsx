@@ -69,14 +69,14 @@ export class CalciteBlock {
   /**
    * Tooltip used for the toggle when expanded.
    *
-   * @deprecated since 5.4.0 - use "intlCollapse" instead.
+   * @deprecated use "intlCollapse" instead.
    */
   @Prop() textCollapse?: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
    *
-   * @deprecated since 5.4.0 - use "intlExpand" instead.
+   * @deprecated use "intlExpand" instead.
    */
   @Prop() textExpand?: string;
 

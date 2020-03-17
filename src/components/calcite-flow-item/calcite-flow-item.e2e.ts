@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 
-import { CSS, SLOTS, TEXT } from "./resources";
+import { CSS, SLOTS } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
@@ -100,24 +100,6 @@ describe("calcite-flow-item", () => {
     const element = await page.find(`calcite-flow-item >>> .${CSS.summary}`);
 
     expect(element).toEqualText("test");
-  });
-
-  it("text defaults should be present", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-flow-item></calcite-flow-item>");
-
-    await page.waitForChanges();
-
-    const element = await page.find("calcite-flow-item");
-
-    const textBack = await element.getProperty("textBack");
-    const textOpen = await element.getProperty("textOpen");
-    const textClose = await element.getProperty("textClose");
-
-    expect(textBack).toEqual(TEXT.back);
-    expect(textOpen).toEqual(TEXT.open);
-    expect(textClose).toEqual(TEXT.close);
   });
 
   it("menuOpen should show/hide when toggled", async () => {
