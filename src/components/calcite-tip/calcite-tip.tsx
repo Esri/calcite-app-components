@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil
 import { CalciteTheme } from "../interfaces";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { VNode } from "@stencil/core/internal";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot thumbnail - A slot for adding an HTML image element to the tip.
@@ -43,7 +44,13 @@ export class CalciteTip {
   /**
    * Alternate text for closing the tip.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() intlClose?: string;
+
+  /**
+   * Alternate text for closing the tip.
+   * @deprecated use "intlClose" instead.
+   */
+  @Prop() textClose?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -88,10 +95,11 @@ export class CalciteTip {
   // --------------------------------------------------------------------------
 
   renderHeader(): VNode {
-    const { nonDismissible, hideTip, textClose, heading } = this;
+    const { nonDismissible, hideTip, intlClose, textClose, heading } = this;
+    const text = intlClose || textClose || TEXT.close;
 
     const dismissButtonNode = !nonDismissible ? (
-      <calcite-action text={textClose} onClick={hideTip} class={CSS.close}>
+      <calcite-action text={text} onClick={hideTip} class={CSS.close}>
         <calcite-icon scale="s" icon={ICONS.close} />
       </calcite-action>
     ) : null;
@@ -109,7 +117,7 @@ export class CalciteTip {
   renderImageFrame(): VNode {
     const { el } = this;
 
-    return el.querySelector(`[slot=${SLOTS.thumbnail}]`) ? (
+    return getSlotted(el, SLOTS.thumbnail) ? (
       <div class={CSS.imageFrame}>
         <slot name={SLOTS.thumbnail} />
       </div>

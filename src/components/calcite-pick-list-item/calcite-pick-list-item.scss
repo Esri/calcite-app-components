@@ -1,8 +1,9 @@
 :host {
   @extend %component-host;
   align-items: center;
+  background-color: var(--calcite-app-background-clear);
   display: flex;
-  margin: 0 var(--calcite-app-side-spacing-half) var(--calcite-app-cap-spacing-minimum);
+  margin: 0;
   color: var(--calcite-app-foreground);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
   animation: calcite-app-fade-in var(--calcite-app-animation-time) var(--calcite-app-easing-function);
@@ -15,23 +16,24 @@
   background-color: var(--calcite-app-background-hover);
 }
 
-:host(:last-child) {
-  margin-bottom: 0;
-  @include borderShadow();
-}
-
 .icon {
   color: var(--calcite-app-foreground-link);
   flex: 0 0 0%;
   line-height: 0;
   width: var(--calcite-app-icon-size);
-  margin: 0 var(--calcite-app-side-spacing-half);
+  margin: 0 var(--calcite-app-side-spacing-quarter);
+  opacity: 0;
+}
+
+:host([selected]) .icon {
+  transition: opacity var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
+  opacity: 1;
 }
 
 .label {
   display: flex;
   flex: 1 1 auto;
-  padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   align-items: center;
   cursor: pointer;
 
@@ -43,7 +45,7 @@
   flex-flow: column nowrap;
   overflow: hidden;
   pointer-events: none;
-  padding: 0 var(--calcite-app-side-spacing-half);
+  padding: 0 var(--calcite-app-side-spacing-quarter);
 }
 
 .title {
@@ -60,7 +62,9 @@
 }
 
 .action {
-  flex: 0 0 0%;
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
   justify-self: flex-end;
   margin: var(--calcite-app-cap-spacing-quarter) var(--calcite-app-side-spacing-half);
 }

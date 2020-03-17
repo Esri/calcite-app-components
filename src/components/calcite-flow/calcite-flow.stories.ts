@@ -1,16 +1,10 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
-import { SLOTS } from "../calcite-flow-item/resources";
+import { SLOTS, TEXT } from "../calcite-flow-item/resources";
 import dedent from "dedent";
 
 export default {
@@ -18,9 +12,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: {
       flow: parseReadme(readme),
       item: parseReadme(itemReadme)
@@ -66,12 +57,16 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
       value: text("summary", "Summary", group)
     },
     {
-      name: "text-back",
-      value: text("textBack", "Back", group)
+      name: "intl-back",
+      value: text("intlBack", TEXT.back, group)
     },
     {
-      name: "text-open",
-      value: text("textOpen", "Open", group)
+      name: "intl-open",
+      value: text("intlOpen", TEXT.open, group)
+    },
+    {
+      name: "intl-close",
+      value: text("intlClose", TEXT.close, group)
     }
   ];
 };

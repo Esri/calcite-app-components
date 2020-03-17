@@ -1,11 +1,5 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
@@ -16,18 +10,11 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: parseReadme(readme)
   }
 };
 
 const createAttributes: () => Attributes = () => [
-  {
-    name: "compact",
-    value: boolean("compact", false)
-  },
   {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
@@ -65,13 +52,13 @@ export const basic = (): string =>
     "calcite-pick-list",
     createAttributes(),
     dedent`
-    <calcite-pick-list-item text-heading="T. Rex" text-description="arm strength impaired" value="trex">
+    <calcite-pick-list-item text-label="T. Rex" text-description="arm strength impaired" value="trex">
       ${action}
     </calcite-pick-list-item>
-    <calcite-pick-list-item text-heading="Triceratops" text-description="3 horn" value="triceratops" selected>
+    <calcite-pick-list-item text-label="Triceratops" text-description="3 horn" value="triceratops" selected>
       ${action}
     </calcite-pick-list-item>
-    <calcite-pick-list-item text-heading="hi" text-description="there" value="helloWorld">
+    <calcite-pick-list-item text-label="hi" text-description="there" value="helloWorld">
       ${action}
     </calcite-pick-list-item>
   `
@@ -83,18 +70,18 @@ export const grouped = (): string =>
     createAttributes(),
     dedent`
     <calcite-pick-list-group text-group-title="numbers">
-      <calcite-pick-list-item text-heading="one" text-description="fish" value="one" icon="grip">
+      <calcite-pick-list-item text-label="one" text-description="fish" value="one" icon="grip">
         ${action}
       </calcite-pick-list-item>
-      <calcite-pick-list-item text-heading="two" text-description="fish" value="two" icon="grip">
+      <calcite-pick-list-item text-label="two" text-description="fish" value="two" icon="grip">
         ${action}
       </calcite-pick-list-item>
     </calcite-pick-list-group>
     <calcite-pick-list-group text-group-title="colors">
-      <calcite-pick-list-item text-heading="red" text-description="fish" value="red" icon="grip">
+      <calcite-pick-list-item text-label="red" text-description="fish" value="red" icon="grip">
         ${action}
       </calcite-pick-list-item>
-      <calcite-pick-list-item text-heading="blue" text-description="fish" value="blue" icon="grip">
+      <calcite-pick-list-item text-label="blue" text-description="fish" value="blue" icon="grip">
         ${action}
       </calcite-pick-list-item>
     </calcite-pick-list-group>

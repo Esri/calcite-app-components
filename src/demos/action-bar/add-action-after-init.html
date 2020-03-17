@@ -1,71 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
-    <title>Calcite App Components:</title>
+  <title>Calcite App Components:</title>
 
-    <!-- Loads the link and script tags-->
-    <script src="../_assets/head.js"></script>
-    <script src="../_assets/toggles.js"></script>
-    <style>
-      .flexxed {
-        display: flex;
-        align-items: flex-start;
-      }
+  <script src="../_assets/head.js"></script>
+  <script src="../_assets/toggles.js"></script>
+  <style>
+    .flexxed {
+      display: flex;
+      align-items: flex-start;
+    }
 
-      .flexxed section {
-        margin: 0 12px;
-      }
-      .action-bar-container {
-        height: 600px;
-      }
-    </style>
-  </head>
+    .flexxed section {
+      margin: 0 12px;
+    }
+  </style>
+</head>
 
-  <body>
-    <main>
-      <section class="example-container">
-        <h1>calcite-action-bar</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-action-bar/readme.md"
-            >calcite-action-bar readme.</a
-          >
-        </p>
-        <div class="flexxed">
-          <section>
-            <h2>LTR</h2>
-            <div class="flexxed">
-              <section>
-                <h3>Bottom Actions</h3>
-                <calcite-action-bar id="slot-test">
-                  <calcite-action text="Add">
-                    <calcite-icon scale="s" icon="add"></calcite-icon>
-                  </calcite-action>
-                  <calcite-action text="Save">
-                    <calcite-icon scale="s" icon="save"></calcite-icon>
-                  </calcite-action>
-                </calcite-action-bar>
+<body>
+  <main>
+    <section class="example-container">
+      <h1>calcite-action-bar</h1>
 
-                <script>
-                  var slotTestNode = document.getElementById("slot-test");
-                  setTimeout(function() {
-                    var action = document.createElement("calcite-action");
-                    action.setAttribute("slot", "bottom-actions");
-                    action.setAttribute("text", "Hello world");
-                    action.innerHTML = `<calcite-icon scale="s" icon="layers"></calcite-icon>`;
-                    slotTestNode.appendChild(action);
-                  }, 2000);
-                </script>
-              </section>
-              </div>
-            </div>
-          </section>
-        </div>
-      </section>
-    </main>
-  </body>
+      <div class="flexxed">
+        <section>
+          <h2>LTR</h2>
+          <div class="flexxed">
+            <section>
+              <h3>Bottom Actions</h3>
+              <calcite-action-bar id="slot-test">
+                <calcite-action text="Add">
+                  <calcite-icon icon="plus" scale="s"></calcite-icon>
+                </calcite-action>
+                <calcite-action text="Save">
+                  <calcite-icon icon="save" scale="s"></calcite-icon>
+                </calcite-action>
+              </calcite-action-bar>
+
+              <script>
+                const slotTestNode = document.getElementById("slot-test");
+                setTimeout(function() {
+                  const action = document.createElement("calcite-action");
+                  action.setAttribute("slot", "bottom-actions");
+                  action.setAttribute("text", "Hello world");
+                  action.innerHTML = `<calcite-icon scale="s" icon="layers"></calcite-icon>`;
+                  slotTestNode.appendChild(action);
+                }, 2000);
+              </script>
+            </section>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
 </html>

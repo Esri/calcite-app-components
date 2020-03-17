@@ -1,6 +1,4 @@
-#### Basic
-
-Renders a basic pick list with radio buttons and actions on the right side.
+Renders a basic pick list with radio buttons on the left and actions on the right side.
 
 ```html
 <calcite-pick-list>
@@ -76,28 +74,5 @@ Renders groups of pick list items that are visually separated.
       </calcite-action>
     </calcite-pick-list-item>
   </calcite-pick-list-group>
-</calcite-pick-list>
-```
-
-#### Compact
-
-Renders compact list items with the text description and a bit of padding removed from the card.
-
-```html
-<calcite-pick-list compact>
-  <calcite-pick-list-item
-    text-label="ID"
-    text-description="This is an id for this field and people use it for things."
-    value="ID"
-  >
-    <calcite-action slot="secondary-action" id="action-test">
-      <calcite-icon scale="s" icon="banana"></calcite-icon>
-    </calcite-action>
-  </calcite-pick-list-item>
-  <calcite-pick-list-item text-label="OBJECTID" value="OBJECTID">
-    <calcite-action slot="secondary-action" id="action-test">
-      <calcite-icon scale="s" icon="banana"></calcite-icon>
-    </calcite-action>
-  </calcite-pick-list-item>
 </calcite-pick-list>
 ```

@@ -1,11 +1,10 @@
 :host {
   @extend %component-host;
   align-items: stretch;
-  background-color: var(--calcite-app-background-clear);
   display: flex;
   flex: 1 0 auto;
   flex-flow: column;
-  padding-bottom: var(--calcite-app-cap-spacing-half);
+  padding-bottom: var(--calcite-app-cap-spacing);
   position: relative;
 }
 
@@ -22,10 +21,11 @@ header {
     top: 0;
     z-index: 1;
   }
+  @include borderShadow();
 }
 
 calcite-filter {
-  @include borderShadow();
+  margin-bottom: 1px;
 }
 
 slot[name="menu-actions"]::slotted(calcite-action) {

@@ -2,6 +2,7 @@ import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import classnames from "classnames";
+import { getCalcitePosition, getSlotted } from "../utils/dom";
 
 /**
  * @slot shell-header - A slot for adding header content. This content will be positioned at the top of the shell.
@@ -43,7 +44,7 @@ export class CalciteShell {
   // --------------------------------------------------------------------------
 
   renderHeader(): VNode {
-    const hasHeader = !!this.el.querySelector(`[slot=${SLOTS.header}]`);
+    const hasHeader = !!getSlotted(this.el, SLOTS.header);
 
     return hasHeader ? <slot name={SLOTS.header} /> : null;
   }
@@ -57,7 +58,7 @@ export class CalciteShell {
   }
 
   renderFooter(): VNode {
-    const hasFooter = !!this.el.querySelector(`[slot=${SLOTS.footer}]`);
+    const hasFooter = !!getSlotted(this.el, SLOTS.footer);
 
     return hasFooter ? (
       <div class={CSS.footer}>
@@ -67,12 +68,10 @@ export class CalciteShell {
   }
 
   renderMain(): VNode {
-    const primaryPanel = this.el.querySelector(
-      `[slot=${SLOTS.primaryPanel}]`
-    ) as HTMLCalciteShellPanelElement;
+    const primaryPanel = getSlotted<HTMLCalciteShellPanelElement>(this.el, SLOTS.primaryPanel);
 
     const mainClasses = {
-      [CSS.mainReversed]: primaryPanel?.layout === "trailing"
+      [CSS.mainReversed]: getCalcitePosition(primaryPanel?.position, primaryPanel?.layout) === "end"
     };
 
     return (

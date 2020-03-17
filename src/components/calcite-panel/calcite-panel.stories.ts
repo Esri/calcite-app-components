@@ -1,15 +1,9 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 const { dir, theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
-import { SLOTS } from "./resources";
+import { SLOTS, TEXT } from "./resources";
 import dedent from "dedent";
 
 export default {
@@ -17,9 +11,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: parseReadme(readme)
   }
 };
@@ -50,8 +41,8 @@ const createAttributes: () => Attributes = () => [
     value: boolean("loading", false)
   },
   {
-    name: "text-close",
-    value: text("textClose", "Close")
+    name: "intl-close",
+    value: text("intlClose", TEXT.close)
   },
   {
     name: "theme",

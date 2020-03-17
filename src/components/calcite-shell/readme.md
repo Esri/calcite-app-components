@@ -17,7 +17,7 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
 
 ```html
 <calcite-shell>
-  <calcite-shell-panel slot="primary-panel" layout="leading" detached>
+  <calcite-shell-panel slot="primary-panel" position="start" detached>
     <calcite-action-bar slot="action-bar" theme="dark">
       <calcite-action-group>
         <calcite-action text="Add">
@@ -59,7 +59,7 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
     </calcite-block>
   </calcite-shell-panel>
 
-   <calcite-shell-panel slot="contextual-panel" layout="trailing" detached detached-scale="l">
+   <calcite-shell-panel slot="contextual-panel" position="end" detached detached-scale="l">
       <calcite-action-bar slot="action-bar">
         <calcite-action-group>
           <calcite-action text="Add" active>
@@ -146,10 +146,10 @@ Renders a shell with a header and panels on the left and right sides of the app.
 
 ```html
 <calcite-shell>
-  <calcite-shell-panel slot="primary-panel" layout="leading">
+  <calcite-shell-panel slot="primary-panel" position="start">
     Leading panel! (on the left side, since this is a LTR app)
   </calcite-shell-panel>
-  <calcite-shell-panel slot="contextual-panel" layout="trailing">
+  <calcite-shell-panel slot="contextual-panel" position="end">
     Trailing panel! (right side)
   </calcite-shell-panel>
   <div slot="shell-header">
@@ -168,7 +168,7 @@ Renders a single panel with actions in an action bar.
 
 ```html
 <calcite-shell>
-  <calcite-shell-panel slot="primary-panel" layout="leading">
+  <calcite-shell-panel slot="primary-panel" position="start">
     <img src="https://via.placeholder.com/300x200" alt="placeholder" />
     <calcite-action-bar slot="action-bar">
       <calcite-action text="Add" active>

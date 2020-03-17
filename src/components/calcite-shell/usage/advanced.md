@@ -5,7 +5,7 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
 
 ```html
 <calcite-shell>
-  <calcite-shell-panel slot="primary-panel" layout="leading" detached>
+  <calcite-shell-panel slot="primary-panel" position="start" detached>
     <calcite-action-bar slot="action-bar" theme="dark">
       <calcite-action-group>
         <calcite-action text="Add">
@@ -47,7 +47,7 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
     </calcite-block>
   </calcite-shell-panel>
 
-   <calcite-shell-panel slot="contextual-panel" layout="trailing" detached detached-scale="l">
+   <calcite-shell-panel slot="contextual-panel" position="end" detached detached-scale="l">
       <calcite-action-bar slot="action-bar">
         <calcite-action-group>
           <calcite-action text="Add" active>

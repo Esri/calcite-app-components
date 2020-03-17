@@ -1,13 +1,7 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { dir, layout, scale, theme } = ATTRIBUTES;
+const { dir, position, scale, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
 import dedent from "dedent";
@@ -17,9 +11,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: {
       shell: parseReadme(readme),
       panel: parseReadme(panelReadme)
@@ -59,8 +50,13 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
       value: select("detachedScale", scale.values, scale.defaultValue, group)
     },
     {
-      name: "layout",
-      value: select("layout", layout.values, group === "Leading Panel" ? layout.values[0] : layout.values[1], group)
+      name: "position",
+      value: select(
+        "position",
+        position.values,
+        group === "Leading Panel" ? position.values[0] : position.values[1],
+        group
+      )
     }
   ];
 };

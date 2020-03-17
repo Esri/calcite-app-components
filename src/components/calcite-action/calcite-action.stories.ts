@@ -1,23 +1,14 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { appearance, dir, theme } = ATTRIBUTES;
+const { appearance, dir, scale, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-action",
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: parseReadme(readme)
   }
 };
@@ -32,16 +23,16 @@ const createAttributes: () => Attributes = () => [
     value: boolean("active", false)
   },
   {
-    name: "compact",
-    value: boolean("compact", false)
-  },
-  {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
     name: "disabled",
     value: boolean("disabled", false)
+  },
+  {
+    name: "icon",
+    value: text("icon", "beaker")
   },
   {
     name: "indicator",
@@ -54,6 +45,10 @@ const createAttributes: () => Attributes = () => [
   {
     name: "loading",
     value: boolean("loading", false)
+  },
+  {
+    name: "scale",
+    value: select("scale", scale.values, scale.defaultValue)
   },
   {
     name: "text",
@@ -69,5 +64,4 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = (): string =>
-  create("calcite-action", createAttributes(), `<calcite-icon scale="s" icon="beaker"></calcite-icon>`);
+export const basic = () => create("calcite-action", createAttributes());

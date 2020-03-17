@@ -9,12 +9,10 @@ import {
   h,
   VNode
 } from "@stencil/core";
-
-import { CalciteLayout, CalciteTheme } from "../interfaces";
-
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-
-import { CSS } from "./resources";
+import { CSS, TEXT } from "./resources";
+import { getCalcitePosition } from "../utils/dom";
 
 /**
  * @slot - A slot for adding `calcite-action`s to the action pad.
@@ -58,18 +56,37 @@ export class CalciteActionPad {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
+   * @deprecated use "intlExpand" instead.
    */
-  @Prop() textExpand = "Expand";
+  @Prop() textExpand?: string;
+
+  /**
+   * Updates the label of the expand icon when the component is not expanded.
+   */
+  @Prop() intlExpand?: string;
+
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   * @deprecated use "intlCollapse" instead.
+   */
+  @Prop() textCollapse?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
    */
-  @Prop() textCollapse = "Collapse";
+  @Prop() intlCollapse?: string;
 
   /**
    * Arrangement of the component.
+   *
+   * @deprecated use "position" instead.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
+   * Arranges the component depending on the elements 'dir' property.
+   */
+  @Prop({ reflect: true }) position: CalcitePosition;
 
   /**
    * Used to set the component's color scheme.
@@ -126,15 +143,29 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup(): VNode {
-    const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
+    const {
+      expanded,
+      expand,
+      intlExpand,
+      intlCollapse,
+      textExpand,
+      textCollapse,
+      el,
+      layout,
+      position,
+      toggleExpand
+    } = this;
+
+    const expandLabel = intlExpand || textExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
         expanded={expanded}
-        textExpand={textExpand}
-        textCollapse={textCollapse}
+        intlExpand={expandLabel}
+        intlCollapse={collapseLabel}
         el={el}
-        layout={layout}
+        position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
       />
     ) : null;

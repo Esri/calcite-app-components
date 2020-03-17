@@ -2,7 +2,6 @@
   @extend %component-host;
   @include borderShadow();
   display: flex;
-  background-color: var(--calcite-app-background);
   padding: var(--calcite-app-side-spacing-minimum);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
     box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);

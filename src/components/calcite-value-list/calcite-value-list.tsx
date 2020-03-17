@@ -13,22 +13,20 @@ import {
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
-import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
-import List from "../calcite-pick-list/shared-list-render";
-
-const {
-  mutationObserverCallback,
-  initialize,
-  initializeObserver,
-  cleanUpObserver,
+import {
   calciteListItemChangeHandler,
   calciteListItemValueChangeHandler,
-  setUpItems,
+  cleanUpObserver,
   deselectSiblingItems,
-  selectSiblings,
+  getItemData,
   handleFilter,
-  getItemData
-} = sharedListMethods;
+  initialize,
+  initializeObserver,
+  mutationObserverCallback,
+  selectSiblings,
+  setUpItems
+} from "../calcite-pick-list/shared-list-logic";
+import List from "../calcite-pick-list/shared-list-render";
 
 /**
  * @slot - A slot for adding `calcite-pick-list-item` elements or `calcite-pick-list-group` elements. Items are displayed as a vertical list.
@@ -39,7 +37,9 @@ const {
   styleUrl: "./calcite-value-list.scss",
   shadow: true
 })
-export class CalciteValueList {
+export class CalciteValueList<
+  ItemElement extends HTMLCalciteValueListItemElement = HTMLCalciteValueListItemElement
+> {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -48,6 +48,8 @@ export class CalciteValueList {
 
   /**
    * Compact reduces the size of all items in the list.
+   *
+   * @deprecated This property will be removed in a future release.
    */
   @Prop({ reflect: true }) compact = false;
 
@@ -82,7 +84,7 @@ export class CalciteValueList {
   /**
    * Placeholder text for the filter input field.
    */
-  @Prop({ reflect: true }) textFilterPlaceholder?: string = TEXT.filterPlaceholder;
+  @Prop({ reflect: true }) textFilterPlaceholder: string = TEXT.filterPlaceholder;
 
   // --------------------------------------------------------------------------
   //
@@ -90,13 +92,13 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Map<string, HTMLCalciteValueListItemElement> = new Map();
+  @State() selectedValues: Map<string, ItemElement> = new Map();
 
   @State() dataForFilter: object[] = [];
 
-  items: HTMLCalciteValueListItemElement[];
+  items: ItemElement[];
 
-  lastSelectedItem: HTMLCalciteValueListItemElement = null;
+  lastSelectedItem: ItemElement = null;
 
   guid = `calcite-value-list-${guid()}`;
 
@@ -104,7 +106,7 @@ export class CalciteValueList {
 
   sortables: Sortable[] = [];
 
-  @Element() el: HTMLCalciteValueListItemElement;
+  @Element() el: HTMLCalciteValueListElement;
 
   emitCalciteListChange: () => void;
 
@@ -149,7 +151,7 @@ export class CalciteValueList {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsUpdated") calciteListItemPropsUpdatedHandler(
+  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(
     event: CustomEvent
   ): void {
     event.stopPropagation();
@@ -188,7 +190,7 @@ export class CalciteValueList {
         handle: `.${CSS.handle}`,
         draggable: "calcite-value-list-item",
         onUpdate: () => {
-          this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
+          this.items = Array.from(this.el.querySelectorAll<ItemElement>("calcite-value-list-item"));
           const values = this.items.map((item) => item.value);
           this.calciteListOrderChange.emit(values);
         }

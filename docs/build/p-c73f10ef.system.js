@@ -1,1 +1,0 @@
-System.register([],(function(t){"use strict";return{execute:function(){t({f:u,g:e});function e(t){return n(t,"dir","ltr")}function n(t,e,n){var u=t.closest("["+e+"]");return u?u.getAttribute(e):n}function u(t){if(!t){return}"setFocus"in t&&typeof t.setFocus==="function"?t.setFocus():t.focus()}}}}));

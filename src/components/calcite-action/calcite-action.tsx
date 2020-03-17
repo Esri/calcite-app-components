@@ -1,6 +1,6 @@
 import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
 
-import { CalciteAppearance, CalciteTheme } from "../interfaces";
+import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 
 import classnames from "classnames";
 
@@ -11,6 +11,9 @@ import { CSS_UTILITY } from "../utils/resources";
 import { getElementDir } from "../utils/dom";
 import { VNode } from "@stencil/core/internal";
 
+/**
+ * @slot - A slot for adding a `calcite-icon`.
+ */
 @Component({
   tag: "calcite-action",
   styleUrl: "calcite-action.scss",
@@ -41,6 +44,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/.
+   */
+  @Prop() icon?: string;
+
+  /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
@@ -54,6 +62,11 @@ export class CalciteAction {
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
+
+  /**
+   * Specifies the size of the action.
+   */
+  @Prop({ reflect: true }) scale: CalciteScale = "m";
 
   /**
    * Text that accompanies the action icon.
@@ -72,7 +85,7 @@ export class CalciteAction {
 
   // --------------------------------------------------------------------------
   //
-  //  Variables
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
 
@@ -112,7 +125,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { loading } = this;
+    const { el, loading, icon, scale } = this;
+    const iconScale = scale === "l" ? "m" : "s";
+    const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
+    const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
+    const iconNode = calciteLoaderNode || calciteIconNode;
+    const hasIconToDisplay = iconNode || el.querySelector("calcite-icon, svg");
 
     const slotContainerNode = (
       <div
@@ -124,21 +142,18 @@ export class CalciteAction {
       </div>
     );
 
-    const calciteLoaderNode = loading ? <calcite-loader is-active inline></calcite-loader> : null;
-
-    return (
+    return hasIconToDisplay ? (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
+        {iconNode}
         {slotContainerNode}
-        {calciteLoaderNode}
       </div>
-    );
+    ) : null;
   }
 
   render(): VNode {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const titleText = !textEnabled && text;
-    const title = label || titleText;
+    const ariaLabel = label || (!textEnabled && text);
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
@@ -151,8 +166,7 @@ export class CalciteAction {
       <Host>
         <button
           class={classnames(CSS.button, buttonClasses)}
-          title={title}
-          aria-label={title}
+          aria-label={ariaLabel}
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}

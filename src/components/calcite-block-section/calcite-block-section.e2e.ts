@@ -1,5 +1,5 @@
 import { CSS, TEXT } from "./resources";
-import { accessible, hidden, reflects, renders } from "../../tests/commonTests";
+import { accessible, defaults, hidden, reflects, renders } from "../../tests/commonTests";
 import { setUpPage } from "../../tests/utils";
 import { E2EPage } from "@stencil/core/testing";
 
@@ -13,6 +13,18 @@ describe("calcite-block-section", () => {
       {
         propertyName: "open",
         value: true
+      }
+    ]));
+
+  it("has property defaults", async () =>
+    defaults("calcite-block-section", [
+      {
+        propertyName: "open",
+        defaultValue: false
+      },
+      {
+        propertyName: "toggleDisplay",
+        defaultValue: "button"
       }
     ]));
 
@@ -127,6 +139,34 @@ describe("calcite-block-section", () => {
     await toggle.click();
 
     expect(toggleSpy).toHaveReceivedEventTimes(2);
+    expect(await element.getProperty("open")).toBe(false);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
+
+    const keyboardToggleEmitter =
+      toggle.tagName === "CALCITE-ACTION"
+        ? (
+            await page.evaluateHandle(() => {
+              // keyboard event needs to be dispatched from the action's button for it to trigger a click
+              // deep shadow piercing is based on https://github.com/puppeteer/puppeteer/issues/858#issuecomment-438540596
+              return document
+                .querySelector("calcite-block-section")
+                .shadowRoot.querySelector("section > calcite-action")
+                .shadowRoot.querySelector("button");
+            })
+          ).asElement()
+        : toggle;
+
+    await keyboardToggleEmitter.press(" ");
+    await page.waitForChanges();
+
+    expect(toggleSpy).toHaveReceivedEventTimes(3);
+    expect(await element.getProperty("open")).toBe(true);
+    expect(toggle.getAttribute("aria-label")).toBe(TEXT.collapse);
+
+    await keyboardToggleEmitter.press("Enter");
+    await page.waitForChanges();
+
+    expect(toggleSpy).toHaveReceivedEventTimes(4);
     expect(await element.getProperty("open")).toBe(false);
     expect(toggle.getAttribute("aria-label")).toBe(TEXT.expand);
   }

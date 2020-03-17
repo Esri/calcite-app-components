@@ -22,6 +22,16 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   /**
+   * Tooltip used for the toggle when expanded.
+   */
+  @Prop() intlCollapse?: string;
+
+  /**
+   * Tooltip used for the toggle when collapsed.
+   */
+  @Prop() intlExpand?: string;
+
+  /**
    * When true, the block's section content will be displayed.
    */
   @Prop({
@@ -35,16 +45,20 @@ export class CalciteBlockSection {
   @Prop() text: string;
 
   /**
-   * Tooltip used for the toggle when collapsed.
+   * Tooltip used for the toggle when expanded.
+   *
+   * @deprecated use "intlCollapse" instead.
    */
   @Prop()
-  textExpand = TEXT.expand;
+  textCollapse?: string;
 
   /**
-   * Tooltip used for the toggle when expanded.
+   * Tooltip used for the toggle when collapsed.
+   *
+   * @deprecated use "intlExpand" instead.
    */
   @Prop()
-  textCollapse = TEXT.collapse;
+  textExpand?: string;
 
   /**
    * This property determines the look of the section toggle.
@@ -86,6 +100,14 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
+  handleHeaderLabelKeyDown(this: HTMLLabelElement, event: KeyboardEvent): void {
+    if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      event.stopPropagation();
+      this.click();
+    }
+  }
+
   toggleSection = (): void => {
     this.open = !this.open;
     this.calciteBlockSectionToggle.emit();
@@ -98,14 +120,27 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render(): VNode {
-    const { el, guid: id, open, text, textCollapse, textExpand, toggleDisplay } = this;
+    const {
+      el,
+      guid: id,
+      intlCollapse,
+      intlExpand,
+      open,
+      text,
+      textCollapse,
+      textExpand,
+      toggleDisplay
+    } = this;
     const dir = getElementDir(el);
     const arrowIcon = open
       ? ICONS.menuOpen
       : dir === "rtl"
       ? ICONS.menuClosedLeft
       : ICONS.menuClosedRight;
-    const toggleLabel = open ? textCollapse : textExpand;
+
+    const toggleLabel = open
+      ? intlCollapse || textCollapse || TEXT.collapse
+      : intlExpand || textExpand || TEXT.expand;
     const labelId = `${id}__label`;
 
     const headerNode =
@@ -114,6 +149,8 @@ export class CalciteBlockSection {
           aria-label={toggleLabel}
           class={classnames(CSS.toggle, CSS.toggleSwitch)}
           id={labelId}
+          onKeyDown={this.handleHeaderLabelKeyDown}
+          tabIndex={0}
         >
           {text}
           <calcite-switch
@@ -121,6 +158,7 @@ export class CalciteBlockSection {
             switched={open}
             onChange={this.toggleSection}
             scale="s"
+            tabIndex={-1}
           />
         </label>
       ) : (

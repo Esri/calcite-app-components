@@ -53,18 +53,18 @@ calcite-loader[inline] {
 }
 
 .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  margin: 0;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-three-quarters);
   background-color: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
   font-family: var(--calcite-app-font-family);
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  margin: 0;
   text-align: unset;
-  width: 100%;
   color: var(--calcite-app-foreground);
   @include focusRingInset();
 }
@@ -80,15 +80,11 @@ calcite-loader[inline] {
 }
 
 .content {
+  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
   position: relative;
 }
 
-::slotted(*) {
-  padding: 0 var(--calcite-app-side-spacing-three-quarters) var(--calcite-app-cap-spacing-half);
-}
-
 ::slotted([slot="control"]) {
-  padding: unset;
   position: absolute;
   margin: auto;
   right: var(--calcite-app-side-spacing-three-quarters);

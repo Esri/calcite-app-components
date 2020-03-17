@@ -9,12 +9,10 @@ import {
   h,
   VNode
 } from "@stencil/core";
-
-import { CalciteLayout, CalciteTheme } from "../interfaces";
-
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-
-import { CSS, SLOTS } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
+import { getCalcitePosition, getSlotted } from "../utils/dom";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -59,19 +57,38 @@ export class CalciteActionBar {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
+   * @deprecated use "intlExpand" instead.
    */
-  @Prop() textExpand = "Expand";
+  @Prop() textExpand?: string;
+
+  /**
+   * Updates the label of the expand icon when the component is not expanded.
+   */
+  @Prop() intlExpand?: string;
+
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   * @deprecated use "intlCollapse" instead.
+   */
+  @Prop() textCollapse?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
    */
-  @Prop() textCollapse = "Collapse";
+  @Prop() intlCollapse?: string;
 
   /**
    * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
    * in a LTR app will appear on the left.
+   *
+   * @deprecated use "position" instead.
    */
   @Prop({ reflect: true }) layout: CalciteLayout;
+
+  /**
+   * Arranges the component depending on the elements 'dir' property.
+   */
+  @Prop({ reflect: true }) position: CalcitePosition;
 
   /**
    * Used to set the component's color scheme.
@@ -129,20 +146,34 @@ export class CalciteActionBar {
   // --------------------------------------------------------------------------
 
   renderBottomActionGroup(): VNode {
-    const { expanded, expand, textExpand, textCollapse, el, layout, toggleExpand } = this;
+    const {
+      expanded,
+      expand,
+      intlExpand,
+      intlCollapse,
+      textExpand,
+      textCollapse,
+      el,
+      layout,
+      position,
+      toggleExpand
+    } = this;
+
+    const expandLabel = intlExpand || textExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
         expanded={expanded}
-        textExpand={textExpand}
-        textCollapse={textCollapse}
+        intlExpand={expandLabel}
+        intlCollapse={collapseLabel}
         el={el}
-        layout={layout}
+        position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
       />
     ) : null;
 
-    return this.el.querySelector(`[slot=${SLOTS.bottomActions}]`) || expandToggleNode ? (
+    return getSlotted(el, SLOTS.bottomActions) || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
         <slot name={SLOTS.bottomActions} />
         {expandToggleNode}

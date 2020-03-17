@@ -3,6 +3,92 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.5.1](https://github.com/Esri/calcite-app-components/compare/v5.5.0...v5.5.1) (2020-03-03)
+
+### Bug Fixes
+
+- **action:** When using tooltips with an action, browsers title popup shows up ([#872](https://github.com/Esri/calcite-app-components/issues/872)) ([0c1fa41](https://github.com/Esri/calcite-app-components/commit/0c1fa413a1dbfa80555214d98438689c79124137)), closes [#871](https://github.com/Esri/calcite-app-components/issues/871)
+
+## [5.5.0](https://github.com/Esri/calcite-app-components/compare/v5.4.0...v5.5.0) (2020-03-03)
+
+### Features
+
+- **pick-list:** add removable prop for easier item removal ([#820](https://github.com/Esri/calcite-app-components/issues/820)) ([e41e460](https://github.com/Esri/calcite-app-components/commit/e41e460d3340d17a07b66dab9c648f783a638d1d)), closes [#753](https://github.com/Esri/calcite-app-components/issues/753)
+
+### Bug Fixes
+
+- **block-section:** increased top and bottom margins on block-section label to fix focus ring overlap ([#862](https://github.com/Esri/calcite-app-components/issues/862)) ([#863](https://github.com/Esri/calcite-app-components/issues/863)) ([3b00652](https://github.com/Esri/calcite-app-components/commit/3b006529abae911f3879127b087bf9ff3613bddb))
+- **flow-item:** update to only show fab-container when fab slot is used ([004019f](https://github.com/Esri/calcite-app-components/commit/004019f8042cb5a2fc9928b241e4da17b3fe4118))
+
+## [5.4.0](https://github.com/Esri/calcite-app-components/compare/v5.3.2...v5.4.0) (2020-02-28)
+
+### Features
+
+- **action:** Add icon property to display calcite-icon. ([#837](https://github.com/Esri/calcite-app-components/issues/837)) ([9de7724](https://github.com/Esri/calcite-app-components/commit/9de772472d58a1fce452ff2050e97f2cb1929f57))
+- **block, block-section, filter:** add intl props ([#852](https://github.com/Esri/calcite-app-components/issues/852)) ([8384fca](https://github.com/Esri/calcite-app-components/commit/8384fcafe74dbfd364a178e14482e3f1bb1f633b)), closes [#818](https://github.com/Esri/calcite-app-components/issues/818)
+- **fab:** Floating Action Button (FAB) aka FABULOUS!!! component. ([#824](https://github.com/Esri/calcite-app-components/issues/824)) ([fc8de45](https://github.com/Esri/calcite-app-components/commit/fc8de457f50c56b455495b99b33a8d94d084f9b3))
+- **filter:** add placeholder property ([#854](https://github.com/Esri/calcite-app-components/issues/854)) ([dec10b1](https://github.com/Esri/calcite-app-components/commit/dec10b1f8814caedf71536842f226a899d59e521))
+- **flow-item,panel:** Add an onscroll event for FlowItem and Panel [#842](https://github.com/Esri/calcite-app-components/issues/842) ([356e399](https://github.com/Esri/calcite-app-components/commit/356e3996610cd4f638fff5534f06cbf179719a1c))
+
+### Bug Fixes
+
+- **action-bar:** removed default return from getCalcitePosition ([5a1fa28](https://github.com/Esri/calcite-app-components/commit/5a1fa28a08b0d11347eb0560e3df0fc32dd21a00))
+- **shell-panel:** style for deprecated leading and trailing attributes ([1643621](https://github.com/Esri/calcite-app-components/commit/16436219d780af4db75f9b9b83d0ae239068c15e)), closes [#846](https://github.com/Esri/calcite-app-components/issues/846)
+
+### [5.3.2](https://github.com/Esri/calcite-app-components/compare/v5.3.1...v5.3.2) (2020-02-19)
+
+### Bug Fixes
+
+- **Action:** Allow SVGs to be slotted into the calcite-action. ([#836](https://github.com/Esri/calcite-app-components/issues/836)) ([6a661e1](https://github.com/Esri/calcite-app-components/commit/6a661e15f389cb809b53c1dd84b7fb23861d20eb))
+
+### [5.3.1](https://github.com/Esri/calcite-app-components/compare/v5.3.0...v5.3.1) (2020-02-18)
+
+### Features
+
+- styles for a tighter calcite-filter and related styles in pick-list and value-list ([9ec3b82](https://github.com/Esri/calcite-app-components/commit/9ec3b820a0d4d87ea0774e13b9f02a3dd0113f29)), closes [#781](https://github.com/Esri/calcite-app-components/issues/781) [#795](https://github.com/Esri/calcite-app-components/issues/795)
+
+## [5.3.0](https://github.com/Esri/calcite-app-components/compare/v5.2.1...v5.3.0) (2020-02-11)
+
+### Features
+
+- deprecate layout in favor of position ([#812](https://github.com/Esri/calcite-app-components/issues/812)) ([5e11467](https://github.com/Esri/calcite-app-components/commit/5e11467d14ce96a430ef2b2408dbce76d30034c6))
+- **Panel, FlowItem:** better header layout and header retains summary when panel is short ([3f3b1e3](https://github.com/Esri/calcite-app-components/commit/3f3b1e3051efe0b8d2953f04bea12fe6e0569199)), closes [#807](https://github.com/Esri/calcite-app-components/issues/807) [#764](https://github.com/Esri/calcite-app-components/issues/764)
+
+### Bug Fixes
+
+- Action - Remove padding when used without an icon ([#810](https://github.com/Esri/calcite-app-components/issues/810)) ([30d3510](https://github.com/Esri/calcite-app-components/commit/30d3510b41cde34d7cec627b345420d644056e59))
+- **block-section:** toggle section (with toggleDisplay=switch) when Enter or Space key is pressed ([#809](https://github.com/Esri/calcite-app-components/issues/809)) ([5fa12ec](https://github.com/Esri/calcite-app-components/commit/5fa12eca1e8e70103079bbb7588ad89ea7db6122)), closes [#801](https://github.com/Esri/calcite-app-components/issues/801)
+
+### [5.2.1](https://github.com/Esri/calcite-app-components/compare/v5.2.0...v5.2.1) (2020-02-05)
+
+### Features
+
+- multiple actions appear side-by-side ([#798](https://github.com/Esri/calcite-app-components/issues/798)) ([591deaf](https://github.com/Esri/calcite-app-components/commit/591deaf0aada884e24fc8fb6f76322753b8fbe8a))
+
+### Bug Fixes
+
+- Replace shadowroot querying with textInput reference. ([#799](https://github.com/Esri/calcite-app-components/issues/799)) ([5ee3f08](https://github.com/Esri/calcite-app-components/commit/5ee3f085c4f0067850c47db6d912f345b7e88485))
+
+## [5.2.0](https://github.com/Esri/calcite-app-components/compare/v5.1.1...v5.2.0) (2020-01-31)
+
+### Features
+
+- Add nesting support to picklist groups ([#770](https://github.com/Esri/calcite-app-components/issues/770)) ([602264b](https://github.com/Esri/calcite-app-components/commit/602264b86de7a18d6b7e222f0b4bfd0d7b0d9acd)), closes [#783](https://github.com/Esri/calcite-app-components/issues/783) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767) [#767](https://github.com/Esri/calcite-app-components/issues/767)
+- drag n drop component 483 ([#747](https://github.com/Esri/calcite-app-components/issues/747)) ([71d5897](https://github.com/Esri/calcite-app-components/commit/71d589749039cd17aa37fa57a505ded86d3cce0a))
+- **action:** add scales to Action ([c5948cb](https://github.com/Esri/calcite-app-components/commit/c5948cb7ad93d864c1b7788876aa29bf869e91a0)), closes [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759) [#759](https://github.com/Esri/calcite-app-components/issues/759)
+
+### Bug Fixes
+
+- **action:** style updates for compact mode ([bc345ce](https://github.com/Esri/calcite-app-components/commit/bc345ce6eb271a2a75e31d35447d517c710cd1f8)), closes [#759](https://github.com/Esri/calcite-app-components/issues/759)
+- **block:** Remove extra padding applied to slotted icon content ([#793](https://github.com/Esri/calcite-app-components/issues/793)) ([9911d3a](https://github.com/Esri/calcite-app-components/commit/9911d3a6796fe599b4a0f96e0ea231af89493627))
+- Calcite-shell-panel remove position relative [#782](https://github.com/Esri/calcite-app-components/issues/782) ([fdc74b5](https://github.com/Esri/calcite-app-components/commit/fdc74b537360f9d13085127c67305333f5fc5f99))
+
+### [5.1.1](https://github.com/Esri/calcite-app-components/compare/v5.1.0...v5.1.1) (2020-01-28)
+
+### Bug Fixes
+
+- **block:** fix block toggling in Edge. ([#785](https://github.com/Esri/calcite-app-components/issues/785)) ([6e9ad73](https://github.com/Esri/calcite-app-components/commit/6e9ad730bb4beb97adc4290617b8e3a31852d6f1)), closes [#763](https://github.com/Esri/calcite-app-components/issues/763)
+
 ## [5.1.0](https://github.com/Esri/calcite-app-components/compare/v5.0.0...v5.1.0) (2020-01-21)
 
 ### Features
