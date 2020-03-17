@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
-import { focusElement, getElementDir } from "../utils/dom";
+import { focusElement, getElementDir, getSlotted } from "../utils/dom";
 import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
@@ -144,7 +144,10 @@ export class CalciteFlowItem {
   }
 
   queryActions(): HTMLCalciteActionElement[] {
-    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
+    return getSlotted<HTMLCalciteActionElement>(this.el, SLOTS.menuActions, {
+      all: true,
+      selector: "calcite-action"
+    });
   }
 
   isValidKey(key: string, supportedKeys: string[]): boolean {
@@ -288,7 +291,7 @@ export class CalciteFlowItem {
   }
 
   renderFooterActions(): VNode {
-    const hasFooterActions = !!this.el.querySelector(`[slot=${SLOTS.footerActions}]`);
+    const hasFooterActions = !!getSlotted(this.el, SLOTS.footerActions);
 
     return hasFooterActions ? (
       <div slot={PANEL_SLOTS.footer} class={CSS.footerActions}>
@@ -315,7 +318,7 @@ export class CalciteFlowItem {
   }
 
   renderHeaderActions(): VNode {
-    const menuActionsNode = this.el.querySelector(`[slot=${SLOTS.menuActions}]`);
+    const menuActionsNode = getSlotted(this.el, SLOTS.menuActions);
 
     const hasMenuActionsInBlacklisted = menuActionsNode?.closest(
       BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(",")

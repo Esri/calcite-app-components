@@ -158,7 +158,7 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   renderHeaderLeadingContent(): VNode {
-    const hasLeadingContent = getSlotted(this.el, SLOTS.headerLeadingContent).length;
+    const hasLeadingContent = getSlotted(this.el, SLOTS.headerLeadingContent);
     return hasLeadingContent ? (
       <div key="header-leading-content" class={CSS.headerLeadingContent}>
         <slot name={SLOTS.headerLeadingContent} />
@@ -219,7 +219,7 @@ export class CalcitePanel {
   renderFooter(): VNode {
     const { el } = this;
 
-    const hasFooter = el.querySelector(`[slot=${SLOTS.footer}]`);
+    const hasFooter = getSlotted(el, SLOTS.footer);
 
     return hasFooter ? (
       <footer class={CSS.footer}>

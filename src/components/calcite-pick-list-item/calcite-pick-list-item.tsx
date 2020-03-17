@@ -11,6 +11,7 @@ import {
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot secondary-action - A slot intended for adding a `calcite-action` or `calcite-button` to the right side of the card.
@@ -254,7 +255,7 @@ export class CalcitePickListItem {
   }
 
   renderSecondaryAction() {
-    const hasSecondaryAction = this.el.querySelector(`[slot=${SLOTS.secondaryAction}]`);
+    const hasSecondaryAction = getSlotted(this.el, SLOTS.secondaryAction);
     return hasSecondaryAction || this.removable ? (
       <div class={CSS.action}>
         <slot name={SLOTS.secondaryAction}>{this.renderRemoveAction()}</slot>

@@ -1,6 +1,7 @@
 import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 import { debounce } from "lodash-es";
+import { getSlotted } from "../utils/dom";
 
 type Lists = CalcitePickList | CalciteValueList;
 type ListItemElement<T> = T extends CalcitePickList ? HTMLCalcitePickListItemElement : HTMLCalciteValueListItemElement;
@@ -147,7 +148,7 @@ export function handleFilter<T extends Lists>(this: List<T>, event: CustomEvent)
 
     // If item is in a group...
     if (inGroup) {
-      const groupParent = item.parentElement.querySelector("[slot=parent-item]") as ListItemElement<T>;
+      const groupParent = getSlotted<ListItemElement<T>>(item.parentElement, "parent-item");
       // If there is a group parent
       if (groupParent !== null) {
         // If the group parent is a match, show me.
