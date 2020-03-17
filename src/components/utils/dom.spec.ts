@@ -11,7 +11,7 @@ describe("dom", () => {
           this.attachShadow({ mode: "open" });
         }
 
-        connectedCallback() {
+        connectedCallback(): void {
           this.shadowRoot.innerHTML = `<slot name="${testSlotName}"></slot>`;
         }
       }

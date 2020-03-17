@@ -106,7 +106,7 @@ export function setUpFilter<T extends Lists>(this: List<T>): void {
   }
 }
 
-export function deselectSiblingItems<T extends Lists>(this: List<T>, item: ListItemElement<T>) {
+export function deselectSiblingItems<T extends Lists>(this: List<T>, item: ListItemElement<T>): void {
   this.items.forEach((currentItem) => {
     if (currentItem.value !== item.value) {
       currentItem.toggleSelected(false);
@@ -117,7 +117,7 @@ export function deselectSiblingItems<T extends Lists>(this: List<T>, item: ListI
   });
 }
 
-export function selectSiblings<T extends Lists>(this: List<T>, item: ListItemElement<T>, deselect = false) {
+export function selectSiblings<T extends Lists>(this: List<T>, item: ListItemElement<T>, deselect = false): void {
   if (!this.lastSelectedItem) {
     return;
   }
