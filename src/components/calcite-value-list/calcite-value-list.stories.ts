@@ -51,7 +51,7 @@ const action = dedent`
   </calcite-action>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-value-list",
     createAttributes(),

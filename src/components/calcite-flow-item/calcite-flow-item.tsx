@@ -378,7 +378,7 @@ export class CalciteFlowItem {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     const { el } = this;
     const dir = getElementDir(el);
 

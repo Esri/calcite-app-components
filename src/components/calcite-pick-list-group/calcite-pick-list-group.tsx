@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
 import classnames from "classnames";
 import { CSS, SLOTS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
@@ -38,7 +38,7 @@ export class CalcitePickListGroup {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const { el, textGroupTitle } = this;
     const rtl = getElementDir(el) === "rtl";
     const hasParentItem = getSlotted(el, SLOTS.parentItem) !== null;

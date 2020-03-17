@@ -46,7 +46,7 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-action-pad",
     createAttributes(),

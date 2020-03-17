@@ -7,7 +7,8 @@ import {
   Method,
   Prop,
   Watch,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
@@ -215,7 +216,7 @@ export class CalcitePickListItem {
   //
   // --------------------------------------------------------------------------
 
-  renderIcon() {
+  renderIcon(): VNode {
     const { compact, icon, selected } = this;
 
     if (!icon || compact) {
@@ -238,7 +239,7 @@ export class CalcitePickListItem {
     );
   }
 
-  renderRemoveAction() {
+  renderRemoveAction(): VNode {
     if (!this.removable) {
       return null;
     }
@@ -254,7 +255,7 @@ export class CalcitePickListItem {
     );
   }
 
-  renderSecondaryAction() {
+  renderSecondaryAction(): VNode {
     const hasSecondaryAction = getSlotted(this.el, SLOTS.secondaryAction);
     return hasSecondaryAction || this.removable ? (
       <div class={CSS.action}>
@@ -263,7 +264,7 @@ export class CalcitePickListItem {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     const description =
       this.textDescription && !this.compact ? (
         <span class={CSS.description}>{this.textDescription}</span>

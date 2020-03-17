@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  Watch,
+  h,
+  VNode
+} from "@stencil/core";
 import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, SLOTS, TEXT } from "./resources";
@@ -25,7 +35,7 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) expand = true;
 
   @Watch("expand")
-  expandHandler(expand: boolean) {
+  expandHandler(expand: boolean): void {
     if (expand) {
       toggleChildActionText({ parent: this.el, expanded: this.expanded });
     }
@@ -37,7 +47,7 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) expanded = false;
 
   @Watch("expanded")
-  expandedHandler(expanded: boolean) {
+  expandedHandler(expanded: boolean): void {
     if (this.expand) {
       toggleChildActionText({ parent: this.el, expanded });
     }
@@ -111,7 +121,7 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     const { el, expand, expanded } = this;
 
     if (expand) {
@@ -135,7 +145,7 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  renderBottomActionGroup() {
+  renderBottomActionGroup(): VNode {
     const {
       expanded,
       expand,
@@ -171,7 +181,7 @@ export class CalciteActionBar {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <slot />

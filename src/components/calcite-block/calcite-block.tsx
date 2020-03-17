@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
@@ -123,7 +123,7 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const {
       collapsible,
       disabled,
