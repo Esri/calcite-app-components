@@ -153,7 +153,7 @@ export class CalciteAction {
   render(): VNode {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const ariaLabel = label || (!textEnabled && text);
+    const ariaLabel = label || textEnabled;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
