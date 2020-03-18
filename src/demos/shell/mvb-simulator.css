@@ -1,0 +1,47 @@
+.enable-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+    background-color: var(--calcite-app-background);
+}
+
+.enable-label calcite-switch {
+    margin: 0;
+}
+
+.form-section {
+    margin: var(--calcite-app-cap-spacing) 0;
+}
+
+.combo-control {
+    width: 100%;
+}
+
+.combo-control__label {
+    display: block;
+    margin: 0 0 var(--calcite-app-cap-spacing-quarter);
+    font-style: var(--calcite-app-font-size--1);
+}
+
+.combo-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid var(--calcite-app-border);
+    /* border-radius: 3px; */
+}
+
+.combo-button__main {
+    border: none;
+    background-color: white;
+    font-size: var(--calcite-app-font-size-0);
+    color: var(--calcite-app-foreground);
+    font-family: var(--calcite-app-font-family);
+    height: 32px;
+    width: calc(100% - 32px);
+    text-align: unset;
+}
+.combo-button .combo-action {
+    border-left: 1px solid var(--calcite-app-border);
+}
