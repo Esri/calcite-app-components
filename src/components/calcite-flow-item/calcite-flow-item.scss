@@ -35,6 +35,9 @@ calcite-panel {
     width: 100%;
   }
 }
+[slot="menu-actions"] {
+  display: flex;
+}
 
 .menu-button {
   align-self: stretch;
