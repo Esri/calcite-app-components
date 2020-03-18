@@ -27,12 +27,8 @@ describe("calcite-flow-item", () => {
     const pageContent = `
     <calcite-flow-item>
       <calcite-pick-list>
-        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
-          <calcite-icon icon="hamburger" scale="s"></calcite-icon>
-        </calcite-action>
-        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool">
-          <calcite-icon icon="hamburger" scale="s"></calcite-icon>
-        </calcite-action>
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool" icon="hamburger"></calcite-action>
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool" icon="hamburger"></calcite-action>
       </calcite-pick-list>
     </calcite-flow-item>
   `;
@@ -52,11 +48,7 @@ describe("calcite-flow-item", () => {
     const pageContent = `
     <calcite-flow-item>
       <calcite-pick-list>
-        <div slot="${SLOTS.menuActions}">
-          <calcite-action indicator text="Cool">
-            <calcite-icon icon="hamburger" scale="s"></calcite-icon>
-          </calcite-action>
-        </div>
+        <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool" icon="hamburger"></calcite-action>
       </calcite-pick-list>
     </calcite-flow-item>
   `;
@@ -74,12 +66,33 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      `<calcite-flow-item><div slot="${SLOTS.menuActions}"><calcite-action text="hello"></calcite-action></div></calcite-flow-item>`
+      `<calcite-flow-item>
+        <calcite-action slot="${SLOTS.menuActions}" text="hello"></calcite-action>
+      </calcite-flow-item>`
     );
 
     const singleActionContainer = await page.find(`calcite-flow-item >>> .${CSS.singleActionContainer}`);
 
     expect(singleActionContainer).not.toBeNull();
+  });
+
+  it("should show menu button when multiple actions", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item>
+      <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool" icon="hamburger"></calcite-action>
+      <calcite-action slot="${SLOTS.menuActions}" indicator text="Cool" icon="hamburger"></calcite-action>
+    </calcite-flow-item>
+  `;
+
+    await page.setContent(pageContent);
+
+    await page.waitForChanges();
+
+    const menuButtonNode = await page.find(`calcite-flow-item >>> .${CSS.menuButton}`);
+
+    expect(menuButtonNode).toBeDefined();
   });
 
   it("should have default heading", async () => {
@@ -106,7 +119,10 @@ describe("calcite-flow-item", () => {
     const page = await newE2EPage();
 
     await page.setContent(
-      `<calcite-flow-item><div slot="${SLOTS.menuActions}"><calcite-action text="hello"></calcite-action><calcite-action text="hello2"></calcite-action></div></calcite-flow-item>`
+      `<calcite-flow-item>
+        <calcite-action slot="${SLOTS.menuActions}" text="hello"></calcite-action>
+        <calcite-action slot="${SLOTS.menuActions}" text="hello2"></calcite-action>
+      </calcite-flow-item>`
     );
 
     await page.waitForChanges();
@@ -180,16 +196,8 @@ describe("calcite-flow-item", () => {
   it("should be accessible", async () =>
     accessible(`
       <calcite-flow-item heading="hello world" summary="test" menu-open show-back-button>
-        <div slot="${SLOTS.menuActions}">
-          <calcite-action text="Add">
-            <calcite-icon icon="plus" scale="s"></calcite-icon>
-          </calcite-action>
-        </div>
-        <div slot="${SLOTS.footerActions}">
-         <calcite-action text="Add">
-            <calcite-icon icon="plus" scale="s"></calcite-icon>
-          </calcite-action>
-        </div>
+        <calcite-action text="Add" slot="${SLOTS.menuActions}" icon="plus"></calcite-action>
+        <calcite-action text="Add" slot="${SLOTS.footerActions}" icon="plus"></calcite-action>
       </calcite-flow-item>
     `));
 });

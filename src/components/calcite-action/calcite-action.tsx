@@ -100,7 +100,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus(): void {
+  async setFocus(): Promise<void> {
     this.buttonEl.focus();
   }
 
@@ -153,7 +153,7 @@ export class CalciteAction {
   render(): VNode {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const ariaLabel = label || (!textEnabled && text);
+    const ariaLabel = label || text;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
