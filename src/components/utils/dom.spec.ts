@@ -2,8 +2,7 @@ import { getSlotted } from "./dom";
 
 describe("dom", () => {
   describe("getSlotted()", () => {
-    const slotNameMultiple = "multiple";
-    const slotNameSingle = "single";
+    const testSlotName = "test";
 
     beforeAll(() => {
       class SlotTest extends HTMLElement {
@@ -12,11 +11,8 @@ describe("dom", () => {
           this.attachShadow({ mode: "open" });
         }
 
-        connectedCallback() {
-          this.shadowRoot.innerHTML = `
-            <slot name="${slotNameMultiple}"></slot>
-            <slot name="${slotNameSingle}"></slot>
-          `;
+        connectedCallback(): void {
+          this.shadowRoot.innerHTML = `<slot name="${testSlotName}"></slot>`;
         }
       }
 
@@ -26,9 +22,8 @@ describe("dom", () => {
     beforeEach(() => {
       document.body.innerHTML = `
       <slot-test>
-        <h2 slot=${slotNameMultiple}>😃</h2>
-        <h2 slot=${slotNameMultiple}>😄</h2>
-        <h2 slot=${slotNameSingle}>😂</h2>
+        <h2 slot=${testSlotName}><span>😃</span></h2>
+        <h2 slot=${testSlotName}><span>😂</span></h2>
       </slot-test>
     `;
     });
@@ -39,12 +34,45 @@ describe("dom", () => {
       }
     });
 
-    it("returns elements with matching slot name", () => {
-      expect(getSlotted(document.body, slotNameMultiple)).toHaveLength(2);
-      expect(getSlotted(document.body, slotNameSingle)).toHaveLength(1);
+    describe("single slotted", () => {
+      it("returns elements with matching slot name", () =>
+        expect(getSlotted(document.body, testSlotName)).toBeTruthy());
+
+      it("returns null when no results", () => expect(getSlotted(document.body, "non-existent-slot")).toBeNull());
+
+      describe("scoped selector", () => {
+        it("returns element with matching nested selector", () =>
+          expect(getSlotted(document.body, testSlotName, { selector: "span" })).toBeTruthy());
+
+        it("returns nothing with non-matching child selector", () =>
+          expect(getSlotted(document.body, testSlotName, { selector: "non-existent-slot" })).toBeNull());
+      });
     });
 
-    it("returns empty array when there are no matches", () =>
-      expect(getSlotted(document.body, "non-existent-slot")).toHaveLength(0));
+    describe("multiple slotted", () => {
+      it("returns elements with matching slot name", () =>
+        expect(getSlotted(document.body, testSlotName, { all: true })).toHaveLength(2));
+
+      it("returns empty list when no results", () =>
+        expect(getSlotted(document.body, "non-existent-slot", { all: true })).toHaveLength(0));
+
+      describe("scoped selector", () => {
+        it("returns child elements matching selector", () =>
+          expect(
+            getSlotted(document.body, testSlotName, {
+              all: true,
+              selector: "span"
+            })
+          ).toHaveLength(2));
+
+        it("returns empty list with non-matching child selector", () =>
+          expect(
+            getSlotted(document.body, testSlotName, {
+              all: true,
+              selector: "non-existent"
+            })
+          ).toHaveLength(0));
+      });
+    });
   });
 });

@@ -29,7 +29,7 @@ function getClosestShellPosition(el: HTMLElement): CalcitePosition | null {
   }
 }
 
-function getCalcitePosition(position: CalcitePosition, el: HTMLElement) {
+function getCalcitePosition(position: CalcitePosition, el: HTMLElement): CalcitePosition {
   return position || getClosestShellPosition(el) || "start";
 }
 

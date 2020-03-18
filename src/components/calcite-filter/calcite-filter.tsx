@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  h,
+  VNode
+} from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 import { CSS, ICONS, TEXT } from "./resources";
 
@@ -87,7 +97,7 @@ export class CalciteFilter {
       return;
     }
 
-    const find = (input: object, RE: RegExp) => {
+    const find = (input: object, RE: RegExp): any => {
       let found = false;
       forIn(input, (val) => {
         if (typeof val === "function") {
@@ -129,7 +139,7 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <label>
@@ -139,7 +149,9 @@ export class CalciteFilter {
             placeholder={this.placeholder || this.textPlaceholder}
             onInput={this.inputHandler}
             aria-label={this.intlLabel || this.textLabel || TEXT.filterLabel}
-            ref={(el) => (this.textInput = el as HTMLInputElement)}
+            ref={(el): void => {
+              this.textInput = el;
+            }}
           />
           <div class={CSS.searchIcon}>
             <calcite-icon scale="s" icon={ICONS.search} />
