@@ -318,19 +318,18 @@ export class CalciteFlowItem {
   }
 
   renderHeaderActions(): VNode {
-    const menuActionsNode = getSlotted(this.el, SLOTS.menuActions);
+    const menuActions = getSlotted(this.el, SLOTS.menuActions, { all: true });
 
-    const hasMenuActionsInBlacklisted = menuActionsNode?.closest(
-      BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(",")
+    const filteredActions = menuActions.filter(
+      (el) => !el.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","))
     );
 
-    const hasMenuActions = !!menuActionsNode && !hasMenuActionsInBlacklisted;
-    const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
+    const actionCount = filteredActions.length;
 
     const menuActionsNodes =
       actionCount === 1
         ? this.renderSingleActionContainer()
-        : hasMenuActions
+        : actionCount
         ? this.renderMenuActionsContainer()
         : null;
 
