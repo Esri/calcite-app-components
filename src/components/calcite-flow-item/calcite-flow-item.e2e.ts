@@ -1,6 +1,6 @@
 import { newE2EPage } from "@stencil/core/testing";
 
-import { CSS, SLOTS, TEXT } from "./resources";
+import { CSS, SLOTS } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-flow-item", () => {
@@ -19,6 +19,28 @@ describe("calcite-flow-item", () => {
 
     expect(menuContainer).toBeNull();
     expect(singleActionContainer).toBeNull();
+  });
+
+  it("header-content slot should override header", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item heading="my heading">
+      <button id="test" slot="header-content"></button>
+    </calcite-flow-item>
+  `;
+
+    await page.setContent(pageContent);
+
+    await page.waitForChanges();
+
+    const headingNode = await page.find(`calcite-flow-item >>> .${CSS.heading}`);
+
+    expect(headingNode).toBeNull();
+
+    const headerNode = await page.find(`calcite-flow-item >>> .${CSS.header}`);
+
+    expect(headerNode).not.toBeNull();
   });
 
   it("should not show menu button when actions are inside blacklisted component", async () => {
@@ -100,24 +122,6 @@ describe("calcite-flow-item", () => {
     const element = await page.find(`calcite-flow-item >>> .${CSS.summary}`);
 
     expect(element).toEqualText("test");
-  });
-
-  it("text defaults should be present", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-flow-item></calcite-flow-item>");
-
-    await page.waitForChanges();
-
-    const element = await page.find("calcite-flow-item");
-
-    const textBack = await element.getProperty("textBack");
-    const textOpen = await element.getProperty("textOpen");
-    const textClose = await element.getProperty("textClose");
-
-    expect(textBack).toEqual(TEXT.back);
-    expect(textOpen).toEqual(TEXT.open);
-    expect(textClose).toEqual(TEXT.close);
   });
 
   it("menuOpen should show/hide when toggled", async () => {

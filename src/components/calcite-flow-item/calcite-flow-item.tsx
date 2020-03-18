@@ -71,17 +71,35 @@ export class CalciteFlowItem {
   /**
    * 'Back' text string.
    */
-  @Prop() textBack = TEXT.back;
+  @Prop() intlBack?: string;
+
+  /**
+   * 'Back' text string.
+   * @deprecated use "intlBack" instead.
+   */
+  @Prop() textBack?: string;
+
+  /**
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
+   */
+  @Prop() intlClose?: string;
 
   /**
    * 'Close' text string for the menu.
+   * @deprecated use "intlClose" instead.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() textClose?: string;
 
   /**
    * 'Open' text string for the menu.
    */
-  @Prop() textOpen = TEXT.open;
+  @Prop() intlOpen?: string;
+
+  /**
+   * 'Open' text string for the menu.
+   * @deprecated use "intlOpen" instead.
+   */
+  @Prop() textOpen?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -219,16 +237,16 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton(rtl: boolean): VNode {
-    const { showBackButton, textBack, backButtonClick } = this;
-
+    const { showBackButton, intlBack, textBack, backButtonClick } = this;
+    const label = intlBack || textBack || TEXT.back;
     const icon = rtl ? ICONS.backRight : ICONS.backLeft;
 
     return showBackButton ? (
       <calcite-action
         slot={PANEL_SLOTS.headerLeadingContent}
         key="back-button"
-        aria-label={textBack}
-        text={textBack}
+        aria-label={label}
+        text={label}
         class={CSS.backButton}
         onClick={backButtonClick}
       >
@@ -238,9 +256,11 @@ export class CalciteFlowItem {
   }
 
   renderMenuButton(): VNode {
-    const { menuOpen, textOpen, textClose } = this;
+    const { menuOpen, textOpen, intlOpen, intlClose, textClose } = this;
+    const closeLabel = intlClose || textClose || TEXT.close;
+    const openLabel = intlOpen || textOpen || TEXT.open;
 
-    const menuLabel = menuOpen ? textClose : textOpen;
+    const menuLabel = menuOpen ? closeLabel : openLabel;
 
     return (
       <calcite-action
@@ -272,7 +292,7 @@ export class CalciteFlowItem {
     const hasHeaderContentSlot = !!this.el.querySelector(`[slot=${SLOTS.headerContent}]`);
 
     return hasHeaderContentSlot ? (
-      <div slot={PANEL_SLOTS.headerContent}>
+      <div class={CSS.header} slot={PANEL_SLOTS.headerContent}>
         <slot name={SLOTS.headerContent} />
       </div>
     ) : null;
@@ -308,8 +328,9 @@ export class CalciteFlowItem {
   renderHeaderActions(): VNode {
     const menuActionsNode = this.el.querySelector(`[slot=${SLOTS.menuActions}]`);
 
-    const hasMenuActionsInBlacklisted =
-      menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
+    const hasMenuActionsInBlacklisted = menuActionsNode?.closest(
+      BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(",")
+    );
 
     const hasMenuActions = !!menuActionsNode && !hasMenuActionsInBlacklisted;
     const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
@@ -357,11 +378,12 @@ export class CalciteFlowItem {
   }
 
   renderFab(): VNode {
-    return (
+    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+    return hasFab ? (
       <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
         <slot name={SLOTS.fab} />
       </div>
-    );
+    ) : null;
   }
 
   render() {

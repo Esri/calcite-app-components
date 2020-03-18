@@ -15,12 +15,6 @@ export const CSS = {
   fabContainer: "fab-container"
 };
 
-export const TEXT = {
-  back: "Back",
-  open: "Open",
-  close: "Close"
-};
-
 export const SLOTS = {
   headerContent: "header-content",
   menuActions: "menu-actions",
@@ -32,4 +26,10 @@ export const ICONS = {
   menu: "ellipsis",
   backLeft: "chevron-left",
   backRight: "chevron-right"
+};
+
+export const TEXT = {
+  back: "Back",
+  open: "Open",
+  close: "Close"
 };
