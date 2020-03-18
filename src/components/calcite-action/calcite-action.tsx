@@ -100,7 +100,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus(): void {
+  async setFocus(): Promise<void> {
     this.buttonEl.focus();
   }
 

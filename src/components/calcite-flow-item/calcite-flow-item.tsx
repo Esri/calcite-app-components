@@ -145,8 +145,7 @@ export class CalciteFlowItem {
 
   queryActions(): HTMLCalciteActionElement[] {
     return getSlotted<HTMLCalciteActionElement>(this.el, SLOTS.menuActions, {
-      all: true,
-      selector: "calcite-action"
+      all: true
     });
   }
 
