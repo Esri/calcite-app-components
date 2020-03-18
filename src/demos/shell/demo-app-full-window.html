@@ -176,11 +176,9 @@
             </calcite-action-bar>
             <calcite-flow id="flow">
               <calcite-flow-item heading="Layer settings">
-                <div slot="menu-actions">
-                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                </div>
+                <calcite-action slot="menu-actions" text="Do a cool thing" text-enabled></calcite-action>
+                <calcite-action slot="menu-actions" text="Do a cool thing" text-enabled></calcite-action>
+                <calcite-action slot="menu-actions" text="Do a cool thing" text-enabled></calcite-action>
                 <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
                   <calcite-block-content>
                     <calcite-value-list id="one" multiple filter-enabled>
@@ -239,12 +237,11 @@
                     </calcite-block-section>
                   </calcite-block-content>
                 </calcite-block>
-                <div slot="footer-actions">
-                  <button>Save</button>
-                  <button>Cancel</button>
-                </div>
+                <button slot="footer-actions">Save</button>
+                <button slot="footer-actions">Cancel</button>
               </calcite-flow-item>
               <calcite-flow-item heading="Deeper flow item">
+                <calcite-action slot="menu-actions" icon="banana" label="this is bananas" text-enabled></calcite-action>
                 <calcite-value-list id="one" multiple filter-enabled>
                   <calcite-value-list-item
                     text-label="2018 Population Density (Esri)"
