@@ -12,4 +12,6 @@ export type FlowDirection = "advancing" | "retreating";
 
 export type CalciteAppearance = "solid" | "clear" | "outline";
 
+export type CalciteColor = "blue" | "red" | "dark" | "light";
+
 export type CalciteScale = "s" | "m" | "l";

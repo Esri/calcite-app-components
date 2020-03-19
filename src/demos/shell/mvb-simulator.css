@@ -11,7 +11,7 @@
 }
 
 .form-section {
-    margin: var(--calcite-app-cap-spacing) 0;
+    margin: 0 0 var(--calcite-app-cap-spacing) 0;
 }
 
 .combo-control {
@@ -21,7 +21,7 @@
 .combo-control__label {
     display: block;
     margin: 0 0 var(--calcite-app-cap-spacing-quarter);
-    font-style: var(--calcite-app-font-size--1);
+    font-size: var(--calcite-app-font-size--1);
 }
 
 .combo-button {
@@ -29,7 +29,6 @@
     align-items: center;
     width: 100%;
     border: 1px solid var(--calcite-app-border);
-    /* border-radius: 3px; */
 }
 
 .combo-button__main {
