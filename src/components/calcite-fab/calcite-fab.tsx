@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, VNode } from "@stencil/core";
 import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 import { CSS, ICONS } from "./resources";
 import { focusElement, getElementDir } from "../utils/dom";
@@ -77,7 +77,7 @@ export class CalciteFab {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus() {
+  async setFocus(): Promise<void> {
     focusElement(this.buttonEl);
   }
 
@@ -87,7 +87,7 @@ export class CalciteFab {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const {
       appearance,
       disabled,
@@ -121,7 +121,9 @@ export class CalciteFab {
           width="auto"
           appearance={appearance}
           color="blue"
-          ref={(buttonEl) => (this.buttonEl = buttonEl)}
+          ref={(buttonEl): void => {
+            this.buttonEl = buttonEl;
+          }}
         >
           {this.textEnabled ? this.text : null}
         </calcite-button>

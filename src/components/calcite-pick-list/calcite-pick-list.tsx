@@ -7,7 +7,8 @@ import {
   Method,
   Prop,
   State,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
 import {
@@ -129,16 +130,20 @@ export class CalcitePickList<
    */
   @Event() calciteListChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(
+    event: CustomEvent
+  ): void {
     event.stopPropagation();
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(
+    event: CustomEvent
+  ): void {
     calciteListItemValueChangeHandler.call(this, event);
   }
 
@@ -187,7 +192,7 @@ export class CalcitePickList<
     return this.multiple ? ICON_TYPES.square : ICON_TYPES.circle;
   }
 
-  render() {
+  render(): VNode {
     return <List props={this} />;
   }
 }

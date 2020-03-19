@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.12/"></script>
     <style>
-      html, body, main, .shell-container {
+      html,
+      body,
+      main,
+      .shell-container {
         position: relative;
         width: 100%;
         height: 100%;
@@ -97,52 +100,48 @@
                 </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
-              <calcite-block collapsible  heading="Primary Content" summary="This is the primary.">
-                <calcite-block-content>
-                  <calcite-action text="Side ActionPad" text-enabled id="action-pad-button" indicator>
-                    <calcite-icon icon="caret-square-right" scale="s"></calcite-icon>
-                  </calcite-action>
-                  <!-- popover from click of this action at bottom of file -->
-                  <calcite-action
-                    text="Anchored Shell Floating Panel"
-                    text-enabled
-                    id="shell-floating-panel-button"
-                  >
-                    <calcite-icon icon="extent" scale="s"></calcite-icon>
-                  </calcite-action>
-                  <calcite-action
-                    text="Over Shell Floating Panel"
-                    text-enabled
-                    id="shell-floating-panel-over-button"
-                  >
-                    <calcite-icon icon="arrow-up-right" scale="s"></calcite-icon>
-                  </calcite-action>
-                </calcite-block-content>
-              </calcite-block>
-              <calcite-block collapsible  heading="Transpancy by predominant percentage">
-                <calcite-block-content>
-                  <calcite-block-section text="Set transparency based on the predominant percentage" toggle-display="switch" open>
-                    <label style="display: flex;flex-flow: column; margin: 15px 0;">
-                      Cool
-                      <input type="text" style="padding: 0.5rem;"/>
-                    </label>
-                  </calcite-block-section>
-                </calcite-block-content>
-              </calcite-block>
-              <calcite-block collapsible  heading="Additional Block" summary="This is the primary.">
-                <calcite-block-content>
-                  <div style="height: 300px;">
-                    <p>Cool thing.</p>
-                  </div>
-                </calcite-block-content>
-              </calcite-block>
-              <calcite-block collapsible  heading="More Block" summary="This is the primary.">
-                <calcite-block-content>
-                  <div style="height: 300px;">
-                    <p>Cool thang.</p>
-                  </div>
-                </calcite-block-content>
-              </calcite-block>
+            <calcite-block collapsible heading="Primary Content" summary="This is the primary.">
+              <calcite-block-content>
+                <calcite-action text="Side ActionPad" text-enabled id="action-pad-button" indicator>
+                  <calcite-icon icon="caret-square-right" scale="s"></calcite-icon>
+                </calcite-action>
+                <!-- popover from click of this action at bottom of file -->
+                <calcite-action text="Anchored Shell Floating Panel" text-enabled id="shell-floating-panel-button">
+                  <calcite-icon icon="extent" scale="s"></calcite-icon>
+                </calcite-action>
+                <calcite-action text="Over Shell Floating Panel" text-enabled id="shell-floating-panel-over-button">
+                  <calcite-icon icon="arrow-up-right" scale="s"></calcite-icon>
+                </calcite-action>
+              </calcite-block-content>
+            </calcite-block>
+            <calcite-block collapsible heading="Transpancy by predominant percentage">
+              <calcite-block-content>
+                <calcite-block-section
+                  text="Set transparency based on the predominant percentage"
+                  toggle-display="switch"
+                  open
+                >
+                  <label style="display: flex;flex-flow: column; margin: 15px 0;">
+                    Cool
+                    <input type="text" style="padding: 0.5rem;" />
+                  </label>
+                </calcite-block-section>
+              </calcite-block-content>
+            </calcite-block>
+            <calcite-block collapsible heading="Additional Block" summary="This is the primary.">
+              <calcite-block-content>
+                <div style="height: 300px;">
+                  <p>Cool thing.</p>
+                </div>
+              </calcite-block-content>
+            </calcite-block>
+            <calcite-block collapsible heading="More Block" summary="This is the primary.">
+              <calcite-block-content>
+                <div style="height: 300px;">
+                  <p>Cool thang.</p>
+                </div>
+              </calcite-block-content>
+            </calcite-block>
           </calcite-shell-panel>
 
           <calcite-shell-panel slot="contextual-panel" position="start" detached detached-scale="l">
@@ -170,18 +169,16 @@
                 </calcite-action>
               </calcite-action-group>
               <calcite-action-group slot="bottom-actions">
-                  <calcite-action text="Tips" id="tip-manager-button">
-                    <calcite-icon icon="lightbulb" scale="s"></calcite-icon>
-                    </calcite-action>
+                <calcite-action text="Tips" id="tip-manager-button">
+                  <calcite-icon icon="lightbulb" scale="s"></calcite-icon>
+                </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-flow id="flow">
               <calcite-flow-item heading="Layer settings">
-                <div slot="menu-actions">
-                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                  <calcite-action text="Do a cool thing" text-enabled></calcite-action>
-                </div>
+                <calcite-action slot="menu-actions" text="Do a cool thing" text-enabled></calcite-action>
+                <calcite-action slot="menu-actions" text="Do a cool thing" text-enabled></calcite-action>
+                <calcite-action slot="menu-actions" text="Do a cool thing" text-enabled></calcite-action>
                 <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
                   <calcite-block-content>
                     <calcite-value-list id="one" multiple filter-enabled>
@@ -240,10 +237,8 @@
                     </calcite-block-section>
                   </calcite-block-content>
                 </calcite-block>
-                <div slot="footer-actions">
-                  <button>Save</button>
-                  <button>Cancel</button>
-                </div>
+                <button slot="footer-actions">Save</button>
+                <button slot="footer-actions">Cancel</button>
               </calcite-flow-item>
               <calcite-flow-item heading="Deeper flow item">
                 <calcite-value-list id="one" multiple filter-enabled>
@@ -377,12 +372,12 @@
               <calcite-tip heading="The Red Rocks and Blue Water">
                 <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
                 <p>
-                  This tip is how a tip should really look. It has a landscape or square image and a small amount of text
-                  content. This paragraph is in an "info" slot.
+                  This tip is how a tip should really look. It has a landscape or square image and a small amount of
+                  text content. This paragraph is in an "info" slot.
                 </p>
                 <p>
-                  This is another paragraph in a subsequent "info" slot. In publishing and graphic design, Lorem ipsum is
-                  a placeholder text commonly used to demonstrate the visual form of a document without relying on
+                  This is another paragraph in a subsequent "info" slot. In publishing and graphic design, Lorem ipsum
+                  is a placeholder text commonly used to demonstrate the visual form of a document without relying on
                   meaningful content (also called greeking). Replacing the actual content with placeholder text allows
                   designers to design the form of the content before the content itself has been produced.
                 </p>
@@ -406,8 +401,8 @@
               <p>
                 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
                 visual form of a document without relying on meaningful content (also called greeking). Replacing the
-                actual content with placeholder text allows designers to design the form of the content before the content
-                itself has been produced.
+                actual content with placeholder text allows designers to design the form of the content before the
+                content itself has been produced.
               </p>
               <a href="http://www.esri.com">View Esri</a>
             </calcite-tip>
@@ -421,7 +416,7 @@
               </p>
               <a href="http://www.esri.com">View Esri</a>
             </calcite-tip>
-            </calcite-tip-manager>
+          </calcite-tip-manager>
           <div id="viewDiv"></div>
 
           <footer slot="shell-footer">Footer</footer>
@@ -434,21 +429,34 @@
             <calcite-action slot="menu-actions" label="options">
               <calcite-icon icon="ellipsis" scale="s"></calcite-icon>
             </calcite-action>
-            <calcite-pick-list-item text-label="about disasters, fires, floods and killer bees" value="1"></calcite-pick-list-item>
-            <calcite-pick-list-item text-label="about the NASA shuttle falling in the sea" value="2"></calcite-pick-list-item>
-            <calcite-pick-list-item text-label="about starvation and the food that Live Aid bought" value="3"></calcite-pick-list-item>
-            <calcite-pick-list-item text-label="about disease, baby rock, Hudson, rock," value="4"></calcite-pick-list-item>
+            <calcite-pick-list-item
+              text-label="about disasters, fires, floods and killer bees"
+              value="1"
+            ></calcite-pick-list-item>
+            <calcite-pick-list-item
+              text-label="about the NASA shuttle falling in the sea"
+              value="2"
+            ></calcite-pick-list-item>
+            <calcite-pick-list-item
+              text-label="about starvation and the food that Live Aid bought"
+              value="3"
+            ></calcite-pick-list-item>
+            <calcite-pick-list-item
+              text-label="about disease, baby rock, Hudson, rock,"
+              value="4"
+            ></calcite-pick-list-item>
           </calcite-pick-list>
-          <calcite-button slot="footer" width="half" >Yeah!</calcite-button>
+          <calcite-button slot="footer" width="half">Yeah!</calcite-button>
           <calcite-button slot="footer" width="half" appearance="clear">Naw.</calcite-button>
         </calcite-panel>
       </calcite-popover>
       <script>
-
         const tipManagerButton = document.getElementById("tip-manager-button");
         const tipManager = document.getElementById("tip-manager");
-        tipManagerButton.addEventListener("click", function(){
-          tipManager.hasAttribute("hidden") ? tipManager.removeAttribute("hidden") : tipManager.setAttribute("hidden", "");
+        tipManagerButton.addEventListener("click", function() {
+          tipManager.hasAttribute("hidden")
+            ? tipManager.removeAttribute("hidden")
+            : tipManager.setAttribute("hidden", "");
         });
 
         const actionPad = document.getElementById("action-pad");

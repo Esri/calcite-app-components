@@ -1,7 +1,8 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot icon - A slot for adding a trailing header icon.
@@ -122,7 +123,7 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const {
       collapsible,
       disabled,
@@ -141,7 +142,7 @@ export class CalciteBlock {
       ? intlCollapse || textCollapse || TEXT.collapse
       : intlExpand || textExpand || TEXT.expand;
 
-    const hasIcon = el.querySelector(`[slot=${SLOTS.icon}]`);
+    const hasIcon = getSlotted(el, SLOTS.icon);
     const headerContent = (
       <header class={CSS.header}>
         {hasIcon ? (
@@ -156,7 +157,7 @@ export class CalciteBlock {
       </header>
     );
 
-    const slottedControl = el.querySelector(`[slot=${SLOTS.control}]`);
+    const slottedControl = getSlotted(el, SLOTS.control);
 
     const headerNode = (
       <div class={CSS.headerContainer}>

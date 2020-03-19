@@ -50,7 +50,7 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-tip-manager",
     createAttributes(),

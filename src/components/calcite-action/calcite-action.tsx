@@ -100,7 +100,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus() {
+  async setFocus(): Promise<void> {
     this.buttonEl.focus();
   }
 
@@ -150,10 +150,10 @@ export class CalciteAction {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const ariaLabel = label || (!textEnabled && text);
+    const ariaLabel = label || text;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
@@ -170,7 +170,7 @@ export class CalciteAction {
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
-          ref={(buttonEl) => (this.buttonEl = buttonEl)}
+          ref={(buttonEl): HTMLButtonElement => (this.buttonEl = buttonEl)}
         >
           {this.renderIconContainer()}
           {this.renderTextContainer()}

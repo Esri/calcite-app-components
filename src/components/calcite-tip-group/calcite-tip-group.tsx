@@ -1,4 +1,4 @@
-import { Component, Prop, h } from "@stencil/core";
+import { Component, Prop, h, VNode } from "@stencil/core";
 
 @Component({
   tag: "calcite-tip-group",
@@ -17,7 +17,7 @@ export class CalciteTipGroup {
    */
   @Prop() textGroupTitle?: string;
 
-  render() {
+  render(): VNode {
     return <slot />;
   }
 }

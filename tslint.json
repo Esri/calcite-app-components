@@ -1,24 +1,15 @@
 {
-  "extends": ["tslint-stencil/default", "tslint-ionic-rules", "tslint-config-prettier"],
+  "extends": ["tslint-config-prettier"],
   "rules": {
     "component-member-order": {
       "severity": "warn"
     },
-    "decorated-member-style": {
-      "severity": "off"
-    },
-    "lines-between-class-members": {
-      "options": [1]
-    },
-    "no-consecutive-blank-lines": {
-      "options": [1]
-    },
-    "no-unused-variable": {
-      "severity": "default"
+    "lifecycle-order": {
+      "severity": "warn"
     },
     "prefer-conditional-expression": {
       "severity": "warn"
     }
   },
-  "rulesDirectory": ["node_modules/tslint-lines-between-class-members"]
+  "rulesDirectory": ["node_modules/tslint-stencil/rules"]
 }

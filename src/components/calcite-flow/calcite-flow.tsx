@@ -1,4 +1,4 @@
-import { Component, Element, Host, Listen, Method, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Listen, Method, Prop, State, h, VNode } from "@stencil/core";
 
 import { CSS } from "./resources";
 
@@ -45,7 +45,9 @@ export class CalciteFlow {
       return;
     }
 
-    const beforeBack = lastItem.beforeBack ? lastItem.beforeBack : () => Promise.resolve();
+    const beforeBack = lastItem.beforeBack
+      ? lastItem.beforeBack
+      : (): Promise<void> => Promise.resolve();
 
     return beforeBack.call(lastItem).then(() => {
       lastItem.remove();
@@ -74,15 +76,15 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     this.updateFlowProps();
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     this.flowItemObserver.observe(this.el, { childList: true, subtree: true });
   }
 
-  componentDidUnload() {
+  componentDidUnload(): void {
     this.flowItemObserver.disconnect();
   }
 
@@ -149,7 +151,7 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const { flowDirection, flowCount } = this;
 
     const frameDirectionClasses = {
