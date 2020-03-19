@@ -22,7 +22,8 @@ import {
   initializeObserver,
   mutationObserverCallback,
   selectSiblings,
-  setUpItems
+  setUpItems,
+  keyDownHandler
 } from "./shared-list-logic";
 import List from "./shared-list-render";
 
@@ -171,6 +172,10 @@ export class CalcitePickList<
 
   getItemData = getItemData.bind(this);
 
+  keyDownHandler = (event): void => {
+    keyDownHandler.call(this, event);
+  };
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -193,6 +198,6 @@ export class CalcitePickList<
   }
 
   render(): VNode {
-    return <List props={this} />;
+    return <List props={this} onKeyDown={this.keyDownHandler} />;
   }
 }

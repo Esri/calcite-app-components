@@ -1,7 +1,8 @@
 import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 import { debounce } from "lodash-es";
-import { getSlotted } from "../utils/dom";
+import { getSlotted, focusElement } from "../utils/dom";
+import { getRoundRobinIndex } from "../utils/array";
 
 type Lists = CalcitePickList | CalciteValueList;
 type ListItemElement<T> = T extends CalcitePickList ? HTMLCalcitePickListItemElement : HTMLCalciteValueListItemElement;
@@ -77,6 +78,48 @@ export function calciteListItemValueChangeHandler<T extends Lists>(this: List<T>
 //  Private Methods
 //
 // --------------------------------------------------------------------------
+
+function isValidKey(key: string, supportedKeys: string[]): boolean {
+  return !!supportedKeys.find((k) => k === key);
+}
+
+const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
+
+export function keyDownHandler<T extends Lists>(this: List<T>, event: KeyboardEvent): void {
+  const { key, target } = event;
+
+  if (!isValidKey(key, SUPPORTED_ARROW_KEYS)) {
+    return;
+  }
+
+  const { items, multiple } = this;
+  const { length } = items;
+  const currentIndex = items.indexOf(target as any);
+
+  if (!length || currentIndex === -1) {
+    return;
+  }
+
+  event.preventDefault();
+
+  if (key === "ArrowUp") {
+    const value = getRoundRobinIndex(currentIndex - 1, length);
+    const previousItem = items[value];
+    focusElement(previousItem);
+    if (!multiple) {
+      previousItem.selected = true;
+    }
+  }
+
+  if (key === "ArrowDown") {
+    const value = getRoundRobinIndex(currentIndex + 1, length);
+    const nextItem = items[value];
+    focusElement(nextItem);
+    if (!multiple) {
+      nextItem.selected = true;
+    }
+  }
+}
 
 export function internalCalciteListChangeEvent<T extends Lists>(this: List<T>): void {
   this.calciteListChange.emit(this.selectedValues);

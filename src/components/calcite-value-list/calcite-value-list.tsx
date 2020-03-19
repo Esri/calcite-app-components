@@ -24,7 +24,8 @@ import {
   initializeObserver,
   mutationObserverCallback,
   selectSiblings,
-  setUpItems
+  setUpItems,
+  keyDownHandler
 } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
 
@@ -225,6 +226,7 @@ export class CalciteValueList<
     });
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
     if (!handleElement || !valueListElement.handleActivated) {
+      keyDownHandler.call(this, event);
       return;
     }
     const lastIndex = this.items.length - 1;

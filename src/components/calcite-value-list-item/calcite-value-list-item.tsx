@@ -98,6 +98,11 @@ export class CalciteValueListItem {
     this.pickListItem.toggleSelected(coerce);
   }
 
+  @Method()
+  async setFocus(): Promise<void> {
+    this.pickListItem?.setFocus();
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
