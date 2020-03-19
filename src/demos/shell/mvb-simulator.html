@@ -184,6 +184,36 @@
                     </div>
                   </section>
                 </calcite-block>
+                <calcite-block heading="An attribute" summary="Continent - State province" open collapsible>
+                  <calcite-icon icon="label" scale="m" slot="icon"></calcite-icon>
+                  <calcite-action slot="control" icon="ellipsis" scale="s"></calcite-action>
+                  <section class="form-section">
+                    <div class="combo-control">
+                      <span class="combo-control__label">
+                        Label attribute
+                      </span>
+                      <div class="combo-button">
+                        <button class="combo-button__main">
+                          NAME
+                        </button>
+                        <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="form-section">
+                    <div class="combo-control">
+                      <span class="combo-control__label">
+                        Label style
+                      </span>
+                      <div class="combo-button">
+                        <button class="combo-button__main">
+                          Edit label style
+                        </button>
+                        <!-- <calcite-action class="combo-action" scale="s" icon="code"></calcite-action> -->
+                      </div>
+                    </div>
+                  </section>
+                </calcite-block>
                 <calcite-block heading="NAME" summary="Continent - State province" open collapsible>
                   <calcite-icon icon="label" scale="m" slot="icon"></calcite-icon>
                   <calcite-action slot="control" icon="ellipsis" scale="s"></calcite-action>
@@ -218,7 +248,11 @@
                   <button>Save</button>
                   <button>Cancel</button>
                 </div> -->
-                <calcite-fab slot="fab" text="Add label class" text-enabled></calcite-fab>
+                <calcite-fab slot="fab" id="label-fab" text="Add label class"></calcite-fab>
+                <calcite-tooltip reference-element="label-fab">
+                  <!-- <img src="https://placekitten.com/200/200"> -->
+                  Add label class
+                </calcite-tooltip>
               </calcite-flow-item>
             </calcite-flow>
           </calcite-shell-panel>
