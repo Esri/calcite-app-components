@@ -20,6 +20,9 @@
   &:focus {
     outline-offset: var(--calcite-app-outline-inset);
   }
+  &:hover {
+    background-color: var(--calcite-app-background-hover);
+  }
   &--activated {
     background-color: var(--calcite-app-background-active);
     color: var(--calcite-app-foreground-active);
