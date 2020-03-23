@@ -46,15 +46,18 @@
           map: webmap
         });
         view.when(function() {
-          var layerList = new LayerList({
-            view: view,
-            selectionEnabled: true,
-            container: "layerlist-container"
-          });
+        //   var layerList = new LayerList({
+        //     view: view,
+        //     selectionEnabled: true,
+        //     container: "layerlist-container"
+        //   });
 
           // Add widget to the top right corner of the view
           // view.ui.add(layerList, "top-right");
         });
+        fetch('layerlist.html')
+        .then(data => data.text())
+        .then(html => document.getElementById('layerlist-container').innerHTML = html);
       });
     </script>
   </head>
@@ -62,8 +65,8 @@
     <main>
       <div class="shell-container">
         <calcite-shell>
-          <calcite-shell-panel slot="primary-panel" position="start" detached>
-            <calcite-panel
+          <calcite-shell-panel id="primary-panel" slot="primary-panel" position="start" detached detached-scale="l">
+            <!-- <calcite-panel
               id="shell-floating-panel"
               slot="shell-floating-panel"
               heading="Anchored Shell Floating Panel"
@@ -82,21 +85,21 @@
               ><span>
                 Shell Floating Panel Content
               </span>
-            </calcite-panel>
+            </calcite-panel> -->
 
             <calcite-action-bar slot="action-bar" theme="dark">
               <calcite-action-group>
-                <calcite-action text="Add">
+                <calcite-action text="New">
                   <calcite-icon icon="plus" scale="s"></calcite-icon>
                 </calcite-action>
                 <calcite-action text="Save" disabled>
                   <calcite-icon icon="save" scale="s"></calcite-icon>
                 </calcite-action>
+            </calcite-action-group>
+            <calcite-action-group>
                 <calcite-action text="Layers" active>
                   <calcite-icon icon="layers" scale="s"></calcite-icon>
                 </calcite-action>
-              </calcite-action-group>
-              <calcite-action-group>
                 <calcite-action text="An unbelievably long title">
                   <calcite-icon icon="plus" scale="s"></calcite-icon>
                 </calcite-action>
@@ -117,9 +120,9 @@
                 <calcite-action text="Layer properties" icon="sliders-horizontal"> </calcite-action>
                 <calcite-action text="Styles" icon="shapes"> </calcite-action>
                 <calcite-action text="Filter" icon="layer-filter"> </calcite-action>
-                <calcite-action text="Configure pop-ups" icon="popup"> </calcite-action>
+                <calcite-action text="Configure pop-ups" icon="popup" active> </calcite-action>
                 <calcite-action text="Configure attributes" icon="feature-details"> </calcite-action>
-                <calcite-action text="Labels" icon="label" active> </calcite-action>
+                <calcite-action text="Labels" icon="label"> </calcite-action>
                 <calcite-action text="Tablew" icon="table"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
@@ -147,131 +150,96 @@
                   <span class="enable-label__text">Enable popup</span>
                   <calcite-switch scale="s" switched></calcite-switch>
                 </section>
-                <calcite-sortabl-list>
-
-                
-                <calcite-block drag-handle heading="2018 Total Population (Esri) and some more stuff" summary="County - Town" open collapsible>
-                  <calcite-icon icon="feature-details" scale="m" slot="icon"></calcite-icon>
-                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                  <section class="form-section">
-                    <div class="combo-control">
-                      <span class="combo-control__label">
-                        Label attribute
-                      </span>
-                      <div class="combo-button">
-                        <button class="combo-button__main">
-                          2018 Total Population (Esri)
-                        </button>
-                        <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                      </div>
+                <div class="combo-button flow-list-item">
+                    <button class="combo-button__main">
+                        Manage expresions
+                    </button>
+                    <calcite-action class="combo-action" icon="chevron-right"  scale="s"></calcite-action>
+                </div>
+                <calcite-sortable-list>
+                  <calcite-block drag-handle heading="Attributes" summary="2/98" open collapsible>
+                    <calcite-icon icon="feature-details" scale="m" slot="icon"></calcite-icon>
+                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                    <!-- <calcite-button appearance="transparent" width="full" scale="s"> -->
+                      <!-- Select attributes -->
+                    </calcite-button>
+                    <calcite-value-list drag-enabled>
+                      <calcite-value-list-item
+                        text-label="2018 Total Households (Esri)"
+                        text-description="{TOTHH_CY}"
+                      ></calcite-value-list-item>
+                      <calcite-value-list-item
+                        text-label="2018 Average Household Size (Esri)"
+                        text-description="{AVGHHSZ_CY}"
+                      ></calcite-value-list-item>
+                    </calcite-value-list>
+                    <div class="row">
+                        <calcite-button id="attribute-add" round icon="plus" scale="s" color="light">Select attributes</calcite-button>
+                        <!-- <calcite-tooltip reference-element="attribute-add" disable-pointer>
+                            Select attributes
+                        </calcite-tooltip> -->
                     </div>
-                  </section>
-                  <section class="form-section">
-                    <div class="combo-control">
-                      <span class="combo-control__label">
-                        Edit label style
-                      </span>
-                      <div class="combo-button">
-                        <button class="combo-button__main">
-                          Edit label style
-                        </button>
-                      </div>
-                    </div>
-                  </section>
-                </calcite-block>
-                <calcite-block heading="2018 Total Population (Esri) and some more stuff" summary="County - Town" open collapsible>
+                  </calcite-block>
+                  <calcite-block drag-handle heading="Image" open collapsible>
                     <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
                     <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                     <section class="form-section">
                       <div class="combo-control">
                         <span class="combo-control__label">
-                          Label attribute
+                          URL
                         </span>
                         <div class="combo-button">
                           <button class="combo-button__main">
-                            2018 Total Population (Esri)
+                            https://ca-times.brightspotcdn.com/dims4/default/
                           </button>
                           <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                         </div>
                       </div>
                     </section>
-                    <section class="form-section">
-                      <div class="combo-control">
-                        <span class="combo-control__label">
-                          Edit label style
-                        </span>
-                        <div class="combo-button">
-                          <button class="combo-button__main">
-                            Edit label style
-                          </button>
+                    <calcite-block-section text="Options">
+                      <section class="form-section">
+                        <div class="combo-control">
+                          <span class="combo-control__label">
+                            Title
+                          </span>
+                          <div class="combo-button">
+                            <button class="combo-button__main">
+                              <span class="placeholder">My cool title</span>
+                            </button>
+                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                          </div>
                         </div>
-                      </div>
-                    </section>
+                        <div class="combo-control">
+                          <span class="combo-control__label">
+                            Caption
+                          </span>
+                          <div class="combo-button">
+                            <button class="combo-button__main">
+                              <span class="placeholder">My cool caption</span>
+                            </button>
+                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                          </div>
+                        </div>
+                        <div class="combo-control">
+                          <span class="combo-control__label">
+                            Link
+                          </span>
+                          <div class="combo-button">
+                            <button class="combo-button__main">
+                              <span class="placeholder">My URL link</span>
+                            </button>
+                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                          </div>
+                        </div>
+                      </section>
+                    </calcite-block-section>
                   </calcite-block>
-                <calcite-block drag-handle heading="NAME" summary="Continent - State province" open >
-                  <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
-                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                  <section class="form-section">
-                    <div class="combo-control">
-                      <span class="combo-control__label">
-                        Label attribute
-                      </span>
-                      <div class="combo-button">
-                        <button class="combo-button__main">
-                          NAME
-                        </button>
-                        <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                      </div>
-                    </div>
-                  </section>
-                  <section class="form-section">
-                    <div class="combo-control">
-                      <span class="combo-control__label">
-                        Label style
-                      </span>
-                      <div class="combo-button">
-                        <button class="combo-button__main">
-                          Edit label style
-                        </button>
-                      </div>
-                    </div>
-                  </section>
-                </calcite-block>
-                <calcite-block drag-handle
-                  heading="2018 Total Households (Esri)"
-                  summary="Streets - Small building"
-                  open
-                  collapsible
-                >
-                  <calcite-icon icon="text" scale="m" slot="icon"></calcite-icon>
-                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                  <section class="form-section">
-                    <div class="combo-control">
-                      <span class="combo-control__label">
-                        Label attribute
-                      </span>
-                      <div class="combo-button">
-                        <button class="combo-button__main">
-                          2018 Total Households (Esri)
-                        </button>
-                        <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                      </div>
-                    </div>
-                  </section>
-                  <section class="form-section">
-                    <div class="combo-control">
-                      <span class="combo-control__label">
-                        Label style
-                      </span>
-                      <div class="combo-button">
-                        <button class="combo-button__main">
-                          Edit label style
-                        </button>
-                      </div>
-                    </div>
-                  </section>
-                </calcite-block>
-            </calcite-sortabl-list>
+                  <calcite-block drag-handle heading="Text" summary="Cool. he {expression/..." open>
+                    <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
+                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                    <button class="multiline-button">Cool. he {expression/expr1} population is {expression/expr2}% of the t...</button>
+                  </calcite-block>
+                </calcite-sortable-list>
                 <calcite-fab slot="fab" id="label-fab" text="Add label class"></calcite-fab>
                 <calcite-tooltip reference-element="label-fab" disable-pointer>
                   <!-- <img src="https://placekitten.com/200/200" /> -->

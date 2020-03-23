@@ -13,15 +13,17 @@
   padding: var(--calcite-app-cap-spacing-three-quarters) var(--calcite-app-side-spacing-half);
   background-color: var(--calcite-app-background);
   border: none;
-  color: var(--calcite-app-foreground-subtle);
+  color: var(--calcite-app-border);
   line-height: 0;
   cursor: move;
   @include focusRingInset();
   &:focus {
     outline-offset: var(--calcite-app-outline-inset);
+    color: var(--calcite-app-foreground);
   }
   &:hover {
     background-color: var(--calcite-app-background-hover);
+    color: var(--calcite-app-foreground);
   }
   &--activated {
     background-color: var(--calcite-app-background-active);
