@@ -138,20 +138,20 @@
             </calcite-action-bar>
             <calcite-flow id="flow">
               <calcite-flow-item
-                heading="Label features"
+                heading="Configure popup"
                 summary="Popular Demographics in the United States (Beta) - County"
               >
                 <calcite-action slot="menu-actions" text="Switch layer" icon="caret-down"></calcite-action>
 
                 <section class="enable-label">
-                  <span class="enable-label__text">Enable labels</span>
+                  <span class="enable-label__text">Enable popup</span>
                   <calcite-switch scale="s" switched></calcite-switch>
                 </section>
                 <calcite-sortabl-list>
 
                 
-                <calcite-block heading="2018 Total Population (Esri) and some more stuff" summary="County - Town" open collapsible>
-                  <calcite-icon icon="label" scale="m" slot="icon"></calcite-icon>
+                <calcite-block drag-handle heading="2018 Total Population (Esri) and some more stuff" summary="County - Town" open collapsible>
+                  <calcite-icon icon="feature-details" scale="m" slot="icon"></calcite-icon>
                   <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                   <section class="form-section">
                     <div class="combo-control">
@@ -179,8 +179,37 @@
                     </div>
                   </section>
                 </calcite-block>
+                <calcite-block heading="2018 Total Population (Esri) and some more stuff" summary="County - Town" open collapsible>
+                    <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
+                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                    <section class="form-section">
+                      <div class="combo-control">
+                        <span class="combo-control__label">
+                          Label attribute
+                        </span>
+                        <div class="combo-button">
+                          <button class="combo-button__main">
+                            2018 Total Population (Esri)
+                          </button>
+                          <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                        </div>
+                      </div>
+                    </section>
+                    <section class="form-section">
+                      <div class="combo-control">
+                        <span class="combo-control__label">
+                          Edit label style
+                        </span>
+                        <div class="combo-button">
+                          <button class="combo-button__main">
+                            Edit label style
+                          </button>
+                        </div>
+                      </div>
+                    </section>
+                  </calcite-block>
                 <calcite-block drag-handle heading="NAME" summary="Continent - State province" open >
-                  <calcite-icon icon="label" scale="m" slot="icon"></calcite-icon>
+                  <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
                   <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                   <section class="form-section">
                     <div class="combo-control">
@@ -214,7 +243,7 @@
                   open
                   collapsible
                 >
-                  <calcite-icon icon="label" scale="m" slot="icon"></calcite-icon>
+                  <calcite-icon icon="text" scale="m" slot="icon"></calcite-icon>
                   <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                   <section class="form-section">
                     <div class="combo-control">
