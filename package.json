@@ -111,5 +111,5 @@
   "peerDependencies": {
     "@esri/calcite-components": "1.0.0-beta.19"
   },
-  "license": "Apache-2.0"
+  "license": "UNLICENSED"
 }
