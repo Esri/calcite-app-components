@@ -2,16 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing-half);
   background-color: var(--calcite-app-background);
 }
 
 .enable-label calcite-switch {
   margin: 0;
-}
-
-.form-section {
-  /* margin: 0 0 var(--calcite-app-cap-spacing) 0; */
 }
 
 .combo-control {
