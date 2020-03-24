@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
-    <title>Calcite App Components: calcite-shell</title>
+    <title>Boomer v Millennial - California</title>
 
     <script src="../_assets/head.js"></script>
 
@@ -67,31 +67,13 @@
       <div class="shell-container">
         <calcite-shell>
           <calcite-shell-panel id="primary-panel" slot="primary-panel" position="start" detached detached-scale="l">
-            <!-- <calcite-panel
-              id="shell-floating-panel"
-              slot="shell-floating-panel"
-              heading="Anchored Shell Floating Panel"
-              placement="anchor"
-              hidden
-              ><span>
-                Shell Floating Panel Content
-              </span>
-            </calcite-panel>
-            <calcite-panel
-              id="shell-floating-panel-over"
-              slot="shell-floating-panel"
-              heading="Over Shell Floating Panel"
-              placement="over"
-              hidden
-              ><span>
-                Shell Floating Panel Content
-              </span>
-            </calcite-panel> -->
-
             <calcite-action-bar slot="action-bar" theme="dark">
               <calcite-action-group>
                 <calcite-action text="New">
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
+                  <calcite-icon icon="map" scale="s"></calcite-icon>
+                </calcite-action>
+                <calcite-action text="Open">
+                  <calcite-icon icon="collection" scale="s"></calcite-icon>
                 </calcite-action>
                 <calcite-action text="Save" disabled>
                   <calcite-icon icon="save" scale="s"></calcite-icon>
@@ -101,18 +83,32 @@
                 <calcite-action text="Layers" active>
                   <calcite-icon icon="layers" scale="s"></calcite-icon>
                 </calcite-action>
-                <calcite-action text="An unbelievably long title">
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
+                <calcite-action text="Basemaps">
+                  <calcite-icon icon="basemap" scale="s"></calcite-icon>
                 </calcite-action>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
+                <calcite-action text="Legend" disabled>
+                  <calcite-icon icon="legend" scale="s"></calcite-icon>
                 </calcite-action>
-                <calcite-action text="Layers">
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
+                <calcite-action text="Bookmarks">
+                  <calcite-icon icon="bookmark" scale="s"></calcite-icon>
                 </calcite-action>
               </calcite-action-group>
+              <calcite-action-group>
+                <calcite-action text="Share">
+                    <calcite-icon icon="share" scale="s"></calcite-icon>
+                  </calcite-action>
+                  <calcite-action text="Print">
+                    <calcite-icon icon="print" scale="s"></calcite-icon>
+                  </calcite-action>
+              </calcite-action-group>
             </calcite-action-bar>
-            <div id="layerlist-container"></div>
+            <calcite-flow>
+                <calcite-flow-item heading="Layers">
+                    <div id="layerlist-container"></div>
+                    <calcite-fab slot="fab" id="layer-fab" text="Add layers"></calcite-fab>
+                    <calcite-tooltip reference-element="layer-fab" disable-pointer>Add layers</calcite-tooltip>
+                </calcite-flow-item>
+            </calcite-flow>
           </calcite-shell-panel>
 
           <calcite-shell-panel slot="contextual-panel" position="end">
@@ -157,12 +153,23 @@
                     </button>
                     <calcite-action class="combo-action" icon="chevron-right"  scale="s"></calcite-action>
                 </div>
+                <section class="popup-title">
+                    <div class="combo-control">
+                    <span class="combo-control__label">
+                        Title
+                      </span>
+                    <div class="combo-button">
+                        <button class="combo-button__main">
+                          County: {NAME}
+                        </button>
+                        <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                      </div>
+                    </div>
+                </section>
                 <calcite-sortable-list>
                   <calcite-block drag-handle heading="Attributes" summary="2/98" open collapsible>
                     <calcite-icon icon="feature-details" scale="m" slot="icon"></calcite-icon>
                     <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <!-- <calcite-button appearance="transparent" width="full" scale="s"> -->
-                      <!-- Select attributes -->
                     </calcite-button>
                     <calcite-value-list drag-enabled>
                       <calcite-value-list-item
@@ -249,10 +256,10 @@
               </calcite-flow-item>
             </calcite-flow>
           </calcite-shell-panel>
-          <div slot="shell-header">
-            <header class="header">
-              <h2 class="heading">My App</h2>
-            </header>
+          <div class="gnav" slot="shell-header">
+              <calcite-icon class="gnav__action" icon="hamburger" scale="m"></calcite-icon>
+              <h2>Boomer v Millennial - California</h2>
+              <calcite-icon class="gnav__action gnav__action--small" icon="pencil" scale="s"></calcite-icon>
           </div>
           <calcite-tip-manager slot="tip-manager" id="tip-manager" hidden>
             <calcite-tip-group text-group-title="Astronomy">

@@ -1,3 +1,24 @@
+.gnav {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    flex: 1 0 56px;
+}
+
+.gnav__action {
+    margin: 0 16px;
+}
+
+.gnav__action--small {
+    margin: 0 3px;
+}
+
+.gnav h2 {
+    font-weight: var(--calcite-app-font-weight);
+    font-size: 18px;
+    margin: 0 12px;
+}
+
 .enable-label {
   display: flex;
   justify-content: space-between;
@@ -52,6 +73,15 @@
 }
 .combo-button .combo-action {
   border-left: 1px solid var(--calcite-app-border);
+}
+
+.popup-title {
+    display: flex;
+    border-top: 1px solid var(--calcite-app-border);
+    /* border-bottom: 1px solid var(--calcite-app-border); */
+    background-color: var(--calcite-app-background);
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
+    /* margin-bottom: var(--calcite-app-cap-spacing); */
 }
 
 .multiline-button {

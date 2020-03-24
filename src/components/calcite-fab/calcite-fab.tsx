@@ -23,7 +23,7 @@ export class CalciteFab {
   /**
    * Used to set the button's color. Default is light.
    */
-  @Prop({ reflect: true }) color: CalciteColor = "light";
+  @Prop({ reflect: true }) color: CalciteColor = "blue";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
