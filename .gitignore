@@ -20,7 +20,6 @@ __docs-temp__/*
 *.bak
 *.orig
 .stencil/
-.storybook/
 .idea/
 .vscode/
 .sass-cache/
