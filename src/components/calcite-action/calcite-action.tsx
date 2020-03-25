@@ -130,7 +130,7 @@ export class CalciteAction {
     const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
     const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
     const iconNode = calciteLoaderNode || calciteIconNode;
-    const hasIconToDisplay = iconNode || el.querySelector("calcite-icon, svg");
+    const hasIconToDisplay = iconNode || el.children?.length;
 
     const slotContainerNode = (
       <div
