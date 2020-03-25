@@ -105,7 +105,7 @@ calcite-loader[inline] {
 .toggle-icon {
   fill: currentColor;
   flex: 0 0 var(--calcite-app-icon-size);
-  margin: 0 var(--calcite-app-side-spacing-quarter) 0 0; // TODO RTL
+  margin: 0 var(--calcite-app-side-spacing) 0 0; // TODO RTL
 }
 
 .content {
@@ -130,12 +130,4 @@ calcite-loader[inline] {
   .icon {
     margin-left: 0; // TODO RTL
   }
-}
-
-::slotted([slot="control"]) {
-  // padding-right: var(--calcite-app-side-spacing-half);
-  // align-self: stretch;
-  // position: absolute;
-  // margin: auto;
-  // right: var(--calcite-app-side-spacing-three-quarters);
 }

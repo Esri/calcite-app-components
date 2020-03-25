@@ -1,22 +1,22 @@
 .gnav {
-    display: flex;
-    align-items: center;
-    height: 56px;
-    flex: 1 0 56px;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  flex: 1 0 56px;
 }
 
 .gnav__action {
-    margin: 0 16px;
+  margin: 0 16px;
 }
 
 .gnav__action--small {
-    margin: 0 3px;
+  margin: 0 3px;
 }
 
 .gnav h2 {
-    font-weight: var(--calcite-app-font-weight);
-    font-size: 18px;
-    margin: 0 12px;
+  font-weight: var(--calcite-app-font-weight);
+  font-size: 18px;
+  margin: 0 12px;
 }
 
 .enable-label {
@@ -76,12 +76,12 @@
 }
 
 .popup-title {
-    display: flex;
-    border-top: 1px solid var(--calcite-app-border);
-    /* border-bottom: 1px solid var(--calcite-app-border); */
-    background-color: var(--calcite-app-background);
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
-    /* margin-bottom: var(--calcite-app-cap-spacing); */
+  display: flex;
+  border-top: 1px solid var(--calcite-app-border);
+  /* border-bottom: 1px solid var(--calcite-app-border); */
+  background-color: var(--calcite-app-background);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
+  /* margin-bottom: var(--calcite-app-cap-spacing); */
 }
 
 .multiline-button {
@@ -97,25 +97,25 @@
 }
 
 .combo-button.flow-list-item {
-    border: none;
-    background-color: var(--calcite-app-background);
-    /* position: sticky;
+  border: none;
+  background-color: var(--calcite-app-background);
+  /* position: sticky;
     top: 0; */
 }
 .combo-button.flow-list-item .combo-action {
-    border: none;
+  border: none;
 }
 .flow-list-item .combo-button__main {
-    height: auto;
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
+  height: auto;
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
 }
 .flow-list-item .combo-action {
-    margin-right: var(--calcite-app-side-spacing-three-quarters);
+  margin-right: var(--calcite-app-side-spacing-three-quarters);
 }
 
 .row {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   padding: var(--calcite-app-cap-spacing-half) 0;
 }
 
@@ -133,35 +133,40 @@
   /* margin: 1rem; */
 }
 .list {
-  padding: 0;
-  margin: 0 0 0 var(--calcite-app-side-spacing-double);
+  /* padding: 0; */
+  padding: 0 0 0 var(--calcite-app-side-spacing-double);
   display: flex;
   flex-flow: column nowrap;
 }
 .list.list--origin {
-  margin-left: 0;
+  padding-left: 0;
 }
 
 .list-item {
+  border-left: 1px solid var(--calcite-app-border);
   list-style: none;
   display: flex;
   flex-flow: column nowrap;
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
+}
+.list-item .list-item {
+    margin-bottom: 0;
 }
 .list-item.out-of-range {
   opacity: 0.6;
   /* border-right: 1px solid var(--calcite-app-foreground-subtle); */
 }
-.list-item.selected .item {
+.item.selected {
   box-shadow: 2px 0 0 0 var(--calcite-app-border-active) inset;
   background-color: var(--calcite-app-background-active);
 }
-.list-item.selected .label {
+.item.selected .label {
   color: var(--calcite-app-foreground-active);
 }
 .item {
   display: flex;
   align-items: stretch;
-  border-left: 1px solid var(--calcite-app-border);
+  /* border-left: 1px solid var(--calcite-app-border); */
   cursor: pointer;
   transition: background-color 125ms ease-in-out;
 }
@@ -186,7 +191,7 @@
   align-items: center;
   /*   height: 100%; */
   /*   background-color: #ff000080; */
-  padding: 0 var(--calcite-app-side-spacing-quarter);
+  /* padding: 0 var(--calcite-app-side-spacing-quarter); */
   transition: background-color 125ms ease-in-out;
   cursor: pointer;
 }
@@ -223,15 +228,15 @@
 /* /////////////// */
 /* Popup */
 .popup-warning-div {
-    background-color: var(--calcite-app-background);
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  background-color: var(--calcite-app-background);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
 
 .popup-warning-label {
-    background-color: #ffffff;
-    border: 1px solid var(--calcite-app-border);
-    box-shadow: var(--calcite-app-shadow-0);
-    display: block;
-    font-size: var(--calcite-app-font-size--1);
-    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  background-color: #ffffff;
+  border: 1px solid var(--calcite-app-border);
+  box-shadow: var(--calcite-app-shadow-0);
+  display: block;
+  font-size: var(--calcite-app-font-size--1);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }

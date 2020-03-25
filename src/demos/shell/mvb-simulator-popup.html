@@ -44,7 +44,7 @@
         const view = new MapView({
           container: "viewDiv",
           map: webmap,
-          padding: {left: 49, right: 400}
+          padding: {left: 49, right: 385}
         });
         view.when(function() {
         //   var layerList = new LayerList({
@@ -135,17 +135,22 @@
                 heading="Configure popup"
                 summary="Popular Demographics in the United States (Beta) - County"
               >
-                <!-- <calcite-notice scale="s" active dismissible="false">
+              <!-- <calcite-tip non-dismissible>
+                Pop-ups authored in Map Viewer Beta are not compatible with all apps. <a href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
+              </calcite-tip> -->
+              <div class="popup-warning-div">
+                <calcite-notice scale="s" active dismissible>
                     <span slot="notice-message">
                         Pop-ups authored in Map Viewer Beta are not compatible with all apps.
                     </span>
                     <a slot="notice-link" href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
-                </calcite-notice> -->
-                <div class="popup-warning-div">
+                </calcite-notice>
+            </div>
+                <!-- <div class="popup-warning-div">
                     <label class="popup-warning-label">
                         Pop-ups authored in Map Viewer Beta are not compatible with all apps. <a href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
                     </label>
-                </div>
+                </div> -->
                 <calcite-action slot="menu-actions" text="Switch layer" icon="caret-down"></calcite-action>
 
                 <section class="enable-label">
@@ -158,7 +163,7 @@
                     </button>
                     <calcite-action class="combo-action" icon="chevron-right"  scale="s"></calcite-action>
                 </div>
-                <section class="popup-title">
+                <!-- <section class="popup-title">
                     <div class="combo-control">
                     <span class="combo-control__label">
                         Title
@@ -170,8 +175,18 @@
                         <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                       </div>
                     </div>
-                </section>
+                </section> -->
                 <calcite-sortable-list>
+                <calcite-block heading="Title" summary="County: {NAME}" open collapsible>
+                    <div class="combo-control">
+                        <div class="combo-button">
+                            <button class="combo-button__main">
+                            County: {NAME}
+                            </button>
+                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                        </div>
+                    </div>
+                </calcite-block>
                   <calcite-block drag-handle heading="Attributes" summary="2/98" open collapsible>
                     <calcite-icon icon="feature-details" scale="m" slot="icon"></calcite-icon>
                     <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
@@ -187,7 +202,7 @@
                       ></calcite-value-list-item>
                     </calcite-value-list>
                     <div class="row">
-                        <calcite-button id="attribute-add" round icon="plus" scale="xs" color="light">Select attributes</calcite-button>
+                        <calcite-button id="attribute-add" round icon="plus" scale="s" width="full" color="light">Select attributes</calcite-button>
                         <!-- <calcite-tooltip reference-element="attribute-add" disable-pointer>
                             Select attributes
                         </calcite-tooltip> -->
