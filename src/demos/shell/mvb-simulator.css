@@ -181,7 +181,7 @@
   padding: 0 var(--calcite-app-side-spacing-half);
 }
 .control {
-  color: var(--interactive);
+  color: var(--calcite-app-foreground-subtle);
   display: flex;
   align-items: center;
   /*   height: 100%; */
@@ -218,4 +218,20 @@
 .drag:hover,
 .drag:focus {
   color: var(--calcite-app-foreground);
+}
+
+/* /////////////// */
+/* Popup */
+.popup-warning-div {
+    background-color: var(--calcite-app-background);
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+}
+
+.popup-warning-label {
+    background-color: #ffffff;
+    border: 1px solid var(--calcite-app-border);
+    box-shadow: var(--calcite-app-shadow-0);
+    display: block;
+    font-size: var(--calcite-app-font-size--1);
+    padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }

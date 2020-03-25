@@ -31,7 +31,7 @@
     </style>
 
     <script>
-      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/LayerList"], function(WebMap, MapView, LayerList) {
+      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/Zoom"], function(WebMap, MapView, Zoom) {
         const webmap = new WebMap({
           portalItem: {
             id: "cc316ca9e0824970ad29ac558161d42d"
@@ -44,7 +44,7 @@
         const view = new MapView({
           container: "viewDiv",
           map: webmap,
-          padding: {left: 49}
+          padding: {left: 49, right: 400}
         });
         view.when(function() {
         //   var layerList = new LayerList({
@@ -55,6 +55,7 @@
 
           // Add widget to the top right corner of the view
           // view.ui.add(layerList, "top-right");
+          view.ui.move("zoom", "bottom-right");
         });
         fetch('layerlist.html')
         .then(data => data.text())
@@ -69,37 +70,30 @@
           <calcite-shell-panel id="primary-panel" slot="primary-panel" position="start" detached detached-scale="l">
             <calcite-action-bar slot="action-bar" theme="dark">
               <calcite-action-group>
-                <calcite-action text="New">
-                  <calcite-icon icon="map" scale="s"></calcite-icon>
+                <calcite-action text="Save" icon="save" indicator>
                 </calcite-action>
-                <calcite-action text="Open">
-                  <calcite-icon icon="collection" scale="s"></calcite-icon>
+                <calcite-action icon="map" text="New">
                 </calcite-action>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
+                <calcite-action icon="collection" text="Open">
                 </calcite-action>
             </calcite-action-group>
             <calcite-action-group>
-                <calcite-action text="Layers" active>
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
+                <calcite-action icon="layers" text="Layers" active>
                 </calcite-action>
-                <calcite-action text="Basemaps">
-                  <calcite-icon icon="basemap" scale="s"></calcite-icon>
+                <calcite-action icon="basemap" text="Basemaps">
                 </calcite-action>
-                <calcite-action text="Legend" disabled>
-                  <calcite-icon icon="legend" scale="s"></calcite-icon>
+                <calcite-action icon="legend" text="Legend">
                 </calcite-action>
-                <calcite-action text="Bookmarks">
-                  <calcite-icon icon="bookmark" scale="s"></calcite-icon>
+                <calcite-action icon="bookmark" text="Bookmarks">
                 </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
-                <calcite-action text="Share">
-                    <calcite-icon icon="share" scale="s"></calcite-icon>
-                  </calcite-action>
-                  <calcite-action text="Print">
-                    <calcite-icon icon="print" scale="s"></calcite-icon>
-                  </calcite-action>
+                <calcite-action text="Share" icon="share"></calcite-action>
+                <calcite-action text="Print" icon="print"></calcite-action>
+              </calcite-action-group>
+              <calcite-action-group slot="bottom-actions">
+                <calcite-action text="Feedback" icon="speech-bubble-plus"></calcite-action>
+                <calcite-action text="What's next" icon="mega-phone"></calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-flow>
@@ -123,12 +117,12 @@
                 <calcite-action text="Tablew" icon="table"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Layers">
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action icon="search" text="Search"></calcite-action>
+                <calcite-action icon="measure" text="Measure"></calcite-action>
+                <calcite-action icon="road-sign" text="Directions"></calcite-action>
+                <calcite-action icon="point" text="Location"></calcite-action>
+                <calcite-action icon="pencil-square" text="Edit" disabled></calcite-action>
+                <calcite-action icon="clock" text="Time" disabled></calcite-action>
               </calcite-action-group>
               <calcite-action-group slot="bottom-actions">
                 <calcite-action text="Tips" id="tip-manager-button">
@@ -141,6 +135,17 @@
                 heading="Configure popup"
                 summary="Popular Demographics in the United States (Beta) - County"
               >
+                <!-- <calcite-notice scale="s" active dismissible="false">
+                    <span slot="notice-message">
+                        Pop-ups authored in Map Viewer Beta are not compatible with all apps.
+                    </span>
+                    <a slot="notice-link" href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
+                </calcite-notice> -->
+                <div class="popup-warning-div">
+                    <label class="popup-warning-label">
+                        Pop-ups authored in Map Viewer Beta are not compatible with all apps. <a href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
+                    </label>
+                </div>
                 <calcite-action slot="menu-actions" text="Switch layer" icon="caret-down"></calcite-action>
 
                 <section class="enable-label">
