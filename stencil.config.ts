@@ -61,7 +61,8 @@ export const create: () => Config = () => ({
   excludeSrc: DEFAULT_EXCLUDE_SRC,
   srcIndexHtml: "src/index.html",
   extras: {
-    appendChildSlotFix: true
+    appendChildSlotFix: true,
+    slotChildNodesFix: true
   }
 });
 
