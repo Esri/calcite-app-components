@@ -1,4 +1,9 @@
 {
   "extends": "./tsconfig-base",
-  "include": [".storybook/*", "src", "node_modules/@esri/calcite-components/dist/types/components.d.ts"]
+  "include": [
+    ".storybook/declarations.d.ts",
+    "src",
+    "node_modules/@esri/calcite-components/dist/types/components.d.ts"
+  ],
+  "exclude": ["**/*.stories.ts", "**/tests/**"]
 }
