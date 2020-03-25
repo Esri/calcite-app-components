@@ -368,7 +368,7 @@ export class CalciteFlowItem {
   }
 
   renderFab(): VNode {
-    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+    const hasFab = getSlotted(this.el, SLOTS.fab);
     return hasFab ? (
       <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
         <slot name={SLOTS.fab} />
