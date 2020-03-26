@@ -172,9 +172,7 @@ export class CalcitePickList<
 
   getItemData = getItemData.bind(this);
 
-  keyDownHandler = (event): void => {
-    keyDownHandler.call(this, event);
-  };
+  keyDownHandler = keyDownHandler.bind(this);
 
   // --------------------------------------------------------------------------
   //

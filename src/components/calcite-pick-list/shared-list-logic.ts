@@ -13,6 +13,8 @@ export function mutationObserverCallback<T extends Lists>(this: List<T>): void {
   this.setUpFilter();
 }
 
+const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
+
 // --------------------------------------------------------------------------
 //
 //  Lifecycle
@@ -79,45 +81,32 @@ export function calciteListItemValueChangeHandler<T extends Lists>(this: List<T>
 //
 // --------------------------------------------------------------------------
 
-function isValidKey(key: string, supportedKeys: string[]): boolean {
-  return !!supportedKeys.find((k) => k === key);
+function isValidNavigationKey(key: string): boolean {
+  return !!SUPPORTED_ARROW_KEYS.find((k) => k === key);
 }
-
-const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 export function keyDownHandler<T extends Lists>(this: List<T>, event: KeyboardEvent): void {
   const { key, target } = event;
 
-  if (!isValidKey(key, SUPPORTED_ARROW_KEYS)) {
+  if (!isValidNavigationKey(key)) {
     return;
   }
 
   const { items, multiple } = this;
-  const { length } = items;
-  const currentIndex = items.indexOf(target as any);
+  const { length: totalItems } = items;
+  const currentIndex = (items as ListItemElement<T>[]).indexOf(target as ListItemElement<T>);
 
-  if (!length || currentIndex === -1) {
+  if (!totalItems || currentIndex === -1) {
     return;
   }
 
   event.preventDefault();
 
-  if (key === "ArrowUp") {
-    const value = getRoundRobinIndex(currentIndex - 1, length);
-    const previousItem = items[value];
-    focusElement(previousItem);
-    if (!multiple) {
-      previousItem.selected = true;
-    }
-  }
-
-  if (key === "ArrowDown") {
-    const value = getRoundRobinIndex(currentIndex + 1, length);
-    const nextItem = items[value];
-    focusElement(nextItem);
-    if (!multiple) {
-      nextItem.selected = true;
-    }
+  const index = getRoundRobinIndex(currentIndex + (key === "ArrowUp" ? -1 : 1), totalItems);
+  const item = items[index];
+  focusElement(item);
+  if (!multiple) {
+    item.selected = true;
   }
 }
 
