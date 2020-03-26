@@ -240,7 +240,7 @@ export class CalcitePanel {
   }
 
   renderFab(): VNode {
-    const hasFab = this.el.querySelector(`[slot=${SLOTS.fab}]`);
+    const hasFab = getSlotted(this.el, SLOTS.fab);
 
     return hasFab ? (
       <div class={CSS.fabContainer}>
