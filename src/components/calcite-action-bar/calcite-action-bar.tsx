@@ -1,8 +1,18 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  Watch,
+  h,
+  VNode
+} from "@stencil/core";
 import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
-import { CSS, SLOTS } from "./resources";
-import { getCalcitePosition } from "../utils/dom";
+import { CSS, SLOTS, TEXT } from "./resources";
+import { getCalcitePosition, getSlotted } from "../utils/dom";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -25,7 +35,7 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) expand = true;
 
   @Watch("expand")
-  expandHandler(expand: boolean) {
+  expandHandler(expand: boolean): void {
     if (expand) {
       toggleChildActionText({ parent: this.el, expanded: this.expanded });
     }
@@ -37,7 +47,7 @@ export class CalciteActionBar {
   @Prop({ reflect: true }) expanded = false;
 
   @Watch("expanded")
-  expandedHandler(expanded: boolean) {
+  expandedHandler(expanded: boolean): void {
     if (this.expand) {
       toggleChildActionText({ parent: this.el, expanded });
     }
@@ -47,13 +57,25 @@ export class CalciteActionBar {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
+   * @deprecated use "intlExpand" instead.
    */
-  @Prop() textExpand = "Expand";
+  @Prop() textExpand?: string;
+
+  /**
+   * Updates the label of the expand icon when the component is not expanded.
+   */
+  @Prop() intlExpand?: string;
+
+  /**
+   * Updates the label of the collapse icon when the component is expanded.
+   * @deprecated use "intlCollapse" instead.
+   */
+  @Prop() textCollapse?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
    */
-  @Prop() textCollapse = "Collapse";
+  @Prop() intlCollapse?: string;
 
   /**
    * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
@@ -99,7 +121,7 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     const { el, expand, expanded } = this;
 
     if (expand) {
@@ -123,21 +145,35 @@ export class CalciteActionBar {
   //
   // --------------------------------------------------------------------------
 
-  renderBottomActionGroup() {
-    const { expanded, expand, textExpand, textCollapse, el, layout, position, toggleExpand } = this;
+  renderBottomActionGroup(): VNode {
+    const {
+      expanded,
+      expand,
+      intlExpand,
+      intlCollapse,
+      textExpand,
+      textCollapse,
+      el,
+      layout,
+      position,
+      toggleExpand
+    } = this;
+
+    const expandLabel = intlExpand || textExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
         expanded={expanded}
-        textExpand={textExpand}
-        textCollapse={textCollapse}
+        intlExpand={expandLabel}
+        intlCollapse={collapseLabel}
         el={el}
         position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
       />
     ) : null;
 
-    return this.el.querySelector(`[slot=${SLOTS.bottomActions}]`) || expandToggleNode ? (
+    return getSlotted(el, SLOTS.bottomActions) || expandToggleNode ? (
       <calcite-action-group class={CSS.actionGroupBottom}>
         <slot name={SLOTS.bottomActions} />
         {expandToggleNode}
@@ -145,7 +181,7 @@ export class CalciteActionBar {
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <slot />

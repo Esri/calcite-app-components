@@ -3,7 +3,7 @@ import { Attributes, createComponentHTML as create, darkBackground, parseReadme 
 import { ATTRIBUTES } from "../../../.storybook/resources";
 const { dir, theme, scale } = ATTRIBUTES;
 import readme from "./readme.md";
-import { SLOTS } from "./resources";
+import { SLOTS, TEXT } from "./resources";
 import dedent from "dedent";
 
 export default {
@@ -41,8 +41,8 @@ const createAttributes: () => Attributes = () => [
     value: boolean("loading", false)
   },
   {
-    name: "text-close",
-    value: text("textClose", "Close")
+    name: "intl-close",
+    value: text("intlClose", TEXT.close)
   },
   {
     name: "theme",
@@ -69,7 +69,7 @@ const footerHTML = dedent`
   <calcite-button slot="${SLOTS.footer}" width="half" appearance="clear">Naw.</calcite-button>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-panel",
     createAttributes(),

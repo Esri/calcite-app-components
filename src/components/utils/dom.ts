@@ -1,10 +1,10 @@
 import { CalciteLayout, CalcitePosition } from "../interfaces";
 
-export function getElementDir(el: HTMLElement) {
+export function getElementDir(el: HTMLElement): "ltr" | "rtl" {
   return getElementProp(el, "dir", "ltr");
 }
 
-export function getElementProp(el: HTMLElement, prop, value) {
+export function getElementProp(el: HTMLElement, prop, value): any {
   const closestWithProp = el.closest(`[${prop}]`);
   return closestWithProp ? closestWithProp.getAttribute(prop) : value;
 }
@@ -31,8 +31,32 @@ export function getCalcitePosition(position: CalcitePosition, layout: CalciteLay
   }
 }
 
-export function getSlotted<T extends Element = Element>(element: Element, slotName: string): T[] {
-  const slottedSelector = `[slot="${slotName}"]`;
+interface GetSlottedOptions {
+  all?: boolean;
+  selector?: string;
+}
 
-  return Array.from(element.querySelectorAll<T>(slottedSelector));
+export function getSlotted<T extends Element = Element>(
+  element: Element,
+  slotName: string,
+  options: GetSlottedOptions & { all: true }
+): T[];
+export function getSlotted<T extends Element = Element>(
+  element: Element,
+  slotName: string,
+  options?: GetSlottedOptions
+): T | null;
+export function getSlotted<T extends Element = Element>(
+  element: Element,
+  slotName: string,
+  options?: GetSlottedOptions
+): (T | null) | T[] {
+  const slottedSelector = `[slot="${slotName}"]`;
+  const selector = options?.selector ? `${slottedSelector} ${options.selector}` : slottedSelector;
+
+  if (options?.all) {
+    return Array.from(element.querySelectorAll<T>(selector));
+  }
+
+  return element.querySelector<T>(selector);
 }

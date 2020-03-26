@@ -58,7 +58,8 @@ export const create: () => Config = () => ({
   srcDir: "src/components",
   srcIndexHtml: "src/index.html",
   extras: {
-    appendChildSlotFix: true
+    appendChildSlotFix: true,
+    slotChildNodesFix: true
   }
 });
 

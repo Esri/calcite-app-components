@@ -7,25 +7,24 @@ import {
   Method,
   Prop,
   State,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
-import { sharedListMethods } from "./shared-list-logic";
-import List from "./shared-list-render";
-
-const {
-  mutationObserverCallback,
-  initialize,
-  initializeObserver,
-  cleanUpObserver,
+import {
   calciteListItemChangeHandler,
   calciteListItemValueChangeHandler,
-  setUpItems,
+  cleanUpObserver,
   deselectSiblingItems,
-  selectSiblings,
+  getItemData,
   handleFilter,
-  getItemData
-} = sharedListMethods;
+  initialize,
+  initializeObserver,
+  mutationObserverCallback,
+  selectSiblings,
+  setUpItems
+} from "./shared-list-logic";
+import List from "./shared-list-render";
 
 /**
  * @slot - A slot for adding `calcite-pick-list-item` elements or `calcite-pick-list-group` elements. Items are displayed as a vertical list.
@@ -36,7 +35,9 @@ const {
   styleUrl: "./calcite-pick-list.scss",
   shadow: true
 })
-export class CalcitePickList {
+export class CalcitePickList<
+  ItemElement extends HTMLCalcitePickListItemElement = HTMLCalcitePickListItemElement
+> {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -77,7 +78,7 @@ export class CalcitePickList {
   /**
    * Placeholder text for the filter input field.
    */
-  @Prop({ reflect: true }) textFilterPlaceholder?: string = TEXT.filterPlaceholder;
+  @Prop({ reflect: true }) textFilterPlaceholder: string = TEXT.filterPlaceholder;
 
   // --------------------------------------------------------------------------
   //
@@ -85,13 +86,13 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Map<string, HTMLCalcitePickListItemElement> = new Map();
+  @State() selectedValues: Map<string, ItemElement> = new Map();
 
   @State() dataForFilter: object[] = [];
 
-  items: HTMLCalcitePickListItemElement[];
+  items: ItemElement[];
 
-  lastSelectedItem: HTMLCalcitePickListItemElement = null;
+  lastSelectedItem: ItemElement = null;
 
   observer = new MutationObserver(mutationObserverCallback.bind(this));
 
@@ -129,16 +130,20 @@ export class CalcitePickList {
    */
   @Event() calciteListChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(
+    event: CustomEvent
+  ): void {
     event.stopPropagation();
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(
+    event: CustomEvent
+  ): void {
     calciteListItemValueChangeHandler.call(this, event);
   }
 
@@ -172,7 +177,8 @@ export class CalcitePickList {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async getSelectedItems(): Promise<Map<string, object>> {
+  @Method()
+  async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
   }
 
@@ -186,7 +192,7 @@ export class CalcitePickList {
     return this.multiple ? ICON_TYPES.square : ICON_TYPES.circle;
   }
 
-  render() {
+  render(): VNode {
     return <List props={this} />;
   }
 }

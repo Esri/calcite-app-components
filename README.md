@@ -3,7 +3,7 @@
 
 # calcite-app-components
 
-A collection of calcite components for building single page applications.
+A collection of calcite components for building single page applications. For more information about these components, see the [Frequenty Asked Questions](FAQ.md).
 
 [![App](https://user-images.githubusercontent.com/1231455/68511307-8155fe80-022a-11ea-8c27-a5bc331bacab.png)​](https://esri.github.io/calcite-app-components/)
 

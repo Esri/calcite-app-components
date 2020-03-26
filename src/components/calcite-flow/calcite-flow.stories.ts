@@ -4,7 +4,7 @@ import { ATTRIBUTES } from "../../../.storybook/resources";
 const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
-import { SLOTS } from "../calcite-flow-item/resources";
+import { SLOTS, TEXT } from "../calcite-flow-item/resources";
 import dedent from "dedent";
 
 export default {
@@ -57,12 +57,16 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
       value: text("summary", "Summary", group)
     },
     {
-      name: "text-back",
-      value: text("textBack", "Back", group)
+      name: "intl-back",
+      value: text("intlBack", TEXT.back, group)
     },
     {
-      name: "text-open",
-      value: text("textOpen", "Open", group)
+      name: "intl-open",
+      value: text("intlOpen", TEXT.open, group)
+    },
+    {
+      name: "intl-close",
+      value: text("intlClose", TEXT.close, group)
     }
   ];
 };
@@ -111,7 +115,7 @@ const item2HTML = dedent`
   </ul>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-flow",
     createAttributes(),
