@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h, VNode } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, VNode, Listen } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
 import { CSS } from "../calcite-pick-list-item/resources";
@@ -101,6 +101,17 @@ export class CalciteValueListItem {
   @Method()
   async setFocus(): Promise<void> {
     this.pickListItem?.setFocus();
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
+    // adjust item payload from wrapped item before bubbling
+    event.detail.item = this.el;
   }
 
   // --------------------------------------------------------------------------

@@ -23,7 +23,8 @@ import {
   mutationObserverCallback,
   selectSiblings,
   setUpItems,
-  keyDownHandler
+  keyDownHandler,
+  setFocus
 } from "./shared-list-logic";
 import List from "./shared-list-render";
 
@@ -183,6 +184,11 @@ export class CalcitePickList<
   @Method()
   async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    return setFocus.call(this);
   }
 
   // --------------------------------------------------------------------------

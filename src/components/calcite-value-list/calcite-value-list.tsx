@@ -25,7 +25,8 @@ import {
   mutationObserverCallback,
   selectSiblings,
   setUpItems,
-  keyDownHandler
+  keyDownHandler,
+  setFocus
 } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
 
@@ -217,18 +218,22 @@ export class CalciteValueList<
 
   getItemData = getItemData.bind(this);
 
-  keyDownHandler = (event): void => {
-    const handleElement = event.composedPath().find((item) => {
-      return item.dataset?.jsHandle;
-    });
-    const valueListElement = event.composedPath().find((item) => {
-      return item.tagName?.toLowerCase() === "calcite-value-list-item";
-    });
+  keyDownHandler = (event: KeyboardEvent): void => {
+    const handleElement = event
+      .composedPath()
+      .find((item: HTMLElement) => item.dataset?.jsHandle) as HTMLCalciteHandleElement;
+
+    const valueListElement = event
+      .composedPath()
+      .find(
+        (item: HTMLElement) => item.tagName?.toLowerCase() === "calcite-value-list-item"
+      ) as ItemElement;
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
     if (!handleElement || !valueListElement.handleActivated) {
       keyDownHandler.call(this, event);
       return;
     }
+
     const lastIndex = this.items.length - 1;
     const value = valueListElement.value;
     const startingIndex = this.items.findIndex((item) => {
@@ -276,6 +281,11 @@ export class CalciteValueList<
 
   @Method() async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    return setFocus.call(this);
   }
 
   // --------------------------------------------------------------------------
