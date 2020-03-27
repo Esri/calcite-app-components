@@ -1,7 +1,8 @@
 import { CalcitePickList } from "./calcite-pick-list";
 import { CalciteValueList } from "../calcite-value-list/calcite-value-list";
 import { debounce } from "lodash-es";
-import { getSlotted } from "../utils/dom";
+import { focusElement, getSlotted } from "../utils/dom";
+import { getRoundRobinIndex } from "../utils/array";
 
 type Lists = CalcitePickList | CalciteValueList;
 type ListItemElement<T> = T extends CalcitePickList ? HTMLCalcitePickListItemElement : HTMLCalciteValueListItemElement;
@@ -11,6 +12,8 @@ export function mutationObserverCallback<T extends Lists>(this: List<T>): void {
   this.setUpItems();
   this.setUpFilter();
 }
+
+const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 // --------------------------------------------------------------------------
 //
@@ -41,19 +44,27 @@ export function cleanUpObserver<T extends Lists>(this: List<T>): void {
 export function calciteListItemChangeHandler<T extends Lists>(this: List<T>, event: CustomEvent): void {
   const { selectedValues } = this;
   const { item, value, selected, shiftPressed } = event.detail;
+
   if (selected) {
     if (!this.multiple) {
       this.deselectSiblingItems(item);
     }
+
     if (this.multiple && shiftPressed) {
       this.selectSiblings(item);
     }
+
     selectedValues.set(value, item);
   } else {
     selectedValues.delete(value);
+
     if (this.multiple && shiftPressed) {
       this.selectSiblings(item, true);
     }
+  }
+
+  if (!this.multiple) {
+    toggleSingleSelectItemTabbing(item, selected);
   }
 
   this.lastSelectedItem = item;
@@ -78,8 +89,65 @@ export function calciteListItemValueChangeHandler<T extends Lists>(this: List<T>
 //
 // --------------------------------------------------------------------------
 
+function isValidNavigationKey(key: string): boolean {
+  return !!SUPPORTED_ARROW_KEYS.find((k) => k === key);
+}
+
+export function keyDownHandler<T extends Lists>(this: List<T>, event: KeyboardEvent): void {
+  const { key, target } = event;
+
+  if (!isValidNavigationKey(key)) {
+    return;
+  }
+
+  const { items, multiple } = this;
+  const { length: totalItems } = items;
+  const currentIndex = (items as ListItemElement<T>[]).indexOf(target as ListItemElement<T>);
+
+  if (!totalItems || currentIndex === -1) {
+    return;
+  }
+
+  event.preventDefault();
+
+  const index = getRoundRobinIndex(currentIndex + (key === "ArrowUp" ? -1 : 1), totalItems);
+  const item = items[index];
+
+  toggleSingleSelectItemTabbing(item, true);
+  focusElement(item);
+
+  if (!multiple) {
+    item.selected = true;
+  }
+}
+
 export function internalCalciteListChangeEvent<T extends Lists>(this: List<T>): void {
   this.calciteListChange.emit(this.selectedValues);
+}
+
+function toggleSingleSelectItemTabbing<T extends Lists>(item: ListItemElement<T>, selectable: boolean): void {
+  // using attribute intentionally
+  if (selectable) {
+    item.removeAttribute("tabindex");
+  } else {
+    item.setAttribute("tabindex", "-1");
+  }
+}
+
+export function setFocus<T extends Lists>(this: List<T>): Promise<void> {
+  const { multiple, items } = this;
+
+  if (items.length === 0) {
+    return;
+  }
+
+  if (multiple) {
+    return items[0].setFocus();
+  }
+
+  const selected = (items as ListItemElement<T>[]).find((item) => item.selected);
+
+  return (selected ? selected : items[0]).setFocus();
 }
 
 export function setUpItems<T extends Lists>(
@@ -87,17 +155,29 @@ export function setUpItems<T extends Lists>(
   tagName: T extends CalcitePickList ? "calcite-pick-list-item" : "calcite-value-list-item"
 ): void {
   (this.items as ListItemElement<T>[]) = Array.from(this.el.querySelectorAll<ListItemElement<T>>(tagName));
+  let hasSelected = false;
 
-  this.items.forEach((item) => {
+  const { items } = this;
+
+  items.forEach((item) => {
     item.icon = this.getIconType();
     item.compact = this.compact;
     if (!this.multiple) {
       item.disableDeselect = true;
+      toggleSingleSelectItemTabbing(item, false);
     }
     if (item.selected) {
+      hasSelected = true;
+      toggleSingleSelectItemTabbing(item, true);
       this.selectedValues.set(item.value, item);
     }
   });
+
+  const [first] = items;
+
+  if (!hasSelected && first) {
+    toggleSingleSelectItemTabbing(first, true);
+  }
 }
 
 export function setUpFilter<T extends Lists>(this: List<T>): void {

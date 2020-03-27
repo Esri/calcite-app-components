@@ -1,9 +1,12 @@
 import { E2EPage, newE2EPage } from "@stencil/core/testing";
 import { CSS, ICON_TYPES } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
-import { tests } from "../calcite-pick-list/shared-list-tests";
-
-const { selectionAndDeselection, filterBehavior, disabledStates } = tests;
+import {
+  selectionAndDeselection,
+  filterBehavior,
+  disabledStates,
+  keyboardNavigation
+} from "../calcite-pick-list/shared-list-tests";
 
 describe("calcite-value-list", () => {
   it("renders", async () => renders("calcite-value-list"));
@@ -16,6 +19,8 @@ describe("calcite-value-list", () => {
   describe("Selection and Deselection", () => {
     selectionAndDeselection("value");
   });
+
+  describe("Keyboard navigation", () => keyboardNavigation("value"));
 
   describe("icon logic", () => {
     it("should be 'grip' when in `configuration` mode drag and drop is enabled ", async () => {
