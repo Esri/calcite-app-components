@@ -57,13 +57,6 @@
           </calcite-block-section>
         </calcite-block>
 
-        <h2>Header + collapsible + control = no collapsible icon</h2>
-
-        <calcite-block heading="no toggle icon when there is a control" collapsible>
-          <label slot="control">test</label>
-          <div>Some content</div>
-        </calcite-block>
-
         <h2>Header + content (sections w/ switch)</h2>
 
         <calcite-block heading="Heading" summary="summary" open collapsible>
@@ -78,7 +71,8 @@
 
         <h2>With drag handle</h2>
 
-        <calcite-block heading="Heading" summary="summary" drag-handle="true"></calcite-block>
+        <calcite-block heading="Heading" summary="summary" drag-handle="true">          <label slot="control">test <input placeholder="I'm a header control"/></label>
+        </calcite-block>
 
         <section dir="rtl">
           <h2>RTL</h2>
