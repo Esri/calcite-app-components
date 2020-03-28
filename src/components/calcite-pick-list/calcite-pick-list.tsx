@@ -22,7 +22,9 @@ import {
   initializeObserver,
   mutationObserverCallback,
   selectSiblings,
-  setUpItems
+  setUpItems,
+  keyDownHandler,
+  setFocus
 } from "./shared-list-logic";
 import List from "./shared-list-render";
 
@@ -171,6 +173,8 @@ export class CalcitePickList<
 
   getItemData = getItemData.bind(this);
 
+  keyDownHandler = keyDownHandler.bind(this);
+
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -180,6 +184,11 @@ export class CalcitePickList<
   @Method()
   async getSelectedItems(): Promise<Map<string, object>> {
     return this.selectedValues;
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    return setFocus.call(this);
   }
 
   // --------------------------------------------------------------------------
@@ -193,6 +202,6 @@ export class CalcitePickList<
   }
 
   render(): VNode {
-    return <List props={this} />;
+    return <List props={this} onKeyDown={this.keyDownHandler} />;
   }
 }
