@@ -1,7 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir, getSlotted } from "../utils/dom";
-import classnames from "classnames";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
 import { getRoundRobinIndex } from "../utils/array";
@@ -281,7 +280,7 @@ export class CalciteFlowItem {
 
     return (
       <div
-        class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}
+        class={{ [CSS.menu]: true, [CSS.menuOpen]: menuOpen }}
         onKeyDown={this.menuActionsKeydown}
       >
         <slot name={SLOTS.menuActions} />

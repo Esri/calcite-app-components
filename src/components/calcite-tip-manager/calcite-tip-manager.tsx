@@ -11,7 +11,6 @@ import {
   h,
   VNode
 } from "@stencil/core";
-import classnames from "classnames";
 import { CSS, ICONS, TEXT } from "./resources";
 import { getElementDir } from "../utils/dom";
 import { CalciteTheme } from "../interfaces";
@@ -332,10 +331,11 @@ export class CalciteTipManager {
           </header>
           <div
             tabIndex={0}
-            class={classnames(CSS.tipContainer, {
+            class={{
+              [CSS.tipContainer]: true,
               [CSS.tipContainerAdvancing]: !closed && direction === "advancing",
               [CSS.tipContainerRetreating]: !closed && direction === "retreating"
-            })}
+            }}
             key={selectedIndex}
           >
             <slot />

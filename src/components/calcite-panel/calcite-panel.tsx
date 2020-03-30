@@ -11,7 +11,6 @@ import {
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { getElementDir, getSlotted } from "../utils/dom";
-import classnames from "classnames";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
@@ -262,9 +261,10 @@ export class CalcitePanel {
           tabIndex={dismissible ? 0 : -1}
           hidden={dismissible && dismissed}
           ref={(containerEl): HTMLElement => (this.containerEl = containerEl)}
-          class={classnames(CSS.container, {
+          class={{
+            [CSS.container]: true,
             [CSS_UTILITY.rtl]: rtl
-          })}
+          }}
         >
           {this.renderHeader()}
           {this.renderContent()}
