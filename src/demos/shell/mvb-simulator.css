@@ -1,3 +1,7 @@
+html {
+    --calcite-app-background-hover: #00000009;
+}
+
 .gnav {
   display: flex;
   align-items: center;
@@ -107,7 +111,7 @@
 }
 .flow-list-item .combo-button__main {
   height: auto;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing);
+  padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing) var(--calcite-app-cap-spacing-plus-half);
 }
 .flow-list-item .combo-action {
   margin-right: var(--calcite-app-side-spacing-three-quarters);
@@ -115,7 +119,7 @@
 
 .row {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   padding: var(--calcite-app-cap-spacing-half) 0;
 }
 
@@ -133,13 +137,13 @@
   /* margin: 1rem; */
 }
 .list {
-  /* padding: 0; */
-  padding: 0 0 0 var(--calcite-app-side-spacing-double);
+  padding: 0;
+  margin: 0 0 0 var(--calcite-app-side-spacing-double);
   display: flex;
   flex-flow: column nowrap;
 }
 .list.list--origin {
-  padding-left: 0;
+  margin-left: 0;
 }
 
 .list-item {
@@ -171,7 +175,7 @@
   transition: background-color 125ms ease-in-out;
 }
 .item:hover {
-  background-color: var(--calcite-app-background-hover);
+    background-color: #0000000a;
 }
 
 .controls-start,
@@ -182,22 +186,26 @@
   padding: 0 0 0 var(--calcite-app-side-spacing);
   margin-left: auto;
 }
-.controls-end.control {
+/* .controls-end .control {
   padding: 0 var(--calcite-app-side-spacing-half);
-}
+} */
 .control {
-  color: var(--calcite-app-foreground-subtle);
+  /* color: var(--calcite-app-foreground-subtle); */
   display: flex;
   align-items: center;
   /*   height: 100%; */
   /*   background-color: #ff000080; */
-  /* padding: 0 var(--calcite-app-side-spacing-quarter); */
+  padding: 0 var(--calcite-app-side-spacing-quarter);
   transition: background-color 125ms ease-in-out;
   cursor: pointer;
 }
 .control:hover,
 .control:focus {
-  background-color: var(--calcite-app-background-hover);
+  background-color: #0000000a;
+}
+
+.control--hidden calcite-icon {
+    visibility: hidden;
 }
 
 .control--hidden:hover {
@@ -209,8 +217,11 @@
 }
 .label {
   word-break: break-all;
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-quarter);
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
 }
+/* .item .label:hover {
+    background-color: #0000000a;
+  } */
 .out-of-range .label {
   opacity: 0.6;
 }

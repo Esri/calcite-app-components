@@ -18,8 +18,8 @@ export const TEXT = {
 };
 
 export const ICONS = {
-  close: "chevron-up",
-  open: "chevron-down"
+  close: "",
+  open: ""
 };
 
 export const enum SLOTS {

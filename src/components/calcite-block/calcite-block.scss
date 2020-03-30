@@ -4,7 +4,6 @@
   flex: 0 0 auto;
   flex-direction: column;
   padding: 0;
-  // border-bottom: 1px solid var(--calcite-app-border);
   border-top: 1px solid var(--calcite-app-border);
   transition: margin var(--calcite-app-animation-time) ease-in-out;
 
@@ -17,19 +16,12 @@
 :host([open]) {
   margin-top: var(--calcite-app-cap-spacing-quarter);
   margin-bottom: var(--calcite-app-cap-spacing-quarter);
-  // border-top: 1px solid var(--calcite-app-border-active);
-  // border-top: 1px solid var(--calcite-app-border);
-  // box-shadow: var(--calcite-app-shadow-2);
-  // .header .title .heading,
-  // .summary {
-  //   color: var(--calcite-app-foreground-active);
-  //   // background-color: var(--calcite-app-background-active);
-  // }
 }
 
 .header {
   flex-grow: 1;
   justify-content: flex-start;
+  padding: 0 var(--calcite-app-side-spacing-half);
 }
 
 .header-container {
@@ -39,14 +31,12 @@
   align-items: stretch;
 
   & > .header {
-    padding: var(--calcite-app-cap-spacing-three-quarters) 0; //var(--calcite-app-side-spacing-three-quarters);
+    padding: var(--calcite-app-cap-spacing-three-quarters) 0;
   }
 }
 
 :host([open]) .header-container {
   border-bottom: 1px solid var(--calcite-app-border);
-  // background-color: var(--calcite-app-background-active);
-  // color: var(--calcite-app-background);
 }
 
 :host([disabled]) {
@@ -62,6 +52,11 @@ calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
 }
 
+:host([drag-handle]) .header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .title {
   margin: 0;
   padding: 0 var(--calcite-app-side-spacing-half);
@@ -70,14 +65,12 @@ calcite-loader[inline] {
 .header .title .heading {
   padding: 0;
   font-size: var(--calcite-app-font-size-0);
-  // transition: all var(--calcite-app-animation-time) ease-in-out;
 }
 
 .summary {
   color: var(--calcite-app-foreground-subtle);
   font-size: var(--calcite-app-font-size--1);
   padding: var(--calcite-app-cap-spacing-eighth) 0 var(--calcite-app-cap-spacing-quarter);
-  // transition: all var(--calcite-app-animation-time) ease-in-out;
 }
 
 .toggle {
@@ -87,7 +80,7 @@ calcite-loader[inline] {
   flex-wrap: nowrap;
   flex-grow: 1;
   margin: 0;
-  padding: var(--calcite-app-cap-spacing-three-quarters) 0; // var(--calcite-app-side-spacing-three-quarters);
+  padding: var(--calcite-app-cap-spacing-three-quarters) 0;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -98,14 +91,13 @@ calcite-loader[inline] {
 }
 
 .icon {
-  // margin-right: var(--calcite-app-side-spacing-half); //TODO RTL
-  margin-left: var(--calcite-app-side-spacing-quarter); //TODO RTL
+  margin-left: var(--calcite-app-side-spacing-quarter);
 }
 
 .toggle-icon {
   fill: currentColor;
   flex: 0 0 var(--calcite-app-icon-size);
-  margin: 0 var(--calcite-app-side-spacing) 0 0; // TODO RTL
+  margin: 0 var(--calcite-app-side-spacing) 0 0;
 }
 
 .content {
@@ -121,13 +113,8 @@ calcite-loader[inline] {
 }
 
 :host([drag-handle]) {
-  .toggle,
-  .header {
-    // TODO RTL
-    padding-left: 0;
-    padding-right: var(--calcite-app-side-spacing-quarter);
-  }
   .icon {
-    margin-left: 0; // TODO RTL
+    margin-left: 0;
+    margin-right: var(--calcite-app-side-spacing-half);
   }
 }
