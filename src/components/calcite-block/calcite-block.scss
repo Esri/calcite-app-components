@@ -17,8 +17,9 @@
 }
 
 .header-container {
-  position: relative;
-  display: flex;
+  display: grid;
+  grid-template: auto / auto auto 1fr;
+  grid-template-areas: "handle header control";
   align-items: center;
 
   & > .header {
@@ -39,6 +40,10 @@ calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
 }
 
+calcite-handle {
+  grid-area: handle;
+}
+
 .title {
   margin: 0;
 }
@@ -53,6 +58,8 @@ calcite-loader[inline] {
 }
 
 .toggle {
+  grid-column: header-start / control-end;
+  grid-row: 1 / 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -85,9 +92,9 @@ calcite-loader[inline] {
 }
 
 ::slotted([slot="control"]) {
-  position: absolute;
-  margin: auto;
-  right: var(--calcite-app-side-spacing-three-quarters);
+  grid-area: control;
+  justify-self: end;
+  margin: auto var(--calcite-app-side-spacing-three-quarters) auto auto;
 }
 
 .calcite--rtl {

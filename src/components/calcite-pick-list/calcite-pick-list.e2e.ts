@@ -1,9 +1,7 @@
 import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
 import { ICON_TYPES } from "./resources";
 import { accessible, hidden, renders } from "../../tests/commonTests";
-import { tests } from "./shared-list-tests";
-
-const { selectionAndDeselection, filterBehavior, disabledStates } = tests;
+import { selectionAndDeselection, filterBehavior, disabledStates, keyboardNavigation } from "./shared-list-tests";
 
 describe("calcite-pick-list", () => {
   it("renders", async () => renders("calcite-pick-list"));
@@ -17,6 +15,8 @@ describe("calcite-pick-list", () => {
   describe("Selection and Deselection", () => {
     selectionAndDeselection("pick");
   });
+
+  describe("Keyboard navigation", () => keyboardNavigation("pick"));
 
   describe("icon logic", () => {
     it("should be 'circle' when multi-select is disabled", async () => {

@@ -124,6 +124,8 @@ export class CalcitePickListItem {
 
   @Element() el: HTMLCalcitePickListItemElement;
 
+  private focusEl: HTMLLabelElement;
+
   shiftPressed: boolean;
 
   // --------------------------------------------------------------------------
@@ -179,6 +181,11 @@ export class CalcitePickListItem {
     }
 
     this.selected = typeof coerce === "boolean" ? coerce : !this.selected;
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    this.focusEl?.focus();
   }
 
   // --------------------------------------------------------------------------
@@ -277,6 +284,7 @@ export class CalcitePickListItem {
           onClick={this.pickListClickHandler}
           onKeyDown={this.pickListKeyDownHandler}
           tabIndex={0}
+          ref={(focusEl): HTMLLabelElement => (this.focusEl = focusEl)}
           aria-label={this.textLabel}
         >
           {this.renderIcon()}
