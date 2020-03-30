@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@stencil/core";
-import { CSS, ICONS, SLOTS, TEXT } from "./resources";
+import { CSS, SLOTS, TEXT } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
 import { getSlotted } from "../utils/dom";
@@ -157,8 +157,6 @@ export class CalciteBlock {
       </header>
     );
 
-    const slottedControl = getSlotted(el, SLOTS.control);
-
     const headerNode = (
       <div class={CSS.headerContainer}>
         {this.dragHandle ? <calcite-handle /> : null}
@@ -170,13 +168,6 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            {slottedControl ? null : (
-              <calcite-icon
-                scale="s"
-                icon={open ? ICONS.close : ICONS.open}
-                class={CSS.toggleIcon}
-              />
-            )}
           </button>
         ) : (
           headerContent

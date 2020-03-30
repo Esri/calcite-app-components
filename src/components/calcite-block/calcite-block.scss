@@ -25,10 +25,10 @@
 }
 
 .header-container {
-  min-height: var(--calcite-app-block-header-min-height);
-  position: relative;
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template: auto / auto auto 1fr;
+  grid-template-areas: "handle header control";
+  align-items: center;
 
   & > .header {
     padding: var(--calcite-app-cap-spacing-three-quarters) 0;
@@ -52,9 +52,8 @@ calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
 }
 
-:host([drag-handle]) .header {
-  padding-left: 0;
-  padding-right: 0;
+calcite-handle {
+  grid-area: handle;
 }
 
 .title {
@@ -74,6 +73,8 @@ calcite-loader[inline] {
 }
 
 .toggle {
+  grid-column: header-start / control-end;
+  grid-row: 1 / 2;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -105,11 +106,10 @@ calcite-loader[inline] {
   position: relative;
 }
 
-.calcite--rtl {
-  .icon {
-    margin-right: 0;
-    margin-left: var(--calcite-app-side-spacing-half);
-  }
+::slotted([slot="control"]) {
+  grid-area: control;
+  justify-self: end;
+  margin: auto var(--calcite-app-side-spacing-three-quarters) auto auto;
 }
 
 :host([drag-handle]) {
