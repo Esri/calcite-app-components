@@ -7,12 +7,15 @@ import {
   Prop,
   Watch,
   h,
+  Method,
   VNode
 } from "@stencil/core";
 import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, TEXT } from "./resources";
 import { getCalcitePosition } from "../utils/dom";
+
+type GetElementId = "expand-action";
 
 /**
  * @slot - A slot for adding `calcite-action`s to the action pad.
@@ -93,6 +96,19 @@ export class CalciteActionPad {
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
+  @Prop() toggleEl: HTMLCalciteActionElement;
+
+  // --------------------------------------------------------------------------
+  //
+  //  Public Methods
+  //
+  // --------------------------------------------------------------------------
+
+  @Method()
+  async getElement(id: GetElementId): Promise<HTMLCalciteActionElement | null> {
+    return id === "expand-action" ? this.toggleEl : null;
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Events
@@ -167,6 +183,7 @@ export class CalciteActionPad {
         el={el}
         position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
+        ref={(toggleEl): HTMLCalciteActionElement => (this.toggleEl = toggleEl)}
       />
     ) : null;
 

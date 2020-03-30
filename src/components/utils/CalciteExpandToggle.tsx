@@ -8,6 +8,7 @@ interface CalciteExpandToggleProps {
   intlCollapse: string;
   el: HTMLElement;
   position: CalcitePosition;
+  ref: (el: HTMLCalciteActionElement) => void;
   toggleExpand: () => void;
 }
 
@@ -49,7 +50,8 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
   intlCollapse,
   toggleExpand,
   el,
-  position
+  position,
+  ref
 }) => {
   const rtl = getElementDir(el) === "rtl";
 
@@ -65,7 +67,7 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
   const collapseIcon = end ? icons[0] : icons[1];
 
   return (
-    <calcite-action onClick={toggleExpand} textEnabled={expanded} text={expandText}>
+    <calcite-action ref={ref} onClick={toggleExpand} textEnabled={expanded} text={expandText}>
       <calcite-icon scale="s" icon={expanded ? expandIcon : collapseIcon} />
     </calcite-action>
   );

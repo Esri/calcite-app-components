@@ -107,6 +107,27 @@
                   </calcite-action-bar>
                 </div>
               </section>
+              <section>
+                <h3>Tooltip on expand toggle</h3>
+                <div class="action-bar-container">
+                  <calcite-action-bar id="tooltip-action-bar">
+                    <calcite-action text="Add">
+                      <calcite-icon icon="plus" scale="s"></calcite-icon>
+                    </calcite-action>
+                  </calcite-action-bar>
+                  <calcite-tooltip id="tooltip">Hello world!</calcite-tooltip>
+                  <script>
+                    var actionBar = document.getElementById("tooltip-action-bar");
+                    window.addEventListener("load", function () {
+                      actionBar.getElement("expand-action").then((el) => {
+                        var tooltip = document.getElementById("tooltip");
+                        tooltip.referenceElement = el;
+                        tooltip.open = true;
+                      });
+                    });
+                  </script>
+                </div>
+              </section>
             </div>
           </section>
           <section>
