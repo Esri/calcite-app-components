@@ -96,8 +96,6 @@ export class CalciteActionPad {
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
 
-  @Prop() toggleEl: HTMLCalciteActionElement;
-
   // --------------------------------------------------------------------------
   //
   //  Public Methods
@@ -127,6 +125,8 @@ export class CalciteActionPad {
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteActionBarElement;
+
+  toggleEl: HTMLCalciteActionElement;
 
   // --------------------------------------------------------------------------
   //
