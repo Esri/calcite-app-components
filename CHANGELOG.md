@@ -3,6 +3,22 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.6.0](https://github.com/Esri/calcite-app-components/compare/v5.5.1...v5.6.0) (2020-03-31)
+
+### Features
+
+- **action-pad,action-bar:** Add intl string properties. ([#823](https://github.com/Esri/calcite-app-components/issues/823)) ([a261c0a](https://github.com/Esri/calcite-app-components/commit/a261c0a19c0163a2cd1117a85522c0bb265b71f0)), closes [#818](https://github.com/Esri/calcite-app-components/issues/818)
+- **block:** drop open/close icon ([#897](https://github.com/Esri/calcite-app-components/issues/897)) ([38e5b4a](https://github.com/Esri/calcite-app-components/commit/38e5b4ad4122b6d1b32d730b8f4533b0391bbfa3))
+- **flow-item:** Fix count for menu-actions ([#883](https://github.com/Esri/calcite-app-components/issues/883)) ([ace82b5](https://github.com/Esri/calcite-app-components/commit/ace82b5bfbe2b9fad63280a9d49f9d2a46075be3))
+- **flow-item,panel:** Add intl string properties. ([#843](https://github.com/Esri/calcite-app-components/issues/843)) ([fed34b7](https://github.com/Esri/calcite-app-components/commit/fed34b7574cbf2048efce292fe767d801c3cd065))
+- **tip,tip-manager:** Add intl string properties. ([#844](https://github.com/Esri/calcite-app-components/issues/844)) ([dbc8561](https://github.com/Esri/calcite-app-components/commit/dbc8561409daadb5960ebbe4c667257d725bc2ae))
+- **value-list, pick-list:** support ↑↓ arrow keys for navigation and value selection when multiple mode is disabled ([#887](https://github.com/Esri/calcite-app-components/issues/887)) ([28cc424](https://github.com/Esri/calcite-app-components/commit/28cc424d9c756389205db1ad9e05428c484e2786))
+
+### Bug Fixes
+
+- **action:** Add slotChildNodesFix to stencil config extras ([#890](https://github.com/Esri/calcite-app-components/issues/890)) ([99717d3](https://github.com/Esri/calcite-app-components/commit/99717d3d126da7088c70c657e9f7149d9af7a799))
+- **block:** use CSS grid to improve header layout ([#895](https://github.com/Esri/calcite-app-components/issues/895)) ([2250249](https://github.com/Esri/calcite-app-components/commit/2250249345fe2a17047507e2a5d2bb5fc87df64c)), closes [#849](https://github.com/Esri/calcite-app-components/issues/849)
+
 ### [5.5.1](https://github.com/Esri/calcite-app-components/compare/v5.5.0...v5.5.1) (2020-03-03)
 
 ### Bug Fixes

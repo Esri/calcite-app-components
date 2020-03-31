@@ -14,7 +14,7 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 | `text`          | `text`           | Text displayed in the button.                                                                                                                                                    | `string`               | `undefined` |
 | `textCollapse`  | `text-collapse`  | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Tooltip used for the toggle when expanded.                                                  | `string`               | `undefined` |
 | `textExpand`    | `text-expand`    | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Tooltip used for the toggle when collapsed.                                                   | `string`               | `undefined` |
-| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" or "switch"` | `"button"`  |
+| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" \| "switch"` | `"button"`  |
 
 ## Events
 

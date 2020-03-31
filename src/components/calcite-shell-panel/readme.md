@@ -44,9 +44,9 @@ Renders a panel with an action bar.
 | --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------- |
 | `collapsed`     | `collapsed`      | Hide the content panel.                                                                                        | `boolean`                 | `false`     |
 | `detached`      | `detached`       | This property makes the content area appear like a "floating" panel.                                           | `boolean`                 | `false`     |
-| `detachedScale` | `detached-scale` | This sets limits the height of the content area. It only applies when detached is true.                        | `"l" or "m" or "s"`       | `"m"`       |
-| `layout`        | `layout`         | <span style="color:red">**[DEPRECATED]**</span> use "position" instead.<br/><br/>Arrangement of the component. | `"leading" or "trailing"` | `undefined` |
-| `position`      | `position`       | Arranges the component depending on the elements 'dir' property.                                               | `"end" or "start"`        | `undefined` |
+| `detachedScale` | `detached-scale` | This sets limits the height of the content area. It only applies when detached is true.                        | `"l" \| "m" \| "s"`       | `"m"`       |
+| `layout`        | `layout`         | <span style="color:red">**[DEPRECATED]**</span> use "position" instead.<br/><br/>Arrangement of the component. | `"leading" \| "trailing"` | `undefined` |
+| `position`      | `position`       | Arranges the component depending on the elements 'dir' property.                                               | `"end" \| "start"`        | `undefined` |
 
 ## Events
 
