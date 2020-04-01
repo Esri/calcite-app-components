@@ -8,7 +8,7 @@ interface CalciteExpandToggleProps {
   intlCollapse: string;
   el: HTMLElement;
   position: CalcitePosition;
-  expandTooltip?: HTMLCalciteTooltipElement;
+  tooltipExpand?: HTMLCalciteTooltipElement;
   toggleExpand: () => void;
 }
 
@@ -63,7 +63,7 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
   toggleExpand,
   el,
   position,
-  expandTooltip
+  tooltipExpand
 }) => {
   const rtl = getElementDir(el) === "rtl";
 
@@ -81,7 +81,7 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
   const actionNode = (
     <calcite-action
       ref={(referenceElement): HTMLCalciteActionElement =>
-        setTooltipReference(expandTooltip, referenceElement, expanded)
+        setTooltipReference(tooltipExpand, referenceElement, expanded)
       }
       onClick={toggleExpand}
       textEnabled={expanded}
@@ -91,7 +91,7 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
     </calcite-action>
   );
 
-  return expandTooltip ? (
+  return tooltipExpand ? (
     <calcite-tooltip-manager>{actionNode}</calcite-tooltip-manager>
   ) : (
     actionNode

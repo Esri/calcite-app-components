@@ -56,9 +56,9 @@ export class CalciteActionBar {
   }
 
   /**
-   * Used to set the a tooltip for the expand toggle.
+   * Used to set the tooltip for the expand toggle.
    */
-  @Prop() expandTooltip?: HTMLCalciteTooltipElement;
+  @Prop() tooltipExpand?: HTMLCalciteTooltipElement;
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
@@ -161,7 +161,7 @@ export class CalciteActionBar {
       layout,
       position,
       toggleExpand,
-      expandTooltip
+      tooltipExpand
     } = this;
 
     const expandLabel = intlExpand || textExpand || TEXT.expand;
@@ -175,7 +175,7 @@ export class CalciteActionBar {
         el={el}
         position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
-        expandTooltip={expandTooltip}
+        tooltipExpand={tooltipExpand}
       />
     ) : null;
 
