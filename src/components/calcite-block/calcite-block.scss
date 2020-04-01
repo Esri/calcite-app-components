@@ -13,26 +13,104 @@
 @import "../../scss/includes/_component";
 @import "../../scss/includes/_header";
 
-:host([open]) {
-  margin-top: var(--calcite-app-cap-spacing-quarter);
-  margin-bottom: var(--calcite-app-cap-spacing-quarter);
-}
-
 .header {
-  flex-grow: 1;
   justify-content: flex-start;
-  padding: 0 var(--calcite-app-side-spacing-half);
+  padding: 0;
 }
 
 .header-container {
   display: grid;
-  grid-template: auto / auto auto 1fr;
+  grid-template: auto / auto 1fr auto;
   grid-template-areas: "handle header control";
-  align-items: center;
+  grid-column: header-start / control-end;
+  grid-row: 1 / 2;
+  align-items: stretch;
 
   & > .header {
     padding: var(--calcite-app-cap-spacing-three-quarters) 0;
   }
+}
+
+.toggle {
+  line-height: var(--calcite-app-line-height);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: var(--calcite-app-cap-spacing-three-quarters) 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--calcite-app-font-family);
+  font-size: var(--calcite-app-font-size-0);
+  text-align: unset;
+  color: var(--calcite-app-foreground);
+  @include focusRingInset();
+}
+
+.header,
+.toggle {
+  grid-area: header;
+}
+
+calcite-loader[inline] {
+  color: var(--calcite-app-foreground-subtle);
+}
+
+calcite-handle {
+  grid-area: handle;
+}
+
+.title {
+  margin: 0;
+  padding: 0 var(--calcite-app-side-spacing-three-quarters);
+}
+
+.header .title .heading {
+  padding: 0;
+  font-size: var(--calcite-app-font-size-0);
+  word-break: break-all;
+}
+
+.summary {
+  color: var(--calcite-app-foreground-subtle);
+  font-size: var(--calcite-app-font-size--1);
+  padding: 0;
+  line-height: var(--calcite-app-line-height);
+  word-break: break-all;
+}
+
+.icon {
+  margin-left: var(--calcite-app-side-spacing-three-quarters);
+}
+
+.toggle-icon {
+  fill: currentColor;
+  flex: 0 0 var(--calcite-app-icon-size);
+  margin: 0 var(--calcite-app-side-spacing) 0 0;
+}
+
+.content {
+  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
+  position: relative;
+}
+
+.control-container {
+  grid-area: control;
+  display: flex;
+  margin: 0;
+}
+
+.calcite--rtl {
+  .icon {
+    margin-left: 0;
+    margin-right: var(--calcite-app-side-spacing-three-quarters);
+  }
+}
+
+:host([open]) {
+  margin-top: var(--calcite-app-cap-spacing-quarter);
+  margin-bottom: var(--calcite-app-cap-spacing-quarter);
 }
 
 :host([open]) .header-container {
@@ -48,73 +126,26 @@
   }
 }
 
-calcite-loader[inline] {
-  color: var(--calcite-app-foreground-subtle);
-}
-
-calcite-handle {
-  grid-area: handle;
-}
-
-.title {
-  margin: 0;
-  padding: 0 var(--calcite-app-side-spacing-half);
-}
-
-.header .title .heading {
-  padding: 0;
-  font-size: var(--calcite-app-font-size-0);
-}
-
-.summary {
-  color: var(--calcite-app-foreground-subtle);
-  font-size: var(--calcite-app-font-size--1);
-  padding: var(--calcite-app-cap-spacing-eighth) 0 var(--calcite-app-cap-spacing-quarter);
-}
-
-.toggle {
-  grid-column: header-start / control-end;
-  grid-row: 1 / 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  margin: 0;
-  padding: var(--calcite-app-cap-spacing-three-quarters) 0;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: var(--calcite-app-font-family);
-  text-align: unset;
-  color: var(--calcite-app-foreground);
-  @include focusRingInset();
-}
-
-.icon {
-  margin-left: var(--calcite-app-side-spacing-quarter);
-}
-
-.toggle-icon {
-  fill: currentColor;
-  flex: 0 0 var(--calcite-app-icon-size);
-  margin: 0 var(--calcite-app-side-spacing) 0 0;
-}
-
-.content {
-  padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing);
-  position: relative;
-}
-
-::slotted([slot="control"]) {
-  grid-area: control;
-  justify-self: end;
-  margin: auto var(--calcite-app-side-spacing-three-quarters) auto auto;
+:host([collapsible]) .header-container:hover {
+  background-color: var(--calcite-app-background-hover-opacity);
 }
 
 :host([drag-handle]) {
+  .title {
+    padding-left: var(--calcite-app-side-spacing-quarter);
+  }
   .icon {
     margin-left: 0;
     margin-right: var(--calcite-app-side-spacing-half);
+  }
+  .calcite--rtl {
+    .title {
+      padding-left: 0;
+      padding-right: var(--calcite-app-side-spacing-quarter);
+    }
+    .icon {
+      margin-right: 0;
+      margin-left: var(--calcite-app-side-spacing-quarter);
+    }
   }
 }
