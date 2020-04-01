@@ -1,6 +1,6 @@
 @mixin componentTypographyVars() {
   /* Component typography variables */
-  --calcite-app-line-height: #{$baseline-ratio};
+  --calcite-app-line-height: 1.35;
 
   --calcite-app-font-family: #{$avenir-family};
   --calcite-app-font-family-monospace: #{$code-family};
