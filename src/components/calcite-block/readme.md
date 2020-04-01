@@ -69,7 +69,7 @@ Renders a header with a clickable icon to toggle the block open and closed.
 | `summary`      | `summary`       | Block summary.                                                                                                                  | `string`            | `undefined` |
 | `textCollapse` | `text-collapse` | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Tooltip used for the toggle when expanded. | `string`            | `undefined` |
 | `textExpand`   | `text-expand`   | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Tooltip used for the toggle when collapsed.  | `string`            | `undefined` |
-| `theme`        | `theme`         | Used to set the component's color scheme.                                                                                       | `"dark" or "light"` | `undefined` |
+| `theme`        | `theme`         | Used to set the component's color scheme.                                                                                       | `"dark" \| "light"` | `undefined` |
 
 ## Events
 

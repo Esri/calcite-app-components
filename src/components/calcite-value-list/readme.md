@@ -8,6 +8,8 @@
 
 ### Basic
 
+#### Basic
+
 Renders a value list with multiple items able to be selected and a filter.
 
 ```html
@@ -36,7 +38,7 @@ Renders a value list with multiple items able to be selected and a filter.
 
 #### Drag and drop
 
-Renders a value list with drag and drop capability.
+Renders a value list with drag and drop capability between the items.
 
 ```html
 <calcite-value-list drag-enabled>
@@ -81,7 +83,7 @@ Renders a value list with label editing and single select.
 
 | Property                | Attribute                 | Description                                                                                                                                                                                                                                       | Type      | Default                  |
 | ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------ |
-| `compact`               | `compact`                 | Compact reduces the size of all items in the list.                                                                                                                                                                                                | `boolean` | `false`                  |
+| `compact`               | `compact`                 | <span style="color:red">**[DEPRECATED]**</span> This property will be removed in a future release.<br/><br/>Compact reduces the size of all items in the list.                                                                                    | `boolean` | `false`                  |
 | `disabled`              | `disabled`                | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                                                                       | `boolean` | `false`                  |
 | `dragEnabled`           | `drag-enabled`            | When true, the items will be sortable via drag and drop.                                                                                                                                                                                          | `boolean` | `false`                  |
 | `filterEnabled`         | `filter-enabled`          | When true, an input appears at the top of the list that can be used by end users to filter items in the list.                                                                                                                                     | `boolean` | `false`                  |
@@ -103,6 +105,12 @@ Renders a value list with label editing and single select.
 #### Returns
 
 Type: `Promise<Map<string, object>>`
+
+### `setFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 

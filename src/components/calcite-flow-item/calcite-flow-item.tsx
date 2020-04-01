@@ -251,7 +251,7 @@ export class CalciteFlowItem {
         class={CSS.backButton}
         onClick={backButtonClick}
       >
-        <calcite-icon scale="s" filled icon={icon} />
+        <calcite-icon scale="s" icon={icon} />
       </calcite-action>
     ) : null;
   }

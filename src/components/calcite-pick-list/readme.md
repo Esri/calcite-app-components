@@ -8,9 +8,7 @@
 
 ### Basic
 
-#### Basic
-
-Renders a basic pick list with radio buttons and actions on the right side.
+Renders a basic pick list with radio buttons on the left and actions on the right side.
 
 ```html
 <calcite-pick-list>
@@ -89,39 +87,16 @@ Renders groups of pick list items that are visually separated.
 </calcite-pick-list>
 ```
 
-#### Compact
-
-Renders compact list items with the text description and a bit of padding removed from the card.
-
-```html
-<calcite-pick-list compact>
-  <calcite-pick-list-item
-    text-label="ID"
-    text-description="This is an id for this field and people use it for things."
-    value="ID"
-  >
-    <calcite-action slot="secondary-action" id="action-test">
-      <calcite-icon scale="s" icon="banana"></calcite-icon>
-    </calcite-action>
-  </calcite-pick-list-item>
-  <calcite-pick-list-item text-label="OBJECTID" value="OBJECTID">
-    <calcite-action slot="secondary-action" id="action-test">
-      <calcite-icon scale="s" icon="banana"></calcite-icon>
-    </calcite-action>
-  </calcite-pick-list-item>
-</calcite-pick-list>
-```
-
 ## Properties
 
-| Property                | Attribute                 | Description                                                                                                                                                                                                                                       | Type      | Default                  |
-| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------ |
-| `compact`               | `compact`                 | Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the `calcite-pick-list-item`.                                                                                      | `boolean` | `false`                  |
-| `disabled`              | `disabled`                | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                                                                       | `boolean` | `false`                  |
-| `filterEnabled`         | `filter-enabled`          | When true, an input appears at the top of the list that can be used by end users to filter items in the list.                                                                                                                                     | `boolean` | `false`                  |
-| `loading`               | `loading`                 | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                                                                                    | `boolean` | `false`                  |
-| `multiple`              | `multiple`                | Multiple works similar to standard radio buttons and checkboxes. When true, a user can select multiple items at a time. When false, only a single item can be selected at a time and selecting a new item will deselect any other selected items. | `boolean` | `false`                  |
-| `textFilterPlaceholder` | `text-filter-placeholder` | Placeholder text for the filter input field.                                                                                                                                                                                                      | `string`  | `TEXT.filterPlaceholder` |
+| Property                | Attribute                 | Description                                                                                                                                                                                                                                                              | Type      | Default                  |
+| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ------------------------ |
+| `compact`               | `compact`                 | <span style="color:red">**[DEPRECATED]**</span> This property will be removed in a future release.<br/><br/>Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the `calcite-pick-list-item`. | `boolean` | `false`                  |
+| `disabled`              | `disabled`                | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                                                                                              | `boolean` | `false`                  |
+| `filterEnabled`         | `filter-enabled`          | When true, an input appears at the top of the list that can be used by end users to filter items in the list.                                                                                                                                                            | `boolean` | `false`                  |
+| `loading`               | `loading`                 | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                                                                                                           | `boolean` | `false`                  |
+| `multiple`              | `multiple`                | Multiple works similar to standard radio buttons and checkboxes. When true, a user can select multiple items at a time. When false, only a single item can be selected at a time and selecting a new item will deselect any other selected items.                        | `boolean` | `false`                  |
+| `textFilterPlaceholder` | `text-filter-placeholder` | Placeholder text for the filter input field.                                                                                                                                                                                                                             | `string`  | `TEXT.filterPlaceholder` |
 
 ## Events
 
@@ -136,6 +111,12 @@ Renders compact list items with the text description and a bit of padding remove
 #### Returns
 
 Type: `Promise<Map<string, object>>`
+
+### `setFocus() => Promise<void>`
+
+#### Returns
+
+Type: `Promise<void>`
 
 ## Slots
 

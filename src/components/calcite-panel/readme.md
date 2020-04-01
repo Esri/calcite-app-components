@@ -65,15 +65,16 @@ Renders a panel that is dismissible with a click of the "x".
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                               | Type                | Default      |
-| ------------- | -------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ------------ |
-| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.               | `boolean`           | `false`      |
-| `dismissed`   | `dismissed`    | Hides the panel.                                                                                          | `boolean`           | `false`      |
-| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`      |
-| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                               | `"l" or "m" or "s"` | `undefined`  |
-| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                            | `boolean`           | `false`      |
-| `textClose`   | `text-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `TEXT.close` |
-| `theme`       | `theme`        | Used to set the component's color scheme.                                                                 | `"dark" or "light"` | `undefined`  |
+| Property      | Attribute      | Description                                                                                                                                                                                 | Type                | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                 | `boolean`           | `false`     |
+| `dismissed`   | `dismissed`    | Hides the panel.                                                                                                                                                                            | `boolean`           | `false`     |
+| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                                                                                                                 | `boolean`           | `false`     |
+| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                                                                                                                 | `"l" \| "m" \| "s"` | `undefined` |
+| `intlClose`   | `intl-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.                                                                                   | `string`            | `undefined` |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                              | `boolean`           | `false`     |
+| `textClose`   | `text-close`   | <span style="color:red">**[DEPRECATED]**</span> use "intlClose" instead.<br/><br/>'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `undefined` |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                                                                                   | `"dark" \| "light"` | `undefined` |
 
 ## Events
 

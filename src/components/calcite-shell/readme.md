@@ -189,7 +189,7 @@ Renders a single panel with actions in an action bar.
 
 | Property | Attribute | Description                               | Type                | Default     |
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
-| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" or "light"` | `undefined` |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
 ## Slots
 

@@ -46,17 +46,17 @@ Renders a flow with menu-actions and footer-actions in the form of buttons.
 
 | Property | Attribute | Description                               | Type                | Default     |
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
-| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" or "light"` | `undefined` |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
 ## Methods
 
-### `back() => Promise<any>`
+### `back() => Promise<HTMLCalciteFlowItemElement>`
 
 Removes the currently active `calcite-flow-item`.
 
 #### Returns
 
-Type: `Promise<any>`
+Type: `Promise<HTMLCalciteFlowItemElement>`
 
 ## Slots
 
