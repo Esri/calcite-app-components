@@ -42,9 +42,7 @@ const createAttributes: () => Attributes = () => [
 ];
 
 const action = dedent`
-  <calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear">
-    <calcite-icon icon="circle" scale="s" style="color: #f689d8;"></calcite-icon>
-  </calcite-action>
+  <calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear" style="color: #f689d8;" icon="circle"></calcite-action>
 `;
 
 export const basic = (): string =>

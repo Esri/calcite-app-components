@@ -63,21 +63,21 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
 
 const actionBarPrimaryContentHTML = dedent`
   <calcite-action-group>
-    <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-    <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
+    <calcite-action text="Add" label="Add Item" icon="plus"></calcite-action>
+    <calcite-action text="Save" label="Save Item" icon="save"></calcite-action>
   </calcite-action-group>
   <calcite-action-group>
-    <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
+    <calcite-action text="Layers" label="View Layers" icon="layers"></calcite-action>
   </calcite-action-group>
 `;
 
 const actionBarContextualContentHTML = dedent`
   <calcite-action-group>
-    <calcite-action text="Idea" label="Add Item"><calcite-icon scale="s" icon="lightbulb"></calcite-icon></calcite-action>
-    <calcite-action text="Information" label="Save Item"><calcite-icon scale="s" icon="information"></calcite-icon></calcite-action>
+    <calcite-action text="Idea" label="Add Item" icon="lightbulb"></calcite-action>
+    <calcite-action text="Information" label="Save Item" icon="information"></calcite-action>
   </calcite-action-group>
   <calcite-action-group>
-    <calcite-action text="Question" label="View Layers"><calcite-icon scale="s" icon="question"></calcite-icon></calcite-action>
+    <calcite-action text="Question" label="View Layers" icon="question"></calcite-action>
   </calcite-action-group>
 `;
 
@@ -195,9 +195,9 @@ const advancedLeadingPanelHTML = dedent`
   ${actionBarPrimaryHTML}
   <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
     <calcite-block-content>
-      <calcite-action text="Play" text-enabled indicator><calcite-icon scale="s" icon="play"></calcite-icon></calcite-action>
-      <calcite-action text="Extent" text-enabled><calcite-icon scale="s" icon="extent"></calcite-icon></calcite-action>
-      <calcite-action text="Chart" text-enabled><calcite-icon scale="s" icon="arrow-up-right"></calcite-icon></calcite-action>
+      <calcite-action text="Play" text-enabled indicator icon="play"></calcite-action>
+      <calcite-action text="Extent" text-enabled icon="extent"></calcite-action>
+      <calcite-action text="Chart" text-enabled icon="arrow-up-right"></calcite-action>
     </calcite-block-content>
   </calcite-block>
   <calcite-block collapsible open heading="Another Block" summary="This is the primary.">
@@ -228,11 +228,9 @@ const advancedTrailingPanelHTMl = dedent`
   ${actionBarContextualHTML}
   <calcite-flow>
     <calcite-flow-item heading="Layer settings">
-      <div slot="menu-actions">
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-      </div>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
       <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
         <calcite-block-content>
           <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
