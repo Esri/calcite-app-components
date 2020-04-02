@@ -9,7 +9,7 @@ import { CSS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
-import { VNode } from "@stencil/core/internal";
+import { VNode, State } from "@stencil/core/internal";
 
 /**
  * @slot - A slot for adding a `calcite-icon`.
@@ -91,7 +91,25 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
-  private buttonEl: HTMLButtonElement;
+  @State() hasChildren: boolean;
+
+  buttonEl: HTMLButtonElement;
+
+  observer = new MutationObserver(() => this.setHasChildren());
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  componentDidLoad(): void {
+    this.observer.observe(this.el, { childList: true, subtree: true });
+  }
+
+  componentDidUnload(): void {
+    this.observer.disconnect();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -103,6 +121,16 @@ export class CalciteAction {
   async setFocus(): Promise<void> {
     this.buttonEl.focus();
   }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  setHasChildren = (): void => {
+    this.hasChildren = !!this.el.children?.length;
+  };
 
   // --------------------------------------------------------------------------
   //
@@ -125,12 +153,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { el, loading, icon, scale } = this;
+    const { loading, icon, scale, hasChildren } = this;
     const iconScale = scale === "l" ? "m" : "s";
     const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
     const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
     const iconNode = calciteLoaderNode || calciteIconNode;
-    const hasIconToDisplay = iconNode || el.children?.length;
+    const hasIconToDisplay = iconNode || hasChildren;
 
     const slotContainerNode = (
       <div
