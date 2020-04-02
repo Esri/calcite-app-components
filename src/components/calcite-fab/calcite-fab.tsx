@@ -123,7 +123,6 @@ export class CalciteFab {
           scale={scale}
           icon={icon}
           round={true}
-          // floating={true}
           width="auto"
           appearance={appearance}
           color={color}

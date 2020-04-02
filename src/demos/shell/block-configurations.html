@@ -9,7 +9,6 @@
     <script src="../_assets/head.js"></script>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css" />
-    <link rel="stylesheet" href="./mvb-simulator.css" />
     <script src="https://js.arcgis.com/4.15/"></script>
     <style>
       html,
@@ -31,7 +30,7 @@
     </style>
 
     <script>
-      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/Zoom"], function(WebMap, MapView, Zoom) {
+      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/LayerList","esri/widgets/Zoom"], function(WebMap, MapView, LayerList, Zoom) {
         const webmap = new WebMap({
           portalItem: {
             id: "cc316ca9e0824970ad29ac558161d42d"
@@ -47,19 +46,19 @@
           padding: {left: 49, right: 385}
         });
         view.when(function() {
-        //   var layerList = new LayerList({
-        //     view: view,
-        //     selectionEnabled: true,
-        //     container: "layerlist-container"
-        //   });
+          var layerList = new LayerList({
+            view: view,
+            selectionEnabled: true,
+            container: "layerlist-container"
+          });
 
           // Add widget to the top right corner of the view
           // view.ui.add(layerList, "top-right");
           view.ui.move("zoom", "bottom-right");
         });
-        fetch('layerlist.html')
-        .then(data => data.text())
-        .then(html => document.getElementById('layerlist-container').innerHTML = html);
+        // fetch('layerlist.html')
+        // .then(data => data.text())
+        // .then(html => document.getElementById('layerlist-container').innerHTML = html);
       });
     </script>
   </head>

@@ -2,19 +2,17 @@
   @extend %component-host;
   @include borderShadow();
   display: flex;
-  // padding: var(--calcite-app-side-spacing-minimum);
   transition: background-color var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function),
     box-shadow var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
 @import "../../scss/includes/_component";
 
-// :host(:hover) {
-//   // background-color: var(--calcite-app-background-hover);
-// }
+:host(:hover) {
+  background-color: var(--calcite-app-background-hover);
+}
 
 calcite-pick-list-item {
-  // background-color: var(--calcite-app-background-clear);
   box-shadow: none;
   flex-grow: 1;
   position: relative;
