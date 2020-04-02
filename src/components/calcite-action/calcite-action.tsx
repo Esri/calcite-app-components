@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, forceUpdate } from "@stencil/core";
 
 import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 
@@ -9,7 +9,7 @@ import { CSS } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 
 import { getElementDir } from "../utils/dom";
-import { VNode, State } from "@stencil/core/internal";
+import { VNode } from "@stencil/core/internal";
 
 /**
  * @slot - A slot for adding a `calcite-icon`.
@@ -91,21 +91,15 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
-  @State() hasChildren = false;
-
   buttonEl: HTMLButtonElement;
 
-  observer = new MutationObserver(() => this.setHasChildren());
+  observer = new MutationObserver(() => forceUpdate(this));
 
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   // --------------------------------------------------------------------------
-
-  componentWillLoad(): void {
-    this.setHasChildren();
-  }
 
   componentDidLoad(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
@@ -128,16 +122,6 @@ export class CalciteAction {
 
   // --------------------------------------------------------------------------
   //
-  //  Private Methods
-  //
-  // --------------------------------------------------------------------------
-
-  setHasChildren = (): void => {
-    this.hasChildren = !!this.el.children?.length;
-  };
-
-  // --------------------------------------------------------------------------
-  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
@@ -157,12 +141,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { loading, icon, scale, hasChildren } = this;
+    const { loading, icon, scale, el } = this;
     const iconScale = scale === "l" ? "m" : "s";
     const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
     const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
     const iconNode = calciteLoaderNode || calciteIconNode;
-    const hasIconToDisplay = iconNode || hasChildren;
+    const hasIconToDisplay = iconNode || el.children?.length;
 
     const slotContainerNode = (
       <div
