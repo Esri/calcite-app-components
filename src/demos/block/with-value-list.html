@@ -26,9 +26,9 @@
                 slot="secondary-action"
                 id="action-test"
                 text="click-me"
+                icon="x"
                 onClick="console.log('clicked');"
               >
-                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-value-list-item>
             <calcite-value-list-item
@@ -41,8 +41,8 @@
                 id="action-test"
                 text="click-me"
                 onClick="console.log('clicked');"
+                icon="x"
               >
-                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-value-list-item>
             <calcite-value-list-item
@@ -55,19 +55,15 @@
                 id="action-test"
                 text="click-me"
                 onClick="console.log('clicked');"
+                icon="x"
               >
-                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-value-list-item>
           </calcite-value-list>
 
           <calcite-block-section text="Section 1" open>
-            <calcite-action text="click-me" text="hello world" text-enabled>
-              <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
-            </calcite-action>
-            <calcite-action text="click-me" text="hello world" text-enabled>
-              <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
-            </calcite-action>
+            <calcite-action text="click-me" text="hello world" text-enabled icon="configure-popup"> </calcite-action>
+            <calcite-action text="click-me" text="hello world" text-enabled icon="configure-popup"> </calcite-action>
           </calcite-block-section>
 
           <calcite-block-section text="Section 2 (toggle switch)" open toggle-display="switch">

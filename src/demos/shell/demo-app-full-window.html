@@ -30,7 +30,7 @@
     </style>
 
     <script>
-      require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
+      require(["esri/Map", "esri/views/MapView"], function (Map, MapView) {
         const map = new Map({
           basemap: "gray-vector"
         });
@@ -71,46 +71,45 @@
             </calcite-panel>
             <calcite-action-pad id="action-pad" placement="side" slot="action-pad" hidden>
               <calcite-action-group>
-                <calcite-action text="Add">
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action text="Add" icon="plus"> </calcite-action>
               </calcite-action-group>
             </calcite-action-pad>
             <calcite-action-bar slot="action-bar" theme="dark">
               <calcite-action-group>
-                <calcite-action text="Add">
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Layers" active indicator>
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action text="Add" icon="plus"> </calcite-action>
+                <calcite-action text="Save" disabled icon="save"> </calcite-action>
+                <calcite-action text="Layers" active indicator icon="layers"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
-                <calcite-action text="An unbelievably long title">
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Layers" indicator>
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action text="An unbelievably long title" icon="plus"> </calcite-action>
+                <calcite-action text="Save" disabled icon="save"> </calcite-action>
+                <calcite-action text="Layers" indicator icon="layers"> </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-block collapsible heading="Primary Content" summary="This is the primary.">
               <calcite-block-content>
-                <calcite-action text="Side ActionPad" text-enabled id="action-pad-button" indicator>
-                  <calcite-icon icon="caret-square-right" scale="s"></calcite-icon>
+                <calcite-action
+                  text="Side ActionPad"
+                  text-enabled
+                  id="action-pad-button"
+                  indicator
+                  icon="caret-square-right"
+                >
                 </calcite-action>
                 <!-- popover from click of this action at bottom of file -->
-                <calcite-action text="Anchored Shell Floating Panel" text-enabled id="shell-floating-panel-button">
-                  <calcite-icon icon="extent" scale="s"></calcite-icon>
+                <calcite-action
+                  text="Anchored Shell Floating Panel"
+                  text-enabled
+                  id="shell-floating-panel-button"
+                  icon="extent"
+                >
                 </calcite-action>
-                <calcite-action text="Over Shell Floating Panel" text-enabled id="shell-floating-panel-over-button">
-                  <calcite-icon icon="arrow-up-right" scale="s"></calcite-icon>
+                <calcite-action
+                  text="Over Shell Floating Panel"
+                  text-enabled
+                  id="shell-floating-panel-over-button"
+                  icon="arrow-up-right"
+                >
                 </calcite-action>
               </calcite-block-content>
             </calcite-block>
@@ -121,7 +120,7 @@
                   toggle-display="switch"
                   open
                 >
-                  <label style="display: flex;flex-flow: column; margin: 15px 0;">
+                  <label style="display: flex; flex-flow: column; margin: 15px 0;">
                     Cool
                     <input type="text" style="padding: 0.5rem;" />
                   </label>
@@ -147,31 +146,17 @@
           <calcite-shell-panel slot="contextual-panel" position="end">
             <calcite-action-bar slot="action-bar">
               <calcite-action-group>
-                <calcite-action text="Add" active>
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Layers">
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action text="Add" active icon="plus"> </calcite-action>
+                <calcite-action text="Save" disabled icon="save"> </calcite-action>
+                <calcite-action text="Layers" icon="layers"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
-                <calcite-action text="An unbelievably long title">
-                  <calcite-icon icon="plus" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Save" disabled>
-                  <calcite-icon icon="save" scale="s"></calcite-icon>
-                </calcite-action>
-                <calcite-action text="Layers">
-                  <calcite-icon icon="layers" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action text="An unbelievably long title" icon="plus"> </calcite-action>
+                <calcite-action text="Save" disabled icon="save"> </calcite-action>
+                <calcite-action text="Layers" icon="layers"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group slot="bottom-actions">
-                <calcite-action text="Tips" id="tip-manager-button">
-                  <calcite-icon icon="lightbulb" scale="s"></calcite-icon>
-                </calcite-action>
+                <calcite-action text="Tips" id="tip-manager-button" icon="lightbulb"> </calcite-action>
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-flow id="flow">
@@ -192,8 +177,8 @@
                           id="action-test"
                           text="click-me"
                           onClick="console.log('clicked');"
+                          icon="x"
                         >
-                          <calcite-icon icon="x" scale="s"></calcite-icon>
                         </calcite-action>
                       </calcite-value-list-item>
                       <calcite-value-list-item
@@ -206,8 +191,8 @@
                           id="action-test"
                           text="click-me"
                           onClick="console.log('clicked');"
+                          icon="x"
                         >
-                          <calcite-icon icon="x" scale="s"></calcite-icon>
                         </calcite-action>
                       </calcite-value-list-item>
                       <calcite-value-list-item
@@ -220,8 +205,8 @@
                           id="action-test"
                           text="click-me"
                           onClick="console.log('clicked');"
+                          icon="x"
                         >
-                          <calcite-icon icon="x" scale="s"></calcite-icon>
                         </calcite-action>
                       </calcite-value-list-item>
                     </calcite-value-list>
@@ -253,8 +238,8 @@
                       id="action-test"
                       text="click-me"
                       onClick="console.log('clicked');"
+                      icon="x"
                     >
-                      <calcite-icon icon="x" scale="s"></calcite-icon>
                     </calcite-action>
                   </calcite-value-list-item>
                   <calcite-value-list-item
@@ -267,8 +252,8 @@
                       id="action-test"
                       text="click-me"
                       onClick="console.log('clicked');"
+                      icon="x"
                     >
-                      <calcite-icon icon="x" scale="s"></calcite-icon>
                     </calcite-action>
                   </calcite-value-list-item>
                   <calcite-value-list-item
@@ -281,8 +266,8 @@
                       id="action-test"
                       text="click-me"
                       onClick="console.log('clicked');"
+                      icon="x"
                     >
-                      <calcite-icon icon="x" scale="s"></calcite-icon>
                     </calcite-action>
                   </calcite-value-list-item>
                 </calcite-value-list>
@@ -304,8 +289,8 @@
                           id="action-test"
                           text="click-me"
                           onClick="console.log('clicked');"
+                          icon="x"
                         >
-                          <calcite-icon icon="x" scale="s"></calcite-icon>
                         </calcite-action>
                       </calcite-value-list-item>
                       <calcite-value-list-item
@@ -318,8 +303,8 @@
                           id="action-test"
                           text="click-me"
                           onClick="console.log('clicked');"
+                          icon="x"
                         >
-                          <calcite-icon icon="x" scale="s"></calcite-icon>
                         </calcite-action>
                       </calcite-value-list-item>
                       <calcite-value-list-item
@@ -332,8 +317,8 @@
                           id="action-test"
                           text="click-me"
                           onClick="console.log('clicked');"
+                          icon="x"
                         >
-                          <calcite-icon icon="x" scale="s"></calcite-icon>
                         </calcite-action>
                       </calcite-value-list-item>
                     </calcite-value-list>
@@ -433,9 +418,7 @@
         <calcite-panel theme="light">
           <h3 class="heading" slot="header-content">WE CARE A LOT</h3>
           <calcite-pick-list filter-enabled filter-sticky>
-            <calcite-action slot="menu-actions" text="options">
-              <calcite-icon icon="ellipsis" scale="s"></calcite-icon>
-            </calcite-action>
+            <calcite-action slot="menu-actions" text="options" icon="ellipsis"> </calcite-action>
             <calcite-pick-list-item
               text-label="about disasters, fires, floods and killer bees"
               value="1"
@@ -460,7 +443,7 @@
       <script>
         const tipManagerButton = document.getElementById("tip-manager-button");
         const tipManager = document.getElementById("tip-manager");
-        tipManagerButton.addEventListener("click", function() {
+        tipManagerButton.addEventListener("click", function () {
           tipManager.hasAttribute("hidden")
             ? tipManager.removeAttribute("hidden")
             : tipManager.setAttribute("hidden", "");
@@ -468,7 +451,7 @@
 
         const actionPad = document.getElementById("action-pad");
         const actionPadButton = document.getElementById("action-pad-button");
-        actionPadButton.addEventListener("click", function() {
+        actionPadButton.addEventListener("click", function () {
           actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
 
           actionPad.positionElement = actionPadButton;
@@ -476,7 +459,7 @@
 
         const shellFloatingPanel = document.getElementById("shell-floating-panel");
         const shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
-        shellFloatingPanelButton.addEventListener("click", function() {
+        shellFloatingPanelButton.addEventListener("click", function () {
           shellFloatingPanel.hasAttribute("hidden")
             ? shellFloatingPanel.removeAttribute("hidden")
             : shellFloatingPanel.setAttribute("hidden", "");
@@ -486,7 +469,7 @@
 
         const shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
         const shellFloatingPanelOverButton = document.getElementById("shell-floating-panel-over-button");
-        shellFloatingPanelOverButton.addEventListener("click", function() {
+        shellFloatingPanelOverButton.addEventListener("click", function () {
           shellFloatingPanelOver.hasAttribute("hidden")
             ? shellFloatingPanelOver.removeAttribute("hidden")
             : shellFloatingPanelOver.setAttribute("hidden", "");
