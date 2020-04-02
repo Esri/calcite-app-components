@@ -48,11 +48,6 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
   <calcite-action text="Information">
     <calcite-icon scale="s" icon="information"></calcite-icon>
   </calcite-action>
-
-  <div slot="bottom-actions">
-    <calcite-action text="Feedback">
-      <calcite-icon scale="s" icon="mega-phone"></calcite-icon>
-    </calcite-action>
-  </div>
+  <calcite-action text="Feedback" slot="bottom-actions" icon="mega-phone"></calcite-action>
 </calcite-action-bar>
 ```

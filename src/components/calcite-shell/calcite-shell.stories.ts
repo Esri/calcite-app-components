@@ -228,11 +228,9 @@ const advancedTrailingPanelHTMl = dedent`
   ${actionBarContextualHTML}
   <calcite-flow>
     <calcite-flow-item heading="Layer settings">
-      <div slot="menu-actions">
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-      </div>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
       <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
         <calcite-block-content>
           <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
