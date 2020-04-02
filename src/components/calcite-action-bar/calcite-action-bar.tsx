@@ -56,6 +56,11 @@ export class CalciteActionBar {
   }
 
   /**
+   * Used to set the tooltip for the expand toggle.
+   */
+  @Prop() tooltipExpand?: HTMLCalciteTooltipElement;
+
+  /**
    * Updates the label of the expand icon when the component is not expanded.
    * @deprecated use "intlExpand" instead.
    */
@@ -93,7 +98,6 @@ export class CalciteActionBar {
   /**
    * Used to set the component's color scheme.
    */
-
   @Prop({ reflect: true }) theme: CalciteTheme;
 
   // --------------------------------------------------------------------------
@@ -156,7 +160,8 @@ export class CalciteActionBar {
       el,
       layout,
       position,
-      toggleExpand
+      toggleExpand,
+      tooltipExpand
     } = this;
 
     const expandLabel = intlExpand || textExpand || TEXT.expand;
@@ -170,6 +175,7 @@ export class CalciteActionBar {
         el={el}
         position={getCalcitePosition(position, layout)}
         toggleExpand={toggleExpand}
+        tooltipExpand={tooltipExpand}
       />
     ) : null;
 
