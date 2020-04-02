@@ -91,7 +91,7 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
-  @State() hasChildren: boolean;
+  @State() hasChildren = false;
 
   buttonEl: HTMLButtonElement;
 
@@ -102,6 +102,10 @@ export class CalciteAction {
   //  Lifecycle
   //
   // --------------------------------------------------------------------------
+
+  componentWillLoad(): void {
+    this.setHasChildren();
+  }
 
   componentDidLoad(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
