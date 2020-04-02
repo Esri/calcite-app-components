@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property          | Attribute          | Description                                                                                                                                                             | Type       | Default     |
@@ -13,21 +14,22 @@
 | `textLabel`       | `text-label`       | <span style="color:red">**[DEPRECATED]**</span> use "intlLabel" instead.<br/><br/>A text label that will appear next to the input field.                                | `string`   | `undefined` |
 | `textPlaceholder` | `text-placeholder` | <span style="color:red">**[DEPRECATED]**</span> use "placeholder" instead.<br/><br/>Placeholder text for the input element's placeholder attribute                      | `string`   | `undefined` |
 
+
 ## Events
 
 | Event                 | Description | Type               |
 | --------------------- | ----------- | ------------------ |
 | `calciteFilterChange` |             | `CustomEvent<any>` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [calcite-pick-list](../calcite-pick-list)
-- [calcite-value-list](../calcite-value-list)
+ - [calcite-pick-list](../calcite-pick-list)
+ - [calcite-value-list](../calcite-value-list)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-pick-list --> calcite-filter
@@ -35,6 +37,6 @@ graph TD;
   style calcite-filter fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

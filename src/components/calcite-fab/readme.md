@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -30,6 +31,8 @@ Renders a `calcite-fab` that is loading and disabled.
 <calcite-fab loading disabled></calcite-fab>
 ```
 
+
+
 ## Properties
 
 | Property      | Attribute      | Description                                                                                                                         | Type                              | Default      |
@@ -44,14 +47,20 @@ Renders a `calcite-fab` that is loading and disabled.
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                                                            | `boolean`                         | `false`      |
 | `theme`       | `theme`        | Used to set the component's color scheme.                                                                                           | `"dark" \| "light"`               | `undefined`  |
 
+
 ## Methods
 
 ### `setFocus() => Promise<void>`
+
+
 
 #### Returns
 
 Type: `Promise<void>`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

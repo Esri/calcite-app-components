@@ -4,6 +4,7 @@ The `calcite-tip-manager` component contains multiple `calcite-tip`s that a user
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -52,6 +53,8 @@ Renders a tip manager using a group of tips as well as a single tip.
 </calcite-tip-manager>
 ```
 
+
+
 ## Properties
 
 | Property              | Attribute               | Description                                                                                                                                     | Type                | Default     |
@@ -69,31 +72,43 @@ Renders a tip manager using a group of tips as well as a single tip.
 | `textPrevious`        | `text-previous`         | <span style="color:red">**[DEPRECATED]**</span> use "intlPrevious" instead.<br/><br/>Alternate text for navigating to the previous tip.         | `string`            | `undefined` |
 | `theme`               | `theme`                 | Used to set the component's color scheme.                                                                                                       | `"dark" \| "light"` | `undefined` |
 
+
 ## Events
 
 | Event                     | Description                                                             | Type               |
 | ------------------------- | ----------------------------------------------------------------------- | ------------------ |
 | `calciteTipManagerToggle` | Emitted when the `calcite-tip-manager` has been toggled open or closed. | `CustomEvent<any>` |
 
+
 ## Methods
 
 ### `nextTip() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `previousTip() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Slots
 
 | Slot | Description                       |
 | ---- | --------------------------------- |
 |      | A slot for adding `calcite-tip`s. |
+
 
 ## Dependencies
 
@@ -102,13 +117,12 @@ Type: `Promise<void>`
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-tip-manager --> calcite-action
   style calcite-tip-manager fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

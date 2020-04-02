@@ -4,6 +4,7 @@ The `calcite-block` component is intended for displaying a heading and content. 
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -54,6 +55,8 @@ Renders a header with a clickable icon to toggle the block open and closed.
 </calcite-block>
 ```
 
+
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                     | Type                | Default     |
@@ -71,11 +74,13 @@ Renders a header with a clickable icon to toggle the block open and closed.
 | `textExpand`   | `text-expand`   | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Tooltip used for the toggle when collapsed.  | `string`            | `undefined` |
 | `theme`        | `theme`         | Used to set the component's color scheme.                                                                                       | `"dark" \| "light"` | `undefined` |
 
+
 ## Events
 
 | Event                | Description                               | Type               |
 | -------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
+
 
 ## Slots
 
@@ -85,6 +90,7 @@ Renders a header with a clickable icon to toggle the block open and closed.
 | `"control"` | A slot for adding a single HTML input element in a header. |
 | `"icon"`    | A slot for adding a trailing header icon.                  |
 
+
 ## Dependencies
 
 ### Depends on
@@ -92,13 +98,12 @@ Renders a header with a clickable icon to toggle the block open and closed.
 - [calcite-handle](../calcite-handle)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-block --> calcite-handle
   style calcite-block fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
