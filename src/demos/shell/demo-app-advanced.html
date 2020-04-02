@@ -9,7 +9,6 @@
     <script src="../_assets/head.js"></script>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css" />
-    <link rel="stylesheet" href="./demo-app-temp.css" />
     <script src="https://js.arcgis.com/4.15/"></script>
     <style>
       html,
@@ -220,91 +219,50 @@
                     <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
                     <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                     <section class="form-section">
-                      <div class="combo-control">
-                        <span class="combo-control__label">
-                          URL
-                        </span>
-                        <div class="combo-button">
-                          <button class="combo-button__main">
-                            https://ca-times.brightspotcdn.com/dims4/default/
-                          </button>
-                          <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                      </div>
+                      <label>
+                        URL
+                        <input type="text" value="https://ca-times.brightspotcdn.com/dims4/default/"/>
+                      </label>
                     </section>
                     <calcite-block-section text="Options">
                       <section class="form-section">
-                        <div class="combo-control">
-                          <span class="combo-control__label">
-                            Title
-                          </span>
-                          <div class="combo-button">
-                            <button class="combo-button__main">
-                              <span class="placeholder">My cool title</span>
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                          </div>
-                        </div>
-                        <div class="combo-control">
-                          <span class="combo-control__label">
-                            Caption
-                          </span>
-                          <div class="combo-button">
-                            <button class="combo-button__main">
-                              <span class="placeholder">My cool caption</span>
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                          </div>
-                        </div>
-                        <div class="combo-control">
-                          <span class="combo-control__label">
-                            State
-                          </span>
-                          <div class="combo-button">
-                            <button class="combo-button__main">
-                              <span class="placeholder">Select a state</span>
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="caret-down"></calcite-action>
-                          </div>
-                        </div>
+                        <label>
+                          Title
+                          <input type="text" placeholder="My cool title"/>
+                        </label>
+                        <label>
+                          Caption
+                          <input type="text" placeholder="My cool caption"/>
+                        </label>
+                        <label>
+                          State
+                          <select placeholder="My cool caption">
+                          <option value="Denial">Denial</option>
+                          <option value="Grace">Grace</option>
+                          <option value="Confusion">Confusion</option>
+                        </select>
+                        </label>
                       </section>
                     </calcite-block-section>
                     <calcite-block-section text="Advanced options">
-                        <section class="form-section">
-                            <div class="combo-control">
-                              <span class="combo-control__label">
-                                Cool thing
-                              </span>
-                              <div class="combo-button">
-                                <button class="combo-button__main">
-                                  <span class="placeholder">My cool thing</span>
-                                </button>
-                                <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                              </div>
-                            </div>
-                            <div class="combo-control">
-                              <span class="combo-control__label">
-                                Trap door
-                              </span>
-                              <div class="combo-button">
-                                <button class="combo-button__main">
-                                  <span class="placeholder">My cool trap door</span>
-                                </button>
-                                <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                              </div>
-                            </div>
-                            <div class="combo-control">
-                              <span class="combo-control__label">
-                                Saucy paws
-                              </span>
-                              <div class="combo-button">
-                                <button class="combo-button__main">
-                                  <span class="placeholder">My paws are saucy.</span>
-                                </button>
-                                <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                              </div>
-                            </div>
-                          </section>
+                      <section class="form-section">
+                        <label>
+                          Title
+                          <input type="text" placeholder="My cool title"/>
+                        </label>
+                        <label>
+                          Caption
+                          <input type="text" placeholder="My cool caption"/>
+                        </label>
+                        <label>
+                          State
+                          <select placeholder="My cool caption">
+                          <option value="Denial">Denial</option>
+                          <option value="Grace">Grace</option>
+                          <option value="Confusion">Confusion</option>
+                        </select>
+                        </label>
+                      </section>
                     </calcite-block-section>
                   </calcite-block>
                   <calcite-block drag-handle heading="Text" summary="Cool. he {expression/..." collapsible>
@@ -322,9 +280,7 @@
             </calcite-flow>
           </calcite-shell-panel>
           <div class="gnav" slot="shell-header">
-              <calcite-icon class="gnav__action" icon="hamburger" scale="m"></calcite-icon>
               <h2>Boomer v Millennial - California</h2>
-              <calcite-icon class="gnav__action gnav__action--small" icon="pencil" scale="s"></calcite-icon>
           </div>
           <calcite-tip-manager slot="tip-manager" id="tip-manager" hidden>
             <calcite-tip-group text-group-title="Astronomy">
