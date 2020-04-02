@@ -119,9 +119,7 @@ describe("calcite-action-pad", () => {
     accessible(`
     <calcite-action-pad>
        <calcite-action-group>
-        <calcite-action text="Add">
-          <calcite-icon icon="plus" scale="s"></calcite-icon>
-        </calcite-action>
+        <calcite-action text="Add" icon="plus"></calcite-action>
       </calcite-action-group>
     </calcite-action-pad>
     `));
@@ -130,9 +128,7 @@ describe("calcite-action-pad", () => {
     accessible(`
     <calcite-action-pad expanded>
       <calcite-action-group>
-        <calcite-action text="Add">
-          <calcite-icon icon="plus" scale="s"></calcite-icon>
-        </calcite-action>
+        <calcite-action text="Add" icon="plus"></calcite-action>
       </calcite-action-group>
     </calcite-action-pad>
     `));

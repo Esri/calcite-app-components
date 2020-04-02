@@ -65,8 +65,11 @@ export const CalciteExpandToggle: FunctionalComponent<CalciteExpandToggleProps> 
   const collapseIcon = end ? icons[0] : icons[1];
 
   return (
-    <calcite-action onClick={toggleExpand} textEnabled={expanded} text={expandText}>
-      <calcite-icon scale="s" icon={expanded ? expandIcon : collapseIcon} />
-    </calcite-action>
+    <calcite-action
+      onClick={toggleExpand}
+      textEnabled={expanded}
+      text={expandText}
+      icon={expanded ? expandIcon : collapseIcon}
+    />
   );
 };

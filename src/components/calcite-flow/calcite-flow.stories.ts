@@ -72,9 +72,9 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
 };
 
 const menuActionsHTML = dedent`
-    <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-    <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
-    <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
+  <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Add" label="Add Item" icon="plus"></calcite-action>
+  <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Save" label="Save Item" icon="save"></calcite-action>
+  <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Layers" label="View Layers" icon="layers"></calcite-action>
 `;
 
 const footerActionsHTML = dedent`
