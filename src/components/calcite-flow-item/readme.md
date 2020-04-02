@@ -4,6 +4,7 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property         | Attribute          | Description                                                                                                         | Type                  | Default     |
@@ -24,12 +25,14 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 | `textOpen`       | `text-open`        | <span style="color:red">**[DEPRECATED]**</span> use "intlOpen" instead.<br/><br/>'Open' text string for the menu.   | `string`              | `undefined` |
 | `theme`          | `theme`            | Used to set the component's color scheme.                                                                           | `"dark" \| "light"`   | `undefined` |
 
+
 ## Events
 
 | Event                      | Description                                    | Type               |
 | -------------------------- | ---------------------------------------------- | ------------------ |
 | `calciteFlowItemBackClick` | Emitted when the back button has been clicked. | `CustomEvent<any>` |
 | `calciteFlowItemScroll`    | Emitted when the content has been scrolled.    | `CustomEvent<any>` |
+
 
 ## Slots
 
@@ -40,6 +43,7 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 | `"footer-actions"` | A slot for adding `calcite-button`s to the footer.                                                                              |
 | `"menu-actions"`   | A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open. |
 
+
 ## Dependencies
 
 ### Depends on
@@ -48,7 +52,6 @@ A `calcite-flow-item` is a child element of `calcite-flow` and lives in a panel 
 - [calcite-panel](../calcite-panel)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-flow-item --> calcite-action
@@ -57,6 +60,6 @@ graph TD;
   style calcite-flow-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

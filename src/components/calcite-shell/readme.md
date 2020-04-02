@@ -6,6 +6,7 @@ _note: calcite-shell supports tablet as the smallest screen size_
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Advanced
@@ -121,6 +122,7 @@ note: calcite-icon is pulled in from [calcite-components](https://esri.github.io
 </calcite-shell>
 ```
 
+
 ### Basic
 
 #### Basic
@@ -185,11 +187,14 @@ Renders a single panel with actions in an action bar.
 </calcite-shell>
 ```
 
+
+
 ## Properties
 
 | Property | Attribute | Description                               | Type                | Default     |
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
 | `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
+
 
 ## Slots
 
@@ -202,6 +207,7 @@ Renders a single panel with actions in an action bar.
 | `"shell-header"`     | A slot for adding header content. This content will be positioned at the top of the shell.                                               |
 | `"tip-manager"`      | A slot for adding a `calcite-tip-manager`. This component will be absolutely positioned.                                                 |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

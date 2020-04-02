@@ -3,6 +3,13 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.6.1](https://github.com/Esri/calcite-app-components/compare/v5.6.0...v5.6.1) (2020-04-01)
+
+
+### Bug Fixes
+
+* **flow-item, pick-list, value-list:** fix icons not showing up ([#903](https://github.com/Esri/calcite-app-components/issues/903)) ([5290dff](https://github.com/Esri/calcite-app-components/commit/5290dffa981ad0dbffcb1500c882ba3a5164dc97))
+
 ## [5.6.0](https://github.com/Esri/calcite-app-components/compare/v5.5.1...v5.6.0) (2020-03-31)
 
 ### Features
