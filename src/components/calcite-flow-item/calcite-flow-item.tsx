@@ -250,9 +250,8 @@ export class CalciteFlowItem {
         text={label}
         class={CSS.backButton}
         onClick={backButtonClick}
-      >
-        <calcite-icon scale="s" icon={icon} />
-      </calcite-action>
+        icon={icon}
+      />
     ) : null;
   }
 
@@ -270,9 +269,8 @@ export class CalciteFlowItem {
         text={menuLabel}
         onClick={this.toggleMenuOpen}
         onKeyDown={this.menuButtonKeyDown}
-      >
-        <calcite-icon scale="s" icon={ICONS.menu} />
-      </calcite-action>
+        icon={ICONS.menu}
+      />
     );
   }
 

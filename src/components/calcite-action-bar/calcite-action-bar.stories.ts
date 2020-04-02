@@ -52,11 +52,11 @@ export const basic = (): string =>
     createAttributes(),
     dedent`
     <calcite-action-group>
-      <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-      <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
+      <calcite-action text="Add" label="Add Item" icon="plus"></calcite-action>
+      <calcite-action text="Save" label="Save Item" icon="save"></calcite-action>
     </calcite-action-group>
     <calcite-action-group>
-      <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
+      <calcite-action text="Layers" label="View Layers" icon="layers"></calcite-action>
     </calcite-action-group>
   `
   );

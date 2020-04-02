@@ -135,15 +135,9 @@ describe("calcite-shell-panel", () => {
     <calcite-shell-panel slot="primary-panel" position="start">
       <calcite-action-bar slot="action-bar">
         <calcite-action-group>
-          <calcite-action text="Add">
-            <calcite-icon icon="plus" scale="s"></calcite-icon>
-          </calcite-action>
-          <calcite-action text="Save">
-            <calcite-icon icon="save" scale="s"></calcite-icon>
-          </calcite-action>
-          <calcite-action text="Layers">
-            <calcite-icon icon="layers" scale="s"></calcite-icon>
-          </calcite-action>
+          <calcite-action text="Add" icon="plus"></calcite-action>
+          <calcite-action text="Save" icon="save"></calcite-action>
+          <calcite-action text="Layers" icon="layers"></calcite-action>
         </calcite-action-group>
       </calcite-action-bar>
       <p>Primary Content</p>

@@ -74,8 +74,8 @@ export const basic = (): string =>
     "calcite-panel",
     createAttributes(),
     `${headerHTML}
-    <calcite-action text="Action" label="Action" slot="${SLOTS.headerLeadingContent}"><calcite-icon scale="s" icon="bluetooth"></calcite-icon></calcite-action>
-    <calcite-action text="Action" label="Action" slot="${SLOTS.headerTrailingContent}"><calcite-icon scale="s" icon="attachment"></calcite-icon></calcite-action>
+    <calcite-action text="Action" label="Action" slot="${SLOTS.headerLeadingContent}" icon="bluetooth"></calcite-action>
+    <calcite-action text="Action" label="Action" slot="${SLOTS.headerTrailingContent}" icon="attachment"></calcite-action>
     ${contentHTML}
     ${footerHTML}`
   );
