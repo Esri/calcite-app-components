@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Bug Fixes
 
-* **flow-item:** fix back button icon not showing up ([#903](https://github.com/Esri/calcite-app-components/issues/903)) ([5290dff](https://github.com/Esri/calcite-app-components/commit/5290dffa981ad0dbffcb1500c882ba3a5164dc97))
+* **flow-item, pick-list, value-list:** fix icons not showing up ([#903](https://github.com/Esri/calcite-app-components/issues/903)) ([5290dff](https://github.com/Esri/calcite-app-components/commit/5290dffa981ad0dbffcb1500c882ba3a5164dc97))
 
 ## [5.6.0](https://github.com/Esri/calcite-app-components/compare/v5.5.1...v5.6.0) (2020-03-31)
 
