@@ -45,7 +45,7 @@ describe("calcite-action", () => {
 
   it("should have icon container with svg", async () => {
     const page = await newE2EPage();
-    await page.setContent(`<calcite-action><svg></svg></calcite-icon></calcite-action>`);
+    await page.setContent(`<calcite-action><svg></svg></calcite-action>`);
 
     const iconContainer = await page.find(`calcite-action >>> .${CSS.iconContainer}`);
     expect(iconContainer).not.toBeNull();
