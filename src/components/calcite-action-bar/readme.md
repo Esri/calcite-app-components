@@ -6,6 +6,7 @@ The `calcite-action-bar` component is made up of multiple `calcite-action`s in t
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -69,6 +70,8 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 </calcite-action-bar>
 ```
 
+
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                                                                                                                                                                                 | Type                      | Default     |
@@ -83,11 +86,13 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 | `textExpand`   | `text-expand`   | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Updates the label of the expand icon when the component is not expanded.                                                                                                 | `string`                  | `undefined` |
 | `theme`        | `theme`         | Used to set the component's color scheme.                                                                                                                                                                                                                   | `"dark" \| "light"`       | `undefined` |
 
+
 ## Events
 
 | Event                    | Description                             | Type               |
 | ------------------------ | --------------------------------------- | ------------------ |
 | `calciteActionBarToggle` | Emitted when expanded has been toggled. | `CustomEvent<any>` |
+
 
 ## Slots
 
@@ -95,6 +100,7 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
 |                    | A slot for adding `calcite-action`s that will appear at the top of the action bar.                                      |
 | `"bottom-actions"` | A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button. |
+
 
 ## Dependencies
 
@@ -104,7 +110,6 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action-group
@@ -112,6 +117,6 @@ graph TD;
   style calcite-action-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
