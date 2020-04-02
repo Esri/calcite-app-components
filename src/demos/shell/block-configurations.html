@@ -36,9 +36,6 @@
             id: "cc316ca9e0824970ad29ac558161d42d"
           }
         });
-        // const map = new Map({
-        //   basemap: "gray-vector"
-        // });
 
         const view = new MapView({
           container: "viewDiv",
@@ -52,13 +49,8 @@
             container: "layerlist-container"
           });
 
-          // Add widget to the top right corner of the view
-          // view.ui.add(layerList, "top-right");
           view.ui.move("zoom", "bottom-right");
         });
-        // fetch('layerlist.html')
-        // .then(data => data.text())
-        // .then(html => document.getElementById('layerlist-container').innerHTML = html);
       });
     </script>
   </head>
@@ -323,124 +315,6 @@
                 
 
 
-<!--
-                <calcite-sortable-list>
-                  <calcite-block drag-handle heading="Attributes" summary="2/98" collapsible>
-                    <calcite-icon icon="feature-details" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    </calcite-button>
-                    <calcite-value-list drag-enabled>
-                      <calcite-value-list-item
-                        text-label="2018 Total Households (Esri)"
-                        text-description="{TOTHH_CY}"
-                      ></calcite-value-list-item>
-                      <calcite-value-list-item
-                        text-label="2018 Average Household Size (Esri)"
-                        text-description="{AVGHHSZ_CY}"
-                      ></calcite-value-list-item>
-                    </calcite-value-list>
-                    <div class="row">
-                        <calcite-button id="attribute-add" round icon="plus" scale="s" width="full" color="light">Select attributes</calcite-button>
-                    </div>
-                  </calcite-block>
-                  <calcite-block drag-handle heading="Image" collapsible>
-                    <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <section class="form-section">
-                      <div class="combo-control">
-                        <span class="combo-control__label">
-                          URL
-                        </span>
-                        <div class="combo-button">
-                          <button class="combo-button__main">
-                            https://ca-times.brightspotcdn.com/dims4/default/
-                          </button>
-                          <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                      </div>
-                    </section>
-                    <calcite-block-section text="Options">
-                      <section class="form-section">
-                        <div class="combo-control">
-                          <span class="combo-control__label">
-                            Title
-                          </span>
-                          <div class="combo-button">
-                            <button class="combo-button__main">
-                              <span class="placeholder">My cool title</span>
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                          </div>
-                        </div>
-                        <div class="combo-control">
-                          <span class="combo-control__label">
-                            Caption
-                          </span>
-                          <div class="combo-button">
-                            <button class="combo-button__main">
-                              <span class="placeholder">My cool caption</span>
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                          </div>
-                        </div>
-                        <div class="combo-control">
-                          <span class="combo-control__label">
-                            State
-                          </span>
-                          <div class="combo-button">
-                            <button class="combo-button__main">
-                              <span class="placeholder">Select a state</span>
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="caret-down"></calcite-action>
-                          </div>
-                        </div>
-                      </section>
-                    </calcite-block-section>
-                    <calcite-block-section text="Advanced options">
-                        <section class="form-section">
-                            <div class="combo-control">
-                              <span class="combo-control__label">
-                                Cool thing
-                              </span>
-                              <div class="combo-button">
-                                <button class="combo-button__main">
-                                  <span class="placeholder">My cool thing</span>
-                                </button>
-                                <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                              </div>
-                            </div>
-                            <div class="combo-control">
-                              <span class="combo-control__label">
-                                Trap door
-                              </span>
-                              <div class="combo-button">
-                                <button class="combo-button__main">
-                                  <span class="placeholder">My cool trap door</span>
-                                </button>
-                                <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                              </div>
-                            </div>
-                            <div class="combo-control">
-                              <span class="combo-control__label">
-                                Saucy paws
-                              </span>
-                              <div class="combo-button">
-                                <button class="combo-button__main">
-                                  <span class="placeholder">My paws are saucy.</span>
-                                </button>
-                                <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                              </div>
-                            </div>
-                          </section>
-                    </calcite-block-section>
-                  </calcite-block>
-                  <calcite-block drag-handle heading="Text" summary="Cool. he {expression/..." collapsible>
-                    <calcite-icon icon="image" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <button class="multiline-button">Cool. he {expression/expr1} population is {expression/expr2}%...</button>
-                  </calcite-block>
-                </calcite-sortable-list>
-            -->
 
                 <calcite-fab slot="fab" id="label-fab" text="Add label class"></calcite-fab>
                 <calcite-tooltip reference-element="label-fab" disable-pointer>
@@ -451,9 +325,7 @@
             </calcite-flow>
           </calcite-shell-panel>
           <div class="gnav" slot="shell-header">
-              <calcite-icon class="gnav__action" icon="hamburger" scale="m"></calcite-icon>
-              <h2>Boomer v Millennial - California</h2>
-              <calcite-icon class="gnav__action gnav__action--small" icon="pencil" scale="s"></calcite-icon>
+              <h2>Cool app</h2>
           </div>
           <calcite-tip-manager slot="tip-manager" id="tip-manager" hidden>
             <calcite-tip-group text-group-title="Astronomy">
