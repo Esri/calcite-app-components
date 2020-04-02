@@ -99,9 +99,7 @@ export class CalciteTip {
     const text = intlClose || textClose || TEXT.close;
 
     const dismissButtonNode = !nonDismissible ? (
-      <calcite-action text={text} onClick={hideTip} class={CSS.close}>
-        <calcite-icon scale="s" icon={ICONS.close} />
-      </calcite-action>
+      <calcite-action text={text} onClick={hideTip} class={CSS.close} icon={ICONS.close} />
     ) : null;
 
     const headingNode = heading ? <h3 class={CSS.heading}>{heading}</h3> : null;

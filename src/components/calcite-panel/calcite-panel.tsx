@@ -186,9 +186,8 @@ export class CalcitePanel {
         aria-label={text}
         text={text}
         onClick={dismiss}
-      >
-        <calcite-icon scale="s" icon={ICONS.close} />
-      </calcite-action>
+        icon={ICONS.close}
+      />
     ) : null;
 
     const slotNode = <slot name={SLOTS.headerTrailingContent} />;
