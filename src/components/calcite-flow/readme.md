@@ -31,14 +31,10 @@ Renders a flow with menu-actions and footer-actions in the form of buttons.
 ```html
 <calcite-flow>
   <calcite-flow-item heading="What are the most popular commute alternatives?">
-    <div slot="menu-actions">
-      <button>Reset</button>
-      <button>Rename</button>
-    </div>
-    <div slot="footer-actions">
-      <button>Save</button>
-      <button>Cancel</button>
-    </div>
+    <button slot="menu-actions">Reset</button>
+    <button slot="menu-actions">Rename</button>
+    <button slot="footer-actions">Save</button>
+    <button slot="footer-actions">Cancel</button>
   </calcite-flow-item>
 </calcite-flow>
 ```
