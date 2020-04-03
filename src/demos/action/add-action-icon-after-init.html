@@ -18,19 +18,18 @@
         <h2>LTR</h2>
         <div class="action-container">
           <h3>With text</h3>
-          <calcite-action id="slot-test" indicator active text="click-me" label="hello world" text-enabled
-            >
+          <calcite-action id="slot-test" indicator active text="click-me" label="hello world" text-enabled>
           </calcite-action>
 
           <script>
             const slotTestNode = document.getElementById("slot-test");
-            setTimeout(function(){
-            const div = document.createElement("div");
-            div.innerHTML = `<calcite-icon scale="s" icon="configure-popup"></calcite-icon>`;
-            slotTestNode.appendChild(div);
-          }, 2000)
+            setTimeout(function () {
+              const icon = document.createElement("calcite-icon");
+              icon.icon = "configure-popup";
+              icon.scale = "s";
+              slotTestNode.appendChild(icon);
+            }, 2000);
           </script>
-
         </div>
       </section>
     </main>

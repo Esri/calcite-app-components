@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, forceUpdate } from "@stencil/core";
 
 import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 
@@ -91,7 +91,23 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
-  private buttonEl: HTMLButtonElement;
+  buttonEl: HTMLButtonElement;
+
+  observer = new MutationObserver(() => forceUpdate(this));
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  componentDidLoad(): void {
+    this.observer.observe(this.el, { childList: true, subtree: true });
+  }
+
+  componentDidUnload(): void {
+    this.observer.disconnect();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -125,7 +141,7 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { el, loading, icon, scale } = this;
+    const { loading, icon, scale, el } = this;
     const iconScale = scale === "l" ? "m" : "s";
     const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
     const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;

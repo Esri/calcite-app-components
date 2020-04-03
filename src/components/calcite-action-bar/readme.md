@@ -17,12 +17,8 @@ Renders `calcite-action`s that stick to the top of the bar.
 
 ```html
 <calcite-action-bar>
-  <calcite-action text="Add">
-    <calcite-icon scale="s" icon="plus"></calcite-icon>
-  </calcite-action>
-  <calcite-action text="Save">
-    <calcite-icon scale="s" icon="save"></calcite-icon>
-  </calcite-action>
+  <calcite-action text="Add" icon="plus"></calcite-action>
+  <calcite-action text="Save" icon="save"></calcite-action>
 </calcite-action-bar>
 ```
 
@@ -33,21 +29,13 @@ Renders a group of `calcite-action`s contained in a `calcite-action-group`. Acti
 ```html
 <calcite-action-bar>
   <calcite-action-group>
-    <calcite-action text="Add">
-      <calcite-icon scale="s" icon="plus"></calcite-icon>
-    </calcite-action>
-    <calcite-action text="Save">
-      <calcite-icon scale="s" icon="save"></calcite-icon>
-    </calcite-action>
+    <calcite-action text="Add" icon="plus"></calcite-action>
+    <calcite-action text="Save" icon="save"></calcite-action>
   </calcite-action-group>
 
   <calcite-action-group>
-    <calcite-action text="Layers">
-      <calcite-icon scale="s" icon="layers"></calcite-icon>
-    </calcite-action>
-    <calcite-action text="Basemaps">
-      <calcite-icon scale="s" icon="layer-basemap"></calcite-icon>
-    </calcite-action>
+    <calcite-action text="Layers" icon="layers"></calcite-action>
+    <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
   </calcite-action-group>
 </calcite-action-bar>
 ```
@@ -58,33 +46,44 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 
 ```html
 <calcite-action-bar>
-  <calcite-action text="Information">
-    <calcite-icon scale="s" icon="information"></calcite-icon>
-  </calcite-action>
-
-  <div slot="bottom-actions">
-    <calcite-action text="Feedback">
-      <calcite-icon scale="s" icon="mega-phone"></calcite-icon>
-    </calcite-action>
-  </div>
+  <calcite-action text="Information" icon="information"></calcite-action>
+  <calcite-action text="Feedback" slot="bottom-actions" icon="mega-phone"></calcite-action>
 </calcite-action-bar>
+```
+
+
+### Tooltip
+
+### Tooltip on the expand action
+
+```html
+<calcite-action-bar id="action-bar-test">
+  <calcite-action text="Add" icon="plus"></calcite-action>
+</calcite-action-bar>
+<calcite-tooltip id="tooltip">Expand</calcite-tooltip>
+<script>
+  var actionBar = document.getElementById("action-bar-test");
+  var tooltip = document.getElementById("tooltip");
+  actionBar.tooltipExpand = tooltip;
+</script>
 ```
 
 
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                                                                                                                                                 | Type                      | Default     |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------- |
-| `expand`       | `expand`        | Indicates whether widget can be expanded.                                                                                                                                                                                                                   | `boolean`                 | `true`      |
-| `expanded`     | `expanded`      | Indicates whether widget is expanded.                                                                                                                                                                                                                       | `boolean`                 | `false`     |
-| `intlCollapse` | `intl-collapse` | Updates the label of the collapse icon when the component is expanded.                                                                                                                                                                                      | `string`                  | `undefined` |
-| `intlExpand`   | `intl-expand`   | Updates the label of the expand icon when the component is not expanded.                                                                                                                                                                                    | `string`                  | `undefined` |
-| `layout`       | `layout`        | <span style="color:red">**[DEPRECATED]**</span> use "position" instead.<br/><br/>Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading" in a LTR app will appear on the left. | `"leading" \| "trailing"` | `undefined` |
-| `position`     | `position`      | Arranges the component depending on the elements 'dir' property.                                                                                                                                                                                            | `"end" \| "start"`        | `undefined` |
-| `textCollapse` | `text-collapse` | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Updates the label of the collapse icon when the component is expanded.                                                                                                 | `string`                  | `undefined` |
-| `textExpand`   | `text-expand`   | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Updates the label of the expand icon when the component is not expanded.                                                                                                 | `string`                  | `undefined` |
-| `theme`        | `theme`         | Used to set the component's color scheme.                                                                                                                                                                                                                   | `"dark" \| "light"`       | `undefined` |
+| Property        | Attribute       | Description                                                                                                                                                                                                                                                 | Type                        | Default     |
+| --------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
+| `expand`        | `expand`        | Indicates whether widget can be expanded.                                                                                                                                                                                                                   | `boolean`                   | `true`      |
+| `expanded`      | `expanded`      | Indicates whether widget is expanded.                                                                                                                                                                                                                       | `boolean`                   | `false`     |
+| `intlCollapse`  | `intl-collapse` | Updates the label of the collapse icon when the component is expanded.                                                                                                                                                                                      | `string`                    | `undefined` |
+| `intlExpand`    | `intl-expand`   | Updates the label of the expand icon when the component is not expanded.                                                                                                                                                                                    | `string`                    | `undefined` |
+| `layout`        | `layout`        | <span style="color:red">**[DEPRECATED]**</span> use "position" instead.<br/><br/>Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading" in a LTR app will appear on the left. | `"leading" \| "trailing"`   | `undefined` |
+| `position`      | `position`      | Arranges the component depending on the elements 'dir' property.                                                                                                                                                                                            | `"end" \| "start"`          | `undefined` |
+| `textCollapse`  | `text-collapse` | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Updates the label of the collapse icon when the component is expanded.                                                                                                 | `string`                    | `undefined` |
+| `textExpand`    | `text-expand`   | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Updates the label of the expand icon when the component is not expanded.                                                                                                 | `string`                    | `undefined` |
+| `theme`         | `theme`         | Used to set the component's color scheme.                                                                                                                                                                                                                   | `"dark" \| "light"`         | `undefined` |
+| `tooltipExpand` | --              | Used to set the tooltip for the expand toggle.                                                                                                                                                                                                              | `HTMLCalciteTooltipElement` | `undefined` |
 
 
 ## Events
