@@ -128,7 +128,6 @@
               >
                 
                 <calcite-block heading="Basic"  summary="Collapsible" collapsible>
-                    <!-- <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon> -->
                     <div class="combo-control">
                         <div class="combo-button">
                             <button class="combo-button__main">
@@ -139,7 +138,6 @@
                     </div>
                 </calcite-block>
                 <calcite-block heading="Basic"  summary="Not collapsible">
-                    <!-- <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon> -->
                     <div class="combo-control">
                         <div class="combo-button">
                             <button class="combo-button__main">
@@ -150,7 +148,6 @@
                     </div>
                 </calcite-block>
                 <calcite-block heading="With control"  summary="Collapsible" collapsible>
-                    <!-- <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon> -->
                     <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                     <div class="combo-control">
                         <div class="combo-button">
@@ -162,7 +159,6 @@
                     </div>
                 </calcite-block>
                 <calcite-block heading="With control"  summary="Not collapsible">
-                    <!-- <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon> -->
                     <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
                     <div class="combo-control">
                         <div class="combo-button">
@@ -175,7 +171,6 @@
                 </calcite-block>
                 <calcite-block heading="With icon"  summary="Collapsible" collapsible>
                     <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <!-- <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action> -->
                     <div class="combo-control">
                         <div class="combo-button">
                             <button class="combo-button__main">
@@ -187,7 +182,6 @@
                 </calcite-block>
                 <calcite-block heading="With icon"  summary="Not collapsible">
                     <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <!-- <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action> -->
                     <div class="combo-control">
                         <div class="combo-button">
                             <button class="combo-button__main">
@@ -318,7 +312,6 @@
 
                 <calcite-fab slot="fab" id="label-fab" text="Add label class"></calcite-fab>
                 <calcite-tooltip reference-element="label-fab" disable-pointer>
-                  <!-- <img src="https://placekitten.com/200/200" /> -->
                   Add label class
                 </calcite-tooltip>
               </calcite-flow-item>
@@ -418,35 +411,6 @@
             ? tipManager.removeAttribute("hidden")
             : tipManager.setAttribute("hidden", "");
         });
-
-        // const actionPad = document.getElementById("action-pad");
-        // const actionPadButton = document.getElementById("action-pad-button");
-        // actionPadButton.addEventListener("click", function() {
-        //   actionPad.hasAttribute("hidden") ? actionPad.removeAttribute("hidden") : actionPad.setAttribute("hidden", "");
-
-        //   actionPad.positionElement = actionPadButton;
-        // });
-
-        // const shellFloatingPanel = document.getElementById("shell-floating-panel");
-        // const shellFloatingPanelButton = document.getElementById("shell-floating-panel-button");
-        // shellFloatingPanelButton.addEventListener("click", function() {
-        //   shellFloatingPanel.hasAttribute("hidden")
-        //     ? shellFloatingPanel.removeAttribute("hidden")
-        //     : shellFloatingPanel.setAttribute("hidden", "");
-
-        //   shellFloatingPanel.positionElement = shellFloatingPanelButton;
-        // });
-
-        // const shellFloatingPanelOver = document.getElementById("shell-floating-panel-over");
-        // const shellFloatingPanelOverButton = document.getElementById("shell-floating-panel-over-button");
-        // shellFloatingPanelOverButton.addEventListener("click", function() {
-        //   shellFloatingPanelOver.hasAttribute("hidden")
-        //     ? shellFloatingPanelOver.removeAttribute("hidden")
-        //     : shellFloatingPanelOver.setAttribute("hidden", "");
-
-        //   shellFloatingPanelOver.positionElement = shellFloatingPanelOverButton;
-        // });
-
         const flowNode = document.getElementById("flow");
       </script>
     </main>

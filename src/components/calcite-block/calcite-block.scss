@@ -111,10 +111,9 @@ calcite-handle {
 :host([open]) {
   margin-top: var(--calcite-app-cap-spacing-quarter);
   margin-bottom: var(--calcite-app-cap-spacing-quarter);
-}
-
-:host([open]) .header-container {
-  border-bottom: 1px solid var(--calcite-app-border);
+  .header-container {
+    border-bottom: 1px solid var(--calcite-app-border);
+  }
 }
 
 :host([disabled]) {
@@ -134,10 +133,12 @@ calcite-handle {
   .title {
     padding-left: var(--calcite-app-side-spacing-quarter);
   }
+
   .icon {
     margin-left: 0;
     margin-right: var(--calcite-app-side-spacing-half);
   }
+
   .calcite--rtl {
     .title {
       padding-left: 0;
