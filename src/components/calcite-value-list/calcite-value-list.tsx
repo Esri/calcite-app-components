@@ -119,9 +119,6 @@ export class CalciteValueList<
   // --------------------------------------------------------------------------
   connectedCallback(): void {
     initialize.call(this);
-  }
-
-  componentDidLoad(): void {
     this.setUpDragAndDrop();
     initializeObserver.call(this);
   }

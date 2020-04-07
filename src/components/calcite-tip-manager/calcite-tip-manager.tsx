@@ -137,9 +137,6 @@ export class CalciteTipManager {
 
   connectedCallback(): void {
     this.setUpTips();
-  }
-
-  componentDidLoad(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 

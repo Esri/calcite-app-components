@@ -110,9 +110,6 @@ export class CalcitePickList<
 
   connectedCallback(): void {
     initialize.call(this);
-  }
-
-  componentDidLoad(): void {
     initializeObserver.call(this);
   }
 
