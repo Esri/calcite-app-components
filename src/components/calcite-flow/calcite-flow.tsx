@@ -78,9 +78,6 @@ export class CalciteFlow {
 
   connectedCallback(): void {
     this.flowItemObserver.observe(this.el, { childList: true, subtree: true });
-  }
-
-  componentWillLoad(): void {
     this.updateFlowProps();
   }
 
