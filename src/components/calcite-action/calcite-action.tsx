@@ -101,7 +101,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
