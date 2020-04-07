@@ -3,6 +3,12 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.7.2](https://github.com/Esri/calcite-app-components/compare/v5.7.1...v5.7.2) (2020-04-07)
+
+### Bug Fixes
+
+- **value-list:** restore DND setup ([#921](https://github.com/Esri/calcite-app-components/issues/921)) ([9f81684](https://github.com/Esri/calcite-app-components/commit/9f816846ea5e741b15731bec3d6d615418794f2f))
+
 ### [5.7.1](https://github.com/Esri/calcite-app-components/compare/v5.7.0...v5.7.1) (2020-04-07)
 
 ### Bug Fixes
