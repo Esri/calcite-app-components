@@ -3,6 +3,12 @@
 This document maintains a list of released versions and changes introduced by those versions.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [5.7.3](https://github.com/Esri/calcite-app-components/compare/v5.7.2...v5.7.3) (2020-04-08)
+
+### Bug Fixes
+
+- **pick-list-item:** update filled circle icon setup ([#922](https://github.com/Esri/calcite-app-components/issues/922)) ([dbbb8ef](https://github.com/Esri/calcite-app-components/commit/dbbb8ef21393c7c6d217820ee44927f21c6b636c))
+
 ### [5.7.2](https://github.com/Esri/calcite-app-components/compare/v5.7.1...v5.7.2) (2020-04-07)
 
 ### Bug Fixes
