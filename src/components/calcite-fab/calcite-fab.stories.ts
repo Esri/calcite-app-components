@@ -66,4 +66,4 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = (): string => create("calcite-fab", createAttributes());
+export const basic = (): string => create("calcite-fab", createAttributes(), "");
