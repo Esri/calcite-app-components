@@ -291,7 +291,7 @@ export class CalciteFlowItem {
     const hasFooterActions = !!getSlotted(this.el, SLOTS.footerActions);
 
     return hasFooterActions ? (
-      <div slot={PANEL_SLOTS.footer} class={CSS.footerActions}>
+      <div key="footer-actions-container" slot={PANEL_SLOTS.footer} class={CSS.footerActions}>
         <slot name={SLOTS.footerActions} />
       </div>
     ) : null;
@@ -331,7 +331,11 @@ export class CalciteFlowItem {
         : null;
 
     return menuActionsNodes ? (
-      <div slot={PANEL_SLOTS.headerTrailingContent} class={CSS.headerActions}>
+      <div
+        key="header-actions-container"
+        slot={PANEL_SLOTS.headerTrailingContent}
+        class={CSS.headerActions}
+      >
         {menuActionsNodes}
       </div>
     ) : null;
@@ -358,7 +362,7 @@ export class CalciteFlowItem {
     const summaryNode = this.renderSummary();
 
     return headingNode || summaryNode ? (
-      <div class={CSS.header} slot={PANEL_SLOTS.headerContent}>
+      <div key="header" class={CSS.header} slot={PANEL_SLOTS.headerContent}>
         {headingNode}
         {summaryNode}
       </div>
@@ -368,10 +372,18 @@ export class CalciteFlowItem {
   renderFab(): VNode {
     const hasFab = getSlotted(this.el, SLOTS.fab);
     return hasFab ? (
-      <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
+      <div key="fab-container" class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
         <slot name={SLOTS.fab} />
       </div>
     ) : null;
+  }
+
+  renderDefaultSlot(): VNode {
+    return (
+      <div key="default-slot-container" class={CSS.defaultSlotContainer}>
+        <slot />
+      </div>
+    );
   }
 
   render(): VNode {
@@ -389,7 +401,7 @@ export class CalciteFlowItem {
           {this.renderBackButton(dir === "rtl")}
           {this.renderHeader()}
           {this.renderHeaderActions()}
-          <slot />
+          {this.renderDefaultSlot()}
           {this.renderFooterActions()}
           {this.renderFab()}
         </calcite-panel>
