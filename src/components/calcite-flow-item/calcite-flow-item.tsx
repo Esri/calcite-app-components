@@ -376,6 +376,7 @@ export class CalciteFlowItem {
 
   renderDefaultSlot(): VNode {
     return (
+      // default slot requires a container for edge legacy.
       <div>
         <slot />
       </div>
