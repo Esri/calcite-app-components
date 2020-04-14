@@ -376,7 +376,7 @@ export class CalciteFlowItem {
 
   renderDefaultSlot(): VNode {
     return (
-      // default slot requires a container for edge legacy.
+      // Workaround for Edge (legacy) "out of stack space" error. Adding a container around the slot fixes the issue.
       <div>
         <slot />
       </div>
