@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h, forceUpdate } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, State } from "@stencil/core";
 
 import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 
@@ -91,9 +91,11 @@ export class CalciteAction {
 
   @Element() el: HTMLCalciteActionElement;
 
+  @State() hasText = false;
+
   buttonEl: HTMLButtonElement;
 
-  observer = new MutationObserver(() => forceUpdate(this));
+  observer = new MutationObserver(() => this.setHasText);
 
   // --------------------------------------------------------------------------
   //
@@ -103,6 +105,7 @@ export class CalciteAction {
 
   connectedCallback(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
+    this.setHasText();
   }
 
   componentDidUnload(): void {
@@ -141,12 +144,12 @@ export class CalciteAction {
   }
 
   renderIconContainer(): VNode {
-    const { loading, icon, scale, el } = this;
+    const { loading, icon, scale, hasText } = this;
     const iconScale = scale === "l" ? "m" : "s";
     const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
     const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
     const iconNode = calciteLoaderNode || calciteIconNode;
-    const hasIconToDisplay = iconNode || el.children?.length;
+    const hasIconToDisplay = iconNode || hasText;
 
     const slotContainerNode = (
       <div
@@ -194,4 +197,14 @@ export class CalciteAction {
       </Host>
     );
   }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  // --------------------------------------------------------------------------
+
+  setHasText = (): void => {
+    this.hasText = !!this.el.children?.length;
+  };
 }
