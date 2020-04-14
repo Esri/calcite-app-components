@@ -19,6 +19,8 @@ Find a bug or want to request a new feature? Please let us know by [submitting a
 
 ## Browser Support
 
+The following browsers are supported.
+
 | ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Edge Legacy](https://raw.githubusercontent.com/alrra/browser-logos/master/src/archive/edge_12-18/edge_12-18_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png) |
 | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
 | **Chrome**<br />Last 2 versions ✔                                                                   | **Firefox**<br />Last 2 versions ✔                                                                     | **Edge** (Chromium)<br />Last 2 versions ✔                                                  | **Edge** (Legacy)<br />Last 2 versions ✔                                                                                 | **Safari**<br />Last 2 versions ✔                                                                   |
