@@ -376,7 +376,7 @@ export class CalciteFlowItem {
 
   renderDefaultSlot(): VNode {
     return (
-      <div class={CSS.defaultSlotContainer}>
+      <div>
         <slot />
       </div>
     );

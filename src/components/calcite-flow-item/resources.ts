@@ -12,8 +12,7 @@ export const CSS = {
   menuButton: "menu-button",
   menu: "menu",
   menuOpen: "menu--open",
-  fabContainer: "fab-container",
-  defaultSlotContainer: "default-slot-container"
+  fabContainer: "fab-container"
 };
 
 export const SLOTS = {
