@@ -3,7 +3,6 @@ import { Component, Element, Event, EventEmitter, Prop, h, VNode } from "@stenci
 import { getElementDir } from "../utils/dom";
 import { CSS, ICONS, TEXT } from "./resources";
 import { guid } from "../utils/guid";
-import classnames from "classnames";
 import { CalciteBlockSectionToggleDisplay } from "../interfaces";
 
 /**
@@ -147,7 +146,10 @@ export class CalciteBlockSection {
       toggleDisplay === "switch" ? (
         <label
           aria-label={toggleLabel}
-          class={classnames(CSS.toggle, CSS.toggleSwitch)}
+          class={{
+            [CSS.toggle]: true,
+            [CSS.toggleSwitch]: true
+          }}
           id={labelId}
           onKeyDown={this.handleHeaderLabelKeyDown}
           tabIndex={0}
