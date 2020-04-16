@@ -125,7 +125,7 @@ var StyleNode=function(){this.start=0,this.end=0,this.previous=null,this.parent=
 
   var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
   var start = function() {
-    var url = new URL('./p-f8d774f0.system.js', resourcesUrl);
+    var url = new URL('./p-318df15f.system.js', resourcesUrl);
     System.import(url.href);
   };
 

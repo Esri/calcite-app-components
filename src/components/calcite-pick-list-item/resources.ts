@@ -13,7 +13,7 @@ export const CSS = {
 
 export const ICONS = {
   checked: "check",
-  circle: "circle",
+  circle: "circleF",
   remove: "x"
 };
 
