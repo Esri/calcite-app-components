@@ -1,8 +1,14 @@
 {
-  "extends": ["plugin:@typescript-eslint/recommended", "prettier", "prettier/@typescript-eslint"],
+  "extends": [
+    "plugin:@stencil/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
   "ignorePatterns": ["dist", "docs", "www"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig-eslint.json",
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
