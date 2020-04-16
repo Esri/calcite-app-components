@@ -4,8 +4,6 @@ import { CSS } from "./resources";
 
 import { CalciteTheme, FlowDirection } from "../interfaces";
 
-import classnames from "classnames";
-
 /**
  * @slot - A slot for adding `calcite-flow-item`s to the flow.
  */
@@ -152,13 +150,14 @@ export class CalciteFlow {
     const { flowDirection, flowCount } = this;
 
     const frameDirectionClasses = {
+      [CSS.frame]: true,
       [CSS.frameAdvancing]: flowDirection === "advancing",
       [CSS.frameRetreating]: flowDirection === "retreating"
     };
 
     return (
       <Host>
-        <div key={flowCount} class={classnames(CSS.frame, frameDirectionClasses)}>
+        <div key={flowCount} class={frameDirectionClasses}>
           <slot />
         </div>
       </Host>
