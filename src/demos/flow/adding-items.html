@@ -50,10 +50,10 @@
 
       const addFlowButtonNode = document.getElementById("add-flow-item");
 
-      addFlowButtonNode.addEventListener("click", function() {
+      addFlowButtonNode.addEventListener("click", function () {
         const newNode = document.createElement("calcite-flow-item");
 
-        newNode.beforeBack = function() {
+        newNode.beforeBack = function () {
           newNode.loading = true;
           newNode.disabled = true;
           return new Promise((resolve) =>
@@ -70,16 +70,12 @@
         newNode.innerHTML = dedent`
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
           <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
-          <calcite-action slot="menu-actions">
-            <calcite-icon icon="pencil" scale="s"></calcite-icon>
-          </calcite-action>
-          <div slot="footer-actions">
-            <button>Save</button>
-            <button>Cancel</button>
-          </div>
+          <calcite-action slot="menu-actions" icon="pencil"></calcite-action>
+          <button slot="footer-actions">Save</button>
+          <button slot="footer-actions">Cancel</button>
         `;
         flowNode.appendChild(newNode);
-        setTimeout(function() {
+        setTimeout(function () {
           const newDiv = document.createElement("div");
           newDiv.innerHTML = "new div who dis?";
           newNode.appendChild(newDiv);

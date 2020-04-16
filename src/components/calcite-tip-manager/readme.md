@@ -4,6 +4,7 @@ The `calcite-tip-manager` component contains multiple `calcite-tip`s that a user
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -52,17 +53,25 @@ Renders a tip manager using a group of tips as well as a single tip.
 </calcite-tip-manager>
 ```
 
+
+
 ## Properties
 
-| Property              | Attribute               | Description                                            | Type                | Default                       |
-| --------------------- | ----------------------- | ------------------------------------------------------ | ------------------- | ----------------------------- |
-| `closed`              | `closed`                | Alternate text for closing the `calcite-tip-manager`.  | `boolean`           | `false`                       |
-| `textClose`           | `text-close`            | Alternate text for closing the `calcite-tip-manager`.  | `string`            | `TEXT.close`                  |
-| `textDefaultTitle`    | `text-default-title`    | The default group title for the `calcite-tip-manager`. | `string`            | `TEXT.defaultGroupTitle`      |
-| `textNext`            | `text-next`             | Alternate text for navigating to the next tip.         | `string`            | `TEXT.next`                   |
-| `textPaginationLabel` | `text-pagination-label` | Label that appears on hover of pagination icon.        | `string`            | `TEXT.defaultPaginationLabel` |
-| `textPrevious`        | `text-previous`         | Alternate text for navigating to the previous tip.     | `string`            | `TEXT.previous`               |
-| `theme`               | `theme`                 | Used to set the component's color scheme.              | `"dark" or "light"` | `undefined`                   |
+| Property              | Attribute               | Description                                                                                                                                     | Type                | Default     |
+| --------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `closed`              | `closed`                | Alternate text for closing the `calcite-tip-manager`.                                                                                           | `boolean`           | `false`     |
+| `intlClose`           | `intl-close`            | Alternate text for closing the tip.                                                                                                             | `string`            | `undefined` |
+| `intlDefaultTitle`    | `intl-default-title`    | The default group title for the `calcite-tip-manager`.                                                                                          | `string`            | `undefined` |
+| `intlNext`            | `intl-next`             | Alternate text for navigating to the next tip.                                                                                                  | `string`            | `undefined` |
+| `intlPaginationLabel` | `intl-pagination-label` | Label that appears on hover of pagination icon.                                                                                                 | `string`            | `undefined` |
+| `intlPrevious`        | `intl-previous`         | Alternate text for navigating to the previous tip.                                                                                              | `string`            | `undefined` |
+| `textClose`           | `text-close`            | <span style="color:red">**[DEPRECATED]**</span> use "intlClose" instead.<br/><br/>Alternate text for closing the tip.                           | `string`            | `undefined` |
+| `textDefaultTitle`    | `text-default-title`    | <span style="color:red">**[DEPRECATED]**</span> use "intlDefaultTitle" instead.<br/><br/>The default group title for the `calcite-tip-manager`. | `string`            | `undefined` |
+| `textNext`            | `text-next`             | <span style="color:red">**[DEPRECATED]**</span> use "intlNext" instead.<br/><br/>Alternate text for navigating to the next tip.                 | `string`            | `undefined` |
+| `textPaginationLabel` | `text-pagination-label` | <span style="color:red">**[DEPRECATED]**</span> use "intlPaginationLabel" instead.<br/><br/>Label that appears on hover of pagination icon.     | `string`            | `undefined` |
+| `textPrevious`        | `text-previous`         | <span style="color:red">**[DEPRECATED]**</span> use "intlPrevious" instead.<br/><br/>Alternate text for navigating to the previous tip.         | `string`            | `undefined` |
+| `theme`               | `theme`                 | Used to set the component's color scheme.                                                                                                       | `"dark" \| "light"` | `undefined` |
+
 
 ## Events
 
@@ -70,25 +79,36 @@ Renders a tip manager using a group of tips as well as a single tip.
 | ------------------------- | ----------------------------------------------------------------------- | ------------------ |
 | `calciteTipManagerToggle` | Emitted when the `calcite-tip-manager` has been toggled open or closed. | `CustomEvent<any>` |
 
+
 ## Methods
 
 ### `nextTip() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `previousTip() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Slots
 
 | Slot | Description                       |
 | ---- | --------------------------------- |
 |      | A slot for adding `calcite-tip`s. |
+
 
 ## Dependencies
 
@@ -97,13 +117,12 @@ Type: `Promise<void>`
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-tip-manager --> calcite-action
   style calcite-tip-manager fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -231,13 +231,7 @@ export class CalcitePickListItem {
     }
 
     const iconName =
-      icon === ICON_TYPES.square
-        ? selected
-          ? ICONS.checked
-          : ICONS.unchecked
-        : selected
-        ? ICONS.selected
-        : ICONS.unselected;
+      icon === ICON_TYPES.circle ? ICONS.circle : selected ? ICONS.checked : ICONS.unchecked;
 
     return (
       <span class={CSS.icon}>

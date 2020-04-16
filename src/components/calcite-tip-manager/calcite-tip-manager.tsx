@@ -136,9 +136,6 @@ export class CalciteTipManager {
 
   connectedCallback(): void {
     this.setUpTips();
-  }
-
-  componentDidLoad(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -292,13 +289,15 @@ export class CalciteTipManager {
           text={previousLabel}
           onClick={this.previousClicked}
           class={CSS.pagePrevious}
-        >
-          <calcite-icon scale="s" icon={dir === "ltr" ? ICONS.chevronLeft : ICONS.chevronRight} />
-        </calcite-action>
+          icon={dir === "ltr" ? ICONS.chevronLeft : ICONS.chevronRight}
+        />
         <span class={CSS.pagePosition}>{`${paginationLabel} ${selectedIndex + 1}/${total}`}</span>
-        <calcite-action text={nextLabel} onClick={this.nextClicked} class={CSS.pageNext}>
-          <calcite-icon scale="s" icon={dir === "ltr" ? ICONS.chevronRight : ICONS.chevronLeft} />
-        </calcite-action>
+        <calcite-action
+          text={nextLabel}
+          onClick={this.nextClicked}
+          class={CSS.pageNext}
+          icon={dir === "ltr" ? ICONS.chevronRight : ICONS.chevronLeft}
+        />
       </footer>
     ) : null;
   }
@@ -325,9 +324,12 @@ export class CalciteTipManager {
             <h2 key={selectedIndex} class={CSS.heading}>
               {groupTitle}
             </h2>
-            <calcite-action text={closeLabel} onClick={this.hideTipManager} class={CSS.close}>
-              <calcite-icon scale="s" icon={ICONS.close} />
-            </calcite-action>
+            <calcite-action
+              text={closeLabel}
+              onClick={this.hideTipManager}
+              class={CSS.close}
+              icon={ICONS.close}
+            />
           </header>
           <div
             tabIndex={0}

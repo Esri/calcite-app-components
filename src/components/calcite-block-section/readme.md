@@ -4,6 +4,7 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                      | Type                   | Default     |
@@ -14,7 +15,8 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 | `text`          | `text`           | Text displayed in the button.                                                                                                                                                    | `string`               | `undefined` |
 | `textCollapse`  | `text-collapse`  | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Tooltip used for the toggle when expanded.                                                  | `string`               | `undefined` |
 | `textExpand`    | `text-expand`    | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Tooltip used for the toggle when collapsed.                                                   | `string`               | `undefined` |
-| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" or "switch"` | `"button"`  |
+| `toggleDisplay` | `toggle-display` | This property determines the look of the section toggle. If the value is "switch", a toggle-switch will be displayed. If the value is "button", a clickable header is displayed. | `"button" \| "switch"` | `"button"`  |
+
 
 ## Events
 
@@ -22,11 +24,13 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 | --------------------------- | ----------------------------------------- | ------------------ |
 | `calciteBlockSectionToggle` | Emitted when the header has been clicked. | `CustomEvent<any>` |
 
+
 ## Slots
 
 | Slot | Description                                     |
 | ---- | ----------------------------------------------- |
 |      | A slot for adding content to the block section. |
+
 
 ## Dependencies
 
@@ -35,13 +39,12 @@ The `calcite-block-section` component is a child element of `calcite-block`. Sec
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-block-section --> calcite-action
   style calcite-block-section fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

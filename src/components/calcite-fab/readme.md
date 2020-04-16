@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -30,28 +31,36 @@ Renders a `calcite-fab` that is loading and disabled.
 <calcite-fab loading disabled></calcite-fab>
 ```
 
+
+
 ## Properties
 
 | Property      | Attribute      | Description                                                                                                                         | Type                              | Default      |
 | ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------ |
-| `appearance`  | `appearance`   | Used to set the button's appearance. Default is outline.                                                                            | `"clear" or "outline" or "solid"` | `"outline"`  |
+| `appearance`  | `appearance`   | Used to set the button's appearance. Default is outline.                                                                            | `"clear" \| "outline" \| "solid"` | `"outline"`  |
 | `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                         | `boolean`                         | `false`      |
 | `icon`        | `icon`         | The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/. | `string`                          | `ICONS.plus` |
 | `label`       | `label`        | Label of the FAB, exposed on hover. If no label is provided, the label inherits what's provided for the `text` prop.                | `string`                          | `undefined`  |
 | `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                                      | `boolean`                         | `false`      |
-| `scale`       | `scale`        | Specifies the size of the fab.                                                                                                      | `"l" or "m" or "s"`               | `"m"`        |
+| `scale`       | `scale`        | Specifies the size of the fab.                                                                                                      | `"l" \| "m" \| "s"`               | `"m"`        |
 | `text`        | `text`         | Text that accompanies the FAB icon.                                                                                                 | `string`                          | `undefined`  |
 | `textEnabled` | `text-enabled` | Indicates whether the text is displayed.                                                                                            | `boolean`                         | `false`      |
-| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                           | `"dark" or "light"`               | `undefined`  |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                           | `"dark" \| "light"`               | `undefined`  |
+
 
 ## Methods
 
 ### `setFocus() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

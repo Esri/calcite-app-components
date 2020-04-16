@@ -43,9 +43,26 @@ describe("calcite-action", () => {
     expect(iconContainer).not.toBeNull();
   });
 
+  it("should have icon container with calcite-icon: after delay", async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<calcite-action></calcite-action>`);
+
+    const action = await page.find("calcite-action");
+
+    const delay = 1;
+    await new Promise((resolve) => setTimeout(resolve, delay));
+
+    action.innerHTML = `<calcite-icon icon="hamburger" scale="s"></calcite-icon>`;
+
+    await page.waitForChanges();
+
+    const iconContainer = await page.find(`calcite-action >>> .${CSS.iconContainer}`);
+    expect(iconContainer).not.toBeNull();
+  });
+
   it("should have icon container with svg", async () => {
     const page = await newE2EPage();
-    await page.setContent(`<calcite-action><svg></svg></calcite-icon></calcite-action>`);
+    await page.setContent(`<calcite-action><svg></svg></calcite-action>`);
 
     const iconContainer = await page.find(`calcite-action >>> .${CSS.iconContainer}`);
     expect(iconContainer).not.toBeNull();
