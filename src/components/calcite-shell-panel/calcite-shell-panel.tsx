@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import { Component, Event, EventEmitter, Host, Prop, Watch, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteLayout, CalcitePosition, CalciteScale } from "../interfaces";
@@ -73,7 +72,7 @@ export class CalciteShellPanel {
     const { collapsed, detached, layout, position } = this;
 
     const contentNode = (
-      <div class={classnames(CSS.content, { [CSS.contentDetached]: detached })} hidden={collapsed}>
+      <div class={{ [CSS.content]: true, [CSS.contentDetached]: detached }} hidden={collapsed}>
         <slot />
       </div>
     );
