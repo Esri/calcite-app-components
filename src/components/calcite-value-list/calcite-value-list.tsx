@@ -117,13 +117,14 @@ export class CalciteValueList<
   //  Lifecycle
   //
   // --------------------------------------------------------------------------
+
   connectedCallback(): void {
     initialize.call(this);
+    initializeObserver.call(this);
   }
 
   componentDidLoad(): void {
     this.setUpDragAndDrop();
-    initializeObserver.call(this);
   }
 
   componentDidUnload(): void {

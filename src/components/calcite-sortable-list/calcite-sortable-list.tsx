@@ -68,7 +68,7 @@ export class CalciteSortableList {
   //
   // --------------------------------------------------------------------------
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     this.items = Array.from(this.el.children);
     this.setUpDragAndDrop();
     this.beginObserving();
