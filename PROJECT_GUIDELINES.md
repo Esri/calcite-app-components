@@ -1,6 +1,6 @@
 # Project Guidelines
 
-Hey there and thanks for stopping by! We welcome all feedback and contributions to [Calcite App Components](https://github.com/Esri/calcite-app-components/blob/master/README.md). If you are interested in getting involved, we ask that you give our guidelines a quick read through. Below is a list of things we've found work well for us as we continue developing our components.
+Hey there and thanks for stopping by! We welcome all feedback and contributions to [Calcite App Components](https://github.com/Esri/calcite-app-components/blob/master/README.md). If you are interested in getting involved, we ask that you give our guidelines a read. Below is a list of things we've found work well for us as we continue developing our components.
 
 ## TOC
 
@@ -20,7 +20,7 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 
 ### Formatting
 
-This project uses lint-staged to automatically format code on commit, making it easier to contribute.
+This project uses [lint-staged](https://www.npmjs.com/package/lint-staged) to automatically format code on commit, making it easier to contribute.
 
 ### Github
 
@@ -30,7 +30,15 @@ We have created [templates](https://github.com/Esri/calcite-app-components/issue
 
 #### Commits
 
-This project follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), which are used to generate the changelog. Be sure to provide clear and sufficient information in commit messages. This is important because the commit messages (type `feat` and `fix`) are used to automatically update the changelog. For ease of discoverability, commit messages for breaking changes should use both the header (`!`) and body (`BREAKING CHANGE:`) syntax:
+This project follows [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), which are used to generate the changelog. Be sure to provide clear and sufficient information in commit messages. This is important because the commit messages are used to automatically update the changelog.
+
+#### Pull requests
+
+In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not. The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
+
+#### Breaking Changes
+
+For ease of discoverability, commit messages for breaking changes should use both the header (`!`) and body (`BREAKING CHANGE:`) syntax:
 
 ```
 <type>!: <descriptive summary>
@@ -39,10 +47,6 @@ This project follows [conventional commits](https://www.conventionalcommits.org/
 
 BREAKING CHANGE: <details about the change and migration options (this can span multiple lines)>
 ```
-
-#### Pull requests
-
-In order to ensure conventional commits are followed, pull requests will run a check to indicate whether the PR is following the convention or not. The [Semantic Pull Request](https://github.com/probot/semantic-pull-requests) status check will ensure your pull requests are semantic before you merge them.
 
 #### Contributing
 
@@ -55,9 +59,9 @@ Things to consider:
 
 - Use a clear and descriptive title
 - What is happening now vs what should happen?
-- Tell us how to reproduce the issue (eg. is it happening in a specific browser?)
+- Tell us how to reproduce the issue (e.g. is it happening in a specific browser?)
 - Can it be reliably reproduced? If not, tell us how often it happens and under what circumstances.
-- Screenshots and gifs are our friends!
+- Screenshots and GIFs are our friends!
 - Did this problem start happening after a recent release or was it always a bug?
 
 ## Code base
@@ -91,20 +95,11 @@ Components should be accessible and we use the following resources as guides:
 
 ### Components
 
-Before the checklist, new components should have an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+) so we can determine whether they belong here or calcite-components. If a component does belong here, that's where the [checklist](https://github.com/Esri/calcite-app-components/wiki/New-Component-Checklist) can be used to guide development.
+New components should have an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+) so we can determine whether they belong here or calcite-components.
 
 #### General checklist
 
-- Slots are documented at the beginning of each component file after the import statements and before the `@Component` decorator.
-- Please properly mutate and reflect props.
-- Make sure to document props.
-- UI text props start with `text`. For example: `textCollapse` updates the label of the collapse icon when the component is expanded in the calcite action bar.
-- Events are named in present tense and start with the `calciteComponent`. For example: `calciteBlockToggle` is emitted when the header in a calcite block has been clicked.
-- Properties without values are marked as required (with a `!` in front) or optional (`?`). For example: `@Prop() label?: string;` or `@Prop() text!: string;`
-- Set `shadow: true` in the `@Component` options to make sure styles are encapsulated.
-- Naming conventions of properties, methods, and events are consistent between components for consistency.
-- A resource file resides inside each component folder. These contain CSS, ICONS, and SLOTS constants.
-- Internal events are not propagated.
+See the [new component checklist](https://github.com/Esri/calcite-app-components/wiki/New-Component-Checklist).
 
 #### Documentation
 
