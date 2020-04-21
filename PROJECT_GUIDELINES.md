@@ -103,9 +103,13 @@ See the [new component checklist](https://github.com/Esri/calcite-app-components
 
 #### Documentation
 
-- We use storybook for a front end view of our doc. In each component folder resides a `component.stories.ts` file.
-- Knobs are added in the stories file so users can edit props dynamically in the storybook UI.
-- Usage folders are in the component folder with a `basic.md` or `advanced.md` file depending on the complexity of the component for notes and snippets that would help the understanding of the component.
+This project uses [Storybook](https://storybook.js.org/) to provide an interactive showcase of components with accompanying documentation.
+
+For each main component (i.e., one that can be used by itself), there should be a <component-name>.stories.ts file in its component folder.
+
+Each story should provide access to relevant [knobs](https://github.com/storybookjs/storybook/tree/next/addons/knobs) so users can test out different properties.
+
+For additional documentation, create a [usage folder](https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-action/usage) in the component directory with a basic.md and optionally an advanced.md file (if additional documentation or examples are required) with snippets showing different supported use cases for the component.
 
 #### Best practices
 
@@ -116,7 +120,7 @@ The following resources showcase best practices we follow for our web components
 
 #### Structure
 
-Please see Stencil's [style guide](https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md#file-structure) for details on component structure.
+We follow Stencil's suggested component structure. See their [style guide](https://github.com/ionic-team/stencil/blob/master/STYLE_GUIDE.md#file-structure) for more details.
 
 #### Styling
 
@@ -126,32 +130,7 @@ Be sure to set `shadow: true` in Stencil's `@Component` options to make sure sty
 
 ##### Unique IDs for components
 
-Many times it is necessary for components to have an `id="something"` attribute for things like `<label>` and various `aria-*` properties. To safely generate a unique id for a component, but to also allow a user supplied `id` attribute to work, follow the following pattern:
-
-```
-import { guid } from "../../utils/guid";
-
-@Component({
-  tag: "calcite-example",
-  styleUrl: "calcite-example.scss",
-  shadow: true
-})
-export class CalciteExample {
-
-  // ...
-
-  guid: string = `calcite-example-${guid()}`;
-
-  render() {
-    const id = this.el.id || this.guid;
-    return (
-      <Host id={id}></Host>
-    );
-  }
-
-  // ...
-}
-```
+Many times it is necessary for components to have an `id="something"` attribute for things like `<label>` and various `aria-*` properties. To safely generate a unique id for a component, but to also allow a user supplied `id` attribute to work, follow the pattern using `guid` in our [calcite-value-list](https://github.com/Esri/calcite-app-components/blob/master/src/components/calcite-value-list/calcite-value-list.tsx).
 
 This will create a unique id attribute like `id="calcite-example-51af-0941-54ae-22c14d441beb"`, which should have a VERY low collision change since guid() generates IDs with `window.crypto.getRandomValues`. If a user supplies an `id`, it will respect the users `id`.
 
@@ -161,33 +140,7 @@ Components should require as a few text translations as possible. In general, th
 
 If your component involves formatting numbers or dates use the [`Intl` APIs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) for formating the display of numbers and dates in the component.
 
-To add RTL support to your components, use the internal `getElementDir` helper to apply the `dir` attribute to the component. That way, the `dir` attribute of the component will always match that of the document.
-
-```tsx
-import { Component, Host, Element, h} from "@stencil/core";
-import { getElementDir } from "../../utils/dom";
-
-@Component({
-  tag: "calcite-component",
-  styleUrl: "calcite-component.scss",
-  shadow: true
-})
-export class CalciteComponent {
-  @Element() el: HTMLElement;
-
-  // ...
-
-  render() {
-    const dir = getElementDir(this.el);
-
-    return (
-      <Host dir={dir}>
-        <!-- The rest of your component -->
-      </Host>
-    );
-  }
-}
-```
+To add RTL support to your components, use the internal `getElementDir` helper to apply the `dir` attribute to the component. That way, the `dir` attribute of the component will always match that of the document. See use of `getElementDir` in [calcite-panel](https://github.com/Esri/calcite-app-components/blob/master/src/components/calcite-panel/calcite-panel.tsx).
 
 Direction specific CSS can be implemented with CSS variables:
 
@@ -208,16 +161,16 @@ Direction specific CSS can be implemented with CSS variables:
 
 #### Testing
 
-Please see Stencil's doc for [end-to-end testing](https://stenciljs.com/docs/end-to-end-testing)!
+Components should have an automated test for any incoming features or bug fix. Make sure all tests pass as PRs will not be allowed to merge if there is a single test failure.
 
-Components should have an automated test for any incoming features or bug fix. We utilize Travis CI to check our work, so PRs will run tests and now allow merging unless all the tests pass (we suggest running locally before making a PR to save time). We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved. Keep it clean!
+We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved. Keep it clean!
+
+Please see Stencil's doc for more info on [end-to-end](https://stenciljs.com/docs/end-to-end-testing) testing. See one of our test examples [here](https://github.com/Esri/calcite-app-components/blob/master/src/components/calcite-block/calcite-block.e2e.ts).
 
 #### Browser support
 
-Our components are best used in most modern browsers including Chrome, Firefox and Safari.
+Our components are best used in most modern browsers including Chrome, Firefox, Edge and Safari.
 
 ## Gotchas
 
-- There have been some complications with stencil loading elements polyfills in Edge. So, some APIs that are available in Chrome and Firefox aren't available in Edge.
-- Internet Explorer is _not_ recommended to use with our web components.
-- We have a [wiki](https://github.com/Esri/calcite-app-components/wiki/Stencil-Tidbits#gotchas) of gotchas we've found with Stencil.
+- See our [gotchas wiki](https://github.com/Esri/calcite-app-components/wiki/Stencil-Tidbits#gotchas) for issues we've found with Stencil.
