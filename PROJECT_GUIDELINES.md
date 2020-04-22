@@ -5,8 +5,8 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 ## TOC
 
 - [Code of conduct](https://github.com/Esri/contributing/blob/master/CODE_OF_CONDUCT.md)
-- [Contribution guidelines](https://github.com/esri/contributing)
 - [Conventions](#conventions)
+  - [Contribution guidelines](https://github.com/esri/contributing)
   - [Formatting](#formatting)
   - [Github](#github)
   - [Report a bug!](#report-a-bug)
@@ -17,6 +17,10 @@ Hey there and thanks for stopping by! We welcome all feedback and contributions 
 - [Gotchas](#gotchas)
 
 ## Conventions
+
+### Contributing
+
+Please see our [contributing guidelines](https://github.com/Esri/calcite-app-components/blob/master/CONTRIBUTING.md).
 
 ### Formatting
 
@@ -48,10 +52,6 @@ For ease of discoverability, commit messages for breaking changes should use bot
 BREAKING CHANGE: <details about the change and migration options (this can span multiple lines)>
 ```
 
-#### Contributing
-
-Please see our [contributing guidelines](https://github.com/Esri/calcite-app-components/blob/master/CONTRIBUTING.md).
-
 ### Report a bug
 
 We use Github issues to keep track of bugs. Please follow our [bug issue template](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=bug%2C+0+-+new&template=bug.md&title=Bug%3A+) and explain the problem clearly for us maintainers to understand and reproduce. The more details the better!
@@ -66,25 +66,12 @@ Things to consider:
 
 ## Code base
 
-Our code base is written in TypeScript. We love it because it keeps our code type safe. Everything should have a type and `any` should be avoided whenever possible.
+Our code base is written entirely in TypeScript and we should aim to have it that way. We have configured the project to help adhere to some conventions and formatting. Here are additional items to follow:
 
-1. Please follow [tslint-iconic-rules](https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js).
-
-2. Variable decorators should be inlined.
-   `@Prop() name: string;`
-
-3. Method decorators should be multi-line.
-
-```
-@Listen('click')
-onClick() {
- ...
-}
-```
-
-4. Use private variables and methods when possible. These are useful for detecting deadcode and enforcing encapsulation. Note that this is a feature which TypeScript provides to help harden your code, but using `private`, `public` or `protected` does not make a difference in the actual JavaScript output.
-
-5. Code with Method/Prop/Event/Component decorators should have jsdocs. This allows for documentation generation and for better user experience in an editor that has TypeScript intellisense.
+1. Avoid using any as much as possible.
+2. Try to always provide a type.
+3. Provide JSDoc for all public APIs.
+4. Fix linting errors, don't ignore them.
 
 ### A11y
 
@@ -169,7 +156,7 @@ Please see Stencil's doc for more info on [end-to-end](https://stenciljs.com/doc
 
 #### Browser support
 
-Our components are best used in most modern browsers including Chrome, Firefox, Edge and Safari.
+See our [README.md](https://github.com/Esri/calcite-app-components/blob/master/README.md) for a list of supported browswers.
 
 ## Gotchas
 
