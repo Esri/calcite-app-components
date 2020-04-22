@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, VNode, Listen } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
 import { CSS } from "../calcite-pick-list-item/resources";
@@ -21,6 +21,8 @@ export class CalciteValueListItem {
 
   /**
    * Compact reduces the size of the item.
+   *
+   * @deprecated This property will be removed in a future release.
    */
   @Prop({ reflect: true }) compact? = false;
 
@@ -48,6 +50,11 @@ export class CalciteValueListItem {
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
   @Prop() metadata?: object;
+
+  /**
+   * Set this to true to display a remove action that removes the item from the list.
+   */
+  @Prop({ reflect: true }) removable = false;
 
   /**
    * Set this to true to pre-select an item. Toggles when an item is checked/unchecked.
@@ -87,8 +94,24 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggleSelected(coerce?: boolean) {
+  @Method() async toggleSelected(coerce?: boolean): Promise<void> {
     this.pickListItem.toggleSelected(coerce);
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    this.pickListItem?.setFocus();
+  }
+
+  // --------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  // --------------------------------------------------------------------------
+
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
+    // adjust item payload from wrapped item before bubbling
+    event.detail.item = this.el;
   }
 
   // --------------------------------------------------------------------------
@@ -97,19 +120,19 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  getPickListRef = (el) => (this.pickListItem = el as HTMLCalcitePickListItemElement);
+  getPickListRef = (el): HTMLCalcitePickListItemElement => (this.pickListItem = el);
 
-  handleKeyDown = (event: KeyboardEvent) => {
+  handleKeyDown = (event: KeyboardEvent): void => {
     if (event.key === " ") {
       this.handleActivated = !this.handleActivated;
     }
   };
 
-  handleBlur = () => {
+  handleBlur = (): void => {
     this.handleActivated = false;
   };
 
-  handleSelectChange = (event: CustomEvent) => {
+  handleSelectChange = (event: CustomEvent): void => {
     this.selected = event.detail.selected;
   };
 
@@ -119,7 +142,7 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  renderHandle() {
+  renderHandle(): VNode {
     const { icon } = this;
     if (icon === ICON_TYPES.grip) {
       return (
@@ -138,7 +161,7 @@ export class CalciteValueListItem {
     }
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host data-id={this.guid}>
         {this.renderHandle()}
@@ -149,6 +172,7 @@ export class CalciteValueListItem {
           disableDeselect={this.disableDeselect}
           selected={this.selected}
           metadata={this.metadata}
+          removable={this.removable}
           textLabel={this.textLabel}
           textDescription={this.textDescription}
           onCalciteListItemChange={this.handleSelectChange}

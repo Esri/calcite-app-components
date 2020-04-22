@@ -11,27 +11,16 @@
     <main>
       <section class="example-container">
         <h1>calcite-value-list</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-value-list/readme.md"
-            >calcite-value-list readme.</a
-          >
-        </p>
 
         <h3>multiple</h3>
-        <calcite-value-list id="one" multiple="true" filter-enabled>
-          <calcite-action slot="menu-actions" indicator text="Cool">
-            <calcite-icon icon="hamburger" scale="s"></calcite-icon>
-          </calcite-action>
+        <calcite-value-list id="one" multiple filter-enabled>
+          <calcite-action slot="menu-actions" indicator text="Cool" scale="s" icon="hamburger"> </calcite-action>
           <calcite-value-list-item text-label="Dogs" text-description="Man's best friend" value="dogs">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');" icon="x">
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="Cats" text-description="Independent and fluffy" value="cats">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');" icon="x">
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -39,8 +28,7 @@
             text-description="Easy to care for."
             value="fish"
           >
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');" icon="x">
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -55,18 +43,15 @@
         <h3>Pick many</h3>
         <calcite-value-list id="two" multiple filter-enabled>
           <calcite-value-list-item text-label="Toughness" text-description="Hard to damage" value="toughness">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');" icon="x">
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="Athletics" value="athletics">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');" icon="x">
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="Investigation" value="investigation">
-            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action slot="secondary-action" text="click-me" onClick="console.log('clicked');" icon="x">
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>

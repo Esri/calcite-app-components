@@ -6,7 +6,6 @@
 
     <title>Calcite App Components: calcite-shell-panel</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -15,30 +14,15 @@
     <main>
       <section class="example-container">
         <h1>calcite-shell-panel</h1>
-        <p>The calcite-action-bar component is a great use for the action-bar slot in calcite-shell-panel.</p>
-        </p>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-shell-panel/readme.md"
-            >calcite-shell-panel readme.</a
-          >
-        </p>
 
         <h2>Basic Shell Panel</h2>
-        <calcite-shell-panel slot="primary-panel" layout="leading">
+        <calcite-shell-panel slot="primary-panel" position="start">
           <img src="https://via.placeholder.com/300x200" alt="placeholder" />
           <calcite-action-bar slot="action-bar">
             <calcite-action-group>
-              <calcite-action text="Add">
-                <calcite-icon icon="plus" scale="s"></calcite-icon>
-              </calcite-action>
-              <calcite-action text="Save">
-                <calcite-icon icon="save" scale="s"></calcite-icon>
-              </calcite-action>
-              <calcite-action text="Layers">
-                <calcite-icon icon="layers" scale="s"></calcite-icon>
-              </calcite-action>
+              <calcite-action text="Add" icon="plus"> </calcite-action>
+              <calcite-action text="Save" icon="save"> </calcite-action>
+              <calcite-action text="Layers" icon="layers"> </calcite-action>
             </calcite-action-group>
           </calcite-action-bar>
         </calcite-shell-panel>

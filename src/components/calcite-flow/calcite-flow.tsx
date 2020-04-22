@@ -1,10 +1,8 @@
-import { Component, Element, Host, Listen, Method, Prop, State, h } from "@stencil/core";
+import { Component, Element, Host, Listen, Method, Prop, State, h, VNode } from "@stencil/core";
 
 import { CSS } from "./resources";
 
 import { CalciteTheme, FlowDirection } from "../interfaces";
-
-import classnames from "classnames";
 
 /**
  * @slot - A slot for adding `calcite-flow-item`s to the flow.
@@ -45,7 +43,9 @@ export class CalciteFlow {
       return;
     }
 
-    const beforeBack = lastItem.beforeBack ? lastItem.beforeBack : () => Promise.resolve();
+    const beforeBack = lastItem.beforeBack
+      ? lastItem.beforeBack
+      : (): Promise<void> => Promise.resolve();
 
     return beforeBack.call(lastItem).then(() => {
       lastItem.remove();
@@ -74,15 +74,12 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  componentWillLoad() {
+  connectedCallback(): void {
+    this.flowItemObserver.observe(this.el, { childList: true, subtree: true });
     this.updateFlowProps();
   }
 
-  componentDidLoad() {
-    this.flowItemObserver.observe(this.el, { childList: true, subtree: true });
-  }
-
-  componentDidUnload() {
+  componentDidUnload(): void {
     this.flowItemObserver.disconnect();
   }
 
@@ -149,17 +146,18 @@ export class CalciteFlow {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const { flowDirection, flowCount } = this;
 
     const frameDirectionClasses = {
+      [CSS.frame]: true,
       [CSS.frameAdvancing]: flowDirection === "advancing",
       [CSS.frameRetreating]: flowDirection === "retreating"
     };
 
     return (
       <Host>
-        <div key={flowCount} class={classnames(CSS.frame, frameDirectionClasses)}>
+        <div key={flowCount} class={frameDirectionClasses}>
           <slot />
         </div>
       </Host>

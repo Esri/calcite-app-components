@@ -1,7 +1,6 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
-import { focusElement, getElementDir } from "../utils/dom";
-import classnames from "classnames";
+import { focusElement, getElementDir, getSlotted } from "../utils/dom";
 import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
 import { getRoundRobinIndex } from "../utils/array";
@@ -11,6 +10,7 @@ const SUPPORTED_ARROW_KEYS = ["ArrowUp", "ArrowDown"];
 
 /**
  * @slot menu-actions - A slot for adding `calcite-action`s to a menu under the `...` in the header. These actions are displayed when the menu is open.
+ * @slot fab - A slot for adding a `calcite-fab` (floating action button) to perform an action.
  * @slot footer-actions - A slot for adding `calcite-button`s to the footer.
  * @slot - A slot for adding content to the flow item.
  */
@@ -69,17 +69,35 @@ export class CalciteFlowItem {
   /**
    * 'Back' text string.
    */
-  @Prop() textBack = TEXT.back;
+  @Prop() intlBack?: string;
+
+  /**
+   * 'Back' text string.
+   * @deprecated use "intlBack" instead.
+   */
+  @Prop() textBack?: string;
+
+  /**
+   * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
+   */
+  @Prop() intlClose?: string;
 
   /**
    * 'Close' text string for the menu.
+   * @deprecated use "intlClose" instead.
    */
-  @Prop() textClose = TEXT.close;
+  @Prop() textClose?: string;
 
   /**
    * 'Open' text string for the menu.
    */
-  @Prop() textOpen = TEXT.open;
+  @Prop() intlOpen?: string;
+
+  /**
+   * 'Open' text string for the menu.
+   * @deprecated use "intlOpen" instead.
+   */
+  @Prop() textOpen?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -98,6 +116,12 @@ export class CalciteFlowItem {
 
   @Event() calciteFlowItemBackClick: EventEmitter;
 
+  /**
+   * Emitted when the content has been scrolled.
+   */
+
+  @Event() calciteFlowItemScroll: EventEmitter;
+
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -112,8 +136,16 @@ export class CalciteFlowItem {
   //
   // --------------------------------------------------------------------------
 
+  @Listen("calcitePanelScroll")
+  handleCalcitePanelScroll(event: CustomEvent): void {
+    event.stopPropagation();
+    this.calciteFlowItemScroll.emit();
+  }
+
   queryActions(): HTMLCalciteActionElement[] {
-    return Array.from(this.el.querySelectorAll(`[slot=${SLOTS.menuActions}] calcite-action`));
+    return getSlotted<HTMLCalciteActionElement>(this.el, SLOTS.menuActions, {
+      all: true
+    });
   }
 
   isValidKey(key: string, supportedKeys: string[]): boolean {
@@ -205,28 +237,29 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton(rtl: boolean): VNode {
-    const { showBackButton, textBack, backButtonClick } = this;
-
+    const { showBackButton, intlBack, textBack, backButtonClick } = this;
+    const label = intlBack || textBack || TEXT.back;
     const icon = rtl ? ICONS.backRight : ICONS.backLeft;
 
     return showBackButton ? (
       <calcite-action
         slot={PANEL_SLOTS.headerLeadingContent}
         key="back-button"
-        aria-label={textBack}
-        text={textBack}
+        aria-label={label}
+        text={label}
         class={CSS.backButton}
         onClick={backButtonClick}
-      >
-        <calcite-icon scale="s" filled icon={icon} />
-      </calcite-action>
+        icon={icon}
+      />
     ) : null;
   }
 
   renderMenuButton(): VNode {
-    const { menuOpen, textOpen, textClose } = this;
+    const { menuOpen, textOpen, intlOpen, intlClose, textClose } = this;
+    const closeLabel = intlClose || textClose || TEXT.close;
+    const openLabel = intlOpen || textOpen || TEXT.open;
 
-    const menuLabel = menuOpen ? textClose : textOpen;
+    const menuLabel = menuOpen ? closeLabel : openLabel;
 
     return (
       <calcite-action
@@ -235,9 +268,8 @@ export class CalciteFlowItem {
         text={menuLabel}
         onClick={this.toggleMenuOpen}
         onKeyDown={this.menuButtonKeyDown}
-      >
-        <calcite-icon scale="s" icon={ICONS.menu} />
-      </calcite-action>
+        icon={ICONS.menu}
+      />
     );
   }
 
@@ -246,7 +278,7 @@ export class CalciteFlowItem {
 
     return (
       <div
-        class={classnames(CSS.menu, { [CSS.menuOpen]: menuOpen })}
+        class={{ [CSS.menu]: true, [CSS.menuOpen]: menuOpen }}
         onKeyDown={this.menuActionsKeydown}
       >
         <slot name={SLOTS.menuActions} />
@@ -255,7 +287,7 @@ export class CalciteFlowItem {
   }
 
   renderFooterActions(): VNode {
-    const hasFooterActions = !!this.el.querySelector(`[slot=${SLOTS.footerActions}]`);
+    const hasFooterActions = !!getSlotted(this.el, SLOTS.footerActions);
 
     return hasFooterActions ? (
       <div slot={PANEL_SLOTS.footer} class={CSS.footerActions}>
@@ -282,18 +314,18 @@ export class CalciteFlowItem {
   }
 
   renderHeaderActions(): VNode {
-    const menuActionsNode = this.el.querySelector(`[slot=${SLOTS.menuActions}]`);
+    const menuActions = getSlotted(this.el, SLOTS.menuActions, { all: true });
 
-    const hasMenuActionsInBlacklisted =
-      menuActionsNode && menuActionsNode.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","));
+    const filteredActions = menuActions.filter(
+      (el) => !el.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","))
+    );
 
-    const hasMenuActions = !!menuActionsNode && !hasMenuActionsInBlacklisted;
-    const actionCount = hasMenuActions ? menuActionsNode.childElementCount : 0;
+    const actionCount = filteredActions.length;
 
     const menuActionsNodes =
       actionCount === 1
         ? this.renderSingleActionContainer()
-        : hasMenuActions
+        : actionCount
         ? this.renderMenuActionsContainer()
         : null;
 
@@ -332,7 +364,16 @@ export class CalciteFlowItem {
     ) : null;
   }
 
-  render() {
+  renderFab(): VNode {
+    const hasFab = getSlotted(this.el, SLOTS.fab);
+    return hasFab ? (
+      <div class={CSS.fabContainer} slot={PANEL_SLOTS.fab}>
+        <slot name={SLOTS.fab} />
+      </div>
+    ) : null;
+  }
+
+  render(): VNode {
     const { el } = this;
     const dir = getElementDir(el);
 
@@ -349,6 +390,7 @@ export class CalciteFlowItem {
           {this.renderHeaderActions()}
           <slot />
           {this.renderFooterActions()}
+          {this.renderFab()}
         </calcite-panel>
       </Host>
     );

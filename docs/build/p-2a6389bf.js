@@ -1,0 +1,1 @@
+const t=()=>[2,1,1,1,3].map(t=>{let a="";for(let e=0;e<t;e++)a+=(65536*(1+Math.random())|0).toString(16).substring(1);return a}).join("-");export{t as a,t as g}

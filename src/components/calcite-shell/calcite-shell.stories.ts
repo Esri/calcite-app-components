@@ -1,13 +1,7 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
-const { dir, layout, scale, theme } = ATTRIBUTES;
+const { dir, position, scale, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import panelReadme from "../calcite-shell-panel/readme.md";
 import dedent from "dedent";
@@ -17,9 +11,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: {
       shell: parseReadme(readme),
       panel: parseReadme(panelReadme)
@@ -59,29 +50,34 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
       value: select("detachedScale", scale.values, scale.defaultValue, group)
     },
     {
-      name: "layout",
-      value: select("layout", layout.values, group === "Leading Panel" ? layout.values[0] : layout.values[1], group)
+      name: "position",
+      value: select(
+        "position",
+        position.values,
+        group === "Leading Panel" ? position.values[0] : position.values[1],
+        group
+      )
     }
   ];
 };
 
 const actionBarPrimaryContentHTML = dedent`
   <calcite-action-group>
-    <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-    <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
+    <calcite-action text="Add" label="Add Item" icon="plus"></calcite-action>
+    <calcite-action text="Save" label="Save Item" icon="save"></calcite-action>
   </calcite-action-group>
   <calcite-action-group>
-    <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
+    <calcite-action text="Layers" label="View Layers" icon="layers"></calcite-action>
   </calcite-action-group>
 `;
 
 const actionBarContextualContentHTML = dedent`
   <calcite-action-group>
-    <calcite-action text="Idea" label="Add Item"><calcite-icon scale="s" icon="lightbulb"></calcite-icon></calcite-action>
-    <calcite-action text="Information" label="Save Item"><calcite-icon scale="s" icon="information"></calcite-icon></calcite-action>
+    <calcite-action text="Idea" label="Add Item" icon="lightbulb"></calcite-action>
+    <calcite-action text="Information" label="Save Item" icon="information"></calcite-action>
   </calcite-action-group>
   <calcite-action-group>
-    <calcite-action text="Question" label="View Layers"><calcite-icon scale="s" icon="question"></calcite-icon></calcite-action>
+    <calcite-action text="Question" label="View Layers" icon="question"></calcite-action>
   </calcite-action-group>
 `;
 
@@ -181,7 +177,7 @@ const tipManagerHTML = dedent`
   </calcite-tip-manager>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-shell",
     createAttributes("Shell"),
@@ -199,9 +195,9 @@ const advancedLeadingPanelHTML = dedent`
   ${actionBarPrimaryHTML}
   <calcite-block collapsible open heading="Primary Content" summary="This is the primary.">
     <calcite-block-content>
-      <calcite-action text="Play" text-enabled indicator><calcite-icon scale="s" icon="play"></calcite-icon></calcite-action>
-      <calcite-action text="Extent" text-enabled><calcite-icon scale="s" icon="extent"></calcite-icon></calcite-action>
-      <calcite-action text="Chart" text-enabled><calcite-icon scale="s" icon="arrow-up-right"></calcite-icon></calcite-action>
+      <calcite-action text="Play" text-enabled indicator icon="play"></calcite-action>
+      <calcite-action text="Extent" text-enabled icon="extent"></calcite-action>
+      <calcite-action text="Chart" text-enabled icon="arrow-up-right"></calcite-action>
     </calcite-block-content>
   </calcite-block>
   <calcite-block collapsible open heading="Another Block" summary="This is the primary.">
@@ -232,11 +228,9 @@ const advancedTrailingPanelHTMl = dedent`
   ${actionBarContextualHTML}
   <calcite-flow>
     <calcite-flow-item heading="Layer settings">
-      <div slot="menu-actions">
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-        <calcite-action text="Cool thing" text-enabled></calcite-action>
-      </div>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
+        <calcite-action slot="menu-actions" text="Cool thing" text-enabled></calcite-action>
       <calcite-block collapsible open heading="Contextual Content" summary="Select goodness">
         <calcite-block-content>
           <img alt="demo" src="https://placeimg.com/640/480/any" width="100%" />
@@ -292,7 +286,7 @@ const advancedTrailingPanelHTMl = dedent`
   </calcite-flow>
 `;
 
-export const advanced = () =>
+export const advanced = (): string =>
   create(
     "calcite-shell",
     createAttributes("Shell"),

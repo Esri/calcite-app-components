@@ -1,7 +1,8 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from "@stencil/core";
-import { CSS, ICONS, SLOTS, TEXT } from "./resources";
+import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@stencil/core";
+import { CSS, SLOTS, TEXT } from "./resources";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot icon - A slot for adding a trailing header icon.
@@ -41,9 +42,14 @@ export class CalciteBlock {
   @Prop() heading: string;
 
   /**
-   * When true, the block's content will be displayed.
+   * Tooltip used for the toggle when expanded.
    */
-  @Prop({ reflect: true }) open = false;
+  @Prop() intlCollapse?: string;
+
+  /**
+   * Tooltip used for the toggle when collapsed.
+   */
+  @Prop() intlExpand?: string;
 
   /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
@@ -51,19 +57,28 @@ export class CalciteBlock {
   @Prop({ reflect: true }) loading = false;
 
   /**
+   * When true, the block's content will be displayed.
+   */
+  @Prop({ reflect: true }) open = false;
+
+  /**
    * Block summary.
    */
   @Prop() summary: string;
 
   /**
-   * Tooltip used for the toggle when collapsed.
+   * Tooltip used for the toggle when expanded.
+   *
+   * @deprecated use "intlCollapse" instead.
    */
-  @Prop() textExpand = TEXT.expand;
+  @Prop() textCollapse?: string;
 
   /**
-   * Tooltip used for the toggle when expanded.
+   * Tooltip used for the toggle when collapsed.
+   *
+   * @deprecated use "intlExpand" instead.
    */
-  @Prop() textCollapse = TEXT.collapse;
+  @Prop() textExpand?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -108,21 +123,26 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const {
       collapsible,
       disabled,
       el,
       heading,
+      intlCollapse,
+      intlExpand,
       loading,
       open,
       summary,
       textCollapse,
       textExpand
     } = this;
-    const toggleLabel = open ? textCollapse : textExpand;
 
-    const hasIcon = el.querySelector(`[slot=${SLOTS.icon}]`);
+    const toggleLabel = open
+      ? intlCollapse || textCollapse || TEXT.collapse
+      : intlExpand || textExpand || TEXT.expand;
+
+    const hasIcon = getSlotted(el, SLOTS.icon);
     const headerContent = (
       <header class={CSS.header}>
         {hasIcon ? (
@@ -137,8 +157,6 @@ export class CalciteBlock {
       </header>
     );
 
-    const slottedControl = el.querySelector(`[slot=${SLOTS.control}]`);
-
     const headerNode = (
       <div class={CSS.headerContainer}>
         {this.dragHandle ? <calcite-handle /> : null}
@@ -150,9 +168,6 @@ export class CalciteBlock {
             title={toggleLabel}
           >
             {headerContent}
-            {slottedControl ? null : (
-              <calcite-icon scale="s" icon={open ? ICONS.close : ICONS.open} />
-            )}
           </button>
         ) : (
           headerContent

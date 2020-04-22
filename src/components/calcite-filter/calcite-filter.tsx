@@ -1,4 +1,14 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Host,
+  Prop,
+  State,
+  h,
+  VNode
+} from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 import { CSS, ICONS, TEXT } from "./resources";
 
@@ -23,14 +33,33 @@ export class CalciteFilter {
   @Prop() data: object[];
 
   /**
+   * A text label that will appear on the clear button.
+   */
+  @Prop() intlClear?: string;
+
+  /**
    * A text label that will appear next to the input field.
    */
-  @Prop() textLabel: string;
+  @Prop() intlLabel?: string;
 
   /**
    * Placeholder text for the input element's placeholder attribute
    */
-  @Prop() textPlaceholder: string;
+  @Prop() placeholder?: string;
+
+  /**
+   * A text label that will appear next to the input field.
+   *
+   * @deprecated use "intlLabel" instead.
+   */
+  @Prop() textLabel?: string;
+
+  /**
+   * Placeholder text for the input element's placeholder attribute
+   *
+   * @deprecated use "placeholder" instead.
+   */
+  @Prop() textPlaceholder?: string;
 
   // --------------------------------------------------------------------------
   //
@@ -68,7 +97,7 @@ export class CalciteFilter {
       return;
     }
 
-    const find = (input: object, RE: RegExp) => {
+    const find = (input: object, RE: RegExp): any => {
       let found = false;
       forIn(input, (val) => {
         if (typeof val === "function") {
@@ -110,24 +139,30 @@ export class CalciteFilter {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <label>
           <input
             type="text"
             value=""
-            placeholder={this.textPlaceholder}
+            placeholder={this.placeholder || this.textPlaceholder}
             onInput={this.inputHandler}
-            aria-label={this.textLabel || TEXT.filterLabel}
-            ref={(el) => (this.textInput = el as HTMLInputElement)}
+            aria-label={this.intlLabel || this.textLabel || TEXT.filterLabel}
+            ref={(el): void => {
+              this.textInput = el;
+            }}
           />
           <div class={CSS.searchIcon}>
             <calcite-icon scale="s" icon={ICONS.search} />
           </div>
         </label>
         {!this.empty ? (
-          <button onClick={this.clear} class={CSS.clearButton} aria-label={TEXT.clear}>
+          <button
+            onClick={this.clear}
+            class={CSS.clearButton}
+            aria-label={this.intlClear || TEXT.clear}
+          >
             <calcite-icon icon={ICONS.close} />
           </button>
         ) : null}

@@ -4,6 +4,7 @@ The `calcite-tip` component can comprise of an image, text and hyperlink to give
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -22,16 +23,20 @@ Renders a non-dismissible tip with a heading, thumbnail, info and a link.
 </calcite-tip>
 ```
 
+
+
 ## Properties
 
-| Property         | Attribute         | Description                                                                       | Type                | Default      |
-| ---------------- | ----------------- | --------------------------------------------------------------------------------- | ------------------- | ------------ |
-| `dismissed`      | `dismissed`       | No longer displays the tip.                                                       | `boolean`           | `false`      |
-| `heading`        | `heading`         | The heading of the tip.                                                           | `string`            | `undefined`  |
-| `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.                                       | `boolean`           | `false`      |
-| `selected`       | `selected`        | The selected state of the tip if it is being used inside a `calcite-tip-manager`. | `boolean`           | `undefined`  |
-| `textClose`      | `text-close`      | Alternate text for closing the tip.                                               | `string`            | `TEXT.close` |
-| `theme`          | `theme`           | Used to set the component's color scheme.                                         | `"dark" or "light"` | `undefined`  |
+| Property         | Attribute         | Description                                                                                                           | Type                | Default     |
+| ---------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `dismissed`      | `dismissed`       | No longer displays the tip.                                                                                           | `boolean`           | `false`     |
+| `heading`        | `heading`         | The heading of the tip.                                                                                               | `string`            | `undefined` |
+| `intlClose`      | `intl-close`      | Alternate text for closing the tip.                                                                                   | `string`            | `undefined` |
+| `nonDismissible` | `non-dismissible` | Indicates whether the tip can be dismissed.                                                                           | `boolean`           | `false`     |
+| `selected`       | `selected`        | The selected state of the tip if it is being used inside a `calcite-tip-manager`.                                     | `boolean`           | `undefined` |
+| `textClose`      | `text-close`      | <span style="color:red">**[DEPRECATED]**</span> use "intlClose" instead.<br/><br/>Alternate text for closing the tip. | `string`            | `undefined` |
+| `theme`          | `theme`           | Used to set the component's color scheme.                                                                             | `"dark" \| "light"` | `undefined` |
+
 
 ## Events
 
@@ -39,11 +44,13 @@ Renders a non-dismissible tip with a heading, thumbnail, info and a link.
 | ------------------- | ---------------------------------------------- | ------------------ |
 | `calciteTipDismiss` | Emitted when the component has been dismissed. | `CustomEvent<any>` |
 
+
 ## Slots
 
 | Slot          | Description                                         |
 | ------------- | --------------------------------------------------- |
 | `"thumbnail"` | A slot for adding an HTML image element to the tip. |
+
 
 ## Dependencies
 
@@ -52,13 +59,12 @@ Renders a non-dismissible tip with a heading, thumbnail, info and a link.
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-tip --> calcite-action
   style calcite-tip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

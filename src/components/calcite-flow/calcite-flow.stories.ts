@@ -1,16 +1,10 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 const { dir, theme } = ATTRIBUTES;
 import readme from "./readme.md";
 import itemReadme from "../calcite-flow-item/readme.md";
-import { SLOTS } from "../calcite-flow-item/resources";
+import { SLOTS, TEXT } from "../calcite-flow-item/resources";
 import dedent from "dedent";
 
 export default {
@@ -18,9 +12,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: {
       flow: parseReadme(readme),
       item: parseReadme(itemReadme)
@@ -66,22 +57,24 @@ const createFlowItemAttributes: (group: string) => Attributes = (group) => {
       value: text("summary", "Summary", group)
     },
     {
-      name: "text-back",
-      value: text("textBack", "Back", group)
+      name: "intl-back",
+      value: text("intlBack", TEXT.back, group)
     },
     {
-      name: "text-open",
-      value: text("textOpen", "Open", group)
+      name: "intl-open",
+      value: text("intlOpen", TEXT.open, group)
+    },
+    {
+      name: "intl-close",
+      value: text("intlClose", TEXT.close, group)
     }
   ];
 };
 
 const menuActionsHTML = dedent`
-  <div slot="${SLOTS.menuActions}">
-    <calcite-action text-enabled text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-    <calcite-action text-enabled text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
-    <calcite-action text-enabled text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
-  </div>
+  <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Add" label="Add Item" icon="plus"></calcite-action>
+  <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Save" label="Save Item" icon="save"></calcite-action>
+  <calcite-action slot="${SLOTS.menuActions}" text-enabled text="Layers" label="View Layers" icon="layers"></calcite-action>
 `;
 
 const footerActionsHTML = dedent`
@@ -120,7 +113,7 @@ const item2HTML = dedent`
   </ul>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-flow",
     createAttributes(),

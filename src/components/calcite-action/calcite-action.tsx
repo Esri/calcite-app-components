@@ -1,8 +1,6 @@
-import { Component, Element, Host, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Method, Prop, h, forceUpdate } from "@stencil/core";
 
 import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
-
-import classnames from "classnames";
 
 import { CSS } from "./resources";
 
@@ -44,6 +42,11 @@ export class CalciteAction {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * The name of the icon to display. The value of this property must match the icon name from https://esri.github.io/calcite-ui-icons/.
+   */
+  @Prop() icon?: string;
+
+  /**
    * Indicates unread changes.
    */
   @Prop({ reflect: true }) indicator = false;
@@ -80,13 +83,29 @@ export class CalciteAction {
 
   // --------------------------------------------------------------------------
   //
-  //  Variables
+  //  Private Properties
   //
   // --------------------------------------------------------------------------
 
   @Element() el: HTMLCalciteActionElement;
 
-  private buttonEl: HTMLButtonElement;
+  buttonEl: HTMLButtonElement;
+
+  observer = new MutationObserver(() => forceUpdate(this));
+
+  // --------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  // --------------------------------------------------------------------------
+
+  connectedCallback(): void {
+    this.observer.observe(this.el, { childList: true, subtree: true });
+  }
+
+  componentDidUnload(): void {
+    this.observer.disconnect();
+  }
 
   // --------------------------------------------------------------------------
   //
@@ -95,7 +114,7 @@ export class CalciteAction {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus() {
+  async setFocus(): Promise<void> {
     this.buttonEl.focus();
   }
 
@@ -109,52 +128,52 @@ export class CalciteAction {
     const { text, textEnabled } = this;
 
     const textContainerClasses = {
+      [CSS.textContainer]: true,
       [CSS.textContainerVisible]: textEnabled
     };
 
     return text ? (
-      <div key="text-container" class={classnames(CSS.textContainer, textContainerClasses)}>
+      <div key="text-container" class={textContainerClasses}>
         {text}
       </div>
     ) : null;
   }
 
   renderIconContainer(): VNode {
-    const { loading } = this;
-
-    const calciteLoaderNode = <calcite-loader is-active inline></calcite-loader>;
+    const { loading, icon, scale, el } = this;
+    const iconScale = scale === "l" ? "m" : "s";
+    const calciteLoaderNode = loading ? <calcite-loader is-active inline /> : null;
+    const calciteIconNode = icon ? <calcite-icon icon={icon} scale={iconScale} /> : null;
+    const iconNode = calciteLoaderNode || calciteIconNode;
+    const hasIconToDisplay = iconNode || el.children?.length;
 
     const slotContainerNode = (
       <div
-        class={classnames(CSS.slotContainer, {
+        class={{
+          [CSS.slotContainer]: true,
           [CSS.slotContainerHidden]: loading
-        })}
+        }}
       >
         <slot />
       </div>
     );
 
-    const iconNode = loading
-      ? calciteLoaderNode
-      : this.el.querySelector("calcite-icon")
-      ? slotContainerNode
-      : null;
-
-    return iconNode ? (
+    return hasIconToDisplay ? (
       <div key="icon-container" aria-hidden="true" class={CSS.iconContainer}>
         {iconNode}
+        {slotContainerNode}
       </div>
     ) : null;
   }
 
-  render() {
+  render(): VNode {
     const { compact, disabled, loading, el, textEnabled, label, text } = this;
 
-    const titleText = !textEnabled && text;
-    const title = label || titleText;
+    const ariaLabel = label || text;
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
+      [CSS.button]: true,
       [CSS.buttonTextVisible]: textEnabled,
       [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
@@ -163,13 +182,12 @@ export class CalciteAction {
     return (
       <Host>
         <button
-          class={classnames(CSS.button, buttonClasses)}
-          title={title}
-          aria-label={title}
+          class={buttonClasses}
+          aria-label={ariaLabel}
           disabled={disabled}
           aria-disabled={disabled.toString()}
           aria-busy={loading.toString()}
-          ref={(buttonEl) => (this.buttonEl = buttonEl)}
+          ref={(buttonEl): HTMLButtonElement => (this.buttonEl = buttonEl)}
         >
           {this.renderIconContainer()}
           {this.renderTextContainer()}

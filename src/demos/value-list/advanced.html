@@ -11,13 +11,6 @@
     <main>
       <section class="example-container" style="width: 28vw; margin-top: 2em;">
         <h1>calcite-value-list</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-value-list/readme.md"
-            >calcite-value-list readme.</a
-          >
-        </p>
 
         <style>
           .toggles {
@@ -32,16 +25,19 @@
 
         <h3>multiple</h3>
         <calcite-value-list id="one" multiple="true" filter-enabled>
-          <calcite-action slot="menu-actions" indicator text="Cool">
-            <calcite-icon icon="hamburger" scale="s"></calcite-icon>
-          </calcite-action>
+          <calcite-action slot="menu-actions" indicator text="Cool" icon="hamburger"> </calcite-action>
           <calcite-value-list-item
             text-label="2018 Population Density (Esri)"
             text-description="{POPDENS_CY}"
             value="POPDENS_CY"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -49,8 +45,13 @@
             text-description="{POPDENS_CY}"
             value="POPDENS_CY2"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -58,8 +59,13 @@
             text-description="{TOTHH_CY}"
             value="TOTHH_CY"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -81,8 +87,13 @@
             text-description="GENALPHACY"
             value="GENALPHACY"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -90,8 +101,13 @@
             text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
             value="HHGRW10CY"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -99,8 +115,13 @@
             text-description="HHGRW10CY-2019-09-18.001ZZYYZALKJLKJLKJLKLJLKJ"
             value="HHGRW10CY2"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -120,18 +141,33 @@
             text-label="2018 Generation Alpha Population (Born 2017 or Later)"
             value="GENALPHACY"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="2010-2018 Households: Annual Growth Rate (Esri)" value="HHGRW10CY">
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="2010-2018 Households" value="HHGRW10CY">
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -148,13 +184,23 @@
         <h3>drag-enabled</h3>
         <calcite-value-list id="four" drag-enabled>
           <calcite-value-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID" icon="grip">
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item text-label="OBJECTID" text-description="OBJECTID" value="OBJECTID2" icon="grip">
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -163,8 +209,13 @@
             value="DIVINDX_FY"
             icon="grip"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
           <calcite-value-list-item
@@ -173,8 +224,13 @@
             value="PCI_FY"
             icon="grip"
           >
-            <calcite-action slot="secondary-action" id="action-test" text="click-me" onClick="console.log('clicked');">
-              <calcite-icon icon="x" scale="s"></calcite-icon>
+            <calcite-action
+              slot="secondary-action"
+              id="action-test"
+              text="click-me"
+              onClick="console.log('clicked');"
+              icon="x"
+            >
             </calcite-action>
           </calcite-value-list-item>
         </calcite-value-list>
@@ -194,7 +250,7 @@
       function toggleProperty(property) {
         const blocks = document.getElementsByTagName("calcite-value-list");
 
-        for (i = 0; i < blocks.length; i++) {
+        for (let i = 0; i < blocks.length; i++) {
           blocks[i].hasAttribute(property) ? blocks[i].removeAttribute(property) : blocks[i].setAttribute(property, "");
         }
       }

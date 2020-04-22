@@ -6,7 +6,6 @@
 
     <title>Calcite App Components: calcite-action-pad</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -15,33 +14,34 @@
     <main>
       <section class="example-container">
         <h1>calcite-action-pad</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-action-pad/readme.md"
-          >
-            calcite-action-pad readme.</a
-          >
-        </p>
 
         <div class="action-pad-container">
           <calcite-action-pad>
             <calcite-action-group>
-              <calcite-action text="Undo">
-                <calcite-icon icon="undo" scale="s"></calcite-icon>
-              </calcite-action>
-              <calcite-action text="Cool">
-                <calcite-icon icon="redo" scale="s"></calcite-icon>
-              </calcite-action>
+              <calcite-action text="Undo" icon="undo"> </calcite-action>
+              <calcite-action text="Cool" icon="redo"> </calcite-action>
             </calcite-action-group>
             <calcite-action-group>
-              <calcite-action text="Add">
-                <calcite-icon icon="trash" scale="s"></calcite-icon>
-              </calcite-action>
+              <calcite-action text="Add" icon="trash"> </calcite-action>
             </calcite-action-group>
           </calcite-action-pad>
         </div>
       </section>
+
+      <section class="example-container">
+        <h3>Tooltip on expand toggle</h3>
+        <div class="action-pad-container">
+          <calcite-action-pad id="action-pad-test">
+            <calcite-action text="Add" icon="plus"></calcite-action>
+          </calcite-action-pad>
+          <calcite-tooltip id="tooltip">Hello world!</calcite-tooltip>
+        </div>
+      </section>
+      <script>
+        var actionPad = document.getElementById("action-pad-test");
+        var tooltip = document.getElementById("tooltip");
+        actionPad.tooltipExpand = tooltip;
+      </script>
     </main>
   </body>
 </html>

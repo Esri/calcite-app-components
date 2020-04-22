@@ -1,7 +1,7 @@
-import { Component, Element, Host, Prop, h } from "@stencil/core";
+import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
-import classnames from "classnames";
+import { getCalcitePosition, getSlotted } from "../utils/dom";
 
 /**
  * @slot shell-header - A slot for adding header content. This content will be positioned at the top of the shell.
@@ -42,13 +42,13 @@ export class CalciteShell {
   //
   // --------------------------------------------------------------------------
 
-  renderHeader() {
-    const hasHeader = !!this.el.querySelector(`[slot=${SLOTS.header}]`);
+  renderHeader(): VNode {
+    const hasHeader = !!getSlotted(this.el, SLOTS.header);
 
     return hasHeader ? <slot name={SLOTS.header} /> : null;
   }
 
-  renderContent() {
+  renderContent(): VNode {
     return (
       <div class={CSS.content}>
         <slot />
@@ -56,8 +56,8 @@ export class CalciteShell {
     );
   }
 
-  renderFooter() {
-    const hasFooter = !!this.el.querySelector(`[slot=${SLOTS.footer}]`);
+  renderFooter(): VNode {
+    const hasFooter = !!getSlotted(this.el, SLOTS.footer);
 
     return hasFooter ? (
       <div class={CSS.footer}>
@@ -66,17 +66,16 @@ export class CalciteShell {
     ) : null;
   }
 
-  renderMain() {
-    const primaryPanel = this.el.querySelector(
-      `[slot=${SLOTS.primaryPanel}]`
-    ) as HTMLCalciteShellPanelElement;
+  renderMain(): VNode {
+    const primaryPanel = getSlotted<HTMLCalciteShellPanelElement>(this.el, SLOTS.primaryPanel);
 
     const mainClasses = {
-      [CSS.mainReversed]: primaryPanel?.layout === "trailing"
+      [CSS.main]: true,
+      [CSS.mainReversed]: getCalcitePosition(primaryPanel?.position, primaryPanel?.layout) === "end"
     };
 
     return (
-      <div class={classnames(CSS.main, mainClasses)}>
+      <div class={mainClasses}>
         <slot name={SLOTS.primaryPanel} />
         {this.renderContent()}
         <slot name={SLOTS.contextualPanel} />
@@ -85,7 +84,7 @@ export class CalciteShell {
     );
   }
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         {this.renderHeader()}

@@ -6,7 +6,6 @@
 
     <title>Calcite App Components: calcite-panel</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -15,12 +14,7 @@
     <main>
       <section class="example-container">
         <h1>calcite-panel</h1>
-        <p>
-          see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-panel/readme.md">
-            calcite-panel readme.</a
-          >
-        </p>
+
         <h2>Basic Panel</h2>
         <calcite-panel>
           <div slot="header-content">panel header</div>
@@ -49,13 +43,94 @@
         </calcite-panel>
 
         <script>
-          var dismissiblePanel = document.getElementById("dismissible-panel");
+          const dismissiblePanel = document.getElementById("dismissible-panel");
           dismissiblePanel.addEventListener("calcitePanelDismissedChange", function() {
             console.log("calcitePanelDismiss event");
           });
           setTimeout(function() {
             dismissiblePanel.setFocus("dismiss-button");
           }, 3000);
+        </script>
+
+        <h2>Scrolling Panel</h2>
+        <calcite-panel style="height: 500px;" id="panel">
+          <div slot="header-content">panel header</div>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+          <p>Slotted content</p>
+        </calcite-panel>
+        <script>
+          const panel = document.getElementById("panel");
+          panel.addEventListener("calcitePanelScroll", function(event) {
+            console.log("scrolled", event);
+          });
         </script>
 
         <div class="panel-container" dir="rtl">

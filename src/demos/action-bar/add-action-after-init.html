@@ -6,7 +6,6 @@
 
     <title>Calcite App Components:</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
     <style>
@@ -18,9 +17,6 @@
       .flexxed section {
         margin: 0 12px;
       }
-      .action-bar-container {
-        height: 600px;
-      }
     </style>
   </head>
 
@@ -28,13 +24,7 @@
     <main>
       <section class="example-container">
         <h1>calcite-action-bar</h1>
-        <p>
-          see the
-          <a
-            href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-action-bar/readme.md"
-            >calcite-action-bar readme.</a
-          >
-        </p>
+
         <div class="flexxed">
           <section>
             <h2>LTR</h2>
@@ -42,32 +32,21 @@
               <section>
                 <h3>Bottom Actions</h3>
                 <calcite-action-bar id="slot-test">
-                  <calcite-action text="Add">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M9 7h5v2H9v5H7V9H2V7h5V2h2z" />
-                    </svg>
-                  </calcite-action>
-                  <calcite-action text="Save">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                      <path
-                        d="M14 1H2a1 1 0 0 0-1 1v10a.99.99 0 0 0 .293.707l2 2A.995.995 0 0 0 4 15h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 14v-3h2v3zm6-.001V14h-1v-4H5v4H4v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12 6H4V2h8z"
-                      />
-                    </svg>
-                  </calcite-action>
+                  <calcite-action text="Add" icon="plus"> </calcite-action>
+                  <calcite-action text="Save" icon="save"> </calcite-action>
                 </calcite-action-bar>
 
                 <script>
-                  var slotTestNode = document.getElementById("slot-test");
-                  setTimeout(function() {
-                    var action = document.createElement("calcite-action");
+                  const slotTestNode = document.getElementById("slot-test");
+                  setTimeout(function () {
+                    const action = document.createElement("calcite-action");
                     action.setAttribute("slot", "bottom-actions");
                     action.setAttribute("text", "Hello world");
-                    action.innerHTML = `<calcite-icon scale="s" icon="layers"></calcite-icon>`;
+                    action.setAttribute("icon", "layers");
                     slotTestNode.appendChild(action);
                   }, 2000);
                 </script>
               </section>
-              </div>
             </div>
           </section>
         </div>

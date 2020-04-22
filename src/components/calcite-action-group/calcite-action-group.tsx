@@ -1,4 +1,4 @@
-import { Component, Host, h } from "@stencil/core";
+import { Component, Host, h, VNode } from "@stencil/core";
 
 @Component({
   tag: "calcite-action-group",
@@ -15,7 +15,7 @@ export class CalciteActionGroup {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <slot />

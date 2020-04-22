@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Calcite App Components: calcite-block</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -14,12 +13,6 @@
     <main>
       <section class="example-container">
         <h1>Block</h1>
-        <p>
-          see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-block/readme.md"
-            >calcite-block readme.</a
-          >
-        </p>
 
         <h2>Block with slotted Value List</h2>
         <calcite-block heading="All the king's buff horses couldn't fix the turbo." summary="summary" open collapsible>
@@ -33,9 +26,9 @@
                 slot="secondary-action"
                 id="action-test"
                 text="click-me"
+                icon="x"
                 onClick="console.log('clicked');"
               >
-                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-value-list-item>
             <calcite-value-list-item
@@ -48,8 +41,8 @@
                 id="action-test"
                 text="click-me"
                 onClick="console.log('clicked');"
+                icon="x"
               >
-                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-value-list-item>
             <calcite-value-list-item
@@ -62,19 +55,15 @@
                 id="action-test"
                 text="click-me"
                 onClick="console.log('clicked');"
+                icon="x"
               >
-                <calcite-icon icon="x" scale="s"></calcite-icon>
               </calcite-action>
             </calcite-value-list-item>
           </calcite-value-list>
 
           <calcite-block-section text="Section 1" open>
-            <calcite-action text="click-me" text="hello world" text-enabled>
-              <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
-            </calcite-action>
-            <calcite-action text="click-me" text="hello world" text-enabled>
-              <calcite-icon icon="configure-popup" scale="s"></calcite-icon>
-            </calcite-action>
+            <calcite-action text="click-me" text="hello world" text-enabled icon="configure-popup"> </calcite-action>
+            <calcite-action text="click-me" text="hello world" text-enabled icon="configure-popup"> </calcite-action>
           </calcite-block-section>
 
           <calcite-block-section text="Section 2 (toggle switch)" open toggle-display="switch">

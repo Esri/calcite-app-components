@@ -4,8 +4,7 @@ import {
   Attributes,
   createComponentHTML as create,
   darkBackground,
-  parseReadme,
-  titlelessDocsPage
+  parseReadme
 } from "../../../.storybook/utils";
 import blockReadme from "./readme.md";
 import sectionReadme from "../calcite-block-section/readme.md";
@@ -17,9 +16,6 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: {
       block: parseReadme(blockReadme),
       section: parseReadme(sectionReadme)
@@ -39,7 +35,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
   return ([
     {
       name: "heading",
-      commit() {
+      commit(): Attribute {
         this.value = text("heading", "Heading", group);
         delete this.build;
         return this;
@@ -47,7 +43,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "dir",
-      commit() {
+      commit(): Attribute {
         this.value = select("dir", dir.values, dir.defaultValue, group);
         delete this.build;
         return this;
@@ -55,7 +51,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "summary",
-      commit() {
+      commit(): Attribute {
         this.value = text("summary", "summary", group);
         delete this.build;
         return this;
@@ -63,7 +59,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "open",
-      commit() {
+      commit(): Attribute {
         this.value = boolean("open", true, group);
         delete this.build;
         return this;
@@ -71,7 +67,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "collapsible",
-      commit() {
+      commit(): Attribute {
         this.value = boolean("collapsible", true, group);
         delete this.build;
         return this;
@@ -79,7 +75,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "loading",
-      commit() {
+      commit(): Attribute {
         this.value = boolean("loading", false, group);
         delete this.build;
         return this;
@@ -87,7 +83,7 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "disabled",
-      commit() {
+      commit(): Attribute {
         this.value = boolean("disabled", false, group);
         delete this.build;
         return this;
@@ -95,24 +91,24 @@ const createBlockAttributes: (options?: { except: string[] }) => Attributes = ({
     },
     {
       name: "theme",
-      commit() {
+      commit(): Attribute {
         this.value = select("theme", theme.values, theme.defaultValue, group);
         delete this.build;
         return this;
       }
     },
     {
-      name: "text-collapse",
-      commit() {
-        this.value = text("textCollapse", "Collapse", group);
+      name: "intl-collapse",
+      commit(): Attribute {
+        this.value = text("intlCollapse", "Collapse", group);
         delete this.build;
         return this;
       }
     },
     {
-      name: "text-expand",
-      commit() {
-        this.value = text("textExpand", "Expand", group);
+      name: "intl-expand",
+      commit(): Attribute {
+        this.value = text("intlExpand", "Expand", group);
         delete this.build;
         return this;
       }
@@ -140,17 +136,17 @@ const createSectionAttributes: () => Attributes = () => {
       value: select("toggleDisplay", toggleDisplayOptions, toggleDisplayOptions[0], group)
     },
     {
-      name: "text-collapse",
-      value: text("textCollapse", "Collapse", group)
+      name: "intl-collapse",
+      value: text("intlCollapse", "Collapse", group)
     },
     {
-      name: "text-expand",
-      value: text("textExpand", "Expand", group)
+      name: "intl-expand",
+      value: text("intlExpand", "Expand", group)
     }
   ];
 };
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-block",
     createBlockAttributes(),
@@ -167,12 +163,12 @@ export const basic = () =>
   `
   );
 
-export const withHeaderControl = () =>
+export const withHeaderControl = (): string =>
   create(
     "calcite-block",
     createBlockAttributes({ except: ["open", "collapsible"] }),
     `<label slot="control">test <input placeholder="I'm a header control"/></label>`
   );
 
-export const withIconAndHeader = () =>
+export const withIconAndHeader = (): string =>
   create("calcite-block", createBlockAttributes({ except: ["open", "collapsible"] }), `<div slot="icon">✅</div>`);

@@ -1,4 +1,4 @@
-(() => {
+((): void => {
   const DEMO_ROOT = "demos";
   const ASSETS_PATH = "demos/_assets";
 

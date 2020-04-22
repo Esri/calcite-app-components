@@ -5,33 +5,27 @@ Renders a value list with multiple items able to be selected and a filter.
 ```html
 <calcite-value-list multiple="true" filter-enabled>
   <calcite-value-list-item text-label="Dogs" text-description="Man's best friend" value="dogs">
-    <calcite-action slot="secondary-action">
-      <calcite-icon scale="s" icon="plus"></calcite-icon>
-    </calcite-action>
+    <calcite-action slot="secondary-action" icon="plus"></calcite-action>
   </calcite-value-list-item>
   <calcite-value-list-item text-label="Cats" text-description="Independent and fluffy" value="cats">
-    <calcite-action slot="secondary-action">
-      <calcite-icon scale="s" icon="plus"></calcite-icon>
-    </calcite-action>
+    <calcite-action slot="secondary-action" icon="plus"></calcite-action>
   </calcite-value-list-item>
   <calcite-value-list-item
     text-label="Fish. But not just any fish, a tiger fish caught live in the Atlantic Ocean while on vacation."
     text-description="Easy to care for."
     value="fish"
   >
-    <calcite-action slot="secondary-action">
-      <calcite-icon scale="s" icon="plus"></calcite-icon>
-    </calcite-action>
+    <calcite-action slot="secondary-action" icon="plus"></calcite-action>
   </calcite-value-list-item>
 </calcite-value-list>
 ```
 
 #### Drag and drop
 
-Renders a compact value list (no text descriptions) with drag and drop capability between the items.
+Renders a value list with drag and drop capability between the items.
 
 ```html
-<calcite-value-list drag-enabled compact>
+<calcite-value-list drag-enabled>
   <calcite-value-list-item text-label="Rent" text-description="Mortgage + housing costs" value="rent">
   </calcite-value-list-item>
   <calcite-value-list-item text-label="Food" text-description="its what you eat." value="food">

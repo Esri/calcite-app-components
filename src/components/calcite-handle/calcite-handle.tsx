@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, h } from "@stencil/core";
+import { Component, Element, Event, EventEmitter, Method, Prop, h, VNode } from "@stencil/core";
 import { CSS, ICONS } from "./resources";
 
 @Component({
@@ -52,7 +52,7 @@ export class CalciteHandle {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus() {
+  async setFocus(): Promise<void> {
     this.handleButton.focus();
   }
 
@@ -62,7 +62,7 @@ export class CalciteHandle {
   //
   // --------------------------------------------------------------------------
 
-  handleKeyDown = (event: KeyboardEvent) => {
+  handleKeyDown = (event: KeyboardEvent): void => {
     switch (event.key) {
       case " ":
         this.activated = !this.activated;
@@ -78,7 +78,7 @@ export class CalciteHandle {
     }
   };
 
-  handleBlur = () => {
+  handleBlur = (): void => {
     this.activated = false;
   };
 
@@ -88,7 +88,7 @@ export class CalciteHandle {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       // Needs to be a span because of https://github.com/SortableJS/Sortable/issues/1486
       <span
@@ -99,7 +99,9 @@ export class CalciteHandle {
         onKeyDown={this.handleKeyDown}
         onBlur={this.handleBlur}
         title={this.textTitle}
-        ref={(el) => (this.handleButton = el)}
+        ref={(el): void => {
+          this.handleButton = el;
+        }}
       >
         <calcite-icon scale="s" icon={ICONS.drag} />
       </span>

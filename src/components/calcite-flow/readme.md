@@ -4,6 +4,7 @@ The `calcite-flow` component is a series of panels that provides a user with a w
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -30,33 +31,35 @@ Renders a flow with menu-actions and footer-actions in the form of buttons.
 ```html
 <calcite-flow>
   <calcite-flow-item heading="What are the most popular commute alternatives?">
-    <div slot="menu-actions">
-      <button>Reset</button>
-      <button>Rename</button>
-    </div>
-    <div slot="footer-actions">
-      <button>Save</button>
-      <button>Cancel</button>
-    </div>
+    <button slot="menu-actions">Reset</button>
+    <button slot="menu-actions">Rename</button>
+    <button slot="footer-actions">Save</button>
+    <button slot="footer-actions">Cancel</button>
   </calcite-flow-item>
 </calcite-flow>
 ```
+
+
 
 ## Properties
 
 | Property | Attribute | Description                               | Type                | Default     |
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
-| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" or "light"` | `undefined` |
+| `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
+
 
 ## Methods
 
-### `back() => Promise<any>`
+### `back() => Promise<HTMLCalciteFlowItemElement>`
 
 Removes the currently active `calcite-flow-item`.
 
 #### Returns
 
-Type: `Promise<any>`
+Type: `Promise<HTMLCalciteFlowItemElement>`
+
+
+
 
 ## Slots
 
@@ -64,6 +67,7 @@ Type: `Promise<any>`
 | ---- | --------------------------------------------------- |
 |      | A slot for adding `calcite-flow-item`s to the flow. |
 
----
 
-_Built with [StencilJS](https://stenciljs.com/)_
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

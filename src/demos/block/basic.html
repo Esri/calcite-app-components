@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Calcite App Components: calcite-block</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
   </head>
@@ -15,12 +14,6 @@
       <section class="example-container">
         <h1>Block</h1>
 
-        <p>
-          see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-block/readme.md"
-            >calcite-block readme.</a
-          >
-        </p>
         <h2>Default (non-collapsible)</h2>
 
         <calcite-block heading="Heading" summary="summary"></calcite-block>
@@ -62,13 +55,6 @@
           <calcite-block-section text="Nature" open>
             <img alt="demo" src="https://placeimg.com/640/480/nature" />
           </calcite-block-section>
-        </calcite-block>
-
-        <h2>Header + collapsible + control = no collapsible icon</h2>
-
-        <calcite-block heading="no toggle icon when there is a control" collapsible>
-          <label slot="control">test</label>
-          <div>Some content</div>
         </calcite-block>
 
         <h2>Header + content (sections w/ switch)</h2>

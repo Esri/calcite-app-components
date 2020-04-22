@@ -4,6 +4,7 @@ The `calcite-panel` component is a container for a header, content and optional 
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -38,15 +39,16 @@ Renders a panel with leading and trailing `calcite-action`s.
 ```html
 <calcite-panel>
   <div slot="header-leading-content">
-    <calcite-action label="Performs my custom action" text="Perform Action!" text-enabled>
-      <calcite-icon scale="s" icon="home"></calcite-icon>
-    </calcite-action>
+    <calcite-action label="Performs my custom action" text="Perform Action!" text-enabled icon="home"></calcite-action>
   </div>
   <div slot="header-content">Header!</div>
   <div slot="header-trailing-content">
-    <calcite-action label="Performs another custom action" text="Perform Another Action!" text-enabled>
-      <calcite-icon scale="s" icon="blog"></calcite-icon>
-    </calcite-action>
+    <calcite-action
+      label="Performs another custom action"
+      text="Perform Another Action!"
+      text-enabled
+      icon="blog"
+    ></calcite-action>
   </div>
   <p>Actions are in the top left and right.</p>
 </calcite-panel>
@@ -63,54 +65,66 @@ Renders a panel that is dismissible with a click of the "x".
 </calcite-panel>
 ```
 
+
+
 ## Properties
 
-| Property      | Attribute      | Description                                                                                               | Type                | Default      |
-| ------------- | -------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ------------ |
-| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.               | `boolean`           | `false`      |
-| `dismissed`   | `dismissed`    | Hides the panel.                                                                                          | `boolean`           | `false`      |
-| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`      |
-| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                               | `"l" or "m" or "s"` | `undefined`  |
-| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                            | `boolean`           | `false`      |
-| `textClose`   | `text-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `TEXT.close` |
-| `theme`       | `theme`        | Used to set the component's color scheme.                                                                 | `"dark" or "light"` | `undefined`  |
+| Property      | Attribute      | Description                                                                                                                                                                                 | Type                | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                 | `boolean`           | `false`     |
+| `dismissed`   | `dismissed`    | Hides the panel.                                                                                                                                                                            | `boolean`           | `false`     |
+| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                                                                                                                 | `boolean`           | `false`     |
+| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                                                                                                                 | `"l" \| "m" \| "s"` | `undefined` |
+| `intlClose`   | `intl-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.                                                                                   | `string`            | `undefined` |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                              | `boolean`           | `false`     |
+| `textClose`   | `text-close`   | <span style="color:red">**[DEPRECATED]**</span> use "intlClose" instead.<br/><br/>'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `undefined` |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                                                                                   | `"dark" \| "light"` | `undefined` |
+
 
 ## Events
 
 | Event                         | Description                                     | Type               |
 | ----------------------------- | ----------------------------------------------- | ------------------ |
 | `calcitePanelDismissedChange` | Emitted when the close button has been clicked. | `CustomEvent<any>` |
+| `calcitePanelScroll`          | Emitted when the content has been scrolled.     | `CustomEvent<any>` |
+
 
 ## Methods
 
 ### `setFocus(focusId?: "dismiss-button") => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
 
+
+
+
 ## Slots
 
-| Slot                        | Description                                                              |
-| --------------------------- | ------------------------------------------------------------------------ |
-|                             | A slot for adding content to the panel.                                  |
-| `"footer"`                  | A slot for adding `calcite-button`s to the footer.                       |
-| `"header-content"`          | A slot for adding content in the center of the header.                   |
-| `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.  |
-| `"header-trailing-content"` | A slot for adding a `calcite-action` on the trailing side of the header. |
+| Slot                        | Description                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------- |
+|                             | A slot for adding content to the panel.                                          |
+| `"fab"`                     | A slot for adding a `calcite-fab` (floating action button) to perform an action. |
+| `"footer"`                  | A slot for adding `calcite-button`s to the footer.                               |
+| `"header-content"`          | A slot for adding content in the center of the header.                           |
+| `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.          |
+| `"header-trailing-content"` | A slot for adding a `calcite-action` on the trailing side of the header.         |
+
 
 ## Dependencies
 
 ### Used by
 
-- [calcite-flow-item](../calcite-flow-item)
+ - [calcite-flow-item](../calcite-flow-item)
 
 ### Depends on
 
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-panel --> calcite-action
@@ -118,6 +132,6 @@ graph TD;
   style calcite-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

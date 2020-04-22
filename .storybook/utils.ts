@@ -24,8 +24,16 @@ export const darkBackground = [
   }
 ];
 
-// the generated readme includes escape characters which actually get rendered, remove them
-export const parseReadme = (content: string) => content.replace(/ \\\| /g, " | ");
+/**
+ * This transforms a component markdown to properly render in Storybook notes.
+ */
+export const parseReadme = (content: string): string => {
+  return (
+    content
+      // markdown uses relative paths for component links
+      .replace(/\.\.\//g, "https://github.com/Esri/calcite-app-components/tree/master/src/components/")
+  );
+};
 
 export interface KnobbedAttribute {
   name: string;
@@ -53,20 +61,11 @@ export interface SimpleAttribute {
 export type Attribute = KnobbedAttribute | SimpleAttribute;
 export type Attributes = Attribute[];
 
-export const createComponentHTML = (tagName: string, attributes: Attributes, contentHTML?: string) =>
+export const createComponentHTML = (tagName: string, attributes: Attributes, contentHTML: string = ""): string =>
   `<${tagName} ${attributes.map(({ name, value }) => `${name}="${value}"`).join(" ")}>${contentHTML}</${tagName}>`;
 
 export const titlelessDocsPage: typeof DocsPage = () =>
   DocsPage({
     // no title since README already has one
-    titleSlot: () => "",
-    descriptionSlot: ({ parameters: { notes } }) => {
-      if (typeof notes === "string") {
-        return notes;
-      }
-
-      return Object.keys(notes)
-        .map((section) => notes[section])
-        .join("\n");
-    }
+    titleSlot: () => ""
   });

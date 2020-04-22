@@ -8,7 +8,8 @@ import {
   Listen,
   Prop,
   State,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 
 /**
@@ -67,13 +68,13 @@ export class CalciteSortableList {
   //
   // --------------------------------------------------------------------------
 
-  componentDidLoad() {
+  connectedCallback(): void {
     this.items = Array.from(this.el.children);
     this.setUpDragAndDrop();
     this.beginObserving();
   }
 
-  componentDidUnload() {
+  componentDidUnload(): void {
     this.observer.disconnect();
     this.cleanUpDragAndDrop();
   }
@@ -90,7 +91,7 @@ export class CalciteSortableList {
    */
   @Event() calciteListOrderChange: EventEmitter;
 
-  @Listen("calciteHandleNudge") calciteHandleNudgeHandler(event: CustomEvent) {
+  @Listen("calciteHandleNudge") calciteHandleNudgeHandler(event: CustomEvent): void {
     const sortItem = this.items.find((item) => {
       return item.contains(event.detail.handle) || event.composedPath().includes(item);
     });
@@ -166,7 +167,7 @@ export class CalciteSortableList {
     this.sortable = null;
   }
 
-  beginObserving() {
+  beginObserving(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -176,7 +177,7 @@ export class CalciteSortableList {
   //
   // --------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     return (
       <Host>
         <slot />

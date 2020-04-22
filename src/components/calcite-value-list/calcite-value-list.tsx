@@ -8,26 +8,27 @@ import {
   Method,
   Prop,
   State,
-  h
+  h,
+  VNode
 } from "@stencil/core";
 import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
-import { sharedListMethods } from "../calcite-pick-list/shared-list-logic";
-import List from "../calcite-pick-list/shared-list-render";
-
-const {
-  mutationObserverCallback,
-  initialize,
-  initializeObserver,
-  cleanUpObserver,
+import {
   calciteListItemChangeHandler,
   calciteListItemValueChangeHandler,
-  setUpItems,
+  cleanUpObserver,
   deselectSiblingItems,
-  selectSiblings,
+  getItemData,
   handleFilter,
-  getItemData
-} = sharedListMethods;
+  initialize,
+  initializeObserver,
+  mutationObserverCallback,
+  selectSiblings,
+  setUpItems,
+  keyDownHandler,
+  setFocus
+} from "../calcite-pick-list/shared-list-logic";
+import List from "../calcite-pick-list/shared-list-render";
 
 /**
  * @slot - A slot for adding `calcite-pick-list-item` elements or `calcite-pick-list-group` elements. Items are displayed as a vertical list.
@@ -38,7 +39,9 @@ const {
   styleUrl: "./calcite-value-list.scss",
   shadow: true
 })
-export class CalciteValueList {
+export class CalciteValueList<
+  ItemElement extends HTMLCalciteValueListItemElement = HTMLCalciteValueListItemElement
+> {
   // --------------------------------------------------------------------------
   //
   //  Properties
@@ -47,6 +50,8 @@ export class CalciteValueList {
 
   /**
    * Compact reduces the size of all items in the list.
+   *
+   * @deprecated This property will be removed in a future release.
    */
   @Prop({ reflect: true }) compact = false;
 
@@ -81,7 +86,7 @@ export class CalciteValueList {
   /**
    * Placeholder text for the filter input field.
    */
-  @Prop({ reflect: true }) textFilterPlaceholder?: string = TEXT.filterPlaceholder;
+  @Prop({ reflect: true }) textFilterPlaceholder: string = TEXT.filterPlaceholder;
 
   // --------------------------------------------------------------------------
   //
@@ -89,13 +94,13 @@ export class CalciteValueList {
   //
   // --------------------------------------------------------------------------
 
-  @State() selectedValues: Map<string, HTMLCalciteValueListItemElement> = new Map();
+  @State() selectedValues: Map<string, ItemElement> = new Map();
 
   @State() dataForFilter: object[] = [];
 
-  items: HTMLCalciteValueListItemElement[];
+  items: ItemElement[];
 
-  lastSelectedItem: HTMLCalciteValueListItemElement = null;
+  lastSelectedItem: ItemElement = null;
 
   guid = `calcite-value-list-${guid()}`;
 
@@ -103,7 +108,7 @@ export class CalciteValueList {
 
   sortables: Sortable[] = [];
 
-  @Element() el: HTMLCalciteValueListItemElement;
+  @Element() el: HTMLCalciteValueListElement;
 
   emitCalciteListChange: () => void;
 
@@ -112,16 +117,17 @@ export class CalciteValueList {
   //  Lifecycle
   //
   // --------------------------------------------------------------------------
-  connectedCallback() {
-    initialize.call(this);
-  }
 
-  componentDidLoad() {
-    this.setUpDragAndDrop();
+  connectedCallback(): void {
+    initialize.call(this);
     initializeObserver.call(this);
   }
 
-  componentDidUnload() {
+  componentDidLoad(): void {
+    this.setUpDragAndDrop();
+  }
+
+  componentDidUnload(): void {
     cleanUpObserver.call(this);
     this.cleanUpDragAndDrop();
   }
@@ -144,16 +150,20 @@ export class CalciteValueList {
    */
   @Event() calciteListOrderChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(
+    event: CustomEvent
+  ): void {
     event.stopPropagation();
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(event: CustomEvent) {
+  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(
+    event: CustomEvent
+  ): void {
     calciteListItemValueChangeHandler.call(this, event);
   }
 
@@ -183,7 +193,7 @@ export class CalciteValueList {
         handle: `.${CSS.handle}`,
         draggable: "calcite-value-list-item",
         onUpdate: () => {
-          this.items = Array.from(this.el.querySelectorAll("calcite-value-list-item"));
+          this.items = Array.from(this.el.querySelectorAll<ItemElement>("calcite-value-list-item"));
           const values = this.items.map((item) => item.value);
           this.calciteListOrderChange.emit(values);
         }
@@ -209,17 +219,22 @@ export class CalciteValueList {
 
   getItemData = getItemData.bind(this);
 
-  keyDownHandler = (event) => {
-    const handleElement = event.composedPath().find((item) => {
-      return item.dataset?.jsHandle;
-    });
-    const valueListElement = event.composedPath().find((item) => {
-      return item.tagName?.toLowerCase() === "calcite-value-list-item";
-    });
+  keyDownHandler = (event: KeyboardEvent): void => {
+    const handleElement = event
+      .composedPath()
+      .find((item: HTMLElement) => item.dataset?.jsHandle) as HTMLCalciteHandleElement;
+
+    const valueListElement = event
+      .composedPath()
+      .find(
+        (item: HTMLElement) => item.tagName?.toLowerCase() === "calcite-value-list-item"
+      ) as ItemElement;
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
     if (!handleElement || !valueListElement.handleActivated) {
+      keyDownHandler.call(this, event);
       return;
     }
+
     const lastIndex = this.items.length - 1;
     const value = valueListElement.value;
     const startingIndex = this.items.findIndex((item) => {
@@ -269,6 +284,11 @@ export class CalciteValueList {
     return this.selectedValues;
   }
 
+  @Method()
+  async setFocus(): Promise<void> {
+    return setFocus.call(this);
+  }
+
   // --------------------------------------------------------------------------
   //
   //  Render Methods
@@ -283,7 +303,7 @@ export class CalciteValueList {
     return type;
   }
 
-  render() {
+  render(): VNode {
     return <List props={this} onKeyDown={this.keyDownHandler} />;
   }
 }

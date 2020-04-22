@@ -1,11 +1,5 @@
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
@@ -16,18 +10,11 @@ export default {
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: parseReadme(readme)
   }
 };
 
 const createAttributes: () => Attributes = () => [
-  {
-    name: "compact",
-    value: boolean("compact", false)
-  },
   {
     name: "dir",
     value: select("dir", dir.values, dir.defaultValue)
@@ -59,12 +46,10 @@ const createAttributes: () => Attributes = () => [
 ];
 
 const action = dedent`
-  <calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear">
-    <calcite-icon icon="circle" scale="s" filled style="color: #f689d8;"></calcite-icon>
-  </calcite-action>
+  <calcite-action slot="secondary-action" label="click-me" onClick="console.log('clicked');" appearance="clear" style="color: #f689d8;" icon="circle"></calcite-action>
 `;
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-value-list",
     createAttributes(),

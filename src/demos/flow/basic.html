@@ -6,83 +6,37 @@
 
     <title>Calcite App Components: calcite-flow</title>
 
-    <!-- Loads the link and script tags-->
     <script src="../_assets/head.js"></script>
     <script src="../_assets/toggles.js"></script>
-    <style>
-      .demo-block {
-        width: 100%;
-        height: 240px;
-        margin-bottom: 8px;
-        background-color: #fff;
-        border-radius: 3px;
-        box-shadow: 0 1px 0 #e0e0e0;
-      }
-      .demo-btn {
-        background-color: transparent;
-        border: 1px solid #007ac2;
-        color: #007ac2;
-        font-size: 1rem;
-        font-family: inherit;
-        padding: 0.7rem;
-        border-radius: 3px;
-        margin: 1rem 0.2rem;
-        min-width: 5rem;
-      }
-    </style>
   </head>
 
   <body>
     <main>
       <section class="example-container">
         <h1>calcite-flow</h1>
-        <p>
-          A Flow is a container for showing flow-items 1 at a time. This can be useful to break content into steps,
-          useful for complicated instructions or walkthroughs.
-        </p>
-        <p>
-          To go to a next step, you'll need to
-          <a href="advanced/flow-adding-items.html">add a new flow-item using native dom methods</a>. The back button
-          (used to go back to previous steps (flow-items) emits an event, but does not automatically switch flow-items
-          by default. Hook into the event to do any cleanup necessary then remove the last flow-item in the flow. Or use
-          the handle-back attribute to have it automatically remove the last flow-item.
-        </p>
-        <p>
-          see the
-          <a href="https://github.com/Esri/calcite-app-components/tree/master/src/components/calcite-flow/readme.md"
-            >calcite-flow readme.</a
-          >
-        </p>
 
         <h2>Basic</h2>
         <calcite-flow>
           <calcite-flow-item heading="Item One">
-            <div slot="menu-actions">
-              <button>Reset</button>
-              <button>Rename</button>
-            </div>
+            <button slot="menu-actions">Reset</button>
+            <button slot="menu-actions">Rename</button>
             <img src="https://via.placeholder.com/300x200" alt="placeholder" />
           </calcite-flow-item>
           <calcite-flow-item heading="Item Two">
-            <div slot="menu-actions">
-              <button>Reset</button>
-              <button>Rename</button>
-            </div>
+            <button slot="menu-actions">Reset</button>
+            <button slot="menu-actions">Rename</button>
             <img src="https://via.placeholder.com/400x300" alt="placeholder" />
+            <calcite-fab slot="fab"></calcite-fab>
           </calcite-flow-item>
         </calcite-flow>
 
         <h2>Menu-actions and Footer-actions</h2>
         <calcite-flow>
           <calcite-flow-item heading="What are the most popular commute alternatives?">
-            <div slot="menu-actions">
-              <button>Reset</button>
-              <button>Rename</button>
-            </div>
-            <div slot="footer-actions">
-              <button class="btn">Save</button>
-              <button class="btn btn-secondary">Cancel</button>
-            </div>
+            <button slot="menu-actions">Reset</button>
+            <button slot="menu-actions">Rename</button>
+            <button slot="footer-actions" class="btn">Save</button>
+            <button slot="footer-actions" class="btn btn-secondary">Cancel</button>
             <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
             <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
           </calcite-flow-item>
@@ -93,32 +47,26 @@
           <h3>Basic</h3>
           <calcite-flow>
             <calcite-flow-item heading="Item One">
-              <div slot="menu-actions">
-                <button>Reset</button>
-                <button>Rename</button>
-              </div>
-              <img src="https://via.placeholder.com/300x200" alt="placeholder"/>
+              <button slot="menu-actions">Reset</button>
+              <button slot="menu-actions">Rename</button>
+
+              <img src="https://via.placeholder.com/300x200" alt="placeholder" />
             </calcite-flow-item>
             <calcite-flow-item heading="Item Two">
-              <div slot="menu-actions">
-                <button>Reset</button>
-                <button>Rename</button>
-              </div>
-              <img src="https://via.placeholder.com/400x300" alt="placeholder"/>
+              <button slot="menu-actions">Reset</button>
+              <button slot="menu-actions">Rename</button>
+
+              <img src="https://via.placeholder.com/400x300" alt="placeholder" />
             </calcite-flow-item>
           </calcite-flow>
 
           <h3>Menu-actions and Footer-actions</h3>
           <calcite-flow>
             <calcite-flow-item heading="What are the most popular commute alternatives?">
-              <div slot="menu-actions">
-                <button>Reset</button>
-                <button>Rename</button>
-              </div>
-              <div slot="footer-actions">
-                <button class="btn">Save</button>
-                <button class="btn btn-secondary">Cancel</button>
-              </div>
+              <button slot="menu-actions">Reset</button>
+              <button slot="menu-actions">Rename</button>
+              <button slot="footer-actions" class="btn">Save</button>
+              <button slot="footer-actions" class="btn btn-secondary">Cancel</button>
               <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
               <p><img src="https://via.placeholder.com/300x200" alt="placeholder" /></p>
             </calcite-flow-item>

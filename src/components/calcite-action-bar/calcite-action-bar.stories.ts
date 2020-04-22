@@ -1,24 +1,16 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import {
-  Attributes,
-  createComponentHTML as create,
-  darkBackground,
-  parseReadme,
-  titlelessDocsPage
-} from "../../../.storybook/utils";
+import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
-const { dir, layout, theme } = ATTRIBUTES;
+const { dir, position, theme } = ATTRIBUTES;
+import { TEXT } from "./resources";
 
 export default {
   title: "components|calcite-action-bar",
   decorators: [withKnobs],
   parameters: {
     backgrounds: darkBackground,
-    docs: {
-      page: titlelessDocsPage
-    },
     notes: parseReadme(readme)
   }
 };
@@ -37,16 +29,16 @@ const createAttributes: () => Attributes = () => [
     value: select("dir", dir.values, dir.defaultValue)
   },
   {
-    name: "text-expand",
-    value: text("textExpand", "Expand")
+    name: "intl-expand",
+    value: text("intlExpand", TEXT.expand)
   },
   {
-    name: "text-collapse",
-    value: text("textCollapse", "Collapse")
+    name: "intl-collapse",
+    value: text("intlCollapse", TEXT.collapse)
   },
   {
-    name: "layout",
-    value: select("layout", layout.values, layout.defaultValue)
+    name: "position",
+    value: select("position", position.values, position.defaultValue)
   },
   {
     name: "theme",
@@ -54,17 +46,17 @@ const createAttributes: () => Attributes = () => [
   }
 ];
 
-export const basic = () =>
+export const basic = (): string =>
   create(
     "calcite-action-bar",
     createAttributes(),
     dedent`
     <calcite-action-group>
-      <calcite-action text="Add" label="Add Item"><calcite-icon scale="s" icon="plus"></calcite-icon></calcite-action>
-      <calcite-action text="Save" label="Save Item"><calcite-icon scale="s" icon="save"></calcite-icon></calcite-action>
+      <calcite-action text="Add" label="Add Item" icon="plus"></calcite-action>
+      <calcite-action text="Save" label="Save Item" icon="save"></calcite-action>
     </calcite-action-group>
     <calcite-action-group>
-      <calcite-action text="Layers" label="View Layers"><calcite-icon scale="s" icon="layers"></calcite-icon></calcite-action>
+      <calcite-action text="Layers" label="View Layers" icon="layers"></calcite-action>
     </calcite-action-group>
   `
   );
