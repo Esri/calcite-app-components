@@ -1,5 +1,5 @@
 import { Component, Element, Host, Method, Prop, h, VNode } from "@stencil/core";
-import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
+import { CalciteAppearance, CalciteColor, CalciteScale, CalciteTheme } from "../interfaces";
 import { CSS, ICONS } from "./resources";
 import { focusElement, getElementDir } from "../utils/dom";
 
@@ -19,6 +19,11 @@ export class CalciteFab {
    * Used to set the button's appearance. Default is outline.
    */
   @Prop({ reflect: true }) appearance: CalciteAppearance = "outline";
+
+  /**
+   * Used to set the button's color. Default is light.
+   */
+  @Prop({ reflect: true }) color: CalciteColor = "light";
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
@@ -43,7 +48,7 @@ export class CalciteFab {
   /**
    * Specifies the size of the fab.
    */
-  @Prop({ reflect: true }) scale: CalciteScale = "m";
+  @Prop({ reflect: true }) scale: CalciteScale = "s";
 
   /**
    * Text that accompanies the FAB icon.
@@ -90,6 +95,7 @@ export class CalciteFab {
   render(): VNode {
     const {
       appearance,
+      color,
       disabled,
       el,
       loading,
@@ -117,10 +123,9 @@ export class CalciteFab {
           scale={scale}
           icon={icon}
           round={true}
-          floating={true}
           width="auto"
           appearance={appearance}
-          color="blue"
+          color={color}
           ref={(buttonEl): void => {
             this.buttonEl = buttonEl;
           }}

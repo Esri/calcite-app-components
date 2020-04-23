@@ -44,6 +44,11 @@
   z-index: 0;
 }
 
+::slotted(.header .heading) {
+  font-weight: var(--calcite-app-font-weight);
+  font-size: var(--calcite-app-font-size-1);
+}
+
 ::slotted(calcite-shell-panel) {
   position: relative;
   z-index: 1;
