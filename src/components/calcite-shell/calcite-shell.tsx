@@ -1,7 +1,6 @@
 import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
-import classnames from "classnames";
 import { getCalcitePosition, getSlotted } from "../utils/dom";
 
 /**
@@ -71,11 +70,12 @@ export class CalciteShell {
     const primaryPanel = getSlotted<HTMLCalciteShellPanelElement>(this.el, SLOTS.primaryPanel);
 
     const mainClasses = {
+      [CSS.main]: true,
       [CSS.mainReversed]: getCalcitePosition(primaryPanel?.position, primaryPanel?.layout) === "end"
     };
 
     return (
-      <div class={classnames(CSS.main, mainClasses)}>
+      <div class={mainClasses}>
         <slot name={SLOTS.primaryPanel} />
         {this.renderContent()}
         <slot name={SLOTS.contextualPanel} />

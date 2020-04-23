@@ -2,8 +2,6 @@ import { Component, Element, Host, Method, Prop, h, forceUpdate } from "@stencil
 
 import { CalciteAppearance, CalciteScale, CalciteTheme } from "../interfaces";
 
-import classnames from "classnames";
-
 import { CSS } from "./resources";
 
 import { CSS_UTILITY } from "../utils/resources";
@@ -101,7 +99,7 @@ export class CalciteAction {
   //
   // --------------------------------------------------------------------------
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     this.observer.observe(this.el, { childList: true, subtree: true });
   }
 
@@ -130,11 +128,12 @@ export class CalciteAction {
     const { text, textEnabled } = this;
 
     const textContainerClasses = {
+      [CSS.textContainer]: true,
       [CSS.textContainerVisible]: textEnabled
     };
 
     return text ? (
-      <div key="text-container" class={classnames(CSS.textContainer, textContainerClasses)}>
+      <div key="text-container" class={textContainerClasses}>
         {text}
       </div>
     ) : null;
@@ -150,9 +149,10 @@ export class CalciteAction {
 
     const slotContainerNode = (
       <div
-        class={classnames(CSS.slotContainer, {
+        class={{
+          [CSS.slotContainer]: true,
           [CSS.slotContainerHidden]: loading
-        })}
+        }}
       >
         <slot />
       </div>
@@ -173,6 +173,7 @@ export class CalciteAction {
     const rtl = getElementDir(el) === "rtl";
 
     const buttonClasses = {
+      [CSS.button]: true,
       [CSS.buttonTextVisible]: textEnabled,
       [CSS.buttonCompact]: compact,
       [CSS_UTILITY.rtl]: rtl
@@ -181,7 +182,7 @@ export class CalciteAction {
     return (
       <Host>
         <button
-          class={classnames(CSS.button, buttonClasses)}
+          class={buttonClasses}
           aria-label={ariaLabel}
           disabled={disabled}
           aria-disabled={disabled.toString()}
