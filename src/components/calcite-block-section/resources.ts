@@ -10,7 +10,7 @@ export const TEXT = {
 };
 
 export const ICONS = {
-  menuOpen: "caret-down",
-  menuClosedLeft: "caret-left",
-  menuClosedRight: "caret-right"
+  menuOpen: "chevron-down",
+  menuClosedLeft: "chevron-left",
+  menuClosedRight: "chevron-right"
 };

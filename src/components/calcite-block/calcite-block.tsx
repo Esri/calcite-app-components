@@ -1,8 +1,9 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, SLOTS, TEXT } from "./resources";
+import { CSS_UTILITY } from "../utils/resources";
 import { CalciteTheme } from "../interfaces";
 import CalciteScrim from "../utils/CalciteScrim";
-import { getSlotted } from "../utils/dom";
+import { getElementDir, getSlotted } from "../utils/dom";
 
 /**
  * @slot icon - A slot for adding a trailing header icon.
@@ -155,6 +156,8 @@ export class CalciteBlock {
       </header>
     );
 
+    const hasControl = getSlotted(el, SLOTS.control);
+
     const headerNode = (
       <div class={CSS.headerContainer}>
         {this.dragHandle ? <calcite-handle /> : null}
@@ -172,15 +175,23 @@ export class CalciteBlock {
         )}
         {loading ? (
           <calcite-loader inline is-active></calcite-loader>
-        ) : (
-          <slot name={SLOTS.control} />
-        )}
+        ) : hasControl ? (
+          <div class={CSS.controlContainer}>
+            <slot name={SLOTS.control} />
+          </div>
+        ) : null}
       </div>
     );
 
+    const rtl = getElementDir(el) === "rtl";
+
     return (
       <Host tabIndex={disabled ? -1 : null}>
-        <article aria-expanded={collapsible ? open.toString() : null} aria-busy={loading}>
+        <article
+          aria-expanded={collapsible ? open.toString() : null}
+          aria-busy={loading}
+          class={rtl ? CSS_UTILITY.rtl : null}
+        >
           {headerNode}
           <div class={CSS.content} hidden={!open}>
             <CalciteScrim loading={loading} disabled={disabled}>

@@ -80,8 +80,8 @@
 :host([scale="s"][compact]) .button,
 :host([scale="m"][compact]) .button,
 :host([scale="l"][compact]) .button {
-  padding-left: var(--calcite-app-side-spacing-quarter);
-  padding-right: var(--calcite-app-side-spacing-quarter);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .slot-container {

@@ -9,7 +9,7 @@ export const CSS = {
   header: "header",
   button: "button",
   summary: "summary",
-  control: "control"
+  controlContainer: "control-container"
 };
 
 export const TEXT = {
