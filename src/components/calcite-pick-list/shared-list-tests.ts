@@ -1,9 +1,10 @@
 import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
+import { JSEvalable } from "puppeteer";
 
 type ListType = "pick" | "value";
 
 export function keyboardNavigation(listType: ListType): void {
-  const getFocusedItemValue = (page: E2EPage) =>
+  const getFocusedItemValue = (page: E2EPage): ReturnType<JSEvalable["evaluate"]> =>
     page.evaluate(
       () => (document.activeElement as HTMLCalcitePickListItemElement | HTMLCalciteValueListItemElement).value
     );

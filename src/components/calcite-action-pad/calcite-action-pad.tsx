@@ -115,7 +115,7 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLCalciteActionBarElement;
+  @Element() el: HTMLCalciteActionPadElement;
 
   // --------------------------------------------------------------------------
   //

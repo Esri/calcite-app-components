@@ -36,10 +36,7 @@ export class CalciteTip {
   /**
    * The selected state of the tip if it is being used inside a `calcite-tip-manager`.
    */
-  @Prop({
-    reflect: true
-  })
-  selected?: boolean;
+  @Prop({ reflect: true }) selected?: boolean;
 
   /**
    * Alternate text for closing the tip.
