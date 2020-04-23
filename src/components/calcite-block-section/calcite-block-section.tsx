@@ -33,10 +33,7 @@ export class CalciteBlockSection {
   /**
    * When true, the block's section content will be displayed.
    */
-  @Prop({
-    reflect: true
-  })
-  open = false;
+  @Prop({ reflect: true }) open = false;
 
   /**
    * Text displayed in the button.
@@ -48,16 +45,14 @@ export class CalciteBlockSection {
    *
    * @deprecated use "intlCollapse" instead.
    */
-  @Prop()
-  textCollapse?: string;
+  @Prop() textCollapse?: string;
 
   /**
    * Tooltip used for the toggle when collapsed.
    *
    * @deprecated use "intlExpand" instead.
    */
-  @Prop()
-  textExpand?: string;
+  @Prop() textExpand?: string;
 
   /**
    * This property determines the look of the section toggle.
@@ -66,10 +61,7 @@ export class CalciteBlockSection {
    *
    * @todo revisit doc
    */
-  @Prop({
-    reflect: true
-  })
-  toggleDisplay: CalciteBlockSectionToggleDisplay = "button";
+  @Prop({ reflect: true }) toggleDisplay: CalciteBlockSectionToggleDisplay = "button";
 
   // --------------------------------------------------------------------------
   //
@@ -77,8 +69,7 @@ export class CalciteBlockSection {
   //
   // --------------------------------------------------------------------------
 
-  @Element()
-  el: HTMLCalciteBlockSectionElement;
+  @Element() el: HTMLCalciteBlockSectionElement;
 
   guid = `calcite-block-section-${guid()}`;
 

@@ -92,8 +92,7 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
-  @Element()
-  el: HTMLCalciteBlockElement;
+  @Element() el: HTMLCalciteBlockElement;
 
   // --------------------------------------------------------------------------
   //
@@ -104,8 +103,7 @@ export class CalciteBlock {
   /**
    * Emitted when the header has been clicked.
    */
-  @Event()
-  calciteBlockToggle: EventEmitter;
+  @Event() calciteBlockToggle: EventEmitter;
 
   // --------------------------------------------------------------------------
   //
