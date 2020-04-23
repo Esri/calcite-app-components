@@ -14,6 +14,10 @@
   },
   "plugins": ["@typescript-eslint", "eslint-plugin-react", "prettier"],
   "rules": {
+    "@stencil/own-methods-must-be-private": "off",
+    "@stencil/own-props-must-be-private": "off",
+    "@stencil/required-jsdoc": "off",
+    "@stencil/strict-boolean-conditions": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-use-before-define": ["error", { "functions": false }],
     "lines-between-class-members": ["error", "always"],

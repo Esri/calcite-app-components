@@ -29,7 +29,7 @@ export class CalcitePickListGroup {
   //
   // --------------------------------------------------------------------------
 
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCalcitePickListGroupElement;
 
   // --------------------------------------------------------------------------
   //

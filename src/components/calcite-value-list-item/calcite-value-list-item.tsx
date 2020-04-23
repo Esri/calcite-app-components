@@ -94,7 +94,8 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Method() async toggleSelected(coerce?: boolean): Promise<void> {
+  @Method()
+  async toggleSelected(coerce?: boolean): Promise<void> {
     this.pickListItem.toggleSelected(coerce);
   }
 
@@ -109,7 +110,8 @@ export class CalciteValueListItem {
   //
   // --------------------------------------------------------------------------
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
+  @Listen("calciteListItemChange")
+  calciteListItemChangeHandler(event: CustomEvent): void {
     // adjust item payload from wrapped item before bubbling
     event.detail.item = this.el;
   }
