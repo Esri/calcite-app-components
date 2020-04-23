@@ -52,9 +52,12 @@ For ease of discoverability, commit messages for breaking changes should use bot
 BREAKING CHANGE: <details about the change and migration options (this can span multiple lines)>
 ```
 
+See the [conventional commits doc](https://www.conventionalcommits.org/en/v1.0.0/) for more helpful information.
+
 ### Report a bug
 
-We use Github issues to keep track of bugs. Please follow our [bug issue template](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=bug%2C+0+-+new&template=bug.md&title=Bug%3A+) and explain the problem clearly for us maintainers to understand and reproduce. The more details the better!
+We use GitHub issues to keep track of bugs. Please follow our [bug issue template](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=bug%2C+0+-+new&template=bug.md&title=Bug%3A+) and explain the problem clearly for us maintainers to understand and reproduce. The more details the better!
+
 Things to consider:
 
 - Use a clear and descriptive title
@@ -82,7 +85,7 @@ Components must be accessible and are required to have tests that focus on a11y.
 
 ### Components
 
-New components should have an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+) so we can determine whether they belong here or calcite-components.
+New components should have an [issue](https://github.com/Esri/calcite-app-components/issues/new?assignees=&labels=new+component%2C+0+-+new%2C+architecture&template=new-component.md&title=New+Component%3A+) so we can determine whether they belong here or [calcite-components](https://github.com/Esri/calcite-components).
 
 #### General checklist
 
@@ -92,7 +95,7 @@ See the [new component checklist](https://github.com/Esri/calcite-app-components
 
 This project uses [Storybook](https://storybook.js.org/) to provide an interactive showcase of components with accompanying documentation.
 
-For each main component (i.e., one that can be used by itself), there should be a <component-name>.stories.ts file in its component folder.
+For each main component (i.e., one that can be used by itself), there should be a `<component-name>.stories.ts` file in its component folder.
 
 Each story should provide access to relevant [knobs](https://github.com/storybookjs/storybook/tree/next/addons/knobs) so users can test out different properties.
 
@@ -111,7 +114,7 @@ We follow Stencil's suggested component structure. See their [style guide](https
 
 #### Styling
 
-Be sure to set `shadow: true` in Stencil's `@Component` options to make sure styles are encapsulated in our calcite design system. This helps keep our components consistent across applications.
+Be sure to set `shadow: true` in Stencil's `@Component` options to make sure styles are encapsulated in our Calcite design system. This helps keep our components consistent across applications.
 
 #### Utils
 
@@ -125,30 +128,18 @@ This will create a unique id attribute like `id="calcite-example-51af-0941-54ae-
 
 Components should require as a few text translations as possible. In general, this allows users to supply text values via slots and attributes and handle translations within their apps.
 
-If your component involves formatting numbers or dates use the [`Intl` APIs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) for formating the display of numbers and dates in the component.
+If your component involves formatting numbers or dates use the [`Intl` APIs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) for formatting.
 
 To add RTL support to your components, use the internal `getElementDir` helper to apply the `dir` attribute to the component. That way, the `dir` attribute of the component will always match that of the document. See use of `getElementDir` in [calcite-panel](https://github.com/Esri/calcite-app-components/blob/master/src/components/calcite-panel/calcite-panel.tsx).
 
-Direction specific CSS can be implemented with CSS variables:
-
-```scss
-:host {
-  --calcite-tabs-tab-margin-start: 1.25rem;
-  --calcite-tabs-tab-margin-end: 0;
-}
-
-:host([dir="rtl"]) {
-  --calcite-tabs-tab-margin-start: 0;
-  --calcite-tabs-tab-margin-end: 1.25rem;
-}
-```
+Direction specific CSS can be implemented with CSS variables- see example [here](https://github.com/Esri/calcite-app-components/blob/master/src/components/calcite-block-section/calcite-block-section.scss).
 
 - https://medium.com/stencil-tricks/implementing-internationalisation-i18n-with-stencil-5e6559554117 and https://codesandbox.io/s/43pmx55vo9
 - https://github.com/ionic-team/ionic-stencil-conference-app/issues/69
 
 #### Testing
 
-Components should have an automated test for any incoming features or bug fix. Make sure all tests pass as PRs will not be allowed to merge if there is a single test failure.
+Components should have an automated test for any incoming features or bug fixes. Make sure all tests pass as PRs will not be allowed to merge if there is a single test failure.
 
 We encourage writing expressive test cases and code that indicates intent. Use comments sparingly when the aforementioned can't be fully achieved. Keep it clean!
 
@@ -156,7 +147,7 @@ Please see Stencil's doc for more info on [end-to-end](https://stenciljs.com/doc
 
 #### Browser support
 
-See our [README.md](https://github.com/Esri/calcite-app-components/blob/master/README.md) for a list of supported browswers.
+See our [README.md](https://github.com/Esri/calcite-app-components/blob/master/README.md#browser-support) for a list of supported browsers.
 
 ## Gotchas
 
