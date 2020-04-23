@@ -58,7 +58,8 @@ export class CalcitePickListItem {
    */
   @Prop() metadata?: object;
 
-  @Watch("metadata") metadataWatchHandler(): void {
+  @Watch("metadata")
+  metadataWatchHandler(): void {
     this.calciteListItemPropsChange.emit();
   }
 
@@ -89,7 +90,8 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textDescription?: string;
 
-  @Watch("textDescription") textDescriptionWatchHandler(): void {
+  @Watch("textDescription")
+  textDescriptionWatchHandler(): void {
     this.calciteListItemPropsChange.emit();
   }
 
@@ -98,7 +100,8 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) textLabel: string;
 
-  @Watch("textLabel") textLabelWatchHandler(): void {
+  @Watch("textLabel")
+  textLabelWatchHandler(): void {
     this.calciteListItemPropsChange.emit();
   }
 
@@ -112,7 +115,8 @@ export class CalcitePickListItem {
    */
   @Prop({ reflect: true }) value!: string;
 
-  @Watch("value") valueWatchHandler(newValue: string, oldValue: string): void {
+  @Watch("value")
+  valueWatchHandler(newValue: string, oldValue: string): void {
     this.calciteListItemValueChange.emit({ oldValue, newValue });
   }
 
@@ -175,7 +179,8 @@ export class CalcitePickListItem {
    * Used to toggle the selection state. By default this won't trigger an event.
    * The first argument allows the value to be coerced, rather than swapping values.
    */
-  @Method() async toggleSelected(coerce?: boolean): Promise<void> {
+  @Method()
+  async toggleSelected(coerce?: boolean): Promise<void> {
     if (this.disabled) {
       return;
     }
@@ -224,7 +229,7 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   renderIcon(): VNode {
-    const { compact, icon, selected } = this;
+    const { compact, icon } = this;
 
     if (!icon || compact) {
       return null;

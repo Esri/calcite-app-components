@@ -129,20 +129,19 @@ export class CalcitePickList<
    */
   @Event() calciteListChange: EventEmitter;
 
-  @Listen("calciteListItemChange") calciteListItemChangeHandler(event: CustomEvent): void {
+  @Listen("calciteListItemChange")
+  calciteListItemChangeHandler(event: CustomEvent): void {
     calciteListItemChangeHandler.call(this, event);
   }
 
-  @Listen("calciteListItemPropsChange") calciteListItemPropsChangeHandler(
-    event: CustomEvent
-  ): void {
+  @Listen("calciteListItemPropsChange")
+  calciteListItemPropsChangeHandler(event: CustomEvent): void {
     event.stopPropagation();
     this.setUpFilter();
   }
 
-  @Listen("calciteListItemValueChange") calciteListItemValueChangeHandler(
-    event: CustomEvent
-  ): void {
+  @Listen("calciteListItemValueChange")
+  calciteListItemValueChangeHandler(event: CustomEvent): void {
     calciteListItemValueChangeHandler.call(this, event);
   }
 

@@ -21,7 +21,7 @@ export class CalciteHandle {
   /**
    * Value for the button title attribute
    */
-  @Prop({ mutable: true, reflect: true }) textTitle = "handle";
+  @Prop({ reflect: true }) textTitle = "handle";
 
   // --------------------------------------------------------------------------
   //

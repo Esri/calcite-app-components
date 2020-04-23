@@ -17,7 +17,7 @@ export const TEXT = {
   expand: "Expand"
 };
 
-export const enum SLOTS {
-  icon = "icon",
-  control = "control"
-}
+export const SLOTS = {
+  icon: "icon",
+  control: "control"
+};
