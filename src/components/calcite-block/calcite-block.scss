@@ -45,7 +45,10 @@
   font-size: var(--calcite-app-font-size-0);
   text-align: unset;
   color: var(--calcite-app-foreground);
-  @include focusRingInset();
+  @include focus-style-base();
+  &:focus {
+    @include focus-style-inset();
+  }
 }
 
 .header,

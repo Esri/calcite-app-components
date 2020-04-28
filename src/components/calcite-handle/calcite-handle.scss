@@ -16,14 +16,14 @@
   color: var(--calcite-app-border);
   line-height: 0;
   cursor: move;
-  @include focusRingInset();
-  &:focus {
-    outline-offset: var(--calcite-app-outline-inset);
-    color: var(--calcite-app-foreground);
-  }
   &:hover {
     background-color: var(--calcite-app-background-hover);
     color: var(--calcite-app-foreground);
+  }
+  @include focus-style-base();
+  &:focus {
+    color: var(--calcite-app-foreground);
+    @include focus-style-inset();
   }
   &--activated {
     background-color: var(--calcite-app-background-active);

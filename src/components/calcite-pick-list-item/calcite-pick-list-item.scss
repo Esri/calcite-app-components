@@ -37,8 +37,10 @@
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-quarter);
   align-items: center;
   cursor: pointer;
-
-  @include focusRingInset();
+  @include focus-style-base();
+  &:focus {
+    @include focus-style-inset();
+  }
 }
 
 .text-container {
