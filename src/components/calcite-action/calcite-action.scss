@@ -24,7 +24,7 @@
   transition: color 125ms ease-in-out, fill 125ms ease-in-out, background-color 125ms ease-in-out;
   text-align: unset;
   position: relative;
-
+  @include focus-style-base();
   &:hover,
   &:focus {
     background-color: var(--calcite-app-background-hover);
@@ -32,7 +32,9 @@
     fill: var(--calcite-app-foreground-hover);
   }
 
-  @include focusRingInset();
+  &:focus {
+    @include focus-style-inset();
+  }
 
   .icon-container {
     min-width: var(--calcite-app-icon-size);
