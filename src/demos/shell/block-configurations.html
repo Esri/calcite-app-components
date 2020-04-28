@@ -30,7 +30,12 @@
     </style>
 
     <script>
-      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/LayerList","esri/widgets/Zoom"], function(WebMap, MapView, LayerList, Zoom) {
+      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/LayerList", "esri/widgets/Zoom"], function (
+        WebMap,
+        MapView,
+        LayerList,
+        Zoom
+      ) {
         const webmap = new WebMap({
           portalItem: {
             id: "cc316ca9e0824970ad29ac558161d42d"
@@ -40,9 +45,9 @@
         const view = new MapView({
           container: "viewDiv",
           map: webmap,
-          padding: {left: 49, right: 385}
+          padding: { left: 49, right: 385 }
         });
-        view.when(function() {
+        view.when(function () {
           var layerList = new LayerList({
             view: view,
             selectionEnabled: true,
@@ -61,22 +66,15 @@
           <calcite-shell-panel id="primary-panel" slot="primary-panel" position="start" detached detached-scale="l">
             <calcite-action-bar slot="action-bar" theme="dark">
               <calcite-action-group>
-                <calcite-action text="Save" icon="save" indicator>
-                </calcite-action>
-                <calcite-action icon="map" text="New">
-                </calcite-action>
-                <calcite-action icon="collection" text="Open">
-                </calcite-action>
-            </calcite-action-group>
-            <calcite-action-group>
-                <calcite-action icon="layers" text="Layers" active>
-                </calcite-action>
-                <calcite-action icon="basemap" text="Basemaps">
-                </calcite-action>
-                <calcite-action icon="legend" text="Legend">
-                </calcite-action>
-                <calcite-action icon="bookmark" text="Bookmarks">
-                </calcite-action>
+                <calcite-action text="Save" icon="save" indicator> </calcite-action>
+                <calcite-action icon="map" text="New"> </calcite-action>
+                <calcite-action icon="collection" text="Open"> </calcite-action>
+              </calcite-action-group>
+              <calcite-action-group>
+                <calcite-action icon="layers" text="Layers" active> </calcite-action>
+                <calcite-action icon="basemap" text="Basemaps"> </calcite-action>
+                <calcite-action icon="legend" text="Legend"> </calcite-action>
+                <calcite-action icon="bookmark" text="Bookmarks"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
                 <calcite-action text="Share" icon="share"></calcite-action>
@@ -88,11 +86,11 @@
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-flow>
-                <calcite-flow-item heading="Layers">
-                    <div id="layerlist-container"></div>
-                    <calcite-fab slot="fab" id="layer-fab" text="Add layers"></calcite-fab>
-                    <calcite-tooltip reference-element="layer-fab" disable-pointer>Add layers</calcite-tooltip>
-                </calcite-flow-item>
+              <calcite-flow-item heading="Layers">
+                <div id="layerlist-container"></div>
+                <calcite-fab slot="fab" id="layer-fab" text="Add layers"></calcite-fab>
+                <calcite-tooltip reference-element="layer-fab" disable-pointer>Add layers</calcite-tooltip>
+              </calcite-flow-item>
             </calcite-flow>
           </calcite-shell-panel>
 
@@ -126,189 +124,189 @@
                 heading="Configure popup"
                 summary="Popular Demographics in the United States (Beta) - County"
               >
-                
-                <calcite-block heading="Basic"  summary="Collapsible" collapsible>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="Basic" summary="Collapsible" collapsible>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="Basic"  summary="Not collapsible">
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="Basic" summary="Not collapsible">
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="With control"  summary="Collapsible" collapsible>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="With control" summary="Collapsible" collapsible>
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="With control"  summary="Not collapsible">
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="With control" summary="Not collapsible">
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="With icon"  summary="Collapsible" collapsible>
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="With icon" summary="Collapsible" collapsible>
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="With icon"  summary="Not collapsible">
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="With icon" summary="Not collapsible">
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="With icon and control and long stuff"  summary="Collapsible" collapsible>
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="With icon and control and long stuff" summary="Collapsible" collapsible>
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block heading="With icon and control"  summary="Not collapsible">
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block heading="With icon and control" summary="Not collapsible">
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
-                </calcite-block>
-
-                <calcite-block drag-handle heading="Drag + Basic"  summary="Collapsible" collapsible>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                    </div>
-                </calcite-block>
-                <calcite-block drag-handle heading="Drag + Basic"  summary="Not collapsible">
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                    </div>
-                </calcite-block>
-                <calcite-block drag-handle heading="Drag + Basic with control and some extra text"  summary="Collapsible" collapsible>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                    </div>
-                </calcite-block>
-                <calcite-block drag-handle heading="Drag + Basicwithcontrolandsomeextratext"  summary="Not collapsible">
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                    </div>
-                </calcite-block>
-                <calcite-block drag-handle heading="Drag + Basic with icon"  summary="Collapsible" collapsible>
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                    </div>
-                </calcite-block>
-                <calcite-block drag-handle heading="Drag + Basic with icon"  summary="Not collapsible">
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
-                    </div>
+                  </div>
                 </calcite-block>
 
-                <calcite-block drag-handle heading="Basic with icon and control"  summary="Collapsible" collapsible>
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block drag-handle heading="Drag + Basic" summary="Collapsible" collapsible>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                <calcite-block drag-handle heading="Basic with icon and control"  summary="Not collapsible">
-                    <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
-                    <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
-                    <div class="combo-control">
-                        <div class="combo-button">
-                            <button class="combo-button__main">
-                            County: {NAME}
-                            </button>
-                            <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                        </div>
+                <calcite-block drag-handle heading="Drag + Basic" summary="Not collapsible">
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
                     </div>
+                  </div>
                 </calcite-block>
-                
-                
+                <calcite-block
+                  drag-handle
+                  heading="Drag + Basic with control and some extra text"
+                  summary="Collapsible"
+                  collapsible
+                >
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                    </div>
+                  </div>
+                </calcite-block>
+                <calcite-block drag-handle heading="Drag + Basicwithcontrolandsomeextratext" summary="Not collapsible">
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                    </div>
+                  </div>
+                </calcite-block>
+                <calcite-block drag-handle heading="Drag + Basic with icon" summary="Collapsible" collapsible>
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                    </div>
+                  </div>
+                </calcite-block>
+                <calcite-block drag-handle heading="Drag + Basic with icon" summary="Not collapsible">
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                    </div>
+                  </div>
+                </calcite-block>
 
-
+                <calcite-block drag-handle heading="Basic with icon and control" summary="Collapsible" collapsible>
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                    </div>
+                  </div>
+                </calcite-block>
+                <calcite-block drag-handle heading="Basic with icon and control" summary="Not collapsible">
+                  <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
+                  <calcite-action slot="control" icon="ellipsis" scale="m"></calcite-action>
+                  <div class="combo-control">
+                    <div class="combo-button">
+                      <button class="combo-button__main">
+                        County: {NAME}
+                      </button>
+                      <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
+                    </div>
+                  </div>
+                </calcite-block>
 
                 <calcite-fab slot="fab" id="label-fab" text="Add label class"></calcite-fab>
                 <calcite-tooltip reference-element="label-fab" disable-pointer>
@@ -318,9 +316,9 @@
             </calcite-flow>
           </calcite-shell-panel>
           <div class="gnav" slot="shell-header">
-              <h2>Cool app</h2>
+            <h2>Cool app</h2>
           </div>
-          <calcite-tip-manager slot="tip-manager" id="tip-manager" hidden>
+          <calcite-tip-manager slot="bottom-panel" id="tip-manager" hidden>
             <calcite-tip-group text-group-title="Astronomy">
               <calcite-tip heading="The Red Rocks and Blue Water">
                 <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
@@ -406,7 +404,7 @@
       <script>
         const tipManagerButton = document.getElementById("tip-manager-button");
         const tipManager = document.getElementById("tip-manager");
-        tipManagerButton.addEventListener("click", function() {
+        tipManagerButton.addEventListener("click", function () {
           tipManager.hasAttribute("hidden")
             ? tipManager.removeAttribute("hidden")
             : tipManager.setAttribute("hidden", "");

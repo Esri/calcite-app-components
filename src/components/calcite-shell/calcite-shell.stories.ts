@@ -125,7 +125,7 @@ const contentHTML = dedent`
 `;
 
 const tipManagerHTML = dedent`
-  <calcite-tip-manager slot="tip-manager">
+  <calcite-tip-manager slot="bottom-panel">
     <calcite-tip-group text-group-title="Astronomy">
       <calcite-tip heading="The Red Rocks and Blue Water">
         <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
