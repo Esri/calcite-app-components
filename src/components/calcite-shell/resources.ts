@@ -2,6 +2,7 @@ export const CSS = {
   main: "main",
   mainReversed: "main--reversed",
   content: "content",
+  // bottomSlotContainer: "bottom-slot-container",
   footer: "footer"
 };
 
