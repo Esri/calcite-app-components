@@ -58,6 +58,8 @@
 
 calcite-loader[inline] {
   color: var(--calcite-app-foreground-subtle);
+  grid-area: control;
+  align-self: center;
 }
 
 calcite-handle {
