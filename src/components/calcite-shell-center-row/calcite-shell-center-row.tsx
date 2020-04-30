@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, Watch, h, VNode } from "@stencil/core";
+import { CSS } from "./resources";
 import { CalcitePosition, CalciteScale } from "../interfaces";
 
 /**
@@ -60,9 +61,12 @@ export class CalciteShellCenterRow {
   // --------------------------------------------------------------------------
 
   render(): VNode {
+    const { collapsed } = this;
     return (
       <Host>
-        <slot />
+        <div class={CSS.content} hidden={collapsed}>
+          <slot />
+        </div>
       </Host>
     );
   }
