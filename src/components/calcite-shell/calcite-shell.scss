@@ -10,8 +10,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
-  --calcite-app-bottom-panel-width: 50vw;
 }
 
 @import "../../scss/includes/_component";
@@ -49,26 +47,10 @@
   font-size: var(--calcite-app-font-size-1);
 }
 
-::slotted(calcite-shell-panel) {
+::slotted(calcite-shell-panel),
+::slotted(calcite-shell-center-row) {
   position: relative;
   z-index: 1;
-}
-
-slot[name="bottom-panel"]::slotted(*) {
-  align-self: flex-end;
-  height: auto;
-  width: var(--calcite-app-bottom-panel-width);
-  position: relative;
-  flex: 1 0 0;
-}
-
-slot[name="bottom-panel"]::slotted([detached]) {
-  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half)
-    var(--calcite-app-cap-spacing-plus-half);
-  border-radius: var(--calcite-app-border-radius);
-  box-shadow: var(--calcite-app-shadow-0);
-  overflow: hidden;
-  animation: calcite-app-fade-in-up var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
 .footer {
