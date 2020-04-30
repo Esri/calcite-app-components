@@ -11,7 +11,7 @@
   flex-direction: column;
   overflow: hidden;
 
-  --calcite-app-shell-tip-spacing: 26vw;
+  --calcite-app-bottom-panel-width: 50vw;
 }
 
 @import "../../scss/includes/_component";
@@ -54,30 +54,21 @@
   z-index: 1;
 }
 
-slot[name="primary-panel"]::slotted(*),
-slot[name="contextual-panel"]::slotted(*) {
-  flex: 1 0 auto;
-}
-
-// slot[name=bottom-panel]::slotted(calcite-panel),
-// slot[name=bottom-panel]::slotted(calcite-flow-item) {
 slot[name="bottom-panel"]::slotted(*) {
   align-self: flex-end;
   height: auto;
-  flex: 0 1 0%;
-  // bottom:0;
+  width: var(--calcite-app-bottom-panel-width);
+  position: relative;
+  flex: 1 0 0;
 }
 
-::slotted(calcite-tip-manager) {
-  animation: calcite-app-fade-in-up var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+slot[name="bottom-panel"]::slotted([detached]) {
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half)
+    var(--calcite-app-cap-spacing-plus-half);
   border-radius: var(--calcite-app-border-radius);
-  bottom: var(--calcite-app-cap-spacing);
-  box-shadow: var(--calcite-app-shadow-2);
-  box-sizing: border-box;
-  left: var(--calcite-app-shell-tip-spacing);
-  position: absolute;
-  right: var(--calcite-app-shell-tip-spacing);
-  z-index: 2;
+  box-shadow: var(--calcite-app-shadow-0);
+  overflow: hidden;
+  animation: calcite-app-fade-in-up var(--calcite-app-animation-time) var(--calcite-app-easing-function);
 }
 
 .footer {
