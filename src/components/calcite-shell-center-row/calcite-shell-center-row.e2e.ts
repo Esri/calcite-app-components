@@ -38,7 +38,6 @@ describe("calcite-shell-center-row", () => {
     expect(isVisible).toBe(true);
   });
 
-  it("should be accessible", async () => {
-    accessible("<calcite-shell-center-row><div>content</div></calcite-shell-center-row>");
-  });
+  it("should be accessible", async () =>
+    accessible("<calcite-shell-center-row><div>content</div></calcite-shell-center-row>"));
 });

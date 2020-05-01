@@ -1,5 +1,6 @@
 :host {
   @extend %component-host;
+  overflow: hidden;
   transition: height var(--calcite-app-animation-time) ease-in-out;
 
   --calcite-app-shell-center-row-height-small: 33%;
@@ -25,7 +26,6 @@
   box-shadow: var(--calcite-app-shadow-0);
   margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half)
     var(--calcite-app-cap-spacing-plus-half);
-  overflow: hidden;
 }
 
 :host([position="end"]) {
