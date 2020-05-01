@@ -16,14 +16,6 @@ describe("calcite-shell-center-row", () => {
       }
     ]));
 
-  it("has a slot", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent("<calcite-shell-center-row></calcite-shell-center-row>");
-    const element = await page.find("calcite-shell-center-row");
-    expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
-  });
-
   it("should show row content", async () => {
     const page = await newE2EPage();
 
