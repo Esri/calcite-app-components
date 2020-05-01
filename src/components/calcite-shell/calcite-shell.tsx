@@ -8,7 +8,8 @@ import { getCalcitePosition, getSlotted } from "../utils/dom";
  * @slot shell-footer - A slot for adding footer content. This content will be positioned at the bottom of the shell.
  * @slot primary-panel - A slot for adding the leading `calcite-shell-panel`.
  * @slot contextual-panel - A slot for adding the trailing `calcite-shell-panel`.
- * @slot tip-manager - A slot for adding a `calcite-tip-manager`. This component will be absolutely positioned.
+ * @slot tip-manager - **[DEPRECATED]** use "bottom-panel" instead.
+ * @slot bottom-panel - A slot for adding a bottom floating panel such as a chart or `calcite-tip-manager`.
  * @slot - A slot for adding content to the shell. This content will appear between any leading and trailing panels added to the shell. (eg. a map)
  */
 @Component({
@@ -78,6 +79,7 @@ export class CalciteShell {
       <div class={mainClasses}>
         <slot name={SLOTS.primaryPanel} />
         {this.renderContent()}
+        <slot name={SLOTS.centerRow} />
         <slot name={SLOTS.contextualPanel} />
         <slot name={SLOTS.tipManager} />
       </div>

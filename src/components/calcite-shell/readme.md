@@ -6,7 +6,6 @@ _note: calcite-shell supports tablet as the smallest screen size_
 
 <!-- Auto Generated Below -->
 
-
 ## Usage
 
 ### Advanced
@@ -83,7 +82,6 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
 </calcite-shell>
 ```
 
-
 ### Basic
 
 #### Basic
@@ -142,27 +140,24 @@ Renders a single panel with actions in an action bar.
 </calcite-shell>
 ```
 
-
-
 ## Properties
 
 | Property | Attribute | Description                               | Type                | Default     |
 | -------- | --------- | ----------------------------------------- | ------------------- | ----------- |
 | `theme`  | `theme`   | Used to set the component's color scheme. | `"dark" \| "light"` | `undefined` |
 
-
 ## Slots
 
 | Slot                 | Description                                                                                                                              |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 |                      | A slot for adding content to the shell. This content will appear between any leading and trailing panels added to the shell. (eg. a map) |
+| `"bottom-panel"`     | A slot for adding a bottom floating panel such as a chart or `calcite-tip-manager`.                                                      |
 | `"contextual-panel"` | A slot for adding the trailing `calcite-shell-panel`.                                                                                    |
 | `"primary-panel"`    | A slot for adding the leading `calcite-shell-panel`.                                                                                     |
 | `"shell-footer"`     | A slot for adding footer content. This content will be positioned at the bottom of the shell.                                            |
 | `"shell-header"`     | A slot for adding header content. This content will be positioned at the top of the shell.                                               |
-| `"tip-manager"`      | A slot for adding a `calcite-tip-manager`. This component will be absolutely positioned.                                                 |
+| `"tip-manager"`      | **[DEPRECATED]** use "bottom-panel" instead.                                                                                             |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

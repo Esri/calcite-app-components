@@ -1,0 +1,58 @@
+:host {
+  @extend %component-host;
+  overflow: hidden;
+  transition: height var(--calcite-app-animation-time) ease-in-out;
+
+  --calcite-app-shell-center-row-height-small: 33%;
+  --calcite-app-shell-center-row-height-medium: 70%;
+  --calcite-app-shell-center-row-height-large: 100%;
+}
+
+@import "../../scss/includes/_component";
+
+.content {
+  background-color: var(--calcite-app-background-content);
+  border: 1px solid var(--calcite-app-border);
+  flex: 1 0 0;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+:host([detached]) {
+  animation: calcite-app-fade-in-up var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+  border-radius: var(--calcite-app-border-radius);
+  box-shadow: var(--calcite-app-shadow-0);
+  margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half)
+    var(--calcite-app-cap-spacing-plus-half);
+}
+
+:host([position="end"]) {
+  align-self: flex-end;
+}
+
+:host([position="start"]) {
+  align-self: flex-start;
+}
+
+:host([height-scale="s"]) {
+  height: var(--calcite-app-shell-center-row-height-small);
+}
+
+:host([height-scale="m"]) {
+  height: var(--calcite-app-shell-center-row-height-medium);
+}
+
+:host([height-scale="l"]) {
+  height: var(--calcite-app-shell-center-row-height-large);
+}
+
+:host([height-scale="l"][detached]) {
+  height: calc(var(--calcite-app-shell-center-row-height-large) - var(--calcite-app-cap-spacing-double));
+}
+
+::slotted(calcite-panel) {
+  width: 100%;
+  height: 100%;
+}
