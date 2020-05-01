@@ -1,10 +1,28 @@
 import { newE2EPage } from "@stencil/core/testing";
 
 import { CSS } from "./resources";
-import { accessible, renders } from "../../tests/commonTests";
+import { accessible, defaults, hidden, renders } from "../../tests/commonTests";
 
 describe("calcite-shell-center-row", () => {
   it("renders", async () => renders("calcite-shell-center-row"));
+
+  it("honors hidden attribute", async () => hidden("calcite-shell-center-row"));
+
+  it("defaults", async () =>
+    defaults("calcite-shell-center-row", [
+      {
+        propertyName: "detached",
+        defaultValue: false
+      },
+      {
+        propertyName: "heightScale",
+        defaultValue: "s"
+      },
+      {
+        propertyName: "position",
+        defaultValue: "end"
+      }
+    ]));
 
   it("should show row content", async () => {
     const page = await newE2EPage();
