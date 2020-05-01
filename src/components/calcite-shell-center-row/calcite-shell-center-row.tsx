@@ -1,4 +1,4 @@
-import { Component, Host, Prop, Watch, h, VNode } from "@stencil/core";
+import { Component, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS } from "./resources";
 import { CalcitePosition, CalciteScale } from "../interfaces";
 
