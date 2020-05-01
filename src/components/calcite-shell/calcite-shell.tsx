@@ -79,11 +79,9 @@ export class CalciteShell {
       <div class={mainClasses}>
         <slot name={SLOTS.primaryPanel} />
         {this.renderContent()}
-        <slot name={SLOTS.centerRow} />
         <slot name={SLOTS.contextualPanel} />
-        {/* <slot name={SLOTS.tipManager} /> */}
-        {/* <div class={CSS.bottomSlotContainer}> */}
-        {/* </div> */}
+        <slot name={SLOTS.centerRow} />
+        <slot name={SLOTS.tipManager} />
       </div>
     );
   }
