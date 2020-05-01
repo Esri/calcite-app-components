@@ -108,7 +108,7 @@
     "updtr": "3.1.0"
   },
   "peerDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.24"
+    "@esri/calcite-components": "1.0.0-beta.25"
   },
   "license": "UNLICENSED"
 }
