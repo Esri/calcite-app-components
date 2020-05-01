@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Prop, Watch, h, VNode } from "@stencil/core";
+import { Component, Host, Prop, Watch, h, VNode } from "@stencil/core";
 import { CSS } from "./resources";
 import { CalcitePosition, CalciteScale } from "../interfaces";
 
@@ -19,16 +19,6 @@ export class CalciteShellCenterRow {
   // --------------------------------------------------------------------------
 
   /**
-   * Hide the content panel.
-   */
-  @Prop({ reflect: true }) collapsed = false;
-
-  @Watch("collapsed")
-  watchHandler(): void {
-    this.calciteShellCenterRowToggle.emit();
-  }
-
-  /**
    * This property makes the content area appear like a "floating" panel.
    */
   @Prop({ reflect: true }) detached = false;
@@ -45,26 +35,14 @@ export class CalciteShellCenterRow {
 
   // --------------------------------------------------------------------------
   //
-  //  Events
-  //
-  // --------------------------------------------------------------------------
-
-  /**
-   * Emitted when collapse has been toggled.
-   */
-  @Event() calciteShellCenterRowToggle: EventEmitter;
-
-  // --------------------------------------------------------------------------
-  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   render(): VNode {
-    const { collapsed } = this;
     return (
       <Host>
-        <div class={CSS.content} hidden={collapsed}>
+        <div class={CSS.content}>
           <slot />
         </div>
       </Host>

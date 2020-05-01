@@ -128,10 +128,10 @@
           <div class="gnav" slot="shell-header">
               <h2>Boomer v Millennial - California</h2>
           </div>
-          <calcite-shell-center-row slot="center-row" height-scale="s" detached >
+          <calcite-shell-center-row slot="center-row" height-scale="s" detached id="center-row">
             <calcite-panel heading="Data table" summary="US Demographics - Country - County">
               <calcite-action slot="header-leading-content" text="Switch layer" icon="caret-down"></calcite-action>
-              <calcite-action slot="header-trailing-content" text="Expand" icon="expand"></calcite-action>
+              <calcite-action slot="header-trailing-content" text="Expand" icon="expand" id="expand-trigger"></calcite-action>
               <div class="header" slot="header-content">
                 Data table<br/>US Demographics - Country - County
               </div>
@@ -421,6 +421,14 @@
           tipManager.hasAttribute("hidden")
             ? tipManager.removeAttribute("hidden")
             : tipManager.setAttribute("hidden", "");
+        });
+
+        const expandTrigger = document.getElementById("expand-trigger");
+        const centerRow = document.getElementById("center-row");
+        expandTrigger.addEventListener("click", function(){
+            centerRow.getAttribute("height-scale") == "s"
+            ? centerRow.setAttribute("height-scale", "m")
+            : centerRow.setAttribute("height-scale", "s");
         });
       </script>
     </main>
