@@ -61,6 +61,31 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
   ];
 };
 
+const createShellCenterRowAttributes: (group: string) => Attributes = (group) => {
+  return [
+    {
+      name: "collapsed",
+      value: boolean("collapsed", false, group)
+    },
+    {
+      name: "detached",
+      value: boolean("detached", false, group)
+    },
+    {
+      name: "height-scale",
+      value: select("heightScale", scale.values, scale.values[0], group)
+    },
+    {
+      name: "position",
+      value: select("position", position.values, position.values[1], group)
+    },
+    {
+      name: "slot",
+      value: "center-row"
+    }
+  ];
+};
+
 const actionBarPrimaryContentHTML = dedent`
   <calcite-action-group>
     <calcite-action text="Add" label="Add Item" icon="plus"></calcite-action>
@@ -96,6 +121,16 @@ const actionBarContextualHTML = dedent`
 const leadingPanelHTML = dedent`
   ${actionBarPrimaryHTML}
   <p>My Leading Panel</p>
+`;
+
+const centerRowHTML = dedent`
+  <div style="
+    width:50vw;
+    background-color: var(--calcite-app-background-content);
+    padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+    ">
+    <span>My Shell Center Row</span>
+  </div>
 `;
 
 const trailingPanelHTML = dedent`
@@ -185,6 +220,7 @@ export const basic = (): string =>
     ${headerHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Leading Panel"), leadingPanelHTML)}
     ${contentHTML}
+    ${create("calcite-shell-center-row", createShellCenterRowAttributes("Center Row"), centerRowHTML)}
     ${create("calcite-shell-panel", createShellPanelAttributes("Trailing Panel"), trailingPanelHTML)}
     ${footerHTML}
   `
@@ -294,6 +330,7 @@ export const advanced = (): string =>
     ${headerHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Leading Panel"), advancedLeadingPanelHTML)}
     ${contentHTML}
+    ${create("calcite-shell-center-row", createShellCenterRowAttributes("Center Row"), centerRowHTML)}
     ${create("calcite-shell-panel", createShellPanelAttributes("Trailing Panel"), advancedTrailingPanelHTMl)}
     ${tipManagerHTML}
     ${footerHTML}
