@@ -156,7 +156,7 @@ const contentHTML = dedent`
 `;
 
 const centerRowAdvancedHTML = dedent`
-  <calcite-tip-manager>
+  <calcite-tip-manager slot="center-row">
     <calcite-tip-group text-group-title="Astronomy">
       <calcite-tip heading="The Red Rocks and Blue Water">
         <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
@@ -326,7 +326,7 @@ export const advanced = (): string =>
     ${headerHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Leading Panel"), advancedLeadingPanelHTML)}
     ${contentHTML}
-    ${create("calcite-shell-center-row", createShellCenterRowAttributes("Center Row"), centerRowAdvancedHTML)}
+    ${centerRowAdvancedHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Trailing Panel"), advancedTrailingPanelHTMl)}
     ${footerHTML}
   `
