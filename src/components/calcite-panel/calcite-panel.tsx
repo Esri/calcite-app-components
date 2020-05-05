@@ -14,7 +14,6 @@ import { getElementDir, getSlotted } from "../utils/dom";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
-import CalciteScrim from "../utils/CalciteScrim";
 
 type FocusId = "dismiss-button";
 
@@ -247,8 +246,14 @@ export class CalcitePanel {
     ) : null;
   }
 
+  renderScrim(): VNode {
+    const { disabled, loading } = this;
+
+    return loading || disabled ? <calcite-scrim loading={loading} /> : null;
+  }
+
   render(): VNode {
-    const { dismissed, disabled, dismissible, el, loading, panelKeyUpHandler } = this;
+    const { dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -269,7 +274,7 @@ export class CalcitePanel {
           {this.renderContent()}
           {this.renderFooter()}
         </article>
-        <CalciteScrim loading={loading} disabled={disabled} />
+        {this.renderScrim()}
       </Host>
     );
   }
