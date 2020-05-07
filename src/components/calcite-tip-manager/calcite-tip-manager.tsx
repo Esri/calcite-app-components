@@ -312,7 +312,7 @@ export class CalciteTipManager {
     }
     return (
       <Host>
-        <div
+        <section
           class={CSS.container}
           hidden={closed}
           aria-hidden={closed.toString()}
@@ -343,7 +343,7 @@ export class CalciteTipManager {
             <slot />
           </div>
           {this.renderPagination()}
-        </div>
+        </section>
       </Host>
     );
   }
