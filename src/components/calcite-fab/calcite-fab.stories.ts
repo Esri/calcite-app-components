@@ -1,4 +1,5 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
 import {
   Attributes,
   createComponentHTML as create,
@@ -13,7 +14,7 @@ const { appearance, dir, scale, theme } = ATTRIBUTES;
 
 export default {
   title: "components|calcite-fab",
-  decorators: [withKnobs],
+  decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,
     docs: {
