@@ -1,7 +1,11 @@
 :host {
   @extend %component-host;
+  display: flex;
   overflow: hidden;
   transition: height var(--calcite-app-animation-time) ease-in-out;
+  background-color: var(--calcite-app-background-clear);
+  border-left: 1px solid var(--calcite-app-border);
+  border-right: 1px solid var(--calcite-app-border);
 
   --calcite-app-shell-center-row-height-small: 33%;
   --calcite-app-shell-center-row-height-medium: 70%;
@@ -11,8 +15,7 @@
 @import "../../scss/includes/_component";
 
 .content {
-  background-color: var(--calcite-app-background-content);
-  border: 1px solid var(--calcite-app-border);
+  display: flex;
   flex: 1 0 0;
   height: 100%;
   margin: 0;
@@ -22,6 +25,7 @@
 
 :host([detached]) {
   animation: calcite-app-fade-in-up var(--calcite-app-animation-time) var(--calcite-app-easing-function);
+  border: none;
   border-radius: var(--calcite-app-border-radius);
   box-shadow: var(--calcite-app-shadow-0);
   margin: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half)
