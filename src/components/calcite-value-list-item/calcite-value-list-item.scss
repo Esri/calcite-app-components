@@ -38,12 +38,15 @@ calcite-pick-list-item {
   color: var(--calcite-app-border);
   line-height: 0;
   cursor: move;
-  @include focusRingInset();
+  @include focus-style-base();
   &:hover,
   &:focus {
     background-color: var(--calcite-app-background-hover);
     outline-offset: var(--calcite-app-outline-inset);
     color: var(--calcite-app-foreground);
+  }
+  &:focus {
+    @include focus-style-inset();
   }
   &--activated {
     background-color: var(--calcite-app-background-active);

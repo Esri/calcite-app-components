@@ -61,6 +61,27 @@ const createShellPanelAttributes: (group: "Leading Panel" | "Trailing Panel") =>
   ];
 };
 
+const createShellCenterRowAttributes: (group: string) => Attributes = (group) => {
+  return [
+    {
+      name: "detached",
+      value: boolean("detached", false, group)
+    },
+    {
+      name: "height-scale",
+      value: select("heightScale", scale.values, scale.values[0], group)
+    },
+    {
+      name: "position",
+      value: select("position", position.values, position.values[1], group)
+    },
+    {
+      name: "slot",
+      value: "center-row"
+    }
+  ];
+};
+
 const actionBarPrimaryContentHTML = dedent`
   <calcite-action-group>
     <calcite-action text="Add" label="Add Item" icon="plus"></calcite-action>
@@ -98,6 +119,16 @@ const leadingPanelHTML = dedent`
   <p>My Leading Panel</p>
 `;
 
+const centerRowHTML = dedent`
+  <div style="
+    width:50vw;
+    background-color: var(--calcite-app-background-content);
+    padding: var(--calcite-app-cap-spacing) var(--calcite-app-side-spacing);
+    ">
+    <span>My Shell Center Row</span>
+  </div>
+`;
+
 const trailingPanelHTML = dedent`
   ${actionBarContextualHTML}
   <p>My Trailing Panel</p>
@@ -124,8 +155,8 @@ const contentHTML = dedent`
   "></div>
 `;
 
-const tipManagerHTML = dedent`
-  <calcite-tip-manager slot="tip-manager">
+const centerRowAdvancedHTML = dedent`
+  <calcite-tip-manager slot="center-row">
     <calcite-tip-group text-group-title="Astronomy">
       <calcite-tip heading="The Red Rocks and Blue Water">
         <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
@@ -185,6 +216,7 @@ export const basic = (): string =>
     ${headerHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Leading Panel"), leadingPanelHTML)}
     ${contentHTML}
+    ${create("calcite-shell-center-row", createShellCenterRowAttributes("Center Row"), centerRowHTML)}
     ${create("calcite-shell-panel", createShellPanelAttributes("Trailing Panel"), trailingPanelHTML)}
     ${footerHTML}
   `
@@ -294,8 +326,8 @@ export const advanced = (): string =>
     ${headerHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Leading Panel"), advancedLeadingPanelHTML)}
     ${contentHTML}
+    ${centerRowAdvancedHTML}
     ${create("calcite-shell-panel", createShellPanelAttributes("Trailing Panel"), advancedTrailingPanelHTMl)}
-    ${tipManagerHTML}
     ${footerHTML}
   `
   );

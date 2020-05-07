@@ -6,6 +6,7 @@ export const CSS = {
 };
 
 export const SLOTS = {
+  centerRow: "center-row",
   primaryPanel: "primary-panel",
   contextualPanel: "contextual-panel",
   header: "shell-header",
