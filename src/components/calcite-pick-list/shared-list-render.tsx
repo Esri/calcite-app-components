@@ -20,20 +20,22 @@ export const List = ({ props, ...rest }): VNode => {
   } = props;
   return (
     <Host role="menu" aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
-      <header class={{ [CSS.sticky]: true }}>
-        {filterEnabled ? (
-          <calcite-filter
-            dir={getElementDir(el)}
-            data={dataForFilter}
-            textPlaceholder={textFilterPlaceholder}
-            aria-label={textFilterPlaceholder}
-            onCalciteFilterChange={handleFilter}
-          />
-        ) : null}
-        <slot name="menu-actions" />
-      </header>
-      <slot />
-      {renderScrim(loading, disabled)}
+      <section>
+        <header class={{ [CSS.sticky]: true }}>
+          {filterEnabled ? (
+            <calcite-filter
+              data={dataForFilter}
+              dir={getElementDir(el)}
+              textPlaceholder={textFilterPlaceholder}
+              aria-label={textFilterPlaceholder}
+              onCalciteFilterChange={handleFilter}
+            />
+          ) : null}
+          <slot name="menu-actions" />
+        </header>
+        <slot />
+        {renderScrim(loading, disabled)}
+      </section>
     </Host>
   );
 };
