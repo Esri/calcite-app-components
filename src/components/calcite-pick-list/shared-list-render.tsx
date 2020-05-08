@@ -1,6 +1,7 @@
 import { Host, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
 import { CSS } from "./resources";
+import { getElementDir } from "../utils/dom";
 
 const renderScrim = (loading, disabled): VNode => {
   return loading || disabled ? <calcite-scrim loading={loading} /> : null;
@@ -13,23 +14,27 @@ export const List = ({ props, ...rest }): VNode => {
     filterEnabled,
     dataForFilter,
     handleFilter,
-    textFilterPlaceholder
+    textFilterPlaceholder,
+    el
   } = props;
   return (
     <Host role="menu" aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
-      <header class={{ [CSS.sticky]: true }}>
-        {filterEnabled ? (
-          <calcite-filter
-            data={dataForFilter}
-            textPlaceholder={textFilterPlaceholder}
-            aria-label={textFilterPlaceholder}
-            onCalciteFilterChange={handleFilter}
-          />
-        ) : null}
-        <slot name="menu-actions" />
-      </header>
-      <slot />
-      {renderScrim(loading, disabled)}
+      <section>
+        <header class={{ [CSS.sticky]: true }}>
+          {filterEnabled ? (
+            <calcite-filter
+              data={dataForFilter}
+              dir={getElementDir(el)}
+              textPlaceholder={textFilterPlaceholder}
+              aria-label={textFilterPlaceholder}
+              onCalciteFilterChange={handleFilter}
+            />
+          ) : null}
+          <slot name="menu-actions" />
+        </header>
+        <slot />
+        {renderScrim(loading, disabled)}
+      </section>
     </Host>
   );
 };

@@ -29,7 +29,7 @@
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
     "preversion": "npm ci && npm test",
     "previewChangelog": "standard-version --no-skip.bump --silent && cat CHANGELOG.md && git reset --hard --quiet",
-    "previewChangelog:latest": "git touch __CHANGELOG-PREVIEW-TEMP__ && standard-version --no-skip.bump --release-count 1 --infile __CHANGELOG-PREVIEW-TEMP__ --same-file --silent && cat __CHANGELOG-PREVIEW-TEMP__ && git reset --hard --quiet",
+    "previewChangelog:latest": "npx touch __CHANGELOG-PREVIEW-TEMP__ && standard-version --no-skip.bump --release-count 1 --infile __CHANGELOG-PREVIEW-TEMP__ --same-file --silent && cat __CHANGELOG-PREVIEW-TEMP__ && git reset --hard --quiet",
     "release": "git push --follow-tags && npm publish && ts-node ./support/githubReleaseFromChangelog.ts",
     "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --dev --watch --serve\"",
     "test": "stencil test --spec --e2e",
@@ -45,6 +45,7 @@
   "dependencies": {
     "@esri/calcite-base": "1.2.0",
     "@esri/calcite-colors": "2.1.0",
+    "@storybook/addon-a11y": "5.3.18",
     "lodash-es": "4.17.15",
     "sortablejs": "1.10.2"
   },

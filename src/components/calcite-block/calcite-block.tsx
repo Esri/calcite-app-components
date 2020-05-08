@@ -200,7 +200,7 @@ export class CalciteBlock {
       <Host tabIndex={disabled ? -1 : null}>
         <article
           aria-expanded={collapsible ? open.toString() : null}
-          aria-busy={loading}
+          aria-busy={loading.toString()}
           class={rtl ? CSS_UTILITY.rtl : null}
         >
           {headerNode}

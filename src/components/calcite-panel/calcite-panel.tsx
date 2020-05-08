@@ -229,7 +229,7 @@ export class CalcitePanel {
 
   renderContent(): VNode {
     return (
-      <section class={CSS.contentContainer} onScroll={this.panelScrollHandler}>
+      <section tabIndex={0} class={CSS.contentContainer} onScroll={this.panelScrollHandler}>
         <slot />
         {this.renderFab()}
       </section>
