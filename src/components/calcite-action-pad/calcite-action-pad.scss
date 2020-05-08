@@ -31,6 +31,7 @@
   max-width: unset;
   ::slotted(calcite-action-group) {
     border-right: 1px solid var(--calcite-app-border);
+    border-bottom: none;
   }
   .action-group--bottom {
     padding-bottom: 0;
