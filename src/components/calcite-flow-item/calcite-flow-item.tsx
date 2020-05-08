@@ -313,6 +313,15 @@ export class CalciteFlowItem {
     );
   }
 
+  renderHeaderLeadingContent(): VNode {
+    // const content = getSlotted(this.el, "header-leading-content", {all: true });
+    return (
+      <div slot="header-leading-content" class="header-leading-content">
+        <slot name="header-leading-content"></slot>
+      </div>
+    );
+  }
+
   renderHeaderActions(): VNode {
     const menuActions = getSlotted(this.el, SLOTS.menuActions, { all: true });
 
@@ -386,6 +395,7 @@ export class CalciteFlowItem {
           dir={dir}
         >
           {this.renderBackButton(dir === "rtl")}
+          {this.renderHeaderLeadingContent()}
           {this.renderHeader()}
           {this.renderHeaderActions()}
           <slot />
