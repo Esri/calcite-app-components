@@ -11,6 +11,8 @@ import {
 } from "@stencil/core";
 import { debounce, forIn } from "lodash-es";
 import { CSS, ICONS, TEXT } from "./resources";
+import { CSS_UTILITY } from "../utils/resources";
+import { getElementDir } from "../utils/dom";
 
 const filterDebounceInMs = 250;
 
@@ -140,9 +142,11 @@ export class CalciteFilter {
   // --------------------------------------------------------------------------
 
   render(): VNode {
+    const rtl = getElementDir(this.el) === "rtl";
+
     return (
       <Host>
-        <label>
+        <label class={rtl ? CSS_UTILITY.rtl : null}>
           <input
             type="text"
             value=""
