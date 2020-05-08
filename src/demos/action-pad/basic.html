@@ -37,6 +37,22 @@
           <calcite-tooltip id="tooltip">Hello world!</calcite-tooltip>
         </div>
       </section>
+
+      <section class="example-container">
+        <h1>calcite-action-pad horizontal</h1>
+
+        <div class="action-pad-container">
+          <calcite-action-pad orientation="horizontal">
+            <calcite-action-group orientation="horizontal">
+              <calcite-action text="Undo" icon="undo"> </calcite-action>
+              <calcite-action text="Cool" icon="redo"> </calcite-action>
+            </calcite-action-group>
+            <calcite-action-group orientation="horizontal">
+              <calcite-action text="Add" icon="trash"> </calcite-action>
+            </calcite-action-group>
+          </calcite-action-pad>
+        </div>
+      </section>
       <script>
         var actionPad = document.getElementById("action-pad-test");
         var tooltip = document.getElementById("tooltip");

@@ -9,7 +9,7 @@ import {
   h,
   VNode
 } from "@stencil/core";
-import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
+import { CalciteLayout, CalcitePosition, CalciteTheme, CalciteOrientation } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, TEXT } from "./resources";
 import { getCalcitePosition } from "../utils/dom";
@@ -89,6 +89,11 @@ export class CalciteActionPad {
   @Prop({ reflect: true }) layout: CalciteLayout;
 
   /**
+   * Orientation of the component.
+   */
+  @Prop({ reflect: true }) orientation: CalciteOrientation = "vertical";
+
+  /**
    * Arranges the component depending on the elements 'dir' property.
    */
   @Prop({ reflect: true }) position: CalcitePosition;
@@ -157,6 +162,7 @@ export class CalciteActionPad {
       textCollapse,
       el,
       layout,
+      orientation,
       position,
       toggleExpand,
       tooltipExpand
@@ -178,7 +184,9 @@ export class CalciteActionPad {
     ) : null;
 
     return expandToggleNode ? (
-      <calcite-action-group class={CSS.actionGroupBottom}>{expandToggleNode}</calcite-action-group>
+      <calcite-action-group class={CSS.actionGroupBottom} orientation={orientation}>
+        {expandToggleNode}
+      </calcite-action-group>
     ) : null;
   }
 

@@ -20,12 +20,27 @@
   padding-top: 0;
 }
 
-::slotted(calcite-action-group:last-child) {
-  border-bottom: none;
-}
-
 .action-group--bottom {
   padding-bottom: 0;
   flex-grow: 1;
   justify-content: flex-end;
+}
+
+:host([orientation="horizontal"], [expanded]),
+:host([orientation="horizontal"]) {
+  max-width: unset;
+  ::slotted(calcite-action-group) {
+    border-right: 1px solid var(--calcite-app-border);
+  }
+  .action-group--bottom {
+    padding-bottom: 0;
+  }
+}
+
+:host([orientation="horizontal"]) {
+  flex-direction: row;
+}
+
+::slotted(calcite-action-group:last-child) {
+  border-bottom: none;
 }
