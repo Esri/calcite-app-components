@@ -17,18 +17,8 @@ const ICONS = {
   chevronsRight: "chevrons-right"
 };
 
-function getClosestShellPosition(el: HTMLElement): CalcitePosition | null {
-  const shellNode = el.closest("calcite-shell-panel");
-  if (!shellNode) {
-    return;
-  }
-  if (shellNode.position) {
-    return shellNode.position;
-  }
-}
-
 function getCalcitePosition(position: CalcitePosition, el: HTMLElement): CalcitePosition {
-  return position || getClosestShellPosition(el) || "start";
+  return position || el.closest("calcite-shell-panel")?.position || "start";
 }
 
 export function toggleChildActionText({
