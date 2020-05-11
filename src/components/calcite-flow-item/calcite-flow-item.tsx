@@ -314,10 +314,10 @@ export class CalciteFlowItem {
   }
 
   renderHeaderLeadingContent(): VNode {
-    // const content = getSlotted(this.el, "header-leading-content", {all: true });
+    // const content = getSlotted(this.el, SLOTS.leadingActions, {all: true });
     return (
-      <div slot="header-leading-content" class="header-leading-content">
-        <slot name="header-leading-content"></slot>
+      <div slot={PANEL_SLOTS.headerLeadingContent} class="leading-actions">
+        <slot name={SLOTS.leadingActions}></slot>
       </div>
     );
   }

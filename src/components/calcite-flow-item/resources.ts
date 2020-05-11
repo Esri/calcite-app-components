@@ -16,6 +16,7 @@ export const CSS = {
 };
 
 export const SLOTS = {
+  leadingActions: "leading-actions",
   menuActions: "menu-actions",
   fab: "fab",
   footerActions: "footer-actions"
