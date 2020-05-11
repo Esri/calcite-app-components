@@ -44,12 +44,6 @@ export class CalciteTip {
   @Prop() intlClose?: string;
 
   /**
-   * Alternate text for closing the tip.
-   * @deprecated use "intlClose" instead.
-   */
-  @Prop() textClose?: string;
-
-  /**
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
@@ -92,8 +86,8 @@ export class CalciteTip {
   // --------------------------------------------------------------------------
 
   renderHeader(): VNode {
-    const { nonDismissible, hideTip, intlClose, textClose, heading } = this;
-    const text = intlClose || textClose || TEXT.close;
+    const { nonDismissible, hideTip, intlClose, heading } = this;
+    const text = intlClose || TEXT.close;
 
     const dismissButtonNode = !nonDismissible ? (
       <calcite-action text={text} onClick={hideTip} class={CSS.close} icon={ICONS.close} />

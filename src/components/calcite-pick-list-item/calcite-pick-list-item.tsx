@@ -31,14 +31,6 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
-   * Compact removes the selection icon (radio or checkbox) and adds a compact attribute.
-   * This allows for a more compact version of the `calcite-pick-list-item`.
-   *
-   * @deprecated This property will be removed in a future release.
-   */
-  @Prop({ reflect: true }) compact? = false;
-
-  /**
    * When true, the item cannot be clicked and is visually muted.
    */
   @Prop({ reflect: true }) disabled? = false;
@@ -229,9 +221,9 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   renderIcon(): VNode {
-    const { compact, icon } = this;
+    const { icon } = this;
 
-    if (!icon || compact) {
+    if (!icon) {
       return null;
     }
 
@@ -270,10 +262,9 @@ export class CalcitePickListItem {
   }
 
   render(): VNode {
-    const description =
-      this.textDescription && !this.compact ? (
-        <span class={CSS.description}>{this.textDescription}</span>
-      ) : null;
+    const description = this.textDescription ? (
+      <span class={CSS.description}>{this.textDescription}</span>
+    ) : null;
 
     return (
       <Host role="menuitemcheckbox" aria-checked={this.selected.toString()}>

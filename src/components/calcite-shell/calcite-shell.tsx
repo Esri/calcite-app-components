@@ -1,14 +1,13 @@
 import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
 import { CalciteTheme } from "../interfaces";
-import { getCalcitePosition, getSlotted } from "../utils/dom";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot shell-header - A slot for adding header content. This content will be positioned at the top of the shell.
  * @slot shell-footer - A slot for adding footer content. This content will be positioned at the bottom of the shell.
  * @slot primary-panel - A slot for adding the leading `calcite-shell-panel`.
  * @slot contextual-panel - A slot for adding the trailing `calcite-shell-panel`.
- * @slot tip-manager - **[DEPRECATED]** use "bottom-panel" instead.
  * @slot bottom-panel - A slot for adding a bottom floating panel such as a chart or `calcite-tip-manager`.
  * @slot - A slot for adding content to the shell. This content will appear between any leading and trailing panels added to the shell. (eg. a map)
  */
@@ -72,7 +71,7 @@ export class CalciteShell {
 
     const mainClasses = {
       [CSS.main]: true,
-      [CSS.mainReversed]: getCalcitePosition(primaryPanel?.position, primaryPanel?.layout) === "end"
+      [CSS.mainReversed]: primaryPanel?.position === "end"
     };
 
     return (
@@ -81,7 +80,6 @@ export class CalciteShell {
         {this.renderContent()}
         <slot name={SLOTS.centerRow} />
         <slot name={SLOTS.contextualPanel} />
-        <slot name={SLOTS.tipManager} />
       </div>
     );
   }

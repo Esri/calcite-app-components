@@ -74,20 +74,6 @@ describe("calcite-shell-panel", () => {
     expect(eventSpy).toHaveReceivedEvent();
   });
 
-  it("deprecated: leading layout property should have action slot first", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
-      '<calcite-shell-panel layout="leading"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
-    );
-
-    const element = await page.find("calcite-shell-panel");
-
-    await page.waitForChanges();
-
-    expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
-  });
-
   it("start position property should have action slot first", async () => {
     const page = await newE2EPage();
 
@@ -100,20 +86,6 @@ describe("calcite-shell-panel", () => {
     await page.waitForChanges();
 
     expect(element.shadowRoot.firstElementChild.tagName).toBe("SLOT");
-  });
-
-  it("deprecated: trailing layout property should have DIV first", async () => {
-    const page = await newE2EPage();
-
-    await page.setContent(
-      '<calcite-shell-panel layout="trailing"><div slot="action-bar">bar</div><div>content</div></calcite-shell-panel>'
-    );
-
-    const element = await page.find("calcite-shell-panel");
-
-    await page.waitForChanges();
-
-    expect(element.shadowRoot.firstElementChild.tagName).toBe("DIV");
   });
 
   it("trailing position property should have DIV first", async () => {
