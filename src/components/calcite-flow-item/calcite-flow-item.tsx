@@ -316,7 +316,7 @@ export class CalciteFlowItem {
   renderHeaderLeadingContent(): VNode {
     const hasLeadingActions = getSlotted(this.el, SLOTS.leadingActions);
     return hasLeadingActions ? (
-      <div slot={PANEL_SLOTS.headerLeadingContent} class="leading-actions">
+      <div slot={PANEL_SLOTS.headerLeadingContent} class={CSS.leadingActions}>
         <slot name={SLOTS.leadingActions}></slot>
       </div>
     ) : null;
