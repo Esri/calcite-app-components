@@ -25,7 +25,7 @@ export const List = ({ props, ...rest }): VNode => {
             <calcite-filter
               data={dataForFilter}
               dir={getElementDir(el)}
-              textPlaceholder={textFilterPlaceholder}
+              placeholder={textFilterPlaceholder}
               aria-label={textFilterPlaceholder}
               onCalciteFilterChange={handleFilter}
             />
