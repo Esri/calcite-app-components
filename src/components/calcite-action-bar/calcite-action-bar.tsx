@@ -9,10 +9,10 @@ import {
   h,
   VNode
 } from "@stencil/core";
-import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
+import { CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, SLOTS, TEXT } from "./resources";
-import { getCalcitePosition, getSlotted } from "../utils/dom";
+import { getSlotted } from "../utils/dom";
 
 /**
  * @slot bottom-actions - A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button.
@@ -62,33 +62,13 @@ export class CalciteActionBar {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
-   * @deprecated use "intlExpand" instead.
-   */
-  @Prop() textExpand?: string;
-
-  /**
-   * Updates the label of the expand icon when the component is not expanded.
    */
   @Prop() intlExpand?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
-   * @deprecated use "intlCollapse" instead.
-   */
-  @Prop() textCollapse?: string;
-
-  /**
-   * Updates the label of the collapse icon when the component is expanded.
    */
   @Prop() intlCollapse?: string;
-
-  /**
-   * Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading"
-   * in a LTR app will appear on the left.
-   *
-   * @deprecated use "position" instead.
-   */
-  @Prop({ reflect: true }) layout: CalciteLayout;
 
   /**
    * Arranges the component depending on the elements 'dir' property.
@@ -155,17 +135,14 @@ export class CalciteActionBar {
       expand,
       intlExpand,
       intlCollapse,
-      textExpand,
-      textCollapse,
       el,
-      layout,
       position,
       toggleExpand,
       tooltipExpand
     } = this;
 
-    const expandLabel = intlExpand || textExpand || TEXT.expand;
-    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
+    const expandLabel = intlExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -173,7 +150,7 @@ export class CalciteActionBar {
         intlExpand={expandLabel}
         intlCollapse={collapseLabel}
         el={el}
-        position={getCalcitePosition(position, layout)}
+        position={position}
         toggleExpand={toggleExpand}
         tooltipExpand={tooltipExpand}
       />

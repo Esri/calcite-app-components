@@ -10,6 +10,5 @@ export const SLOTS = {
   primaryPanel: "primary-panel",
   contextualPanel: "contextual-panel",
   header: "shell-header",
-  footer: "shell-footer",
-  tipManager: "tip-manager"
+  footer: "shell-footer"
 };

@@ -68,20 +68,6 @@ export class CalciteBlock {
   @Prop() summary: string;
 
   /**
-   * Tooltip used for the toggle when expanded.
-   *
-   * @deprecated use "intlCollapse" instead.
-   */
-  @Prop() textCollapse?: string;
-
-  /**
-   * Tooltip used for the toggle when collapsed.
-   *
-   * @deprecated use "intlExpand" instead.
-   */
-  @Prop() textExpand?: string;
-
-  /**
    * Used to set the component's color scheme.
    */
   @Prop({ reflect: true }) theme: CalciteTheme;
@@ -132,14 +118,10 @@ export class CalciteBlock {
       intlExpand,
       loading,
       open,
-      summary,
-      textCollapse,
-      textExpand
+      summary
     } = this;
 
-    const toggleLabel = open
-      ? intlCollapse || textCollapse || TEXT.collapse
-      : intlExpand || textExpand || TEXT.expand;
+    const toggleLabel = open ? intlCollapse || TEXT.collapse : intlExpand || TEXT.expand;
 
     const hasIcon = getSlotted(el, SLOTS.icon);
     const headerContent = (
