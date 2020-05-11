@@ -31,6 +31,21 @@ describe("calcite-flow-item", () => {
     expect(actionsContainer).toBeNull();
   });
 
+  it("should render leading actions container when there are leading actions", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-flow-item>
+      <calcite-action slot="${SLOTS.leadingActions}" text="hello"></calcite-action>
+    </calcite-flow-item>`;
+
+    await page.setContent(pageContent);
+
+    const actionsContainer = await page.find(`calcite-flow-item >>> .${CSS.leadingActions}`);
+
+    expect(actionsContainer).not.toBeNull();
+  });
+
   it("should not show menu button when actions are inside blacklisted component", async () => {
     const page = await newE2EPage();
 
