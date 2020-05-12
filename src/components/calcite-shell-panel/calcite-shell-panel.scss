@@ -50,11 +50,10 @@
   display: none;
 }
 
-:host([layout="leading"]) slot[name="action-bar"]::slotted(calcite-action-bar), // deprecated
 :host([position="start"]) slot[name="action-bar"]::slotted(calcite-action-bar) {
   border-right: 1px solid var(--calcite-app-border);
 }
-:host([layout="trailing"]) slot[name="action-bar"]::slotted(calcite-action-bar), // deprecated 
+
 :host([position="end"]) slot[name="action-bar"]::slotted(calcite-action-bar) {
   border-left: 1px solid var(--calcite-app-border);
 }

@@ -1,5 +1,5 @@
 import { Component, Host, h, VNode, Prop } from "@stencil/core";
-import { CalciteOrientation } from "../interfaces";
+import { CalciteLayout } from "../interfaces";
 
 @Component({
   tag: "calcite-action-group",
@@ -16,9 +16,10 @@ export class CalciteActionGroup {
   //
   // --------------------------------------------------------------------------
   /**
-   * Orientation of the component.
+   * Indicates the horizontal or vertical layout of the component.
    */
-  @Prop({ reflect: true }) orientation: CalciteOrientation = "vertical";
+  @Prop({ reflect: true }) layout: CalciteLayout = "vertical";
+
   // --------------------------------------------------------------------------
   //
   //  Component Methods

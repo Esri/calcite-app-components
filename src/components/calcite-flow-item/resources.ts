@@ -7,6 +7,7 @@ export const CSS = {
   backButton: "back-button",
   footerActions: "footer-actions",
   headerActions: "header-actions",
+  leadingActions: "leading-actions",
   singleActionContainer: "single-action-container",
   menuContainer: "menu-container",
   menuButton: "menu-button",
@@ -16,6 +17,7 @@ export const CSS = {
 };
 
 export const SLOTS = {
+  leadingActions: "leading-actions",
   menuActions: "menu-actions",
   fab: "fab",
   footerActions: "footer-actions"

@@ -1,10 +1,8 @@
 /* Note: using `.d.ts` file extension will exclude it from the output build */
 
-export type CalciteLayout = "leading" | "trailing";
+export type CalciteLayout = "horizontal" | "vertical";
 
 export type CalcitePosition = "start" | "end";
-
-export type CalciteOrientation = "horizontal" | "vertical";
 
 export type CalciteTheme = "light" | "dark";
 

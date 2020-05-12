@@ -9,10 +9,9 @@ import {
   h,
   VNode
 } from "@stencil/core";
-import { CalciteLayout, CalcitePosition, CalciteTheme, CalciteOrientation } from "../interfaces";
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, TEXT } from "./resources";
-import { getCalcitePosition } from "../utils/dom";
 
 /**
  * @slot - A slot for adding `calcite-action`s to the action pad.
@@ -32,6 +31,11 @@ export class CalciteActionPad {
    * Indicates whether widget can be expanded.
    */
   @Prop({ reflect: true }) expand = true;
+
+  /**
+   * Indicates the horizontal or vertical layout of the component.
+   */
+  @Prop({ reflect: true }) layout: CalciteLayout = "vertical";
 
   @Watch("expand")
   expandHandler(expand: boolean): void {
@@ -61,37 +65,13 @@ export class CalciteActionPad {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
-   * @deprecated use "intlExpand" instead.
-   */
-  @Prop() textExpand?: string;
-
-  /**
-   * Updates the label of the expand icon when the component is not expanded.
    */
   @Prop() intlExpand?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
-   * @deprecated use "intlCollapse" instead.
-   */
-  @Prop() textCollapse?: string;
-
-  /**
-   * Updates the label of the collapse icon when the component is expanded.
    */
   @Prop() intlCollapse?: string;
-
-  /**
-   * Arrangement of the component.
-   *
-   * @deprecated use "position" instead.
-   */
-  @Prop({ reflect: true }) layout: CalciteLayout;
-
-  /**
-   * Orientation of the component.
-   */
-  @Prop({ reflect: true }) orientation: CalciteOrientation = "vertical";
 
   /**
    * Arranges the component depending on the elements 'dir' property.
@@ -158,18 +138,15 @@ export class CalciteActionPad {
       expand,
       intlExpand,
       intlCollapse,
-      textExpand,
-      textCollapse,
       el,
       layout,
-      orientation,
       position,
       toggleExpand,
       tooltipExpand
     } = this;
 
-    const expandLabel = intlExpand || textExpand || TEXT.expand;
-    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
+    const expandLabel = intlExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -177,14 +154,14 @@ export class CalciteActionPad {
         intlExpand={expandLabel}
         intlCollapse={collapseLabel}
         el={el}
-        position={getCalcitePosition(position, layout)}
+        position={position}
         toggleExpand={toggleExpand}
         tooltipExpand={tooltipExpand}
       />
     ) : null;
 
     return expandToggleNode ? (
-      <calcite-action-group class={CSS.actionGroupBottom} orientation={orientation}>
+      <calcite-action-group class={CSS.actionGroupBottom} layout={layout}>
         {expandToggleNode}
       </calcite-action-group>
     ) : null;

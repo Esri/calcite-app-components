@@ -11,7 +11,7 @@
   padding-top: 0;
 }
 
-:host([orientation="horizontal"]) {
+:host([layout="horizontal"]) {
   flex-direction: row;
   padding: 0;
 }

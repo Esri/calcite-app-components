@@ -1,4 +1,5 @@
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
 import { Attributes, createComponentHTML as create, darkBackground, parseReadme } from "../../../.storybook/utils";
 import readme from "./readme.md";
 import { ATTRIBUTES } from "../../../.storybook/resources";
@@ -8,7 +9,7 @@ import { TEXT } from "./resources";
 
 export default {
   title: "components|calcite-action-bar",
-  decorators: [withKnobs],
+  decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,
     notes: parseReadme(readme)

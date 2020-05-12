@@ -57,13 +57,14 @@ $tip-max-width: 540px;
   animation-duration: var(--calcite-app-animation-time);
   animation-timing-function: var(--calcite-app-easing-function);
   height: $tip-manager-height;
+  margin-top: var(--calcite-app-cap-spacing-quarter);
   overflow: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   @include focus-style-base();
   &:focus {
-    @include focus-style-inset();
+    @include focus-style-outset();
   }
 }
 
