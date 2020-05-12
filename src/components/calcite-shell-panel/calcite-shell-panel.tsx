@@ -1,7 +1,6 @@
 import { Component, Event, EventEmitter, Host, Prop, Watch, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
-import { CalciteLayout, CalcitePosition, CalciteScale } from "../interfaces";
-import { getCalcitePosition } from "../utils/dom";
+import { CalcitePosition, CalciteScale } from "../interfaces";
 
 /**
  * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
@@ -40,13 +39,6 @@ export class CalciteShellPanel {
   @Prop({ reflect: false }) detachedScale: CalciteScale = "m";
 
   /**
-   * Arrangement of the component.
-   *
-   * @deprecated use "position" instead.
-   */
-  @Prop({ reflect: true }) layout: CalciteLayout;
-
-  /**
    * Arranges the component depending on the elements 'dir' property.
    */
   @Prop({ reflect: true }) position: CalcitePosition;
@@ -69,7 +61,7 @@ export class CalciteShellPanel {
   // --------------------------------------------------------------------------
 
   render(): VNode {
-    const { collapsed, detached, layout, position } = this;
+    const { collapsed, detached, position } = this;
 
     const contentNode = (
       <div class={{ [CSS.content]: true, [CSS.contentDetached]: detached }} hidden={collapsed}>
@@ -81,7 +73,7 @@ export class CalciteShellPanel {
 
     const mainNodes = [actionBarNode, contentNode];
 
-    if (getCalcitePosition(position, layout) === "end") {
+    if (position === "end") {
       mainNodes.reverse();
     }
 

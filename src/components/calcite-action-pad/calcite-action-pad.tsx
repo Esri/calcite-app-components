@@ -9,10 +9,9 @@ import {
   h,
   VNode
 } from "@stencil/core";
-import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
+import { CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
 import { CSS, TEXT } from "./resources";
-import { getCalcitePosition } from "../utils/dom";
 
 /**
  * @slot - A slot for adding `calcite-action`s to the action pad.
@@ -61,32 +60,13 @@ export class CalciteActionPad {
 
   /**
    * Updates the label of the expand icon when the component is not expanded.
-   * @deprecated use "intlExpand" instead.
-   */
-  @Prop() textExpand?: string;
-
-  /**
-   * Updates the label of the expand icon when the component is not expanded.
    */
   @Prop() intlExpand?: string;
 
   /**
    * Updates the label of the collapse icon when the component is expanded.
-   * @deprecated use "intlCollapse" instead.
-   */
-  @Prop() textCollapse?: string;
-
-  /**
-   * Updates the label of the collapse icon when the component is expanded.
    */
   @Prop() intlCollapse?: string;
-
-  /**
-   * Arrangement of the component.
-   *
-   * @deprecated use "position" instead.
-   */
-  @Prop({ reflect: true }) layout: CalciteLayout;
 
   /**
    * Arranges the component depending on the elements 'dir' property.
@@ -153,17 +133,14 @@ export class CalciteActionPad {
       expand,
       intlExpand,
       intlCollapse,
-      textExpand,
-      textCollapse,
       el,
-      layout,
       position,
       toggleExpand,
       tooltipExpand
     } = this;
 
-    const expandLabel = intlExpand || textExpand || TEXT.expand;
-    const collapseLabel = intlCollapse || textCollapse || TEXT.collapse;
+    const expandLabel = intlExpand || TEXT.expand;
+    const collapseLabel = intlCollapse || TEXT.collapse;
 
     const expandToggleNode = expand ? (
       <CalciteExpandToggle
@@ -171,7 +148,7 @@ export class CalciteActionPad {
         intlExpand={expandLabel}
         intlCollapse={collapseLabel}
         el={el}
-        position={getCalcitePosition(position, layout)}
+        position={position}
         toggleExpand={toggleExpand}
         tooltipExpand={tooltipExpand}
       />

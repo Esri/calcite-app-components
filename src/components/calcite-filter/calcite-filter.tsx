@@ -49,20 +49,6 @@ export class CalciteFilter {
    */
   @Prop() placeholder?: string;
 
-  /**
-   * A text label that will appear next to the input field.
-   *
-   * @deprecated use "intlLabel" instead.
-   */
-  @Prop() textLabel?: string;
-
-  /**
-   * Placeholder text for the input element's placeholder attribute
-   *
-   * @deprecated use "placeholder" instead.
-   */
-  @Prop() textPlaceholder?: string;
-
   // --------------------------------------------------------------------------
   //
   //  Private Properties
@@ -150,9 +136,9 @@ export class CalciteFilter {
           <input
             type="text"
             value=""
-            placeholder={this.placeholder || this.textPlaceholder}
+            placeholder={this.placeholder}
             onInput={this.inputHandler}
-            aria-label={this.intlLabel || this.textLabel || TEXT.filterLabel}
+            aria-label={this.intlLabel || TEXT.filterLabel}
             ref={(el): void => {
               this.textInput = el;
             }}

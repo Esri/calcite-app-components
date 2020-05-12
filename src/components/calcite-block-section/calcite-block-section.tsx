@@ -42,20 +42,6 @@ export class CalciteBlockSection {
   @Prop() text: string;
 
   /**
-   * Tooltip used for the toggle when expanded.
-   *
-   * @deprecated use "intlCollapse" instead.
-   */
-  @Prop() textCollapse?: string;
-
-  /**
-   * Tooltip used for the toggle when collapsed.
-   *
-   * @deprecated use "intlExpand" instead.
-   */
-  @Prop() textExpand?: string;
-
-  /**
    * This property determines the look of the section toggle.
    * If the value is "switch", a toggle-switch will be displayed.
    * If the value is "button", a clickable header is displayed.
@@ -111,17 +97,7 @@ export class CalciteBlockSection {
   // --------------------------------------------------------------------------
 
   render(): VNode {
-    const {
-      el,
-      guid: id,
-      intlCollapse,
-      intlExpand,
-      open,
-      text,
-      textCollapse,
-      textExpand,
-      toggleDisplay
-    } = this;
+    const { el, guid: id, intlCollapse, intlExpand, open, text, toggleDisplay } = this;
     const dir = getElementDir(el);
     const arrowIcon = open
       ? ICONS.menuOpen
@@ -129,9 +105,7 @@ export class CalciteBlockSection {
       ? ICONS.menuClosedLeft
       : ICONS.menuClosedRight;
 
-    const toggleLabel = open
-      ? intlCollapse || textCollapse || TEXT.collapse
-      : intlExpand || textExpand || TEXT.expand;
+    const toggleLabel = open ? intlCollapse || TEXT.collapse : intlExpand || TEXT.expand;
     const labelId = `${id}__label`;
 
     const headerNode =

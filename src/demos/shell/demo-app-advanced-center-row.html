@@ -29,48 +29,46 @@
       }
     </style>
 
-<script>
-    require(["esri/WebMap", "esri/views/MapView", "esri/widgets/LayerList","esri/widgets/Zoom"], function(WebMap, MapView, LayerList, Zoom) {
-      const webmap = new WebMap({
-        portalItem: {
-          id: "cc316ca9e0824970ad29ac558161d42d"
-        }
-      });
+    <script>
+      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/LayerList", "esri/widgets/Zoom"], function (
+        WebMap,
+        MapView,
+        LayerList,
+        Zoom
+      ) {
+        const webmap = new WebMap({
+          portalItem: {
+            id: "cc316ca9e0824970ad29ac558161d42d"
+          }
+        });
 
-      const view = new MapView({
-        container: "viewDiv",
-        map: webmap,
-        padding: {left: 49, right: 49}
+        const view = new MapView({
+          container: "viewDiv",
+          map: webmap,
+          padding: { left: 49, right: 49 }
+        });
+        view.when(function () {
+          view.ui.move("zoom", "bottom-right");
+        });
       });
-      view.when(function() {
-        view.ui.move("zoom", "bottom-right");
-      });
-    });
-  </script>
+    </script>
   </head>
   <body>
     <main>
       <div class="shell-container">
         <calcite-shell>
-          <calcite-shell-panel id="primary-panel" slot="primary-panel" position="start"  detached-scale="l">
+          <calcite-shell-panel id="primary-panel" slot="primary-panel" position="start" detached-scale="l">
             <calcite-action-bar slot="action-bar" theme="dark">
               <calcite-action-group>
-                <calcite-action text="Save" icon="save" indicator>
-                </calcite-action>
-                <calcite-action icon="map" text="New">
-                </calcite-action>
-                <calcite-action icon="collection" text="Open">
-                </calcite-action>
-            </calcite-action-group>
-            <calcite-action-group>
-                <calcite-action icon="layers" text="Layers" active>
-                </calcite-action>
-                <calcite-action icon="basemap" text="Basemaps">
-                </calcite-action>
-                <calcite-action icon="legend" text="Legend">
-                </calcite-action>
-                <calcite-action icon="bookmark" text="Bookmarks">
-                </calcite-action>
+                <calcite-action text="Save" icon="save" indicator> </calcite-action>
+                <calcite-action icon="map" text="New"> </calcite-action>
+                <calcite-action icon="collection" text="Open"> </calcite-action>
+              </calcite-action-group>
+              <calcite-action-group>
+                <calcite-action icon="layers" text="Layers" active> </calcite-action>
+                <calcite-action icon="basemap" text="Basemaps"> </calcite-action>
+                <calcite-action icon="legend" text="Legend"> </calcite-action>
+                <calcite-action icon="bookmark" text="Bookmarks"> </calcite-action>
               </calcite-action-group>
               <calcite-action-group>
                 <calcite-action text="Share" icon="share"></calcite-action>
@@ -82,16 +80,16 @@
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-flow>
-                <calcite-flow-item heading="First flow item">
-                    Default slot of the first flow-item
-                </calcite-flow-item>
-                <calcite-flow-item heading="Second flow item 02">
-                    Default slot of the second flow-item
-                </calcite-flow-item>
+              <calcite-flow-item heading="First flow item">
+                Default slot of the first flow-item
+              </calcite-flow-item>
+              <calcite-flow-item heading="Second flow item 02">
+                Default slot of the second flow-item
+              </calcite-flow-item>
             </calcite-flow>
           </calcite-shell-panel>
 
-          <calcite-shell-panel slot="contextual-panel" position="end"  detached-scale="l">
+          <calcite-shell-panel slot="contextual-panel" position="end" detached-scale="l">
             <calcite-action-bar slot="action-bar">
               <calcite-action-group>
                 <calcite-action text="Layer properties" icon="sliders-horizontal"> </calcite-action>
@@ -117,25 +115,25 @@
               </calcite-action-group>
             </calcite-action-bar>
             <calcite-flow id="flow">
-              <calcite-flow-item
-                heading="Single flow-item"
-                summary="I'm in the contextual-panel"
-              >
+              <calcite-flow-item heading="Single flow-item" summary="I'm in the contextual-panel">
                 Default slot of flow-item
               </calcite-flow-item>
             </calcite-flow>
           </calcite-shell-panel>
           <div class="gnav" slot="shell-header">
-              <h2>Boomer v Millennial - California</h2>
+            <h2>Boomer v Millennial - California</h2>
           </div>
           <calcite-shell-center-row slot="center-row" height-scale="s" detached id="center-row">
             <calcite-panel heading="Data table" summary="US Demographics - Country - County">
               <calcite-action slot="header-leading-content" text="Switch layer" icon="caret-down"></calcite-action>
-              <calcite-action slot="header-trailing-content" text="Expand" icon="expand" id="expand-trigger"></calcite-action>
+              <calcite-action
+                slot="header-trailing-content"
+                text="Expand"
+                icon="expand"
+                id="expand-trigger"
+              ></calcite-action>
               <calcite-fab slot="fab"></calcite-fab>
-              <div class="header" slot="header-content">
-                Data table<br/>US Demographics - Country - County
-              </div>
+              <div class="header" slot="header-content">Data table<br />US Demographics - Country - County</div>
               <style>
                 .demo-table th {
                   background-color: white;
@@ -356,60 +354,59 @@
                   <td>When will you die?</td>
                   <td>Protagonist</td>
                 </tr>
-                
               </table>
-          </calcite-panel>
-        </calcite-shell-center-row>
-        <calcite-tip-manager slot="tip-manager" id="tip-manager" hidden detached>
-          <calcite-tip-group text-group-title="Astronomy">
-            <calcite-tip heading="The Red Rocks and Blue Water">
-              <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
+            </calcite-panel>
+          </calcite-shell-center-row>
+          <calcite-tip-manager slot="center-row" id="tip-manager" hidden detached>
+            <calcite-tip-group text-group-title="Astronomy">
+              <calcite-tip heading="The Red Rocks and Blue Water">
+                <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
+                <p>
+                  This tip is how a tip should really look. It has a landscape or square image and a small amount of
+                  text content. This paragraph is in an "info" slot.
+                </p>
+                <p>
+                  This is another paragraph in a subsequent "info" slot. In publishing and graphic design, Lorem ipsum
+                  is a placeholder text commonly used to demonstrate the visual form of a document without relying on
+                  meaningful content (also called greeking). Replacing the actual content with placeholder text allows
+                  designers to design the form of the content before the content itself has been produced.
+                </p>
+                <a href="http://www.esri.com">This is the "link" slot.</a>
+              </calcite-tip>
+              <calcite-tip heading="The Long Trees">
+                <img slot="thumbnail" src="https://placeimg.com/1000/600/nature" alt="This is an image." />
+                <p>
+                  This tip has an image that is a pretty tall. And the text will run out before the end of the image.
+                </p>
+                <p>In astronomy, the terms object and body are often used interchangeably.</p>
+                <a href="http://www.esri.com">View Esri</a>
+              </calcite-tip>
+            </calcite-tip-group>
+            <calcite-tip heading="Square Nature">
+              <img slot="thumbnail" src="https://placeimg.com/1000/1000/nature" alt="This is an image." />
               <p>
-                This tip is how a tip should really look. It has a landscape or square image and a small amount of
-                text content. This paragraph is in an "info" slot.
-              </p>
-              <p>
-                This is another paragraph in a subsequent "info" slot. In publishing and graphic design, Lorem ipsum
-                is a placeholder text commonly used to demonstrate the visual form of a document without relying on
-                meaningful content (also called greeking). Replacing the actual content with placeholder text allows
-                designers to design the form of the content before the content itself has been produced.
-              </p>
-              <a href="http://www.esri.com">This is the "link" slot.</a>
-            </calcite-tip>
-            <calcite-tip heading="The Long Trees">
-              <img slot="thumbnail" src="https://placeimg.com/1000/600/nature" alt="This is an image." />
-              <p>
-                This tip has an image that is a pretty tall. And the text will run out before the end of the image.
+                This tip has an image that is square. And the text will run out before the end of the image.
               </p>
               <p>In astronomy, the terms object and body are often used interchangeably.</p>
+              <p>
+                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
+                visual form of a document without relying on meaningful content (also called greeking). Replacing the
+                actual content with placeholder text allows designers to design the form of the content before the
+                content itself has been produced.
+              </p>
               <a href="http://www.esri.com">View Esri</a>
             </calcite-tip>
-          </calcite-tip-group>
-          <calcite-tip heading="Square Nature">
-            <img slot="thumbnail" src="https://placeimg.com/1000/1000/nature" alt="This is an image." />
-            <p>
-              This tip has an image that is square. And the text will run out before the end of the image.
-            </p>
-            <p>In astronomy, the terms object and body are often used interchangeably.</p>
-            <p>
-              In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
-              visual form of a document without relying on meaningful content (also called greeking). Replacing the
-              actual content with placeholder text allows designers to design the form of the content before the
-              content itself has been produced.
-            </p>
-            <a href="http://www.esri.com">View Esri</a>
-          </calcite-tip>
-          <calcite-tip heading="The lack of imagery">
-            <p>
-              This tip has no image. As such, the content area will take up the entire width of the tip.
-            </p>
-            <p>
-              This is the next paragraph and should show how wide the content area is now. Of course, the width of the
-              overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
-            </p>
-            <a href="http://www.esri.com">View Esri</a>
-          </calcite-tip>
-        </calcite-tip-manager>
+            <calcite-tip heading="The lack of imagery">
+              <p>
+                This tip has no image. As such, the content area will take up the entire width of the tip.
+              </p>
+              <p>
+                This is the next paragraph and should show how wide the content area is now. Of course, the width of the
+                overall tip will affect things. In astronomy, the terms object and body are often used interchangeably.
+              </p>
+              <a href="http://www.esri.com">View Esri</a>
+            </calcite-tip>
+          </calcite-tip-manager>
           <div id="viewDiv"></div>
 
           <footer slot="shell-footer">Footer</footer>
@@ -418,7 +415,7 @@
       <script>
         const tipManagerButton = document.getElementById("tip-manager-button");
         const tipManager = document.getElementById("tip-manager");
-        tipManagerButton.addEventListener("click", function() {
+        tipManagerButton.addEventListener("click", function () {
           tipManager.hasAttribute("hidden")
             ? tipManager.removeAttribute("hidden")
             : tipManager.setAttribute("hidden", "");
@@ -426,8 +423,8 @@
 
         const expandTrigger = document.getElementById("expand-trigger");
         const centerRow = document.getElementById("center-row");
-        expandTrigger.addEventListener("click", function(){
-            centerRow.getAttribute("height-scale") == "s"
+        expandTrigger.addEventListener("click", function () {
+          centerRow.getAttribute("height-scale") == "s"
             ? centerRow.setAttribute("height-scale", "m")
             : centerRow.setAttribute("height-scale", "s");
         });
