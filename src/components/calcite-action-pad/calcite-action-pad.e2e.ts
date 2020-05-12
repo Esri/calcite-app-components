@@ -15,6 +15,8 @@ describe("calcite-action-pad", () => {
     const element = await page.find("calcite-action-pad");
     expect(element.getAttribute("expand")).not.toBeNull();
     expect(element.getAttribute("expanded")).toBeNull();
+    expect(element.getAttribute("layout")).toBe("vertical");
+    expect(element.getAttribute("layout")).not.toBe("horizontal");
   });
 
   describe("expand functionality", () => {
