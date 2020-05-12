@@ -72,32 +72,14 @@ export class CalciteFlowItem {
   @Prop() intlBack?: string;
 
   /**
-   * 'Back' text string.
-   * @deprecated use "intlBack" instead.
-   */
-  @Prop() textBack?: string;
-
-  /**
    * 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.
    */
   @Prop() intlClose?: string;
 
   /**
-   * 'Close' text string for the menu.
-   * @deprecated use "intlClose" instead.
-   */
-  @Prop() textClose?: string;
-
-  /**
    * 'Open' text string for the menu.
    */
   @Prop() intlOpen?: string;
-
-  /**
-   * 'Open' text string for the menu.
-   * @deprecated use "intlOpen" instead.
-   */
-  @Prop() textOpen?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -237,8 +219,8 @@ export class CalciteFlowItem {
   // --------------------------------------------------------------------------
 
   renderBackButton(rtl: boolean): VNode {
-    const { showBackButton, intlBack, textBack, backButtonClick } = this;
-    const label = intlBack || textBack || TEXT.back;
+    const { showBackButton, intlBack, backButtonClick } = this;
+    const label = intlBack || TEXT.back;
     const icon = rtl ? ICONS.backRight : ICONS.backLeft;
 
     return showBackButton ? (
@@ -255,9 +237,9 @@ export class CalciteFlowItem {
   }
 
   renderMenuButton(): VNode {
-    const { menuOpen, textOpen, intlOpen, intlClose, textClose } = this;
-    const closeLabel = intlClose || textClose || TEXT.close;
-    const openLabel = intlOpen || textOpen || TEXT.open;
+    const { menuOpen, intlOpen, intlClose } = this;
+    const closeLabel = intlClose || TEXT.close;
+    const openLabel = intlOpen || TEXT.open;
 
     const menuLabel = menuOpen ? closeLabel : openLabel;
 

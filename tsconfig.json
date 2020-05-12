@@ -2,7 +2,7 @@
   "extends": "./tsconfig-base",
   "include": [
     ".storybook/declarations.d.ts",
-    "src",
+    "./src/components",
     "node_modules/@esri/calcite-components/dist/types/components.d.ts"
   ],
   "exclude": ["**/*.stories.ts", "**/tests/**"]

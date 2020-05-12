@@ -46,21 +46,9 @@ export class CalciteTipManager {
   @Prop() intlClose?: string;
 
   /**
-   * Alternate text for closing the tip.
-   * @deprecated use "intlClose" instead.
-   */
-  @Prop() textClose?: string;
-
-  /**
    * The default group title for the `calcite-tip-manager`.
    */
   @Prop() intlDefaultTitle?: string;
-
-  /**
-   * The default group title for the `calcite-tip-manager`.
-   * @deprecated use "intlDefaultTitle" instead.
-   */
-  @Prop() textDefaultTitle?: string;
 
   /**
    * Alternate text for navigating to the next tip.
@@ -68,32 +56,14 @@ export class CalciteTipManager {
   @Prop() intlNext?: string;
 
   /**
-   * Alternate text for navigating to the next tip.
-   * @deprecated use "intlNext" instead.
-   */
-  @Prop() textNext?: string;
-
-  /**
    * Label that appears on hover of pagination icon.
    */
   @Prop() intlPaginationLabel?: string;
 
   /**
-   * Label that appears on hover of pagination icon.
-   * @deprecated use "intlPaginationLabel" instead.
-   */
-  @Prop() textPaginationLabel?: string;
-
-  /**
    * Alternate text for navigating to the previous tip.
    */
   @Prop() intlPrevious?: string;
-
-  /**
-   * Alternate text for navigating to the previous tip.
-   * @deprecated use "intlPrevious" instead.
-   */
-  @Prop() textPrevious?: string;
 
   /**
    * Used to set the component's color scheme.
@@ -214,11 +184,7 @@ export class CalciteTipManager {
   updateGroupTitle(): void {
     const selectedTip = this.tips[this.selectedIndex];
     const tipParent = selectedTip.closest("calcite-tip-group");
-    this.groupTitle =
-      tipParent?.textGroupTitle ||
-      this.intlDefaultTitle ||
-      this.textDefaultTitle ||
-      TEXT.defaultGroupTitle;
+    this.groupTitle = tipParent?.textGroupTitle || this.intlDefaultTitle || TEXT.defaultGroupTitle;
   }
 
   previousClicked = (): void => {
@@ -266,22 +232,11 @@ export class CalciteTipManager {
 
   renderPagination(): VNode {
     const dir = getElementDir(this.el);
-    const {
-      selectedIndex,
-      tips,
-      total,
-      intlNext,
-      textNext,
-      intlPrevious,
-      textPrevious,
-      intlPaginationLabel,
-      textPaginationLabel
-    } = this;
+    const { selectedIndex, tips, total, intlNext, intlPrevious, intlPaginationLabel } = this;
 
-    const nextLabel = intlNext || textNext || TEXT.next;
-    const previousLabel = intlPrevious || textPrevious || TEXT.previous;
-    const paginationLabel =
-      intlPaginationLabel || textPaginationLabel || TEXT.defaultPaginationLabel;
+    const nextLabel = intlNext || TEXT.next;
+    const previousLabel = intlPrevious || TEXT.previous;
+    const paginationLabel = intlPaginationLabel || TEXT.defaultPaginationLabel;
 
     return tips.length > 1 ? (
       <footer class={CSS.pagination}>
@@ -303,9 +258,9 @@ export class CalciteTipManager {
   }
 
   render(): VNode {
-    const { closed, direction, groupTitle, selectedIndex, intlClose, textClose, total } = this;
+    const { closed, direction, groupTitle, selectedIndex, intlClose, total } = this;
 
-    const closeLabel = intlClose || textClose || TEXT.close;
+    const closeLabel = intlClose || TEXT.close;
 
     if (total === 0) {
       return <Host />;
