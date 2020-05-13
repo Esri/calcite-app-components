@@ -1,10 +1,5 @@
 :host {
   @extend %component-host;
-  display: inline-flex;
-  flex-direction: column;
-  box-shadow: var(--calcite-app-shadow-2);
-  max-width: 15vw;
-  overflow-y: auto;
   animation: calcite-app-fade-in var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
 }
 
@@ -20,6 +15,14 @@
   padding-top: 0;
 }
 
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  box-shadow: var(--calcite-app-shadow-2);
+  max-width: 15vw;
+  overflow-y: auto;
+}
+
 .action-group--bottom {
   padding-bottom: 0;
   flex-grow: 1;
@@ -28,16 +31,22 @@
 
 :host([layout="horizontal"], [expanded]),
 :host([layout="horizontal"]) {
-  flex-direction: row;
-  max-width: unset;
-  ::slotted(calcite-action-group) {
-    border-right: 1px solid var(--calcite-app-border);
-    border-bottom: none;
+  .container {
     flex-direction: row;
-    padding: 0;
+    max-width: unset;
+    .action-group--bottom {
+      padding: 0;
+    }
+    ::slotted(calcite-action-group) {
+      border-right: 1px solid var(--calcite-app-border);
+      border-bottom: none;
+      flex-direction: row;
+      padding: 0;
+    }
   }
-  .action-group--bottom {
-    padding: 0;
+  .container.calcite--rtl ::slotted(calcite-action-group) {
+    border-right: none;
+    border-left: 1px solid var(--calcite-app-border);
   }
 }
 

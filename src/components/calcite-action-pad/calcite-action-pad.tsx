@@ -11,6 +11,8 @@ import {
 } from "@stencil/core";
 import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
+import { getElementDir } from "../utils/dom";
+import { CSS_UTILITY } from "../utils/resources";
 import { CSS, TEXT } from "./resources";
 
 /**
@@ -165,10 +167,18 @@ export class CalciteActionPad {
   }
 
   render(): VNode {
+    const rtl = getElementDir(this.el) === "rtl";
+    const containerClasses = {
+      [CSS.container]: true,
+      [CSS_UTILITY.rtl]: rtl
+    }
+
     return (
       <Host>
-        <slot />
-        {this.renderBottomActionGroup()}
+        <div class={containerClasses}>
+          <slot />
+          {this.renderBottomActionGroup()}
+        </div>
       </Host>
     );
   }

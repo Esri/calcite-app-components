@@ -43,21 +43,47 @@
 
         <div class="action-pad-container">
           <calcite-action-pad layout="horizontal">
-            <calcite-action-group layout="horizontal">
+            <calcite-action-group>
               <calcite-action text="Undo" icon="undo"> </calcite-action>
               <calcite-action text="Redo" icon="redo"> </calcite-action>
             </calcite-action-group>
-            <calcite-action-group layout="horizontal">
+            <calcite-action-group>
               <calcite-action text="Title" icon="title"></calcite-action>
               <calcite-action text="Text" icon="text"></calcite-action>
               <calcite-action text="Bold" icon="bold"></calcite-action>
               <calcite-action text="Italics" icon="italicize"></calcite-action>
             </calcite-action-group>
-            <calcite-action-group layout="horizontal">
+            <calcite-action-group>
               <calcite-action text="Cut" icon="scissors"></calcite-action>
               <calcite-action text="Add" icon="plus-square"></calcite-action>
             </calcite-action-group>
-            <calcite-action-group layout="horizontal">
+            <calcite-action-group>
+              <calcite-action text="Remove" icon="trash"> </calcite-action>
+            </calcite-action-group>
+          </calcite-action-pad>
+        </div>
+      </section>
+
+      <section class="example-container" >
+        <h1>RTL : calcite-action-pad horizontal</h1>
+
+        <div class="action-pad-container" dir="rtl">
+          <calcite-action-pad layout="horizontal">
+            <calcite-action-group>
+              <calcite-action text="Undo" icon="undo"> </calcite-action>
+              <calcite-action text="Redo" icon="redo"> </calcite-action>
+            </calcite-action-group>
+            <calcite-action-group>
+              <calcite-action text="Title" icon="title"></calcite-action>
+              <calcite-action text="Text" icon="text"></calcite-action>
+              <calcite-action text="Bold" icon="bold"></calcite-action>
+              <calcite-action text="Italics" icon="italicize"></calcite-action>
+            </calcite-action-group>
+            <calcite-action-group>
+              <calcite-action text="Cut" icon="scissors"></calcite-action>
+              <calcite-action text="Add" icon="plus-square"></calcite-action>
+            </calcite-action-group>
+            <calcite-action-group>
               <calcite-action text="Remove" icon="trash"> </calcite-action>
             </calcite-action-group>
           </calcite-action-pad>
