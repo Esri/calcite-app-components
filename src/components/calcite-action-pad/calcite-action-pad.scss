@@ -29,7 +29,6 @@
   justify-content: flex-end;
 }
 
-:host([layout="horizontal"], [expanded]),
 :host([layout="horizontal"]) {
   .container {
     flex-direction: row;
