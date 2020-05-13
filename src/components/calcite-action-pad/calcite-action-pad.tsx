@@ -28,14 +28,14 @@ export class CalciteActionPad {
   //
   // --------------------------------------------------------------------------
   /**
-   * Indicates whether widget can be expanded.
-   */
-  @Prop({ reflect: true }) expand = true;
-
-  /**
    * Indicates the horizontal or vertical layout of the component.
    */
   @Prop({ reflect: true }) layout: CalciteLayout = "vertical";
+
+  /**
+   * Indicates whether widget can be expanded.
+   */
+  @Prop({ reflect: true }) expand = true;
 
   @Watch("expand")
   expandHandler(expand: boolean): void {
@@ -139,7 +139,6 @@ export class CalciteActionPad {
       intlExpand,
       intlCollapse,
       el,
-      layout,
       position,
       toggleExpand,
       tooltipExpand
@@ -161,9 +160,7 @@ export class CalciteActionPad {
     ) : null;
 
     return expandToggleNode ? (
-      <calcite-action-group class={CSS.actionGroupBottom} layout={layout}>
-        {expandToggleNode}
-      </calcite-action-group>
+      <calcite-action-group class={CSS.actionGroupBottom}>{expandToggleNode}</calcite-action-group>
     ) : null;
   }
 

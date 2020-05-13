@@ -11,11 +11,6 @@
   padding-top: 0;
 }
 
-:host([layout="horizontal"]) {
-  flex-direction: row;
-  padding: 0;
-}
-
 ::slotted(calcite-action) {
   display: flex;
   width: 100%;

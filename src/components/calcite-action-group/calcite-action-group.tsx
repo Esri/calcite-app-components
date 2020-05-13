@@ -1,5 +1,4 @@
-import { Component, Host, h, VNode, Prop } from "@stencil/core";
-import { CalciteLayout } from "../interfaces";
+import { Component, Host, h, VNode } from "@stencil/core";
 
 @Component({
   tag: "calcite-action-group",
@@ -10,16 +9,6 @@ import { CalciteLayout } from "../interfaces";
  * @slot - A slot for adding a group of `calcite-action`s.
  */
 export class CalciteActionGroup {
-  // --------------------------------------------------------------------------
-  //
-  //  Properties
-  //
-  // --------------------------------------------------------------------------
-  /**
-   * Indicates the horizontal or vertical layout of the component.
-   */
-  @Prop({ reflect: true }) layout: CalciteLayout = "vertical";
-
   // --------------------------------------------------------------------------
   //
   //  Component Methods

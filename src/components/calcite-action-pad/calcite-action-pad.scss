@@ -28,18 +28,17 @@
 
 :host([layout="horizontal"], [expanded]),
 :host([layout="horizontal"]) {
+  flex-direction: row;
   max-width: unset;
   ::slotted(calcite-action-group) {
     border-right: 1px solid var(--calcite-app-border);
     border-bottom: none;
+    flex-direction: row;
+    padding: 0;
   }
   .action-group--bottom {
-    padding-bottom: 0;
+    padding: 0;
   }
-}
-
-:host([layout="horizontal"]) {
-  flex-direction: row;
 }
 
 ::slotted(calcite-action-group:last-child) {
