@@ -8,7 +8,7 @@ describe("calcite-action-group", () => {
   it("should be accessible", async () =>
     accessible(`
     <calcite-action-group>
-        <calcite-action text="Add" icon="plus"></calcite-action>
-      </calcite-action-group>
+      <calcite-action text="Add" icon="plus"></calcite-action>
+    </calcite-action-group>
     `));
 });

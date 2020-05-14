@@ -1,5 +1,6 @@
 export const CSS = {
-  actionGroupBottom: "action-group--bottom"
+  actionGroupBottom: "action-group--bottom",
+  container: "container"
 };
 
 export const TEXT = {

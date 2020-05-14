@@ -9,8 +9,10 @@ import {
   h,
   VNode
 } from "@stencil/core";
-import { CalcitePosition, CalciteTheme } from "../interfaces";
+import { CalciteLayout, CalcitePosition, CalciteTheme } from "../interfaces";
 import { CalciteExpandToggle, toggleChildActionText } from "../utils/CalciteExpandToggle";
+import { getElementDir } from "../utils/dom";
+import { CSS_UTILITY } from "../utils/resources";
 import { CSS, TEXT } from "./resources";
 
 /**
@@ -27,6 +29,11 @@ export class CalciteActionPad {
   //  Properties
   //
   // --------------------------------------------------------------------------
+  /**
+   * Indicates the horizontal or vertical layout of the component.
+   */
+  @Prop({ reflect: true }) layout: CalciteLayout = "vertical";
+
   /**
    * Indicates whether widget can be expanded.
    */
@@ -160,10 +167,18 @@ export class CalciteActionPad {
   }
 
   render(): VNode {
+    const rtl = getElementDir(this.el) === "rtl";
+    const containerClasses = {
+      [CSS.container]: true,
+      [CSS_UTILITY.rtl]: rtl
+    }
+
     return (
       <Host>
-        <slot />
-        {this.renderBottomActionGroup()}
+        <div class={containerClasses}>
+          <slot />
+          {this.renderBottomActionGroup()}
+        </div>
       </Host>
     );
   }
