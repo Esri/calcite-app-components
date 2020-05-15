@@ -129,59 +129,23 @@
               <!-- <calcite-tip non-dismissible>
                 Pop-ups authored in Map Viewer Beta are not compatible with all apps. <a href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
               </calcite-tip> -->
-              <div class="popup-warning-div">
+              <!-- <div class="popup-warning-div"> -->
                 <calcite-notice scale="s" active dismissible>
                     <span slot="notice-message">
                         Pop-ups authored in Map Viewer Beta are not compatible with all apps.
                     </span>
                     <a slot="notice-link" href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
                 </calcite-notice>
-            </div>
-                <!-- <div class="popup-warning-div">
-                    <label class="popup-warning-label">
-                        Pop-ups authored in Map Viewer Beta are not compatible with all apps. <a href="https://links.esri.com/agol/new-mv-beta" target="_blank">Learn more</a>
-                    </label>
-                </div> -->
-                <calcite-action slot="menu-actions" text="Switch layer" icon="caret-down"></calcite-action>
-
-                <section class="enable-label">
-                  <span class="enable-label__text">Enable popup</span>
-                  <calcite-switch scale="s" switched></calcite-switch>
-                </section>
-                <div class="combo-button flow-list-item">
-                    <button class="combo-button__main">
-                        Manage expresions
-                    </button>
-                    <calcite-icon class="combo-action" icon="chevron-right"  scale="s"></calcite-icon>
-                </div>
-                <!-- <section class="popup-title">
-                    <div class="combo-control">
-                    <span class="combo-control__label">
-                        Title
-                      </span>
-                    <div class="combo-button">
-                        <button class="combo-button__main">
-                          County: {NAME}
-                        </button>
-                        <calcite-action class="combo-action" scale="s" icon="code"></calcite-action>
-                      </div>
-                    </div>
-                </section> -->
-                <!-- <calcite-value-list drag-enabled>
-                    <calcite-value-list-item
-                      text-label="2018 Total Households (Esri)"
-                      text-description="{TOTHH_CY}"
-                    ></calcite-value-list-item>
-                    <calcite-value-list-item
-                      text-label="2018 Average Household Size (Esri)"
-                      text-description="{AVGHHSZ_CY}"
-                    ></calcite-value-list-item>
-                </calcite-value-list>
-                <div style="display: flex;">
-                    <calcite-button icon="plus" scale="s" width="half" appearance="transparent">Field</calcite-button>
-                    <calcite-button icon="plus" scale="s" width="half" appearance="transparent">Expression</calcite-button>
-                </div> -->
-
+            <!-- </div> -->
+                <calcite-action slot="leading-actions" text="Switch layer" scale="s" icon="caret-down"></calcite-action>
+                <calcite-pick-list appearance="clear">
+                  <calcite-pick-list-item text-label="Feature pop-up" text-description="Configure the pop-up for individual features.">
+                    <calcite-icon icon="chevron-right" scale="s" slot="secondary-action"></calcite-icon>
+                  </calcite-pick-list-item>
+                  <calcite-pick-list-item text-label="Cluster popup" text-description="This is a description.">
+                    <calcite-icon icon="chevron-right" scale="s" slot="secondary-action"></calcite-icon>
+                  </calcite-pick-list-item>
+                </calcite-pick-list>
                 <calcite-block heading="Title"  summary="County: {NAME}" collapsible>
                     <calcite-icon icon="title" scale="m" slot="icon"></calcite-icon>
                     <div class="combo-control">

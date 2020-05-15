@@ -2,7 +2,7 @@
   @extend %component-host;
   align-items: stretch;
   display: flex;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
   flex-flow: column;
   padding-bottom: var(--calcite-app-cap-spacing);
   position: relative;
@@ -22,6 +22,13 @@ header {
     z-index: 1;
   }
   @include borderShadow();
+}
+
+:host([appearance="clear"]) {
+  background-color: var(--calcite-app-background-clear);
+  header {
+    background-color: var(--calcite-app-background-clear);
+  }
 }
 
 calcite-filter {
