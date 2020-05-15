@@ -11,7 +11,6 @@ import {
   VNode
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
-import { CalciteAppearance } from "../interfaces";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import { getSlotted } from "../utils/dom";
 
@@ -30,11 +29,6 @@ export class CalcitePickListItem {
   //  Properties
   //
   // --------------------------------------------------------------------------
-
-  /**
-   * Determines the appearance of the component. Defaults to solid
-   */
-  @Prop({ reflect: true }) appearance: CalciteAppearance = "solid";
 
   /**
    * When true, the item cannot be clicked and is visually muted.
@@ -249,7 +243,7 @@ export class CalcitePickListItem {
 
     return (
       <calcite-action
-        appearance={this.appearance}
+        appearance="clear"
         scale="s"
         class={CSS.remove}
         icon={ICONS.remove}

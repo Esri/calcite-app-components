@@ -11,6 +11,7 @@ import {
   VNode
 } from "@stencil/core";
 import { ICON_TYPES, TEXT } from "./resources";
+import { CalciteAppearance } from "../interfaces";
 import {
   calciteListItemChangeHandler,
   calciteListItemValueChangeHandler,
@@ -45,6 +46,11 @@ export class CalcitePickList<
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * Determines the appearance of the component. Defaults to solid
+   */
+  @Prop({ reflect: true }) appearance: CalciteAppearance | null = null;
 
   /**
    * When true, disabled prevents interaction. This state shows items with lower opacity/grayed.
