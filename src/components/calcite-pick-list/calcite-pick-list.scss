@@ -2,9 +2,9 @@
   @extend %component-host;
   align-items: stretch;
   display: flex;
-  flex: 0 1 auto;
+  flex: 1 0 auto;
   flex-flow: column;
-  padding-bottom: var(--calcite-app-cap-spacing);
+  padding-bottom: var(--calcite-app-cap-spacing-half);
   position: relative;
 }
 
@@ -33,6 +33,10 @@ header {
 
 calcite-filter {
   margin-bottom: 1px;
+}
+
+::slotted(calcite-pick-list-item:first-child) {
+  border-top: none;
 }
 
 slot[name="menu-actions"]::slotted(calcite-action) {
