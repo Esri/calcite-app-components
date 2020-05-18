@@ -17,7 +17,7 @@
     "build": "stencil build --docs",
     "build:docs": "stencil build --config stencil.storybook.config.ts",
     "demoPageSync": "ts-node ./support/demoPageSync.ts",
-    "deps:update": "updtr --ex @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"build(deps): bump versions\"",
+    "deps:update": "updtr --ex jest-runner @types/jest @types/puppeteer jest jest-cli puppeteer && git add package*.json && git commit -q -m \"build(deps): bump versions\"",
     "docs": "concurrently --kill-others --raw \"npm run build:docs && build-storybook --static-dir ./__docs-temp__ --output-dir ./docs\"  \"ts-node ./support/tempDocDirCleaner.ts\"",
     "docs:preview": "concurrently --raw \"npm run build:docs && start-storybook --static-dir ./__docs-temp__\" \"ts-node ./support/tempDocDirCleaner.ts\"",
     "lint": "concurrently npm:lint:*",
@@ -50,7 +50,7 @@
     "sortablejs": "1.10.2"
   },
   "devDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.25",
+    "@esri/calcite-components": "1.0.0-beta.26",
     "@stencil/core": "1.13.0",
     "@stencil/eslint-plugin": "0.3.1",
     "@stencil/postcss": "1.0.1",
@@ -71,9 +71,9 @@
     "@types/rimraf": "3.0.0",
     "@types/sortablejs": "1.10.4",
     "@types/webpack": "4.41.13",
-    "@typescript-eslint/eslint-plugin": "2.33.0",
-    "@typescript-eslint/parser": "2.33.0",
-    "autoprefixer": "9.7.6",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
+    "autoprefixer": "9.8.0",
     "awesome-typescript-loader": "5.2.1",
     "axe-core": "3.5.3",
     "babel-loader": "8.1.0",
@@ -92,17 +92,17 @@
     "jest-axe": "3.4.0",
     "jest-cli": "24.9.0",
     "jest-runner": "24.9.0",
-    "lint-staged": "10.2.2",
+    "lint-staged": "10.2.4",
     "package": "1.0.1",
     "posthtml": "0.13.0",
     "prettier": "2.0.5",
     "puppeteer": "2.1.0",
     "rimraf": "3.0.2",
     "standard-version": "8.0.0",
-    "stylelint": "13.3.3",
+    "stylelint": "13.4.1",
     "stylelint-config-recommended-scss": "4.2.0",
     "stylelint-scss": "3.17.2",
-    "ts-jest": "25.5.1",
+    "ts-jest": "26.0.0",
     "ts-node": "8.10.1",
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
@@ -110,7 +110,7 @@
     "updtr": "3.1.0"
   },
   "peerDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.25"
+    "@esri/calcite-components": "1.0.0-beta.26"
   },
   "license": "UNLICENSED"
 }
