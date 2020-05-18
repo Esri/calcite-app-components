@@ -21,6 +21,7 @@ export function focusElement(el: CalciteFocusableElement): void {
 
 interface GetSlottedOptions {
   all?: boolean;
+  direct?: boolean;
   selector?: string;
 }
 
@@ -43,8 +44,18 @@ export function getSlotted<T extends Element = Element>(
   const selector = options?.selector ? `${slottedSelector} ${options.selector}` : slottedSelector;
 
   if (options?.all) {
-    return Array.from(element.querySelectorAll<T>(selector));
+    const matches = Array.from(element.querySelectorAll<T>(selector));
+    return options.direct ? direct(element, matches) : matches;
   }
 
-  return element.querySelector<T>(selector);
+  const match = element.querySelector<T>(selector);
+  return options?.direct ? direct(element, match) : match;
+}
+
+function direct<T extends Element = Element>(element: Element, itemsOrItem: T | T[]): T | T[] {
+  if (Array.isArray(itemsOrItem)) {
+    return itemsOrItem.filter((item) => item.parentElement === element);
+  }
+
+  return itemsOrItem.parentElement === element ? itemsOrItem : null;
 }
