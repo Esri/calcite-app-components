@@ -29,7 +29,7 @@ export const List = ({ props, ...rest }): VNode => {
           <slot name="menu-actions" />
         </header>
         <slot />
-        {loading || disabled ? <calcite-scrim loading={loading} /> : null}
+        {(loading || disabled) ? <calcite-scrim loading={loading} /> : null}
       </section>
     </Host>
   );
