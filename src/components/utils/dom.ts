@@ -55,7 +55,7 @@ function queryMultiple<T extends Element = Element>(
   options?: GetSlottedOptions
 ): T[] {
   let matches = Array.from(element.querySelectorAll<T>(slotSelector));
-  matches = options?.direct ? matches.filter((el) => el.parentElement === element) : matches;
+  matches = options && options.direct === false ? matches : matches.filter((el) => el.parentElement === element);
 
   const selector = options?.selector;
   return selector ? matches.map((item) => item.querySelector<T>(selector)).filter((match) => !!match) : matches;
@@ -67,7 +67,7 @@ function querySingle<T extends Element = Element>(
   options?: GetSlottedOptions
 ): T | null {
   let match = element.querySelector<T>(slotSelector);
-  match = options?.direct ? (match?.parentElement === element ? match : null) : match;
+  match = options && options.direct === false ? match : match?.parentElement === element ? match : null;
 
   const selector = options?.selector;
   return selector ? match.querySelector<T>(selector) : match;
