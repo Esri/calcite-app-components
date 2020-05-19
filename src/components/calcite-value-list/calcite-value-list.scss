@@ -32,6 +32,12 @@ calcite-filter {
   margin-bottom: 1px;
 }
 
+calcite-scrim {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: column;
+}
+
 slot[name="menu-actions"]::slotted(calcite-action) {
   padding: 0 var(--calcite-app-side-spacing-half);
 }

@@ -3,6 +3,15 @@ import { VNode } from "@stencil/core/internal";
 import { CSS } from "./resources";
 import { getElementDir } from "../utils/dom";
 
+const renderScrim = (loading: boolean, disabled: boolean): VNode => {
+  const defaultSlot = <slot />;
+  return loading || disabled ? (
+    <calcite-scrim loading={loading}>{defaultSlot}</calcite-scrim>
+  ) : (
+    defaultSlot
+  );
+};
+
 export const List = ({ props, ...rest }): VNode => {
   const {
     disabled,
@@ -28,8 +37,7 @@ export const List = ({ props, ...rest }): VNode => {
           ) : null}
           <slot name="menu-actions" />
         </header>
-        <slot />
-        {(loading || disabled) ? <calcite-scrim loading={loading} /> : null}
+        {renderScrim(loading, disabled)}
       </section>
     </Host>
   );
