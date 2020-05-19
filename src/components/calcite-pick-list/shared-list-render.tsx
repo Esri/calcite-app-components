@@ -1,19 +1,7 @@
 import { Host, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
 import { CSS } from "./resources";
-import { getElementDir } from "../utils/dom";
-import { CalciteTheme } from "../interfaces";
-
-const renderScrim = (loading: boolean, disabled: boolean, theme: CalciteTheme): VNode => {
-  const defaultSlot = <slot />;
-  return loading || disabled ? (
-    <calcite-scrim theme={theme} loading={loading}>
-      {defaultSlot}
-    </calcite-scrim>
-  ) : (
-    defaultSlot
-  );
-};
+import { getElementDir, getElementTheme } from "../utils/dom";
 
 export const List = ({ props, ...rest }): VNode => {
   const {
@@ -23,9 +11,9 @@ export const List = ({ props, ...rest }): VNode => {
     dataForFilter,
     handleFilter,
     textFilterPlaceholder,
-    theme,
     el
   } = props;
+  const defaultSlot = <slot />;
 
   return (
     <Host role="menu" aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
@@ -42,7 +30,13 @@ export const List = ({ props, ...rest }): VNode => {
           ) : null}
           <slot name="menu-actions" />
         </header>
-        {renderScrim(loading, disabled, theme)}
+        {loading || disabled ? (
+          <calcite-scrim theme={getElementTheme(el)} loading={loading}>
+            {defaultSlot}
+          </calcite-scrim>
+        ) : (
+          defaultSlot
+        )}
       </section>
     </Host>
   );

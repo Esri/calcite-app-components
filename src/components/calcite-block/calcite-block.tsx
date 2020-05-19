@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@
 import { CSS, SLOTS, TEXT } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 import { CalciteTheme } from "../interfaces";
-import { getElementDir, getSlotted } from "../utils/dom";
+import { getElementDir, getSlotted, getElementTheme } from "../utils/dom";
 
 /**
  * @slot icon - A slot for adding a trailing header icon.
@@ -108,12 +108,12 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   renderScrim(): VNode {
-    const { disabled, loading, theme } = this;
+    const { disabled, loading, el } = this;
 
     const defaultSlot = <slot />;
 
     return loading || disabled ? (
-      <calcite-scrim theme={theme} loading={loading}>
+      <calcite-scrim theme={getElementTheme(el)} loading={loading}>
         {defaultSlot}
       </calcite-scrim>
     ) : (

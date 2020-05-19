@@ -1,5 +1,11 @@
+import { CalciteTheme } from "../interfaces";
+
 export function getElementDir(el: HTMLElement): "ltr" | "rtl" {
   return getElementProp(el, "dir", "ltr");
+}
+
+export function getElementTheme(el: HTMLElement): CalciteTheme {
+  return getElementProp(el, "theme", "light");
 }
 
 export function getElementProp(el: HTMLElement, prop, value): any {
