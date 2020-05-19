@@ -10,7 +10,7 @@ import {
   h
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
-import { getElementDir, getSlotted } from "../utils/dom";
+import { getElementDir, getSlotted, getElementTheme } from "../utils/dom";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
@@ -266,7 +266,9 @@ export class CalcitePanel {
     return (
       <Host>
         {loading || disabled ? (
-          <calcite-scrim loading={loading}>{panelNode}</calcite-scrim>
+          <calcite-scrim theme={getElementTheme(el)} loading={loading}>
+            {panelNode}
+          </calcite-scrim>
         ) : (
           panelNode
         )}
