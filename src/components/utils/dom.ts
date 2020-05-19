@@ -40,36 +40,35 @@ export function getSlotted<T extends Element = Element>(
   slotName: string,
   options?: GetSlottedOptions
 ): (T | null) | T[] {
-  const selector = buildSlottedSelector(slotName, options?.selector);
+  const slotSelector = `[slot="${slotName}"]`;
 
   if (options?.all) {
-    return queryMultiple<T>(element, selector, options?.direct);
+    return queryMultiple<T>(element, slotSelector, options);
   }
 
-  return querySingle<T>(element, selector, options?.direct);
+  return querySingle<T>(element, slotSelector, options);
 }
 
-function buildSlottedSelector(slotName: string, selector?: string): string {
-  const slottedSelector = `[slot="${slotName}"]`;
-  return selector ? `${slottedSelector} ${selector}` : slottedSelector;
+function queryMultiple<T extends Element = Element>(
+  element: Element,
+  slotSelector: string,
+  options?: GetSlottedOptions
+): T[] {
+  let matches = Array.from(element.querySelectorAll<T>(slotSelector));
+  matches = options?.direct ? matches.filter((el) => el.parentElement === element) : matches;
+
+  const selector = options?.selector;
+  return selector ? matches.map((item) => item.querySelector<T>(selector)).filter((match) => !!match) : matches;
 }
 
-function queryMultiple<T extends Element = Element>(element: Element, selector: string, direct?: boolean): T[] {
-  const items = Array.from(element.querySelectorAll<T>(selector));
+function querySingle<T extends Element = Element>(
+  element: Element,
+  slotSelector: string,
+  options?: GetSlottedOptions
+): T | null {
+  let match = element.querySelector<T>(slotSelector);
+  match = options?.direct ? (match?.parentElement === element ? match : null) : match;
 
-  if (!direct) {
-    return items;
-  }
-
-  return items.filter((item) => item.parentElement === element);
-}
-
-function querySingle<T extends Element = Element>(element: Element, selector: string, direct?: boolean): T | null {
-  const match = element.querySelector<T>(selector);
-
-  if (!direct) {
-    return match;
-  }
-
-  return match?.parentElement === element ? match : null;
+  const selector = options?.selector;
+  return selector ? match.querySelector<T>(selector) : match;
 }

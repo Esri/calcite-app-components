@@ -305,7 +305,7 @@ export class CalciteFlowItem {
   }
 
   renderHeaderActions(): VNode {
-    const menuActions = getSlotted(this.el, SLOTS.menuActions, { all: true, direct: true });
+    const menuActions = getSlotted(this.el, SLOTS.menuActions, { all: true });
     const actionCount = menuActions.length;
 
     const menuActionsNodes =
