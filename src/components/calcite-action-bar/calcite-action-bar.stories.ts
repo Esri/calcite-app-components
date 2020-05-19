@@ -61,3 +61,24 @@ export const basic = (): string =>
     </calcite-action-group>
   `
   );
+
+export const withTooltip = (): DocumentFragment => {
+  const action = document.createElement("calcite-action");
+  action.text = "Add";
+  action.icon = "plus";
+
+  const tooltip = document.createElement("calcite-tooltip");
+  tooltip.innerText = "Expand";
+
+  const actionBar = document.createElement("calcite-action-bar");
+  actionBar.tooltipExpand = tooltip;
+
+  actionBar.append(action);
+
+  const fragment = document.createDocumentFragment();
+
+  fragment.append(actionBar);
+  fragment.append(tooltip);
+
+  return fragment;
+};
