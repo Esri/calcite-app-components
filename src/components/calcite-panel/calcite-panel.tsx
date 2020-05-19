@@ -241,7 +241,7 @@ export class CalcitePanel {
   }
 
   render(): VNode {
-    const { dismissed, disabled, dismissible, el, loading, panelKeyUpHandler } = this;
+    const { dismissed, disabled, dismissible, el, loading, theme, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
@@ -266,7 +266,9 @@ export class CalcitePanel {
     return (
       <Host>
         {loading || disabled ? (
-          <calcite-scrim loading={loading}>{panelNode}</calcite-scrim>
+          <calcite-scrim theme={theme} loading={loading}>
+            {panelNode}
+          </calcite-scrim>
         ) : (
           panelNode
         )}

@@ -108,12 +108,14 @@ export class CalciteBlock {
   // --------------------------------------------------------------------------
 
   renderScrim(): VNode {
-    const { disabled, loading } = this;
+    const { disabled, loading, theme } = this;
 
     const defaultSlot = <slot />;
 
     return loading || disabled ? (
-      <calcite-scrim loading={loading}>{defaultSlot}</calcite-scrim>
+      <calcite-scrim theme={theme} loading={loading}>
+        {defaultSlot}
+      </calcite-scrim>
     ) : (
       defaultSlot
     );
