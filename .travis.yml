@@ -5,7 +5,7 @@ branches:
   only:
     - master
 notifications:
-  slack: "$SLACK_ACCOUNT"
+  slack: "$SLACK_ACCOUNT:$SLACK_TOKEN"
 script:
   - npm run lint
   - npm test
