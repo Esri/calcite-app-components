@@ -5,7 +5,7 @@ branches:
   only:
     - master
 notifications:
-  slack: esri-webgis:D26hnnKPMsexqKOGR6LOUc02
+  slack: "$SLACK_ACCOUNT"
 script:
   - npm run lint
   - npm test
