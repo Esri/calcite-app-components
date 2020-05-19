@@ -14,7 +14,6 @@ import { getElementDir, getSlotted } from "../utils/dom";
 import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
-import CalciteScrim from "../utils/CalciteScrim";
 
 type FocusId = "dismiss-button";
 
@@ -246,24 +245,31 @@ export class CalcitePanel {
 
     const rtl = getElementDir(el) === "rtl";
 
+    const panelNode = (
+      <article
+        aria-busy={loading.toString()}
+        onKeyUp={panelKeyUpHandler}
+        tabIndex={dismissible ? 0 : -1}
+        hidden={dismissible && dismissed}
+        ref={(containerEl): HTMLElement => (this.containerEl = containerEl)}
+        class={{
+          [CSS.container]: true,
+          [CSS_UTILITY.rtl]: rtl
+        }}
+      >
+        {this.renderHeader()}
+        {this.renderContent()}
+        {this.renderFooter()}
+      </article>
+    );
+
     return (
       <Host>
-        <article
-          aria-busy={loading.toString()}
-          onKeyUp={panelKeyUpHandler}
-          tabIndex={dismissible ? 0 : -1}
-          hidden={dismissible && dismissed}
-          ref={(containerEl): HTMLElement => (this.containerEl = containerEl)}
-          class={{
-            [CSS.container]: true,
-            [CSS_UTILITY.rtl]: rtl
-          }}
-        >
-          {this.renderHeader()}
-          {this.renderContent()}
-          {this.renderFooter()}
-        </article>
-        <CalciteScrim loading={loading} disabled={disabled} />
+        {loading || disabled ? (
+          <calcite-scrim loading={loading}>{panelNode}</calcite-scrim>
+        ) : (
+          panelNode
+        )}
       </Host>
     );
   }

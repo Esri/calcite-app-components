@@ -77,7 +77,7 @@ describe("calcite-block", () => {
       { withPeerDependencies: true }
     );
 
-    expect(await page.find("calcite-block >>> calcite-loader")).toBeNull();
+    expect(await page.find("calcite-block >>> calcite-scrim")).toBeNull();
 
     const content = await page.find(".content");
     const clickSpy = await content.spyOnEvent("click");
@@ -91,7 +91,7 @@ describe("calcite-block", () => {
     await content.click();
     expect(clickSpy).toHaveReceivedEventTimes(1);
 
-    expect(await page.find("calcite-block >>> calcite-loader")).toBeTruthy();
+    expect(await page.find("calcite-block >>> calcite-scrim")).toBeTruthy();
   });
 
   it("can display/hide content", async () => {

@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h, VNode } from "@
 import { CSS, SLOTS, TEXT } from "./resources";
 import { CSS_UTILITY } from "../utils/resources";
 import { CalciteTheme } from "../interfaces";
-import CalciteScrim from "../utils/CalciteScrim";
 import { getElementDir, getSlotted } from "../utils/dom";
 
 /**
@@ -108,6 +107,18 @@ export class CalciteBlock {
   //
   // --------------------------------------------------------------------------
 
+  renderScrim(): VNode {
+    const { disabled, loading } = this;
+
+    const defaultSlot = <slot />;
+
+    return loading || disabled ? (
+      <calcite-scrim loading={loading}>{defaultSlot}</calcite-scrim>
+    ) : (
+      defaultSlot
+    );
+  }
+
   render(): VNode {
     const {
       collapsible,
@@ -176,9 +187,7 @@ export class CalciteBlock {
         >
           {headerNode}
           <div class={CSS.content} hidden={!open}>
-            <CalciteScrim loading={loading} disabled={disabled}>
-              <slot />
-            </CalciteScrim>
+            {this.renderScrim()}
           </div>
         </article>
       </Host>

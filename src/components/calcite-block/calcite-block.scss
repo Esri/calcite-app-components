@@ -18,6 +18,11 @@
   padding: 0;
 }
 
+.header,
+.toggle {
+  grid-area: header;
+}
+
 .header-container {
   display: grid;
   grid-template: auto / auto 1fr auto;
@@ -49,11 +54,6 @@
   &:focus {
     @include focus-style-inset();
   }
-}
-
-.header,
-.toggle {
-  grid-area: header;
 }
 
 calcite-loader[inline] {
@@ -104,6 +104,10 @@ calcite-handle {
   grid-area: control;
   display: flex;
   margin: 0;
+}
+
+calcite-scrim {
+  pointer-events: none;
 }
 
 .calcite--rtl {
