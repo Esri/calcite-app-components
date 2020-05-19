@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from "@stencil/core";
 import { VNode } from "@stencil/core/internal";
 import { focusElement, getElementDir, getSlotted } from "../utils/dom";
-import { BLACKLISTED_MENU_ACTIONS_COMPONENTS, CSS, ICONS, SLOTS, TEXT } from "./resources";
+import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { SLOTS as PANEL_SLOTS } from "../calcite-panel/resources";
 import { getRoundRobinIndex } from "../utils/array";
 import { CalciteScale, CalciteTheme } from "../interfaces";
@@ -306,12 +306,7 @@ export class CalciteFlowItem {
 
   renderHeaderActions(): VNode {
     const menuActions = getSlotted(this.el, SLOTS.menuActions, { all: true });
-
-    const filteredActions = menuActions.filter(
-      (el) => !el.closest(BLACKLISTED_MENU_ACTIONS_COMPONENTS.join(","))
-    );
-
-    const actionCount = filteredActions.length;
+    const actionCount = menuActions.length;
 
     const menuActionsNodes =
       actionCount === 1

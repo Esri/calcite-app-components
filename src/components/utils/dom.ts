@@ -21,6 +21,7 @@ export function focusElement(el: CalciteFocusableElement): void {
 
 interface GetSlottedOptions {
   all?: boolean;
+  direct?: boolean;
   selector?: string;
 }
 
@@ -39,12 +40,35 @@ export function getSlotted<T extends Element = Element>(
   slotName: string,
   options?: GetSlottedOptions
 ): (T | null) | T[] {
-  const slottedSelector = `[slot="${slotName}"]`;
-  const selector = options?.selector ? `${slottedSelector} ${options.selector}` : slottedSelector;
+  const slotSelector = `[slot="${slotName}"]`;
 
   if (options?.all) {
-    return Array.from(element.querySelectorAll<T>(selector));
+    return queryMultiple<T>(element, slotSelector, options);
   }
 
-  return element.querySelector<T>(selector);
+  return querySingle<T>(element, slotSelector, options);
+}
+
+function queryMultiple<T extends Element = Element>(
+  element: Element,
+  slotSelector: string,
+  options?: GetSlottedOptions
+): T[] {
+  let matches = Array.from(element.querySelectorAll<T>(slotSelector));
+  matches = options && options.direct === false ? matches : matches.filter((el) => el.parentElement === element);
+
+  const selector = options?.selector;
+  return selector ? matches.map((item) => item.querySelector<T>(selector)).filter((match) => !!match) : matches;
+}
+
+function querySingle<T extends Element = Element>(
+  element: Element,
+  slotSelector: string,
+  options?: GetSlottedOptions
+): T | null {
+  let match = element.querySelector<T>(slotSelector);
+  match = options && options.direct === false ? match : match?.parentElement === element ? match : null;
+
+  const selector = options?.selector;
+  return selector ? match.querySelector<T>(selector) : match;
 }
