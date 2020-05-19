@@ -36,6 +36,7 @@ calcite-scrim {
   display: flex;
   flex: 0 0 auto;
   flex-flow: column;
+  pointer-events: none;
 }
 
 slot[name="menu-actions"]::slotted(calcite-action) {

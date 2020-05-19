@@ -240,35 +240,36 @@ export class CalcitePanel {
     ) : null;
   }
 
-  renderScrim(): VNode {
-    const { disabled, loading } = this;
-
-    return loading || disabled ? <calcite-scrim loading={loading} /> : null;
-  }
-
   render(): VNode {
-    const { dismissed, dismissible, el, loading, panelKeyUpHandler } = this;
+    const { dismissed, disabled, dismissible, el, loading, panelKeyUpHandler } = this;
 
     const rtl = getElementDir(el) === "rtl";
 
+    const panelNode = (
+      <article
+        aria-busy={loading.toString()}
+        onKeyUp={panelKeyUpHandler}
+        tabIndex={dismissible ? 0 : -1}
+        hidden={dismissible && dismissed}
+        ref={(containerEl): HTMLElement => (this.containerEl = containerEl)}
+        class={{
+          [CSS.container]: true,
+          [CSS_UTILITY.rtl]: rtl
+        }}
+      >
+        {this.renderHeader()}
+        {this.renderContent()}
+        {this.renderFooter()}
+      </article>
+    );
+
     return (
       <Host>
-        <article
-          aria-busy={loading.toString()}
-          onKeyUp={panelKeyUpHandler}
-          tabIndex={dismissible ? 0 : -1}
-          hidden={dismissible && dismissed}
-          ref={(containerEl): HTMLElement => (this.containerEl = containerEl)}
-          class={{
-            [CSS.container]: true,
-            [CSS_UTILITY.rtl]: rtl
-          }}
-        >
-          {this.renderHeader()}
-          {this.renderContent()}
-          {this.renderFooter()}
-        </article>
-        {this.renderScrim()}
+        {loading || disabled ? (
+          <calcite-scrim loading={loading}>{panelNode}</calcite-scrim>
+        ) : (
+          panelNode
+        )}
       </Host>
     );
   }
