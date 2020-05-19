@@ -40,22 +40,36 @@ export function getSlotted<T extends Element = Element>(
   slotName: string,
   options?: GetSlottedOptions
 ): (T | null) | T[] {
-  const slottedSelector = `[slot="${slotName}"]`;
-  const selector = options?.selector ? `${slottedSelector} ${options.selector}` : slottedSelector;
+  const selector = buildSlottedSelector(slotName, options?.selector);
 
   if (options?.all) {
-    const matches = Array.from(element.querySelectorAll<T>(selector));
-    return options.direct ? direct(element, matches) : matches;
+    return queryMultiple<T>(element, selector, options?.direct);
   }
 
-  const match = element.querySelector<T>(selector);
-  return options?.direct ? direct(element, match) : match;
+  return querySingle<T>(element, selector, options?.direct);
 }
 
-function direct<T extends Element = Element>(element: Element, itemsOrItem: T | T[]): T | T[] {
-  if (Array.isArray(itemsOrItem)) {
-    return itemsOrItem.filter((item) => item.parentElement === element);
+function buildSlottedSelector(slotName: string, selector?: string): string {
+  const slottedSelector = `[slot="${slotName}"]`;
+  return selector ? `${slottedSelector} ${selector}` : slottedSelector;
+}
+
+function queryMultiple<T extends Element = Element>(element: Element, selector: string, direct?: boolean): T[] {
+  const items = Array.from(element.querySelectorAll<T>(selector));
+
+  if (!direct) {
+    return items;
   }
 
-  return itemsOrItem.parentElement === element ? itemsOrItem : null;
+  return items.filter((item) => item.parentElement === element);
+}
+
+function querySingle<T extends Element = Element>(element: Element, selector: string, direct?: boolean): T | null {
+  const match = element.querySelector<T>(selector);
+
+  if (!direct) {
+    return match;
+  }
+
+  return match?.parentElement === element ? match : null;
 }
