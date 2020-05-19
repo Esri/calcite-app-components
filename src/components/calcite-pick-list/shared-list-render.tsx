@@ -3,10 +3,6 @@ import { VNode } from "@stencil/core/internal";
 import { CSS } from "./resources";
 import { getElementDir } from "../utils/dom";
 
-const renderScrim = (loading, disabled): VNode => {
-  return loading || disabled ? <calcite-scrim loading={loading} /> : null;
-};
-
 export const List = ({ props, ...rest }): VNode => {
   const {
     disabled,
@@ -33,7 +29,7 @@ export const List = ({ props, ...rest }): VNode => {
           <slot name="menu-actions" />
         </header>
         <slot />
-        {renderScrim(loading, disabled)}
+        {loading || disabled ? <calcite-scrim loading={loading} /> : null}
       </section>
     </Host>
   );
