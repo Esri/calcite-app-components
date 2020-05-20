@@ -99,7 +99,7 @@
     "puppeteer": "2.1.0",
     "rimraf": "3.0.2",
     "standard-version": "8.0.0",
-    "stylelint": "13.4.1",
+    "stylelint": "13.5.0",
     "stylelint-config-recommended-scss": "4.2.0",
     "stylelint-scss": "3.17.2",
     "ts-jest": "26.0.0",
