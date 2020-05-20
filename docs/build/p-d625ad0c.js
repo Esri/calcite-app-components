@@ -1,1 +1,0 @@
-const e={action:"action",description:"description",handle:"handle",handleActivated:"handle--activated",highlight:"highlight",icon:"icon",label:"label",remove:"remove",title:"title",textContainer:"text-container"},c={unchecked:"square",checked:"check",circle:"circleF",remove:"x"},t={secondaryAction:"secondary-action"},i={remove:"remove"};export{e as C,c as I,t as S,i as T}

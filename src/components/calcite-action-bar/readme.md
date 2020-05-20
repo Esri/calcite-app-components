@@ -6,7 +6,6 @@ The `calcite-action-bar` component is made up of multiple `calcite-action`s in t
 
 <!-- Auto Generated Below -->
 
-
 ## Usage
 
 ### Basic
@@ -51,7 +50,6 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 </calcite-action-bar>
 ```
 
-
 ### Tooltip
 
 ### Tooltip on the expand action
@@ -68,23 +66,17 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 </script>
 ```
 
-
-
 ## Properties
 
-| Property        | Attribute       | Description                                                                                                                                                                                                                                                 | Type                        | Default     |
-| --------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----------- |
-| `expand`        | `expand`        | Indicates whether widget can be expanded.                                                                                                                                                                                                                   | `boolean`                   | `true`      |
-| `expanded`      | `expanded`      | Indicates whether widget is expanded.                                                                                                                                                                                                                       | `boolean`                   | `false`     |
-| `intlCollapse`  | `intl-collapse` | Updates the label of the collapse icon when the component is expanded.                                                                                                                                                                                      | `string`                    | `undefined` |
-| `intlExpand`    | `intl-expand`   | Updates the label of the expand icon when the component is not expanded.                                                                                                                                                                                    | `string`                    | `undefined` |
-| `layout`        | `layout`        | <span style="color:red">**[DEPRECATED]**</span> use "position" instead.<br/><br/>Arrangement of the component. Leading and trailing are different depending on if the direction is LTR or RTL. For example, "leading" in a LTR app will appear on the left. | `"leading" \| "trailing"`   | `undefined` |
-| `position`      | `position`      | Arranges the component depending on the elements 'dir' property.                                                                                                                                                                                            | `"end" \| "start"`          | `undefined` |
-| `textCollapse`  | `text-collapse` | <span style="color:red">**[DEPRECATED]**</span> use "intlCollapse" instead.<br/><br/>Updates the label of the collapse icon when the component is expanded.                                                                                                 | `string`                    | `undefined` |
-| `textExpand`    | `text-expand`   | <span style="color:red">**[DEPRECATED]**</span> use "intlExpand" instead.<br/><br/>Updates the label of the expand icon when the component is not expanded.                                                                                                 | `string`                    | `undefined` |
-| `theme`         | `theme`         | Used to set the component's color scheme.                                                                                                                                                                                                                   | `"dark" \| "light"`         | `undefined` |
-| `tooltipExpand` | --              | Used to set the tooltip for the expand toggle.                                                                                                                                                                                                              | `HTMLCalciteTooltipElement` | `undefined` |
-
+| Property        | Attribute       | Description                                                              | Type                        | Default     |
+| --------------- | --------------- | ------------------------------------------------------------------------ | --------------------------- | ----------- |
+| `expand`        | `expand`        | Indicates whether widget can be expanded.                                | `boolean`                   | `true`      |
+| `expanded`      | `expanded`      | Indicates whether widget is expanded.                                    | `boolean`                   | `false`     |
+| `intlCollapse`  | `intl-collapse` | Updates the label of the collapse icon when the component is expanded.   | `string`                    | `undefined` |
+| `intlExpand`    | `intl-expand`   | Updates the label of the expand icon when the component is not expanded. | `string`                    | `undefined` |
+| `position`      | `position`      | Arranges the component depending on the elements 'dir' property.         | `"end" \| "start"`          | `undefined` |
+| `theme`         | `theme`         | Used to set the component's color scheme.                                | `"dark" \| "light"`         | `undefined` |
+| `tooltipExpand` | --              | Used to set the tooltip for the expand toggle.                           | `HTMLCalciteTooltipElement` | `undefined` |
 
 ## Events
 
@@ -92,14 +84,12 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 | ------------------------ | --------------------------------------- | ------------------ |
 | `calciteActionBarToggle` | Emitted when expanded has been toggled. | `CustomEvent<any>` |
 
-
 ## Slots
 
 | Slot               | Description                                                                                                             |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
 |                    | A slot for adding `calcite-action`s that will appear at the top of the action bar.                                      |
 | `"bottom-actions"` | A slot for adding `calcite-action`s that will appear at the bottom of the action bar, above the collapse/expand button. |
-
 
 ## Dependencies
 
@@ -109,6 +99,7 @@ The bottom-actions slot renders `calcite-action`s that stick to the bottom of th
 - [calcite-action](../calcite-action)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-action-bar --> calcite-action-group
@@ -116,6 +107,6 @@ graph TD;
   style calcite-action-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

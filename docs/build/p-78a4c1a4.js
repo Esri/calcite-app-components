@@ -1,0 +1,1 @@
+const e={action:"action",description:"description",handle:"handle",handleActivated:"handle--activated",highlight:"highlight",icon:"icon",label:"label",remove:"remove",title:"title",textContainer:"text-container"},t={checked:"check",circle:"circleF",remove:"x"},c={secondaryAction:"secondary-action"},i={remove:"remove"};export{e as C,t as I,c as S,i as T}

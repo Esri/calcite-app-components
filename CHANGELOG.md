@@ -1,7 +1,36 @@
 # Changelog
 
-This document maintains a list of released versions and changes introduced by those versions.
+This document maintains a list of released versions and changes introduced by them.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
+
+## [6.0.0](https://github.com/Esri/calcite-app-components/compare/v5.7.3...v6.0.0) (2020-05-20)
+
+### ⚠ BREAKING CHANGES
+
+- - Removed deprecated 'text-\*' properties from action-bar, action-pad, block, block-section, filter, flow-item, panel, tip-manager, and tip.
+
+* Removed deprecated 'layout' property from action-bar, action-pad, and shell-panel.
+* Removed deprecated 'compact' property from pick-list-item, pick-list, value-list, and value-list-item.
+* Removed deprecated `tip-manager` slot from shell.
+
+### Features
+
+- **action-pad:** add horizontal layout ([faf319b](https://github.com/Esri/calcite-app-components/commit/faf319b36b95b019c3f8562ff2e793d244542e79)), closes [#967](https://github.com/Esri/calcite-app-components/issues/967) [#967](https://github.com/Esri/calcite-app-components/issues/967) [#967](https://github.com/Esri/calcite-app-components/issues/967) [#967](https://github.com/Esri/calcite-app-components/issues/967) [#967](https://github.com/Esri/calcite-app-components/issues/967)
+- **flow-item:** added slot that hydrates header-leading-content of calcite-panel ([e894d55](https://github.com/Esri/calcite-app-components/commit/e894d55e430705e075a34a496a48cddf029b538f)), closes [#958](https://github.com/Esri/calcite-app-components/issues/958) [#958](https://github.com/Esri/calcite-app-components/issues/958) [#958](https://github.com/Esri/calcite-app-components/issues/958) [#958](https://github.com/Esri/calcite-app-components/issues/958) [#958](https://github.com/Esri/calcite-app-components/issues/958)
+- css tweaks for shell-panel and center-row ([eb3ef56](https://github.com/Esri/calcite-app-components/commit/eb3ef56de1741757aa4d0f1eaefe9a51249c0487)), closes [#955](https://github.com/Esri/calcite-app-components/issues/955)
+- **panel:** tweak for FAB slot when h-scroll ([530ca8c](https://github.com/Esri/calcite-app-components/commit/530ca8cbb5cf330586e8cf1ecae2b795088a65c3))
+- new calcite-shell-center-row component and updated slot for calcite-shell ([#950](https://github.com/Esri/calcite-app-components/issues/950)) ([56a47d4](https://github.com/Esri/calcite-app-components/commit/56a47d42865fe50514d2d5936586304d7eb2a557)), closes [#935](https://github.com/Esri/calcite-app-components/issues/935)
+- replace focus ring mixin and added new mixin where needed ([f4429d4](https://github.com/Esri/calcite-app-components/commit/f4429d4a57ae99683aa22e7c4dfaa77fe1e86131)), closes [#945](https://github.com/Esri/calcite-app-components/issues/945)
+- typographic reduction and spacing updates ([f81ec72](https://github.com/Esri/calcite-app-components/commit/f81ec72fbb88de2244106512d253a6008231a269)), closes [#886](https://github.com/Esri/calcite-app-components/issues/886) [#886](https://github.com/Esri/calcite-app-components/issues/886) [#886](https://github.com/Esri/calcite-app-components/issues/886)
+- use less confusing icons in pick-list and value-list ([d4c9c7a](https://github.com/Esri/calcite-app-components/commit/d4c9c7a3f5716aaa57eb24257247f29fa3aeaed5))
+
+### Bug Fixes
+
+- **block:** updated for loader UI bug ([3eabce2](https://github.com/Esri/calcite-app-components/commit/3eabce201c059a7a586367f9e0a0c6339e343259))
+- **block-section:** added rtl check and css ([13483a8](https://github.com/Esri/calcite-app-components/commit/13483a80e1550468ef35216645eff8c1ba7924e0)), closes [#957](https://github.com/Esri/calcite-app-components/issues/957)
+- **calcite-filter:** added rtl check and updated styles ([f226c41](https://github.com/Esri/calcite-app-components/commit/f226c41b35ec7a881252039347973f791d9f7670)), closes [#959](https://github.com/Esri/calcite-app-components/issues/959)
+
+* Remove deprecated properties and slots from components ([#971](https://github.com/Esri/calcite-app-components/issues/971)) ([a37633a](https://github.com/Esri/calcite-app-components/commit/a37633aa0ff2d67458bf7e3ce4066880b6045901))
 
 ### [5.7.3](https://github.com/Esri/calcite-app-components/compare/v5.7.2...v5.7.3) (2020-04-08)
 

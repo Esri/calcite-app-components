@@ -74,7 +74,7 @@ Renders a shell with leading and trailing floating panels, action bar/pad, block
         </calcite-flow-item>
       </calcite-flow>
   </calcite-shell-panel>
-  <calcite-tip-manager slot="tip-manager">
+  <calcite-tip-manager slot="center-row">
     <calcite-tip heading="The Red Rocks and Blue Water" thumbnail="https://placeimg.com/1000/600" text-thumbnail="This is an image of nature.">
     <calcite-tip heading="The Long Trees" thumbnail="https://placeimg.com/1000/600" text-thumbnail="This is an image of trees.">
   </calcite-tip-manager>
@@ -113,6 +113,9 @@ Renders a shell with a header and panels on the left and right sides of the app.
   <calcite-shell-panel slot="contextual-panel" position="end">
     Trailing panel! (right side)
   </calcite-shell-panel>
+  <calcite-shell-center-row slot="center-row" position="end" height-scale="m">
+    Center Row! (center bottom)
+  </calcite-shell-center-row>
   <div slot="shell-header">
     <header>
       <h2>Shell Header: My App</h2>
@@ -156,7 +159,6 @@ Renders a single panel with actions in an action bar.
 | `"primary-panel"`    | A slot for adding the leading `calcite-shell-panel`.                                                                                     |
 | `"shell-footer"`     | A slot for adding footer content. This content will be positioned at the bottom of the shell.                                            |
 | `"shell-header"`     | A slot for adding header content. This content will be positioned at the top of the shell.                                               |
-| `"tip-manager"`      | **[DEPRECATED]** use "bottom-panel" instead.                                                                                             |
 
 ---
 

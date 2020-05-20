@@ -4,7 +4,6 @@ The `calcite-panel` component is a container for a header, content and optional 
 
 <!-- Auto Generated Below -->
 
-
 ## Usage
 
 ### Basic
@@ -65,21 +64,17 @@ Renders a panel that is dismissible with a click of the "x".
 </calcite-panel>
 ```
 
-
-
 ## Properties
 
-| Property      | Attribute      | Description                                                                                                                                                                                 | Type                | Default     |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
-| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                 | `boolean`           | `false`     |
-| `dismissed`   | `dismissed`    | Hides the panel.                                                                                                                                                                            | `boolean`           | `false`     |
-| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                                                                                                                 | `boolean`           | `false`     |
-| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                                                                                                                 | `"l" \| "m" \| "s"` | `undefined` |
-| `intlClose`   | `intl-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true.                                                                                   | `string`            | `undefined` |
-| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                              | `boolean`           | `false`     |
-| `textClose`   | `text-close`   | <span style="color:red">**[DEPRECATED]**</span> use "intlClose" instead.<br/><br/>'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `undefined` |
-| `theme`       | `theme`        | Used to set the component's color scheme.                                                                                                                                                   | `"dark" \| "light"` | `undefined` |
-
+| Property      | Attribute      | Description                                                                                               | Type                | Default     |
+| ------------- | -------------- | --------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `disabled`    | `disabled`     | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.               | `boolean`           | `false`     |
+| `dismissed`   | `dismissed`    | Hides the panel.                                                                                          | `boolean`           | `false`     |
+| `dismissible` | `dismissible`  | Displays a close button in the trailing side of the header.                                               | `boolean`           | `false`     |
+| `heightScale` | `height-scale` | Specifies the maxiumum height of the panel.                                                               | `"l" \| "m" \| "s"` | `undefined` |
+| `intlClose`   | `intl-close`   | 'Close' text string for the close button. The close button will only be shown when 'dismissible' is true. | `string`            | `undefined` |
+| `loading`     | `loading`      | When true, content is waiting to be loaded. This state shows a busy indicator.                            | `boolean`           | `false`     |
+| `theme`       | `theme`        | Used to set the component's color scheme.                                                                 | `"dark" \| "light"` | `undefined` |
 
 ## Events
 
@@ -88,19 +83,13 @@ Renders a panel that is dismissible with a click of the "x".
 | `calcitePanelDismissedChange` | Emitted when the close button has been clicked. | `CustomEvent<any>` |
 | `calcitePanelScroll`          | Emitted when the content has been scrolled.     | `CustomEvent<any>` |
 
-
 ## Methods
 
 ### `setFocus(focusId?: "dismiss-button") => Promise<void>`
 
-
-
 #### Returns
 
 Type: `Promise<void>`
-
-
-
 
 ## Slots
 
@@ -113,18 +102,18 @@ Type: `Promise<void>`
 | `"header-leading-content"`  | A slot for adding a `calcite-action` on the leading side of the header.          |
 | `"header-trailing-content"` | A slot for adding a `calcite-action` on the trailing side of the header.         |
 
-
 ## Dependencies
 
 ### Used by
 
- - [calcite-flow-item](../calcite-flow-item)
+- [calcite-flow-item](../calcite-flow-item)
 
 ### Depends on
 
 - [calcite-action](../calcite-action)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-panel --> calcite-action
@@ -132,6 +121,6 @@ graph TD;
   style calcite-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

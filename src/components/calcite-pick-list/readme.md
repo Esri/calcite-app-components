@@ -4,7 +4,6 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Usage
 
 ### Basic
@@ -68,19 +67,15 @@ Renders groups of pick list items that are visually separated.
 </calcite-pick-list>
 ```
 
-
-
 ## Properties
 
-| Property                | Attribute                 | Description                                                                                                                                                                                                                                                              | Type      | Default                  |
-| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- | ------------------------ |
-| `compact`               | `compact`                 | <span style="color:red">**[DEPRECATED]**</span> This property will be removed in a future release.<br/><br/>Compact removes the selection icon (radio or checkbox) and adds a compact attribute. This allows for a more compact version of the `calcite-pick-list-item`. | `boolean` | `false`                  |
-| `disabled`              | `disabled`                | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                                                                                              | `boolean` | `false`                  |
-| `filterEnabled`         | `filter-enabled`          | When true, an input appears at the top of the list that can be used by end users to filter items in the list.                                                                                                                                                            | `boolean` | `false`                  |
-| `loading`               | `loading`                 | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                                                                                                           | `boolean` | `false`                  |
-| `multiple`              | `multiple`                | Multiple works similar to standard radio buttons and checkboxes. When true, a user can select multiple items at a time. When false, only a single item can be selected at a time and selecting a new item will deselect any other selected items.                        | `boolean` | `false`                  |
-| `textFilterPlaceholder` | `text-filter-placeholder` | Placeholder text for the filter input field.                                                                                                                                                                                                                             | `string`  | `TEXT.filterPlaceholder` |
-
+| Property                | Attribute                 | Description                                                                                                                                                                                                                                       | Type      | Default                  |
+| ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------ |
+| `disabled`              | `disabled`                | When true, disabled prevents interaction. This state shows items with lower opacity/grayed.                                                                                                                                                       | `boolean` | `false`                  |
+| `filterEnabled`         | `filter-enabled`          | When true, an input appears at the top of the list that can be used by end users to filter items in the list.                                                                                                                                     | `boolean` | `false`                  |
+| `loading`               | `loading`                 | When true, content is waiting to be loaded. This state shows a busy indicator.                                                                                                                                                                    | `boolean` | `false`                  |
+| `multiple`              | `multiple`                | Multiple works similar to standard radio buttons and checkboxes. When true, a user can select multiple items at a time. When false, only a single item can be selected at a time and selecting a new item will deselect any other selected items. | `boolean` | `false`                  |
+| `textFilterPlaceholder` | `text-filter-placeholder` | Placeholder text for the filter input field.                                                                                                                                                                                                      | `string`  | `TEXT.filterPlaceholder` |
 
 ## Events
 
@@ -88,29 +83,19 @@ Renders groups of pick list items that are visually separated.
 | ------------------- | ----------------------------------------------------- | ------------------ |
 | `calciteListChange` | Emitted when any of the item selections have changed. | `CustomEvent<any>` |
 
-
 ## Methods
 
 ### `getSelectedItems() => Promise<Map<string, object>>`
-
-
 
 #### Returns
 
 Type: `Promise<Map<string, object>>`
 
-
-
 ### `setFocus() => Promise<void>`
-
-
 
 #### Returns
 
 Type: `Promise<void>`
-
-
-
 
 ## Slots
 
@@ -119,7 +104,6 @@ Type: `Promise<void>`
 |                  | A slot for adding `calcite-pick-list-item` elements or `calcite-pick-list-group` elements. Items are displayed as a vertical list. |
 | `"menu-actions"` | A slot for adding a button + menu combo for performing actions like sorting.                                                       |
 
-
 ## Dependencies
 
 ### Depends on
@@ -127,12 +111,13 @@ Type: `Promise<void>`
 - [calcite-filter](../calcite-filter)
 
 ### Graph
+
 ```mermaid
 graph TD;
   calcite-pick-list --> calcite-filter
   style calcite-pick-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
