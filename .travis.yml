@@ -3,15 +3,15 @@ branches:
     - master
 before_deploy: source support/prepNextDeploymentForTravis.sh
 deploy:
-  api_key:
+  api_token:
     secure: "v8YX9pb1vj1FFhnTa6kgyaIfvQo7jLDfKnYQcXXt0zHPSugOJRk4bs/48UD0TQazHmRCXh+mu/JzWjEG+XIfmGmqS9dbj0qaYLdewKjrecBhcjtIHxDODQdwVXOjr6PjzmHNNCUuJixQi4igFZ7tYVQprS50/1/HuUPyUGwPFaHddcpGoY1izFtPe76DBW/OVNxoSL/Nbnpri+o4IaTIlRhBu6vx2boIOpGbgrZU3ob2du+iS8kqaXDjbTwBzasyUyN6/FM0vYiWemkW97FaiDdnfFSwM9C9pMq3YmsrmTUw55EkNnER3Ll7fP7T5ZBubo9hqGnxJ+hoZ4UShMIjUGYE9GxUJ17JgWcqUACCFhcJ9brvAEzO+iKDkVGwGwPoAUkP9DZIRb+j7mIyBo0U+VTmONvJ0iGx9JCbQjJ80Q0F651FKk399XqrYK8Bn0/U9cK2y/vzVhRWW6/NX2+u/1OdtWk6Ft+ZFeBQSZQB6a0SMukPUHOw8HZjNYNqRCRRNj9jzTIUW6Gh0+W6zv2krtgkQqTQPZkdDY0cs0MnpLS/eNRSUv5FJMw6rfPLUG4MqnhWJYhBIHY7c26xtAfEyJaT9XWEHRpqAWvKqBFdvvk/hNyr7mxXqYa8mm92C+vWfxSU49v8Pih6IRpCK3J0xhQBWaqDrrnrl27Vj6jBRRE="
+  cleanup: false
   email:
     secure: "WRzfSxYVU5imEhTjJiMFL2OZv7LNlbzbkkcv+/SAr+ZBR2TbIoGD7G/hEQylMYjDQgyQKnLsoTP1zL6DFpPmIebBakJyPKjQPWufJsYwkWesY9o58S9DiC51nwYI0NsVgv1TQ6nC4VW3zCalgGNA6KwfgX9z3VuOMteFum+Zw5mu0PqxIiy7aTw8UcgI4SImDOGHV+d22EgWI1zvH8icQUDjYwvA665csHuRaSzcsyDI/BvRJS0yyFaJCAorvzrl0lPj4c7a1zyMR6rK9X+ByfPlY8chYFOlyceTr3NAYiSogRlyxA1viuQKxig3BpMMPE0w8C/abon5Sqe6+Kx8Qf01Vp9ZJU6hzHZ2+3bYDawoNf64tdqXod11nqkmhTqy4YjdAO8eTQZDwa4cMYSdZB16YUu290Wk7CbTxYPCPd+lXZz3wA1qZ94wxHkel1djuVrsrGkE4w540lFw9PfrDrFKPvUGLfYaSrjd9cbW2/2wL/aKvxEPhbPOS+1Q5NF4fHS2xBxMjzwd6XA+Tl8P9F3netkbjxiMHdtystZRAAYz9FiExmFy6X0v+P4fk7XJ1aMpN2RyBFpilnmFwbGQT9jCoK8HgCRK8V6UXwHsakRPfLXOCG46QQ3b/yitb7Jkow6APXI7miQP3vLcCTbdTRSXXQEBr17ljKGT07y3nlM="
-  provider: npm
   on:
-    all_branches: true
-    condition: $NEXT_RELEASE_ENABLED AND $NEXT_RELEASE_HAS_CHANGES
-  skip_cleanup: true
+    branch: master
+    condition: $NEXT_RELEASE_ENABLED && $NEXT_RELEASE_HAS_CHANGES
+  provider: npm
   tag: next
 language: node_js
 node_js:
