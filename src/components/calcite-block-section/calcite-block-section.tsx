@@ -142,7 +142,7 @@ export class CalciteBlockSection {
       );
 
     return (
-      <section aria-expanded={open.toString()} class={dir ? CSS_UTILITY.rtl : null}>
+      <section aria-expanded={open.toString()} class={{ [CSS_UTILITY.rtl]: dir === "rtl" }}>
         {headerNode}
         <div class={CSS.content} hidden={!open}>
           <slot />

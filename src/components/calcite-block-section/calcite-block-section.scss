@@ -11,6 +11,7 @@
 }
 
 .toggle--switch {
+  align-items: center;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -20,7 +21,7 @@
 
   calcite-switch {
     pointer-events: none;
-    margin: var(--calcite-app-cap-spacing-third) 0 0 var(--calcite-app-side-spacing-half);
+    margin: 0 0 0 var(--calcite-app-side-spacing-half);
   }
 }
 

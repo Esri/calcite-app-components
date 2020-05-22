@@ -12,7 +12,7 @@ main {
 .example-container {
   color: var(--calcite-app-foreground-subtle);
   max-width: 1024px;
-  min-width: 480px;
+  min-width: 280px;
   width: 70vw;
   padding: 0 var(--calcite-app-side-spacing-double);
   margin: 0 auto var(--calcite-app-cap-spacing-double);
