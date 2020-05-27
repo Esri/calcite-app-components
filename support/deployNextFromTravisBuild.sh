@@ -8,9 +8,7 @@ if \
   { git log "$( git describe --tags --abbrev=0 )..HEAD" --format='%s' | cut -d: -f1 | sort -u | sed -e 's/([^)]*)//' | grep -q -E '\!$' ; } || \
   { git log "$( git describe --tags --abbrev=0 )..HEAD" --format='%b' | grep -q -E '^BREAKING CHANGE:' ; }
 then
-  # sets an environment variable for Travis' deployment and stages the artifacts
-  export NEXT_RELEASE_HAS_CHANGES=true
-  npm run util:prepNextFromExistingBuild
+  npm run util:deployNextFromExistingBuild
 else
-  echo "No changelog-updating changes since the previous release, skipping..."
+  echo "No changes since the previous release, skipping..."
 fi
