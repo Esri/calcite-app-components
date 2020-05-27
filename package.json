@@ -30,7 +30,7 @@
     "previewChangelog": "standard-version --no-skip.bump --silent && cat CHANGELOG.md && git reset --hard --quiet",
     "previewChangelog:latest": "npx touch __CHANGELOG-PREVIEW-TEMP__ && standard-version --no-skip.bump --release-count 1 --infile __CHANGELOG-PREVIEW-TEMP__ --same-file --silent && cat __CHANGELOG-PREVIEW-TEMP__ && rimraf __CHANGELOG-PREVIEW-TEMP__ && git reset --hard --quiet",
     "release": "git push --follow-tags && npm publish && ts-node ./support/githubReleaseFromChangelog.ts",
-    "release:next": "npm run util:cleanTestedBuild && npm run util:prepNextFromExistingBuild && git push --dry-run --follow-tags && npm publish --dry-run --tag next",
+    "release:next": "npm run util:cleanTestedBuild && npm run util:prepNextFromExistingBuild && git push --follow-tags && npm publish --tag next",
     "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --dev --watch --serve\"",
     "test": "stencil test --spec --e2e",
     "test:headed": "stencil test --spec --e2e --devtools",
