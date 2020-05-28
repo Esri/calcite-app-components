@@ -3,12 +3,12 @@ branches:
     - master
 before_deploy: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" &>> .npmrc
 deploy:
-  cleanup: false
   on:
     branch: master
     condition: $NEXT_RELEASE_ENABLED
   provider: script
   script: bash support/deployNextFromTravisBuild.sh
+  skip_cleanup: true
 language: node_js
 node_js:
   - lts/*
