@@ -3,12 +3,6 @@
 This document maintains a list of released versions and changes introduced by them.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-### [6.0.1-beta.0](https://github.com/Esri/calcite-app-components/compare/v6.0.0...v6.0.1-beta.0) (2020-05-27)
-
-### Bug Fixes
-
-- **block-section:** rtl class was getting incorrectly applied ([d4b8c2b](https://github.com/Esri/calcite-app-components/commit/d4b8c2b4b8b3e118dc18af32dfdd345f61d3ca31)), closes [#993](https://github.com/Esri/calcite-app-components/issues/993) [#993](https://github.com/Esri/calcite-app-components/issues/993)
-
 ## [6.0.0](https://github.com/Esri/calcite-app-components/compare/v5.7.3...v6.0.0) (2020-05-20)
 
 ### ⚠ BREAKING CHANGES

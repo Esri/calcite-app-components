@@ -8,7 +8,9 @@ if \
   { git log "$( git describe --tags --abbrev=0 )..HEAD" --format='%s' | cut -d: -f1 | sort -u | sed -e 's/([^)]*)//' | grep -q -E '\!$' ; } || \
   { git log "$( git describe --tags --abbrev=0 )..HEAD" --format='%b' | grep -q -E '^BREAKING CHANGE:' ; }
 then
+  echo "Deploying @next from existing build..."
   npm run util:deployNextFromExistingBuild
+  echo "@next deployed! 🚀"
 else
   echo "No changes since the previous release, skipping..."
 fi

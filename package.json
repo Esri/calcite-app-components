@@ -37,7 +37,7 @@
     "test:watch": "stencil test --spec --e2e --watch",
     "test:watchAll": "stencil test --spec --e2e --watchAll",
     "util:cleanTestedBuild": "npm ci && npm test && npm run build",
-    "util:deployNextFromExistingBuild": "git add . && standard-version --no-skip.bump --no-skip.commit --no-skip.tag --prerelease beta --commit-all && npm run util:publishToGitHubAndNPM -- --tag next",
+    "util:deployNextFromExistingBuild": "standard-version --no-skip.bump --no-skip.commit --no-skip.tag --skip.changelog --prerelease beta && npm run util:publishToGitHubAndNPM -- --tag next",
     "util:publishToGitHubAndNPM": "git push --follow-tags && npm publish",
     "version": "npm run util:cleanTestedBuild && npm run docs && standard-version && git add ."
   },
