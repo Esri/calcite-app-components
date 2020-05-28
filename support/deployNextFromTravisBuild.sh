@@ -9,6 +9,9 @@ if \
   { git log "$( git describe --tags --abbrev=0 )..HEAD" --format='%b' | grep -q -E '^BREAKING CHANGE:' ; }
 then
   echo "Deploying @next from existing build..."
+  # checking out master for deployment since Travis leaves us in a detached state
+  git checkout master
+  echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc 2> /dev/null
   npm run util:deployNextFromExistingBuild
   echo "@next deployed! 🚀"
 else

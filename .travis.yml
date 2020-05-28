@@ -1,7 +1,6 @@
 branches:
   only:
     - master
-before_deploy: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" &>> .npmrc
 deploy:
   on:
     branch: master
