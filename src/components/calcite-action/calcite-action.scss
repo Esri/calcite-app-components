@@ -4,6 +4,10 @@
   background-color: var(--calcite-app-background-clear);
 }
 
+:host([disabled]) {
+  pointer-events: none;
+}
+
 @import "../../scss/includes/_component";
 
 .button {

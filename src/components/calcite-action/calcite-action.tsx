@@ -182,6 +182,7 @@ export class CalciteAction {
     return (
       <Host>
         <button
+          tabIndex={disabled ? -1 : null}
           class={buttonClasses}
           aria-label={ariaLabel}
           disabled={disabled}
