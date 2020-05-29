@@ -86,3 +86,39 @@ export const grouped = (): string =>
     </calcite-pick-list-group>
   `
   );
+
+export const nested = (): string =>
+  create(
+    "calcite-pick-list",
+    createAttributes(),
+    dedent`
+    <calcite-pick-list-group>
+      <calcite-pick-list-item text-label="All the dogs" value="all-dogs" slot="parent-item">
+        ${action}
+      </calcite-pick-list-item>
+      <calcite-pick-list-item text-label="Husky" value="husky">
+        ${action}
+      </calcite-pick-list-item>
+      <calcite-pick-list-item text-label="Pomeranian" value="pom">
+        ${action}
+      </calcite-pick-list-item>
+      <calcite-pick-list-item text-label="Xoloitzcuintle" value="xolo">
+        ${action}
+      </calcite-pick-list-item>
+    </calcite-pick-list-group>
+    <calcite-pick-list-group>
+      <calcite-pick-list-item text-label="All the cats" value="all-cats" slot="parent-item">
+        ${action}
+      </calcite-pick-list-item>
+      <calcite-pick-list-item text-label="Himalayan" value="himalayan">
+        ${action}
+      </calcite-pick-list-item>
+      <calcite-pick-list-item text-label="Persian" value="persian">
+        ${action}
+      </calcite-pick-list-item>
+      <calcite-pick-list-item text-label="Spynx" value="spynx">
+        ${action}
+      </calcite-pick-list-item>
+    </calcite-pick-list-group>
+  `
+  );
