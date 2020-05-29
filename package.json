@@ -29,7 +29,7 @@
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
     "previewChangelog": "standard-version --no-skip.bump --silent && cat CHANGELOG.md && git reset --hard --quiet",
     "previewChangelog:latest": "npx touch __CHANGELOG-PREVIEW-TEMP__ && standard-version --no-skip.bump --release-count 1 --infile __CHANGELOG-PREVIEW-TEMP__ --same-file --silent && cat __CHANGELOG-PREVIEW-TEMP__ && rimraf __CHANGELOG-PREVIEW-TEMP__ && git reset --hard --quiet",
-    "release": "npm run util:publishToGitHubAndNPM && ts-node ./support/githubReleaseFromChangelog.ts",
+    "release": "npm run util:pushTags && npm publish && ts-node ./support/githubReleaseFromChangelog.ts",
     "release:next": "npm run util:cleanTestedBuild && npm run util:deployNextFromExistingBuild",
     "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --dev --watch --serve\"",
     "test": "stencil test --spec --e2e",
@@ -37,8 +37,10 @@
     "test:watch": "stencil test --spec --e2e --watch",
     "test:watchAll": "stencil test --spec --e2e --watchAll",
     "util:cleanTestedBuild": "npm ci && npm test && npm run build",
-    "util:deployNextFromExistingBuild": "standard-version --no-skip.bump --no-skip.commit --no-skip.tag --skip.changelog --prerelease beta && npm run util:publishToGitHubAndNPM -- --tag next",
-    "util:publishToGitHubAndNPM": "git push --follow-tags && npm publish",
+    "util:deployNextFromExistingBuild": "npm run util:prepNextFromExistingBuild && npm run util:pushTags && npm run util:publishNext",
+    "util:prepNextFromExistingBuild": "standard-version --no-skip.bump --no-skip.commit --no-skip.tag --skip.changelog --prerelease beta",
+    "util:pushTags": "git push --follow-tags",
+    "util:publishNext": "npm publish --tag next",
     "version": "npm run util:cleanTestedBuild && npm run docs && standard-version && git add ."
   },
   "repository": {

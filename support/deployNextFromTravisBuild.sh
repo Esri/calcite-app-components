@@ -9,11 +9,25 @@ if \
   { git log "$( git describe --tags --abbrev=0 )..HEAD" --format='%b' | grep -q -E '^BREAKING CHANGE:' ; }
 then
   echo "Deploying @next from existing build..."
-  # checking out master for deployment since Travis leaves us in a detached state
-  git checkout master
-  echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc 2> /dev/null
-  npm run util:deployNextFromExistingBuild
-  echo "@next deployed! 🚀"
+
+  if \
+    git checkout master --quiet && \
+    { echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc 2> /dev/null ; } && \
+    { \
+      echo " - prepping package..." && \
+      npm run util:prepNextFromExistingBuild >/dev/null 2>&1 && \
+
+      echo " - pushing tags..." && \
+      npm run util:pushTags -- --quiet https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG master >/dev/null 2>&1 && \
+
+      echo " - publishing @next..." && \
+      npm run util:publishNext >/dev/null 2>&1  \
+    ; }
+  then
+    echo "@next deployed! 🚀"
+  else
+    echo "An error occurred during deployment 🚫"
+  fi
 else
   echo "No changes since the previous release, skipping..."
 fi
