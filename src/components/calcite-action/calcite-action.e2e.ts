@@ -120,4 +120,18 @@ describe("calcite-action", () => {
     await accessible(`<calcite-action text="hello world"></calcite-action>`);
     await accessible(`<calcite-action text="hello world" disabled text-enabled></calcite-action>`);
   });
+
+  it("should not emit click event when disabled", async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`<calcite-action text="hello world" disabled></calcite-action>`);
+
+    const action = await page.find("calcite-action");
+
+    const clickSpy = await action.spyOnEvent("click");
+
+    await action.click();
+
+    expect(clickSpy).toHaveReceivedEventTimes(0);
+  });
 });
