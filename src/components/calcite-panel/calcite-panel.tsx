@@ -15,8 +15,6 @@ import { CSS_UTILITY } from "../utils/resources";
 import { VNode } from "@stencil/core/internal";
 import { CalciteScale, CalciteTheme } from "../interfaces";
 
-type FocusId = "dismiss-button";
-
 /**
  * @slot header-content - A slot for adding content in the center of the header.
  * @slot header-leading-content - A slot for adding a `calcite-action` on the leading side of the header.
@@ -134,7 +132,7 @@ export class CalcitePanel {
   // --------------------------------------------------------------------------
 
   @Method()
-  async setFocus(focusId?: FocusId): Promise<void> {
+  async setFocus(focusId?: "dismiss-button"): Promise<void> {
     if (focusId === "dismiss-button") {
       this.dismissButtonEl?.setFocus();
       return;
