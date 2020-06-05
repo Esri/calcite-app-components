@@ -116,10 +116,16 @@ calcite-scrim {
 
 .fab-container {
   position: sticky;
+  z-index: 2;
   bottom: 0;
   display: inline-block;
   margin: 0 auto;
   padding: var(--calcite-app-cap-spacing-half) var(--calcite-app-side-spacing-half);
   left: 0;
   right: 0;
+}
+
+.slot-container {
+  position: relative;
+  z-index: 1;
 }
