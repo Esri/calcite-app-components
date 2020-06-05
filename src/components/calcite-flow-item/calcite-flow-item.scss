@@ -19,6 +19,15 @@ calcite-panel {
 
 .header-content {
   display: block;
+  .heading,
+  .summary {
+    padding: 0;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
   .heading {
     font-size: var(--calcite-app-font-size-1);
     font-weight: var(--calcite-app-font-weight-demi);
@@ -30,15 +39,6 @@ calcite-panel {
   .summary {
     color: var(--calcite-app-foreground-subtle);
     font-size: var(--calcite-app-font-size--1);
-  }
-  .heading,
-  .summary {
-    padding: 0;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
   }
 }
 
@@ -55,29 +55,8 @@ calcite-panel {
 }
 
 .menu {
-  position: absolute;
-  top: 100%;
-  z-index: 1;
-  background-color: var(--calcite-app-background);
-  box-shadow: var(--calcite-app-shadow-0);
-  padding: 0;
-  left: auto;
   min-width: var(--calcite-app-menu-min-width);
-  right: var(--calcite-app-menu-offset);
-  visibility: visible;
   flex-flow: column nowrap;
-  border: 1px solid var(--calcite-app-border);
-  animation: calcite-app-fade-in-down var(--calcite-app-animation-time-fast) var(--calcite-app-easing-function);
-  display: none;
-}
-
-.calcite--rtl .menu {
-  left: var(--calcite-app-menu-offset);
-  right: auto;
-}
-
-.menu--open {
-  display: block;
 }
 
 .footer-actions {
