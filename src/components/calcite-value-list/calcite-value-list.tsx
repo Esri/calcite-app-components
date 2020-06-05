@@ -4,14 +4,13 @@ import {
   Element,
   Event,
   EventEmitter,
+  h,
   Listen,
   Method,
   Prop,
   State,
-  h,
   VNode
 } from "@stencil/core";
-import guid from "../utils/guid";
 import { CSS, ICON_TYPES, TEXT } from "./resources";
 import {
   calciteListItemChangeHandler,
@@ -22,13 +21,15 @@ import {
   handleFilter,
   initialize,
   initializeObserver,
+  ItemData,
+  keyDownHandler,
   mutationObserverCallback,
   selectSiblings,
-  setUpItems,
-  keyDownHandler,
-  setFocus
+  setFocus,
+  setUpItems
 } from "../calcite-pick-list/shared-list-logic";
 import List from "../calcite-pick-list/shared-list-render";
+import { getRoundRobinIndex } from "../utils/array";
 
 /**
  * @slot - A slot for adding `calcite-pick-list-item` elements or `calcite-pick-list-group` elements. Items are displayed as a vertical list.
@@ -89,17 +90,15 @@ export class CalciteValueList<
 
   @State() selectedValues: Map<string, ItemElement> = new Map();
 
-  @State() dataForFilter: object[] = [];
+  @State() dataForFilter: ItemData = [];
 
   items: ItemElement[];
 
   lastSelectedItem: ItemElement = null;
 
-  guid = `calcite-value-list-${guid()}`;
-
   observer = new MutationObserver(mutationObserverCallback.bind(this));
 
-  sortables: Sortable[] = [];
+  sortable: Sortable;
 
   @Element() el: HTMLCalciteValueListElement;
 
@@ -179,28 +178,23 @@ export class CalciteValueList<
     if (!this.dragEnabled) {
       return;
     }
-    this.sortables.push(
-      Sortable.create(this.el, {
-        group: this.guid,
-        handle: `.${CSS.handle}`,
-        draggable: "calcite-value-list-item",
-        onUpdate: () => {
-          this.items = Array.from(this.el.querySelectorAll<ItemElement>("calcite-value-list-item"));
-          const values = this.items.map((item) => item.value);
-          this.calciteListOrderChange.emit(values);
-        }
-      })
-    );
+
+    this.sortable = Sortable.create(this.el, {
+      handle: `.${CSS.handle}`,
+      draggable: "calcite-value-list-item",
+      onUpdate: () => {
+        this.items = Array.from(this.el.querySelectorAll<ItemElement>("calcite-value-list-item"));
+        const values = this.items.map((item) => item.value);
+        this.calciteListOrderChange.emit(values);
+      }
+    });
   }
 
   cleanUpDragAndDrop(): void {
     if (!this.dragEnabled) {
       return;
     }
-    this.sortables.forEach((sortable) => {
-      sortable.destroy();
-    });
-    this.sortables = [];
+    this.sortable.destroy();
   }
 
   deselectSiblingItems = deselectSiblingItems.bind(this);
@@ -216,54 +210,42 @@ export class CalciteValueList<
       .composedPath()
       .find((item: HTMLElement) => item.dataset?.jsHandle) as HTMLCalciteHandleElement;
 
-    const valueListElement = event
+    const item = event
       .composedPath()
       .find(
         (item: HTMLElement) => item.tagName?.toLowerCase() === "calcite-value-list-item"
       ) as ItemElement;
+
     // Only trigger keyboard sorting when the internal drag handle is focused and activated
-    if (!handleElement || !valueListElement.handleActivated) {
+    if (!handleElement || !item.handleActivated) {
       keyDownHandler.call(this, event);
       return;
     }
 
-    const lastIndex = this.items.length - 1;
-    const value = valueListElement.value;
-    const startingIndex = this.items.findIndex((item) => {
-      return item.value === value;
-    });
-    let appendInstead = false;
-    let buddyIndex;
-    switch (event.key) {
-      case "ArrowUp":
-        event.preventDefault();
-        if (startingIndex === 0) {
-          appendInstead = true;
-        } else {
-          buddyIndex = startingIndex - 1;
-        }
-        break;
-      case "ArrowDown":
-        event.preventDefault();
-        if (startingIndex === lastIndex) {
-          buddyIndex = 0;
-        } else if (startingIndex === lastIndex - 1) {
-          appendInstead = true;
-        } else {
-          buddyIndex = startingIndex + 2;
-        }
-        break;
-      default:
-        return;
-    }
-    if (appendInstead) {
-      valueListElement.parentElement.appendChild(valueListElement);
-    } else {
-      valueListElement.parentElement.insertBefore(valueListElement, this.items[buddyIndex]);
+    if (event.key !== "ArrowUp" && event.key !== "ArrowDown") {
+      return;
     }
 
-    handleElement.focus();
-    valueListElement.handleActivated = true;
+    event.preventDefault();
+
+    const { el, items } = this;
+    const moveOffset = event.key === "ArrowDown" ? 1 : -1;
+    const currentIndex = items.indexOf(item);
+    const nextIndex = getRoundRobinIndex(currentIndex + moveOffset, items.length);
+
+    if (nextIndex === items.length - 1) {
+      el.appendChild(item);
+    } else {
+      const itemAtNextIndex = el.children[nextIndex];
+      const insertionReferenceItem =
+        itemAtNextIndex === item.nextElementSibling
+          ? itemAtNextIndex.nextElementSibling
+          : itemAtNextIndex;
+      el.insertBefore(item, insertionReferenceItem);
+    }
+
+    requestAnimationFrame(() => handleElement.focus());
+    item.handleActivated = true;
   };
 
   // --------------------------------------------------------------------------
@@ -273,7 +255,7 @@ export class CalciteValueList<
   // --------------------------------------------------------------------------
 
   @Method()
-  async getSelectedItems(): Promise<Map<string, object>> {
+  async getSelectedItems(): Promise<Map<string, HTMLCalciteValueListItemElement>> {
     return this.selectedValues;
   }
 

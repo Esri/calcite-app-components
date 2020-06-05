@@ -24,7 +24,8 @@ import {
   selectSiblings,
   setUpItems,
   keyDownHandler,
-  setFocus
+  setFocus,
+  ItemData
 } from "./shared-list-logic";
 import List from "./shared-list-render";
 
@@ -82,7 +83,7 @@ export class CalcitePickList<
 
   @State() selectedValues: Map<string, ItemElement> = new Map();
 
-  @State() dataForFilter: object[] = [];
+  @State() dataForFilter: ItemData = [];
 
   items: ItemElement[];
 
@@ -170,7 +171,7 @@ export class CalcitePickList<
   // --------------------------------------------------------------------------
 
   @Method()
-  async getSelectedItems(): Promise<Map<string, object>> {
+  async getSelectedItems(): Promise<Map<string, HTMLCalcitePickListItemElement>> {
     return this.selectedValues;
   }
 
