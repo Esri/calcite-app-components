@@ -93,13 +93,28 @@ describe("calcite-value-list", () => {
     });
 
     it("works using a keyboard", async () => {
-      page.keyboard.press("Tab");
-      page.keyboard.press("Space");
+      await page.keyboard.press("Tab");
+      await page.keyboard.press("Space");
       await page.waitForChanges();
-      page.keyboard.press("ArrowDown");
-      const itemsAfter = await page.findAll("calcite-value-list-item");
-      expect(await itemsAfter[0].getProperty("value")).toBe("two");
-      expect(await itemsAfter[1].getProperty("value")).toBe("one");
+
+      async function assertKeyboardMove(direction: "down" | "up", expectedValueOrder: string[]): Promise<void> {
+        const arrowKey = `Arrow${direction.charAt(0).toUpperCase() + direction.slice(1)}`;
+        await page.keyboard.press(arrowKey);
+        await page.waitForChanges();
+        const itemsAfter = await page.findAll("calcite-value-list-item");
+
+        for (let i = 0; i < itemsAfter.length; i++) {
+          expect(await itemsAfter[i].getProperty("value")).toBe(expectedValueOrder[i]);
+        }
+      }
+
+      await assertKeyboardMove("down", ["two", "one", "three"]);
+      await assertKeyboardMove("down", ["two", "three", "one"]);
+      await assertKeyboardMove("down", ["one", "two", "three"]);
+
+      await assertKeyboardMove("up", ["two", "three", "one"]);
+      await assertKeyboardMove("up", ["two", "one", "three"]);
+      await assertKeyboardMove("up", ["one", "two", "three"]);
     });
   });
 });

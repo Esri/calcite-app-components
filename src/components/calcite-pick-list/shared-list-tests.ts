@@ -2,6 +2,7 @@ import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
 import { JSEvalable } from "puppeteer";
 
 type ListType = "pick" | "value";
+type ListElement = HTMLCalcitePickListElement | HTMLCalciteValueListElement;
 
 export function keyboardNavigation(listType: ListType): void {
   const getFocusedItemValue = (page: E2EPage): ReturnType<JSEvalable["evaluate"]> =>
@@ -159,13 +160,10 @@ export function selectionAndDeselection(listType: ListType): void {
           <calcite-${listType}-list-item value="two" text-label="Two"></calcite-${listType}-list-item>
         </calcite-${listType}-list>`);
 
-      const numSelected = await page.evaluate((listType) => {
-        const list: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
-          `calcite-${listType}-list`
-        );
-        return list.getSelectedItems().then((result) => {
-          return result.size;
-        });
+      const numSelected = await page.evaluate(async (listType) => {
+        const list: ListElement = document.querySelector(`calcite-${listType}-list`);
+
+        return (await list.getSelectedItems()).size;
       }, listType);
 
       expect(numSelected).toBe(1);
@@ -190,13 +188,9 @@ export function selectionAndDeselection(listType: ListType): void {
       await item3.click();
       await page.keyboard.up("Shift");
 
-      const numSelected = await page.evaluate((listType) => {
-        const list: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
-          `calcite-${listType}-list`
-        );
-        return list.getSelectedItems().then((result) => {
-          return result.size;
-        });
+      const numSelected = await page.evaluate(async (listType) => {
+        const list: ListElement = document.querySelector(`calcite-${listType}-list`);
+        return (await list.getSelectedItems()).size;
       }, listType);
 
       expect(numSelected).toBe(3);
@@ -218,13 +212,9 @@ export function selectionAndDeselection(listType: ListType): void {
       await item3.click();
       await page.keyboard.up("Shift");
 
-      const numSelected = await page.evaluate((type) => {
-        const domList: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
-          `calcite-${type}-list`
-        );
-        return domList.getSelectedItems().then((result) => {
-          return result.size;
-        });
+      const numSelected = await page.evaluate(async (type) => {
+        const domList: ListElement = document.querySelector(`calcite-${type}-list`);
+        return (await domList.getSelectedItems()).size;
       }, listType);
       expect(numSelected).toBe(0);
     });
@@ -275,13 +265,9 @@ export function selectionAndDeselection(listType: ListType): void {
       const item1 = await list.find("[value=one]");
       await item1.click();
 
-      const hasValueOne = await page.evaluate((type) => {
-        const pageList: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
-          `calcite-${type}-list`
-        );
-        return pageList.getSelectedItems().then((result) => {
-          return result.has("one");
-        });
+      const hasValueOne = await page.evaluate(async (type) => {
+        const pageList: ListElement = document.querySelector(`calcite-${type}-list`);
+        return (await pageList.getSelectedItems()).has("one");
       }, listType);
 
       expect(hasValueOne).toBe(true);
@@ -289,16 +275,14 @@ export function selectionAndDeselection(listType: ListType): void {
       item1.setProperty("value", "four");
       await page.waitForChanges();
 
-      const hasValues = await page.evaluate((type) => {
-        const pageList: HTMLCalcitePickListElement | HTMLCalciteValueListElement = document.querySelector(
-          `calcite-${type}-list`
-        );
-        return pageList.getSelectedItems().then((result) => {
-          return {
-            four: result.has("four"),
-            one: result.has("one")
-          };
-        });
+      const hasValues = await page.evaluate(async (type) => {
+        const pageList: ListElement = document.querySelector(`calcite-${type}-list`);
+        const result = await pageList.getSelectedItems();
+
+        return {
+          four: result.has("four"),
+          one: result.has("one")
+        };
       }, listType);
 
       expect(hasValues.one).toBe(false);

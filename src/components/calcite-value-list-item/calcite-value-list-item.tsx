@@ -42,7 +42,7 @@ export class CalciteValueListItem {
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata?: object;
+  @Prop() metadata?: Record<string, unknown>;
 
   /**
    * Set this to true to display a remove action that removes the item from the list.

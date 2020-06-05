@@ -243,9 +243,14 @@ export function handleFilter<T extends Lists>(this: List<T>, event: CustomEvent)
   });
 }
 
-export function getItemData<T extends Lists>(
-  this: List<T>
-): { label: string; description: string; metadata: object; value: string }[] {
+export type ItemData = {
+  label: string;
+  description: string;
+  metadata: Record<string, unknown>;
+  value: string;
+}[];
+
+export function getItemData<T extends Lists>(this: List<T>): ItemData {
   return (this.items as ListItemElement<T>[]).map((item) => ({
     label: item.textLabel,
     description: item.textDescription,

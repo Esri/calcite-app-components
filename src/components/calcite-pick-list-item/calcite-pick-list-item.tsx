@@ -48,7 +48,7 @@ export class CalcitePickListItem {
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
-  @Prop() metadata?: object;
+  @Prop() metadata?: Record<string, unknown>;
 
   @Watch("metadata")
   metadataWatchHandler(): void {
