@@ -44,10 +44,10 @@
 
         <script>
           const dismissiblePanel = document.getElementById("dismissible-panel");
-          dismissiblePanel.addEventListener("calcitePanelDismissedChange", function() {
+          dismissiblePanel.addEventListener("calcitePanelDismissedChange", function () {
             console.log("calcitePanelDismiss event");
           });
-          setTimeout(function() {
+          setTimeout(function () {
             dismissiblePanel.setFocus("dismiss-button");
           }, 3000);
         </script>
@@ -81,6 +81,12 @@
           <p>Slotted content</p>
           <p>Slotted content</p>
           <p>Slotted content</p>
+          <p style="position: relative; z-index: 999;">
+            High zIndex content. High zIndex content. High zIndex content. High zIndex content. High zIndex content.
+            High zIndex content. High zIndex content. High zIndex content. High zIndex content. High zIndex content.
+            High zIndex content. High zIndex content. High zIndex content. High zIndex content. High zIndex content.
+            High zIndex content.
+          </p>
           <p>Slotted content</p>
           <p>Slotted content</p>
           <p>Slotted content</p>
@@ -125,10 +131,11 @@
           <p>Slotted content</p>
           <p>Slotted content</p>
           <p>Slotted content</p>
+          <calcite-fab slot="fab" text-enabled text="Add" label="Add"></calcite-fab>
         </calcite-panel>
         <script>
           const panel = document.getElementById("panel");
-          panel.addEventListener("calcitePanelScroll", function(event) {
+          panel.addEventListener("calcitePanelScroll", function (event) {
             console.log("scrolled", event);
           });
         </script>
