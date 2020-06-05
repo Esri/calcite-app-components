@@ -116,7 +116,7 @@ calcite-scrim {
 
 .fab-container {
   position: sticky;
-  z-index: 2;
+  z-index: 1;
   bottom: 0;
   display: inline-block;
   margin: 0 auto;
@@ -127,5 +127,5 @@ calcite-scrim {
 
 .slot-container {
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
