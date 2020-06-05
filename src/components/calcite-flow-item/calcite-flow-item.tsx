@@ -112,6 +112,8 @@ export class CalciteFlowItem {
 
   @Element() el: HTMLCalciteFlowItemElement;
 
+  menuButtonEl: HTMLCalciteActionElement;
+
   // --------------------------------------------------------------------------
   //
   //  Private Methods
@@ -248,6 +250,7 @@ export class CalciteFlowItem {
         class={CSS.menuButton}
         aria-label={menuLabel}
         text={menuLabel}
+        ref={(menuButtonEl): HTMLCalciteActionElement => (this.menuButtonEl = menuButtonEl)}
         onClick={this.toggleMenuOpen}
         onKeyDown={this.menuButtonKeyDown}
         icon={ICONS.menu}
@@ -256,15 +259,23 @@ export class CalciteFlowItem {
   }
 
   renderMenuActions(): VNode {
-    const { menuOpen } = this;
+    const { el, menuOpen, menuButtonEl } = this;
 
     return (
-      <div
-        class={{ [CSS.menu]: true, [CSS.menuOpen]: menuOpen }}
+      <calcite-popover
+        referenceElement={menuButtonEl}
+        theme={getElementTheme(el)}
+        open={menuOpen}
+        offsetDistance={0}
+        disablePointer={true}
+        placement="bottom-end"
+        flipPlacements={["bottom-end", "top-end"]}
         onKeyDown={this.menuActionsKeydown}
       >
-        <slot name={SLOTS.menuActions} />
-      </div>
+        <div class={CSS.menu}>
+          <slot name={SLOTS.menuActions} />
+        </div>
+      </calcite-popover>
     );
   }
 
