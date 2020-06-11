@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.action-bar-container {
+  display: flex;
+}
+
 :host([detached]) {
   animation: calcite-app-fade-in-up var(--calcite-app-animation-time) var(--calcite-app-easing-function);
   border: none;
@@ -59,4 +63,11 @@
 ::slotted(calcite-panel) {
   width: 100%;
   height: 100%;
+}
+
+::slotted(calcite-action-bar[position="start"]) {
+  border-right: 1px solid var(--calcite-app-border);
+}
+::slotted(calcite-action-bar[position="end"]) {
+  border-left: 1px solid var(--calcite-app-border);
 }
