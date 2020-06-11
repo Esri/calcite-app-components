@@ -1,6 +1,6 @@
 import { Component, Event, EventEmitter, Host, Prop, Watch, h, VNode } from "@stencil/core";
 import { CSS, SLOTS } from "./resources";
-import { CalcitePosition, CalciteScale, CalciteWidth } from "../interfaces";
+import { CalcitePosition, CalciteScale } from "../interfaces";
 
 /**
  * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
@@ -42,11 +42,6 @@ export class CalciteShellPanel {
    * Arranges the component depending on the elements 'dir' property.
    */
   @Prop({ reflect: true }) position: CalcitePosition;
-
-  /**
-   * This sets the dynamic width of the content area.
-   */
-  @Prop({ reflect: true }) width: CalciteWidth = "dynamic";
 
   // --------------------------------------------------------------------------
   //

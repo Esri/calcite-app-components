@@ -15,5 +15,3 @@ export type CalciteAppearance = "solid" | "clear" | "outline";
 export type CalciteColor = "blue" | "red" | "dark" | "light";
 
 export type CalciteScale = "s" | "m" | "l";
-
-export type CalciteWidth = "dynamic" | "full";
