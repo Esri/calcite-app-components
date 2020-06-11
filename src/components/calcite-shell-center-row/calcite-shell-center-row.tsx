@@ -49,6 +49,9 @@ export class CalciteShellCenterRow {
   // --------------------------------------------------------------------------
 
   render(): VNode {
+    /**
+     * TODO: add RTL check.
+     */
     const hasActionBar = getSlotted(this.el, SLOTS.actionBar);
     // const actionBarPosition;
     const actionBarNode = hasActionBar ? (
