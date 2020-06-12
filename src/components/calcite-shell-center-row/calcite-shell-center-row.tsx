@@ -52,25 +52,32 @@ export class CalciteShellCenterRow {
     /**
      * TODO: add RTL check.
      */
-    const hasActionBar = getSlotted(this.el, SLOTS.actionBar);
-    // const actionBarPosition;
-    const actionBarNode = hasActionBar ? (
-      <div class={CSS.actionBarContainer}>
-        <slot name={SLOTS.actionBar} />
-      </div>
-    ) : null;
-
     const contentNode = (
       <div class={CSS.content}>
         <slot />
       </div>
     );
 
-    const mainNodes = [actionBarNode, contentNode];
-    // if (actionBarPosition === "end") {
-      // mainNodes.reverse();
-    // }
+    const actionBar = getSlotted<HTMLCalciteActionBarElement>(this.el, SLOTS.actionBar);
 
-    return <Host>{mainNodes}</Host>;
+    if (!actionBar) {
+      return <Host>{contentNode}</Host>;
+    }
+
+    const actionBarNode = (
+      <div class={CSS.actionBarContainer}>
+        <slot name={SLOTS.actionBar} />
+      </div>
+    );
+
+    const children = [contentNode];
+
+    if (actionBar.position === "end") {
+      children.push(actionBarNode);
+    } else {
+      children.unshift(actionBarNode);
+    }
+
+    return <Host>{children}</Host>;
   }
 }
