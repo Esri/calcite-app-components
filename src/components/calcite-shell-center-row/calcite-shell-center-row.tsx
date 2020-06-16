@@ -52,7 +52,7 @@ export class CalciteShellCenterRow {
   render(): VNode {
     const { el } = this;
     const rtl = getElementDir(el) === "rtl";
-    
+
     const contentNode = (
       <div class={{ [CSS.content]: true, [CSS_UTILITY.rtl]: rtl }}>
         <slot />
@@ -61,22 +61,16 @@ export class CalciteShellCenterRow {
 
     const actionBar = getSlotted<HTMLCalciteActionBarElement>(el, SLOTS.actionBar);
 
-    if (!actionBar) {
-      return <Host>{contentNode}</Host>;
-    }
-
-    const actionBarNode = (
+    const actionBarNode = actionBar ? (
       <div class={{ [CSS.actionBarContainer]: true, [CSS_UTILITY.rtl]: rtl }}>
         <slot name={SLOTS.actionBar} />
       </div>
-    );
+    ) : null;
 
-    const children = [contentNode];
-
+    const children = [actionBarNode, contentNode];
+    
     if (actionBar.position === "end") {
-      children.push(actionBarNode);
-    } else {
-      children.unshift(actionBarNode);
+      children.reverse();
     }
 
     return <Host>{children}</Host>;
