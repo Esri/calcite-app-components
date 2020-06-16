@@ -10,6 +10,8 @@
   --calcite-app-shell-center-row-height-small: 33%;
   --calcite-app-shell-center-row-height-medium: 70%;
   --calcite-app-shell-center-row-height-large: 100%;
+
+  --calcite-app-shell-center-row-border: 1px solid var(--calcite-app-border);
 }
 
 @import "../../scss/includes/_component";
@@ -66,19 +68,19 @@
 }
 
 ::slotted(calcite-action-bar[position="start"]) {
-  border-right: 1px solid var(--calcite-app-border);
+  border-right: var(----calcite-app-shell-center-row-border);
 }
 ::slotted(calcite-action-bar[position="end"]) {
-  border-left: 1px solid var(--calcite-app-border);
+  border-left: var(----calcite-app-shell-center-row-border);
 }
 
 .calcite--rtl {
   ::slotted(calcite-action-bar[position="start"]) {
-    border-right:none;
-    border-left: 1px solid var(--calcite-app-border);
+    border-right: none;
+    border-left: var(----calcite-app-shell-center-row-border);
   }
   ::slotted(calcite-action-bar[position="end"]) {
     border-left: none;
-    border-right: 1px solid var(--calcite-app-border);
+    border-right: var(----calcite-app-shell-center-row-border);
   }
 }
