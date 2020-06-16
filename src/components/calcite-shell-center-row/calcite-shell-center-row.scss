@@ -1,3 +1,5 @@
+$center-row-border: 1px solid var(--calcite-app-border);
+
 :host {
   @extend %component-host;
   display: flex;
@@ -21,6 +23,10 @@
   margin: 0;
   overflow: hidden;
   width: 100%;
+}
+
+.action-bar-container {
+  display: flex;
 }
 
 :host([detached]) {
@@ -59,4 +65,23 @@
 ::slotted(calcite-panel) {
   width: 100%;
   height: 100%;
+}
+
+::slotted(calcite-action-bar) {
+  border-right: $center-row-border;
+}
+::slotted(calcite-action-bar[position="end"]) {
+  border-right: none;
+  border-left: $center-row-border;
+}
+
+.calcite--rtl {
+  ::slotted(calcite-action-bar) {
+    border-right: none;
+    border-left: $center-row-border;
+  }
+  ::slotted(calcite-action-bar[position="end"]) {
+    border-left: none;
+    border-right: $center-row-border;
+  }
 }

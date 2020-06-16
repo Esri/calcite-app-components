@@ -1,6 +1,8 @@
-import { Component, Host, Prop, h, VNode } from "@stencil/core";
-import { CSS } from "./resources";
+import { Component, Element, Host, Prop, h, VNode } from "@stencil/core";
+import { CSS, SLOTS } from "./resources";
 import { CalcitePosition, CalciteScale } from "../interfaces";
+import { getElementDir, getSlotted } from "../utils/dom";
+import { CSS_UTILITY } from "../utils/resources";
 
 /**
  * @slot action-bar - A slot for adding a `calcite-action-bar` to the panel.
@@ -35,17 +37,42 @@ export class CalciteShellCenterRow {
 
   // --------------------------------------------------------------------------
   //
+  //  Private Properties
+  //
+  // --------------------------------------------------------------------------
+
+  @Element() el: HTMLCalciteShellCenterRowElement;
+
+  // --------------------------------------------------------------------------
+  //
   //  Render Methods
   //
   // --------------------------------------------------------------------------
 
   render(): VNode {
-    return (
-      <Host>
-        <div class={CSS.content}>
-          <slot />
-        </div>
-      </Host>
+    const { el } = this;
+    const rtl = getElementDir(el) === "rtl";
+
+    const contentNode = (
+      <div class={{ [CSS.content]: true, [CSS_UTILITY.rtl]: rtl }}>
+        <slot />
+      </div>
     );
+
+    const actionBar = getSlotted<HTMLCalciteActionBarElement>(el, SLOTS.actionBar);
+
+    const actionBarNode = actionBar ? (
+      <div class={{ [CSS.actionBarContainer]: true, [CSS_UTILITY.rtl]: rtl }}>
+        <slot name={SLOTS.actionBar} />
+      </div>
+    ) : null;
+
+    const children = [actionBarNode, contentNode];
+    
+    if (actionBar.position === "end") {
+      children.reverse();
+    }
+
+    return <Host>{children}</Host>;
   }
 }
