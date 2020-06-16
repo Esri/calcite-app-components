@@ -43,12 +43,52 @@ describe("calcite-shell-center-row", () => {
         <calcite-action text="hello" icon="banana"></calcite-action>
       </calcite-action-bar>
     </calcite-shell-center-row>
-    `
+    `;
     await page.setContent(pageContent);
 
     const actionBarContainer = await page.find(`calcite-shell-center-row >>> .${CSS.actionBarContainer}`);
 
     expect(actionBarContainer).not.toBeNull();
+  });
+
+  it("should render action bar container first when action bar has start position", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-shell-center-row>
+      <div>Hello</div>
+      <calcite-action-bar slot=${SLOTS.actionBar} position="start">
+        <calcite-action text="hello" icon="banana"></calcite-action>
+      </calcite-action-bar>
+    </calcite-shell-center-row>
+    `;
+    await page.setContent(pageContent);
+
+    const element = await page.find("calcite-shell-center-row");
+
+    await page.waitForChanges();
+
+    expect(element.shadowRoot.firstElementChild).toHaveClass(CSS.actionBarContainer);
+  });
+
+  it("should render action bar container last when action bar has end position", async () => {
+    const page = await newE2EPage();
+
+    const pageContent = `
+    <calcite-shell-center-row>
+      <calcite-action-bar slot=${SLOTS.actionBar} position="end">
+        <calcite-action text="hello" icon="banana"></calcite-action>
+      </calcite-action-bar>
+      <div>Hello</div>
+    </calcite-shell-center-row>
+    `;
+    await page.setContent(pageContent);
+
+    const element = await page.find("calcite-shell-center-row");
+
+    await page.waitForChanges();
+
+    expect(element.shadowRoot.lastElementChild).toHaveClass(CSS.actionBarContainer);
   });
 
   it("should be accessible", async () =>
