@@ -73,7 +73,7 @@ export class CalciteActionBar {
   /**
    * Arranges the component depending on the elements 'dir' property.
    */
-  @Prop({ reflect: true }) position: CalcitePosition = "start";
+  @Prop({ reflect: true }) position: CalcitePosition;
 
   /**
    * Used to set the component's color scheme.
