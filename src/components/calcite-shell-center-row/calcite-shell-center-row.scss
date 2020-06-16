@@ -72,4 +72,13 @@
   border-left: 1px solid var(--calcite-app-border);
 }
 
-// TODO RTL
+.calcite--rtl {
+  ::slotted(calcite-action-bar[position="start"]) {
+    border-right:none;
+    border-left: 1px solid var(--calcite-app-border);
+  }
+  ::slotted(calcite-action-bar[position="end"]) {
+    border-left: none;
+    border-right: 1px solid var(--calcite-app-border);
+  }
+}
