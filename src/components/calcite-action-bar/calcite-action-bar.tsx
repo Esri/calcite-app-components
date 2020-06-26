@@ -111,6 +111,15 @@ export class CalciteActionBar {
     if (expand) {
       toggleChildActionText({ parent: el, expanded });
     }
+
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === "childList") {
+          toggleChildActionText({ parent: el, expanded });
+        }
+      }
+    });
+    observer.observe(el, { childList: true });
   }
 
   // --------------------------------------------------------------------------
