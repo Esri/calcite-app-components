@@ -113,6 +113,28 @@ describe("calcite-action-bar", () => {
 
       expect(textEnabled).toBe(false);
     });
+
+    it("should modify textEnabled on actions when expanded is true and new children are added", async () => {
+      const page = await newE2EPage();
+
+      await page.setContent(
+        `<calcite-action-bar expand expanded><calcite-action text="hello"></calcite-action></calcite-action-bar>`
+      );
+
+      await page.evaluate(() => {
+        const actionBar = document.querySelector("calcite-action-bar");
+        const newAction = document.createElement("calcite-action");
+        newAction.textEnabled = false;
+        newAction.id = "new-child";
+        actionBar.appendChild(newAction);
+      });
+
+      const action = await page.find("#new-child");
+
+      const textEnabled = await action.getProperty("textEnabled");
+
+      expect(textEnabled).toBe(true);
+    });
   });
 
   it("should be accessible", async () =>

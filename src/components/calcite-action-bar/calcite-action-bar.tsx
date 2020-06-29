@@ -99,6 +99,11 @@ export class CalciteActionBar {
 
   @Element() el: HTMLCalciteActionBarElement;
 
+  observer = new MutationObserver(() => {
+    const { el, expanded } = this;
+    toggleChildActionText({ parent: el, expanded });
+  });
+
   // --------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -111,6 +116,12 @@ export class CalciteActionBar {
     if (expand) {
       toggleChildActionText({ parent: el, expanded });
     }
+
+    this.observer.observe(el, { childList: true });
+  }
+
+  componentDidUnload(): void {
+    this.observer.disconnect();
   }
 
   // --------------------------------------------------------------------------

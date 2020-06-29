@@ -47,6 +47,25 @@
                   }, 2000);
                 </script>
               </section>
+
+              <section>
+                <h3>Expanded</h3>
+                <calcite-action-bar id="slot-test-expanded" expanded>
+                  <calcite-action text="Add" icon="plus"> </calcite-action>
+                  <calcite-action text="Save" icon="save"> </calcite-action>
+                </calcite-action-bar>
+
+                <script>
+                  const expandedTestNode = document.getElementById("slot-test-expanded");
+                  setTimeout(function () {
+                    const action = document.createElement("calcite-action");
+                    action.setAttribute("slot", "bottom-actions");
+                    action.setAttribute("text", "Hello world");
+                    action.setAttribute("icon", "layers");
+                    expandedTestNode.appendChild(action);
+                  }, 2000);
+                </script>
+              </section>
             </div>
           </section>
         </div>
