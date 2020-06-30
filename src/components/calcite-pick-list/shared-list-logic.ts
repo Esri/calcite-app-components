@@ -217,30 +217,53 @@ export function selectSiblings<T extends Lists>(this: List<T>, item: ListItemEle
   });
 }
 
+let groups: Set<HTMLCalcitePickListGroupElement>;
+
 export function handleFilter<T extends Lists>(this: List<T>, event: CustomEvent): void {
   const filteredData = event.detail;
   const values = filteredData.map((item) => item.value);
-  this.items.forEach((item) => {
-    const inGroup = item.parentElement.matches("calcite-pick-list-group");
 
-    item.hidden = values.indexOf(item.value) === -1;
+  if (!groups) {
+    groups = new Set<HTMLCalcitePickListGroupElement>();
+  }
 
-    // If item is in a group...
-    if (inGroup) {
-      const groupParent = getSlotted<ListItemElement<T>>(item.parentElement, "parent-item");
-      // If there is a group parent
-      if (groupParent !== null) {
-        // If the group parent is a match, show me.
-        if (values.indexOf(groupParent.value) !== -1) {
-          item.hidden = false;
-        }
-        // If I am a match, show my parent.
-        if (values.indexOf(item.value) !== -1) {
-          groupParent.hidden = false;
-        }
+  const matchedItems = (this.items as ListItemElement<T>[]).filter((item) => {
+    const parent = item.parentElement;
+    const grouped = parent.matches("calcite-pick-list-group");
+
+    if (grouped) {
+      groups.add(parent as HTMLCalcitePickListGroupElement);
+    }
+
+    const matches = values.includes(item.value);
+
+    item.hidden = !matches;
+
+    return matches;
+  });
+
+  groups.forEach((group) => {
+    const hasAtLeastOneMatch = matchedItems.some((item) => group.contains(item));
+    group.hidden = !hasAtLeastOneMatch;
+
+    if (!hasAtLeastOneMatch) {
+      return;
+    }
+
+    const parentItem = getSlotted<ListItemElement<T>>(group, "parent-item");
+
+    if (parentItem) {
+      parentItem.hidden = false;
+
+      if (matchedItems.includes(parentItem)) {
+        Array.from(group.children as HTMLCollectionOf<HTMLCalcitePickListElement>).forEach(
+          (child) => (child.hidden = false)
+        );
       }
     }
   });
+
+  groups.clear();
 }
 
 export type ItemData = {
