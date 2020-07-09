@@ -85,11 +85,11 @@ Renders groups of pick list items that are visually separated.
 
 ## Methods
 
-### `getSelectedItems() => Promise<Map<string, object>>`
+### `getSelectedItems() => Promise<Map<string, HTMLCalcitePickListItemElement>>`
 
 #### Returns
 
-Type: `Promise<Map<string, object>>`
+Type: `Promise<Map<string, HTMLCalcitePickListItemElement>>`
 
 ### `setFocus() => Promise<void>`
 
