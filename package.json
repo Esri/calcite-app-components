@@ -27,8 +27,8 @@
     "prettier": "concurrently npm:prettier:*",
     "prettier:ts": "prettier --write \"src/**/*.ts?(x)\"",
     "prettier:styles": "prettier --write \"src/**/*.scss\"",
-    "previewChangelog": "standard-version --no-skip.bump --silent && cat CHANGELOG.md && git reset --hard --quiet",
-    "previewChangelog:latest": "npx touch __CHANGELOG-PREVIEW-TEMP__ && standard-version --no-skip.bump --release-count 1 --infile __CHANGELOG-PREVIEW-TEMP__ --same-file --silent && cat __CHANGELOG-PREVIEW-TEMP__ && rimraf __CHANGELOG-PREVIEW-TEMP__ && git reset --hard --quiet",
+    "previewChangelog": "ts-node ./support/ensureNonPrereleaseChangelog.ts --no-skip.bump --silent && cat CHANGELOG.md && git reset --hard --quiet",
+    "previewChangelog:latest": "npx touch __CHANGELOG-PREVIEW-TEMP__ && ts-node ./support/ensureNonPrereleaseChangelog.ts --no-skip.bump --release-count 1 --infile __CHANGELOG-PREVIEW-TEMP__ --same-file --silent && cat __CHANGELOG-PREVIEW-TEMP__ && rimraf __CHANGELOG-PREVIEW-TEMP__ && git reset --hard --quiet",
     "release": "npm run util:pushTags && npm publish && ts-node ./support/githubReleaseFromChangelog.ts",
     "release:next": "npm run util:cleanTestedBuild && npm run util:deployNextFromExistingBuild",
     "start": "concurrently --kill-others --raw \"npm run demoPageSync\" \"tsc --project ./tsconfig-demos.json --watch\" \"stencil build --dev --watch --serve\"",
@@ -41,7 +41,7 @@
     "util:prepNextFromExistingBuild": "standard-version --no-skip.bump --no-skip.commit --no-skip.tag --skip.changelog --prerelease beta",
     "util:pushTags": "git push --follow-tags",
     "util:publishNext": "npm publish --tag next",
-    "version": "npm run util:cleanTestedBuild && npm run docs && standard-version && git add ."
+    "version": "npm run util:cleanTestedBuild && npm run docs && ts-node ./support/ensureNonPrereleaseChangelog.ts && git add ."
   },
   "repository": {
     "type": "git",
