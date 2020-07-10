@@ -4,9 +4,11 @@ export interface SetUpPageOptions {
   withPeerDependencies: boolean;
 }
 
-export async function setUpPage(content: string, options?: SetUpPageOptions): Promise<E2EPage> {
-  const page = await newE2EPage();
-  await page.setContent(content);
+export async function setUpPage(html: string, options?: SetUpPageOptions): Promise<E2EPage> {
+  const page = await newE2EPage({
+    html,
+    failOnConsoleError: true
+  });
 
   if (options?.withPeerDependencies) {
     await page.addScriptTag({
