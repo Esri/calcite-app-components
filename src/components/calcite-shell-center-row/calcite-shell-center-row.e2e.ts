@@ -27,11 +27,14 @@ describe("calcite-shell-center-row", () => {
   it("should not error when there is no action-bar", async () => {
     const page = await newE2EPage();
 
-    console.error = jest.fn();
+    const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation();
 
     await page.setContent("<calcite-shell-center-row></calcite-shell-center-row>");
 
     expect(console.error).toHaveBeenCalledTimes(0);
+
+    consoleErrorSpy.mockClear();
+    consoleErrorSpy.mockRestore();
   });
 
   it("should not render action bar container when there is no action-bar", async () => {
