@@ -14,8 +14,8 @@
 
 | Slot           | Description                                            |
 | -------------- | ------------------------------------------------------ |
-|                | A slot for adding content to the center row.          |
-| `"action-bar"` | A slot for adding a `calcite-action-bar` to the center row. |
+|                | A slot for adding content to the shell panel.          |
+| `"action-bar"` | A slot for adding a `calcite-action-bar` to the panel. |
 
 ---
 

@@ -3,6 +3,24 @@
 This document maintains a list of released versions and changes introduced by them.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [6.1.0](https://github.com/Esri/calcite-app-components/compare/v6.0.0...v6.1.0) (2020-07-09)
+
+### Features
+
+- **flow-item:** Use calcite-popover for menu actions [#1011](https://github.com/Esri/calcite-app-components/issues/1011) ([a33526a](https://github.com/Esri/calcite-app-components/commit/a33526a765c3037a886e33b6f8e15d1cd2fe19a7))
+- **pick-list-item:** update to word-break ([845e869](https://github.com/Esri/calcite-app-components/commit/845e869990177cba69c28ce4660605b56f4aaee0))
+- **shell-center-row:** add slot for action-bar ([05e1049](https://github.com/Esri/calcite-app-components/commit/05e10492a0aabf4ed43df70a172f21d63295280d)), closes [#1015](https://github.com/Esri/calcite-app-components/issues/1015)
+
+### Bug Fixes
+
+- **action:** icon scale update ([7005bf5](https://github.com/Esri/calcite-app-components/commit/7005bf5dd35827013ab9ebdcd3e68917563078f5))
+- **action:** Prevent disabled buttons from being clicked or tabbed into ([#1004](https://github.com/Esri/calcite-app-components/issues/1004)) ([0afa470](https://github.com/Esri/calcite-app-components/commit/0afa4704e8928bfbad6c69e0f7930b19e315e3c5))
+- **action-bar:** Sync expanded state with new children ([#1025](https://github.com/Esri/calcite-app-components/issues/1025)) ([81506f5](https://github.com/Esri/calcite-app-components/commit/81506f5dfc875b82c57b9e5b26ddbfb0432d061a))
+- **block-section:** rtl class was getting incorrectly applied ([eebf0f5](https://github.com/Esri/calcite-app-components/commit/eebf0f53443ac5bd926bedf7a51c000065d0fd1d)), closes [#993](https://github.com/Esri/calcite-app-components/issues/993) [#993](https://github.com/Esri/calcite-app-components/issues/993)
+- **panel, flow-item:** Make sure the FAB is always stacked higher than slot content. ([#1010](https://github.com/Esri/calcite-app-components/issues/1010)) ([5f783d4](https://github.com/Esri/calcite-app-components/commit/5f783d42f729a0ce21323491d6e2c1144c082c2a)), closes [#1000](https://github.com/Esri/calcite-app-components/issues/1000)
+- **pick-list:** hide non-nested groups that do not match filter ([#1028](https://github.com/Esri/calcite-app-components/issues/1028)) ([d28e5a1](https://github.com/Esri/calcite-app-components/commit/d28e5a1657daaa584603c6e197096c71cc67cf8c)), closes [#1026](https://github.com/Esri/calcite-app-components/issues/1026)
+- **value-list:** ensure keyboard-enabled DND stays active when moving items around ([#1012](https://github.com/Esri/calcite-app-components/issues/1012)) ([1c4a741](https://github.com/Esri/calcite-app-components/commit/1c4a741667f64e1b2febe0b56585cf48d82c800c)), closes [#986](https://github.com/Esri/calcite-app-components/issues/986)
+
 ## [6.0.0](https://github.com/Esri/calcite-app-components/compare/v5.7.3...v6.0.0) (2020-05-20)
 
 ### ⚠ BREAKING CHANGES
