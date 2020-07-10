@@ -31,7 +31,7 @@ describe("calcite-shell-center-row", () => {
 
     await page.setContent("<calcite-shell-center-row></calcite-shell-center-row>");
 
-    expect(console.error).toHaveBeenCalledTimes(0);
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(0);
 
     consoleErrorSpy.mockClear();
     consoleErrorSpy.mockRestore();
