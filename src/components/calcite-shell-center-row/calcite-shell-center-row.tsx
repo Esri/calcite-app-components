@@ -68,8 +68,8 @@ export class CalciteShellCenterRow {
     ) : null;
 
     const children = [actionBarNode, contentNode];
-    
-    if (actionBar.position === "end") {
+
+    if (actionBar?.position === "end") {
       children.reverse();
     }
 
