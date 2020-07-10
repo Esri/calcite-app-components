@@ -24,6 +24,16 @@ describe("calcite-shell-center-row", () => {
       }
     ]));
 
+  it("should not error when there is no action-bar", async () => {
+    const page = await newE2EPage();
+
+    console.error = jest.fn();
+
+    await page.setContent("<calcite-shell-center-row></calcite-shell-center-row>");
+
+    expect(console.error).toHaveBeenCalledTimes(0);
+  });
+
   it("should not render action bar container when there is no action-bar", async () => {
     const page = await newE2EPage();
 
