@@ -124,7 +124,7 @@ export class CalciteBlockSection {
           <calcite-switch
             aria-labelledby={labelId}
             switched={open}
-            onChange={this.toggleSection}
+            onCalciteSwitchChange={this.toggleSection}
             scale="s"
             tabIndex={-1}
           />
