@@ -121,7 +121,7 @@ export class CalciteFab {
           theme={theme}
           dir={dir}
           scale={scale}
-          icon={icon}
+          icon-start={icon}
           round={true}
           width="auto"
           appearance={appearance}
