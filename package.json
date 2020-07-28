@@ -55,8 +55,8 @@
     "sortablejs": "1.10.2"
   },
   "devDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.33",
-    "@stencil/core": "1.16.4",
+    "@esri/calcite-components": "1.0.0-beta.34",
+    "@stencil/core": "1.17.2",
     "@stencil/eslint-plugin": "0.3.1",
     "@stencil/postcss": "1.0.1",
     "@stencil/sass": "1.3.2",
@@ -78,21 +78,21 @@
     "@types/rimraf": "3.0.0",
     "@types/sortablejs": "1.10.5",
     "@types/webpack": "4.41.21",
-    "@typescript-eslint/eslint-plugin": "3.7.0",
-    "@typescript-eslint/parser": "3.7.0",
+    "@typescript-eslint/eslint-plugin": "3.7.1",
+    "@typescript-eslint/parser": "3.7.1",
     "autoprefixer": "9.8.5",
     "awesome-typescript-loader": "5.2.1",
     "axe-core": "3.5.5",
     "babel-loader": "8.1.0",
     "chalk": "4.1.0",
     "chokidar": "3.4.1",
-    "colorette": "1.2.0",
+    "colorette": "1.2.1",
     "concurrently": "5.2.0",
     "dedent": "0.7.0",
     "eslint": "7.5.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.20.3",
+    "eslint-plugin-react": "7.20.5",
     "gh-release": "3.5.0",
     "git-semver-tags": "4.0.0",
     "github-release-from-cc-changelog": "2.2.0",
@@ -112,7 +112,7 @@
     "stylelint": "13.6.1",
     "stylelint-config-recommended-scss": "4.2.0",
     "stylelint-scss": "3.18.0",
-    "ts-jest": "26.1.3",
+    "ts-jest": "26.1.4",
     "ts-node": "8.10.2",
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
@@ -120,7 +120,7 @@
     "updtr": "3.1.0"
   },
   "peerDependencies": {
-    "@esri/calcite-components": "1.0.0-beta.33"
+    "@esri/calcite-components": "1.0.0-beta.34"
   },
   "license": "UNLICENSED"
 }
