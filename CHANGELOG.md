@@ -3,6 +3,12 @@
 This document maintains a list of released versions and changes introduced by them.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+### [6.1.2](https://github.com/Esri/calcite-app-components/compare/v6.1.1...v6.1.2) (2020-07-29)
+
+### Bug Fixes
+
+- **panel:** slot-container height ([0221638](https://github.com/Esri/calcite-app-components/commit/0221638d1c3bf19888825389de7b91f73f02122b)), closes [#1045](https://github.com/Esri/calcite-app-components/issues/1045)
+
 ### [6.1.1](https://github.com/Esri/calcite-app-components/compare/v6.1.0...v6.1.1) (2020-07-21)
 
 ### Bug Fixes
