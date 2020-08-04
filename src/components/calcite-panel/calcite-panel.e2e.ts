@@ -83,14 +83,8 @@ describe("calcite-panel", () => {
   });
 
   it("honors calcitePanelScroll event", async () => {
-    const html = `
-    <calcite-panel style="height:200px; width:600px;">
-      <div style="height:1000px; width:600px;">Test content.</div>
-    </calcite-panel>
-    `;
-
     const page = await newE2EPage({
-      html
+      html: "<calcite-panel>test</calcite-panel>"
     });
 
     const scrollSpy = await page.spyOnEvent("calcitePanelScroll");
