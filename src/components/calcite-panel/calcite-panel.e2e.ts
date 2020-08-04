@@ -84,9 +84,8 @@ describe("calcite-panel", () => {
 
   it("honors calcitePanelScroll event", async () => {
     const html = `
-    <calcite-panel style="height:200px; width:200px;">
-      <p style="height:1000px; width:200px;">Test content</p>
-      <p id="scrollToMe">Scroll to me</p>
+    <calcite-panel style="height:200px; width:600px;">
+      <div style="height:1000px; width:600px;">Test content.</div>
     </calcite-panel>
     `;
 
@@ -96,9 +95,13 @@ describe("calcite-panel", () => {
 
     const scrollSpy = await page.spyOnEvent("calcitePanelScroll");
 
-    await page.evaluate(() => {
-      document.querySelector("calcite-panel #scrollToMe").scrollIntoView();
-    });
+    await page.evaluate((contentContainerSelector) => {
+      const contentContainer = document
+        .querySelector("calcite-panel")
+        .shadowRoot.querySelector(contentContainerSelector);
+
+      contentContainer.dispatchEvent(new CustomEvent("scroll"));
+    }, `.${CSS.contentContainer}`);
 
     await page.waitForChanges();
 
