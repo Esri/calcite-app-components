@@ -3,6 +3,16 @@
 This document maintains a list of released versions and changes introduced by them.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [6.2.0](https://github.com/Esri/calcite-app-components/compare/v6.1.2...v6.2.0) (2020-08-20)
+
+### Features
+
+- **panel:** Add tooling to test onscroll event for FlowItem and Panel [#842](https://github.com/Esri/calcite-app-components/issues/842) [#859](https://github.com/Esri/calcite-app-components/issues/859) ([#1050](https://github.com/Esri/calcite-app-components/issues/1050)) ([1cfe5e3](https://github.com/Esri/calcite-app-components/commit/1cfe5e397a507a62f083f166e9028b8f49a267d3))
+
+### Bug Fixes
+
+- **panel:** remove slot-container and associated styles ([ceb6ab7](https://github.com/Esri/calcite-app-components/commit/ceb6ab768a23c1a0772e937628054a14033b370c))
+
 ### [6.1.2](https://github.com/Esri/calcite-app-components/compare/v6.1.1...v6.1.2) (2020-07-29)
 
 ### Bug Fixes
