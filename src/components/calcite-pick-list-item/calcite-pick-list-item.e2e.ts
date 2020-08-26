@@ -6,7 +6,7 @@ describe("calcite-pick-list-item", () => {
   it("renders", async () => renders("calcite-pick-list-item"));
 
   it("should toggle selected attribute when clicked", async () => {
-    const page = await setUpPage(`<calcite-pick-list-item text-label="test"></calcite-pick-list-item>`);
+    const page = await setUpPage(`<calcite-pick-list-item label="test"></calcite-pick-list-item>`);
 
     const item = await page.find("calcite-pick-list-item");
     expect(await item.getProperty("selected")).toBe(false);
@@ -19,7 +19,7 @@ describe("calcite-pick-list-item", () => {
   });
 
   it("should fire event calciteListItemChange when item is clicked", async () => {
-    const page = await setUpPage(`<calcite-pick-list-item text-label="test" value="example"></calcite-pick-list-item>`);
+    const page = await setUpPage(`<calcite-pick-list-item label="test" value="example"></calcite-pick-list-item>`);
     const item = await page.find("calcite-pick-list-item");
     await page.evaluate(() => {
       document.addEventListener("calciteListItemChange", (event: CustomEvent) => {
@@ -40,7 +40,7 @@ describe("calcite-pick-list-item", () => {
 
   it("prevents deselection when disableDeselect is true", async () => {
     const page = await setUpPage(
-      `<calcite-pick-list-item text-label="test" value="example" disable-deselect selected></calcite-pick-list-item>`
+      `<calcite-pick-list-item label="test" value="example" disable-deselect selected></calcite-pick-list-item>`
     );
     const item = await page.find("calcite-pick-list-item");
 
@@ -51,7 +51,7 @@ describe("calcite-pick-list-item", () => {
 
   it("allows for easy removal", async () => {
     const page = await setUpPage(
-      `<calcite-pick-list-item text-label="test" value="example" removable></calcite-pick-list-item>`
+      `<calcite-pick-list-item label="test" value="example" removable></calcite-pick-list-item>`
     );
 
     const removeButton = await page.find(`calcite-pick-list-item >>> .${CSS.remove}`);

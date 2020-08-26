@@ -14,6 +14,14 @@ export class CalciteTipGroup {
 
   /**
    * The title used for all nested tips.
+   *
+   */
+  @Prop() groupTitle?: string;
+
+  /**
+   * The title used for all nested tips.
+   *
+   * @deprecated use groupTitle instead.
    */
   @Prop() textGroupTitle?: string;
 

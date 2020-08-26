@@ -30,8 +30,8 @@ const createAttributes: () => Attributes = () => [
     value: text("intlClose", TEXT.close)
   },
   {
-    name: "text-defalut-title",
-    value: text("textDefaultTitle", TEXT.defaultGroupTitle)
+    name: "intl-default-title",
+    value: text("intlDefaultTitle", TEXT.defaultGroupTitle)
   },
   {
     name: "intl-pagination-label",
@@ -56,7 +56,7 @@ export const basic = (): string =>
     "calcite-tip-manager",
     createAttributes(),
     dedent`
-    <calcite-tip-group text-group-title="Astronomy">
+    <calcite-tip-group group-title="Astronomy">
       <calcite-tip heading="The Red Rocks and Blue Water">
         <img slot="thumbnail" src="https://placeimg.com/1000/600/city" alt="This is an image." />
         <p>

@@ -19,7 +19,15 @@ export class CalcitePickListGroup {
   // --------------------------------------------------------------------------
 
   /**
-   * The title used for all nested `calcite-pick-list` rows
+   * The title used for all nested `calcite-pick-list` rows.
+   *
+   */
+  @Prop({ reflect: true }) groupTitle: string;
+
+  /**
+   * The title used for all nested `calcite-pick-list` rows.
+   *
+   * @deprecated use groupTitle instead
    */
   @Prop({ reflect: true }) textGroupTitle: string;
 
@@ -38,7 +46,7 @@ export class CalcitePickListGroup {
   // --------------------------------------------------------------------------
 
   render(): VNode {
-    const { el, textGroupTitle } = this;
+    const { el, groupTitle, textGroupTitle } = this;
     const rtl = getElementDir(el) === "rtl";
     const hasParentItem = getSlotted(el, SLOTS.parentItem) !== null;
     const sectionClasses = {
@@ -47,9 +55,11 @@ export class CalcitePickListGroup {
       [CSS_UTILITY.rtl]: rtl
     };
 
+    const title = groupTitle || textGroupTitle;
+
     return (
       <Host>
-        {textGroupTitle ? <h3 class={CSS.heading}>{textGroupTitle}</h3> : null}
+        {title ? <h3 class={CSS.heading}>{title}</h3> : null}
         <slot name={SLOTS.parentItem} />
         <section class={sectionClasses}>
           <slot />
