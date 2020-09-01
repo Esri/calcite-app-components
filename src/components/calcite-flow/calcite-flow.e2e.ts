@@ -44,8 +44,12 @@ describe("calcite-flow", () => {
 
     await page.setContent("<calcite-flow><calcite-flow-item></calcite-flow-item></calcite-flow>");
 
-    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowItemElement) => {
-      elm.beforeBack = this.beforeBack;
+    await page.$eval("calcite-flow-item", (elm: HTMLCalciteFlowItemElement): void => {
+      type TestWindow = {
+        beforeBack: () => Promise<void>;
+      } & typeof window;
+
+      elm.beforeBack = (window as TestWindow).beforeBack;
     });
 
     const flow = await page.find("calcite-flow");
