@@ -124,7 +124,7 @@ export class CalciteValueList<
     this.setUpDragAndDrop();
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     cleanUpObserver.call(this);
     this.cleanUpDragAndDrop();
   }
