@@ -6,7 +6,7 @@ import { ATTRIBUTES } from "../../../.storybook/resources";
 const { appearance, dir, scale, theme } = ATTRIBUTES;
 
 export default {
-  title: "components|calcite-action",
+  title: "components/calcite-action",
   decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,

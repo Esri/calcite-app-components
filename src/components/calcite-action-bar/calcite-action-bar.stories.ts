@@ -8,7 +8,7 @@ const { dir, position, theme } = ATTRIBUTES;
 import { TEXT } from "./resources";
 
 export default {
-  title: "components|calcite-action-bar",
+  title: "components/calcite-action-bar",
   decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,

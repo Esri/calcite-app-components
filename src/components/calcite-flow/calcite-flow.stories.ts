@@ -9,7 +9,7 @@ import { SLOTS, TEXT } from "../calcite-flow-item/resources";
 import dedent from "dedent";
 
 export default {
-  title: "components|calcite-flow",
+  title: "components/calcite-flow",
   decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,

@@ -8,7 +8,7 @@ import dedent from "dedent";
 const { dir, theme } = ATTRIBUTES;
 
 export default {
-  title: "components|calcite-tip-manager",
+  title: "components/calcite-tip-manager",
   decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,

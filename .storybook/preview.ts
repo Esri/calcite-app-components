@@ -1,34 +1,34 @@
-import { addDecorator, addParameters } from "@storybook/html";
-import centered from "@storybook/addon-centered/html";
-import theme from "./theme";
-import { titlelessDocsPage } from "./utils";
+import { addParameters } from "@storybook/html";
+import { backgrounds, globalDocsPage, parseReadme } from "./utils";
 
-addDecorator(centered);
 addParameters({
-  backgrounds: [{ name: "Light", value: "#f8f8f8", default: true }],
-  options: {
-    theme,
-    storySort: (a, b) => {
-      const sectionA = a[1].id.split("-")[0];
-      const sectionB = b[1].id.split("-")[0];
-
-      return sectionB.localeCompare(sectionA);
-    }
+  a11y: {
+    element: "#root",
+    config: {},
+    options: {},
+    manual: true
   },
+  backgrounds,
   docs: {
-    page: titlelessDocsPage,
     extractComponentDescription: (_component, { notes }) => {
       if (notes) {
         if (typeof notes === "string") {
-          return notes;
+          return parseReadme(notes);
         }
 
-        return Object.keys(notes)
-          .map((section) => notes[section])
-          .join("\n");
+        const multipleNotes = Array.isArray(notes) ? notes : Object.keys(notes).map((section) => notes[section]);
+
+        return parseReadme(multipleNotes.join("\n"));
       }
 
       return null;
+    },
+    page: globalDocsPage
+  },
+  layout: "centered",
+  options: {
+    storySort: {
+      order: ["Overview", "Components"]
     }
   }
 });

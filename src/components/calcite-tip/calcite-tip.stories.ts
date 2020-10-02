@@ -6,7 +6,7 @@ import { TEXT } from "./resources";
 import { ATTRIBUTES } from "../../../.storybook/resources";
 
 export default {
-  title: "components|calcite-tip",
+  title: "components/calcite-tip",
   decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,

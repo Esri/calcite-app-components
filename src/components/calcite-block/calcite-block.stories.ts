@@ -13,7 +13,7 @@ import { ATTRIBUTES } from "../../../.storybook/resources";
 import dedent from "dedent";
 
 export default {
-  title: "components|calcite-block",
+  title: "components/calcite-block",
   decorators: [withKnobs, withA11y],
   parameters: {
     backgrounds: darkBackground,
