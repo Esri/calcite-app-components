@@ -10,10 +10,12 @@ export const List = ({ props, ...rest }): VNode => {
     filterEnabled,
     dataForFilter,
     handleFilter,
+    filterPlaceholder,
     textFilterPlaceholder,
     el
   } = props;
   const defaultSlot = <slot />;
+  const placeholder = filterPlaceholder || textFilterPlaceholder;
 
   return (
     <Host role="menu" aria-disabled={disabled.toString()} aria-busy={loading.toString()} {...rest}>
@@ -23,8 +25,8 @@ export const List = ({ props, ...rest }): VNode => {
             <calcite-filter
               data={dataForFilter}
               dir={getElementDir(el)}
-              placeholder={textFilterPlaceholder}
-              aria-label={textFilterPlaceholder}
+              placeholder={placeholder}
+              aria-label={placeholder}
               onCalciteFilterChange={handleFilter}
             />
           ) : null}
