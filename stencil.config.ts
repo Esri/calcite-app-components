@@ -59,6 +59,11 @@ export const create: () => Config = () => ({
   srcIndexHtml: "src/index.html",
   extras: {
     appendChildSlotFix: true,
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true,
     slotChildNodesFix: true
   }
 });
