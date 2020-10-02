@@ -3,6 +3,13 @@
 This document maintains a list of released versions and changes introduced by them.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [6.3.0](https://github.com/Esri/calcite-app-components/compare/v6.2.0...v6.3.0) (2020-10-02)
+
+### Features
+
+- **pick-list-group, pick-list-item, tip-group, tip-manager, value-list-item:** add replacement text props ([#1060](https://github.com/Esri/calcite-app-components/issues/1060)) ([d62a0fc](https://github.com/Esri/calcite-app-components/commit/d62a0fc6ac8b69ba7789707dbba27717364a8359))
+- **value-list:** allow dragging items between lists ([#1059](https://github.com/Esri/calcite-app-components/issues/1059)) ([84e7d73](https://github.com/Esri/calcite-app-components/commit/84e7d73edf21b43b297e5321aee842c96b153a37)), closes [#1056](https://github.com/Esri/calcite-app-components/issues/1056)
+
 ## [6.2.0](https://github.com/Esri/calcite-app-components/compare/v6.1.2...v6.2.0) (2020-08-20)
 
 ### Features

@@ -4,14 +4,13 @@
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property         | Attribute          | Description                         | Type     | Default     |
-| ---------------- | ------------------ | ----------------------------------- | -------- | ----------- |
-| `textGroupTitle` | `text-group-title` | The title used for all nested tips. | `string` | `undefined` |
+| Property         | Attribute          | Description                                                                                                          | Type     | Default     |
+| ---------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `groupTitle`     | `group-title`      | The title used for all nested tips.                                                                                  | `string` | `undefined` |
+| `textGroupTitle` | `text-group-title` | <span style="color:red">**[DEPRECATED]**</span> use groupTitle instead.<br/><br/>The title used for all nested tips. | `string` | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
