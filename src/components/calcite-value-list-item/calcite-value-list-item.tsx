@@ -1,4 +1,4 @@
-import { Component, Element, Host, Method, Prop, h, VNode, Listen } from "@stencil/core";
+import { Component, Element, h, Host, Listen, Method, Prop, VNode } from "@stencil/core";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
 import guid from "../utils/guid";
 import { CSS } from "../calcite-pick-list-item/resources";
@@ -18,6 +18,11 @@ export class CalciteValueListItem {
   //  Properties
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * An optional description for this item. Will appear below the label text.
+   */
+  @Prop({ reflect: true }) description?: string;
 
   /**
    * When true, the item cannot be clicked and is visually muted
@@ -40,6 +45,11 @@ export class CalciteValueListItem {
   @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
 
   /**
+   * The main label for this item. Appears next to the icon.
+   */
+  @Prop({ reflect: true }) label!: string;
+
+  /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
    */
   @Prop() metadata?: Record<string, unknown>;
@@ -56,11 +66,15 @@ export class CalciteValueListItem {
 
   /**
    * The main label for this item. Appears next to the icon.
+   *
+   * @deprecated use label instead.
    */
   @Prop({ reflect: true }) textLabel!: string;
 
   /**
    * An optional description for this item. Will appear below the label text.
+   *
+   * @deprecated use description instead.
    */
   @Prop({ reflect: true }) textDescription?: string;
 
@@ -167,8 +181,8 @@ export class CalciteValueListItem {
           selected={this.selected}
           metadata={this.metadata}
           removable={this.removable}
-          textLabel={this.textLabel}
-          textDescription={this.textDescription}
+          textLabel={this.label || this.textLabel}
+          textDescription={this.description || this.textDescription}
           onCalciteListItemChange={this.handleSelectChange}
           value={this.value}
         >

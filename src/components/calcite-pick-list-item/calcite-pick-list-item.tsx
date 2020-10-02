@@ -3,12 +3,12 @@ import {
   Element,
   Event,
   EventEmitter,
+  h,
   Host,
   Method,
   Prop,
-  Watch,
-  h,
-  VNode
+  VNode,
+  Watch
 } from "@stencil/core";
 import { CSS, ICONS, SLOTS, TEXT } from "./resources";
 import { ICON_TYPES } from "../calcite-pick-list/resources";
@@ -31,6 +31,16 @@ export class CalcitePickListItem {
   // --------------------------------------------------------------------------
 
   /**
+   * An optional description for this item.  This will appear below the label text.
+   */
+  @Prop({ reflect: true }) description?: string;
+
+  @Watch("description")
+  descriptionWatchHandler(): void {
+    this.calciteListItemPropsChange.emit();
+  }
+
+  /**
    * When true, the item cannot be clicked and is visually muted.
    */
   @Prop({ reflect: true }) disabled? = false;
@@ -44,6 +54,16 @@ export class CalcitePickListItem {
    * Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.
    */
   @Prop({ reflect: true }) icon?: ICON_TYPES | null = null;
+
+  /**
+   * The main label for this item. This will appear next to the icon.
+   */
+  @Prop({ reflect: true }) label: string;
+
+  @Watch("label")
+  labelWatchHandler(): void {
+    this.calciteListItemPropsChange.emit();
+  }
 
   /**
    * Used to provide additional metadata to an item, primarily used when the parent list has a filter.
@@ -79,6 +99,8 @@ export class CalcitePickListItem {
 
   /**
    * An optional description for this item.  This will appear below the label text.
+   *
+   * @deprecated use description instead.
    */
   @Prop({ reflect: true }) textDescription?: string;
 
@@ -89,6 +111,8 @@ export class CalcitePickListItem {
 
   /**
    * The main label for this item. This will appear next to the icon.
+   *
+   * @deprecated use label instead.
    */
   @Prop({ reflect: true }) textLabel: string;
 
@@ -262,9 +286,8 @@ export class CalcitePickListItem {
   }
 
   render(): VNode {
-    const description = this.textDescription ? (
-      <span class={CSS.description}>{this.textDescription}</span>
-    ) : null;
+    const description = this.description || this.textDescription;
+    const label = this.label || this.textLabel;
 
     return (
       <Host role="menuitemcheckbox" aria-checked={this.selected.toString()}>
@@ -274,12 +297,12 @@ export class CalcitePickListItem {
           onKeyDown={this.pickListKeyDownHandler}
           tabIndex={0}
           ref={(focusEl): HTMLLabelElement => (this.focusEl = focusEl)}
-          aria-label={this.textLabel}
+          aria-label={label}
         >
           {this.renderIcon()}
           <div class={CSS.textContainer}>
-            <span class={CSS.title}>{this.textLabel}</span>
-            {description}
+            <span class={CSS.title}>{label}</span>
+            {description ? <span class={CSS.description}>{description}</span> : null}
           </div>
         </label>
         {this.renderSecondaryAction()}

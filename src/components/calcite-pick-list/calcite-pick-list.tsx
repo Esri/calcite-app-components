@@ -58,6 +58,11 @@ export class CalcitePickList<
   @Prop({ reflect: true }) filterEnabled = false;
 
   /**
+   * Placeholder text for the filter input field.
+   */
+  @Prop({ reflect: true }) filterPlaceholder: string;
+
+  /**
    * When true, content is waiting to be loaded. This state shows a busy indicator.
    */
   @Prop({ reflect: true }) loading = false;
@@ -72,8 +77,10 @@ export class CalcitePickList<
 
   /**
    * Placeholder text for the filter input field.
+   *
+   * @deprecated use filterPlaceholder instead.
    */
-  @Prop({ reflect: true }) textFilterPlaceholder: string = TEXT.filterPlaceholder;
+  @Prop({ reflect: true }) textFilterPlaceholder: string = TEXT.filterResults;
 
   // --------------------------------------------------------------------------
   //
