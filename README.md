@@ -1,4 +1,4 @@
-# This repository has been deprecated and merged into [@esri/calcite-components](https://github.com/Esri/calcite-app-components/)
+# This repository has been deprecated and merged into [@esri/calcite-components](https://github.com/Esri/calcite-components/)
 
 [![Build Status](https://travis-ci.com/Esri/calcite-app-components.svg?branch=master)](https://travis-ci.com/Esri/calcite-app-components)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
